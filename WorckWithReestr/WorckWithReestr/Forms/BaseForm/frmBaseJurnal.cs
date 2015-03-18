@@ -140,6 +140,7 @@ namespace WorckWithReestr
             dgv.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dgv_CellValuePushed);
 
             //dgv.Dock = DockStyle.Fill;
+
             for (int i = 0; i < 'Z' - 'A'; i++)
             {
                 string name = ((char)('A' + i)).ToString();
