@@ -1,9 +1,0 @@
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\bin\Debug\DemoTestMap.dll
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\bin\Debug\DemoTestMap.pdb
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\obj\Debug\DemoTestMap.csprojResolveAssemblyReference.cache
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\obj\Debug\DemoTestMap.dll
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\obj\Debug\DemoTestMap.pdb
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\obj\Debug\DemoTestMap.frmFindAndSelect_MapObject.resources
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\obj\Debug\DemoTestMap.frmShowInfoAboutMapObj.resources
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\obj\Debug\DemoTestMap.csproj.GenerateResource.Cache
-D:\_for_programmer\ArcGis_Proj\DemoTestMap\DemoTestMap\bin\Debug\DemoTestMap.esriAddIn
