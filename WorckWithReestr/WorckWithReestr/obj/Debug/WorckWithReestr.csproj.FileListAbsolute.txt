@@ -1,0 +1,14 @@
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\bin\Debug\WorckWithReestr.dll
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\bin\Debug\WorckWithReestr.pdb
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.frmBaseSpr_list.resources
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.frmFizLic_element.resources
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.Properties.Resources.resources
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.csproj.GenerateResource.Cache
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.dll
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.pdb
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.frmBaseSpr_element.resources
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.frmJurLic_element.resources
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.csprojResolveAssemblyReference.cache
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.frmBaseJurnal.resources
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\obj\Debug\WorckWithReestr.frmReestrZayav_jurnal.resources
+d:\_for_programmer\ArcGis_Proj\WorckWithReestr\WorckWithReestr\bin\Debug\WorckWithReestr.esriAddIn
