@@ -83,145 +83,151 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(534, 695);
+            this.btnOk.Location = new System.Drawing.Point(461, 651);
+            this.btnOk.TabIndex = 24;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(15, 695);
+            this.btnCancel.Location = new System.Drawing.Point(12, 651);
+            this.btnCancel.TabIndex = 25;
             // 
             // txtNomerKancelyar
             // 
-            this.txtNomerKancelyar.Location = new System.Drawing.Point(158, 385);
+            this.txtNomerKancelyar.Location = new System.Drawing.Point(136, 286);
             this.txtNomerKancelyar.Name = "txtNomerKancelyar";
-            this.txtNomerKancelyar.Size = new System.Drawing.Size(154, 20);
-            this.txtNomerKancelyar.TabIndex = 31;
+            this.txtNomerKancelyar.Size = new System.Drawing.Size(130, 20);
+            this.txtNomerKancelyar.TabIndex = 11;
             // 
             // cbPrichinaOtkaz
             // 
             this.cbPrichinaOtkaz.FormattingEnabled = true;
-            this.cbPrichinaOtkaz.Location = new System.Drawing.Point(158, 360);
+            this.cbPrichinaOtkaz.Location = new System.Drawing.Point(370, 310);
             this.cbPrichinaOtkaz.Name = "cbPrichinaOtkaz";
-            this.cbPrichinaOtkaz.Size = new System.Drawing.Size(154, 21);
-            this.cbPrichinaOtkaz.TabIndex = 30;
+            this.cbPrichinaOtkaz.Size = new System.Drawing.Size(166, 21);
+            this.cbPrichinaOtkaz.TabIndex = 13;
             // 
             // cbOtmetkaOtkaz
             // 
             this.cbOtmetkaOtkaz.FormattingEnabled = true;
-            this.cbOtmetkaOtkaz.Location = new System.Drawing.Point(158, 335);
+            this.cbOtmetkaOtkaz.Location = new System.Drawing.Point(136, 310);
             this.cbOtmetkaOtkaz.Name = "cbOtmetkaOtkaz";
-            this.cbOtmetkaOtkaz.Size = new System.Drawing.Size(154, 21);
-            this.cbOtmetkaOtkaz.TabIndex = 29;
+            this.cbOtmetkaOtkaz.Size = new System.Drawing.Size(130, 21);
+            this.cbOtmetkaOtkaz.TabIndex = 12;
             // 
             // cbFIOPoluchil
             // 
             this.cbFIOPoluchil.FormattingEnabled = true;
-            this.cbFIOPoluchil.Location = new System.Drawing.Point(158, 311);
+            this.cbFIOPoluchil.Location = new System.Drawing.Point(136, 333);
             this.cbFIOPoluchil.Name = "cbFIOPoluchil";
-            this.cbFIOPoluchil.Size = new System.Drawing.Size(154, 21);
-            this.cbFIOPoluchil.TabIndex = 28;
+            this.cbFIOPoluchil.Size = new System.Drawing.Size(195, 21);
+            this.cbFIOPoluchil.TabIndex = 14;
             // 
             // txtDopMat
             // 
-            this.txtDopMat.Location = new System.Drawing.Point(158, 254);
+            this.txtDopMat.Location = new System.Drawing.Point(136, 218);
+            this.txtDopMat.Multiline = true;
             this.txtDopMat.Name = "txtDopMat";
-            this.txtDopMat.Size = new System.Drawing.Size(154, 20);
-            this.txtDopMat.TabIndex = 27;
+            this.txtDopMat.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtDopMat.Size = new System.Drawing.Size(400, 50);
+            this.txtDopMat.TabIndex = 10;
             // 
             // txtZmist
             // 
-            this.txtZmist.Location = new System.Drawing.Point(158, 232);
+            this.txtZmist.Location = new System.Drawing.Point(136, 165);
+            this.txtZmist.Multiline = true;
             this.txtZmist.Name = "txtZmist";
-            this.txtZmist.Size = new System.Drawing.Size(154, 20);
-            this.txtZmist.TabIndex = 26;
+            this.txtZmist.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtZmist.Size = new System.Drawing.Size(400, 50);
+            this.txtZmist.TabIndex = 9;
             // 
             // txtEMael
             // 
-            this.txtEMael.Location = new System.Drawing.Point(158, 210);
+            this.txtEMael.Location = new System.Drawing.Point(136, 142);
             this.txtEMael.Name = "txtEMael";
-            this.txtEMael.Size = new System.Drawing.Size(154, 20);
-            this.txtEMael.TabIndex = 25;
+            this.txtEMael.Size = new System.Drawing.Size(400, 20);
+            this.txtEMael.TabIndex = 8;
             // 
             // txtKodZayavnika
             // 
-            this.txtKodZayavnika.Location = new System.Drawing.Point(158, 188);
+            this.txtKodZayavnika.Location = new System.Drawing.Point(136, 118);
             this.txtKodZayavnika.Name = "txtKodZayavnika";
-            this.txtKodZayavnika.Size = new System.Drawing.Size(154, 20);
-            this.txtKodZayavnika.TabIndex = 24;
+            this.txtKodZayavnika.Size = new System.Drawing.Size(130, 20);
+            this.txtKodZayavnika.TabIndex = 7;
             // 
             // cbStatusZayavnika
             // 
             this.cbStatusZayavnika.FormattingEnabled = true;
-            this.cbStatusZayavnika.Location = new System.Drawing.Point(158, 165);
+            this.cbStatusZayavnika.Location = new System.Drawing.Point(385, 94);
             this.cbStatusZayavnika.Name = "cbStatusZayavnika";
-            this.cbStatusZayavnika.Size = new System.Drawing.Size(154, 21);
-            this.cbStatusZayavnika.TabIndex = 23;
+            this.cbStatusZayavnika.Size = new System.Drawing.Size(151, 21);
+            this.cbStatusZayavnika.TabIndex = 6;
             // 
             // cblblTipDok
             // 
             this.cblblTipDok.FormattingEnabled = true;
-            this.cblblTipDok.Location = new System.Drawing.Point(158, 142);
+            this.cblblTipDok.Location = new System.Drawing.Point(136, 94);
             this.cblblTipDok.Name = "cblblTipDok";
-            this.cblblTipDok.Size = new System.Drawing.Size(154, 21);
-            this.cblblTipDok.TabIndex = 22;
+            this.cblblTipDok.Size = new System.Drawing.Size(130, 21);
+            this.cblblTipDok.TabIndex = 5;
             // 
             // dtpDataVhod
             // 
-            this.dtpDataVhod.Location = new System.Drawing.Point(158, 120);
+            this.dtpDataVhod.Location = new System.Drawing.Point(385, 70);
             this.dtpDataVhod.Name = "dtpDataVhod";
-            this.dtpDataVhod.Size = new System.Drawing.Size(154, 20);
-            this.dtpDataVhod.TabIndex = 21;
+            this.dtpDataVhod.Size = new System.Drawing.Size(151, 20);
+            this.dtpDataVhod.TabIndex = 4;
             // 
             // txtNomerVhod
             // 
-            this.txtNomerVhod.Location = new System.Drawing.Point(158, 98);
+            this.txtNomerVhod.Location = new System.Drawing.Point(136, 70);
             this.txtNomerVhod.Name = "txtNomerVhod";
-            this.txtNomerVhod.Size = new System.Drawing.Size(154, 20);
-            this.txtNomerVhod.TabIndex = 20;
+            this.txtNomerVhod.Size = new System.Drawing.Size(130, 20);
+            this.txtNomerVhod.TabIndex = 3;
             // 
             // cbZamovnik
             // 
             this.cbZamovnik.FormattingEnabled = true;
-            this.cbZamovnik.Location = new System.Drawing.Point(158, 53);
+            this.cbZamovnik.Location = new System.Drawing.Point(136, 46);
             this.cbZamovnik.Name = "cbZamovnik";
-            this.cbZamovnik.Size = new System.Drawing.Size(154, 21);
-            this.cbZamovnik.TabIndex = 19;
+            this.cbZamovnik.Size = new System.Drawing.Size(400, 21);
+            this.cbZamovnik.TabIndex = 2;
             // 
             // lblNomerKancelyar
             // 
-            this.lblNomerKancelyar.Location = new System.Drawing.Point(12, 385);
+            this.lblNomerKancelyar.Location = new System.Drawing.Point(5, 286);
             this.lblNomerKancelyar.Name = "lblNomerKancelyar";
-            this.lblNomerKancelyar.Size = new System.Drawing.Size(140, 20);
+            this.lblNomerKancelyar.Size = new System.Drawing.Size(125, 20);
             this.lblNomerKancelyar.TabIndex = 18;
             this.lblNomerKancelyar.Text = "№ канцелярський";
             // 
             // lblPrichinaOtkaz
             // 
-            this.lblPrichinaOtkaz.Location = new System.Drawing.Point(12, 360);
+            this.lblPrichinaOtkaz.Location = new System.Drawing.Point(276, 310);
             this.lblPrichinaOtkaz.Name = "lblPrichinaOtkaz";
-            this.lblPrichinaOtkaz.Size = new System.Drawing.Size(140, 20);
+            this.lblPrichinaOtkaz.Size = new System.Drawing.Size(103, 20);
             this.lblPrichinaOtkaz.TabIndex = 17;
             this.lblPrichinaOtkaz.Text = "Причина відмови";
             // 
             // lblOtmetkaOtkaz
             // 
-            this.lblOtmetkaOtkaz.Location = new System.Drawing.Point(12, 335);
+            this.lblOtmetkaOtkaz.Location = new System.Drawing.Point(5, 310);
             this.lblOtmetkaOtkaz.Name = "lblOtmetkaOtkaz";
-            this.lblOtmetkaOtkaz.Size = new System.Drawing.Size(140, 20);
+            this.lblOtmetkaOtkaz.Size = new System.Drawing.Size(125, 20);
             this.lblOtmetkaOtkaz.TabIndex = 16;
             this.lblOtmetkaOtkaz.Text = "Відмітка про відмову";
             // 
             // lblFIOPoluchil
             // 
-            this.lblFIOPoluchil.Location = new System.Drawing.Point(12, 311);
+            this.lblFIOPoluchil.Location = new System.Drawing.Point(5, 333);
             this.lblFIOPoluchil.Name = "lblFIOPoluchil";
-            this.lblFIOPoluchil.Size = new System.Drawing.Size(140, 20);
+            this.lblFIOPoluchil.Size = new System.Drawing.Size(125, 41);
             this.lblFIOPoluchil.TabIndex = 15;
-            this.lblFIOPoluchil.Text = "ПІБ особи, що прийняла";
+            this.lblFIOPoluchil.Text = "ПІБ особи, що прийняла заяву / звернення";
             // 
             // lblDoppData
             // 
             this.lblDoppData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblDoppData.Location = new System.Drawing.Point(12, 288);
+            this.lblDoppData.Location = new System.Drawing.Point(5, 268);
             this.lblDoppData.Name = "lblDoppData";
             this.lblDoppData.Size = new System.Drawing.Size(188, 19);
             this.lblDoppData.TabIndex = 14;
@@ -230,7 +236,7 @@
             // lblFirstData
             // 
             this.lblFirstData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFirstData.Location = new System.Drawing.Point(12, 9);
+            this.lblFirstData.Location = new System.Drawing.Point(5, 3);
             this.lblFirstData.Name = "lblFirstData";
             this.lblFirstData.Size = new System.Drawing.Size(188, 22);
             this.lblFirstData.TabIndex = 13;
@@ -238,175 +244,179 @@
             // 
             // dtpDataObr
             // 
-            this.dtpDataObr.Location = new System.Drawing.Point(158, 76);
+            this.dtpDataObr.Location = new System.Drawing.Point(385, 24);
             this.dtpDataObr.Name = "dtpDataObr";
-            this.dtpDataObr.Size = new System.Drawing.Size(154, 20);
-            this.dtpDataObr.TabIndex = 12;
+            this.dtpDataObr.Size = new System.Drawing.Size(151, 20);
+            this.dtpDataObr.TabIndex = 1;
             // 
             // lblDopMat
             // 
-            this.lblDopMat.Location = new System.Drawing.Point(12, 254);
+            this.lblDopMat.Location = new System.Drawing.Point(5, 218);
             this.lblDopMat.Name = "lblDopMat";
-            this.lblDopMat.Size = new System.Drawing.Size(140, 20);
+            this.lblDopMat.Size = new System.Drawing.Size(125, 20);
             this.lblDopMat.TabIndex = 11;
             this.lblDopMat.Text = "Додані матеріали";
             // 
             // lblZmist
             // 
-            this.lblZmist.Location = new System.Drawing.Point(12, 232);
+            this.lblZmist.Location = new System.Drawing.Point(5, 165);
             this.lblZmist.Name = "lblZmist";
-            this.lblZmist.Size = new System.Drawing.Size(140, 20);
+            this.lblZmist.Size = new System.Drawing.Size(125, 20);
             this.lblZmist.TabIndex = 10;
             this.lblZmist.Text = "Стислий зміст";
             // 
             // lblEMael
             // 
-            this.lblEMael.Location = new System.Drawing.Point(12, 210);
+            this.lblEMael.Location = new System.Drawing.Point(5, 142);
             this.lblEMael.Name = "lblEMael";
-            this.lblEMael.Size = new System.Drawing.Size(140, 20);
+            this.lblEMael.Size = new System.Drawing.Size(125, 20);
             this.lblEMael.TabIndex = 9;
             this.lblEMael.Text = "Тел. / e-mail заявника";
             // 
             // lblKodZayavnika
             // 
-            this.lblKodZayavnika.Location = new System.Drawing.Point(12, 188);
+            this.lblKodZayavnika.Location = new System.Drawing.Point(5, 118);
             this.lblKodZayavnika.Name = "lblKodZayavnika";
-            this.lblKodZayavnika.Size = new System.Drawing.Size(140, 20);
+            this.lblKodZayavnika.Size = new System.Drawing.Size(125, 20);
             this.lblKodZayavnika.TabIndex = 8;
             this.lblKodZayavnika.Text = "Код заявника";
             // 
             // lblStatusZayavnika
             // 
-            this.lblStatusZayavnika.Location = new System.Drawing.Point(12, 165);
+            this.lblStatusZayavnika.Location = new System.Drawing.Point(276, 94);
             this.lblStatusZayavnika.Name = "lblStatusZayavnika";
-            this.lblStatusZayavnika.Size = new System.Drawing.Size(140, 20);
+            this.lblStatusZayavnika.Size = new System.Drawing.Size(101, 21);
             this.lblStatusZayavnika.TabIndex = 7;
             this.lblStatusZayavnika.Text = "Статус заявника";
             // 
             // lblTipDok
             // 
-            this.lblTipDok.Location = new System.Drawing.Point(12, 142);
+            this.lblTipDok.Location = new System.Drawing.Point(5, 94);
             this.lblTipDok.Name = "lblTipDok";
-            this.lblTipDok.Size = new System.Drawing.Size(140, 20);
+            this.lblTipDok.Size = new System.Drawing.Size(125, 21);
             this.lblTipDok.TabIndex = 6;
             this.lblTipDok.Text = "Тип документа";
             // 
             // lblDataVhod
             // 
-            this.lblDataVhod.Location = new System.Drawing.Point(12, 120);
+            this.lblDataVhod.Location = new System.Drawing.Point(276, 70);
             this.lblDataVhod.Name = "lblDataVhod";
-            this.lblDataVhod.Size = new System.Drawing.Size(140, 20);
+            this.lblDataVhod.Size = new System.Drawing.Size(101, 20);
             this.lblDataVhod.TabIndex = 5;
             this.lblDataVhod.Text = "Дата листа";
             // 
             // lblNomerVhod
             // 
-            this.lblNomerVhod.Location = new System.Drawing.Point(12, 98);
+            this.lblNomerVhod.Location = new System.Drawing.Point(5, 70);
             this.lblNomerVhod.Name = "lblNomerVhod";
-            this.lblNomerVhod.Size = new System.Drawing.Size(140, 20);
+            this.lblNomerVhod.Size = new System.Drawing.Size(125, 20);
             this.lblNomerVhod.TabIndex = 4;
             this.lblNomerVhod.Text = "Вихідний номер листа";
             // 
             // lblDataObr
             // 
-            this.lblDataObr.Location = new System.Drawing.Point(12, 76);
+            this.lblDataObr.Location = new System.Drawing.Point(276, 24);
             this.lblDataObr.Name = "lblDataObr";
-            this.lblDataObr.Size = new System.Drawing.Size(140, 20);
+            this.lblDataObr.Size = new System.Drawing.Size(101, 20);
             this.lblDataObr.TabIndex = 3;
             this.lblDataObr.Text = "Дата звернення";
             // 
             // lblZamovnik
             // 
-            this.lblZamovnik.Location = new System.Drawing.Point(12, 53);
+            this.lblZamovnik.Location = new System.Drawing.Point(5, 46);
             this.lblZamovnik.Name = "lblZamovnik";
-            this.lblZamovnik.Size = new System.Drawing.Size(140, 20);
+            this.lblZamovnik.Size = new System.Drawing.Size(125, 21);
             this.lblZamovnik.TabIndex = 2;
             this.lblZamovnik.Text = "Замовник";
             // 
             // txtNomerZvernennya
             // 
-            this.txtNomerZvernennya.Location = new System.Drawing.Point(158, 31);
+            this.txtNomerZvernennya.Location = new System.Drawing.Point(136, 24);
             this.txtNomerZvernennya.Name = "txtNomerZvernennya";
-            this.txtNomerZvernennya.Size = new System.Drawing.Size(154, 20);
-            this.txtNomerZvernennya.TabIndex = 1;
+            this.txtNomerZvernennya.Size = new System.Drawing.Size(130, 20);
+            this.txtNomerZvernennya.TabIndex = 0;
             // 
             // lblNomerZvernennya
             // 
-            this.lblNomerZvernennya.Location = new System.Drawing.Point(12, 31);
+            this.lblNomerZvernennya.Location = new System.Drawing.Point(5, 24);
             this.lblNomerZvernennya.Name = "lblNomerZvernennya";
-            this.lblNomerZvernennya.Size = new System.Drawing.Size(140, 20);
+            this.lblNomerZvernennya.Size = new System.Drawing.Size(125, 20);
             this.lblNomerZvernennya.TabIndex = 0;
             this.lblNomerZvernennya.Text = "№ звернення / заяви";
             // 
             // txtDokProSplatu
             // 
-            this.txtDokProSplatu.Location = new System.Drawing.Point(158, 499);
+            this.txtDokProSplatu.Location = new System.Drawing.Point(136, 453);
             this.txtDokProSplatu.Name = "txtDokProSplatu";
-            this.txtDokProSplatu.Size = new System.Drawing.Size(154, 20);
-            this.txtDokProSplatu.TabIndex = 29;
+            this.txtDokProSplatu.Size = new System.Drawing.Size(400, 20);
+            this.txtDokProSplatu.TabIndex = 19;
             // 
             // txtFormaPeredachiPoslugi
             // 
-            this.txtFormaPeredachiPoslugi.Location = new System.Drawing.Point(158, 568);
+            this.txtFormaPeredachiPoslugi.Location = new System.Drawing.Point(136, 530);
+            this.txtFormaPeredachiPoslugi.Multiline = true;
             this.txtFormaPeredachiPoslugi.Name = "txtFormaPeredachiPoslugi";
-            this.txtFormaPeredachiPoslugi.Size = new System.Drawing.Size(154, 20);
-            this.txtFormaPeredachiPoslugi.TabIndex = 28;
+            this.txtFormaPeredachiPoslugi.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtFormaPeredachiPoslugi.Size = new System.Drawing.Size(400, 50);
+            this.txtFormaPeredachiPoslugi.TabIndex = 21;
             // 
             // txtOpisNadannoiPoslugi
             // 
-            this.txtOpisNadannoiPoslugi.Location = new System.Drawing.Point(158, 545);
+            this.txtOpisNadannoiPoslugi.Location = new System.Drawing.Point(136, 477);
+            this.txtOpisNadannoiPoslugi.Multiline = true;
             this.txtOpisNadannoiPoslugi.Name = "txtOpisNadannoiPoslugi";
-            this.txtOpisNadannoiPoslugi.Size = new System.Drawing.Size(154, 20);
-            this.txtOpisNadannoiPoslugi.TabIndex = 27;
+            this.txtOpisNadannoiPoslugi.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtOpisNadannoiPoslugi.Size = new System.Drawing.Size(400, 50);
+            this.txtOpisNadannoiPoslugi.TabIndex = 20;
             // 
             // txtNomerPoslugi
             // 
-            this.txtNomerPoslugi.Location = new System.Drawing.Point(158, 430);
+            this.txtNomerPoslugi.Location = new System.Drawing.Point(136, 405);
             this.txtNomerPoslugi.Name = "txtNomerPoslugi";
-            this.txtNomerPoslugi.Size = new System.Drawing.Size(154, 20);
-            this.txtNomerPoslugi.TabIndex = 26;
+            this.txtNomerPoslugi.Size = new System.Drawing.Size(130, 20);
+            this.txtNomerPoslugi.TabIndex = 15;
             // 
             // cbStatusNaddanyaPoslugi
             // 
             this.cbStatusNaddanyaPoslugi.FormattingEnabled = true;
-            this.cbStatusNaddanyaPoslugi.Location = new System.Drawing.Point(158, 453);
+            this.cbStatusNaddanyaPoslugi.Location = new System.Drawing.Point(136, 429);
             this.cbStatusNaddanyaPoslugi.Name = "cbStatusNaddanyaPoslugi";
-            this.cbStatusNaddanyaPoslugi.Size = new System.Drawing.Size(154, 21);
-            this.cbStatusNaddanyaPoslugi.TabIndex = 25;
+            this.cbStatusNaddanyaPoslugi.Size = new System.Drawing.Size(130, 21);
+            this.cbStatusNaddanyaPoslugi.TabIndex = 17;
             // 
             // cbFIOOtrimuvacha
             // 
             this.cbFIOOtrimuvacha.FormattingEnabled = true;
-            this.cbFIOOtrimuvacha.Location = new System.Drawing.Point(158, 614);
+            this.cbFIOOtrimuvacha.Location = new System.Drawing.Point(150, 609);
             this.cbFIOOtrimuvacha.Name = "cbFIOOtrimuvacha";
-            this.cbFIOOtrimuvacha.Size = new System.Drawing.Size(154, 21);
-            this.cbFIOOtrimuvacha.TabIndex = 24;
+            this.cbFIOOtrimuvacha.Size = new System.Drawing.Size(181, 21);
+            this.cbFIOOtrimuvacha.TabIndex = 23;
             // 
             // cbFIOVikonovucha
             // 
             this.cbFIOVikonovucha.FormattingEnabled = true;
-            this.cbFIOVikonovucha.Location = new System.Drawing.Point(158, 591);
+            this.cbFIOVikonovucha.Location = new System.Drawing.Point(150, 583);
             this.cbFIOVikonovucha.Name = "cbFIOVikonovucha";
-            this.cbFIOVikonovucha.Size = new System.Drawing.Size(154, 21);
-            this.cbFIOVikonovucha.TabIndex = 23;
+            this.cbFIOVikonovucha.Size = new System.Drawing.Size(181, 21);
+            this.cbFIOVikonovucha.TabIndex = 22;
             // 
             // dtpDataSplati
             // 
-            this.dtpDataSplati.Location = new System.Drawing.Point(158, 476);
+            this.dtpDataSplati.Location = new System.Drawing.Point(385, 429);
             this.dtpDataSplati.Name = "dtpDataSplati";
-            this.dtpDataSplati.Size = new System.Drawing.Size(154, 20);
-            this.dtpDataSplati.TabIndex = 22;
+            this.dtpDataSplati.Size = new System.Drawing.Size(151, 20);
+            this.dtpDataSplati.TabIndex = 18;
             // 
             // dtpDataNadannyaPoslugi
             // 
-            this.dtpDataNadannyaPoslugi.Location = new System.Drawing.Point(158, 522);
+            this.dtpDataNadannyaPoslugi.Location = new System.Drawing.Point(385, 405);
             this.dtpDataNadannyaPoslugi.Name = "dtpDataNadannyaPoslugi";
-            this.dtpDataNadannyaPoslugi.Size = new System.Drawing.Size(154, 20);
-            this.dtpDataNadannyaPoslugi.TabIndex = 21;
+            this.dtpDataNadannyaPoslugi.Size = new System.Drawing.Size(151, 20);
+            this.dtpDataNadannyaPoslugi.TabIndex = 16;
             // 
             // lblFIOOtrimuvacha
             // 
-            this.lblFIOOtrimuvacha.Location = new System.Drawing.Point(12, 617);
+            this.lblFIOOtrimuvacha.Location = new System.Drawing.Point(5, 609);
             this.lblFIOOtrimuvacha.Name = "lblFIOOtrimuvacha";
             this.lblFIOOtrimuvacha.Size = new System.Drawing.Size(140, 14);
             this.lblFIOOtrimuvacha.TabIndex = 20;
@@ -414,7 +424,7 @@
             // 
             // lblFIOVikonovucha
             // 
-            this.lblFIOVikonovucha.Location = new System.Drawing.Point(12, 594);
+            this.lblFIOVikonovucha.Location = new System.Drawing.Point(5, 583);
             this.lblFIOVikonovucha.Name = "lblFIOVikonovucha";
             this.lblFIOVikonovucha.Size = new System.Drawing.Size(140, 14);
             this.lblFIOVikonovucha.TabIndex = 19;
@@ -422,64 +432,64 @@
             // 
             // lblFormaPeredachiPoslugi
             // 
-            this.lblFormaPeredachiPoslugi.Location = new System.Drawing.Point(12, 571);
+            this.lblFormaPeredachiPoslugi.Location = new System.Drawing.Point(5, 530);
             this.lblFormaPeredachiPoslugi.Name = "lblFormaPeredachiPoslugi";
-            this.lblFormaPeredachiPoslugi.Size = new System.Drawing.Size(140, 14);
+            this.lblFormaPeredachiPoslugi.Size = new System.Drawing.Size(125, 14);
             this.lblFormaPeredachiPoslugi.TabIndex = 18;
             this.lblFormaPeredachiPoslugi.Text = "Форма передачі послуг";
             // 
             // lblOpisNadannoiPoslugi
             // 
-            this.lblOpisNadannoiPoslugi.Location = new System.Drawing.Point(12, 548);
+            this.lblOpisNadannoiPoslugi.Location = new System.Drawing.Point(5, 477);
             this.lblOpisNadannoiPoslugi.Name = "lblOpisNadannoiPoslugi";
-            this.lblOpisNadannoiPoslugi.Size = new System.Drawing.Size(140, 14);
+            this.lblOpisNadannoiPoslugi.Size = new System.Drawing.Size(125, 14);
             this.lblOpisNadannoiPoslugi.TabIndex = 17;
             this.lblOpisNadannoiPoslugi.Text = "Опис наданих послуг";
             // 
             // lblDataNadannyaPoslugi
             // 
-            this.lblDataNadannyaPoslugi.Location = new System.Drawing.Point(12, 525);
+            this.lblDataNadannyaPoslugi.Location = new System.Drawing.Point(265, 405);
             this.lblDataNadannyaPoslugi.Name = "lblDataNadannyaPoslugi";
-            this.lblDataNadannyaPoslugi.Size = new System.Drawing.Size(140, 14);
+            this.lblDataNadannyaPoslugi.Size = new System.Drawing.Size(126, 20);
             this.lblDataNadannyaPoslugi.TabIndex = 16;
             this.lblDataNadannyaPoslugi.Text = "Дата надання послуги";
             // 
             // lblDokProSplatu
             // 
-            this.lblDokProSplatu.Location = new System.Drawing.Point(12, 502);
+            this.lblDokProSplatu.Location = new System.Drawing.Point(5, 453);
             this.lblDokProSplatu.Name = "lblDokProSplatu";
-            this.lblDokProSplatu.Size = new System.Drawing.Size(140, 14);
+            this.lblDokProSplatu.Size = new System.Drawing.Size(125, 20);
             this.lblDokProSplatu.TabIndex = 15;
             this.lblDokProSplatu.Text = "Документ про сплату";
             // 
             // lblDataSplati
             // 
-            this.lblDataSplati.Location = new System.Drawing.Point(12, 479);
+            this.lblDataSplati.Location = new System.Drawing.Point(276, 429);
             this.lblDataSplati.Name = "lblDataSplati";
-            this.lblDataSplati.Size = new System.Drawing.Size(140, 14);
+            this.lblDataSplati.Size = new System.Drawing.Size(83, 21);
             this.lblDataSplati.TabIndex = 14;
             this.lblDataSplati.Text = "Дата сплати";
             // 
             // lblStatusNaddanyaPoslugi
             // 
-            this.lblStatusNaddanyaPoslugi.Location = new System.Drawing.Point(12, 456);
+            this.lblStatusNaddanyaPoslugi.Location = new System.Drawing.Point(5, 429);
             this.lblStatusNaddanyaPoslugi.Name = "lblStatusNaddanyaPoslugi";
-            this.lblStatusNaddanyaPoslugi.Size = new System.Drawing.Size(140, 14);
+            this.lblStatusNaddanyaPoslugi.Size = new System.Drawing.Size(125, 21);
             this.lblStatusNaddanyaPoslugi.TabIndex = 13;
             this.lblStatusNaddanyaPoslugi.Text = "Статус надання послуг";
             // 
             // lblNomerPoslugi
             // 
-            this.lblNomerPoslugi.Location = new System.Drawing.Point(12, 433);
+            this.lblNomerPoslugi.Location = new System.Drawing.Point(5, 405);
             this.lblNomerPoslugi.Name = "lblNomerPoslugi";
-            this.lblNomerPoslugi.Size = new System.Drawing.Size(140, 14);
+            this.lblNomerPoslugi.Size = new System.Drawing.Size(69, 20);
             this.lblNomerPoslugi.TabIndex = 12;
             this.lblNomerPoslugi.Text = "№ послуги";
             // 
             // lblServicesProvided
             // 
             this.lblServicesProvided.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblServicesProvided.Location = new System.Drawing.Point(12, 408);
+            this.lblServicesProvided.Location = new System.Drawing.Point(5, 385);
             this.lblServicesProvided.Name = "lblServicesProvided";
             this.lblServicesProvided.Size = new System.Drawing.Size(188, 19);
             this.lblServicesProvided.TabIndex = 32;
@@ -489,7 +499,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 730);
+            this.ClientSize = new System.Drawing.Size(542, 681);
             this.Controls.Add(this.lblServicesProvided);
             this.Controls.Add(this.txtDokProSplatu);
             this.Controls.Add(this.txtNomerKancelyar);
@@ -541,7 +551,13 @@
             this.Controls.Add(this.lblFIOPoluchil);
             this.Controls.Add(this.lblFirstData);
             this.Controls.Add(this.lblDoppData);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmReestrZayav_doc";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Заява / звернення";
             this.Controls.SetChildIndex(this.lblDoppData, 0);
             this.Controls.SetChildIndex(this.lblFirstData, 0);

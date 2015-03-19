@@ -7,5 +7,7 @@ namespace WorckWithReestr
         {
             InitializeComponent();
         }
+
+
     }
 }
