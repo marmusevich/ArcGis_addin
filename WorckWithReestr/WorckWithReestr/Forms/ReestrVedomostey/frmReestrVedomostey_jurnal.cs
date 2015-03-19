@@ -29,7 +29,22 @@ namespace WorckWithReestr
             : base()
         {
             InitializeComponent();
+
+            base.NameWorkspace = "reestr";
+            base.NameTable = "reestr.DBO.Kn_Reg_Ved";
+            base.NameSortFild = "Data_Vh";
+
+
         }
         #endregion
+
+        protected override frmBaseDocument GetDocumentForm(int _objectID, frmBaseDocument.EditMode _editMode)
+        {
+            //return new frmReestrVedomostey_doc(_objectID, _editMode);
+            return new frmReestrVedomostey_doc();
+        }
+
+
+
     }
 }

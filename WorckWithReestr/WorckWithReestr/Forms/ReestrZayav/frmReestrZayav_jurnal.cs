@@ -28,14 +28,14 @@ namespace WorckWithReestr
             InitializeComponent();
 
 
-            //base.NameWorkspace = "reestr";
-            //base.NameTable = "reestr.DBO.Kn_Reg_Zayv";
-            //base.NameSortFild = "Data_Z";
-
-
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.fizichni_osoby";
-            base.NameSortFild = "П_І_Б";
+            base.NameTable = "reestr.DBO.Kn_Reg_Zayv";
+            base.NameSortFild = "Data_Z";
+
+
+            //base.NameWorkspace = "reestr";
+            //base.NameTable = "reestr.DBO.fizichni_osoby";
+            //base.NameSortFild = "П_І_Б";
 
 
         }

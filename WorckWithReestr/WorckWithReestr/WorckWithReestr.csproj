@@ -209,6 +209,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\BaseForm\frmBaseDocument.resx">
+      <DependentUpon>frmBaseDocument.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseForm\frmBaseJurnal.resx">
       <DependentUpon>frmBaseJurnal.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +226,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JurLic\frmJurLic_element.resx">
       <DependentUpon>frmJurLic_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReestrVedomostey\frmReestrVedomostey_doc.resx">
+      <DependentUpon>frmReestrVedomostey_doc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReestrZayav\frmReestrZayav_doc.resx">
+      <DependentUpon>frmReestrZayav_doc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReestrZayav\frmReestrZayav_jurnal.resx">
       <DependentUpon>frmReestrZayav_jurnal.cs</DependentUpon>

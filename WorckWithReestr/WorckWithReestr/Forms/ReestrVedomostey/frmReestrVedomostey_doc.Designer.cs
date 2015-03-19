@@ -28,9 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(571, 593);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(12, 593);
+            // 
+            // frmReestrVedomostey_doc
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(658, 628);
+            this.Name = "frmReestrVedomostey_doc";
             this.Text = "frmReestrVedomostey_doc";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
