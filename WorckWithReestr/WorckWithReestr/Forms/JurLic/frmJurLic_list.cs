@@ -45,33 +45,7 @@ namespace WorckWithReestr
         {
             bool ret = base.ReadData();
 
-
-            //try
-            //{
-            //    IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
-            //    ITable table = fws.OpenTable(NameTable);
-            //    DomeinDataAdapter dda = new DomeinDataAdapter(table.Fields.get_Field(3).Domain);
-
-            //    //dgv.Columns.RemoveAt(3);
-            //    dgv.Columns[3].Visible = false;
-            //    System.Windows.Forms.DataGridViewComboBoxColumn dGVC = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            //    dGVC.Name = table.Fields.get_Field(3).Name;
-            //    dGVC.DataPropertyName = table.Fields.get_Field(3).Name;
-            //    dGVC.HeaderText = table.Fields.get_Field(3).AliasName;
-            //    dGVC.ReadOnly = true;
-            //    dGVC.Items.AddRange(dda.ToArray());
-            //    dGVC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-
-            //    dgv.Columns.Add(dGVC);
-            //}
-            //catch (Exception ee) // доработать блок ошибок на разные исключения
-            //{
-            //    SharedClass.ShowErrorMessage();
-            //    this.Close();
-            //}
-
-
-            return ret;
+            return true;
         }
 
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)

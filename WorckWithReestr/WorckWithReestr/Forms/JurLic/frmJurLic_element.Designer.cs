@@ -110,7 +110,6 @@
             // 
             // frmJurLic_element
             // 
-            //this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(436, 136);
@@ -122,13 +121,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblID);
-            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            //this.MaximizeBox = false;
-            //this.MinimizeBox = false;
             this.Name = "frmJurLic_element";
-            //this.ShowIcon = false;
-            //this.ShowInTaskbar = false;
-            //this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmJurLic_element";
             this.Load += new System.EventHandler(this.frmJurLic_element_Load);
             this.Controls.SetChildIndex(this.btnCancel, 0);

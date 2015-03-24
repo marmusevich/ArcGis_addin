@@ -67,6 +67,7 @@
             this.dgv.Location = new System.Drawing.Point(0, 28);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(287, 238);

@@ -95,54 +95,20 @@ namespace WorckWithReestr
 
                 dgv.DataSource = dsBinding;
 
-
-
-                ////Bindingl<ITable> ds2 = new BindingSource<ITable>();
-                //IDataset ds = table as IDataset;
-
-//Dim pLayer As FeatureLayer = AxMapControl1.Map.Layer(0) 
-//Dim attributeTable As IAttributeTable = TryCast(pLayer, IAttributeTable) 
-//Dim dt As New System.Data.DataTable 
-//Dim bs As New System.Windows.Forms.BindingSource 
-//dt.Load(attributeTable.AttributeTable) 
-//bs.DataSource = dt 
-//Me.DataGridView1.DataSource = bs 
-//Me.DataGridView1.Refresh() 
-
-                //ESRI.ArcGIS.Carto.IAttributeTable
-    
-                //System.Data.DataTable dt = new System.Data.DataTable;
-                //dt.Load(table as System.Data.IDataReader);
-        
-
-
-//;  
-//IRecordSetInit recordSetInit= new ESRI.ArcGIS.Geodatabase.RecordSetClass();  
-//recordSetInit.SetSourceTable(table, new QueryFilterClass());  
-//IRecordSet recordSet= recordSetInit as IRecordSet;  
-  
-//System.Data.DataSet netDS = ESRI.ArcGIS.Utility.Converter.ToDataSet(recordSet);  
-
-//                //dgv.DataSource = table;
-
-//                BindingSource dsBinding = new BindingSource();
-
-//                dsBinding.DataSource = ds;
-
-//                //dgv.AutoGenerateColumns = false;
-
-//                //SharedClass.CreateColumIn(dgv, table);
-
-//                dgv.DataSource = dsBinding;
-
-
-
                 int width = 0;
                 for (int i = 0; i < dgv.Columns.Count; i++)
                 {
                     width += dgv.Columns[i].Width;
                 }
-                this.Width = width;
+                if (Screen.PrimaryScreen.WorkingArea.Width < width)
+                {
+                    this.Width = Screen.PrimaryScreen.WorkingArea.Width/2;
+
+                 //   this.WindowState = FormWindowState.Maximized;
+                }
+                else
+                    this.Width = width;
+
                 this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                 ret = true;
             }
@@ -151,8 +117,8 @@ namespace WorckWithReestr
                 ret = false;
             }
 
-            //if (ret)
-            //    dgv.Columns[0].Visible = false;
+            if (ret)
+                dgv.Columns[0].Visible = false;
 
 
             return ret;
@@ -176,41 +142,7 @@ namespace WorckWithReestr
             FilteredString = filteredString;
             IsSelectMode = isSelectMode;
 
-            ////((System.ComponentModel.ISupportInitialize)(dgv)).BeginInit();
-            //dgv.VirtualMode = true;
-            //dgv.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dgv_CellValueNeeded);
-            //dgv.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dgv_CellValuePushed);
-
-            ////dgv.Dock = DockStyle.Fill;
-
-            //for (int i = 0; i < 'Z' - 'A'; i++)
-            //{
-            //    string name = ((char)('A' + i)).ToString();
-            //    dgv.Columns.Add(name, name);
-            //}
-
-            ////dgv.RowCount = ushort.MaxValue;
-
-            //dgv.RowCount = 10;
-            ////((System.ComponentModel.ISupportInitialize)(dgv)).EndInit();
         }
-
-        private void dgv_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
-        {
-            int ColumnIndex = e.ColumnIndex;
-            int RowIndex = e.RowIndex;
-            object Value = null;
-
-            Value = "C "+ColumnIndex.ToString() + "; R "+ RowIndex.ToString();
-
-            e.Value = Value;
-        }
-
-        private void dgv_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
-        {
-
-        }
-
 
 
         private void frmBaseJurnal_Load(object sender, System.EventArgs e)

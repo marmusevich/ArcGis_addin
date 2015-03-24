@@ -53,9 +53,9 @@ namespace WorckWithReestr
             try
             {
                 IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
-                ITable table_fizLic = fws.OpenTable(NameTable);
+                ITable table = fws.OpenTable(NameTable);
 
-                IRow row = table_fizLic.GetRow(objectID);
+                IRow row = table.GetRow(objectID);
                 DB_to_FormElement(row);
 
                 ret = true;
@@ -80,13 +80,13 @@ namespace WorckWithReestr
                 wse.StartEditing(false);
                 wse.StartEditOperation();
 
-                ITable table_fizLic = fws.OpenTable(NameTable);
+                ITable table = fws.OpenTable(NameTable);
                 IRow row = null;
 
                 if (editMode == EditMode.ADD)
-                    row = table_fizLic.CreateRow();
+                    row = table.CreateRow();
                 else if (editMode == EditMode.EDIT)
-                    row = table_fizLic.GetRow(objectID);
+                    row = table.GetRow(objectID);
                 else
                     return false;
 
@@ -126,9 +126,9 @@ namespace WorckWithReestr
                 wse.StartEditing(false);
                 wse.StartEditOperation();
 
-                ITable table_fizLic = fws.OpenTable(NameTable);
+                ITable table = fws.OpenTable(NameTable);
 
-                IRow row = table_fizLic.GetRow(objectID);
+                IRow row = table.GetRow(objectID);
                 row.Delete();
 
                 // закончить транзакцию

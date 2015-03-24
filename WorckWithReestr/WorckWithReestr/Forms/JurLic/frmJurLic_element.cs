@@ -1,5 +1,6 @@
 ﻿using ESRI.ArcGIS.Geodatabase;
 using System;
+using System.Windows.Forms;
 
 namespace WorckWithReestr
 {
@@ -120,7 +121,6 @@ namespace WorckWithReestr
                 IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 ITable table = fws.OpenTable(NameTable);
 
-                //IRow row = table_fizLic.GetRow(objectID);
 
                 dda = new DomeinDataAdapter(table.Fields.get_Field(3).Domain);
                 cbFV.Items.AddRange(dda.ToArray());

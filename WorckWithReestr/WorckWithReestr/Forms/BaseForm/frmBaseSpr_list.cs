@@ -73,9 +73,8 @@ namespace WorckWithReestr
 
             //перечитать если лперация была закончена, или всегда???
             ReadData();
+
         }
-
-
 
         protected virtual bool ReadData()
         {
@@ -89,24 +88,31 @@ namespace WorckWithReestr
 
 
                 TableWraper tableWrapper = new TableWraper(table, NameSortFild);
-                tableWrapper.AllowNew = false;
-                tableWrapper.AllowRemove = false;
+                //ArcGisListBinding tableWrapper = new ArcGisListBinding(table, NameSortFild);
+
+                //tableWrapper.AllowNew = false;
+                //tableWrapper.AllowRemove = false;
+                //tableWrapper.UseCVDomains = true;
+
 
                 BindingSource dsBinding = new BindingSource();
                 dsBinding.DataSource = tableWrapper;
 
                 dgv.AutoGenerateColumns = false;
-
                 SharedClass.CreateColumIn(dgv, table);
-
                 dgv.DataSource = dsBinding;
+                dgv.Refresh();
 
                 int width = 0;
                 for (int i = 0; i < dgv.Columns.Count; i++)
                 {
                     width += dgv.Columns[i].Width;
                 }
-                this.Width = width;
+                if (Screen.PrimaryScreen.WorkingArea.Width < width)
+                    this.Width = Screen.PrimaryScreen.WorkingArea.Width/2;
+                else
+                    this.Width = width;
+
                 this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                 ret = true;
             }
@@ -115,8 +121,8 @@ namespace WorckWithReestr
                 ret = false;
             }
 
-            if (ret)
-                dgv.Columns[0].Visible = false;
+            //if (ret)
+            //    dgv.Columns[0].Visible = false;
 
 
             return ret;

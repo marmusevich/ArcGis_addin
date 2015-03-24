@@ -23,8 +23,9 @@ namespace WorckWithReestr
                 wrappedTable = tableToWrap;
                 sortedFilds = fildsToSorted;
                 GenerateFakeProperties();
-                AddData();
+                GetData(fildsToSorted);
                 wkspcEdit = ((IDataset)wrappedTable).Workspace as IWorkspaceEdit;
+                UseCVDomains = true;
                 AllowNew = true;
                 AllowRemove = true;
             }
@@ -80,6 +81,9 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  private 
         //---------------------------------------------------------------------------------------------------------------------------------------------
+
+        
+        // для редактирования
         protected override void OnAddingNew(AddingNewEventArgs e)
         {
             // Check that we can still add rows, this property could have been changed
@@ -127,44 +131,6 @@ namespace WorckWithReestr
             }
         }
 
-        // создать перечень колонок в связке
-        private void GenerateFakeProperties()
-        {
-            for (int fieldCount = 0; fieldCount < wrappedTable.Fields.FieldCount; fieldCount++)
-            {
-                FieldPropertyDescriptor newPropertyDesc = new FieldPropertyDescriptor(wrappedTable, wrappedTable.Fields.get_Field(fieldCount).Name, fieldCount);
-                fakePropertiesList.Add(newPropertyDesc);
-            }
-        }
-
-        // выгрузить данные
-        private void AddData()
-        {
-            ICursor cur = null;
-
-            if (sortedFilds == null)
-            {
-                // без сортировки
-                cur = wrappedTable.Search(null, false);
-            }
-            else
-            {
-                // с сортировкой
-                ITableSort tableSort = new TableSort();
-                tableSort.Table = wrappedTable;
-                tableSort.Fields = sortedFilds;
-                tableSort.Sort(null);
-                cur = tableSort.Rows;
-            }
-
-            IRow curRow = cur.NextRow();
-            while (null != curRow)
-            {
-                Add(curRow);
-                curRow = cur.NextRow();
-            }
-        }
-
         private bool StartEditOp()
         {
             bool retVal = false;
@@ -193,14 +159,150 @@ namespace WorckWithReestr
                 wkspcEdit.StopEditing(true);
             }
         }
+        //---------------------------------------------------------------------------------------------------------------------------------------------
 
-        // inner members
-        private ITable wrappedTable;
-        private List<PropertyDescriptor> fakePropertiesList = new List<PropertyDescriptor>();
-        private IWorkspaceEdit wkspcEdit;
-        private string sortedFilds;
+
+
+        // создать перечень колонок в связке
+        private void GenerateFakeProperties()
+        {
+            for (int fieldCount = 0; fieldCount < wrappedTable.Fields.FieldCount; fieldCount++)
+            {
+                FieldPropertyDescriptor newPropertyDesc = new FieldPropertyDescriptor(wrappedTable, wrappedTable.Fields.get_Field(fieldCount).Name, fieldCount);
+                fakePropertiesList.Add(newPropertyDesc);
+            }
+        }
+        // выгрузить данные
+        private void GetData(string fildName = null, bool isSortDirectionAscending = true)
+        {
+            isGetingData = true;
+
+            ClearItems();
+
+
+            ICursor cur = null;
+
+            if (fildName == null)
+            {
+                // без сортировки
+                cur = wrappedTable.Search(queryFilter, false);
+            }
+            else
+            {
+
+                // собственно сортировка здесь
+                ITableSort tableSort = new TableSort();
+                tableSort.Table = wrappedTable;
+                tableSort.Fields = fildName;
+                tableSort.set_Ascending(fildName, isSortDirectionAscending);
+
+                if (queryFilter != null)
+                    tableSort.QueryFilter = queryFilter;
+                if (selectionSet != null)
+                    tableSort.SelectionSet = selectionSet;
+
+                tableSort.Sort(null);
+                cur = tableSort.Rows;
+            }
+
+            IRow curRow = cur.NextRow();
+            while (null != curRow)
+            {
+                Add(curRow);
+                curRow = cur.NextRow();
+            }
+            isGetingData = false;
+        }
+        protected override void OnListChanged(ListChangedEventArgs e)
+        {
+            if (!isGetingData)
+                base.OnListChanged(e);
+        }
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        //// для поиска, фильтрации
+        //protected override bool SupportsSearchingCore
+        //{
+        //    get
+        //    {
+        //        return true;
+        //    }
+        //}
+        //protected override int FindCore(System.ComponentModel.PropertyDescriptor prop, object key)
+        //{
+        //    //return base.FindCore(prop, key);
+        //    return -1;
+        //}
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
+        
+        //сортировка
+        protected override bool SupportsSortingCore
+        {
+            get
+            {
+                return true;
+            }
+        }
+        protected override bool IsSortedCore
+        {
+            get
+            {
+                return isSorted;
+            }
+        }
+        protected override ListSortDirection SortDirectionCore
+        {
+            get
+            {
+                return sortDirection;
+            }
+        }
+        protected override void ApplySortCore(PropertyDescriptor prop, ListSortDirection direction)
+        {
+            GetData(prop.Name, sortDirection == ListSortDirection.Ascending);
+            //--
+            isSorted = true;
+            sortDirection = direction;
+            sortProperty = prop;
+
+            //OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
+        }
+        protected override void RemoveSortCore()
+        {
+            isSorted = false;
+            sortDirection = ListSortDirection.Ascending;
+            sortProperty = null;
+
+            // отмена сортировки
+            GetData(sortedFilds);
+        }
+        //---------------------------------------------------------------------------------------------------------------------------------------------
 
         #endregion
+
+
+        // переменные
+        protected ITable wrappedTable;
+        protected List<PropertyDescriptor> fakePropertiesList = new List<PropertyDescriptor>();
+        protected IWorkspaceEdit wkspcEdit;
+        // поле для сортировки по умолчанию
+        protected string sortedFilds;
+        private bool isGetingData = false;
+
+        // для фмльтрации
+        protected IQueryFilter queryFilter = null;
+        protected ISelectionSet selectionSet = null;
+
+        //для сортировки
+        protected bool isSorted = false;
+        protected ListSortDirection sortDirection = ListSortDirection.Ascending;
+        protected PropertyDescriptor sortProperty = null;
+
+
+
+
     }
 
 }

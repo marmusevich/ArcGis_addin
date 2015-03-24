@@ -42,9 +42,9 @@ namespace WorckWithReestr
                 IField f = tableToWrap.Fields.get_Field(fieldCount);
 
                 System.Windows.Forms.DataGridViewColumn dGVC = null;
-                if ((f.Domain != null) && (string.Compare(f.Domain.Name, "bool", true) == 0))
-                    dGVC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-                else
+                //if ((f.Domain != null) && (string.Compare(f.Domain.Name, "bool", true) == 0))
+                //    dGVC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+                //else
                     dGVC = new System.Windows.Forms.DataGridViewTextBoxColumn();
 
                 dGVC.Name = f.Name;
@@ -68,71 +68,8 @@ namespace WorckWithReestr
         }
     }
 
-        //public static object[] GetListOfDamaibValue(IDomain domain)
-        //{
-        //    // Use the ICodedValueDomain interface.
-        //    ICodedValueDomain codedValueDomain = (ICodedValueDomain)domain;
-        //    if (codedValueDomain == null)
-        //        return null;
+  
 
-        //    ArrayList ret = new ArrayList(codedValueDomain.CodeCount);
-
-        //    // Iterate through the code/value pairs.
-        //    for (int i = 0; i < codedValueDomain.CodeCount; i++)
-        //    {
-        //        ret.Add(new SelectData(codedValueDomain.get_Value(i), codedValueDomain.get_Name(i)));
-        //    }
-        //    return ret.ToArray();
-        //}
-
-
-
-
-    ////вспомогательный для выбора значений
-    //class SelectData
-    //{
-    //    public readonly object Value;
-    //    public readonly string Text;
-
-    //    public SelectData(object Value, string Text)
-    //    {
-    //        this.Value = Value;
-    //        this.Text = Text;
-    //    }
-
-    //    public override string ToString()
-    //    {
-    //        return this.Text;
-    //    }
-    //}
-
-    //class CompareSelectDataByValue : IComparer
-    //{
-    //    int Compare(object obj1, object obj2)
-    //    {
-    //        object v1 = ((SelectData)obj1).Value;
-    //        object v2 = ((SelectData)obj2).Value;
-
-    //        int ret = 0;
-    //        //if (v1 == v2)
-    //        //    ret = 0;
-    //        //else if (v1 > v2)
-    //        //    ret = +1;
-    //        //else 
-    //        //    ret = -1;
-
-    //        return ret;
-    //    }
-    //}
-    //class CompareSelectDataByText : IComparer
-    //{
-    //    int Compare(object obj1, object obj2)
-    //    {
-    //        string str1 = ((SelectData)obj1).ToString();
-    //        string str2 = ((SelectData)obj2).ToString();
-    //        return str1.CompareTo(str2);
-    //    }
-    //}
 
 
 }

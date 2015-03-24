@@ -61,6 +61,7 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Name = "frmBaseDocument";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmBaseDocument";
             this.ResumeLayout(false);
 

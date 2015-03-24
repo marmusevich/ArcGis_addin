@@ -85,9 +85,16 @@
     <Compile Include="ArcButtons\arcBtn_Open_JurLicList.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrVedomostey.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrZayav.cs" />
+    <Compile Include="ArcButtons\ArcGISAddin1.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BaseForm\frmBaseDocument.cs">
       <SubType>Form</SubType>
@@ -137,6 +144,7 @@
     <Compile Include="Forms\ReestrZayav\frmReestrZayav_jurnal.Designer.cs">
       <DependentUpon>frmReestrZayav_jurnal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shared\ArcGisListBinding.cs" />
     <Compile Include="Shared\DomeinDataAdapter.cs" />
     <Compile Include="Shared\FieldPropertyDescriptor.cs" />
     <Compile Include="Forms\BaseForm\frmBaseSpr_list.cs">
@@ -209,6 +217,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseForm\frmBaseDocument.resx">
       <DependentUpon>frmBaseDocument.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,7 +258,9 @@
   <ItemGroup>
     <AddInContent Include="_Images\arcBtn_Open_ReestrZayav.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AddInContent Include="Images\ArcGISAddin1.png" />
+  </ItemGroup>
   <ItemGroup>
     <AddInContent Include="_Images\arcBtn_Open_ReestrVedomostey.png" />
   </ItemGroup>
