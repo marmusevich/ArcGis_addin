@@ -14,7 +14,6 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  public
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
         //конструктор, параметры
         //   tableToWrap - таблица для связи
         //   fildsToSorted - поля для сортировки
@@ -87,23 +86,16 @@ namespace WorckWithReestr
             }
         }
         #endregion
-
+      
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        #region  private
+        #region  для редактирования
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
-        // для редактирования
         protected override void OnAddingNew(AddingNewEventArgs e)
         {
-            // Check that we can still add rows, this property could have been changed
             if (AllowNew)
             {
-                // Need to create a new IRow
                 IRow newRow = wrappedTable.CreateRow();
                 e.NewObject = newRow;
-
-                // Loop through fields and set default values
                 for (int fieldCount = 0; fieldCount < newRow.Fields.FieldCount; fieldCount++)
                 {
                     IField curField = newRow.Fields.get_Field(fieldCount);
@@ -112,8 +104,6 @@ namespace WorckWithReestr
                         newRow.set_Value(fieldCount, (object)curField.DefaultValue);
                     }
                 }
-
-                // Save default values
                 bool weStartedEditing = StartEditOp();
                 newRow.Store();
                 StopEditOp(weStartedEditing);
@@ -124,55 +114,47 @@ namespace WorckWithReestr
 
         protected override void RemoveItem(int index)
         {
-            // Check that we can still delete rows, this property could have been changed
             if (AllowRemove)
             {
-                // Get the corresponding IRow
                 IRow itemToRemove = Items[index];
-
                 bool weStartedEditing = StartEditOp();
-
-                // Delete the row
                 itemToRemove.Delete();
-
                 StopEditOp(weStartedEditing);
-
                 base.RemoveItem(index);
             }
         }
+        protected override void OnListChanged(ListChangedEventArgs e)
+        {
+            if (!isGetingData)
+                base.OnListChanged(e);
+        }
+
 
         private bool StartEditOp()
         {
             bool retVal = false;
-
-            // Check to see if we're editing
             if (!wkspcEdit.IsBeingEdited())
             {
-                // Not being edited so start here
                 wkspcEdit.StartEditing(false);
                 retVal = true;
             }
-
-            // Start operation
             wkspcEdit.StartEditOperation();
             return retVal;
         }
 
         private void StopEditOp(bool weStartedEditing)
         {
-            // Stop edit operation
             wkspcEdit.StopEditOperation();
-
             if (weStartedEditing)
             {
-                // We started the edit session so stop it here
                 wkspcEdit.StopEditing(true);
             }
         }
+        #endregion
+        
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
+        #region  получение данных
+        //---------------------------------------------------------------------------------------------------------------------------------------------
         // создать перечень колонок в связке
         private void GenerateFakeProperties()
         {
@@ -185,7 +167,7 @@ namespace WorckWithReestr
         // выгрузить данные
         private void GetData(string fildName = null, bool isSortDirectionAscending = true)
         {
-            isGetingData = true;
+            isGetingData = true; // экранировать изменения
             ClearItems();
             ICursor cur = null;
             if (fildName == null)
@@ -217,15 +199,12 @@ namespace WorckWithReestr
             }
             isGetingData = false;
         }
-        protected override void OnListChanged(ListChangedEventArgs e)
-        {
-            if (!isGetingData)
-                base.OnListChanged(e);
-        }
+        
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
-        //// для поиска, фильтрации
+        #endregion
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  для поиска, фильтрации
+        //---------------------------------------------------------------------------------------------------------------------------------------------
         //protected override bool SupportsSearchingCore
         //{
         //    get
@@ -238,10 +217,12 @@ namespace WorckWithReestr
         //    //return base.FindCore(prop, key);
         //    return -1;
         //}
+        #endregion
+       
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  сортировка
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
-
-        //сортировка
         protected override bool SupportsSortingCore
         {
             get
@@ -271,6 +252,7 @@ namespace WorckWithReestr
 
             GetData(sortProperty.Name, sortDirection == ListSortDirection.Ascending);
 
+            // по правилам нужно, но у меня лучьше без этого
             //OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
         }
         protected override void RemoveSortCore()
@@ -281,19 +263,22 @@ namespace WorckWithReestr
 
             // отмена сортировки
             GetData(defaultSortedFilds);
+            // по правилам нужно, но у меня лучьше без этого
+            //OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
         }
-        //---------------------------------------------------------------------------------------------------------------------------------------------
 
         #endregion
-
-
-        // переменные
+       
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  переменные
+        //---------------------------------------------------------------------------------------------------------------------------------------------
         protected ITable wrappedTable;
         protected List<PropertyDescriptor> fakePropertiesList = new List<PropertyDescriptor>();
         protected IWorkspaceEdit wkspcEdit;
+        private bool isGetingData = false;
+
         // поле для сортировки по умолчанию
         protected string defaultSortedFilds;
-        private bool isGetingData = false;
 
         // для фмльтрации
         protected IQueryFilter queryFilter = null;
@@ -304,9 +289,7 @@ namespace WorckWithReestr
         protected ListSortDirection sortDirection = ListSortDirection.Ascending;
         protected PropertyDescriptor sortProperty = null;
 
-
-
-
+        #endregion
     }
 
 }

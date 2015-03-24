@@ -22,6 +22,7 @@ namespace WorckWithReestr
         protected string NameWorkspace = "";
         protected string NameTable = "";
         protected string NameSortFild = "";
+        protected TableWraper tableWrapper = null;
 
         public int SelectID { get; protected set; }
         public string FilteredString { protected get; set; }
@@ -87,15 +88,7 @@ namespace WorckWithReestr
                 this.Text = (table as IObjectClass).AliasName;
 
 
-                TableWraper tableWrapper = new TableWraper(table, NameSortFild);
-                //TableWraper tableWrapper = new TableWraper(table);
-                //(tableWrapper as System.ComponentModel.IBindingList).ApplySort(tableWrapper.GetPropertyDescriptorByName(NameSortFild), System.ComponentModel.ListSortDirection.Ascending);
-
-                //tableWrapper.AllowNew = false;
-                //tableWrapper.AllowRemove = false;
-                //tableWrapper.UseCVDomains = true;
-
-
+                tableWrapper = new TableWraper(table, NameSortFild);
 
                 BindingSource dsBinding = new BindingSource();
                 dsBinding.DataSource = tableWrapper;

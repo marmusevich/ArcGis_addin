@@ -144,7 +144,6 @@
     <Compile Include="Forms\ReestrZayav\frmReestrZayav_jurnal.Designer.cs">
       <DependentUpon>frmReestrZayav_jurnal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Shared\ArcGisListBinding.cs" />
     <Compile Include="Shared\DomeinDataAdapter.cs" />
     <Compile Include="Shared\FieldPropertyDescriptor.cs" />
     <Compile Include="Forms\BaseForm\frmBaseSpr_list.cs">

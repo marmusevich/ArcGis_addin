@@ -18,6 +18,7 @@ namespace WorckWithReestr
         protected string NameWorkspace = "";
         protected string NameTable = "";
         protected string NameSortFild = "";
+        protected TableWraper tableWrapper = null;
 
         public int SelectID { get; protected set; }
         public string FilteredString { protected get; set; }
@@ -82,7 +83,7 @@ namespace WorckWithReestr
                 this.Text = (table as IObjectClass).AliasName;
 
 
-                TableWraper tableWrapper = new TableWraper(table, NameSortFild);
+                tableWrapper = new TableWraper(table, NameSortFild);
                 tableWrapper.AllowNew = false;
                 tableWrapper.AllowRemove = false;
 
