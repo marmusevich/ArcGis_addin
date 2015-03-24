@@ -14,34 +14,33 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  public
         //---------------------------------------------------------------------------------------------------------------------------------------------
-         
+
         //конструктор, параметры
         //   tableToWrap - таблица для связи
         //   fildsToSorted - поля для сортировки
-        public TableWraper(ITable tableToWrap, string fildsToSorted = null)
-            {
-                wrappedTable = tableToWrap;
-                sortedFilds = fildsToSorted;
-                GenerateFakeProperties();
-                GetData(fildsToSorted);
-                wkspcEdit = ((IDataset)wrappedTable).Workspace as IWorkspaceEdit;
-                UseCVDomains = true;
-                AllowNew = true;
-                AllowRemove = true;
-            }
+        //   queryFiltered - фильтр
+        public TableWraper(ITable tableToWrap, string defaultFildsToSorted = null, IQueryFilter queryFiltered = null)
+        {
+            wrappedTable = tableToWrap;
+            queryFilter = queryFiltered;
+            defaultSortedFilds = defaultFildsToSorted;
+            GenerateFakeProperties();
+            GetData(defaultFildsToSorted);
+            wkspcEdit = ((IDataset)wrappedTable).Workspace as IWorkspaceEdit;
+            UseCVDomains = true;
+            AllowNew = true;
+            AllowRemove = true;
+        }
 
         public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
         {
             PropertyDescriptorCollection propCollection = null;
             if (null == listAccessors)
             {
-                // Return all properties
                 propCollection = new PropertyDescriptorCollection(fakePropertiesList.ToArray());
             }
             else
             {
-                // Return the requested properties by checking each item in listAccessors
-                // to make sure it exists in our property collection.
                 List<PropertyDescriptor> tempList = new List<PropertyDescriptor>();
                 foreach (PropertyDescriptor curPropDesc in listAccessors)
                 {
@@ -56,11 +55,24 @@ namespace WorckWithReestr
             return propCollection;
         }
 
+        public PropertyDescriptor GetPropertyDescriptorByName(string fildName)
+        {
+            PropertyDescriptor ret = null;
+            foreach (PropertyDescriptor curPropDesc in fakePropertiesList)
+            {
+                if (curPropDesc.Name.Equals(fildName))
+                    ret = curPropDesc;
+            }
+            return ret;
+        }
+
+
         public string GetListName(PropertyDescriptor[] listAccessors)
         {
             return ((IDataset)wrappedTable).Name;
         }
 
+        //включить выключить поддержку доменов
         public bool UseCVDomains
         {
             set
@@ -69,20 +81,18 @@ namespace WorckWithReestr
                 {
                     if (curPropDesc.HasCVDomain)
                     {
-                        // Field has a coded value domain so turn the usage of this on or off
-                        // as requested
                         curPropDesc.UseCVDomain = value;
                     }
                 }
             }
         }
-    #endregion
+        #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        #region  private 
+        #region  private
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
-        
+
         // для редактирования
         protected override void OnAddingNew(AddingNewEventArgs e)
         {
@@ -176,12 +186,8 @@ namespace WorckWithReestr
         private void GetData(string fildName = null, bool isSortDirectionAscending = true)
         {
             isGetingData = true;
-
             ClearItems();
-
-
             ICursor cur = null;
-
             if (fildName == null)
             {
                 // без сортировки
@@ -189,7 +195,6 @@ namespace WorckWithReestr
             }
             else
             {
-
                 // собственно сортировка здесь
                 ITableSort tableSort = new TableSort();
                 tableSort.Table = wrappedTable;
@@ -204,7 +209,6 @@ namespace WorckWithReestr
                 tableSort.Sort(null);
                 cur = tableSort.Rows;
             }
-
             IRow curRow = cur.NextRow();
             while (null != curRow)
             {
@@ -236,7 +240,7 @@ namespace WorckWithReestr
         //}
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
-        
+
         //сортировка
         protected override bool SupportsSortingCore
         {
@@ -261,11 +265,11 @@ namespace WorckWithReestr
         }
         protected override void ApplySortCore(PropertyDescriptor prop, ListSortDirection direction)
         {
-            GetData(prop.Name, sortDirection == ListSortDirection.Ascending);
-            //--
             isSorted = true;
             sortDirection = direction;
             sortProperty = prop;
+
+            GetData(sortProperty.Name, sortDirection == ListSortDirection.Ascending);
 
             //OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
         }
@@ -276,7 +280,7 @@ namespace WorckWithReestr
             sortProperty = null;
 
             // отмена сортировки
-            GetData(sortedFilds);
+            GetData(defaultSortedFilds);
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -288,7 +292,7 @@ namespace WorckWithReestr
         protected List<PropertyDescriptor> fakePropertiesList = new List<PropertyDescriptor>();
         protected IWorkspaceEdit wkspcEdit;
         // поле для сортировки по умолчанию
-        protected string sortedFilds;
+        protected string defaultSortedFilds;
         private bool isGetingData = false;
 
         // для фмльтрации

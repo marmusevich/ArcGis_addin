@@ -88,11 +88,13 @@ namespace WorckWithReestr
 
 
                 TableWraper tableWrapper = new TableWraper(table, NameSortFild);
-                //ArcGisListBinding tableWrapper = new ArcGisListBinding(table, NameSortFild);
+                //TableWraper tableWrapper = new TableWraper(table);
+                //(tableWrapper as System.ComponentModel.IBindingList).ApplySort(tableWrapper.GetPropertyDescriptorByName(NameSortFild), System.ComponentModel.ListSortDirection.Ascending);
 
                 //tableWrapper.AllowNew = false;
                 //tableWrapper.AllowRemove = false;
                 //tableWrapper.UseCVDomains = true;
+
 
 
                 BindingSource dsBinding = new BindingSource();
