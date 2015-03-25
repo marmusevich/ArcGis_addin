@@ -248,9 +248,6 @@
     <AddInContent Include="_Images\arcBtn_Open_ReestrZayav.png" />
   </ItemGroup>
   <ItemGroup>
-    <AddInContent Include="Images\ArcGISAddin1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AddInContent Include="_Images\arcBtn_Open_ReestrVedomostey.png" />
   </ItemGroup>
   <PropertyGroup>

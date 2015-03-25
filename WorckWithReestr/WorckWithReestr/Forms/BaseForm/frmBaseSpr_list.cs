@@ -61,6 +61,8 @@ namespace WorckWithReestr
 
             //перечитать если лперация была закончена, или всегда???
             ReadData();
+            //tableWrapper.UpdateData();
+            
         }
 
         protected virtual void DeleteRec(int objectID)

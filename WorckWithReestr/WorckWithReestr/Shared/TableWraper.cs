@@ -123,6 +123,7 @@ namespace WorckWithReestr
                 base.RemoveItem(index);
             }
         }
+        
         protected override void OnListChanged(ListChangedEventArgs e)
         {
             if (!isGetingData)
@@ -199,7 +200,22 @@ namespace WorckWithReestr
             }
             isGetingData = false;
         }
-        
+
+        public void UpdateData()
+        {
+            if (sortProperty == null)
+            {
+                GetData(defaultSortedFilds);
+                OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
+            }
+            else
+            {
+                OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
+                ApplySortCore(sortProperty, sortDirection);
+            }
+
+                //ListChanged(this, new ListChangedEventArgs(ListChangedType.Reset, -1));
+        }
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -250,7 +266,10 @@ namespace WorckWithReestr
             sortDirection = direction;
             sortProperty = prop;
 
-            GetData(sortProperty.Name, sortDirection == ListSortDirection.Ascending);
+            if (sortProperty == null)
+                GetData(null, sortDirection == ListSortDirection.Ascending);
+            else
+                GetData(sortProperty.Name, sortDirection == ListSortDirection.Ascending);
 
             // по правилам нужно, но у меня лучьше без этого
             //OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
