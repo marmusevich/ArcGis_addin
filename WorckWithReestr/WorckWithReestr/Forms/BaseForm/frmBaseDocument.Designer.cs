@@ -40,6 +40,7 @@
             this.btnOk.TabIndex = 9;
             this.btnOk.Text = "Сохранить";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -63,6 +64,8 @@
             this.Name = "frmBaseDocument";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmBaseDocument";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseDocument_FormClosing);
+            this.Load += new System.EventHandler(this.frmBaseDocument_Load);
             this.ResumeLayout(false);
 
         }

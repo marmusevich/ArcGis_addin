@@ -34,30 +34,6 @@ namespace WorckWithReestr
             txtName.Text = row.get_Value(1) as string;
             txtOKPO.Text = row.get_Value(2) as string;
 
-
-
-            //cbFV - взять из домена поле №3
-
-            //object[] arr = SharedClass.GetListOfDamaibValue(row.Fields.get_Field(3).Domain);
-            //if (arr == null)
-            //    return;
-
-            ////Array.BinarySearch
-            //cbFV.Items.AddRange(arr);
-
-
-            //ICodedValueDomain codedValueDomain = (ICodedValueDomain)row.Fields.get_Field(3).Domain;
-            //System.Collections.Generic.List<SelectData> ret = new System.Collections.Generic.List<SelectData>();
-            //for (int i = 0; i < codedValueDomain.CodeCount; i++)
-            //{
-            //    cbFV.Items.Add(new SelectData(codedValueDomain.get_Value(i), codedValueDomain.get_Name(i)));
-
-
-            //    if ((row.get_Value(3) != null) && row.get_Value(3).Equals(codedValueDomain.get_Value(i)))
-            //        cbFV.SelectedIndex = i;
-            //}
-            
-
             object o = row.get_Value(3);
             if(o == null )
                 o = row.Fields.get_Field(3).DefaultValue;

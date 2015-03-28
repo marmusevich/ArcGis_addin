@@ -46,8 +46,8 @@ namespace WorckWithReestr
             frm.Owner = this;
             frm.ShowDialog();
 
-            //перечитать если лперация была закончена, или всегда???
-            ReadData();
+            tableWrapper.UpdateData();
+            dgv.Refresh();
         }
 
         protected virtual void EditRec(int objectID)
@@ -59,9 +59,8 @@ namespace WorckWithReestr
             frm.Owner = this;
             frm.ShowDialog();
 
-            //перечитать если лперация была закончена, или всегда???
-            ReadData();
-            //tableWrapper.UpdateData();
+            tableWrapper.UpdateData();
+            dgv.Refresh();
             
         }
 
@@ -74,9 +73,8 @@ namespace WorckWithReestr
             frm.Owner = this;
             frm.ShowDialog();
 
-            //перечитать если лперация была закончена, или всегда???
-            ReadData();
-
+            tableWrapper.UpdateData();
+            dgv.Refresh();
         }
 
         protected virtual bool ReadData()

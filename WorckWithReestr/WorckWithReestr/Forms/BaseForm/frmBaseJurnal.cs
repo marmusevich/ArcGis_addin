@@ -208,14 +208,14 @@ namespace WorckWithReestr
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0)
-            //{
-            //    int id = (int)dgv.Rows[e.RowIndex].Cells[0].Value;
-            //    if (IsSelectMode)
-            //        SelectRec(id);
-            //    else
-            //        EditRec(id);
-            //}
+            if (e.RowIndex >= 0)
+            {
+                int id = (int)dgv.Rows[e.RowIndex].Cells[0].Value;
+                if (IsSelectMode)
+                    SelectRec(id);
+                else
+                    EditRec(id);
+            }
         }
         #endregion
 

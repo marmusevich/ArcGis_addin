@@ -54,6 +54,12 @@ namespace WorckWithReestr
             return propCollection;
         }
 
+        public string GetListName(PropertyDescriptor[] listAccessors)
+        {
+            return ((IDataset)wrappedTable).Name;
+        }
+
+        //получить описатель свойства по имени поля
         public PropertyDescriptor GetPropertyDescriptorByName(string fildName)
         {
             PropertyDescriptor ret = null;
@@ -65,10 +71,35 @@ namespace WorckWithReestr
             return ret;
         }
 
-
-        public string GetListName(PropertyDescriptor[] listAccessors)
+        //получить описатель свойства по индексу
+        public PropertyDescriptor GetPropertyDescriptorByIndex(int index)
         {
-            return ((IDataset)wrappedTable).Name;
+            PropertyDescriptor ret = null;
+            if (index >= 0 && index < fakePropertiesList.Count)
+                ret = fakePropertiesList[index];
+            return ret;
+        }
+
+        //получить именя поля по индексу
+        public string GetNameByIndex(int index)
+        {
+            string ret = null;
+            if (index >= 0 && index < fakePropertiesList.Count)
+                ret = fakePropertiesList[index].Name;
+            return ret;
+        }
+
+        //получить индекс по имени поля
+        public int GetIndexByName(string fildName)
+        {
+            int ret = -1;
+            //foreach (PropertyDescriptor curPropDesc in fakePropertiesList)
+            for(int i = 0; i < fakePropertiesList.Count; i++)
+            {
+                if (fakePropertiesList[i].Name.Equals(fildName))
+                    ret = i;
+            }
+            return ret;
         }
 
         //включить выключить поддержку доменов
@@ -205,16 +236,19 @@ namespace WorckWithReestr
         {
             if (sortProperty == null)
             {
-                GetData(defaultSortedFilds);
-                OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
+                RemoveSortCore();
+
+                //GetData(defaultSortedFilds);
+                //OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
             }
             else
             {
-                OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
+                //OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
                 ApplySortCore(sortProperty, sortDirection);
             }
 
-                //ListChanged(this, new ListChangedEventArgs(ListChangedType.Reset, -1));
+            OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1)); 
+            //ListChanged(this, new ListChangedEventArgs(ListChangedType.Reset, -1));
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #endregion

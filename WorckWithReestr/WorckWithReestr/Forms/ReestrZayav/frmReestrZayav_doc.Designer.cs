@@ -557,7 +557,6 @@
             this.Name = "frmReestrZayav_doc";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Заява / звернення";
             this.Controls.SetChildIndex(this.lblDoppData, 0);
             this.Controls.SetChildIndex(this.lblFirstData, 0);
