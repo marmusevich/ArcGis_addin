@@ -96,6 +96,7 @@ namespace WorckWithReestr
                 wse.StopEditing(true);
 
                 ret = true;
+
             }
             catch (Exception e) // доработать блок ошибок на разные исключения
             {

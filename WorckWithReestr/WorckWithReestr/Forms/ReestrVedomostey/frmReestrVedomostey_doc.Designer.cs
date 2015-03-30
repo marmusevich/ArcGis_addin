@@ -165,6 +165,8 @@
             // 
             // dtmDataVidpravlennya
             // 
+            this.dtmDataVidpravlennya.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtmDataVidpravlennya.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtmDataVidpravlennya.Location = new System.Drawing.Point(397, 74);
             this.dtmDataVidpravlennya.Name = "dtmDataVidpravlennya";
             this.dtmDataVidpravlennya.Size = new System.Drawing.Size(141, 20);
@@ -180,6 +182,8 @@
             // 
             // dtpDataRazmeschenie
             // 
+            this.dtpDataRazmeschenie.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpDataRazmeschenie.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataRazmeschenie.Location = new System.Drawing.Point(398, 266);
             this.dtpDataRazmeschenie.Name = "dtpDataRazmeschenie";
             this.dtpDataRazmeschenie.Size = new System.Drawing.Size(141, 20);
@@ -288,6 +292,8 @@
             // 
             // dtpData
             // 
+            this.dtpData.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData.Location = new System.Drawing.Point(397, 24);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(141, 20);
@@ -353,7 +359,6 @@
             this.Name = "frmReestrVedomostey_doc";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmReestrVedomostey_doc";
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOk, 0);

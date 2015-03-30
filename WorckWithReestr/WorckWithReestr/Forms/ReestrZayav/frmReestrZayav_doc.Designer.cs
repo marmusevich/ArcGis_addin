@@ -121,6 +121,7 @@
             this.cbFIOPoluchil.Name = "cbFIOPoluchil";
             this.cbFIOPoluchil.Size = new System.Drawing.Size(195, 21);
             this.cbFIOPoluchil.TabIndex = 14;
+            this.cbFIOPoluchil.DropDown += new System.EventHandler(this.cbFIOPoluchil_DropDown);
             // 
             // txtDopMat
             // 
@@ -172,6 +173,8 @@
             // 
             // dtpDataVhod
             // 
+            this.dtpDataVhod.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpDataVhod.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataVhod.Location = new System.Drawing.Point(385, 70);
             this.dtpDataVhod.Name = "dtpDataVhod";
             this.dtpDataVhod.Size = new System.Drawing.Size(151, 20);
@@ -244,6 +247,8 @@
             // 
             // dtpDataObr
             // 
+            this.dtpDataObr.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpDataObr.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataObr.Location = new System.Drawing.Point(385, 24);
             this.dtpDataObr.Name = "dtpDataObr";
             this.dtpDataObr.Size = new System.Drawing.Size(151, 20);
@@ -402,6 +407,8 @@
             // 
             // dtpDataSplati
             // 
+            this.dtpDataSplati.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpDataSplati.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataSplati.Location = new System.Drawing.Point(385, 429);
             this.dtpDataSplati.Name = "dtpDataSplati";
             this.dtpDataSplati.Size = new System.Drawing.Size(151, 20);
@@ -409,6 +416,8 @@
             // 
             // dtpDataNadannyaPoslugi
             // 
+            this.dtpDataNadannyaPoslugi.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpDataNadannyaPoslugi.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataNadannyaPoslugi.Location = new System.Drawing.Point(385, 405);
             this.dtpDataNadannyaPoslugi.Name = "dtpDataNadannyaPoslugi";
             this.dtpDataNadannyaPoslugi.Size = new System.Drawing.Size(151, 20);
@@ -499,7 +508,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 681);
+            this.ClientSize = new System.Drawing.Size(973, 681);
             this.Controls.Add(this.lblServicesProvided);
             this.Controls.Add(this.txtDokProSplatu);
             this.Controls.Add(this.txtNomerKancelyar);
@@ -558,6 +567,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Заява / звернення";
+            this.Load += new System.EventHandler(this.frmReestrZayav_doc_Load);
             this.Controls.SetChildIndex(this.lblDoppData, 0);
             this.Controls.SetChildIndex(this.lblFirstData, 0);
             this.Controls.SetChildIndex(this.lblFIOPoluchil, 0);

@@ -66,12 +66,15 @@ namespace WorckWithReestr
             else
                 return false;
         }
+        //преобразует значение из базы в DateTime
+        public static DateTime ConvertVolueToDateTime(object obj)
+        {
+            if ((obj != null) && !Convert.IsDBNull(obj))
+                return Convert.ToDateTime(obj);
+            else
+                return DateTime.Now;
+        }
     }
-
-  
-
-
-
 }
 
 

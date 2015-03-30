@@ -85,6 +85,7 @@
     <Compile Include="ArcButtons\arcBtn_Open_JurLicList.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrVedomostey.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrZayav.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_TipDoc.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
@@ -136,6 +137,18 @@
     </Compile>
     <Compile Include="Forms\ReestrZayav\frmReestrZayav_jurnal.Designer.cs">
       <DependentUpon>frmReestrZayav_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TipDok\frmTipDoc_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TipDok\frmTipDoc_element.Designer.cs">
+      <DependentUpon>frmTipDoc_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TipDok\frmTipDoc_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TipDok\frmTipDoc_list.Designer.cs">
+      <DependentUpon>frmTipDoc_list.cs</DependentUpon>
     </Compile>
     <Compile Include="Shared\DomeinDataAdapter.cs" />
     <Compile Include="Shared\FieldPropertyDescriptor.cs" />
@@ -236,6 +249,9 @@
     <EmbeddedResource Include="Forms\ReestrZayav\frmReestrZayav_jurnal.resx">
       <DependentUpon>frmReestrZayav_jurnal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TipDok\frmTipDoc_element.resx">
+      <DependentUpon>frmTipDoc_element.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -249,6 +265,9 @@
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="_Images\arcBtn_Open_ReestrVedomostey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="_Images\arcBtn_Open_TipDoc.png" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

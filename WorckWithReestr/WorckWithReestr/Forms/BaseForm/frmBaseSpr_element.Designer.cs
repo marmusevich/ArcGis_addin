@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
@@ -52,11 +55,16 @@
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmBaseSpr_element
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(441, 212);
             this.Controls.Add(this.btnOk);
@@ -71,13 +79,16 @@
             this.Text = "frmBaseSpr_element";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseSpr_element_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseSpr_element_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
 
         protected System.Windows.Forms.Button btnOk;
         protected System.Windows.Forms.Button btnCancel;
+        protected System.Windows.Forms.ErrorProvider errorProvider;
 
     }
 }

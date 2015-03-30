@@ -3,16 +3,14 @@ using System;
 
 namespace WorckWithReestr
 {
-
-
-    public partial class frmFizLic_element : frmBaseSpr_element
+    public partial class frmTipDoc_element : frmBaseSpr_element
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
 
-   
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -28,67 +26,94 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             // взять из базы
-            txtID.Text = "" + row.get_Value(0) as string;
-            txtFIO.Text = row.get_Value(1) as string;
-            txtCategor.Text = row.get_Value(2) as string;
-            txtINN.Text = row.get_Value(3) as string;
-
-            cbIsWorker.Checked = SharedClass.ConvertVolueToBool(row.get_Value(4));
+            txtTip_Doc.Text = "" + row.get_Value(base.table.FindField("Tip_Doc")) as string;
+            txtKod_Doc.Text = "" + row.get_Value(base.table.FindField("Kod_Doc")).ToString();
         }
-
         protected override void FormElement_to_DB(IRow row)
         {
             // положить в базы
-            row.set_Value(1, txtFIO.Text);
-            row.set_Value(2, txtCategor.Text);
-            row.set_Value(3, txtINN.Text);
-
-            if (cbIsWorker.Checked)
-                row.set_Value(4, 1);
-            else
-                row.set_Value(4, 0);
-
+            row.set_Value(base.table.FindField("Tip_Doc"), txtTip_Doc.Text);
+            row.set_Value(base.table.FindField("Kod_Doc"), Convert.ToInt16(txtKod_Doc.Text));
         }
+
+
+
+        protected override bool ValidatingData()
+        {
+            bool ret = false;
+
+            try
+            {
+                short numVal = Convert.ToInt16(txtKod_Doc.Text);
+                errorProvider.SetError(txtKod_Doc, String.Empty);
+                ret = true;
+            }
+            catch (FormatException e)
+            {
+                errorProvider.SetError(txtKod_Doc, "Должно быть число.");
+                ret = false;
+            }
+            catch (OverflowException e)
+            {
+                errorProvider.SetError(txtKod_Doc, "Слишком большое число.");
+                ret = false;
+            }
+
+            if (txtTip_Doc.Text == null || txtTip_Doc.Text == "")
+            {
+                errorProvider.SetError(txtTip_Doc, "Тип документа пустой.");
+                ret = false;
+            }
+            else
+            {
+                errorProvider.SetError(txtTip_Doc, String.Empty);
+                ret = true;
+            }
+
+
+
+            return ret;
+        }
+
+
+
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmFizLic_element() : base()
+        public frmTipDoc_element()
+            : base()
         {
             InitializeComponent();
         }
 
-        public frmFizLic_element(int _objectID, EditMode _editMode)
+        public frmTipDoc_element(int _objectID, EditMode _editMode)
             : base(_objectID, _editMode)
         {
             InitializeComponent();
 
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.fizichni_osoby";
-
+            base.NameTable = "reestr.DBO.Tip_Doc";
         }
 
 
-        private void frmFizLic_element_Load(object sender, EventArgs e)
+        private void frmTipDoc_element_Load(object sender, EventArgs e)
         {
             switch (editMode)
             {
                 case EditMode.ADD:
-                    Text = "Добавление нового физического лица";
+                    Text = "Добавление нового типа документа";
                     break;
                 case EditMode.EDIT:
-                    Text = "Корректировка данных физического лица";
+                    Text = "Корректировка данных типа документа";
                     break;
                 case EditMode.DELETE:
-                    Text = "Удаление физического лица";
+                    Text = "Удаление типа документа";
                     btnOk.Text = "Удалить";
-                    txtID.Enabled = false;
-                    txtFIO.Enabled = false;
-                    txtINN.Enabled = false;
-                    txtCategor.Enabled = false;
-                    cbIsWorker.Enabled = false;
-
+                    txtTip_Doc.Enabled = false;
+                    txtKod_Doc.Enabled = false;
                     break;
 
                 default:
@@ -105,32 +130,28 @@ namespace WorckWithReestr
                 }
             }
         }
-
-
-        private void txtFIO_TextChanged(object sender, EventArgs e)
-        {
-            isModified = true;
-        }
-
-        private void txtINN_TextChanged(object sender, EventArgs e)
-        {
-            isModified = true;
-        }
-
-        private void txtCategor_TextChanged(object sender, EventArgs e)
-        {
-            isModified = true;
-        }
-
-        private void cbIsWorker_CheckedChanged(object sender, EventArgs e)
-        {
-            isModified = true;
-        }
-
-
         #endregion
 
+        private void txtTip_Doc_TextChanged(object sender, EventArgs e)
+        {
+            isModified = true;
+            ValidatingData();
+        }
+
+        private void txtKod_Doc_TextChanged(object sender, EventArgs e)
+        {
+            isModified = true;
+            ValidatingData();
+        }
+
+        private void txtKod_Doc_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
+
+        private void txtTip_Doc_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
     }
-
-
 }

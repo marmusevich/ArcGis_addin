@@ -87,7 +87,6 @@ namespace WorckWithReestr
 
                 this.Text = (table as IObjectClass).AliasName;
 
-
                 tableWrapper = new TableWraper(table, NameSortFild);
 
                 BindingSource dsBinding = new BindingSource();
@@ -116,9 +115,8 @@ namespace WorckWithReestr
                 ret = false;
             }
 
-            //if (ret)
-            //    dgv.Columns[0].Visible = false;
-
+            if (ret)
+                dgv.Columns[0].Visible = false;
 
             return ret;
         }

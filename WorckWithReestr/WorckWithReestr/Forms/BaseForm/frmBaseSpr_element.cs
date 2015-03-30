@@ -28,7 +28,8 @@ namespace WorckWithReestr
 
         protected string NameWorkspace = "";
         protected string NameTable = "";
-
+        protected ITable table = null;
+        //protected bool IsValidatedOk = false;
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -42,8 +43,10 @@ namespace WorckWithReestr
         {
         }
 
-
-
+        protected virtual bool ValidatingData()
+        {
+            return true;
+        }
 
 
 
@@ -53,7 +56,7 @@ namespace WorckWithReestr
             try
             {
                 IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
-                ITable table = fws.OpenTable(NameTable);
+                table = fws.OpenTable(NameTable);
 
                 IRow row = table.GetRow(objectID);
                 DB_to_FormElement(row);
@@ -80,7 +83,7 @@ namespace WorckWithReestr
                 wse.StartEditing(false);
                 wse.StartEditOperation();
 
-                ITable table = fws.OpenTable(NameTable);
+                table = fws.OpenTable(NameTable);
                 IRow row = null;
 
                 if (editMode == EditMode.ADD)
@@ -126,7 +129,7 @@ namespace WorckWithReestr
                 wse.StartEditing(false);
                 wse.StartEditOperation();
 
-                ITable table = fws.OpenTable(NameTable);
+                table = fws.OpenTable(NameTable);
 
                 IRow row = table.GetRow(objectID);
                 row.Delete();
@@ -183,6 +186,9 @@ namespace WorckWithReestr
         {
             if (isModified && editMode != EditMode.DELETE)
             {
+                if (!ValidatingData())
+                    return;
+
                 if (MessageBox.Show("Сохранить внесенные изменения?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SaveData();
@@ -192,6 +198,9 @@ namespace WorckWithReestr
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
+            if (!ValidatingData())
+                return;
+
             bool ret = false;
 
             if (editMode == EditMode.DELETE)
