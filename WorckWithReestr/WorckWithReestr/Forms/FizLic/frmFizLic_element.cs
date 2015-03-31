@@ -28,27 +28,34 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             // взять из базы
-            txtID.Text = "" + row.get_Value(0) as string;
-            txtFIO.Text = row.get_Value(1) as string;
-            txtCategor.Text = row.get_Value(2) as string;
-            txtINN.Text = row.get_Value(3) as string;
+            txtFIO.Text = row.get_Value(base.table.FindField("П_І_Б")) as string;
+            txtCategor.Text = row.get_Value(base.table.FindField("категорія")) as string;
+            txtINN.Text = row.get_Value(base.table.FindField("ідент_код")) as string;
 
-            cbIsWorker.Checked = SharedClass.ConvertVolueToBool(row.get_Value(4));
+            cbIsWorker.Checked = SharedClass.ConvertVolueToBool(base.table.FindField("ЭтоСотрудник"));
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             // положить в базы
-            row.set_Value(1, txtFIO.Text);
-            row.set_Value(2, txtCategor.Text);
-            row.set_Value(3, txtINN.Text);
+            row.set_Value(base.table.FindField("П_І_Б"), txtFIO.Text);
+            row.set_Value(base.table.FindField("категорія"), txtCategor.Text);
+            row.set_Value(base.table.FindField("ідент_код"), txtINN.Text);
 
             if (cbIsWorker.Checked)
-                row.set_Value(4, 1);
+                row.set_Value(base.table.FindField("ЭтоСотрудник"), 1);
             else
-                row.set_Value(4, 0);
+                row.set_Value(base.table.FindField("ЭтоСотрудник"), 0);
 
         }
+
+        protected override bool ValidatingData()
+        {
+            bool ret = base.ValidatingData();
+            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtFIO, errorProvider) && ret;
+            return ret;
+        }
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -83,7 +90,6 @@ namespace WorckWithReestr
                 case EditMode.DELETE:
                     Text = "Удаление физического лица";
                     btnOk.Text = "Удалить";
-                    txtID.Enabled = false;
                     txtFIO.Enabled = false;
                     txtINN.Enabled = false;
                     txtCategor.Enabled = false;
@@ -110,6 +116,11 @@ namespace WorckWithReestr
         private void txtFIO_TextChanged(object sender, EventArgs e)
         {
             isModified = true;
+            ValidatingData();
+        }
+        private void txtFIO_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
         }
 
         private void txtINN_TextChanged(object sender, EventArgs e)
@@ -126,10 +137,7 @@ namespace WorckWithReestr
         {
             isModified = true;
         }
-
-
         #endregion
-
     }
 
 

@@ -30,24 +30,31 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             // взять из базы
-            txtID.Text = "" + row.get_Value(0) as string;
-            txtName.Text = row.get_Value(1) as string;
-            txtOKPO.Text = row.get_Value(2) as string;
-
-            object o = row.get_Value(3);
+            txtName.Text = "" + row.get_Value(base.table.FindField("назва")) as string;
+            txtOKPO.Text = "" + row.get_Value(base.table.FindField("код_ЄДРПОУ")) as string;
+            
+            object o = row.get_Value(base.table.FindField("форма_власності"));
             if(o == null )
-                o = row.Fields.get_Field(3).DefaultValue;
-
-            cbFV.SelectedIndex = dda.GetIndexByValue(o);
+                o = row.Fields.get_Field(base.table.FindField("форма_власності")).DefaultValue;
+            cbFV.SelectedIndex = dda.GetIndexByValue(o); 
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             // положить в базы
-            row.set_Value(1, txtName.Text);
-            row.set_Value(2, txtOKPO.Text); // в базе число наверное, а здесь строка
-            row.set_Value(3, ((DomeinData)cbFV.SelectedItem).Value);
+            row.set_Value(base.table.FindField("назва"), txtName.Text);
+            row.set_Value(base.table.FindField("код_ЄДРПОУ"), txtOKPO.Text);
+            row.set_Value(base.table.FindField("форма_власності"), ((DomeinData)cbFV.SelectedItem).Value);
         }
+
+        protected override bool ValidatingData()
+        {
+            bool ret = base.ValidatingData();
+            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtName, errorProvider) && ret;
+            return ret;
+        }
+
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,7 +87,6 @@ namespace WorckWithReestr
                 case EditMode.DELETE:
                     Text = "Удаление юридического лица";
                     btnOk.Text = "Удалить";
-                    txtID.Enabled = false;
                     txtName.Enabled = false;
                     txtOKPO.Enabled = false;
                     cbFV.Enabled = false;
@@ -120,5 +126,16 @@ namespace WorckWithReestr
             }
         }
         #endregion
+
+        private void txtName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            isModified = true;
+            ValidatingData();
+        }
     }
 }

@@ -37,7 +37,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(354, 87);
+            this.btnOk.Location = new System.Drawing.Point(347, 87);
             // 
             // btnCancel
             // 
@@ -47,7 +47,7 @@
             // 
             this.txtTip_Doc.Location = new System.Drawing.Point(115, 6);
             this.txtTip_Doc.Name = "txtTip_Doc";
-            this.txtTip_Doc.Size = new System.Drawing.Size(314, 20);
+            this.txtTip_Doc.Size = new System.Drawing.Size(307, 20);
             this.txtTip_Doc.TabIndex = 9;
             this.txtTip_Doc.TextChanged += new System.EventHandler(this.txtTip_Doc_TextChanged);
             this.txtTip_Doc.Validating += new System.ComponentModel.CancelEventHandler(this.txtTip_Doc_Validating);

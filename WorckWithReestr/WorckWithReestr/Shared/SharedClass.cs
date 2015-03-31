@@ -58,6 +58,8 @@ namespace WorckWithReestr
             }
         }
 
+        #region преобразование значений
+
         //преобразует значение из базы с предпологаемым домено BOOL  в  BOOL
         public static bool ConvertVolueToBool(object obj)
         {
@@ -74,6 +76,80 @@ namespace WorckWithReestr
             else
                 return DateTime.Now;
         }
+        #endregion
+
+
+
+        #region методы проверок полей ввода
+        // проверка текстового поля на содержание Smal Int (16 бит) и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsSmalInt_SetError(System.Windows.Forms.TextBox _chekedValue, System.Windows.Forms.ErrorProvider _errorProvider)
+        {
+            bool ret = true;
+            try
+            {
+                short numVal = Convert.ToInt16(_chekedValue.Text);
+                _errorProvider.SetError(_chekedValue, String.Empty);
+            }
+            catch (FormatException e)
+            {
+                _errorProvider.SetError(_chekedValue, "Должно быть число.");
+                ret = false;
+            }
+            catch (OverflowException e)
+            {
+                _errorProvider.SetError(_chekedValue, "Слишком большое число.");
+                ret = false;
+            }
+            return ret;
+        }
+
+        // проверка текстового поля на содержание Int (32 бит) и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsInt_SetError(System.Windows.Forms.TextBox _chekedValue, System.Windows.Forms.ErrorProvider _errorProvider)
+        {
+            bool ret = true;
+            try
+            {
+                int numVal = Convert.ToInt32(_chekedValue.Text);
+                _errorProvider.SetError(_chekedValue, String.Empty);
+            }
+            catch (FormatException e)
+            {
+                _errorProvider.SetError(_chekedValue, "Должно быть число.");
+                ret = false;
+            }
+            catch (OverflowException e)
+            {
+                _errorProvider.SetError(_chekedValue, "Слишком большое число.");
+                ret = false;
+            }
+            return ret;
+        }
+
+
+        // остальные числовые значения
+
+
+        // проверка текстового поля на не пуста при содержании текста и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueStringNotEmpty_SetError(System.Windows.Forms.TextBox _chekedValue, System.Windows.Forms.ErrorProvider _errorProvider)
+        {
+            bool ret = true;
+
+            if (_chekedValue.Text == null || _chekedValue.Text == "")
+            {
+                _errorProvider.SetError(_chekedValue, "Строка должна быть не пустой.");
+                ret = false;
+            }
+            else
+            {
+                _errorProvider.SetError(_chekedValue, String.Empty);
+            }
+            return ret;
+        }
+
+        #endregion
+
+
+
     }
 }
 

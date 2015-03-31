@@ -102,6 +102,8 @@ namespace WorckWithReestr
                 {
                     width += dgv.Columns[i].Width;
                 }
+                if (width < this.Width)
+                    width = this.Width;
                 if (Screen.PrimaryScreen.WorkingArea.Width < width)
                     this.Width = Screen.PrimaryScreen.WorkingArea.Width/2;
                 else
@@ -133,7 +135,8 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region form  events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmBaseSpr_list() : this(false, "") { }
+        //public frmBaseSpr_list() : this(false, "") { }
+        public frmBaseSpr_list() { }
 
         public frmBaseSpr_list(bool isSelectMode = false, string filteredString = "")
         {

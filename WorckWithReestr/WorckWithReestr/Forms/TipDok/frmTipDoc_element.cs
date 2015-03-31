@@ -40,43 +40,14 @@ namespace WorckWithReestr
 
         protected override bool ValidatingData()
         {
-            bool ret = false;
+            bool ret = base.ValidatingData();
 
-            try
-            {
-                short numVal = Convert.ToInt16(txtKod_Doc.Text);
-                errorProvider.SetError(txtKod_Doc, String.Empty);
-                ret = true;
-            }
-            catch (FormatException e)
-            {
-                errorProvider.SetError(txtKod_Doc, "Должно быть число.");
-                ret = false;
-            }
-            catch (OverflowException e)
-            {
-                errorProvider.SetError(txtKod_Doc, "Слишком большое число.");
-                ret = false;
-            }
+            ret = SharedClass.CheckValueIsSmalInt_SetError(txtKod_Doc, errorProvider) && ret;
 
-            if (txtTip_Doc.Text == null || txtTip_Doc.Text == "")
-            {
-                errorProvider.SetError(txtTip_Doc, "Тип документа пустой.");
-                ret = false;
-            }
-            else
-            {
-                errorProvider.SetError(txtTip_Doc, String.Empty);
-                ret = true;
-            }
-
-
+            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtTip_Doc, errorProvider) && ret;
 
             return ret;
         }
-
-
-
 
         #endregion
 

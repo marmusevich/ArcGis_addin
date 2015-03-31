@@ -252,6 +252,9 @@
     <EmbeddedResource Include="Forms\TipDok\frmTipDoc_element.resx">
       <DependentUpon>frmTipDoc_element.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TipDok\frmTipDoc_list.resx">
+      <DependentUpon>frmTipDoc_list.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
