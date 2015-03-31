@@ -148,6 +148,51 @@ namespace WorckWithReestr
 
         #endregion
 
+        //универсальный метод получение значения из таблицы
+        public static object GetValueByID(int id, string tableName, string fildName)
+        {
+            try
+            {
+                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                ITable table = fws.OpenTable("reestr.DBO." + tableName);
+                IRow row = table.GetRow(id);
+                return row.get_Value(table.FindField(fildName));
+            }
+            catch (Exception e) // доработать блок ошибок на разные исключения
+            {
+                return null;
+            }
+        }
+
+
+        //          !!!!!!!!!!!
+        // подумать слишком непонятная работа
+        // универсальный запрос а возвращает масив для одного поля
+        //public static ArrayList GenerateList(string tableName, string fildName)
+        //{
+        //    ArrayList data = new ArrayList();
+        //    try
+        //    {
+        //        IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+        //        IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
+        //        queryDef2.Tables = "reestr.DBO." + tableName;
+        //        queryDef2.SubFields = "DISTINCT " + fildName;
+        //        //queryDef2.WhereClause = "1 = 1"; // условие
+        //        queryDef2.PostfixClause = "ORDER BY "+fildName;
+        //        ICursor cursor = queryDef2.Evaluate2(true);
+        //        IRow row = null;
+        //        while ((row = cursor.NextRow()) != null)
+        //        {
+        //            data.Add(row.get_Value(0));
+        //        }
+        //        return data;
+        //    }
+        //    catch (Exception e) // доработать блок ошибок на разные исключения
+        //    {
+        //        return null;
+        //    }
+        //}
+
 
 
     }

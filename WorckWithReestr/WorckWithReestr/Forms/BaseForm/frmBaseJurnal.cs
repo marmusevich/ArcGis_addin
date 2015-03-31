@@ -26,12 +26,17 @@ namespace WorckWithReestr
 
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        #region functions
+        #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected virtual frmBaseDocument GetDocumentForm(int _objectID, frmBaseDocument.EditMode _editMode)
         {
             return null;
         }
+
+        #endregion
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  functions - base
+        //---------------------------------------------------------------------------------------------------------------------------------------------
 
         protected virtual void AddRec()
         {
@@ -42,8 +47,8 @@ namespace WorckWithReestr
             frm.Owner = this;
             frm.ShowDialog();
 
-            //перечитать если лперация была закончена, или всегда???
-            ReadData();
+            tableWrapper.UpdateData();
+            dgv.Refresh();
         }
 
         protected virtual void EditRec(int objectID)
@@ -55,8 +60,8 @@ namespace WorckWithReestr
             frm.Owner = this;
             frm.ShowDialog();
 
-            //перечитать если лперация была закончена, или всегда???
-            ReadData();
+            tableWrapper.UpdateData();
+            dgv.Refresh();
         }
 
         protected virtual void DeleteRec(int objectID)
@@ -68,8 +73,8 @@ namespace WorckWithReestr
             frm.Owner = this;
             frm.ShowDialog();
 
-            //перечитать если лперация была закончена, или всегда???
-            ReadData();
+            tableWrapper.UpdateData();
+            dgv.Refresh();
         }
 
         protected virtual bool ReadData()
@@ -120,7 +125,6 @@ namespace WorckWithReestr
 
             if (ret)
                 dgv.Columns[0].Visible = false;
-
 
             return ret;
         }

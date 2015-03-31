@@ -92,6 +92,12 @@ namespace WorckWithReestr
                     return;
             }
 
+            if (!this.GetSharedData()) // error
+            {
+                SharedClass.ShowErrorMessage();
+                this.Close();
+            }
+
             if (editMode != EditMode.ADD)
             {
                 if (!this.ReadData()) // error
@@ -100,8 +106,8 @@ namespace WorckWithReestr
                     this.Close();
                 }
             }
+
         }
-        #endregion
 
         private void txtTip_Doc_TextChanged(object sender, EventArgs e)
         {
@@ -124,5 +130,6 @@ namespace WorckWithReestr
         {
             e.Cancel = !ValidatingData();
         }
+        #endregion
     }
 }

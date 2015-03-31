@@ -29,11 +29,10 @@ namespace WorckWithReestr
         protected string NameWorkspace = "";
         protected string NameTable = "";
         protected ITable table = null;
-        //protected bool IsValidatedOk = false;
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        #region  functions
+        #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected virtual void DB_to_FormElement(IRow row)
         {
@@ -48,7 +47,33 @@ namespace WorckWithReestr
             return true;
         }
 
+        protected virtual void DB_SharedData_to_FormElement()
+        {
+        }
 
+
+        #endregion
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  functions - base
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        protected virtual bool GetSharedData()
+        {
+            bool ret = false;
+            try
+            {
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                table = fws.OpenTable(NameTable);
+                DB_SharedData_to_FormElement();
+                ret = true;
+            }
+            catch (Exception ee) // доработать блок ошибок на разные исключения
+            {
+                ret = false;
+            }
+            return ret;
+        }
 
         protected virtual bool ReadData()
         {
@@ -198,9 +223,6 @@ namespace WorckWithReestr
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            if (!ValidatingData())
-                return;
-
             bool ret = false;
 
             if (editMode == EditMode.DELETE)
@@ -212,6 +234,9 @@ namespace WorckWithReestr
             }
             else
             {
+                if (!ValidatingData())
+                    return;
+
                 ret = SaveData();
                 isModified = false;
             }

@@ -30,12 +30,17 @@ namespace WorckWithReestr
 
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        #region functions
+        #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected virtual frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
             return null;
         }
+        #endregion
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  functions - base
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
 
         protected virtual void AddRec()
         {
@@ -143,6 +148,8 @@ namespace WorckWithReestr
             InitializeComponent();
             FilteredString = filteredString;
             IsSelectMode = isSelectMode;
+
+            SelectID = -1;
         }
 
         private void frmBaseSpr_list_Load(object sender, EventArgs e)

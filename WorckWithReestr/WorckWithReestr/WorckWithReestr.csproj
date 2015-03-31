@@ -150,6 +150,7 @@
     <Compile Include="Forms\TipDok\frmTipDoc_list.Designer.cs">
       <DependentUpon>frmTipDoc_list.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shared\DictionaryWork.cs" />
     <Compile Include="Shared\DomeinDataAdapter.cs" />
     <Compile Include="Shared\FieldPropertyDescriptor.cs" />
     <Compile Include="Forms\BaseForm\frmBaseSpr_list.cs">

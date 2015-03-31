@@ -34,7 +34,7 @@ namespace WorckWithReestr
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        #region  functions
+        #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected virtual void DB_to_FormElement(IRow row)
         {
@@ -44,6 +44,59 @@ namespace WorckWithReestr
         {
         }
 
+        protected virtual bool ValidatingData()
+        {
+            return true;
+        }
+
+        protected virtual void DB_SharedData_to_FormElement()
+        {
+        }
+
+        protected virtual void DB_DefaultValue_to_FormElement()
+        {
+        }
+
+        #endregion
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  functions - base
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        protected virtual bool SetDefaultValueToNew()
+        {
+            bool ret = false;
+            try
+            {
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                table = fws.OpenTable(NameTable);
+
+                DB_DefaultValue_to_FormElement();
+                ret = true;
+            }
+            catch (Exception ee) // доработать блок ошибок на разные исключения
+            {
+                ret = false;
+            }
+            return ret;
+        }
+
+        protected virtual bool GetSharedData()
+        {
+            bool ret = false;
+            try
+            {
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                table = fws.OpenTable(NameTable);
+                DB_SharedData_to_FormElement();
+                ret = true;
+            }
+            catch (Exception ee) // доработать блок ошибок на разные исключения
+            {
+                ret = false;
+            }
+            return ret;
+        }
 
         protected virtual bool ReadData()
         {
@@ -182,6 +235,9 @@ namespace WorckWithReestr
         {
             if (isModified && editMode != EditMode.DELETE)
             {
+                if (!ValidatingData())
+                    return;
+
                 if (MessageBox.Show("Сохранить внесенные изменения?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SaveData();
@@ -202,6 +258,9 @@ namespace WorckWithReestr
             }
             else
             {
+                if (!ValidatingData())
+                    return;
+
                 ret = SaveData();
                 isModified = false;
             }

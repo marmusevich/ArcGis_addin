@@ -36,7 +36,7 @@ namespace WorckWithReestr
             object o = row.get_Value(base.table.FindField("форма_власності"));
             if(o == null )
                 o = row.Fields.get_Field(base.table.FindField("форма_власності")).DefaultValue;
-            cbFV.SelectedIndex = dda.GetIndexByValue(o); 
+            cbFV.SelectedIndex = dda.GetIndexByValue(Convert.ToInt16(o)); 
         }
 
         protected override void FormElement_to_DB(IRow row)
@@ -54,6 +54,13 @@ namespace WorckWithReestr
             return ret;
         }
 
+        protected override void DB_SharedData_to_FormElement()
+        {
+            dda = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("форма_власності")).Domain);
+            cbFV.Items.AddRange(dda.ToArray());
+            object o = base.table.Fields.get_Field(base.table.FindField("форма_власності")).DefaultValue;
+            cbFV.SelectedIndex = dda.GetIndexByValue(Convert.ToInt16(o));
+        }
 
         #endregion
 
@@ -98,23 +105,11 @@ namespace WorckWithReestr
                     return;
             }
 
-            try
-            {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
-                ITable table = fws.OpenTable(NameTable);
-
-
-                dda = new DomeinDataAdapter(table.Fields.get_Field(3).Domain);
-                cbFV.Items.AddRange(dda.ToArray());
-                object o = table.Fields.get_Field(3).DefaultValue;
-                cbFV.SelectedIndex = dda.GetIndexByValue(o);
-            }
-            catch (Exception ee) // доработать блок ошибок на разные исключения
+            if (!this.GetSharedData()) // error
             {
                 SharedClass.ShowErrorMessage();
                 this.Close();
             }
-
 
             if (editMode != EditMode.ADD)
             {
@@ -125,6 +120,8 @@ namespace WorckWithReestr
                 }
             }
         }
+
+ 
         #endregion
 
         private void txtName_Validating(object sender, System.ComponentModel.CancelEventArgs e)

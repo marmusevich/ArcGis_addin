@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
@@ -52,6 +55,10 @@
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmBaseDocument
             // 
             this.AcceptButton = this.btnOk;
@@ -66,6 +73,7 @@
             this.Text = "frmBaseDocument";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseDocument_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseDocument_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -74,5 +82,6 @@
 
         protected System.Windows.Forms.Button btnOk;
         protected System.Windows.Forms.Button btnCancel;
+        protected System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
