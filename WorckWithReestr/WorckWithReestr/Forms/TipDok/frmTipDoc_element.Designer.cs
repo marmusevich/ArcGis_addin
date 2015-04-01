@@ -1,4 +1,5 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+namespace WorckWithReestr
 {
     partial class frmTipDoc_element
     {
@@ -28,10 +29,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTip_Doc = new System.Windows.Forms.TextBox();
-            this.txtKod_Doc = new System.Windows.Forms.TextBox();
-            this.lblTip_Doc = new System.Windows.Forms.Label();
-            this.lblKod_Doc = new System.Windows.Forms.Label();
+            this.txtTip_Doc = new TextBox();
+            this.txtKod_Doc = new TextBox();
+            this.lblTip_Doc = new Label();
+            this.lblKod_Doc = new Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@
             // frmTipDoc_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 120);
             this.Controls.Add(this.lblKod_Doc);
             this.Controls.Add(this.lblTip_Doc);
@@ -103,9 +104,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtTip_Doc;
-        private System.Windows.Forms.TextBox txtKod_Doc;
-        private System.Windows.Forms.Label lblTip_Doc;
-        private System.Windows.Forms.Label lblKod_Doc;
+        private TextBox txtTip_Doc;
+        private TextBox txtKod_Doc;
+        private Label lblTip_Doc;
+        private Label lblKod_Doc;
     }
 }

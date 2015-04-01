@@ -41,12 +41,6 @@ namespace WorckWithReestr
             //this.Text = "";
         }
 
-        protected override bool ReadData()
-        {
-            bool ret = base.ReadData();
-
-            return true;
-        }
 
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {

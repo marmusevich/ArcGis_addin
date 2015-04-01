@@ -3,12 +3,18 @@
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.esriSystem;
 using System.Collections;
+using System.IO.IsolatedStorage;
+using System.Windows.Forms;
+using System.IO;
+using System.Xml.Serialization;
 
 
 namespace WorckWithReestr
 {
     class SharedClass
     {
+        //---------------------------------------------------------------------------------------
+        #region общее
         // получить рабочее пространство связоное с базой данных из сервера баз данных
         // dataBase - открываеммая база на сервере
         public static IWorkspace GetWorkspace(string dataBase)
@@ -26,40 +32,91 @@ namespace WorckWithReestr
             IWorkspaceFactory workspaceFactory = (IWorkspaceFactory)Activator.CreateInstance(factoryType);
             return workspaceFactory.Open(propertySet, 0);
         }
-
         //унифицированый вызов сообщения об ошибке
         public static void ShowErrorMessage(string errorText = "Произошла какая то ошибка!!", string errorCaption = "Ошибка в расширении")
         {
-            System.Windows.Forms.MessageBox.Show(errorText, errorCaption, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            MessageBox.Show(errorText, errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
         // создать колонки в гриде по таблице ArcGIS
-        public static void CreateColumIn(System.Windows.Forms.DataGridView dgv, ITable tableToWrap)
+        public static void CreateColumIn(DataGridView dgv, ITable tableToWrap)
         {
             dgv.Columns.Clear();
             for (int fieldCount = 0; fieldCount < tableToWrap.Fields.FieldCount; fieldCount++)
             {
                 IField f = tableToWrap.Fields.get_Field(fieldCount);
 
-                System.Windows.Forms.DataGridViewColumn dGVC = null;
+                DataGridViewColumn dGVC = null;
                 //if ((f.Domain != null) && (string.Compare(f.Domain.Name, "bool", true) == 0))
-                //    dGVC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+                //    dGVC = new DataGridViewCheckBoxColumn();
                 //else
-                    dGVC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                    dGVC = new DataGridViewTextBoxColumn();
 
                 dGVC.Name = f.Name;
                 dGVC.DataPropertyName = f.Name;
                 dGVC.HeaderText = f.AliasName;
                 dGVC.ReadOnly = true;
-                dGVC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+                dGVC.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 dgv.Columns.Add(dGVC);
                 f = null;
             }
         }
+        //получить и сохранить в файле порядок колонок
+        public static void GetDisplayOrder(DataGridView dgv, string tableName)
+        {
+            IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForAssembly();
+            using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(tableName + "_gridColumOrder", FileMode.Create, isoFile))
+            {
+                int[] displayIndices = new int[dgv.ColumnCount];
+                for (int i = 0; i < dgv.ColumnCount; i++)
+                {
+                    displayIndices[i] = dgv.Columns[i].DisplayIndex;
+                }
+                XmlSerializer ser = new XmlSerializer(typeof(int[]));
+                ser.Serialize(isoStream, displayIndices);
+            }
+        }
+        //устоновить порядок колонок из файла
+        public static bool SetDisplayOrder(DataGridView dgv, string tableName)
+        {
+            bool ret = false;
+            IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForAssembly();
+            string[] fileNames = isoFile.GetFileNames("*");
+            bool found = false;
+            foreach (string fileName in fileNames)
+            {
+                if (fileName == tableName + "_gridColumOrder")
+                    found = true;
+            }
+            if (!found)
+                return ret;
+            using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(tableName + "_gridColumOrder", FileMode.Open, isoFile))
+            {
+                try
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(int[]));
+                    int[] displayIndicies = (int[])ser.Deserialize(isoStream);
+                    SetDisplayOrderByArray(dgv, displayIndicies);
+                    ret = true;
+                }
+                catch { }
+            }
+            return ret;
+        }
+        //устоновить порядок колонок по массиву
+        public static void SetDisplayOrderByArray(DataGridView dgv, int[] displayIndicies)
+        {
+            for (int i = 0; i < displayIndicies.Length; i++)
+            {
+                dgv.Columns[i].DisplayIndex = displayIndicies[i];
+            }
+        }
 
+        #endregion
+        //---------------------------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------------------
         #region преобразование значений
-
         //преобразует значение из базы с предпологаемым домено BOOL  в  BOOL
         public static bool ConvertVolueToBool(object obj)
         {
@@ -76,13 +133,14 @@ namespace WorckWithReestr
             else
                 return DateTime.Now;
         }
+
         #endregion
-
-
-
+        //---------------------------------------------------------------------------------------
+        
+        //---------------------------------------------------------------------------------------
         #region методы проверок полей ввода
         // проверка текстового поля на содержание Smal Int (16 бит) и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsSmalInt_SetError(System.Windows.Forms.TextBox _chekedValue, System.Windows.Forms.ErrorProvider _errorProvider)
+        public static bool CheckValueIsSmalInt_SetError(TextBox _chekedValue, ErrorProvider _errorProvider)
         {
             bool ret = true;
             try
@@ -102,9 +160,8 @@ namespace WorckWithReestr
             }
             return ret;
         }
-
         // проверка текстового поля на содержание Int (32 бит) и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsInt_SetError(System.Windows.Forms.TextBox _chekedValue, System.Windows.Forms.ErrorProvider _errorProvider)
+        public static bool CheckValueIsInt_SetError(TextBox _chekedValue, ErrorProvider _errorProvider)
         {
             bool ret = true;
             try
@@ -125,12 +182,10 @@ namespace WorckWithReestr
             return ret;
         }
 
-
         // остальные числовые значения
 
-
         // проверка текстового поля на не пуста при содержании текста и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueStringNotEmpty_SetError(System.Windows.Forms.TextBox _chekedValue, System.Windows.Forms.ErrorProvider _errorProvider)
+        public static bool CheckValueStringNotEmpty_SetError(TextBox _chekedValue, ErrorProvider _errorProvider)
         {
             bool ret = true;
 
@@ -147,24 +202,127 @@ namespace WorckWithReestr
         }
 
         #endregion
+        //---------------------------------------------------------------------------------------
 
+        //---------------------------------------------------------------------------------------
+        #region механизм обращения к базе
         //универсальный метод получение значения из таблицы
         public static object GetValueByID(int id, string tableName, string fildName)
         {
+            object ret = null;
             try
             {
                 IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
                 ITable table = fws.OpenTable("reestr.DBO." + tableName);
                 IRow row = table.GetRow(id);
-                return row.get_Value(table.FindField(fildName));
+                ret =  row.get_Value(table.FindField(fildName));
             }
             catch (Exception e) // доработать блок ошибок на разные исключения
             {
-                return null;
             }
+            return ret;
+        }
+        //получение ID из таблицы по значению текстового поля
+        public static int GetIDByTextValue(string textValue, string tableName, string fildName, bool strongCompare = false)
+        {
+            int ret = -1;
+            try
+            {
+                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
+                queryDef2.Tables = "reestr.DBO." + tableName;
+                queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
+                if (strongCompare)
+                    queryDef2.WhereClause = fildName = " = '" + textValue + "'";
+                else
+                    queryDef2.WhereClause = fildName = " like '%" + textValue + "%'";
+                //queryDef2.PostfixClause = "ORDER BY " + fildName;
+                ICursor cursor = queryDef2.Evaluate2(true);
+                IRow row = null;
+                if ((row = cursor.NextRow()) != null)
+                {
+                    ret = row.get_Value(0);
+                }
+            }
+            catch (Exception e) // доработать блок ошибок на разные исключения
+            {
+            }
+            return ret;
+        }
+        //получение ID из таблицы по значению числового поля
+        public static int GetIDByIntValue(int intValue, string tableName, string fildName)
+        {
+            int ret = -1;
+            try
+            {
+                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
+                queryDef2.Tables = "reestr.DBO." + tableName;
+                queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
+                queryDef2.WhereClause = fildName = " = " + intValue.ToString();
+                //queryDef2.PostfixClause = "ORDER BY " + fildName;
+                ICursor cursor = queryDef2.Evaluate2(true);
+                IRow row = null;
+                if ((row = cursor.NextRow()) != null)
+                {
+                    ret = row.get_Value(0);
+                }
+            }
+            catch (Exception e) // доработать блок ошибок на разные исключения
+            {
+            }
+            return ret;
         }
 
+        #endregion
+        //---------------------------------------------------------------------------------------
 
+        //---------------------------------------------------------------------------------------
+        #region автозаполнение полей
+        // получить лист для автозаполнения
+        public static AutoCompleteStringCollection GenerateAutoCompleteStringCollection(string tableName, string fildName)
+        {
+            AutoCompleteStringCollection ret = null;
+            ArrayList data = new ArrayList();
+            try
+            {
+                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
+                queryDef2.Tables = "reestr.DBO." + tableName;
+                queryDef2.SubFields = "DISTINCT " + fildName;
+                queryDef2.PostfixClause = "ORDER BY " + fildName;
+                ICursor cursor = queryDef2.Evaluate2(true);
+                IRow row = null;
+                while ((row = cursor.NextRow()) != null)
+                {
+                    data.Add(row.get_Value(0));
+                }
+            }
+            catch (Exception e) // доработать блок ошибок на разные исключения
+            {
+            }
+
+            if (data != null && data.Count > 0)
+            {
+                ret = new AutoCompleteStringCollection();
+                foreach (object o in data)
+                {
+                    ret.Add(o.ToString());
+                }
+            }
+            return ret;
+        }
+        #endregion
+        //---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+    }
+}
         //          !!!!!!!!!!!
         // подумать слишком непонятная работа
         // универсальный запрос а возвращает масив для одного поля
@@ -193,12 +351,6 @@ namespace WorckWithReestr
         //    }
         //}
 
-
-
-    }
-}
-
-
 // примеры
 
 // текущий документ / карта
@@ -220,3 +372,7 @@ namespace WorckWithReestr
 //ITable tt = fws.OpenTable("reestr.DBO.fizichni_osoby");
 //IDataset ids = tt as IDataset;
 //IObjectClass ob = tt as IObjectClass;
+
+
+
+

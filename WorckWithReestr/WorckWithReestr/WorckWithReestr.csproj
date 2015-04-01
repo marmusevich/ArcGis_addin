@@ -183,6 +183,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Shared\JurnalWork.cs" />
     <Compile Include="Shared\SharedClass.cs" />
     <Compile Include="Shared\TableWraper.cs" />
   </ItemGroup>

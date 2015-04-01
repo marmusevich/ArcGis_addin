@@ -1,4 +1,5 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+namespace WorckWithReestr
 {
     partial class frmBaseJurnal
     {
@@ -87,6 +88,7 @@
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToOrderColumns = true;
             this.dgv.AllowUserToResizeRows = false;
             this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -101,6 +103,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.ContextMenuStrip = this.cmsMain;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv.Location = new System.Drawing.Point(12, 28);
             this.dgv.MultiSelect = false;
@@ -151,6 +154,7 @@
             this.Controls.Add(this.dgv);
             this.Name = "frmBaseJurnal";
             this.Text = "frmBaseJurnal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseJurnal_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseJurnal_Load);
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
@@ -163,14 +167,14 @@
 
         #endregion
 
-        protected System.Windows.Forms.ToolStrip tsMain;
-        private System.Windows.Forms.ToolStripButton tsbAdd;
-        private System.Windows.Forms.ToolStripButton tsdEdit;
-        private System.Windows.Forms.ToolStripButton tsdDelete;
-        protected System.Windows.Forms.DataGridView dgv;
-        protected System.Windows.Forms.ContextMenuStrip cmsMain;
-        private System.Windows.Forms.ToolStripMenuItem cmsAdd;
-        private System.Windows.Forms.ToolStripMenuItem cmsEdit;
-        private System.Windows.Forms.ToolStripMenuItem cmsDelete;
+        protected ToolStrip tsMain;
+        private ToolStripButton tsbAdd;
+        private ToolStripButton tsdEdit;
+        private ToolStripButton tsdDelete;
+        protected DataGridView dgv;
+        protected ContextMenuStrip cmsMain;
+        private ToolStripMenuItem cmsAdd;
+        private ToolStripMenuItem cmsEdit;
+        private ToolStripMenuItem cmsDelete;
     }
 }

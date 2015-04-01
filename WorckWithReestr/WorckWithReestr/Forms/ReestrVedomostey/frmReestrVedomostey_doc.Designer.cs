@@ -1,4 +1,5 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+namespace WorckWithReestr
 {
     partial class frmReestrVedomostey_doc
     {
@@ -28,37 +29,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNazvaMD = new System.Windows.Forms.TextBox();
-            this.txtNomerMD = new System.Windows.Forms.TextBox();
-            this.txtNomerMDPP = new System.Windows.Forms.TextBox();
-            this.lblNomerMDPP = new System.Windows.Forms.Label();
-            this.lblNomerMD = new System.Windows.Forms.Label();
-            this.lblNazvaMD = new System.Windows.Forms.Label();
-            this.lblRozmischennyaKadastr = new System.Windows.Forms.Label();
-            this.txtKolListMD = new System.Windows.Forms.TextBox();
-            this.txtPrimitki = new System.Windows.Forms.TextBox();
-            this.txtNomerRegistracii = new System.Windows.Forms.TextBox();
-            this.txtElFormaMD = new System.Windows.Forms.TextBox();
-            this.cbFIORazmestila = new System.Windows.Forms.ComboBox();
-            this.dtmDataVidpravlennya = new System.Windows.Forms.DateTimePicker();
-            this.lblNomerPP = new System.Windows.Forms.Label();
-            this.dtpDataRazmeschenie = new System.Windows.Forms.DateTimePicker();
-            this.txtNomerPP = new System.Windows.Forms.TextBox();
-            this.lblFIORazmestila = new System.Windows.Forms.Label();
-            this.lblPrimitki = new System.Windows.Forms.Label();
-            this.lblNomerRegistracii = new System.Windows.Forms.Label();
-            this.lblDataRazmeschenie = new System.Windows.Forms.Label();
-            this.lblData = new System.Windows.Forms.Label();
-            this.txtNomerVhid = new System.Windows.Forms.TextBox();
-            this.lblDataVidpravlennya = new System.Windows.Forms.Label();
-            this.lblDjereloVedomostey = new System.Windows.Forms.Label();
-            this.lblElFormaMD = new System.Windows.Forms.Label();
-            this.txtDjereloVedomostey = new System.Windows.Forms.TextBox();
-            this.lblNomerVhid = new System.Windows.Forms.Label();
-            this.lblKolListMD = new System.Windows.Forms.Label();
-            this.dtpData = new System.Windows.Forms.DateTimePicker();
-            this.lblVhidni = new System.Windows.Forms.Label();
-            this.lblDocMD = new System.Windows.Forms.Label();
+            this.txtNazvaMD = new TextBox();
+            this.txtNomerMD = new TextBox();
+            this.txtNomerMDPP = new TextBox();
+            this.lblNomerMDPP = new Label();
+            this.lblNomerMD = new Label();
+            this.lblNazvaMD = new Label();
+            this.lblRozmischennyaKadastr = new Label();
+            this.txtKolListMD = new TextBox();
+            this.txtPrimitki = new TextBox();
+            this.txtNomerRegistracii = new TextBox();
+            this.txtElFormaMD = new TextBox();
+            this.cbFIORazmestila = new ComboBox();
+            this.dtmDataVidpravlennya = new DateTimePicker();
+            this.lblNomerPP = new Label();
+            this.dtpDataRazmeschenie = new DateTimePicker();
+            this.txtNomerPP = new TextBox();
+            this.lblFIORazmestila = new Label();
+            this.lblPrimitki = new Label();
+            this.lblNomerRegistracii = new Label();
+            this.lblDataRazmeschenie = new Label();
+            this.lblData = new Label();
+            this.txtNomerVhid = new TextBox();
+            this.lblDataVidpravlennya = new Label();
+            this.lblDjereloVedomostey = new Label();
+            this.lblElFormaMD = new Label();
+            this.txtDjereloVedomostey = new TextBox();
+            this.lblNomerVhid = new Label();
+            this.lblKolListMD = new Label();
+            this.dtpData = new DateTimePicker();
+            this.lblVhidni = new Label();
+            this.lblDocMD = new Label();
             this.SuspendLayout();
             // 
             // btnOk
@@ -137,7 +138,7 @@
             this.txtPrimitki.Location = new System.Drawing.Point(129, 311);
             this.txtPrimitki.Multiline = true;
             this.txtPrimitki.Name = "txtPrimitki";
-            this.txtPrimitki.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtPrimitki.ScrollBars = ScrollBars.Both;
             this.txtPrimitki.Size = new System.Drawing.Size(409, 61);
             this.txtPrimitki.TabIndex = 13;
             // 
@@ -166,7 +167,7 @@
             // dtmDataVidpravlennya
             // 
             this.dtmDataVidpravlennya.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtmDataVidpravlennya.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtmDataVidpravlennya.Format = DateTimePickerFormat.Custom;
             this.dtmDataVidpravlennya.Location = new System.Drawing.Point(397, 74);
             this.dtmDataVidpravlennya.Name = "dtmDataVidpravlennya";
             this.dtmDataVidpravlennya.Size = new System.Drawing.Size(141, 20);
@@ -183,7 +184,7 @@
             // dtpDataRazmeschenie
             // 
             this.dtpDataRazmeschenie.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpDataRazmeschenie.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDataRazmeschenie.Format = DateTimePickerFormat.Custom;
             this.dtpDataRazmeschenie.Location = new System.Drawing.Point(398, 266);
             this.dtpDataRazmeschenie.Name = "dtpDataRazmeschenie";
             this.dtpDataRazmeschenie.Size = new System.Drawing.Size(141, 20);
@@ -293,7 +294,7 @@
             // dtpData
             // 
             this.dtpData.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData.Format = DateTimePickerFormat.Custom;
             this.dtpData.Location = new System.Drawing.Point(397, 24);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(141, 20);
@@ -320,7 +321,7 @@
             // frmReestrVedomostey_doc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 406);
             this.Controls.Add(this.txtNazvaMD);
             this.Controls.Add(this.txtNomerMD);
@@ -353,7 +354,7 @@
             this.Controls.Add(this.dtpData);
             this.Controls.Add(this.lblVhidni);
             this.Controls.Add(this.lblDocMD);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmReestrVedomostey_doc";
@@ -400,37 +401,37 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNazvaMD;
-        private System.Windows.Forms.TextBox txtNomerMD;
-        private System.Windows.Forms.TextBox txtNomerMDPP;
-        private System.Windows.Forms.Label lblNomerMDPP;
-        private System.Windows.Forms.Label lblNomerMD;
-        private System.Windows.Forms.Label lblNazvaMD;
-        private System.Windows.Forms.Label lblRozmischennyaKadastr;
-        private System.Windows.Forms.TextBox txtKolListMD;
-        private System.Windows.Forms.TextBox txtPrimitki;
-        private System.Windows.Forms.TextBox txtNomerRegistracii;
-        private System.Windows.Forms.TextBox txtElFormaMD;
-        private System.Windows.Forms.ComboBox cbFIORazmestila;
-        private System.Windows.Forms.DateTimePicker dtmDataVidpravlennya;
-        private System.Windows.Forms.Label lblNomerPP;
-        private System.Windows.Forms.DateTimePicker dtpDataRazmeschenie;
-        private System.Windows.Forms.TextBox txtNomerPP;
-        private System.Windows.Forms.Label lblFIORazmestila;
-        private System.Windows.Forms.Label lblPrimitki;
-        private System.Windows.Forms.Label lblNomerRegistracii;
-        private System.Windows.Forms.Label lblDataRazmeschenie;
-        private System.Windows.Forms.Label lblData;
-        private System.Windows.Forms.TextBox txtNomerVhid;
-        private System.Windows.Forms.Label lblDataVidpravlennya;
-        private System.Windows.Forms.Label lblDjereloVedomostey;
-        private System.Windows.Forms.Label lblElFormaMD;
-        private System.Windows.Forms.TextBox txtDjereloVedomostey;
-        private System.Windows.Forms.Label lblNomerVhid;
-        private System.Windows.Forms.Label lblKolListMD;
-        private System.Windows.Forms.DateTimePicker dtpData;
-        private System.Windows.Forms.Label lblVhidni;
-        private System.Windows.Forms.Label lblDocMD;
+        private TextBox txtNazvaMD;
+        private TextBox txtNomerMD;
+        private TextBox txtNomerMDPP;
+        private Label lblNomerMDPP;
+        private Label lblNomerMD;
+        private Label lblNazvaMD;
+        private Label lblRozmischennyaKadastr;
+        private TextBox txtKolListMD;
+        private TextBox txtPrimitki;
+        private TextBox txtNomerRegistracii;
+        private TextBox txtElFormaMD;
+        private ComboBox cbFIORazmestila;
+        private DateTimePicker dtmDataVidpravlennya;
+        private Label lblNomerPP;
+        private DateTimePicker dtpDataRazmeschenie;
+        private TextBox txtNomerPP;
+        private Label lblFIORazmestila;
+        private Label lblPrimitki;
+        private Label lblNomerRegistracii;
+        private Label lblDataRazmeschenie;
+        private Label lblData;
+        private TextBox txtNomerVhid;
+        private Label lblDataVidpravlennya;
+        private Label lblDjereloVedomostey;
+        private Label lblElFormaMD;
+        private TextBox txtDjereloVedomostey;
+        private Label lblNomerVhid;
+        private Label lblKolListMD;
+        private DateTimePicker dtpData;
+        private Label lblVhidni;
+        private Label lblDocMD;
 
     }
 }

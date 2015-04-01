@@ -48,6 +48,7 @@
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToOrderColumns = true;
             this.dgv.AllowUserToResizeRows = false;
             this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -155,6 +156,7 @@
             this.Name = "frmBaseSpr_list";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseSpr_list_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseSpr_list_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.cmsMain.ResumeLayout(false);

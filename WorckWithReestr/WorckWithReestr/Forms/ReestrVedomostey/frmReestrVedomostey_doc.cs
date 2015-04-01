@@ -30,8 +30,6 @@ namespace WorckWithReestr
         }
 
 
-
-
         public frmReestrVedomostey_doc()
         {
             InitializeComponent();

@@ -1,4 +1,6 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+
+namespace WorckWithReestr
 {
     partial class frmReestrZayav_jurnal
     {
@@ -33,7 +35,7 @@
             // frmReestrZayav_jurnal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "frmReestrZayav_jurnal";
             this.Text = "frmReestrZayav_jurnal";

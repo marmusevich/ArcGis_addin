@@ -104,21 +104,6 @@ namespace WorckWithReestr
                     this.Close();
                     return;
             }
-
-            if (!this.GetSharedData()) // error
-            {
-                SharedClass.ShowErrorMessage();
-                this.Close();
-            }
-
-            if (editMode != EditMode.ADD)
-            {
-                if (!this.ReadData()) // error
-                {
-                    SharedClass.ShowErrorMessage();
-                    this.Close();
-                }
-            }
         }
 
  

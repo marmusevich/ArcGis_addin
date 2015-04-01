@@ -1,4 +1,6 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+
+namespace WorckWithReestr
 {
     partial class frmJurLic_list
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.Text = "frmJurLic_list";
         }
 

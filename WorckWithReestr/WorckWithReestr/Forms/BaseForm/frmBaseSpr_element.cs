@@ -204,7 +204,20 @@ namespace WorckWithReestr
 
         private void frmBaseSpr_element_Load(object sender, EventArgs e)
         {
+            if (!this.GetSharedData()) // error
+            {
+                SharedClass.ShowErrorMessage();
+                this.Close();
+            }
 
+            if (editMode != EditMode.ADD)
+            {
+                if (!this.ReadData()) // error
+                {
+                    SharedClass.ShowErrorMessage();
+                    this.Close();
+                }
+            }
         }
 
         protected void frmBaseSpr_element_FormClosing(object sender, FormClosingEventArgs e)

@@ -228,7 +228,29 @@ namespace WorckWithReestr
 
         private void frmBaseDocument_Load(object sender, EventArgs e)
         {
+            if (!this.GetSharedData()) // error
+            {
+                SharedClass.ShowErrorMessage();
+                this.Close();
+            }
 
+
+            if (editMode != EditMode.ADD)
+            {
+                if (!this.ReadData()) // error
+                {
+                    SharedClass.ShowErrorMessage();
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (!this.SetDefaultValueToNew()) // error
+                {
+                    SharedClass.ShowErrorMessage();
+                    this.Close();
+                }
+            }
         }
 
         protected void frmBaseDocument_FormClosing(object sender, FormClosingEventArgs e)

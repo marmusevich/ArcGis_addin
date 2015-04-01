@@ -1,4 +1,5 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+namespace WorckWithReestr
 {
     partial class frmJurLic_element
     {
@@ -28,12 +29,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblFV = new System.Windows.Forms.Label();
-            this.lblOKPO = new System.Windows.Forms.Label();
-            this.cbFV = new System.Windows.Forms.ComboBox();
-            this.txtOKPO = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new Label();
+            this.lblFV = new Label();
+            this.lblOKPO = new Label();
+            this.cbFV = new ComboBox();
+            this.txtOKPO = new TextBox();
+            this.txtName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             // 
             // cbFV
             // 
-            this.cbFV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFV.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cbFV.FormattingEnabled = true;
             this.cbFV.Location = new System.Drawing.Point(136, 38);
             this.cbFV.Name = "cbFV";
@@ -97,7 +98,7 @@
             // frmJurLic_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 111);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtOKPO);
@@ -124,11 +125,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblFV;
-        private System.Windows.Forms.Label lblOKPO;
-        private System.Windows.Forms.ComboBox cbFV;
-        private System.Windows.Forms.TextBox txtOKPO;
-        private System.Windows.Forms.TextBox txtName;
+        private Label lblName;
+        private Label lblFV;
+        private Label lblOKPO;
+        private ComboBox cbFV;
+        private TextBox txtOKPO;
+        private TextBox txtName;
     }
 }

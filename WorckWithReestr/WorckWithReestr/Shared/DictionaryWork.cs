@@ -1,166 +1,149 @@
 ﻿using ESRI.ArcGIS.Geodatabase;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WorckWithReestr
 {
     class DictionaryWork
     {
-
+        //---------------------------------------------------------------------------------------
         #region получение значения из справочника
-
-
         //вернуть Ф.И.О. из справочника физлиц
         public static string GetFIOByIDFromFizLic(int id)
         {
+            string ret = "";
             object o = SharedClass.GetValueByID(id, "fizichni_osoby", "П_І_Б");
-            if (o == null)
-                return "";
-            else
-                return o.ToString();
+            if (o != null)
+                ret = o.ToString();
+            return ret;
         }
         //вернуть ИНН из справочника физлиц
         public static string GetINNByIDFromFizLic(int id)
         {
+            string ret = "";
             object o = SharedClass.GetValueByID(id, "fizichni_osoby", "ідент_код");
-            if (o == null)
-                return "";
-            else
-                return o.ToString();
+            if (o != null)
+                ret = o.ToString();
+            return ret;
         }
-
         //вернуть наименование из справочника юр лиц
         public static string GetNameByIDFromJurOsoby(int id)
         {
+            string ret = "";
             object o = SharedClass.GetValueByID(id, "jur_osoby", "назва");
-            if (o == null)
-                return "";
-            else
-                return o.ToString();
+            if (o != null)
+                ret = o.ToString();
+            return ret;
         }
         //вернуть ИНН из справочника юр лиц
         public static string GetINNByIDFromJurOsoby(int id)
         {
+            string ret = "";
             object o = SharedClass.GetValueByID(id, "jur_osoby", "код_ЄДРПОУ");
-            if (o == null)
-                return "";
-            else
-                return o.ToString();
+            if (o != null)
+                ret = o.ToString();
+            return ret;
         }
-
         //вернуть наименование из справочника типов документов
         public static string GetNameByIDFromTip_Doc(int id)
         {
+            string ret = "";
             object o = SharedClass.GetValueByID(id, "Tip_Doc", "Tip_Doc");
-            if (o == null)
-                return "";
-            else
-                return o.ToString();
+            if (o != null)
+                ret = o.ToString();
+            return ret;
         }
         //вернуть код из справочника типов документов
         public static string GetCodeByIDFromTip_Doc(int id)
         {
+            string ret = "";
             object o = SharedClass.GetValueByID(id, "Tip_Doc", "Kod_Doc");
-            if (o == null)
-                return "";
-            else
-                return o.ToString();
+            if (o != null)
+                ret = o.ToString();
+            return ret;
         }
+
         #endregion
+        //---------------------------------------------------------------------------------------
 
-
+        //---------------------------------------------------------------------------------------
         #region автозаполнение для справочников
-        // получить лист для автозаполнения
-        public static System.Windows.Forms.AutoCompleteStringCollection GenerateAutoCompleteStringCollection(string tableName, string fildName)
+        //включить автозаполнение поля по ФИО для физических лиц
+        public static bool EnableAutoComlectToFizLic(TextBox fizLicTextBox)
         {
-            ArrayList data = new ArrayList();
-            try
-            {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
-                IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = "reestr.DBO." + tableName;
-                queryDef2.SubFields = "DISTINCT " + fildName;
-                queryDef2.PostfixClause = "ORDER BY " + fildName;
-                ICursor cursor = queryDef2.Evaluate2(true);
-                IRow row = null;
-                while ((row = cursor.NextRow()) != null)
-                {
-                    data.Add(row.get_Value(0));
-                }
-            }
-            catch (Exception e) // доработать блок ошибок на разные исключения
-            {
-                return null;
-            }
-            
-            System.Windows.Forms.AutoCompleteStringCollection source = new System.Windows.Forms.AutoCompleteStringCollection();
-            foreach (object o in data)
-            {
-                source.Add(o.ToString());
-            }
-            return source;
-        }
-
-        public static bool EnableAutoComlectToFizLic(System.Windows.Forms.TextBox fizLicTextBox)
-        {
-            System.Windows.Forms.AutoCompleteStringCollection sourse = GenerateAutoCompleteStringCollection("fizichni_osoby", "П_І_Б");
+            bool ret = false;
+            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("fizichni_osoby", "П_І_Б");
             if (sourse != null)
             {
-                fizLicTextBox.ReadOnly = false;
                 fizLicTextBox.AutoCompleteCustomSource = sourse;
-                fizLicTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-                fizLicTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-                return true;
+                fizLicTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                fizLicTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                ret = true;
             }
-            else
-            {
-                fizLicTextBox.ReadOnly = true;
-                return false;
-            }
+            fizLicTextBox.ReadOnly = !ret;
+            return ret;
         }
-
-        public static bool EnableAutoComlectToJurLic(System.Windows.Forms.TextBox jurLicTextBox)
+        //включить автозаполнение поля по наименованию для юредических лиц
+        public static bool EnableAutoComlectToJurLic(TextBox jurLicTextBox)
         {
-            System.Windows.Forms.AutoCompleteStringCollection sourse = GenerateAutoCompleteStringCollection("jur_osoby", "назва");
+            bool ret = false;
+            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("jur_osoby", "назва");
             if (sourse != null)
             {
-                jurLicTextBox.ReadOnly = false;
                 jurLicTextBox.AutoCompleteCustomSource = sourse;
-                jurLicTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-                jurLicTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-                return true;
+                jurLicTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                jurLicTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                ret = true;
             }
-            else
-            {
-                jurLicTextBox.ReadOnly = true;
-                return false;
-            }
+            jurLicTextBox.ReadOnly = !ret;
+            return ret;
         }
-
-        public static bool EnableAutoComlectToTip_Doc(System.Windows.Forms.TextBox tipDocTextBox)
+        //включить автозаполнение поля по наименованию для типов документов
+        public static bool EnableAutoComlectToTip_Doc(TextBox tipDocTextBox)
         {
-            System.Windows.Forms.AutoCompleteStringCollection sourse = GenerateAutoCompleteStringCollection("Tip_Doc", "Tip_Doc");
+            bool ret = false;
+            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("Tip_Doc", "Tip_Doc");
             if (sourse != null)
             {
-                tipDocTextBox.ReadOnly = false;
                 tipDocTextBox.AutoCompleteCustomSource = sourse;
-                tipDocTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-                tipDocTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-                return true;
+                tipDocTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                tipDocTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                ret = true;
             }
-            else
-            {
-                tipDocTextBox.ReadOnly = true;
-                return false;
-            }
+            tipDocTextBox.ReadOnly = !ret;
+            return ret;
         }
+        
         #endregion
+        //---------------------------------------------------------------------------------------
 
+        //---------------------------------------------------------------------------------------
+        #region методы проверок полей ввода
+        // проверка текстового поля на содержание Smal Int (16 бит) и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsSmalInt_SetError(TextBox _chekedValue, ErrorProvider _errorProvider)
+        {
+            bool ret = true;
+            //try
+            //{
+            //    short numVal = Convert.ToInt16(_chekedValue.Text);
+            //    _errorProvider.SetError(_chekedValue, String.Empty);
+            //}
+            //catch (FormatException e)
+            //{
+            //    _errorProvider.SetError(_chekedValue, "Должно быть число.");
+            //    ret = false;
+            //}
+            //catch (OverflowException e)
+            //{
+            //    _errorProvider.SetError(_chekedValue, "Слишком большое число.");
+            //    ret = false;
+            //}
+            return ret;
+        }
 
+        #endregion
+        //---------------------------------------------------------------------------------------
 
     }
 }

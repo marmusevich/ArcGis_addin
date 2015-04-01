@@ -46,11 +46,6 @@ namespace WorckWithReestr
             base.NameSortFild = "Kod_Doc";
         }
 
-        protected override bool ReadData()
-        {
-            bool ret = base.ReadData();
-            return ret;
-        }
 
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {

@@ -1,4 +1,5 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+namespace WorckWithReestr
 {
     partial class frmReestrZayav_doc
     {
@@ -28,64 +29,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSodergan = new System.Windows.Forms.TextBox();
-            this.txtTel_Z = new System.Windows.Forms.TextBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
-            this.dtpData_Ish = new System.Windows.Forms.DateTimePicker();
-            this.txtN_Ish_Z = new System.Windows.Forms.TextBox();
-            this.lblCane = new System.Windows.Forms.Label();
-            this.lblPr_Otkaz = new System.Windows.Forms.Label();
-            this.lblOtkaz = new System.Windows.Forms.Label();
-            this.lblFio_Z = new System.Windows.Forms.Label();
-            this.lblDoppData = new System.Windows.Forms.Label();
-            this.lblFirstData = new System.Windows.Forms.Label();
-            this.dtpData_Z = new System.Windows.Forms.DateTimePicker();
-            this.lblSodergan = new System.Windows.Forms.Label();
-            this.lblTel_Z = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblTip_Doc = new System.Windows.Forms.Label();
-            this.lblData_Ish = new System.Windows.Forms.Label();
-            this.lblN_Ish_Z = new System.Windows.Forms.Label();
-            this.lblData_Z = new System.Windows.Forms.Label();
-            this.lblKod_Z = new System.Windows.Forms.Label();
-            this.txtN_Z = new System.Windows.Forms.TextBox();
-            this.lblN_Z = new System.Windows.Forms.Label();
-            this.txtForma_Ved = new System.Windows.Forms.TextBox();
-            this.dtpData_Ved = new System.Windows.Forms.DateTimePicker();
-            this.dtpData_Oplata = new System.Windows.Forms.DateTimePicker();
-            this.lblFio_Ved_Prin = new System.Windows.Forms.Label();
-            this.lblFio_Ved_Vid = new System.Windows.Forms.Label();
-            this.lblForma_Ved = new System.Windows.Forms.Label();
-            this.lblOpisan_Ved = new System.Windows.Forms.Label();
-            this.lblData_Oplata = new System.Windows.Forms.Label();
-            this.lblDoc_Oplata = new System.Windows.Forms.Label();
-            this.lblData_Ved = new System.Windows.Forms.Label();
-            this.lblOplata = new System.Windows.Forms.Label();
-            this.lblTip_Doc_code = new System.Windows.Forms.Label();
-            this.lblServicesProvided = new System.Windows.Forms.Label();
-            this.txtKod_Z = new System.Windows.Forms.TextBox();
-            this.btnKod_Z = new System.Windows.Forms.Button();
-            this.txtTip_Doc = new System.Windows.Forms.TextBox();
-            this.btnTip_Doc = new System.Windows.Forms.Button();
-            this.txtPrim = new System.Windows.Forms.TextBox();
-            this.lblPrim = new System.Windows.Forms.Label();
-            this.btnFio_Ved_Vid = new System.Windows.Forms.Button();
-            this.txtFio_Ved_Vid = new System.Windows.Forms.TextBox();
-            this.btnFio_Ved_Prin = new System.Windows.Forms.Button();
-            this.txtFio_Ved_Prin = new System.Windows.Forms.TextBox();
-            this.txtOpisan_Ved = new System.Windows.Forms.TextBox();
-            this.txtDoc_Oplata = new System.Windows.Forms.TextBox();
-            this.cbOplata = new System.Windows.Forms.ComboBox();
-            this.txtTip_Doc_code = new System.Windows.Forms.TextBox();
-            this.cbOtkaz = new System.Windows.Forms.ComboBox();
-            this.txtCane = new System.Windows.Forms.TextBox();
-            this.txtPr_Otkaz = new System.Windows.Forms.TextBox();
-            this.btnFio_Z = new System.Windows.Forms.Button();
-            this.txtFio_Z = new System.Windows.Forms.TextBox();
-            this.txtKod_Z_code = new System.Windows.Forms.TextBox();
-            this.lblKod_Z_code = new System.Windows.Forms.Label();
-            this.txtDodatok = new System.Windows.Forms.TextBox();
-            this.lblDodatok = new System.Windows.Forms.Label();
+            this.txtSodergan = new TextBox();
+            this.txtTel_Z = new TextBox();
+            this.cbStatus = new ComboBox();
+            this.dtpData_Ish = new DateTimePicker();
+            this.txtN_Ish_Z = new TextBox();
+            this.lblCane = new Label();
+            this.lblPr_Otkaz = new Label();
+            this.lblOtkaz = new Label();
+            this.lblFio_Z = new Label();
+            this.lblDoppData = new Label();
+            this.lblFirstData = new Label();
+            this.dtpData_Z = new DateTimePicker();
+            this.lblSodergan = new Label();
+            this.lblTel_Z = new Label();
+            this.lblStatus = new Label();
+            this.lblTip_Doc = new Label();
+            this.lblData_Ish = new Label();
+            this.lblN_Ish_Z = new Label();
+            this.lblData_Z = new Label();
+            this.lblKod_Z = new Label();
+            this.txtN_Z = new TextBox();
+            this.lblN_Z = new Label();
+            this.txtForma_Ved = new TextBox();
+            this.dtpData_Ved = new DateTimePicker();
+            this.dtpData_Oplata = new DateTimePicker();
+            this.lblFio_Ved_Prin = new Label();
+            this.lblFio_Ved_Vid = new Label();
+            this.lblForma_Ved = new Label();
+            this.lblOpisan_Ved = new Label();
+            this.lblData_Oplata = new Label();
+            this.lblDoc_Oplata = new Label();
+            this.lblData_Ved = new Label();
+            this.lblOplata = new Label();
+            this.lblTip_Doc_code = new Label();
+            this.lblServicesProvided = new Label();
+            this.txtKod_Z = new TextBox();
+            this.btnKod_Z = new Button();
+            this.txtTip_Doc = new TextBox();
+            this.btnTip_Doc = new Button();
+            this.txtPrim = new TextBox();
+            this.lblPrim = new Label();
+            this.btnFio_Ved_Vid = new Button();
+            this.txtFio_Ved_Vid = new TextBox();
+            this.btnFio_Ved_Prin = new Button();
+            this.txtFio_Ved_Prin = new TextBox();
+            this.txtOpisan_Ved = new TextBox();
+            this.txtDoc_Oplata = new TextBox();
+            this.cbOplata = new ComboBox();
+            this.txtTip_Doc_code = new TextBox();
+            this.cbOtkaz = new ComboBox();
+            this.txtCane = new TextBox();
+            this.txtPr_Otkaz = new TextBox();
+            this.btnFio_Z = new Button();
+            this.txtFio_Z = new TextBox();
+            this.txtKod_Z_code = new TextBox();
+            this.lblKod_Z_code = new Label();
+            this.txtDodatok = new TextBox();
+            this.lblDodatok = new Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +105,7 @@
             this.txtSodergan.Location = new System.Drawing.Point(143, 215);
             this.txtSodergan.Multiline = true;
             this.txtSodergan.Name = "txtSodergan";
-            this.txtSodergan.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtSodergan.ScrollBars = ScrollBars.Both;
             this.txtSodergan.Size = new System.Drawing.Size(400, 50);
             this.txtSodergan.TabIndex = 9;
             // 
@@ -117,7 +118,7 @@
             // 
             // cbStatus
             // 
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Location = new System.Drawing.Point(143, 53);
             this.cbStatus.Name = "cbStatus";
@@ -128,7 +129,7 @@
             // dtpData_Ish
             // 
             this.dtpData_Ish.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Ish.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData_Ish.Format = DateTimePickerFormat.Custom;
             this.dtpData_Ish.Location = new System.Drawing.Point(392, 192);
             this.dtpData_Ish.Name = "dtpData_Ish";
             this.dtpData_Ish.Size = new System.Drawing.Size(151, 20);
@@ -194,7 +195,7 @@
             // dtpData_Z
             // 
             this.dtpData_Z.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Z.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData_Z.Format = DateTimePickerFormat.Custom;
             this.dtpData_Z.Location = new System.Drawing.Point(392, 30);
             this.dtpData_Z.Name = "dtpData_Z";
             this.dtpData_Z.Size = new System.Drawing.Size(151, 20);
@@ -286,14 +287,14 @@
             this.txtForma_Ved.Location = new System.Drawing.Point(705, 291);
             this.txtForma_Ved.Multiline = true;
             this.txtForma_Ved.Name = "txtForma_Ved";
-            this.txtForma_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtForma_Ved.ScrollBars = ScrollBars.Both;
             this.txtForma_Ved.Size = new System.Drawing.Size(400, 50);
             this.txtForma_Ved.TabIndex = 21;
             // 
             // dtpData_Ved
             // 
             this.dtpData_Ved.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Ved.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData_Ved.Format = DateTimePickerFormat.Custom;
             this.dtpData_Ved.Location = new System.Drawing.Point(705, 215);
             this.dtpData_Ved.Name = "dtpData_Ved";
             this.dtpData_Ved.Size = new System.Drawing.Size(151, 20);
@@ -302,7 +303,7 @@
             // dtpData_Oplata
             // 
             this.dtpData_Oplata.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Oplata.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData_Oplata.Format = DateTimePickerFormat.Custom;
             this.dtpData_Oplata.Location = new System.Drawing.Point(705, 77);
             this.dtpData_Oplata.Name = "dtpData_Oplata";
             this.dtpData_Oplata.Size = new System.Drawing.Size(151, 20);
@@ -428,7 +429,7 @@
             this.txtPrim.Location = new System.Drawing.Point(143, 321);
             this.txtPrim.Multiline = true;
             this.txtPrim.Name = "txtPrim";
-            this.txtPrim.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtPrim.ScrollBars = ScrollBars.Both;
             this.txtPrim.Size = new System.Drawing.Size(400, 50);
             this.txtPrim.TabIndex = 37;
             // 
@@ -479,7 +480,7 @@
             this.txtOpisan_Ved.Location = new System.Drawing.Point(705, 238);
             this.txtOpisan_Ved.Multiline = true;
             this.txtOpisan_Ved.Name = "txtOpisan_Ved";
-            this.txtOpisan_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtOpisan_Ved.ScrollBars = ScrollBars.Both;
             this.txtOpisan_Ved.Size = new System.Drawing.Size(400, 50);
             this.txtOpisan_Ved.TabIndex = 20;
             // 
@@ -492,7 +493,7 @@
             // 
             // cbOplata
             // 
-            this.cbOplata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOplata.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cbOplata.FormattingEnabled = true;
             this.cbOplata.Location = new System.Drawing.Point(705, 53);
             this.cbOplata.Name = "cbOplata";
@@ -510,7 +511,7 @@
             // 
             // cbOtkaz
             // 
-            this.cbOtkaz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOtkaz.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cbOtkaz.FormattingEnabled = true;
             this.cbOtkaz.Location = new System.Drawing.Point(705, 169);
             this.cbOtkaz.Name = "cbOtkaz";
@@ -570,7 +571,7 @@
             this.txtDodatok.Location = new System.Drawing.Point(143, 268);
             this.txtDodatok.Multiline = true;
             this.txtDodatok.Name = "txtDodatok";
-            this.txtDodatok.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtDodatok.ScrollBars = ScrollBars.Both;
             this.txtDodatok.Size = new System.Drawing.Size(400, 50);
             this.txtDodatok.TabIndex = 49;
             // 
@@ -645,7 +646,7 @@
             this.Controls.Add(this.lblFio_Z);
             this.Controls.Add(this.lblFirstData);
             this.Controls.Add(this.lblDoppData);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmReestrZayav_doc";
@@ -721,63 +722,63 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtSodergan;
-        private System.Windows.Forms.TextBox txtTel_Z;
-        private System.Windows.Forms.ComboBox cbStatus;
-        private System.Windows.Forms.DateTimePicker dtpData_Ish;
-        private System.Windows.Forms.TextBox txtN_Ish_Z;
-        private System.Windows.Forms.Label lblCane;
-        private System.Windows.Forms.Label lblPr_Otkaz;
-        private System.Windows.Forms.Label lblOtkaz;
-        private System.Windows.Forms.Label lblFio_Z;
-        private System.Windows.Forms.Label lblDoppData;
-        private System.Windows.Forms.Label lblFirstData;
-        private System.Windows.Forms.DateTimePicker dtpData_Z;
-        private System.Windows.Forms.Label lblSodergan;
-        private System.Windows.Forms.Label lblTel_Z;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblTip_Doc;
-        private System.Windows.Forms.Label lblData_Ish;
-        private System.Windows.Forms.Label lblN_Ish_Z;
-        private System.Windows.Forms.Label lblData_Z;
-        private System.Windows.Forms.Label lblKod_Z;
-        private System.Windows.Forms.TextBox txtN_Z;
-        private System.Windows.Forms.Label lblN_Z;
-        private System.Windows.Forms.TextBox txtForma_Ved;
-        private System.Windows.Forms.DateTimePicker dtpData_Ved;
-        private System.Windows.Forms.DateTimePicker dtpData_Oplata;
-        private System.Windows.Forms.Label lblFio_Ved_Prin;
-        private System.Windows.Forms.Label lblFio_Ved_Vid;
-        private System.Windows.Forms.Label lblForma_Ved;
-        private System.Windows.Forms.Label lblOpisan_Ved;
-        private System.Windows.Forms.Label lblData_Oplata;
-        private System.Windows.Forms.Label lblDoc_Oplata;
-        private System.Windows.Forms.Label lblData_Ved;
-        private System.Windows.Forms.Label lblOplata;
-        private System.Windows.Forms.Label lblTip_Doc_code;
-        private System.Windows.Forms.Label lblServicesProvided;
-        private System.Windows.Forms.TextBox txtKod_Z;
-        private System.Windows.Forms.Button btnKod_Z;
-        private System.Windows.Forms.TextBox txtTip_Doc;
-        private System.Windows.Forms.Button btnTip_Doc;
-        private System.Windows.Forms.TextBox txtPrim;
-        private System.Windows.Forms.Label lblPrim;
-        private System.Windows.Forms.Button btnFio_Ved_Vid;
-        private System.Windows.Forms.TextBox txtFio_Ved_Vid;
-        private System.Windows.Forms.Button btnFio_Ved_Prin;
-        private System.Windows.Forms.TextBox txtFio_Ved_Prin;
-        private System.Windows.Forms.TextBox txtOpisan_Ved;
-        private System.Windows.Forms.TextBox txtDoc_Oplata;
-        private System.Windows.Forms.ComboBox cbOplata;
-        private System.Windows.Forms.TextBox txtTip_Doc_code;
-        private System.Windows.Forms.ComboBox cbOtkaz;
-        private System.Windows.Forms.TextBox txtCane;
-        private System.Windows.Forms.TextBox txtPr_Otkaz;
-        private System.Windows.Forms.Button btnFio_Z;
-        private System.Windows.Forms.TextBox txtFio_Z;
-        private System.Windows.Forms.TextBox txtKod_Z_code;
-        private System.Windows.Forms.Label lblKod_Z_code;
-        private System.Windows.Forms.TextBox txtDodatok;
-        private System.Windows.Forms.Label lblDodatok;
+        private TextBox txtSodergan;
+        private TextBox txtTel_Z;
+        private ComboBox cbStatus;
+        private DateTimePicker dtpData_Ish;
+        private TextBox txtN_Ish_Z;
+        private Label lblCane;
+        private Label lblPr_Otkaz;
+        private Label lblOtkaz;
+        private Label lblFio_Z;
+        private Label lblDoppData;
+        private Label lblFirstData;
+        private DateTimePicker dtpData_Z;
+        private Label lblSodergan;
+        private Label lblTel_Z;
+        private Label lblStatus;
+        private Label lblTip_Doc;
+        private Label lblData_Ish;
+        private Label lblN_Ish_Z;
+        private Label lblData_Z;
+        private Label lblKod_Z;
+        private TextBox txtN_Z;
+        private Label lblN_Z;
+        private TextBox txtForma_Ved;
+        private DateTimePicker dtpData_Ved;
+        private DateTimePicker dtpData_Oplata;
+        private Label lblFio_Ved_Prin;
+        private Label lblFio_Ved_Vid;
+        private Label lblForma_Ved;
+        private Label lblOpisan_Ved;
+        private Label lblData_Oplata;
+        private Label lblDoc_Oplata;
+        private Label lblData_Ved;
+        private Label lblOplata;
+        private Label lblTip_Doc_code;
+        private Label lblServicesProvided;
+        private TextBox txtKod_Z;
+        private Button btnKod_Z;
+        private TextBox txtTip_Doc;
+        private Button btnTip_Doc;
+        private TextBox txtPrim;
+        private Label lblPrim;
+        private Button btnFio_Ved_Vid;
+        private TextBox txtFio_Ved_Vid;
+        private Button btnFio_Ved_Prin;
+        private TextBox txtFio_Ved_Prin;
+        private TextBox txtOpisan_Ved;
+        private TextBox txtDoc_Oplata;
+        private ComboBox cbOplata;
+        private TextBox txtTip_Doc_code;
+        private ComboBox cbOtkaz;
+        private TextBox txtCane;
+        private TextBox txtPr_Otkaz;
+        private Button btnFio_Z;
+        private TextBox txtFio_Z;
+        private TextBox txtKod_Z_code;
+        private Label lblKod_Z_code;
+        private TextBox txtDodatok;
+        private Label lblDodatok;
     }
 }

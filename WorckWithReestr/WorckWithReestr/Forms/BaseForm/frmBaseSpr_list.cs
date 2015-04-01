@@ -36,6 +36,10 @@ namespace WorckWithReestr
         {
             return null;
         }
+        protected virtual void SetDefaultDisplayOrder()
+        {
+            
+        }
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - base
@@ -100,21 +104,8 @@ namespace WorckWithReestr
                 dgv.AutoGenerateColumns = false;
                 SharedClass.CreateColumIn(dgv, table);
                 dgv.DataSource = dsBinding;
+                SetupDGV();
                 dgv.Refresh();
-
-                int width = 0;
-                for (int i = 0; i < dgv.Columns.Count; i++)
-                {
-                    width += dgv.Columns[i].Width;
-                }
-                if (width < this.Width)
-                    width = this.Width;
-                if (Screen.PrimaryScreen.WorkingArea.Width < width)
-                    this.Width = Screen.PrimaryScreen.WorkingArea.Width/2;
-                else
-                    this.Width = width;
-
-                this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                 ret = true;
             }
             catch (Exception e) // доработать блок ошибок на разные исключения
@@ -122,10 +113,33 @@ namespace WorckWithReestr
                 ret = false;
             }
 
-            if (ret)
-                dgv.Columns[0].Visible = false;
 
             return ret;
+        }
+
+        private void SetupDGV()
+        {
+            int width = 0;
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                width += dgv.Columns[i].Width;
+            }
+            if (width < this.Width)
+                width = this.Width;
+            else
+            {
+                if (Screen.PrimaryScreen.WorkingArea.Width < width)
+                    this.Width = Screen.PrimaryScreen.WorkingArea.Width / 2;
+                else
+                    this.Width = width;
+            }
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            if (!SharedClass.SetDisplayOrder(dgv, NameTable))
+                SetDefaultDisplayOrder();
+
+            if (dgv.Columns.Count > 0)
+                dgv.Columns[0].Visible = false;
         }
 
         protected virtual void SelectRec(int objectID)
@@ -164,6 +178,12 @@ namespace WorckWithReestr
                 this.Close();
             }
         }
+
+        private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SharedClass.GetDisplayOrder(dgv, NameTable);
+        }
+
 
         private void cmsAdd_Click(object sender, EventArgs e)
         {
@@ -223,6 +243,7 @@ namespace WorckWithReestr
             }
         }
         #endregion
+
     }
 }
 

@@ -36,16 +36,11 @@ namespace WorckWithReestr
             row.set_Value(base.table.FindField("Kod_Doc"), Convert.ToInt16(txtKod_Doc.Text));
         }
 
-
-
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-
             ret = SharedClass.CheckValueIsSmalInt_SetError(txtKod_Doc, errorProvider) && ret;
-
             ret = SharedClass.CheckValueStringNotEmpty_SetError(txtTip_Doc, errorProvider) && ret;
-
             return ret;
         }
 
@@ -91,22 +86,6 @@ namespace WorckWithReestr
                     this.Close();
                     return;
             }
-
-            if (!this.GetSharedData()) // error
-            {
-                SharedClass.ShowErrorMessage();
-                this.Close();
-            }
-
-            if (editMode != EditMode.ADD)
-            {
-                if (!this.ReadData()) // error
-                {
-                    SharedClass.ShowErrorMessage();
-                    this.Close();
-                }
-            }
-
         }
 
         private void txtTip_Doc_TextChanged(object sender, EventArgs e)

@@ -157,7 +157,6 @@ namespace WorckWithReestr
 
 
             // справочники
-
             DictionaryWork.EnableAutoComlectToFizLic(txtFio_Z);
             DictionaryWork.EnableAutoComlectToFizLic(txtFio_Ved_Prin);
             DictionaryWork.EnableAutoComlectToFizLic(txtFio_Ved_Vid);
@@ -176,8 +175,6 @@ namespace WorckWithReestr
             txtN_Z.Text = "1";
         }
 
-
-
         private void OnChangedTipDoc()
         {
             txtTip_Doc.Text = DictionaryWork.GetNameByIDFromTip_Doc(mTip_Doc);
@@ -193,6 +190,7 @@ namespace WorckWithReestr
         {
             txtFio_Ved_Vid.Text = DictionaryWork.GetFIOByIDFromFizLic(mFio_Ved_Vid);
         }
+
         private void OnChangedKod_Z()
         {
             if (cbStatus.SelectedIndex == 0)
@@ -258,35 +256,8 @@ namespace WorckWithReestr
             //}
 
 
-            OnFormLoad();
         }
 
-        private void OnFormLoad()
-        {
-            if (!this.GetSharedData()) // error
-            {
-                SharedClass.ShowErrorMessage();
-                this.Close();
-            }
-
-
-            if (editMode != EditMode.ADD)
-            {
-                if (!this.ReadData()) // error
-                {
-                    SharedClass.ShowErrorMessage();
-                    this.Close();
-                }
-            }
-            else
-            {
-                if (!this.SetDefaultValueToNew()) // error
-                {
-                    SharedClass.ShowErrorMessage();
-                    this.Close();
-                }
-            }
-        }
 
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -336,7 +307,7 @@ namespace WorckWithReestr
         }
         #endregion
 
-        //---------------------------------------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------
         #region  валидация
         //---------------------------------------------------------------------------------------------------------------------------------------------
         private void txtN_Z_TextChanged(object sender, EventArgs e)
@@ -416,6 +387,12 @@ namespace WorckWithReestr
             }
         }
         #endregion
+
+
+
+
+
+
 
 
     }

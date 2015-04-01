@@ -1,4 +1,6 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+
+namespace WorckWithReestr
 {
     partial class frmTipDoc_list
     {
@@ -33,7 +35,7 @@
             // frmTipDoc_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 266);
             this.Name = "frmTipDoc_list";
             this.Text = "Form2";

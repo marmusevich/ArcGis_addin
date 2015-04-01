@@ -1,4 +1,5 @@
-﻿namespace WorckWithReestr
+﻿using System.Windows.Forms;
+namespace WorckWithReestr
 {
     partial class frmFizLic_element
     {
@@ -28,13 +29,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblFIO = new System.Windows.Forms.Label();
-            this.lblCategor = new System.Windows.Forms.Label();
-            this.lblINN = new System.Windows.Forms.Label();
-            this.cbIsWorker = new System.Windows.Forms.CheckBox();
-            this.txtCategor = new System.Windows.Forms.TextBox();
-            this.txtINN = new System.Windows.Forms.TextBox();
-            this.txtFIO = new System.Windows.Forms.TextBox();
+            this.lblFIO = new Label();
+            this.lblCategor = new Label();
+            this.lblINN = new Label();
+            this.cbIsWorker = new CheckBox();
+            this.txtCategor = new TextBox();
+            this.txtINN = new TextBox();
+            this.txtFIO = new TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +110,7 @@
             // frmFizLic_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 136);
             this.Controls.Add(this.txtFIO);
             this.Controls.Add(this.txtINN);
@@ -138,12 +139,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblFIO;
-        private System.Windows.Forms.Label lblCategor;
-        private System.Windows.Forms.Label lblINN;
-        private System.Windows.Forms.CheckBox cbIsWorker;
-        private System.Windows.Forms.TextBox txtCategor;
-        private System.Windows.Forms.TextBox txtINN;
-        private System.Windows.Forms.TextBox txtFIO;
+        private Label lblFIO;
+        private Label lblCategor;
+        private Label lblINN;
+        private CheckBox cbIsWorker;
+        private TextBox txtCategor;
+        private TextBox txtINN;
+        private TextBox txtFIO;
     }
 }
