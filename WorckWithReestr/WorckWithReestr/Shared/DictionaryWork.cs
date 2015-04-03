@@ -120,30 +120,79 @@ namespace WorckWithReestr
 
         //---------------------------------------------------------------------------------------
         #region методы проверок полей ввода
-        // проверка текстового поля на содержание Smal Int (16 бит) и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsSmalInt_SetError(TextBox _chekedValue, ErrorProvider _errorProvider)
+        // проверка текстового поля на значения из справочника физ лиц и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsContainsFizLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, int id, TextBox _codeValue = null)
         {
             bool ret = true;
-            //try
-            //{
-            //    short numVal = Convert.ToInt16(_chekedValue.Text);
-            //    _errorProvider.SetError(_chekedValue, String.Empty);
-            //}
-            //catch (FormatException e)
-            //{
-            //    _errorProvider.SetError(_chekedValue, "Должно быть число.");
-            //    ret = false;
-            //}
-            //catch (OverflowException e)
-            //{
-            //    _errorProvider.SetError(_chekedValue, "Слишком большое число.");
-            //    ret = false;
-            //}
+            int id_temp;
+
+            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "fizichni_osoby", "П_І_Б");
+
+            if (id_temp != -1)
+            {
+                _errorProvider.SetError(_chekedValue, String.Empty);
+                id = id_temp;
+                _chekedValue.Text = GetFIOByIDFromFizLic(id);
+                if( _codeValue != null)
+                    _codeValue.Text = GetINNByIDFromFizLic(id);
+            }
+            else
+            {
+                _errorProvider.SetError(_chekedValue, "Должно быть значение из справочника физических лиц");
+                ret = false;
+            }
+            return ret;
+        }
+        // проверка текстового поля на значения из справочника юр лиц и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsContainsJurLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, int id, TextBox _codeValue = null)
+        {
+            bool ret = true;
+            int id_temp;
+
+            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "jur_osoby", "назва");
+
+            if (id_temp != -1)
+            {
+                _errorProvider.SetError(_chekedValue, String.Empty);
+                id = id_temp;
+                _chekedValue.Text = GetNameByIDFromJurOsoby(id);
+                if( _codeValue != null)
+                    _codeValue.Text = GetINNByIDFromJurOsoby(id);
+            }
+            else
+            {
+                _errorProvider.SetError(_chekedValue, "Должно быть значение из справочника юридических лиц");
+                ret = false;
+            }
             return ret;
         }
 
+        // проверка текстового поля на значения из справочника типы документов и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsContainsTip_Doc_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, int id, TextBox _codeValue = null)
+        {
+            bool ret = true;
+            int id_temp;
+
+            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "Tip_Doc", "Tip_Doc");
+
+            if (id_temp != -1)
+            {
+                _errorProvider.SetError(_chekedValue, String.Empty);
+                id = id_temp;
+                _chekedValue.Text = GetNameByIDFromTip_Doc(id);
+                if( _codeValue != null)
+                    _codeValue.Text = GetCodeByIDFromTip_Doc(id);
+            }
+            else
+            {
+                _errorProvider.SetError(_chekedValue, "Должно быть значение из справочника типов документов");
+                ret = false;
+            }
+            return ret;
+        }
         #endregion
         //---------------------------------------------------------------------------------------
 
     }
 }
+

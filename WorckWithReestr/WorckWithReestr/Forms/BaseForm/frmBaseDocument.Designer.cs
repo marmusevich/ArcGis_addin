@@ -30,9 +30,9 @@ namespace WorckWithReestr
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnOk = new Button();
-            this.btnCancel = new Button();
-            this.errorProvider = new ErrorProvider(this.components);
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@ namespace WorckWithReestr
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = DialogResult.Cancel;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(12, 226);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -62,17 +62,17 @@ namespace WorckWithReestr
             // 
             // frmBaseDocument
             // 
-            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(281, 285);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Name = "frmBaseDocument";
-            this.StartPosition = FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmBaseDocument";
-            this.FormClosing += new FormClosingEventHandler(this.frmBaseDocument_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseDocument_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseDocument_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);

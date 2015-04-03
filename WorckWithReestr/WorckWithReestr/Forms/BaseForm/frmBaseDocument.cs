@@ -2,6 +2,9 @@
 using System;
 using System.Windows.Forms;
 
+//#define 
+
+
 namespace WorckWithReestr
 {
     public partial class frmBaseDocument : Form
@@ -61,8 +64,6 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - base
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
         protected virtual bool SetDefaultValueToNew()
         {
             bool ret = false;
@@ -206,7 +207,6 @@ namespace WorckWithReestr
         }
         #endregion
 
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -228,12 +228,14 @@ namespace WorckWithReestr
 
         private void frmBaseDocument_Load(object sender, EventArgs e)
         {
+
+//#if ()
+
             if (!this.GetSharedData()) // error
             {
                 SharedClass.ShowErrorMessage();
                 this.Close();
             }
-
 
             if (editMode != EditMode.ADD)
             {
@@ -251,6 +253,7 @@ namespace WorckWithReestr
                     this.Close();
                 }
             }
+//#endif
         }
 
         protected void frmBaseDocument_FormClosing(object sender, FormClosingEventArgs e)

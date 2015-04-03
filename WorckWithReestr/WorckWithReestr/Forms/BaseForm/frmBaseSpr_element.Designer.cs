@@ -48,7 +48,7 @@ namespace WorckWithReestr
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = DialogResult.Cancel;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(12, 38);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -64,19 +64,19 @@ namespace WorckWithReestr
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.AutoValidate = AutoValidate.EnableAllowFocusChange;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(441, 212);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmBaseSpr_element";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmBaseSpr_element";
             this.FormClosing += new FormClosingEventHandler(this.frmBaseSpr_element_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseSpr_element_Load);

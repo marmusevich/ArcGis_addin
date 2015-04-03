@@ -35,7 +35,7 @@ namespace WorckWithReestr
             // frmTipDoc_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 266);
             this.Name = "frmTipDoc_list";
             this.Text = "Form2";

@@ -81,7 +81,7 @@ namespace WorckWithReestr
             // frmTipDoc_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 120);
             this.Controls.Add(this.lblKod_Doc);
             this.Controls.Add(this.lblTip_Doc);

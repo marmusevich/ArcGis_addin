@@ -233,9 +233,9 @@ namespace WorckWithReestr
                 queryDef2.Tables = "reestr.DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
                 if (strongCompare)
-                    queryDef2.WhereClause = fildName = " = '" + textValue + "'";
+                    queryDef2.WhereClause = fildName + " = '" + textValue + "'";
                 else
-                    queryDef2.WhereClause = fildName = " like '%" + textValue + "%'";
+                    queryDef2.WhereClause = fildName + " like '%" + textValue + "%'";
                 //queryDef2.PostfixClause = "ORDER BY " + fildName;
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;

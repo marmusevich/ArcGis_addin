@@ -26,14 +26,11 @@ namespace WorckWithReestr
         int mFio_Ved_Prin = -1;
         int mFio_Z = -1;
 
-
-
         #endregion
+        
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
         protected override void DB_to_FormElement(IRow row)
         {
             //даты
@@ -90,7 +87,6 @@ namespace WorckWithReestr
 
         }
 
-
         protected override void FormElement_to_DB(IRow row)
         {
             //даты
@@ -132,7 +128,21 @@ namespace WorckWithReestr
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueIsSmalInt_SetError(txtN_Z, errorProvider) && ret;
+            ret = SharedClass.CheckValueIsInt_SetError(txtN_Z, errorProvider) && ret;
+            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Z, errorProvider, mFio_Z) && ret;
+            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Vid, errorProvider, mFio_Ved_Vid) && ret;
+            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Prin, errorProvider, mFio_Ved_Prin) && ret;
+            if (cbStatus.SelectedIndex == 0)
+            {
+                ret = DictionaryWork.CheckValueIsContainsJurLic_SetError(txtKod_Z, errorProvider, mKod_Z, txtKod_Z_code) && ret;
+            }
+            else
+            {
+                ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtKod_Z, errorProvider, mKod_Z, txtKod_Z_code) && ret;
+            }
+            ret = DictionaryWork.CheckValueIsContainsTip_Doc_SetError(txtTip_Doc, errorProvider, mTip_Doc, txtTip_Doc_code) && ret;
+
+
             return ret;
         }
 
@@ -210,15 +220,11 @@ namespace WorckWithReestr
             txtFio_Z.Text = DictionaryWork.GetFIOByIDFromFizLic(mFio_Z);
         }
 
-
-
-
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
         public frmReestrZayav_doc() : base()
         {
             InitializeComponent();
@@ -230,7 +236,6 @@ namespace WorckWithReestr
             InitializeComponent();
             base.NameWorkspace = "reestr";
             base.NameTable = "reestr.DBO.Kn_Reg_Zayv";
-
         }
 
         private void frmReestrZayav_doc_Load(object sender, EventArgs e)
@@ -254,10 +259,7 @@ namespace WorckWithReestr
             //        this.Close();
             //        return;
             //}
-
-
         }
-
 
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -267,14 +269,14 @@ namespace WorckWithReestr
         {
             string filteredString = "";
             mFio_Z = frmFizLic_list.ShowForSelect(filteredString);
-            OnChangedFio_Z();
+            ValidatingData();
         }
 
         private void btnTip_Doc_Click(object sender, EventArgs e)
         {
             string filteredString = "";
             mTip_Doc = frmTipDoc_list.ShowForSelect(filteredString);
-            OnChangedTipDoc();
+            ValidatingData();
         }
 
         private void btnKod_Z_Click(object sender, EventArgs e)
@@ -289,21 +291,21 @@ namespace WorckWithReestr
                 string filteredString = "";
                 mKod_Z = frmFizLic_list.ShowForSelect(filteredString);
             }
-            OnChangedKod_Z();
+            ValidatingData();
         }
 
         private void btnFio_Ved_Prin_Click(object sender, EventArgs e)
         {
             string filteredString = "";
             mFio_Ved_Prin = frmFizLic_list.ShowForSelect(filteredString);
-            OnChangedFio_Ved_Prin();
+            ValidatingData();
         }
 
         private void btnFio_Ved_Vid_Click(object sender, EventArgs e)
         {
             string filteredString = "";
             mFio_Ved_Vid = frmFizLic_list.ShowForSelect(filteredString);
-            OnChangedFio_Ved_Vid();
+            ValidatingData();
         }
         #endregion
 
@@ -386,14 +388,32 @@ namespace WorckWithReestr
                 btnFio_Ved_Prin.Enabled = false;
             }
         }
+
+        private void txtKod_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
+
+        private void txtFio_Ved_Vid_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
+
+        private void txtFio_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
+
+        private void txtFio_Ved_Prin_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
+
+        private void txtTip_Doc_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = !ValidatingData();
+        }
         #endregion
-
-
-
-
-
-
-
 
     }
 }

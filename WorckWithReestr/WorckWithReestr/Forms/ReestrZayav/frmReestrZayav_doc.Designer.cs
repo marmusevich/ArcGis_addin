@@ -29,71 +29,71 @@ namespace WorckWithReestr
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSodergan = new TextBox();
-            this.txtTel_Z = new TextBox();
-            this.cbStatus = new ComboBox();
-            this.dtpData_Ish = new DateTimePicker();
-            this.txtN_Ish_Z = new TextBox();
-            this.lblCane = new Label();
-            this.lblPr_Otkaz = new Label();
-            this.lblOtkaz = new Label();
-            this.lblFio_Z = new Label();
-            this.lblDoppData = new Label();
-            this.lblFirstData = new Label();
-            this.dtpData_Z = new DateTimePicker();
-            this.lblSodergan = new Label();
-            this.lblTel_Z = new Label();
-            this.lblStatus = new Label();
-            this.lblTip_Doc = new Label();
-            this.lblData_Ish = new Label();
-            this.lblN_Ish_Z = new Label();
-            this.lblData_Z = new Label();
-            this.lblKod_Z = new Label();
-            this.txtN_Z = new TextBox();
-            this.lblN_Z = new Label();
-            this.txtForma_Ved = new TextBox();
-            this.dtpData_Ved = new DateTimePicker();
-            this.dtpData_Oplata = new DateTimePicker();
-            this.lblFio_Ved_Prin = new Label();
-            this.lblFio_Ved_Vid = new Label();
-            this.lblForma_Ved = new Label();
-            this.lblOpisan_Ved = new Label();
-            this.lblData_Oplata = new Label();
-            this.lblDoc_Oplata = new Label();
-            this.lblData_Ved = new Label();
-            this.lblOplata = new Label();
-            this.lblTip_Doc_code = new Label();
-            this.lblServicesProvided = new Label();
-            this.txtKod_Z = new TextBox();
-            this.btnKod_Z = new Button();
-            this.txtTip_Doc = new TextBox();
-            this.btnTip_Doc = new Button();
-            this.txtPrim = new TextBox();
-            this.lblPrim = new Label();
-            this.btnFio_Ved_Vid = new Button();
-            this.txtFio_Ved_Vid = new TextBox();
-            this.btnFio_Ved_Prin = new Button();
-            this.txtFio_Ved_Prin = new TextBox();
-            this.txtOpisan_Ved = new TextBox();
-            this.txtDoc_Oplata = new TextBox();
-            this.cbOplata = new ComboBox();
-            this.txtTip_Doc_code = new TextBox();
-            this.cbOtkaz = new ComboBox();
-            this.txtCane = new TextBox();
-            this.txtPr_Otkaz = new TextBox();
-            this.btnFio_Z = new Button();
-            this.txtFio_Z = new TextBox();
-            this.txtKod_Z_code = new TextBox();
-            this.lblKod_Z_code = new Label();
-            this.txtDodatok = new TextBox();
-            this.lblDodatok = new Label();
+            this.txtSodergan = new System.Windows.Forms.TextBox();
+            this.txtTel_Z = new System.Windows.Forms.TextBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.dtpData_Ish = new System.Windows.Forms.DateTimePicker();
+            this.txtN_Ish_Z = new System.Windows.Forms.TextBox();
+            this.lblCane = new System.Windows.Forms.Label();
+            this.lblPr_Otkaz = new System.Windows.Forms.Label();
+            this.lblOtkaz = new System.Windows.Forms.Label();
+            this.lblFio_Z = new System.Windows.Forms.Label();
+            this.lblDoppData = new System.Windows.Forms.Label();
+            this.lblFirstData = new System.Windows.Forms.Label();
+            this.dtpData_Z = new System.Windows.Forms.DateTimePicker();
+            this.lblSodergan = new System.Windows.Forms.Label();
+            this.lblTel_Z = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblTip_Doc = new System.Windows.Forms.Label();
+            this.lblData_Ish = new System.Windows.Forms.Label();
+            this.lblN_Ish_Z = new System.Windows.Forms.Label();
+            this.lblData_Z = new System.Windows.Forms.Label();
+            this.lblKod_Z = new System.Windows.Forms.Label();
+            this.txtN_Z = new System.Windows.Forms.TextBox();
+            this.lblN_Z = new System.Windows.Forms.Label();
+            this.txtForma_Ved = new System.Windows.Forms.TextBox();
+            this.dtpData_Ved = new System.Windows.Forms.DateTimePicker();
+            this.dtpData_Oplata = new System.Windows.Forms.DateTimePicker();
+            this.lblFio_Ved_Prin = new System.Windows.Forms.Label();
+            this.lblFio_Ved_Vid = new System.Windows.Forms.Label();
+            this.lblForma_Ved = new System.Windows.Forms.Label();
+            this.lblOpisan_Ved = new System.Windows.Forms.Label();
+            this.lblData_Oplata = new System.Windows.Forms.Label();
+            this.lblDoc_Oplata = new System.Windows.Forms.Label();
+            this.lblData_Ved = new System.Windows.Forms.Label();
+            this.lblOplata = new System.Windows.Forms.Label();
+            this.lblTip_Doc_code = new System.Windows.Forms.Label();
+            this.lblServicesProvided = new System.Windows.Forms.Label();
+            this.txtKod_Z = new System.Windows.Forms.TextBox();
+            this.btnKod_Z = new System.Windows.Forms.Button();
+            this.txtTip_Doc = new System.Windows.Forms.TextBox();
+            this.btnTip_Doc = new System.Windows.Forms.Button();
+            this.txtPrim = new System.Windows.Forms.TextBox();
+            this.lblPrim = new System.Windows.Forms.Label();
+            this.btnFio_Ved_Vid = new System.Windows.Forms.Button();
+            this.txtFio_Ved_Vid = new System.Windows.Forms.TextBox();
+            this.btnFio_Ved_Prin = new System.Windows.Forms.Button();
+            this.txtFio_Ved_Prin = new System.Windows.Forms.TextBox();
+            this.txtOpisan_Ved = new System.Windows.Forms.TextBox();
+            this.txtDoc_Oplata = new System.Windows.Forms.TextBox();
+            this.cbOplata = new System.Windows.Forms.ComboBox();
+            this.txtTip_Doc_code = new System.Windows.Forms.TextBox();
+            this.cbOtkaz = new System.Windows.Forms.ComboBox();
+            this.txtCane = new System.Windows.Forms.TextBox();
+            this.txtPr_Otkaz = new System.Windows.Forms.TextBox();
+            this.btnFio_Z = new System.Windows.Forms.Button();
+            this.txtFio_Z = new System.Windows.Forms.TextBox();
+            this.txtKod_Z_code = new System.Windows.Forms.TextBox();
+            this.lblKod_Z_code = new System.Windows.Forms.Label();
+            this.txtDodatok = new System.Windows.Forms.TextBox();
+            this.lblDodatok = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(1030, 443);
-            this.btnOk.TabIndex = 24;
+            this.btnOk.TabIndex = 23;
             // 
             // btnCancel
             // 
@@ -105,42 +105,42 @@ namespace WorckWithReestr
             this.txtSodergan.Location = new System.Drawing.Point(143, 215);
             this.txtSodergan.Multiline = true;
             this.txtSodergan.Name = "txtSodergan";
-            this.txtSodergan.ScrollBars = ScrollBars.Both;
+            this.txtSodergan.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtSodergan.Size = new System.Drawing.Size(400, 50);
-            this.txtSodergan.TabIndex = 9;
+            this.txtSodergan.TabIndex = 8;
             // 
             // txtTel_Z
             // 
             this.txtTel_Z.Location = new System.Drawing.Point(143, 123);
             this.txtTel_Z.Name = "txtTel_Z";
             this.txtTel_Z.Size = new System.Drawing.Size(400, 20);
-            this.txtTel_Z.TabIndex = 8;
+            this.txtTel_Z.TabIndex = 4;
             // 
             // cbStatus
             // 
-            this.cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Location = new System.Drawing.Point(143, 53);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(151, 21);
-            this.cbStatus.TabIndex = 6;
+            this.cbStatus.TabIndex = 2;
             this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
             // 
             // dtpData_Ish
             // 
             this.dtpData_Ish.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Ish.Format = DateTimePickerFormat.Custom;
+            this.dtpData_Ish.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData_Ish.Location = new System.Drawing.Point(392, 192);
             this.dtpData_Ish.Name = "dtpData_Ish";
             this.dtpData_Ish.Size = new System.Drawing.Size(151, 20);
-            this.dtpData_Ish.TabIndex = 4;
+            this.dtpData_Ish.TabIndex = 7;
             // 
             // txtN_Ish_Z
             // 
             this.txtN_Ish_Z.Location = new System.Drawing.Point(143, 192);
             this.txtN_Ish_Z.Name = "txtN_Ish_Z";
             this.txtN_Ish_Z.Size = new System.Drawing.Size(130, 20);
-            this.txtN_Ish_Z.TabIndex = 3;
+            this.txtN_Ish_Z.TabIndex = 6;
             // 
             // lblCane
             // 
@@ -195,7 +195,7 @@ namespace WorckWithReestr
             // dtpData_Z
             // 
             this.dtpData_Z.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Z.Format = DateTimePickerFormat.Custom;
+            this.dtpData_Z.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData_Z.Location = new System.Drawing.Point(392, 30);
             this.dtpData_Z.Name = "dtpData_Z";
             this.dtpData_Z.Size = new System.Drawing.Size(151, 20);
@@ -287,14 +287,14 @@ namespace WorckWithReestr
             this.txtForma_Ved.Location = new System.Drawing.Point(705, 291);
             this.txtForma_Ved.Multiline = true;
             this.txtForma_Ved.Name = "txtForma_Ved";
-            this.txtForma_Ved.ScrollBars = ScrollBars.Both;
+            this.txtForma_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtForma_Ved.Size = new System.Drawing.Size(400, 50);
-            this.txtForma_Ved.TabIndex = 21;
+            this.txtForma_Ved.TabIndex = 20;
             // 
             // dtpData_Ved
             // 
             this.dtpData_Ved.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Ved.Format = DateTimePickerFormat.Custom;
+            this.dtpData_Ved.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData_Ved.Location = new System.Drawing.Point(705, 215);
             this.dtpData_Ved.Name = "dtpData_Ved";
             this.dtpData_Ved.Size = new System.Drawing.Size(151, 20);
@@ -303,11 +303,11 @@ namespace WorckWithReestr
             // dtpData_Oplata
             // 
             this.dtpData_Oplata.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData_Oplata.Format = DateTimePickerFormat.Custom;
+            this.dtpData_Oplata.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpData_Oplata.Location = new System.Drawing.Point(705, 77);
             this.dtpData_Oplata.Name = "dtpData_Oplata";
             this.dtpData_Oplata.Size = new System.Drawing.Size(151, 20);
-            this.dtpData_Oplata.TabIndex = 16;
+            this.dtpData_Oplata.TabIndex = 14;
             // 
             // lblFio_Ved_Prin
             // 
@@ -395,7 +395,8 @@ namespace WorckWithReestr
             this.txtKod_Z.Location = new System.Drawing.Point(143, 77);
             this.txtKod_Z.Name = "txtKod_Z";
             this.txtKod_Z.Size = new System.Drawing.Size(372, 20);
-            this.txtKod_Z.TabIndex = 33;
+            this.txtKod_Z.TabIndex = 3;
+            this.txtKod_Z.Validating += new System.ComponentModel.CancelEventHandler(this.txtKod_Z_Validating);
             // 
             // btnKod_Z
             // 
@@ -412,7 +413,8 @@ namespace WorckWithReestr
             this.txtTip_Doc.Location = new System.Drawing.Point(143, 146);
             this.txtTip_Doc.Name = "txtTip_Doc";
             this.txtTip_Doc.Size = new System.Drawing.Size(372, 20);
-            this.txtTip_Doc.TabIndex = 35;
+            this.txtTip_Doc.TabIndex = 5;
+            this.txtTip_Doc.Validating += new System.ComponentModel.CancelEventHandler(this.txtTip_Doc_Validating);
             // 
             // btnTip_Doc
             // 
@@ -429,9 +431,9 @@ namespace WorckWithReestr
             this.txtPrim.Location = new System.Drawing.Point(143, 321);
             this.txtPrim.Multiline = true;
             this.txtPrim.Name = "txtPrim";
-            this.txtPrim.ScrollBars = ScrollBars.Both;
+            this.txtPrim.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtPrim.Size = new System.Drawing.Size(400, 50);
-            this.txtPrim.TabIndex = 37;
+            this.txtPrim.TabIndex = 10;
             // 
             // lblPrim
             // 
@@ -456,7 +458,8 @@ namespace WorckWithReestr
             this.txtFio_Ved_Vid.Location = new System.Drawing.Point(705, 345);
             this.txtFio_Ved_Vid.Name = "txtFio_Ved_Vid";
             this.txtFio_Ved_Vid.Size = new System.Drawing.Size(372, 20);
-            this.txtFio_Ved_Vid.TabIndex = 39;
+            this.txtFio_Ved_Vid.TabIndex = 21;
+            this.txtFio_Ved_Vid.Validating += new System.ComponentModel.CancelEventHandler(this.txtFio_Ved_Vid_Validating);
             // 
             // btnFio_Ved_Prin
             // 
@@ -473,32 +476,33 @@ namespace WorckWithReestr
             this.txtFio_Ved_Prin.Location = new System.Drawing.Point(705, 369);
             this.txtFio_Ved_Prin.Name = "txtFio_Ved_Prin";
             this.txtFio_Ved_Prin.Size = new System.Drawing.Size(372, 20);
-            this.txtFio_Ved_Prin.TabIndex = 41;
+            this.txtFio_Ved_Prin.TabIndex = 22;
+            this.txtFio_Ved_Prin.Validating += new System.ComponentModel.CancelEventHandler(this.txtFio_Ved_Prin_Validating);
             // 
             // txtOpisan_Ved
             // 
             this.txtOpisan_Ved.Location = new System.Drawing.Point(705, 238);
             this.txtOpisan_Ved.Multiline = true;
             this.txtOpisan_Ved.Name = "txtOpisan_Ved";
-            this.txtOpisan_Ved.ScrollBars = ScrollBars.Both;
+            this.txtOpisan_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtOpisan_Ved.Size = new System.Drawing.Size(400, 50);
-            this.txtOpisan_Ved.TabIndex = 20;
+            this.txtOpisan_Ved.TabIndex = 19;
             // 
             // txtDoc_Oplata
             // 
             this.txtDoc_Oplata.Location = new System.Drawing.Point(705, 100);
             this.txtDoc_Oplata.Name = "txtDoc_Oplata";
             this.txtDoc_Oplata.Size = new System.Drawing.Size(400, 20);
-            this.txtDoc_Oplata.TabIndex = 19;
+            this.txtDoc_Oplata.TabIndex = 15;
             // 
             // cbOplata
             // 
-            this.cbOplata.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cbOplata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOplata.FormattingEnabled = true;
             this.cbOplata.Location = new System.Drawing.Point(705, 53);
             this.cbOplata.Name = "cbOplata";
             this.cbOplata.Size = new System.Drawing.Size(130, 21);
-            this.cbOplata.TabIndex = 17;
+            this.cbOplata.TabIndex = 13;
             this.cbOplata.SelectedIndexChanged += new System.EventHandler(this.cbOplata_SelectedIndexChanged);
             // 
             // txtTip_Doc_code
@@ -511,12 +515,12 @@ namespace WorckWithReestr
             // 
             // cbOtkaz
             // 
-            this.cbOtkaz.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cbOtkaz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOtkaz.FormattingEnabled = true;
             this.cbOtkaz.Location = new System.Drawing.Point(705, 169);
             this.cbOtkaz.Name = "cbOtkaz";
             this.cbOtkaz.Size = new System.Drawing.Size(130, 21);
-            this.cbOtkaz.TabIndex = 12;
+            this.cbOtkaz.TabIndex = 16;
             this.cbOtkaz.SelectedIndexChanged += new System.EventHandler(this.cbOtkaz_SelectedIndexChanged);
             // 
             // txtCane
@@ -524,14 +528,14 @@ namespace WorckWithReestr
             this.txtCane.Location = new System.Drawing.Point(705, 30);
             this.txtCane.Name = "txtCane";
             this.txtCane.Size = new System.Drawing.Size(130, 20);
-            this.txtCane.TabIndex = 11;
+            this.txtCane.TabIndex = 12;
             // 
             // txtPr_Otkaz
             // 
             this.txtPr_Otkaz.Location = new System.Drawing.Point(705, 192);
             this.txtPr_Otkaz.Name = "txtPr_Otkaz";
             this.txtPr_Otkaz.Size = new System.Drawing.Size(400, 20);
-            this.txtPr_Otkaz.TabIndex = 43;
+            this.txtPr_Otkaz.TabIndex = 17;
             // 
             // btnFio_Z
             // 
@@ -548,7 +552,8 @@ namespace WorckWithReestr
             this.txtFio_Z.Location = new System.Drawing.Point(143, 394);
             this.txtFio_Z.Name = "txtFio_Z";
             this.txtFio_Z.Size = new System.Drawing.Size(372, 20);
-            this.txtFio_Z.TabIndex = 44;
+            this.txtFio_Z.TabIndex = 11;
+            this.txtFio_Z.Validating += new System.ComponentModel.CancelEventHandler(this.txtFio_Z_Validating);
             // 
             // txtKod_Z_code
             // 
@@ -571,9 +576,9 @@ namespace WorckWithReestr
             this.txtDodatok.Location = new System.Drawing.Point(143, 268);
             this.txtDodatok.Multiline = true;
             this.txtDodatok.Name = "txtDodatok";
-            this.txtDodatok.ScrollBars = ScrollBars.Both;
+            this.txtDodatok.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDodatok.Size = new System.Drawing.Size(400, 50);
-            this.txtDodatok.TabIndex = 49;
+            this.txtDodatok.TabIndex = 9;
             // 
             // lblDodatok
             // 
@@ -646,7 +651,7 @@ namespace WorckWithReestr
             this.Controls.Add(this.lblFio_Z);
             this.Controls.Add(this.lblFirstData);
             this.Controls.Add(this.lblDoppData);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmReestrZayav_doc";
