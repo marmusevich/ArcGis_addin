@@ -1,4 +1,6 @@
-﻿using ESRI.ArcGIS.Geodatabase;
+﻿//#define CONSTRUCT_FORM
+
+using ESRI.ArcGIS.Geodatabase;
 using System;
 using System.Windows.Forms;
 
@@ -18,6 +20,7 @@ namespace WorckWithReestr
         protected string NameWorkspace = "";
         protected string NameTable = "";
         protected string NameSortFild = "";
+        protected ITable table;
         protected TableWraper tableWrapper = null;
 
         public int SelectID { get; protected set; }
@@ -28,15 +31,17 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //вернуть форму документа
         protected virtual frmBaseDocument GetDocumentForm(int _objectID, frmBaseDocument.EditMode _editMode)
         {
             return null;
         }
+        //установка порядка колонок по умолчанию      
         protected virtual void SetDefaultDisplayOrder()
         {
 
         }
-
+        //доп настройка грида
         protected virtual void OtherSetupDGV()
         {
 
@@ -93,7 +98,7 @@ namespace WorckWithReestr
             try
             {
                 IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
-                ITable table = fws.OpenTable(NameTable);
+                table = fws.OpenTable(NameTable);
 
                 this.Text = (table as IObjectClass).AliasName;
 
@@ -114,8 +119,10 @@ namespace WorckWithReestr
                 dgv.Refresh();
                 ret = true;
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Чтиение журнала документов  '{0}'", NameTable));
+                SharedClass.ShowErrorMessage(string.Format("Проблема при чтиение журнала документов  '{0}'", NameTable));
                 ret = false;
             }
             return ret;
@@ -171,15 +178,12 @@ namespace WorckWithReestr
 
         private void frmBaseJurnal_Load(object sender, System.EventArgs e)
         {
-            if (this.ReadData()) // -ok
+#if (!CONSTRUCT_FORM)
+            if (!this.ReadData()) // -ok
             {
-
-            }
-            else // error
-            {
-                SharedClass.ShowErrorMessage();
                 this.Close();
             }
+#endif
         }
 
         private void frmBaseJurnal_FormClosing(object sender, FormClosingEventArgs e)

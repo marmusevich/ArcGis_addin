@@ -333,7 +333,7 @@ namespace WorckWithReestr
         // поле для сортировки по умолчанию
         protected string defaultSortedFilds;
 
-        // для фмльтрации
+        // для фильтрации
         protected IQueryFilter queryFilter = null;
         protected ISelectionSet selectionSet = null;
 

@@ -31,12 +31,18 @@ namespace WorckWithReestr
                     ret = row.get_Value(0);
                 }
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("WorckWithReestr.GetMaxNumerForAutoicrement('{0}', '{1}')", tableName, fildName));
             }
             return ret;
         }
 
+        //вернуть следующий порядковый номер для рееста заявлений / обращений
+        public static int GetNextNumerToReestrZayav()
+        {
+            return GetMaxNumerForAutoicrement("Kn_Reg_Zayv", "N_Z") + 1;
+        }
 
     }
 }

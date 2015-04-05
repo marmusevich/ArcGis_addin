@@ -15,6 +15,21 @@ namespace WorckWithReestr
     {
         //---------------------------------------------------------------------------------------
         #region общее
+        //хранит путь к деректории с настройками
+        private static string m_applicationDataPath = null;
+        //получить путь к коталогу с файлами настройкам програмы, при отсутствии, создать
+        public static string GetAppDataPathAndCreateDirIfNeed()
+        {
+            if (m_applicationDataPath == null)
+            {
+                m_applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\WorkWithReestr");
+            }
+            if (!Directory.Exists(m_applicationDataPath))
+                Directory.CreateDirectory(m_applicationDataPath); // Создаем директорию, если нужно
+
+            return m_applicationDataPath;
+        }
+
         // получить рабочее пространство связоное с базой данных из сервера баз данных
         // dataBase - открываеммая база на сервере
         public static IWorkspace GetWorkspace(string dataBase)
@@ -56,7 +71,6 @@ namespace WorckWithReestr
                 dGVC.HeaderText = f.AliasName;
                 dGVC.ReadOnly = true;
                 dGVC.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
                 dgv.Columns.Add(dGVC);
                 f = null;
             }
@@ -64,13 +78,14 @@ namespace WorckWithReestr
         //получить и сохранить в файле порядок колонок
         public static void GetDisplayOrder(DataGridView dgv, string tableName)
         {
-            IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForAssembly();
-            using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(tableName + "_gridColumOrder", FileMode.Create, isoFile))
+            string filename = Path.Combine(SharedClass.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
+            using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
             {
                 int[] displayIndices = new int[dgv.ColumnCount];
                 for (int i = 0; i < dgv.ColumnCount; i++)
                 {
-                    displayIndices[i] = dgv.Columns[i].DisplayIndex;
+                    //displayIndices[i] = dgv.Columns[i].DisplayIndex;
+                    displayIndices[dgv.Columns[i].DisplayIndex] = i;
                 }
                 XmlSerializer ser = new XmlSerializer(typeof(int[]));
                 ser.Serialize(isoStream, displayIndices);
@@ -80,35 +95,33 @@ namespace WorckWithReestr
         public static bool SetDisplayOrder(DataGridView dgv, string tableName)
         {
             bool ret = false;
-            IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForAssembly();
-            string[] fileNames = isoFile.GetFileNames("*");
-            bool found = false;
-            foreach (string fileName in fileNames)
+            try
             {
-                if (fileName == tableName + "_gridColumOrder")
-                    found = true;
-            }
-            if (!found)
-                return ret;
-            using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(tableName + "_gridColumOrder", FileMode.Open, isoFile))
-            {
-                try
+                string filename = Path.Combine(SharedClass.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
+                if(File.Exists(filename))
                 {
-                    XmlSerializer ser = new XmlSerializer(typeof(int[]));
-                    int[] displayIndicies = (int[])ser.Deserialize(isoStream);
-                    SetDisplayOrderByArray(dgv, displayIndicies);
-                    ret = true;
+                    using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))
+                    {
+                        XmlSerializer ser = new XmlSerializer(typeof(int[]));
+                        int[] displayIndicies = (int[])ser.Deserialize(isoStream);
+                        SetDisplayOrderByArray(dgv, displayIndicies);
+                        ret = true;
+                    }
                 }
-                catch { }
             }
-            return ret;
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("SharedClass.SetDisplayOrder('{0}')", tableName));
+            }
+                return ret;
         }
         //устоновить порядок колонок по массиву
-        public static void SetDisplayOrderByArray(DataGridView dgv, int[] displayIndicies)
+        public static void SetDisplayOrderByArray(DataGridView dgv, int[] displayIndices)
         {
-            for (int i = 0; i < displayIndicies.Length; i++)
+            for (int i = 0; i < displayIndices.Length; i++)
             {
-                dgv.Columns[i].DisplayIndex = displayIndicies[i];
+                //dgv.Columns[i].DisplayIndex = displayIndicies[i];
+                dgv.Columns[displayIndices[i]].DisplayIndex = i;
             }
         }
 
@@ -148,12 +161,12 @@ namespace WorckWithReestr
                 short numVal = Convert.ToInt16(_chekedValue.Text);
                 _errorProvider.SetError(_chekedValue, String.Empty);
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 _errorProvider.SetError(_chekedValue, "Должно быть число.");
                 ret = false;
             }
-            catch (OverflowException e)
+            catch (OverflowException)
             {
                 _errorProvider.SetError(_chekedValue, "Слишком большое число.");
                 ret = false;
@@ -169,12 +182,12 @@ namespace WorckWithReestr
                 int numVal = Convert.ToInt32(_chekedValue.Text);
                 _errorProvider.SetError(_chekedValue, String.Empty);
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 _errorProvider.SetError(_chekedValue, "Должно быть число.");
                 ret = false;
             }
-            catch (OverflowException e)
+            catch (OverflowException)
             {
                 _errorProvider.SetError(_chekedValue, "Слишком большое число.");
                 ret = false;
@@ -217,8 +230,9 @@ namespace WorckWithReestr
                 IRow row = table.GetRow(id);
                 ret =  row.get_Value(table.FindField(fildName));
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("SharedClass.GetValueByID('{0}', '{1}', '{2}')", id, tableName, fildName));
             }
             return ret;
         }
@@ -244,8 +258,9 @@ namespace WorckWithReestr
                     ret = row.get_Value(0);
                 }
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("SharedClass.GetIDByTextValue('{0}', '{1}', '{2}', '{3}')", textValue, tableName, fildName, strongCompare));
             }
             return ret;
         }
@@ -268,8 +283,9 @@ namespace WorckWithReestr
                     ret = row.get_Value(0);
                 }
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("SharedClass.GetIDByIntValue('{0}', '{1}', '{2}')", intValue, tableName, fildName));
             }
             return ret;
         }
@@ -298,8 +314,9 @@ namespace WorckWithReestr
                     data.Add(row.get_Value(0));
                 }
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("SharedClass.GenerateAutoCompleteStringCollection('{0}', '{1}')", tableName, fildName));
             }
 
             if (data != null && data.Count > 0)
@@ -314,42 +331,8 @@ namespace WorckWithReestr
         }
         #endregion
         //---------------------------------------------------------------------------------------
-
-
-
-
-
-
-
     }
 }
-        //          !!!!!!!!!!!
-        // подумать слишком непонятная работа
-        // универсальный запрос а возвращает масив для одного поля
-        //public static ArrayList GenerateList(string tableName, string fildName)
-        //{
-        //    ArrayList data = new ArrayList();
-        //    try
-        //    {
-        //        IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
-        //        IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-        //        queryDef2.Tables = "reestr.DBO." + tableName;
-        //        queryDef2.SubFields = "DISTINCT " + fildName;
-        //        //queryDef2.WhereClause = "1 = 1"; // условие
-        //        queryDef2.PostfixClause = "ORDER BY "+fildName;
-        //        ICursor cursor = queryDef2.Evaluate2(true);
-        //        IRow row = null;
-        //        while ((row = cursor.NextRow()) != null)
-        //        {
-        //            data.Add(row.get_Value(0));
-        //        }
-        //        return data;
-        //    }
-        //    catch (Exception e) // доработать блок ошибок на разные исключения
-        //    {
-        //        return null;
-        //    }
-        //}
 
 // примеры
 

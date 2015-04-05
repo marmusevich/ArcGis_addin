@@ -45,10 +45,33 @@ namespace WorckWithReestr
 
         protected override void SetDefaultDisplayOrder()
         {
-            //0-23
-            int[] displayIndicies = { 0, 2, 4, 5, 6, 9, 11, 12, 16, 17, 18, 19, 20, 23, 7, 8, 10, 15, 21, 22, 3, 1, 13, 14 };
-            SharedClass.SetDisplayOrderByArray(dgv, displayIndicies);
 
+            int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
+                                      base.table.FindField("N_Z"),// 1
+                                      base.table.FindField("Data_Z"),// 2
+                                      base.table.FindField("Kod_Z"),// 3
+                                      base.table.FindField("N_Ish_Z"),// 4
+                                      base.table.FindField("Data_Ish"),// 5
+                                      base.table.FindField("Sodergan"),// 6
+                                      base.table.FindField("Fio_Z"),// 7
+                                      base.table.FindField("Otkaz"),// 8
+                                      base.table.FindField("Pr_Otkaz"),// 9
+                                      base.table.FindField("Tip_Doc"),// 10
+                                      base.table.FindField("Status"),// 11
+                                      base.table.FindField("Tel_Z"),// 12
+                                      base.table.FindField("Dodatok"),// 13
+                                      base.table.FindField("Cane"),// 14
+                                      base.table.FindField("Oplata"),// 15
+                                      base.table.FindField("Data_Oplata"),// 16
+                                      base.table.FindField("Doc_Oplata"),// 17
+                                      base.table.FindField("Data_Ved"),// 18
+                                      base.table.FindField("Opisan_Ved"),// 19
+                                      base.table.FindField("Forma_Ved"),// 20
+                                      base.table.FindField("Fio_Ved_Vid"),// 21
+                                      base.table.FindField("Fio_Ved_Prin"),// 22
+                                      base.table.FindField("Prim") // 23
+                                    };
+            SharedClass.SetDisplayOrderByArray(dgv, displayIndicies);
         }
 
         protected override void OtherSetupDGV()
@@ -76,8 +99,10 @@ namespace WorckWithReestr
                     e.FormattingApplied = true;
                     e.Value = DictionaryWork.GetFIOByIDFromFizLic(Convert.ToInt32(e.Value));
                 }
-                catch (FormatException ee)
-                {}
+                catch (Exception ex) // обработка ошибок
+                {
+                    Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Fio_Ved_Vid ={0}", e.Value));
+                }
             }
 
             if (e.ColumnIndex == indexFio_Ved_Prin)
@@ -87,8 +112,10 @@ namespace WorckWithReestr
                     e.FormattingApplied = true;
                     e.Value = DictionaryWork.GetFIOByIDFromFizLic(Convert.ToInt32(e.Value));
                 }
-                catch (FormatException ee)
-                { }
+                catch (Exception ex) // обработка ошибок
+                {
+                    Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Fio_Ved_Prin ={0}", e.Value));
+                }
             }
 
             if (e.ColumnIndex == indexFio_Z)
@@ -98,8 +125,10 @@ namespace WorckWithReestr
                     e.FormattingApplied = true;
                     e.Value = DictionaryWork.GetFIOByIDFromFizLic(Convert.ToInt32(e.Value));
                 }
-                catch (FormatException ee)
-                { }
+                catch (Exception ex) // обработка ошибок
+                {
+                    Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Fio_Z ={0}", e.Value));
+                }
             }
 
             //
@@ -109,14 +138,19 @@ namespace WorckWithReestr
                 {
                     e.FormattingApplied = true;
                     DataGridViewRow row = dgv.Rows[e.RowIndex];
-                    if(Convert.ToInt32(row.Cells[indexStatus].Value) == 0)
+                    string s = row.Cells[indexStatus].Value.ToString();
+                    if(s[0] == 'Ю')
                         e.Value = DictionaryWork.GetNameByIDFromJurOsoby(Convert.ToInt32(e.Value));
                     else
                         e.Value = DictionaryWork.GetFIOByIDFromFizLic(Convert.ToInt32(e.Value));
                 }
-                catch (FormatException ee)
-                { }
+                catch (Exception ex) // обработка ошибок
+                {
+                    Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Kod_Z ={0}", e.Value));
+                }
             }
+
+
 
             //if (e.ColumnIndex == indexKod_Z_code)
             //{
@@ -141,8 +175,10 @@ namespace WorckWithReestr
                     e.FormattingApplied = true;
                     e.Value = DictionaryWork.GetNameByIDFromTip_Doc(Convert.ToInt32(e.Value));
                 }
-                catch (FormatException ee)
-                { }
+                catch (Exception ex) // обработка ошибок
+                {
+                    Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Tip_Doc ={0}", e.Value));
+                }
             }
 
             //if (e.ColumnIndex == indexTip_code)

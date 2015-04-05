@@ -1,8 +1,8 @@
-﻿using ESRI.ArcGIS.Geodatabase;
+﻿//#define CONSTRUCT_FORM
+
+using ESRI.ArcGIS.Geodatabase;
 using System;
 using System.Windows.Forms;
-
-//#define 
 
 
 namespace WorckWithReestr
@@ -39,23 +39,24 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //получение данных из базы и иницилизация значений элементов управлений
         protected virtual void DB_to_FormElement(IRow row)
         {
         }
-
+        //сохранение значений элементов управления в базу данных
         protected virtual void FormElement_to_DB(IRow row)
         {
         }
-
+        //проверка полей ввода на коректность ввода
         protected virtual bool ValidatingData()
         {
             return true;
         }
-
+        //получение обобщеных данных для элементов данных (например: списки доменных значений, данные для автодополнения)
         protected virtual void DB_SharedData_to_FormElement()
         {
         }
-
+        //присвоение значений по умалчанию для полей при создании нового
         protected virtual void DB_DefaultValue_to_FormElement()
         {
         }
@@ -75,8 +76,11 @@ namespace WorckWithReestr
                 DB_DefaultValue_to_FormElement();
                 ret = true;
             }
-            catch (Exception ee) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Установка значений по умолчанию в документе  '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема установки значений по умолчанию в документе  '{0}' id {1}", NameTable, objectID));
+
                 ret = false;
             }
             return ret;
@@ -92,8 +96,10 @@ namespace WorckWithReestr
                 DB_SharedData_to_FormElement();
                 ret = true;
             }
-            catch (Exception ee) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Получения общих данных в документе  '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема получения общих данных в документе  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             return ret;
@@ -112,8 +118,10 @@ namespace WorckWithReestr
 
                 ret = true;
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Чтиение данных документа  '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема при чтиение данных документа  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             isModified = false;
@@ -152,8 +160,10 @@ namespace WorckWithReestr
                 ret = true;
 
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Сохранение данных документа '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема при сохранение данных документа '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -191,8 +201,10 @@ namespace WorckWithReestr
 
                 ret = true;
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Удаление документа '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема при удаление документа '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -228,12 +240,9 @@ namespace WorckWithReestr
 
         private void frmBaseDocument_Load(object sender, EventArgs e)
         {
-
-//#if ()
-
+#if (!CONSTRUCT_FORM)
             if (!this.GetSharedData()) // error
             {
-                SharedClass.ShowErrorMessage();
                 this.Close();
             }
 
@@ -241,7 +250,6 @@ namespace WorckWithReestr
             {
                 if (!this.ReadData()) // error
                 {
-                    SharedClass.ShowErrorMessage();
                     this.Close();
                 }
             }
@@ -249,11 +257,10 @@ namespace WorckWithReestr
             {
                 if (!this.SetDefaultValueToNew()) // error
                 {
-                    SharedClass.ShowErrorMessage();
                     this.Close();
                 }
             }
-//#endif
+#endif
         }
 
         protected void frmBaseDocument_FormClosing(object sender, FormClosingEventArgs e)
@@ -289,13 +296,6 @@ namespace WorckWithReestr
                 ret = SaveData();
                 isModified = false;
             }
-
-            //-------------------
-            if (!ret) // error
-            {
-                SharedClass.ShowErrorMessage();
-            }
-
             this.Close();
         }
 

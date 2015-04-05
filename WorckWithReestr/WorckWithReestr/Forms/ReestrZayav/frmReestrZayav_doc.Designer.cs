@@ -108,6 +108,7 @@ namespace WorckWithReestr
             this.txtSodergan.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtSodergan.Size = new System.Drawing.Size(400, 50);
             this.txtSodergan.TabIndex = 8;
+            this.txtSodergan.Validating += new System.ComponentModel.CancelEventHandler(this.txtSodergan_Validating);
             // 
             // txtTel_Z
             // 
@@ -115,6 +116,7 @@ namespace WorckWithReestr
             this.txtTel_Z.Name = "txtTel_Z";
             this.txtTel_Z.Size = new System.Drawing.Size(400, 20);
             this.txtTel_Z.TabIndex = 4;
+            this.txtTel_Z.Validating += new System.ComponentModel.CancelEventHandler(this.txtTel_Z_Validating);
             // 
             // cbStatus
             // 
@@ -141,6 +143,7 @@ namespace WorckWithReestr
             this.txtN_Ish_Z.Name = "txtN_Ish_Z";
             this.txtN_Ish_Z.Size = new System.Drawing.Size(130, 20);
             this.txtN_Ish_Z.TabIndex = 6;
+            this.txtN_Ish_Z.Validating += new System.ComponentModel.CancelEventHandler(this.txtN_Ish_Z_Validating);
             // 
             // lblCane
             // 
@@ -290,6 +293,7 @@ namespace WorckWithReestr
             this.txtForma_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtForma_Ved.Size = new System.Drawing.Size(400, 50);
             this.txtForma_Ved.TabIndex = 20;
+            this.txtForma_Ved.Validating += new System.ComponentModel.CancelEventHandler(this.txtForma_Ved_Validating);
             // 
             // dtpData_Ved
             // 
@@ -434,6 +438,7 @@ namespace WorckWithReestr
             this.txtPrim.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtPrim.Size = new System.Drawing.Size(400, 50);
             this.txtPrim.TabIndex = 10;
+            this.txtPrim.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrim_Validating);
             // 
             // lblPrim
             // 
@@ -487,6 +492,7 @@ namespace WorckWithReestr
             this.txtOpisan_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtOpisan_Ved.Size = new System.Drawing.Size(400, 50);
             this.txtOpisan_Ved.TabIndex = 19;
+            this.txtOpisan_Ved.Validating += new System.ComponentModel.CancelEventHandler(this.txtOpisan_Ved_Validating);
             // 
             // txtDoc_Oplata
             // 
@@ -494,6 +500,7 @@ namespace WorckWithReestr
             this.txtDoc_Oplata.Name = "txtDoc_Oplata";
             this.txtDoc_Oplata.Size = new System.Drawing.Size(400, 20);
             this.txtDoc_Oplata.TabIndex = 15;
+            this.txtDoc_Oplata.Validating += new System.ComponentModel.CancelEventHandler(this.txtDoc_Oplata_Validating);
             // 
             // cbOplata
             // 
@@ -529,6 +536,7 @@ namespace WorckWithReestr
             this.txtCane.Name = "txtCane";
             this.txtCane.Size = new System.Drawing.Size(130, 20);
             this.txtCane.TabIndex = 12;
+            this.txtCane.Validating += new System.ComponentModel.CancelEventHandler(this.txtCane_Validating);
             // 
             // txtPr_Otkaz
             // 
@@ -536,6 +544,7 @@ namespace WorckWithReestr
             this.txtPr_Otkaz.Name = "txtPr_Otkaz";
             this.txtPr_Otkaz.Size = new System.Drawing.Size(400, 20);
             this.txtPr_Otkaz.TabIndex = 17;
+            this.txtPr_Otkaz.Validating += new System.ComponentModel.CancelEventHandler(this.txtPr_Otkaz_Validating);
             // 
             // btnFio_Z
             // 
@@ -579,6 +588,7 @@ namespace WorckWithReestr
             this.txtDodatok.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDodatok.Size = new System.Drawing.Size(400, 50);
             this.txtDodatok.TabIndex = 9;
+            this.txtDodatok.Validating += new System.ComponentModel.CancelEventHandler(this.txtDodatok_Validating);
             // 
             // lblDodatok
             // 

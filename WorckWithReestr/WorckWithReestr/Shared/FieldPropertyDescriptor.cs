@@ -23,10 +23,6 @@ namespace WorckWithReestr
         {
             wrappedFieldIndex = fieldIndex;
 
-            // Get the field this property will represent. We will use it to
-            // get the field type and determine whether it can be edited or not. In
-            // this case, editable means the field's editable property is true and it
-            // is not a blob, geometry or raster field.
             IField wrappedField = wrappedTable.Fields.get_Field(fieldIndex);
             esriType = wrappedField.Type;
             isEditable = wrappedField.Editable &&
@@ -52,12 +48,10 @@ namespace WorckWithReestr
                 useCVDomain = value;
                 if (value)
                 {
-                    // We want the property type for this field to be string
                     netType = typeof(string);
                 }
                 else
                 {
-                    // Restore the original type
                     netType = actualType;
                 }
             }
@@ -76,7 +70,6 @@ namespace WorckWithReestr
                     {
                         if (null == cvDomainValDescriptionConverter)
                         {
-                            // We want a string converter
                             cvDomainValDescriptionConverter = TypeDescriptor.GetConverter(typeof(string));
                         }
 
@@ -86,8 +79,7 @@ namespace WorckWithReestr
                     {
                         if (null == actualValueConverter)
                         {
-                            // We want a converter for the type of this field's actual value
-                            actualValueConverter = TypeDescriptor.GetConverter(actualType);
+                             actualValueConverter = TypeDescriptor.GetConverter(actualType);
                         }
 
                         retVal = actualValueConverter;
@@ -95,8 +87,6 @@ namespace WorckWithReestr
                 }
                 else
                 {
-                    // This field doesn't have a coded value domain, the base implementation
-                    // works fine.
                     retVal = base.Converter;
                 }
 
@@ -121,7 +111,6 @@ namespace WorckWithReestr
             IRow givenRow = (IRow)component;
             try
             {
-                // Get value
                 object value = givenRow.get_Value(wrappedFieldIndex);
 
                 if ((null != cvDomain) && useCVDomain)
@@ -148,9 +137,9 @@ namespace WorckWithReestr
                         break;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex) // обработка ошибок
             {
-                System.Diagnostics.Debug.WriteLine(e.Message);
+                Logger.Write(ex);
             }
 
             return retVal;
@@ -177,10 +166,8 @@ namespace WorckWithReestr
 
             if (null != cvDomain)
             {
-                // This field has a coded value domain
                 if (!useCVDomain)
                 {
-                    // Check value is valid member of the domain
                     if (!((IDomain)cvDomain).MemberOf(value))
                     {
                         System.Windows.Forms.MessageBox.Show(string.Format(
@@ -190,8 +177,6 @@ namespace WorckWithReestr
                 }
                 else
                 {
-                    // We need to convert the string value to one of the cv domain values
-                    // Loop through all the values until we, hopefully, find a match
                     bool foundMatch = false;
                     for (int valueCount = 0; valueCount < cvDomain.CodeCount; valueCount++)
                     {
@@ -203,7 +188,6 @@ namespace WorckWithReestr
                         }
                     }
 
-                    // Did we find a match?
                     if (!foundMatch)
                     {
                         System.Windows.Forms.MessageBox.Show(string.Format(
@@ -214,7 +198,7 @@ namespace WorckWithReestr
             }
             givenRow.set_Value(wrappedFieldIndex, value);
 
-            // Start editing if we aren't already editing
+
             bool weStartedEditing = false;
             if (!wkspcEdit.IsBeingEdited())
             {
@@ -222,12 +206,10 @@ namespace WorckWithReestr
                 weStartedEditing = true;
             }
 
-            // Store change in an edit operation
             wkspcEdit.StartEditOperation();
             givenRow.Store();
             wkspcEdit.StopEditOperation();
 
-            // Stop editing if we started here
             if (weStartedEditing)
             {
                 wkspcEdit.StopEditing(true);
@@ -244,7 +226,6 @@ namespace WorckWithReestr
         {
             esriFieldType esriType = field.Type;
 
-            // Does this field have a domain?
             cvDomain = field.Domain as ICodedValueDomain;
             if ((null != cvDomain) && useCVDomain)
             {
@@ -256,7 +237,7 @@ namespace WorckWithReestr
                 switch (esriType)
                 {
                     case esriFieldType.esriFieldTypeBlob:
-                        //beyond scope of sample to deal with blob fields
+
                         return typeof(string);
                     case esriFieldType.esriFieldTypeDate:
                         return typeof(DateTime);
@@ -273,7 +254,7 @@ namespace WorckWithReestr
                     case esriFieldType.esriFieldTypeOID:
                         return typeof(Int32);
                     case esriFieldType.esriFieldTypeRaster:
-                        //beyond scope of sample to correctly display rasters
+
                         return typeof(string);
                     case esriFieldType.esriFieldTypeSingle:
                         return typeof(Single);
@@ -285,9 +266,9 @@ namespace WorckWithReestr
                         return typeof(string);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) // обработка ошибок
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                Logger.Write(ex);
                 return typeof(string);
             }
         }

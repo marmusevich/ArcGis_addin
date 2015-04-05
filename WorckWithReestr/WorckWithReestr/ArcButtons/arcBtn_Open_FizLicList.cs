@@ -14,7 +14,6 @@ namespace WorckWithReestr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-
             frmFizLic_list.ShowForView();
         }
         protected override void OnUpdate()

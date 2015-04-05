@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define CONSTRUCT_FORM
+
+using System;
 using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
@@ -32,10 +34,12 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //получить форму элемента справочника
         protected virtual frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
             return null;
         }
+        //устоновит порядок колонок по умолчанию
         protected virtual void SetDefaultDisplayOrder()
         {
             
@@ -108,12 +112,11 @@ namespace WorckWithReestr
                 dgv.Refresh();
                 ret = true;
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex);
                 ret = false;
             }
-
-
             return ret;
         }
 
@@ -168,15 +171,12 @@ namespace WorckWithReestr
 
         private void frmBaseSpr_list_Load(object sender, EventArgs e)
         {
-            if (this.ReadData()) // -ok
+#if (!CONSTRUCT_FORM)
+            if(!this.ReadData()) // -ok
             {
-
-            }
-            else // error
-            {
-                SharedClass.ShowErrorMessage();
                 this.Close();
             }
+#endif
         }
 
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)

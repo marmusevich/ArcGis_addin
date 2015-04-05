@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define CONSTRUCT_FORM
+
+using System;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Geodatabase;
 
@@ -34,19 +36,20 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //получение данных из базы и иницилизация значений элементов управлений
         protected virtual void DB_to_FormElement(IRow row)
         {
         }
-
+        //сохранение значений элементов управления в базу данных
         protected virtual void FormElement_to_DB(IRow row)
         {
         }
-
+        //проверка полей ввода на коректность ввода
         protected virtual bool ValidatingData()
         {
             return true;
         }
-
+        //получение обобщеных данных для элементов данных (например: списки доменных значений, данные для автодополнения)
         protected virtual void DB_SharedData_to_FormElement()
         {
         }
@@ -68,8 +71,10 @@ namespace WorckWithReestr
                 DB_SharedData_to_FormElement();
                 ret = true;
             }
-            catch (Exception ee) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("олучения общих данных в справочника  '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             return ret;
@@ -88,8 +93,10 @@ namespace WorckWithReestr
 
                 ret = true;
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема при чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             isModified = false;
@@ -127,8 +134,10 @@ namespace WorckWithReestr
 
                 ret = true;
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Сохранение данных справочника '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -166,8 +175,10 @@ namespace WorckWithReestr
 
                 ret = true;
             }
-            catch (Exception e) // доработать блок ошибок на разные исключения
+            catch (Exception ex) // обработка ошибок
             {
+                Logger.Write(ex, string.Format("Удаление справочника '{0}' id {1}", NameTable, objectID));
+                SharedClass.ShowErrorMessage(string.Format("Проблема при удаление справочника '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -204,9 +215,9 @@ namespace WorckWithReestr
 
         private void frmBaseSpr_element_Load(object sender, EventArgs e)
         {
+#if (!CONSTRUCT_FORM)
             if (!this.GetSharedData()) // error
             {
-                SharedClass.ShowErrorMessage();
                 this.Close();
             }
 
@@ -214,10 +225,10 @@ namespace WorckWithReestr
             {
                 if (!this.ReadData()) // error
                 {
-                    SharedClass.ShowErrorMessage();
                     this.Close();
                 }
             }
+#endif
         }
 
         protected void frmBaseSpr_element_FormClosing(object sender, FormClosingEventArgs e)
@@ -252,12 +263,6 @@ namespace WorckWithReestr
 
                 ret = SaveData();
                 isModified = false;
-            }
-
-            //-------------------
-            if (!ret) // error
-            {
-                SharedClass.ShowErrorMessage();
             }
 
             this.Close();

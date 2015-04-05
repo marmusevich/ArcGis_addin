@@ -121,12 +121,12 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------
         #region методы проверок полей ввода
         // проверка текстового поля на значения из справочника физ лиц и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsContainsFizLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, int id, TextBox _codeValue = null)
+        public static bool CheckValueIsContainsFizLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, ref int id, TextBox _codeValue = null)
         {
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "fizichni_osoby", "П_І_Б");
+            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "fizichni_osoby", "П_І_Б", true);
 
             if (id_temp != -1)
             {
@@ -144,12 +144,12 @@ namespace WorckWithReestr
             return ret;
         }
         // проверка текстового поля на значения из справочника юр лиц и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsContainsJurLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, int id, TextBox _codeValue = null)
+        public static bool CheckValueIsContainsJurLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, ref int id, TextBox _codeValue = null)
         {
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "jur_osoby", "назва");
+            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "jur_osoby", "назва", true);
 
             if (id_temp != -1)
             {
@@ -166,14 +166,13 @@ namespace WorckWithReestr
             }
             return ret;
         }
-
         // проверка текстового поля на значения из справочника типы документов и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsContainsTip_Doc_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, int id, TextBox _codeValue = null)
+        public static bool CheckValueIsContainsTip_Doc_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, ref int id, TextBox _codeValue = null)
         {
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "Tip_Doc", "Tip_Doc");
+            id_temp = SharedClass.GetIDByTextValue(_chekedValue.Text, "Tip_Doc", "Tip_Doc", true);
 
             if (id_temp != -1)
             {

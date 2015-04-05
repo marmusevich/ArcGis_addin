@@ -129,18 +129,18 @@ namespace WorckWithReestr
         {
             bool ret = base.ValidatingData();
             ret = SharedClass.CheckValueIsInt_SetError(txtN_Z, errorProvider) && ret;
-            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Z, errorProvider, mFio_Z) && ret;
-            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Vid, errorProvider, mFio_Ved_Vid) && ret;
-            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Prin, errorProvider, mFio_Ved_Prin) && ret;
+            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Z, errorProvider, ref mFio_Z) && ret;
+            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Vid, errorProvider, ref mFio_Ved_Vid) && ret;
+            ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Prin, errorProvider, ref mFio_Ved_Prin) && ret;
             if (cbStatus.SelectedIndex == 0)
             {
-                ret = DictionaryWork.CheckValueIsContainsJurLic_SetError(txtKod_Z, errorProvider, mKod_Z, txtKod_Z_code) && ret;
+                ret = DictionaryWork.CheckValueIsContainsJurLic_SetError(txtKod_Z, errorProvider, ref mKod_Z, txtKod_Z_code) && ret;
             }
             else
             {
-                ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtKod_Z, errorProvider, mKod_Z, txtKod_Z_code) && ret;
+                ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtKod_Z, errorProvider, ref mKod_Z, txtKod_Z_code) && ret;
             }
-            ret = DictionaryWork.CheckValueIsContainsTip_Doc_SetError(txtTip_Doc, errorProvider, mTip_Doc, txtTip_Doc_code) && ret;
+            ret = DictionaryWork.CheckValueIsContainsTip_Doc_SetError(txtTip_Doc, errorProvider, ref mTip_Doc, txtTip_Doc_code) && ret;
 
 
             return ret;
@@ -153,7 +153,7 @@ namespace WorckWithReestr
             ddaStatus = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Status")).Domain);
             cbStatus.Items.AddRange(ddaStatus.ToArray());
             o = base.table.Fields.get_Field(base.table.FindField("Status")).DefaultValue;
-            cbStatus.SelectedIndex = ddaStatus.GetIndexByValue(o);
+            cbStatus.SelectedIndex = ddaStatus.GetIndexByValue(Convert.ToInt16(o));
 
             ddaOtkaz = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Otkaz")).Domain);
             cbOtkaz.Items.AddRange(ddaOtkaz.ToArray());
@@ -182,7 +182,7 @@ namespace WorckWithReestr
         protected override void DB_DefaultValue_to_FormElement()
         {
             //алгоритм генерации номера, запрос большего из базы или последнего
-            txtN_Z.Text = "1";
+            txtN_Z.Text = JurnalWork.GetNextNumerToReestrZayav().ToString();
         }
 
         private void OnChangedTipDoc()
@@ -240,25 +240,83 @@ namespace WorckWithReestr
 
         private void frmReestrZayav_doc_Load(object sender, EventArgs e)
         {
-            //switch (editMode)
-            //{
-            //    case EditMode.ADD:
-            //        //Text = "Добавление нового физического лица";
-            //        break;
-            //    case EditMode.EDIT:
-            //        //Text = "Корректировка данных физического лица";
-            //        break;
-            //    case EditMode.DELETE:
-            //        //Text = "Удаление физического лица";
-            //        btnOk.Text = "Удалить";
-            //        //cbIsWorker.Enabled = false;
+            switch (editMode)
+            {
+                case EditMode.ADD:
+                    //Text = "Добавление нового заявления / обращения";
+                    break;
+                case EditMode.EDIT:
+                    //Text = "Корректировка данных заявления / обращения";
+                    break;
+                case EditMode.DELETE:
+                    //Text = "Удаление заявления / обращения";
+                    btnOk.Text = "Удалить";
+                    //cbIsWorker.Enabled = false;
+                    txtSodergan.Enabled = false;
+                    txtTel_Z.Enabled = false;
+                    cbStatus.Enabled = false;
+                    dtpData_Ish.Enabled = false;
+                    txtN_Ish_Z.Enabled = false;
+                    lblCane.Enabled = false;
+                    lblPr_Otkaz.Enabled = false;
+                    lblOtkaz.Enabled = false;
+                    lblFio_Z.Enabled = false;
+                    lblDoppData.Enabled = false;
+                    lblFirstData.Enabled = false;
+                    dtpData_Z.Enabled = false;
+                    lblSodergan.Enabled = false;
+                    lblTel_Z.Enabled = false;
+                    lblStatus.Enabled = false;
+                    lblTip_Doc.Enabled = false;
+                    lblData_Ish.Enabled = false;
+                    lblN_Ish_Z.Enabled = false;
+                    lblData_Z.Enabled = false;
+                    lblKod_Z.Enabled = false;
+                    txtN_Z.Enabled = false;
+                    lblN_Z.Enabled = false;
+                    txtForma_Ved.Enabled = false;
+                    dtpData_Ved.Enabled = false;
+                    dtpData_Oplata.Enabled = false;
+                    lblFio_Ved_Prin.Enabled = false;
+                    lblFio_Ved_Vid.Enabled = false;
+                    lblForma_Ved.Enabled = false;
+                    lblOpisan_Ved.Enabled = false;
+                    lblData_Oplata.Enabled = false;
+                    lblDoc_Oplata.Enabled = false;
+                    lblData_Ved.Enabled = false;
+                    lblOplata.Enabled = false;
+                    lblTip_Doc_code.Enabled = false;
+                    lblServicesProvided.Enabled = false;
+                    txtKod_Z.Enabled = false;
+                    btnKod_Z.Enabled = false;
+                    txtTip_Doc.Enabled = false;
+                    btnTip_Doc.Enabled = false;
+                    txtPrim.Enabled = false;
+                    lblPrim.Enabled = false;
+                    btnFio_Ved_Vid.Enabled = false;
+                    txtFio_Ved_Vid.Enabled = false;
+                    btnFio_Ved_Prin.Enabled = false;
+                    txtFio_Ved_Prin.Enabled = false;
+                    txtOpisan_Ved.Enabled = false;
+                    txtDoc_Oplata.Enabled = false;
+                    cbOplata.Enabled = false;
+                    txtTip_Doc_code.Enabled = false;
+                    cbOtkaz.Enabled = false;
+                    txtCane.Enabled = false;
+                    txtPr_Otkaz.Enabled = false;
+                    btnFio_Z.Enabled = false;
+                    txtFio_Z.Enabled = false;
+                    txtKod_Z_code.Enabled = false;
+                    lblKod_Z_code.Enabled = false;
+                    txtDodatok.Enabled = false;
+                    lblDodatok.Enabled = false;
 
-            //        break;
+                    break;
 
-            //    default:
-            //        this.Close();
-            //        return;
-            //}
+                default:
+                    this.Close();
+                    return;
+            }
         }
 
         #endregion
@@ -269,14 +327,18 @@ namespace WorckWithReestr
         {
             string filteredString = "";
             mFio_Z = frmFizLic_list.ShowForSelect(filteredString);
-            ValidatingData();
+            OnChangedFio_Z();
+            errorProvider.SetError(txtFio_Z, String.Empty);
+            //ValidatingData();
         }
 
         private void btnTip_Doc_Click(object sender, EventArgs e)
         {
             string filteredString = "";
             mTip_Doc = frmTipDoc_list.ShowForSelect(filteredString);
-            ValidatingData();
+            OnChangedTipDoc();
+            errorProvider.SetError(txtTip_Doc, String.Empty);
+            //ValidatingData();
         }
 
         private void btnKod_Z_Click(object sender, EventArgs e)
@@ -291,21 +353,27 @@ namespace WorckWithReestr
                 string filteredString = "";
                 mKod_Z = frmFizLic_list.ShowForSelect(filteredString);
             }
-            ValidatingData();
+            OnChangedKod_Z();
+            errorProvider.SetError(txtKod_Z, String.Empty);
+            //ValidatingData();
         }
 
         private void btnFio_Ved_Prin_Click(object sender, EventArgs e)
         {
             string filteredString = "";
             mFio_Ved_Prin = frmFizLic_list.ShowForSelect(filteredString);
-            ValidatingData();
+            OnChangedFio_Ved_Prin();
+            errorProvider.SetError(txtFio_Ved_Prin, String.Empty);
+            //ValidatingData();
         }
 
         private void btnFio_Ved_Vid_Click(object sender, EventArgs e)
         {
             string filteredString = "";
             mFio_Ved_Vid = frmFizLic_list.ShowForSelect(filteredString);
-            ValidatingData();
+            OnChangedFio_Ved_Vid();
+            errorProvider.SetError(txtFio_Ved_Vid, String.Empty);
+            //ValidatingData();
         }
         #endregion
 
@@ -325,6 +393,7 @@ namespace WorckWithReestr
 
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isModified = true;
             mKod_Z = -1;
             txtKod_Z.Text = "";
             txtKod_Z_code.Text = "";
@@ -337,6 +406,7 @@ namespace WorckWithReestr
 
         private void cbOplata_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isModified = true;
             if (cbOplata.SelectedIndex == 0)
             {
                 dtpData_Oplata.Enabled = true;
@@ -353,6 +423,7 @@ namespace WorckWithReestr
 
         private void cbOtkaz_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isModified = true;
             if (cbOtkaz.SelectedIndex == 0)
             {
                 txtPr_Otkaz.Enabled = false;
@@ -391,29 +462,96 @@ namespace WorckWithReestr
 
         private void txtKod_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            isModified = true;
             e.Cancel = !ValidatingData();
         }
 
         private void txtFio_Ved_Vid_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            isModified = true;
             e.Cancel = !ValidatingData();
         }
 
         private void txtFio_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            isModified = true;
             e.Cancel = !ValidatingData();
         }
 
         private void txtFio_Ved_Prin_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            isModified = true;
             e.Cancel = !ValidatingData();
         }
 
         private void txtTip_Doc_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            isModified = true;
             e.Cancel = !ValidatingData();
         }
+
+        private void txtTel_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtN_Ish_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtSodergan_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtDodatok_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtPrim_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtCane_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtDoc_Oplata_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtPr_Otkaz_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtOpisan_Ved_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
+        private void txtForma_Ved_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+
+        }
+
         #endregion
+
 
     }
 }
