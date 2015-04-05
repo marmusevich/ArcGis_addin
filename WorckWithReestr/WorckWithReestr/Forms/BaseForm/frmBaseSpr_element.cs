@@ -228,6 +228,19 @@ namespace WorckWithReestr
                     this.Close();
                 }
             }
+
+            //отключить контролы для режыма удаления
+            if (editMode == EditMode.DELETE)
+            {
+                foreach (System.Windows.Forms.Control c in Controls)
+                {
+                    c.Enabled = false;
+                }
+                btnOk.Text = "Удалить";
+                btnOk.Enabled = true;
+                btnCancel.Enabled = true;
+            }
+
 #endif
         }
 

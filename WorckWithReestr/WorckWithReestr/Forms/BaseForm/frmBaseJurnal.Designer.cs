@@ -30,7 +30,7 @@ namespace WorckWithReestr
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsdEdit = new System.Windows.Forms.ToolStripButton();
@@ -40,6 +40,10 @@ namespace WorckWithReestr
             this.cmsAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.dtpDataOt = new System.Windows.Forms.DateTimePicker();
+            this.dtpDatePo = new System.Windows.Forms.DateTimePicker();
+            this.lblDataOt = new System.Windows.Forms.Label();
+            this.lblDatePo = new System.Windows.Forms.Label();
             this.tsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.cmsMain.SuspendLayout();
@@ -53,7 +57,7 @@ namespace WorckWithReestr
             this.tsdDelete});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(308, 25);
+            this.tsMain.Size = new System.Drawing.Size(544, 25);
             this.tsMain.TabIndex = 8;
             this.tsMain.Text = "Панель управления";
             // 
@@ -94,23 +98,23 @@ namespace WorckWithReestr
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.ContextMenuStrip = this.cmsMain;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv.Location = new System.Drawing.Point(12, 28);
+            this.dgv.Location = new System.Drawing.Point(12, 54);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(284, 235);
+            this.dgv.Size = new System.Drawing.Size(520, 209);
             this.dgv.TabIndex = 7;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
@@ -145,11 +149,47 @@ namespace WorckWithReestr
             this.cmsDelete.Text = "Удалить";
             this.cmsDelete.Click += new System.EventHandler(this.cmsDelete_Click);
             // 
+            // dtpDataOt
+            // 
+            this.dtpDataOt.Location = new System.Drawing.Point(60, 27);
+            this.dtpDataOt.Name = "dtpDataOt";
+            this.dtpDataOt.Size = new System.Drawing.Size(119, 20);
+            this.dtpDataOt.TabIndex = 9;
+            this.dtpDataOt.ValueChanged += new System.EventHandler(this.dtpDataOt_ValueChanged);
+            // 
+            // dtpDatePo
+            // 
+            this.dtpDatePo.Location = new System.Drawing.Point(211, 27);
+            this.dtpDatePo.Name = "dtpDatePo";
+            this.dtpDatePo.Size = new System.Drawing.Size(119, 20);
+            this.dtpDatePo.TabIndex = 10;
+            this.dtpDatePo.ValueChanged += new System.EventHandler(this.dtpDatePo_ValueChanged);
+            // 
+            // lblDataOt
+            // 
+            this.lblDataOt.Location = new System.Drawing.Point(12, 27);
+            this.lblDataOt.Name = "lblDataOt";
+            this.lblDataOt.Size = new System.Drawing.Size(43, 23);
+            this.lblDataOt.TabIndex = 11;
+            this.lblDataOt.Text = "Дата с";
+            // 
+            // lblDatePo
+            // 
+            this.lblDatePo.Location = new System.Drawing.Point(185, 27);
+            this.lblDatePo.Name = "lblDatePo";
+            this.lblDatePo.Size = new System.Drawing.Size(19, 23);
+            this.lblDatePo.TabIndex = 12;
+            this.lblDatePo.Text = "по";
+            // 
             // frmBaseJurnal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 275);
+            this.ClientSize = new System.Drawing.Size(544, 275);
+            this.Controls.Add(this.lblDatePo);
+            this.Controls.Add(this.lblDataOt);
+            this.Controls.Add(this.dtpDatePo);
+            this.Controls.Add(this.dtpDataOt);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.dgv);
             this.Name = "frmBaseJurnal";
@@ -176,5 +216,9 @@ namespace WorckWithReestr
         private ToolStripMenuItem cmsAdd;
         private ToolStripMenuItem cmsEdit;
         private ToolStripMenuItem cmsDelete;
+        private DateTimePicker dtpDataOt;
+        private DateTimePicker dtpDatePo;
+        private Label lblDataOt;
+        private Label lblDatePo;
     }
 }

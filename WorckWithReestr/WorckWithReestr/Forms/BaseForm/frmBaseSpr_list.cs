@@ -1,4 +1,4 @@
-﻿//#define CONSTRUCT_FORM
+﻿#define CONSTRUCT_FORM
 
 using System;
 using System.Windows.Forms;

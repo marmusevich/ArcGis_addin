@@ -72,11 +72,7 @@ namespace WorckWithReestr
                     break;
                 case EditMode.DELETE:
                     Text = "Удаление типа документа";
-                    btnOk.Text = "Удалить";
-                    txtTip_Doc.Enabled = false;
-                    txtKod_Doc.Enabled = false;
                     break;
-
                 default:
                     this.Close();
                     return;

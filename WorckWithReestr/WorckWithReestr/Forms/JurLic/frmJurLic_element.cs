@@ -93,13 +93,7 @@ namespace WorckWithReestr
                     break;
                 case EditMode.DELETE:
                     Text = "Удаление юридического лица";
-                    btnOk.Text = "Удалить";
-                    txtName.Enabled = false;
-                    txtOKPO.Enabled = false;
-                    cbFV.Enabled = false;
-
                     break;
-
                 default:
                     this.Close();
                     return;

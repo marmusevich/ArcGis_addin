@@ -243,76 +243,14 @@ namespace WorckWithReestr
             switch (editMode)
             {
                 case EditMode.ADD:
-                    //Text = "Добавление нового заявления / обращения";
+                    Text = "Добавление нового заявления / обращения";
                     break;
                 case EditMode.EDIT:
-                    //Text = "Корректировка данных заявления / обращения";
+                    Text = "Корректировка данных заявления / обращения";
                     break;
                 case EditMode.DELETE:
-                    //Text = "Удаление заявления / обращения";
-                    btnOk.Text = "Удалить";
-                    //cbIsWorker.Enabled = false;
-                    txtSodergan.Enabled = false;
-                    txtTel_Z.Enabled = false;
-                    cbStatus.Enabled = false;
-                    dtpData_Ish.Enabled = false;
-                    txtN_Ish_Z.Enabled = false;
-                    lblCane.Enabled = false;
-                    lblPr_Otkaz.Enabled = false;
-                    lblOtkaz.Enabled = false;
-                    lblFio_Z.Enabled = false;
-                    lblDoppData.Enabled = false;
-                    lblFirstData.Enabled = false;
-                    dtpData_Z.Enabled = false;
-                    lblSodergan.Enabled = false;
-                    lblTel_Z.Enabled = false;
-                    lblStatus.Enabled = false;
-                    lblTip_Doc.Enabled = false;
-                    lblData_Ish.Enabled = false;
-                    lblN_Ish_Z.Enabled = false;
-                    lblData_Z.Enabled = false;
-                    lblKod_Z.Enabled = false;
-                    txtN_Z.Enabled = false;
-                    lblN_Z.Enabled = false;
-                    txtForma_Ved.Enabled = false;
-                    dtpData_Ved.Enabled = false;
-                    dtpData_Oplata.Enabled = false;
-                    lblFio_Ved_Prin.Enabled = false;
-                    lblFio_Ved_Vid.Enabled = false;
-                    lblForma_Ved.Enabled = false;
-                    lblOpisan_Ved.Enabled = false;
-                    lblData_Oplata.Enabled = false;
-                    lblDoc_Oplata.Enabled = false;
-                    lblData_Ved.Enabled = false;
-                    lblOplata.Enabled = false;
-                    lblTip_Doc_code.Enabled = false;
-                    lblServicesProvided.Enabled = false;
-                    txtKod_Z.Enabled = false;
-                    btnKod_Z.Enabled = false;
-                    txtTip_Doc.Enabled = false;
-                    btnTip_Doc.Enabled = false;
-                    txtPrim.Enabled = false;
-                    lblPrim.Enabled = false;
-                    btnFio_Ved_Vid.Enabled = false;
-                    txtFio_Ved_Vid.Enabled = false;
-                    btnFio_Ved_Prin.Enabled = false;
-                    txtFio_Ved_Prin.Enabled = false;
-                    txtOpisan_Ved.Enabled = false;
-                    txtDoc_Oplata.Enabled = false;
-                    cbOplata.Enabled = false;
-                    txtTip_Doc_code.Enabled = false;
-                    cbOtkaz.Enabled = false;
-                    txtCane.Enabled = false;
-                    txtPr_Otkaz.Enabled = false;
-                    btnFio_Z.Enabled = false;
-                    txtFio_Z.Enabled = false;
-                    txtKod_Z_code.Enabled = false;
-                    lblKod_Z_code.Enabled = false;
-                    txtDodatok.Enabled = false;
-                    lblDodatok.Enabled = false;
-
+                    Text = "Удаление заявления / обращения";
                     break;
-
                 default:
                     this.Close();
                     return;

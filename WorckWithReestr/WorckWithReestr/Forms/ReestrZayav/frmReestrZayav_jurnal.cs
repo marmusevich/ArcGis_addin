@@ -36,6 +36,7 @@ namespace WorckWithReestr
             base.NameWorkspace = "reestr";
             base.NameTable = "reestr.DBO.Kn_Reg_Zayv";
             base.NameSortFild = "Data_Z";
+            base.NameDataFilteredFild = "Data_Z";
         }
 
         protected override frmBaseDocument GetDocumentForm(int _objectID, frmBaseDocument.EditMode _editMode)
@@ -89,6 +90,17 @@ namespace WorckWithReestr
 
             dgv.CellFormatting += OnCellFormatting;
         }
+
+        //вернуть строку доаолнительных условий
+        protected override string GetStringAddetConditions()
+        {
+            string ret = base.GetStringAddetConditions();
+
+            return ret;
+        }
+
+
+
 
         private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

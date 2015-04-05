@@ -89,14 +89,7 @@ namespace WorckWithReestr
                     break;
                 case EditMode.DELETE:
                     Text = "Удаление физического лица";
-                    btnOk.Text = "Удалить";
-                    txtFIO.Enabled = false;
-                    txtINN.Enabled = false;
-                    txtCategor.Enabled = false;
-                    cbIsWorker.Enabled = false;
-
                     break;
-
                 default:
                     this.Close();
                     return;

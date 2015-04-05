@@ -20,6 +20,7 @@ namespace WorckWithReestr
         protected string NameWorkspace = "";
         protected string NameTable = "";
         protected string NameSortFild = "";
+        protected string NameDataFilteredFild = "";
         protected ITable table;
         protected TableWraper tableWrapper = null;
 
@@ -45,6 +46,12 @@ namespace WorckWithReestr
         protected virtual void OtherSetupDGV()
         {
 
+        }
+
+        //вернуть строку доаолнительных условий
+        protected virtual string GetStringAddetConditions()
+        {
+            return "";
         }
 
 
@@ -102,8 +109,7 @@ namespace WorckWithReestr
 
                 this.Text = (table as IObjectClass).AliasName;
 
-
-                tableWrapper = new TableWraper(table, NameSortFild);
+                tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
                 tableWrapper.AllowNew = false;
                 tableWrapper.AllowRemove = false;
 
@@ -127,6 +133,37 @@ namespace WorckWithReestr
             }
             return ret;
         }
+
+        private IQueryFilter BuildConditions()
+        {
+            IQueryFilter ret = null;
+            string dopUsl = GetStringAddetConditions();
+            string usl = "";
+
+
+            if (NameDataFilteredFild != "")
+            {
+                usl = string.Format(" ({0} >= '{1:yyy.MM.dd}' and {0} <= '{2:yyy.MM.dd}  23:59:59.9999999') ", NameDataFilteredFild, dtpDataOt.Value, dtpDatePo.Value);
+
+                if (dopUsl != "")
+                    usl += " and " + dopUsl;
+            }
+            else
+            {
+                if (dopUsl != "")
+                    usl = dopUsl;
+            }
+
+            if (usl != "")
+            {
+                ret = new QueryFilter();// Class();
+                ret.WhereClause = usl;
+            }
+
+
+            return ret;
+        }
+
 
         private void SetupDGV()
         {
@@ -178,6 +215,8 @@ namespace WorckWithReestr
 
         private void frmBaseJurnal_Load(object sender, System.EventArgs e)
         {
+            dtpDataOt.Value = SharedClass.GetFirstMonthDayDate( DateTime.Now );
+            dtpDatePo.Value = SharedClass.GetLastMonthDayDate( DateTime.Now );
 #if (!CONSTRUCT_FORM)
             if (!this.ReadData()) // -ok
             {
@@ -248,7 +287,28 @@ namespace WorckWithReestr
                     EditRec(id);
             }
         }
+
+        private void dtpDataOt_ValueChanged(object sender, EventArgs e)
+        {
+            if (tableWrapper != null)
+            {
+                tableWrapper.QueryFilter = BuildConditions();
+                tableWrapper.UpdateData();
+                dgv.Refresh();
+            }
+        }
+
+        private void dtpDatePo_ValueChanged(object sender, EventArgs e)
+        {
+            if (tableWrapper != null)
+            {
+                tableWrapper.QueryFilter = BuildConditions();
+                tableWrapper.UpdateData();
+                dgv.Refresh();
+            }
+        }
         #endregion
+
 
 
     }

@@ -21,7 +21,7 @@ namespace WorckWithReestr
         public TableWraper(ITable tableToWrap, string defaultFildsToSorted = null, IQueryFilter queryFiltered = null)
         {
             wrappedTable = tableToWrap;
-            queryFilter = queryFiltered;
+            QueryFilter = queryFiltered;
             defaultSortedFilds = defaultFildsToSorted;
             GenerateFakeProperties();
             GetData(defaultFildsToSorted);
@@ -205,7 +205,7 @@ namespace WorckWithReestr
             if (fildName == null)
             {
                 // без сортировки
-                cur = wrappedTable.Search(queryFilter, false);
+                cur = wrappedTable.Search(QueryFilter, false);
             }
             else
             {
@@ -215,8 +215,8 @@ namespace WorckWithReestr
                 tableSort.Fields = fildName;
                 tableSort.set_Ascending(fildName, isSortDirectionAscending);
 
-                if (queryFilter != null)
-                    tableSort.QueryFilter = queryFilter;
+                if (QueryFilter != null)
+                    tableSort.QueryFilter = QueryFilter;
                 if (selectionSet != null)
                     tableSort.SelectionSet = selectionSet;
 
@@ -334,7 +334,7 @@ namespace WorckWithReestr
         protected string defaultSortedFilds;
 
         // для фильтрации
-        protected IQueryFilter queryFilter = null;
+        public IQueryFilter QueryFilter { get; set; }
         protected ISelectionSet selectionSet = null;
 
         //для сортировки

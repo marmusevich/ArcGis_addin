@@ -35,11 +35,12 @@ namespace WorckWithReestr
             // frmReestrZayav_jurnal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = base.ClientSize;
             this.Name = "frmReestrZayav_jurnal";
             this.Text = "frmReestrZayav_jurnal";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
