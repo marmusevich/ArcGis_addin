@@ -1,5 +1,6 @@
 ﻿using ESRI.ArcGIS.Geodatabase;
 using System;
+using System.Windows.Forms;
 
 // получить умолчательные значения для справочников
 // привязать к справочнику
@@ -39,7 +40,7 @@ namespace WorckWithReestr
             dtpData_Oplata.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Oplata")));
             dtpData_Ved.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Ved")));
 
-            ////простые тексты  
+            //простые тексты  
             txtTel_Z.Text = "" + row.get_Value(base.table.FindField("Tel_Z")) as string;
             txtPrim.Text = "" + row.get_Value(base.table.FindField("Prim")) as string;
             txtOpisan_Ved.Text = "" + row.get_Value(base.table.FindField("Opisan_Ved")) as string;
@@ -81,10 +82,8 @@ namespace WorckWithReestr
             OnChangedFio_Ved_Prin();
             OnChangedTipDoc();
 
-            // порядковый номер ??
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             txtN_Z.Text = "" + row.get_Value(base.table.FindField("N_Z")) as string;
-
         }
 
         protected override void FormElement_to_DB(IRow row)
@@ -119,9 +118,13 @@ namespace WorckWithReestr
             row.set_Value(base.table.FindField("Fio_Ved_Prin"), mFio_Ved_Prin);
             row.set_Value(base.table.FindField("Fio_Z"), mFio_Z);
 
-            // порядковый номер ??
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             int N_Z = Convert.ToInt32(txtN_Z.Text);
+            if (DocumentWork.IsNumerReestrZayavExist(N_Z))
+            {
+                if (MessageBox.Show(string.Format("Документ с номером [{0}] уже есть. \n Згенерировать следующий доступный? ",N_Z), "Не унекальный номер", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    N_Z = DocumentWork.GetNextNumerToReestrZayav();
+            }
             row.set_Value(base.table.FindField("N_Z"), N_Z);
         }
 
@@ -165,18 +168,15 @@ namespace WorckWithReestr
             o = base.table.Fields.get_Field(base.table.FindField("Oplata")).DefaultValue;
             cbOplata.SelectedIndex = ddaOplata.GetIndexByValue(Convert.ToInt16(o));
 
-
             // справочники
             DictionaryWork.EnableAutoComlectToFizLic(txtFio_Z);
             DictionaryWork.EnableAutoComlectToFizLic(txtFio_Ved_Prin);
             DictionaryWork.EnableAutoComlectToFizLic(txtFio_Ved_Vid);
+            DictionaryWork.EnableAutoComlectToFizLic(txtTip_Doc);
             if (cbStatus.SelectedIndex == 0)
                 DictionaryWork.EnableAutoComlectToJurLic(txtKod_Z);
             else
                 DictionaryWork.EnableAutoComlectToFizLic(txtKod_Z);
-
-            DictionaryWork.EnableAutoComlectToFizLic(txtTip_Doc);
-
         }
 
         protected override void DB_DefaultValue_to_FormElement()
@@ -221,7 +221,6 @@ namespace WorckWithReestr
         }
 
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -427,72 +426,79 @@ namespace WorckWithReestr
             isModified = true;
             e.Cancel = !ValidatingData();
         }
-
+        
+        //---
         private void txtTel_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtN_Ish_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtSodergan_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtDodatok_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtPrim_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtCane_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtDoc_Oplata_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtPr_Otkaz_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtOpisan_Ved_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
         private void txtForma_Ved_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             isModified = true;
-
         }
 
-        #endregion
-
-        private void frmReestrZayav_doc_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void dtpData_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            isModified = true;
         }
+
+        private void dtpData_Ish_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+        }
+
+        private void dtpData_Oplata_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+        }
+
+        private void dtpData_Ved_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+        }
+        
+        #endregion
 
 
     }
@@ -521,9 +527,6 @@ namespace WorckWithReestr
 //Prim, Type = esriFieldTypeString, AliasName = Примечание 
 //Dodatok, Type = esriFieldTypeString, AliasName = Перелік доданніх матеріалів 
 //Cane, Type = esriFieldTypeString, AliasName = Канцелярскій № входящій
-
-
-
 
 
 ////доменные значения

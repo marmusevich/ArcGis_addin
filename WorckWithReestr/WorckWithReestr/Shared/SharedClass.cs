@@ -276,7 +276,7 @@ namespace WorckWithReestr
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
                 queryDef2.Tables = "reestr.DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
-                queryDef2.WhereClause = fildName = " = " + intValue.ToString();
+                queryDef2.WhereClause = fildName + " = " + intValue.ToString();
                 //queryDef2.PostfixClause = "ORDER BY " + fildName;
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;

@@ -5,6 +5,8 @@ namespace WorckWithReestr
 {
     public partial class frmReestrZayav_jurnal : frmBaseJurnal
     {
+        DomeinDataAdapter ddaStatus;
+
         int indexFio_Ved_Vid;
         int indexFio_Ved_Prin;
         int indexFio_Z;
@@ -77,6 +79,10 @@ namespace WorckWithReestr
 
         protected override void OtherSetupDGV()
         {
+            //доменные значения
+            object o = null;
+            ddaStatus = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Status")).Domain);
+
             indexFio_Ved_Vid = dgv.Columns["Fio_Ved_Vid"].Index;
             indexFio_Ved_Prin = dgv.Columns["Fio_Ved_Prin"].Index;
             indexFio_Z = dgv.Columns["Fio_Z"].Index;
@@ -98,9 +104,6 @@ namespace WorckWithReestr
 
             return ret;
         }
-
-
-
 
         private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -129,7 +132,6 @@ namespace WorckWithReestr
                     Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Fio_Ved_Prin ={0}", e.Value));
                 }
             }
-
             if (e.ColumnIndex == indexFio_Z)
             {
                 try
@@ -142,17 +144,14 @@ namespace WorckWithReestr
                     Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Fio_Z ={0}", e.Value));
                 }
             }
-
-            //
             if (e.ColumnIndex == indexKod_Z)
             {
                 try
                 {
                     e.FormattingApplied = true;
                     DataGridViewRow row = dgv.Rows[e.RowIndex];
-                    string s = row.Cells[indexStatus].Value.ToString();
-                    if(s[0] == 'Ю')
-                        e.Value = DictionaryWork.GetNameByIDFromJurOsoby(Convert.ToInt32(e.Value));
+                    if (ddaStatus.GetIndexByText(row.Cells[indexStatus].Value.ToString()) == 0)
+                       e.Value = DictionaryWork.GetNameByIDFromJurOsoby(Convert.ToInt32(e.Value));
                     else
                         e.Value = DictionaryWork.GetFIOByIDFromFizLic(Convert.ToInt32(e.Value));
                 }
@@ -161,9 +160,6 @@ namespace WorckWithReestr
                     Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Kod_Z ={0}", e.Value));
                 }
             }
-
-
-
             //if (e.ColumnIndex == indexKod_Z_code)
             //{
             //    try
@@ -179,7 +175,6 @@ namespace WorckWithReestr
             //    catch (FormatException ee)
             //    { }
             //}
-
             if (e.ColumnIndex == indexTip_Doc)
             {
                 try
@@ -192,7 +187,6 @@ namespace WorckWithReestr
                     Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Tip_Doc ={0}", e.Value));
                 }
             }
-
             //if (e.ColumnIndex == indexTip_code)
             //{
             //    try

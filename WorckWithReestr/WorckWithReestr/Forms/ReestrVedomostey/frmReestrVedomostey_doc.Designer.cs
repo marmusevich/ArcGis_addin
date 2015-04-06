@@ -29,332 +29,359 @@ namespace WorckWithReestr
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNazvaMD = new TextBox();
-            this.txtNomerMD = new TextBox();
-            this.txtNomerMDPP = new TextBox();
-            this.lblNomerMDPP = new Label();
-            this.lblNomerMD = new Label();
-            this.lblNazvaMD = new Label();
-            this.lblRozmischennyaKadastr = new Label();
-            this.txtKolListMD = new TextBox();
-            this.txtPrimitki = new TextBox();
-            this.txtNomerRegistracii = new TextBox();
-            this.txtElFormaMD = new TextBox();
-            this.cbFIORazmestila = new ComboBox();
-            this.dtmDataVidpravlennya = new DateTimePicker();
-            this.lblNomerPP = new Label();
-            this.dtpDataRazmeschenie = new DateTimePicker();
-            this.txtNomerPP = new TextBox();
-            this.lblFIORazmestila = new Label();
-            this.lblPrimitki = new Label();
-            this.lblNomerRegistracii = new Label();
-            this.lblDataRazmeschenie = new Label();
-            this.lblData = new Label();
-            this.txtNomerVhid = new TextBox();
-            this.lblDataVidpravlennya = new Label();
-            this.lblDjereloVedomostey = new Label();
-            this.lblElFormaMD = new Label();
-            this.txtDjereloVedomostey = new TextBox();
-            this.lblNomerVhid = new Label();
-            this.lblKolListMD = new Label();
-            this.dtpData = new DateTimePicker();
-            this.lblVhidni = new Label();
-            this.lblDocMD = new Label();
+            this.txtName_GD = new System.Windows.Forms.TextBox();
+            this.txtN_Doc_GD = new System.Windows.Forms.TextBox();
+            this.txtN_GD = new System.Windows.Forms.TextBox();
+            this.lblN_GD = new System.Windows.Forms.Label();
+            this.lblN_Doc_GD = new System.Windows.Forms.Label();
+            this.lblName_GD = new System.Windows.Forms.Label();
+            this.lblRozmischennyaKadastr = new System.Windows.Forms.Label();
+            this.txtKol_Str_GD = new System.Windows.Forms.TextBox();
+            this.txtPrim = new System.Windows.Forms.TextBox();
+            this.txtN_Kad = new System.Windows.Forms.TextBox();
+            this.txtEl_Format_GD = new System.Windows.Forms.TextBox();
+            this.dtpData_Otp = new System.Windows.Forms.DateTimePicker();
+            this.lblN_Vh = new System.Windows.Forms.Label();
+            this.dtpData_Kad = new System.Windows.Forms.DateTimePicker();
+            this.txtN_Vh = new System.Windows.Forms.TextBox();
+            this.lblFIO_Kad = new System.Windows.Forms.Label();
+            this.lblPrim = new System.Windows.Forms.Label();
+            this.lblN_Kad = new System.Windows.Forms.Label();
+            this.lblData_Kad = new System.Windows.Forms.Label();
+            this.lblData_Vh = new System.Windows.Forms.Label();
+            this.txtN_Sop_List = new System.Windows.Forms.TextBox();
+            this.lblData_Otp = new System.Windows.Forms.Label();
+            this.lblIst_Ved = new System.Windows.Forms.Label();
+            this.lblEl_Format_GD = new System.Windows.Forms.Label();
+            this.txtIst_Ved = new System.Windows.Forms.TextBox();
+            this.lblN_Sop_List = new System.Windows.Forms.Label();
+            this.lblKol_Str_GD = new System.Windows.Forms.Label();
+            this.dtpData_Vh = new System.Windows.Forms.DateTimePicker();
+            this.lblVhidni = new System.Windows.Forms.Label();
+            this.lblDocMD = new System.Windows.Forms.Label();
+            this.btnFIO_Kad = new System.Windows.Forms.Button();
+            this.txtFIO_Kad = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(463, 378);
+            this.btnOk.Location = new System.Drawing.Point(529, 418);
             this.btnOk.TabIndex = 14;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(9, 378);
+            this.btnCancel.Location = new System.Drawing.Point(19, 418);
             this.btnCancel.TabIndex = 15;
             // 
-            // txtNazvaMD
+            // txtName_GD
             // 
-            this.txtNazvaMD.Location = new System.Drawing.Point(129, 169);
-            this.txtNazvaMD.Name = "txtNazvaMD";
-            this.txtNazvaMD.Size = new System.Drawing.Size(175, 20);
-            this.txtNazvaMD.TabIndex = 7;
+            this.txtName_GD.Location = new System.Drawing.Point(195, 164);
+            this.txtName_GD.Name = "txtName_GD";
+            this.txtName_GD.Size = new System.Drawing.Size(409, 20);
+            this.txtName_GD.TabIndex = 7;
+            this.txtName_GD.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_GD_Validating);
             // 
-            // txtNomerMD
+            // txtN_Doc_GD
             // 
-            this.txtNomerMD.Location = new System.Drawing.Point(129, 147);
-            this.txtNomerMD.Name = "txtNomerMD";
-            this.txtNomerMD.Size = new System.Drawing.Size(175, 20);
-            this.txtNomerMD.TabIndex = 6;
+            this.txtN_Doc_GD.Location = new System.Drawing.Point(463, 138);
+            this.txtN_Doc_GD.Name = "txtN_Doc_GD";
+            this.txtN_Doc_GD.Size = new System.Drawing.Size(141, 20);
+            this.txtN_Doc_GD.TabIndex = 6;
+            this.txtN_Doc_GD.Validating += new System.ComponentModel.CancelEventHandler(this.txtN_Doc_GD_Validating);
             // 
-            // txtNomerMDPP
+            // txtN_GD
             // 
-            this.txtNomerMDPP.Location = new System.Drawing.Point(129, 125);
-            this.txtNomerMDPP.Name = "txtNomerMDPP";
-            this.txtNomerMDPP.Size = new System.Drawing.Size(79, 20);
-            this.txtNomerMDPP.TabIndex = 5;
+            this.txtN_GD.Location = new System.Drawing.Point(195, 138);
+            this.txtN_GD.Name = "txtN_GD";
+            this.txtN_GD.Size = new System.Drawing.Size(98, 20);
+            this.txtN_GD.TabIndex = 5;
+            this.txtN_GD.Validating += new System.ComponentModel.CancelEventHandler(this.txtN_GD_Validating);
             // 
-            // lblNomerMDPP
+            // lblN_GD
             // 
-            this.lblNomerMDPP.Location = new System.Drawing.Point(6, 125);
-            this.lblNomerMDPP.Name = "lblNomerMDPP";
-            this.lblNomerMDPP.Size = new System.Drawing.Size(97, 20);
-            this.lblNomerMDPP.TabIndex = 162;
-            this.lblNomerMDPP.Text = "№ п/п";
+            this.lblN_GD.Location = new System.Drawing.Point(16, 138);
+            this.lblN_GD.Name = "lblN_GD";
+            this.lblN_GD.Size = new System.Drawing.Size(171, 20);
+            this.lblN_GD.TabIndex = 162;
+            this.lblN_GD.Text = "№ п/п";
             // 
-            // lblNomerMD
+            // lblN_Doc_GD
             // 
-            this.lblNomerMD.Location = new System.Drawing.Point(6, 147);
-            this.lblNomerMD.Name = "lblNomerMD";
-            this.lblNomerMD.Size = new System.Drawing.Size(118, 20);
-            this.lblNomerMD.TabIndex = 163;
-            this.lblNomerMD.Text = "Номер документу МД";
+            this.lblN_Doc_GD.Location = new System.Drawing.Point(302, 138);
+            this.lblN_Doc_GD.Name = "lblN_Doc_GD";
+            this.lblN_Doc_GD.Size = new System.Drawing.Size(155, 20);
+            this.lblN_Doc_GD.TabIndex = 163;
+            this.lblN_Doc_GD.Text = "Номер документу МД";
             // 
-            // lblNazvaMD
+            // lblName_GD
             // 
-            this.lblNazvaMD.Location = new System.Drawing.Point(6, 169);
-            this.lblNazvaMD.Name = "lblNazvaMD";
-            this.lblNazvaMD.Size = new System.Drawing.Size(118, 20);
-            this.lblNazvaMD.TabIndex = 164;
-            this.lblNazvaMD.Text = "Назва документу МД";
+            this.lblName_GD.Location = new System.Drawing.Point(16, 164);
+            this.lblName_GD.Name = "lblName_GD";
+            this.lblName_GD.Size = new System.Drawing.Size(171, 20);
+            this.lblName_GD.TabIndex = 164;
+            this.lblName_GD.Text = "Назва документу МД";
             // 
             // lblRozmischennyaKadastr
             // 
             this.lblRozmischennyaKadastr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblRozmischennyaKadastr.Location = new System.Drawing.Point(6, 244);
+            this.lblRozmischennyaKadastr.Location = new System.Drawing.Point(16, 249);
             this.lblRozmischennyaKadastr.Name = "lblRozmischennyaKadastr";
-            this.lblRozmischennyaKadastr.Size = new System.Drawing.Size(188, 19);
+            this.lblRozmischennyaKadastr.Size = new System.Drawing.Size(188, 20);
             this.lblRozmischennyaKadastr.TabIndex = 161;
             this.lblRozmischennyaKadastr.Text = "Розміщення в кадастрі";
             // 
-            // txtKolListMD
+            // txtKol_Str_GD
             // 
-            this.txtKolListMD.Location = new System.Drawing.Point(129, 192);
-            this.txtKolListMD.Name = "txtKolListMD";
-            this.txtKolListMD.Size = new System.Drawing.Size(79, 20);
-            this.txtKolListMD.TabIndex = 8;
+            this.txtKol_Str_GD.Location = new System.Drawing.Point(195, 190);
+            this.txtKol_Str_GD.Name = "txtKol_Str_GD";
+            this.txtKol_Str_GD.Size = new System.Drawing.Size(98, 20);
+            this.txtKol_Str_GD.TabIndex = 8;
+            this.txtKol_Str_GD.TextChanged += new System.EventHandler(this.txtKol_Str_GD_TextChanged);
+            this.txtKol_Str_GD.Validating += new System.ComponentModel.CancelEventHandler(this.txtKol_Str_GD_Validating);
             // 
-            // txtPrimitki
+            // txtPrim
             // 
-            this.txtPrimitki.Location = new System.Drawing.Point(129, 311);
-            this.txtPrimitki.Multiline = true;
-            this.txtPrimitki.Name = "txtPrimitki";
-            this.txtPrimitki.ScrollBars = ScrollBars.Both;
-            this.txtPrimitki.Size = new System.Drawing.Size(409, 61);
-            this.txtPrimitki.TabIndex = 13;
+            this.txtPrim.Location = new System.Drawing.Point(195, 298);
+            this.txtPrim.Multiline = true;
+            this.txtPrim.Name = "txtPrim";
+            this.txtPrim.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtPrim.Size = new System.Drawing.Size(409, 61);
+            this.txtPrim.TabIndex = 12;
+            this.txtPrim.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrim_Validating);
             // 
-            // txtNomerRegistracii
+            // txtN_Kad
             // 
-            this.txtNomerRegistracii.Location = new System.Drawing.Point(129, 266);
-            this.txtNomerRegistracii.Name = "txtNomerRegistracii";
-            this.txtNomerRegistracii.Size = new System.Drawing.Size(175, 20);
-            this.txtNomerRegistracii.TabIndex = 10;
+            this.txtN_Kad.Location = new System.Drawing.Point(195, 272);
+            this.txtN_Kad.Name = "txtN_Kad";
+            this.txtN_Kad.Size = new System.Drawing.Size(99, 20);
+            this.txtN_Kad.TabIndex = 10;
+            this.txtN_Kad.VisibleChanged += new System.EventHandler(this.txtN_Kad_VisibleChanged);
             // 
-            // txtElFormaMD
+            // txtEl_Format_GD
             // 
-            this.txtElFormaMD.Location = new System.Drawing.Point(129, 216);
-            this.txtElFormaMD.Name = "txtElFormaMD";
-            this.txtElFormaMD.Size = new System.Drawing.Size(410, 20);
-            this.txtElFormaMD.TabIndex = 9;
+            this.txtEl_Format_GD.Location = new System.Drawing.Point(195, 216);
+            this.txtEl_Format_GD.Name = "txtEl_Format_GD";
+            this.txtEl_Format_GD.Size = new System.Drawing.Size(410, 20);
+            this.txtEl_Format_GD.TabIndex = 9;
+            this.txtEl_Format_GD.Validating += new System.ComponentModel.CancelEventHandler(this.txtEl_Format_GD_Validating);
             // 
-            // cbFIORazmestila
+            // dtpData_Otp
             // 
-            this.cbFIORazmestila.FormattingEnabled = true;
-            this.cbFIORazmestila.Location = new System.Drawing.Point(129, 288);
-            this.cbFIORazmestila.Name = "cbFIORazmestila";
-            this.cbFIORazmestila.Size = new System.Drawing.Size(175, 21);
-            this.cbFIORazmestila.TabIndex = 12;
+            this.dtpData_Otp.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpData_Otp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData_Otp.Location = new System.Drawing.Point(463, 84);
+            this.dtpData_Otp.Name = "dtpData_Otp";
+            this.dtpData_Otp.Size = new System.Drawing.Size(141, 20);
+            this.dtpData_Otp.TabIndex = 4;
+            this.dtpData_Otp.Validating += new System.ComponentModel.CancelEventHandler(this.dtpData_Otp_Validating);
             // 
-            // dtmDataVidpravlennya
+            // lblN_Vh
             // 
-            this.dtmDataVidpravlennya.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtmDataVidpravlennya.Format = DateTimePickerFormat.Custom;
-            this.dtmDataVidpravlennya.Location = new System.Drawing.Point(397, 74);
-            this.dtmDataVidpravlennya.Name = "dtmDataVidpravlennya";
-            this.dtmDataVidpravlennya.Size = new System.Drawing.Size(141, 20);
-            this.dtmDataVidpravlennya.TabIndex = 4;
+            this.lblN_Vh.Location = new System.Drawing.Point(16, 32);
+            this.lblN_Vh.Name = "lblN_Vh";
+            this.lblN_Vh.Size = new System.Drawing.Size(171, 20);
+            this.lblN_Vh.TabIndex = 137;
+            this.lblN_Vh.Text = "Вхідний №";
             // 
-            // lblNomerPP
+            // dtpData_Kad
             // 
-            this.lblNomerPP.Location = new System.Drawing.Point(6, 27);
-            this.lblNomerPP.Name = "lblNomerPP";
-            this.lblNomerPP.Size = new System.Drawing.Size(118, 20);
-            this.lblNomerPP.TabIndex = 137;
-            this.lblNomerPP.Text = "№ п/п";
+            this.dtpData_Kad.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpData_Kad.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData_Kad.Location = new System.Drawing.Point(463, 272);
+            this.dtpData_Kad.Name = "dtpData_Kad";
+            this.dtpData_Kad.Size = new System.Drawing.Size(141, 20);
+            this.dtpData_Kad.TabIndex = 11;
+            this.dtpData_Kad.Validating += new System.ComponentModel.CancelEventHandler(this.dtpData_Kad_Validating);
             // 
-            // dtpDataRazmeschenie
+            // txtN_Vh
             // 
-            this.dtpDataRazmeschenie.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpDataRazmeschenie.Format = DateTimePickerFormat.Custom;
-            this.dtpDataRazmeschenie.Location = new System.Drawing.Point(398, 266);
-            this.dtpDataRazmeschenie.Name = "dtpDataRazmeschenie";
-            this.dtpDataRazmeschenie.Size = new System.Drawing.Size(141, 20);
-            this.dtpDataRazmeschenie.TabIndex = 11;
+            this.txtN_Vh.Location = new System.Drawing.Point(195, 32);
+            this.txtN_Vh.Name = "txtN_Vh";
+            this.txtN_Vh.Size = new System.Drawing.Size(99, 20);
+            this.txtN_Vh.TabIndex = 0;
+            this.txtN_Vh.TextChanged += new System.EventHandler(this.txtN_Vh_TextChanged);
+            this.txtN_Vh.Validating += new System.ComponentModel.CancelEventHandler(this.txtN_Vh_Validating);
             // 
-            // txtNomerPP
+            // lblFIO_Kad
             // 
-            this.txtNomerPP.Location = new System.Drawing.Point(129, 27);
-            this.txtNomerPP.Name = "txtNomerPP";
-            this.txtNomerPP.Size = new System.Drawing.Size(175, 20);
-            this.txtNomerPP.TabIndex = 0;
+            this.lblFIO_Kad.Location = new System.Drawing.Point(16, 365);
+            this.lblFIO_Kad.Name = "lblFIO_Kad";
+            this.lblFIO_Kad.Size = new System.Drawing.Size(171, 20);
+            this.lblFIO_Kad.TabIndex = 151;
+            this.lblFIO_Kad.Text = "ПІБ що розмістила";
             // 
-            // lblFIORazmestila
+            // lblPrim
             // 
-            this.lblFIORazmestila.Location = new System.Drawing.Point(6, 291);
-            this.lblFIORazmestila.Name = "lblFIORazmestila";
-            this.lblFIORazmestila.Size = new System.Drawing.Size(118, 14);
-            this.lblFIORazmestila.TabIndex = 151;
-            this.lblFIORazmestila.Text = "ПІБ що розмістила";
+            this.lblPrim.Location = new System.Drawing.Point(16, 318);
+            this.lblPrim.Name = "lblPrim";
+            this.lblPrim.Size = new System.Drawing.Size(171, 20);
+            this.lblPrim.TabIndex = 149;
+            this.lblPrim.Text = "Примітки";
             // 
-            // lblPrimitki
+            // lblN_Kad
             // 
-            this.lblPrimitki.Location = new System.Drawing.Point(6, 314);
-            this.lblPrimitki.Name = "lblPrimitki";
-            this.lblPrimitki.Size = new System.Drawing.Size(118, 14);
-            this.lblPrimitki.TabIndex = 149;
-            this.lblPrimitki.Text = "Примітки";
+            this.lblN_Kad.Location = new System.Drawing.Point(16, 272);
+            this.lblN_Kad.Name = "lblN_Kad";
+            this.lblN_Kad.Size = new System.Drawing.Size(171, 20);
+            this.lblN_Kad.TabIndex = 148;
+            this.lblN_Kad.Text = "Реєстраційний № в кадастрі";
             // 
-            // lblNomerRegistracii
+            // lblData_Kad
             // 
-            this.lblNomerRegistracii.Location = new System.Drawing.Point(6, 266);
-            this.lblNomerRegistracii.Name = "lblNomerRegistracii";
-            this.lblNomerRegistracii.Size = new System.Drawing.Size(118, 14);
-            this.lblNomerRegistracii.TabIndex = 148;
-            this.lblNomerRegistracii.Text = "Реєстраційний номер";
+            this.lblData_Kad.Location = new System.Drawing.Point(303, 272);
+            this.lblData_Kad.Name = "lblData_Kad";
+            this.lblData_Kad.Size = new System.Drawing.Size(155, 20);
+            this.lblData_Kad.TabIndex = 147;
+            this.lblData_Kad.Text = "Дата розміщення в кадастрі";
             // 
-            // lblDataRazmeschenie
+            // lblData_Vh
             // 
-            this.lblDataRazmeschenie.Location = new System.Drawing.Point(312, 266);
-            this.lblDataRazmeschenie.Name = "lblDataRazmeschenie";
-            this.lblDataRazmeschenie.Size = new System.Drawing.Size(80, 14);
-            this.lblDataRazmeschenie.TabIndex = 147;
-            this.lblDataRazmeschenie.Text = "Дата";
+            this.lblData_Vh.Location = new System.Drawing.Point(302, 32);
+            this.lblData_Vh.Name = "lblData_Vh";
+            this.lblData_Vh.Size = new System.Drawing.Size(155, 20);
+            this.lblData_Vh.TabIndex = 139;
+            this.lblData_Vh.Text = "Дата внесення документа";
             // 
-            // lblData
+            // txtN_Sop_List
             // 
-            this.lblData.Location = new System.Drawing.Point(311, 27);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(80, 20);
-            this.lblData.TabIndex = 139;
-            this.lblData.Text = "Дата";
+            this.txtN_Sop_List.Location = new System.Drawing.Point(195, 84);
+            this.txtN_Sop_List.Name = "txtN_Sop_List";
+            this.txtN_Sop_List.Size = new System.Drawing.Size(99, 20);
+            this.txtN_Sop_List.TabIndex = 3;
+            this.txtN_Sop_List.Validating += new System.ComponentModel.CancelEventHandler(this.txtN_Sop_List_Validating);
             // 
-            // txtNomerVhid
+            // lblData_Otp
             // 
-            this.txtNomerVhid.Location = new System.Drawing.Point(129, 74);
-            this.txtNomerVhid.Name = "txtNomerVhid";
-            this.txtNomerVhid.Size = new System.Drawing.Size(175, 20);
-            this.txtNomerVhid.TabIndex = 3;
+            this.lblData_Otp.Location = new System.Drawing.Point(302, 84);
+            this.lblData_Otp.Name = "lblData_Otp";
+            this.lblData_Otp.Size = new System.Drawing.Size(155, 20);
+            this.lblData_Otp.TabIndex = 145;
+            this.lblData_Otp.Text = "Дата відправлення";
             // 
-            // lblDataVidpravlennya
+            // lblIst_Ved
             // 
-            this.lblDataVidpravlennya.Location = new System.Drawing.Point(311, 74);
-            this.lblDataVidpravlennya.Name = "lblDataVidpravlennya";
-            this.lblDataVidpravlennya.Size = new System.Drawing.Size(80, 29);
-            this.lblDataVidpravlennya.TabIndex = 145;
-            this.lblDataVidpravlennya.Text = "Дата відправлення";
+            this.lblIst_Ved.Location = new System.Drawing.Point(16, 58);
+            this.lblIst_Ved.Name = "lblIst_Ved";
+            this.lblIst_Ved.Size = new System.Drawing.Size(171, 20);
+            this.lblIst_Ved.TabIndex = 140;
+            this.lblIst_Ved.Text = "Джерело відомостей";
             // 
-            // lblDjereloVedomostey
+            // lblEl_Format_GD
             // 
-            this.lblDjereloVedomostey.Location = new System.Drawing.Point(6, 50);
-            this.lblDjereloVedomostey.Name = "lblDjereloVedomostey";
-            this.lblDjereloVedomostey.Size = new System.Drawing.Size(118, 20);
-            this.lblDjereloVedomostey.TabIndex = 140;
-            this.lblDjereloVedomostey.Text = "Джерело відомостей";
+            this.lblEl_Format_GD.Location = new System.Drawing.Point(16, 216);
+            this.lblEl_Format_GD.Name = "lblEl_Format_GD";
+            this.lblEl_Format_GD.Size = new System.Drawing.Size(171, 20);
+            this.lblEl_Format_GD.TabIndex = 142;
+            this.lblEl_Format_GD.Text = "Електронна форма подання";
             // 
-            // lblElFormaMD
+            // txtIst_Ved
             // 
-            this.lblElFormaMD.Location = new System.Drawing.Point(6, 216);
-            this.lblElFormaMD.Name = "lblElFormaMD";
-            this.lblElFormaMD.Size = new System.Drawing.Size(97, 28);
-            this.lblElFormaMD.TabIndex = 142;
-            this.lblElFormaMD.Text = "Електронна форма подння";
+            this.txtIst_Ved.Location = new System.Drawing.Point(195, 58);
+            this.txtIst_Ved.Name = "txtIst_Ved";
+            this.txtIst_Ved.Size = new System.Drawing.Size(409, 20);
+            this.txtIst_Ved.TabIndex = 2;
+            this.txtIst_Ved.Validating += new System.ComponentModel.CancelEventHandler(this.txtIst_Ved_Validating);
             // 
-            // txtDjereloVedomostey
+            // lblN_Sop_List
             // 
-            this.txtDjereloVedomostey.Location = new System.Drawing.Point(129, 50);
-            this.txtDjereloVedomostey.Name = "txtDjereloVedomostey";
-            this.txtDjereloVedomostey.Size = new System.Drawing.Size(409, 20);
-            this.txtDjereloVedomostey.TabIndex = 2;
+            this.lblN_Sop_List.Location = new System.Drawing.Point(16, 84);
+            this.lblN_Sop_List.Name = "lblN_Sop_List";
+            this.lblN_Sop_List.Size = new System.Drawing.Size(171, 20);
+            this.lblN_Sop_List.TabIndex = 141;
+            this.lblN_Sop_List.Text = "Вихідий № супровідного листа";
             // 
-            // lblNomerVhid
+            // lblKol_Str_GD
             // 
-            this.lblNomerVhid.Location = new System.Drawing.Point(6, 74);
-            this.lblNomerVhid.Name = "lblNomerVhid";
-            this.lblNomerVhid.Size = new System.Drawing.Size(118, 32);
-            this.lblNomerVhid.TabIndex = 141;
-            this.lblNomerVhid.Text = "Вихід. номер супровідного листа";
+            this.lblKol_Str_GD.Location = new System.Drawing.Point(16, 190);
+            this.lblKol_Str_GD.Name = "lblKol_Str_GD";
+            this.lblKol_Str_GD.Size = new System.Drawing.Size(171, 20);
+            this.lblKol_Str_GD.TabIndex = 150;
+            this.lblKol_Str_GD.Text = "Кількість аркушів";
             // 
-            // lblKolListMD
+            // dtpData_Vh
             // 
-            this.lblKolListMD.Location = new System.Drawing.Point(6, 192);
-            this.lblKolListMD.Name = "lblKolListMD";
-            this.lblKolListMD.Size = new System.Drawing.Size(97, 20);
-            this.lblKolListMD.TabIndex = 150;
-            this.lblKolListMD.Text = "Кількість аркушів";
-            // 
-            // dtpData
-            // 
-            this.dtpData.CustomFormat = "dd.MMM.yyyy HH.mm";
-            this.dtpData.Format = DateTimePickerFormat.Custom;
-            this.dtpData.Location = new System.Drawing.Point(397, 24);
-            this.dtpData.Name = "dtpData";
-            this.dtpData.Size = new System.Drawing.Size(141, 20);
-            this.dtpData.TabIndex = 1;
+            this.dtpData_Vh.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpData_Vh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpData_Vh.Location = new System.Drawing.Point(463, 32);
+            this.dtpData_Vh.Name = "dtpData_Vh";
+            this.dtpData_Vh.Size = new System.Drawing.Size(141, 20);
+            this.dtpData_Vh.TabIndex = 1;
+            this.dtpData_Vh.Validating += new System.ComponentModel.CancelEventHandler(this.dtpData_Vh_Validating);
             // 
             // lblVhidni
             // 
             this.lblVhidni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblVhidni.Location = new System.Drawing.Point(6, 5);
+            this.lblVhidni.Location = new System.Drawing.Point(16, 9);
             this.lblVhidni.Name = "lblVhidni";
-            this.lblVhidni.Size = new System.Drawing.Size(188, 22);
+            this.lblVhidni.Size = new System.Drawing.Size(188, 20);
             this.lblVhidni.TabIndex = 144;
             this.lblVhidni.Text = "Вхідні дані";
             // 
             // lblDocMD
             // 
             this.lblDocMD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblDocMD.Location = new System.Drawing.Point(6, 105);
+            this.lblDocMD.Location = new System.Drawing.Point(16, 116);
             this.lblDocMD.Name = "lblDocMD";
-            this.lblDocMD.Size = new System.Drawing.Size(188, 19);
+            this.lblDocMD.Size = new System.Drawing.Size(188, 20);
             this.lblDocMD.TabIndex = 146;
             this.lblDocMD.Text = "Документи МД";
+            // 
+            // btnFIO_Kad
+            // 
+            this.btnFIO_Kad.Location = new System.Drawing.Point(582, 364);
+            this.btnFIO_Kad.Name = "btnFIO_Kad";
+            this.btnFIO_Kad.Size = new System.Drawing.Size(22, 23);
+            this.btnFIO_Kad.TabIndex = 166;
+            this.btnFIO_Kad.Text = "...";
+            this.btnFIO_Kad.UseVisualStyleBackColor = true;
+            this.btnFIO_Kad.Click += new System.EventHandler(this.btnFIO_Kad_Click);
+            // 
+            // txtFIO_Kad
+            // 
+            this.txtFIO_Kad.Location = new System.Drawing.Point(195, 365);
+            this.txtFIO_Kad.Name = "txtFIO_Kad";
+            this.txtFIO_Kad.Size = new System.Drawing.Size(380, 20);
+            this.txtFIO_Kad.TabIndex = 13;
+            this.txtFIO_Kad.Validating += new System.ComponentModel.CancelEventHandler(this.txtFIO_Kad_Validating);
             // 
             // frmReestrVedomostey_doc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 406);
-            this.Controls.Add(this.txtNazvaMD);
-            this.Controls.Add(this.txtNomerMD);
-            this.Controls.Add(this.txtNomerMDPP);
-            this.Controls.Add(this.lblNomerMDPP);
-            this.Controls.Add(this.lblNomerMD);
-            this.Controls.Add(this.lblNazvaMD);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(618, 451);
+            this.Controls.Add(this.btnFIO_Kad);
+            this.Controls.Add(this.txtFIO_Kad);
+            this.Controls.Add(this.txtName_GD);
+            this.Controls.Add(this.txtN_Doc_GD);
+            this.Controls.Add(this.txtN_GD);
+            this.Controls.Add(this.lblN_GD);
+            this.Controls.Add(this.lblN_Doc_GD);
+            this.Controls.Add(this.lblName_GD);
             this.Controls.Add(this.lblRozmischennyaKadastr);
-            this.Controls.Add(this.txtKolListMD);
-            this.Controls.Add(this.txtPrimitki);
-            this.Controls.Add(this.txtNomerRegistracii);
-            this.Controls.Add(this.txtElFormaMD);
-            this.Controls.Add(this.cbFIORazmestila);
-            this.Controls.Add(this.dtmDataVidpravlennya);
-            this.Controls.Add(this.lblNomerPP);
-            this.Controls.Add(this.dtpDataRazmeschenie);
-            this.Controls.Add(this.txtNomerPP);
-            this.Controls.Add(this.lblFIORazmestila);
-            this.Controls.Add(this.lblPrimitki);
-            this.Controls.Add(this.lblNomerRegistracii);
-            this.Controls.Add(this.lblDataRazmeschenie);
-            this.Controls.Add(this.lblData);
-            this.Controls.Add(this.txtNomerVhid);
-            this.Controls.Add(this.lblDataVidpravlennya);
-            this.Controls.Add(this.lblDjereloVedomostey);
-            this.Controls.Add(this.lblElFormaMD);
-            this.Controls.Add(this.txtDjereloVedomostey);
-            this.Controls.Add(this.lblNomerVhid);
-            this.Controls.Add(this.lblKolListMD);
-            this.Controls.Add(this.dtpData);
+            this.Controls.Add(this.txtKol_Str_GD);
+            this.Controls.Add(this.txtPrim);
+            this.Controls.Add(this.txtN_Kad);
+            this.Controls.Add(this.txtEl_Format_GD);
+            this.Controls.Add(this.dtpData_Otp);
+            this.Controls.Add(this.lblN_Vh);
+            this.Controls.Add(this.dtpData_Kad);
+            this.Controls.Add(this.txtN_Vh);
+            this.Controls.Add(this.lblFIO_Kad);
+            this.Controls.Add(this.lblPrim);
+            this.Controls.Add(this.lblN_Kad);
+            this.Controls.Add(this.lblData_Kad);
+            this.Controls.Add(this.lblData_Vh);
+            this.Controls.Add(this.txtN_Sop_List);
+            this.Controls.Add(this.lblData_Otp);
+            this.Controls.Add(this.lblIst_Ved);
+            this.Controls.Add(this.lblEl_Format_GD);
+            this.Controls.Add(this.txtIst_Ved);
+            this.Controls.Add(this.lblN_Sop_List);
+            this.Controls.Add(this.lblKol_Str_GD);
+            this.Controls.Add(this.dtpData_Vh);
             this.Controls.Add(this.lblVhidni);
             this.Controls.Add(this.lblDocMD);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmReestrVedomostey_doc";
@@ -365,35 +392,37 @@ namespace WorckWithReestr
             this.Controls.SetChildIndex(this.btnOk, 0);
             this.Controls.SetChildIndex(this.lblDocMD, 0);
             this.Controls.SetChildIndex(this.lblVhidni, 0);
-            this.Controls.SetChildIndex(this.dtpData, 0);
-            this.Controls.SetChildIndex(this.lblKolListMD, 0);
-            this.Controls.SetChildIndex(this.lblNomerVhid, 0);
-            this.Controls.SetChildIndex(this.txtDjereloVedomostey, 0);
-            this.Controls.SetChildIndex(this.lblElFormaMD, 0);
-            this.Controls.SetChildIndex(this.lblDjereloVedomostey, 0);
-            this.Controls.SetChildIndex(this.lblDataVidpravlennya, 0);
-            this.Controls.SetChildIndex(this.txtNomerVhid, 0);
-            this.Controls.SetChildIndex(this.lblData, 0);
-            this.Controls.SetChildIndex(this.lblDataRazmeschenie, 0);
-            this.Controls.SetChildIndex(this.lblNomerRegistracii, 0);
-            this.Controls.SetChildIndex(this.lblPrimitki, 0);
-            this.Controls.SetChildIndex(this.lblFIORazmestila, 0);
-            this.Controls.SetChildIndex(this.txtNomerPP, 0);
-            this.Controls.SetChildIndex(this.dtpDataRazmeschenie, 0);
-            this.Controls.SetChildIndex(this.lblNomerPP, 0);
-            this.Controls.SetChildIndex(this.dtmDataVidpravlennya, 0);
-            this.Controls.SetChildIndex(this.cbFIORazmestila, 0);
-            this.Controls.SetChildIndex(this.txtElFormaMD, 0);
-            this.Controls.SetChildIndex(this.txtNomerRegistracii, 0);
-            this.Controls.SetChildIndex(this.txtPrimitki, 0);
-            this.Controls.SetChildIndex(this.txtKolListMD, 0);
+            this.Controls.SetChildIndex(this.dtpData_Vh, 0);
+            this.Controls.SetChildIndex(this.lblKol_Str_GD, 0);
+            this.Controls.SetChildIndex(this.lblN_Sop_List, 0);
+            this.Controls.SetChildIndex(this.txtIst_Ved, 0);
+            this.Controls.SetChildIndex(this.lblEl_Format_GD, 0);
+            this.Controls.SetChildIndex(this.lblIst_Ved, 0);
+            this.Controls.SetChildIndex(this.lblData_Otp, 0);
+            this.Controls.SetChildIndex(this.txtN_Sop_List, 0);
+            this.Controls.SetChildIndex(this.lblData_Vh, 0);
+            this.Controls.SetChildIndex(this.lblData_Kad, 0);
+            this.Controls.SetChildIndex(this.lblN_Kad, 0);
+            this.Controls.SetChildIndex(this.lblPrim, 0);
+            this.Controls.SetChildIndex(this.lblFIO_Kad, 0);
+            this.Controls.SetChildIndex(this.txtN_Vh, 0);
+            this.Controls.SetChildIndex(this.dtpData_Kad, 0);
+            this.Controls.SetChildIndex(this.lblN_Vh, 0);
+            this.Controls.SetChildIndex(this.dtpData_Otp, 0);
+            this.Controls.SetChildIndex(this.txtEl_Format_GD, 0);
+            this.Controls.SetChildIndex(this.txtN_Kad, 0);
+            this.Controls.SetChildIndex(this.txtPrim, 0);
+            this.Controls.SetChildIndex(this.txtKol_Str_GD, 0);
             this.Controls.SetChildIndex(this.lblRozmischennyaKadastr, 0);
-            this.Controls.SetChildIndex(this.lblNazvaMD, 0);
-            this.Controls.SetChildIndex(this.lblNomerMD, 0);
-            this.Controls.SetChildIndex(this.lblNomerMDPP, 0);
-            this.Controls.SetChildIndex(this.txtNomerMDPP, 0);
-            this.Controls.SetChildIndex(this.txtNomerMD, 0);
-            this.Controls.SetChildIndex(this.txtNazvaMD, 0);
+            this.Controls.SetChildIndex(this.lblName_GD, 0);
+            this.Controls.SetChildIndex(this.lblN_Doc_GD, 0);
+            this.Controls.SetChildIndex(this.lblN_GD, 0);
+            this.Controls.SetChildIndex(this.txtN_GD, 0);
+            this.Controls.SetChildIndex(this.txtN_Doc_GD, 0);
+            this.Controls.SetChildIndex(this.txtName_GD, 0);
+            this.Controls.SetChildIndex(this.txtFIO_Kad, 0);
+            this.Controls.SetChildIndex(this.btnFIO_Kad, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,37 +430,38 @@ namespace WorckWithReestr
 
         #endregion
 
-        private TextBox txtNazvaMD;
-        private TextBox txtNomerMD;
-        private TextBox txtNomerMDPP;
-        private Label lblNomerMDPP;
-        private Label lblNomerMD;
-        private Label lblNazvaMD;
+        private TextBox txtName_GD;
+        private TextBox txtN_Doc_GD;
+        private TextBox txtN_GD;
+        private Label lblN_GD;
+        private Label lblN_Doc_GD;
+        private Label lblName_GD;
         private Label lblRozmischennyaKadastr;
-        private TextBox txtKolListMD;
-        private TextBox txtPrimitki;
-        private TextBox txtNomerRegistracii;
-        private TextBox txtElFormaMD;
-        private ComboBox cbFIORazmestila;
-        private DateTimePicker dtmDataVidpravlennya;
-        private Label lblNomerPP;
-        private DateTimePicker dtpDataRazmeschenie;
-        private TextBox txtNomerPP;
-        private Label lblFIORazmestila;
-        private Label lblPrimitki;
-        private Label lblNomerRegistracii;
-        private Label lblDataRazmeschenie;
-        private Label lblData;
-        private TextBox txtNomerVhid;
-        private Label lblDataVidpravlennya;
-        private Label lblDjereloVedomostey;
-        private Label lblElFormaMD;
-        private TextBox txtDjereloVedomostey;
-        private Label lblNomerVhid;
-        private Label lblKolListMD;
-        private DateTimePicker dtpData;
+        private TextBox txtKol_Str_GD;
+        private TextBox txtPrim;
+        private TextBox txtN_Kad;
+        private TextBox txtEl_Format_GD;
+        private DateTimePicker dtpData_Otp;
+        private Label lblN_Vh;
+        private DateTimePicker dtpData_Kad;
+        private TextBox txtN_Vh;
+        private Label lblFIO_Kad;
+        private Label lblPrim;
+        private Label lblN_Kad;
+        private Label lblData_Kad;
+        private Label lblData_Vh;
+        private TextBox txtN_Sop_List;
+        private Label lblData_Otp;
+        private Label lblIst_Ved;
+        private Label lblEl_Format_GD;
+        private TextBox txtIst_Ved;
+        private Label lblN_Sop_List;
+        private Label lblKol_Str_GD;
+        private DateTimePicker dtpData_Vh;
         private Label lblVhidni;
         private Label lblDocMD;
+        private Button btnFIO_Kad;
+        private TextBox txtFIO_Kad;
 
     }
 }

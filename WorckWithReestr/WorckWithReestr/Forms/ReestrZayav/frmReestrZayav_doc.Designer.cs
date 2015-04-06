@@ -137,6 +137,7 @@ namespace WorckWithReestr
             this.dtpData_Ish.Name = "dtpData_Ish";
             this.dtpData_Ish.Size = new System.Drawing.Size(151, 20);
             this.dtpData_Ish.TabIndex = 7;
+            this.dtpData_Ish.Validating += new System.ComponentModel.CancelEventHandler(this.dtpData_Ish_Validating);
             // 
             // txtN_Ish_Z
             // 
@@ -204,6 +205,7 @@ namespace WorckWithReestr
             this.dtpData_Z.Name = "dtpData_Z";
             this.dtpData_Z.Size = new System.Drawing.Size(151, 20);
             this.dtpData_Z.TabIndex = 1;
+            this.dtpData_Z.Validating += new System.ComponentModel.CancelEventHandler(this.dtpData_Z_Validating);
             // 
             // lblSodergan
             // 
@@ -305,6 +307,7 @@ namespace WorckWithReestr
             this.dtpData_Ved.Name = "dtpData_Ved";
             this.dtpData_Ved.Size = new System.Drawing.Size(151, 20);
             this.dtpData_Ved.TabIndex = 18;
+            this.dtpData_Ved.Validating += new System.ComponentModel.CancelEventHandler(this.dtpData_Ved_Validating);
             // 
             // dtpData_Oplata
             // 
@@ -314,6 +317,7 @@ namespace WorckWithReestr
             this.dtpData_Oplata.Name = "dtpData_Oplata";
             this.dtpData_Oplata.Size = new System.Drawing.Size(151, 20);
             this.dtpData_Oplata.TabIndex = 14;
+            this.dtpData_Oplata.Validating += new System.ComponentModel.CancelEventHandler(this.dtpData_Oplata_Validating);
             // 
             // lblFio_Ved_Prin
             // 
@@ -666,7 +670,6 @@ namespace WorckWithReestr
             this.Controls.Add(this.lblFio_Z);
             this.Controls.Add(this.lblFirstData);
             this.Controls.Add(this.lblDoppData);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmReestrZayav_doc";
