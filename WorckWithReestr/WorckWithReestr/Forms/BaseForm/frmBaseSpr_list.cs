@@ -1,4 +1,4 @@
-﻿#define CONSTRUCT_FORM
+﻿//#define CONSTRUCT_FORM
 
 using System;
 using System.Windows.Forms;
@@ -9,28 +9,30 @@ namespace WorckWithReestr
 {
     public partial class frmBaseSpr_list : Form
     {
-        // режим выбора из списка
-        // перечитывать данные и установка текущих строки/колонки когда и как?
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  variables
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        // это режим выбора
         protected bool IsSelectMode;
+        //имя пространства данных
         protected string NameWorkspace = "";
+        //имя таблицы
         protected string NameTable = "";
+        //поле для сортировки
         protected string NameSortFild = "";
-        protected TableWraper tableWrapper = null;
-
-        public int SelectID { get; protected set; }
+        //строка фильтрации
         public string FilteredString { protected get; set; }
+        //собственно таблица
+        protected ITable table;
+        //обертка над таблицей
+        protected TableWraper tableWrapper = null;
+        //результат выбраного значения
+        public int SelectID { get; protected set; }
         #endregion
-
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -44,12 +46,16 @@ namespace WorckWithReestr
         {
             
         }
+        //вернуть строку доаолнительных условий
+        protected virtual string GetStringAddetConditions()
+        {
+            return "";
+        }
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - base
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
+        //добавить запись
         protected virtual void AddRec()
         {
             frmBaseSpr_element frm = GetElementForm(-1, frmBaseSpr_element.EditMode.ADD);
@@ -62,7 +68,7 @@ namespace WorckWithReestr
             tableWrapper.UpdateData();
             dgv.Refresh();
         }
-
+        //редактировать запись
         protected virtual void EditRec(int objectID)
         {
             frmBaseSpr_element frm = GetElementForm(objectID, frmBaseSpr_element.EditMode.EDIT);
@@ -76,7 +82,7 @@ namespace WorckWithReestr
             dgv.Refresh();
             
         }
-
+        //удалить запись
         protected virtual void DeleteRec(int objectID)
         {
             frmBaseSpr_element frm = GetElementForm(objectID, frmBaseSpr_element.EditMode.DELETE);
@@ -89,18 +95,16 @@ namespace WorckWithReestr
             tableWrapper.UpdateData();
             dgv.Refresh();
         }
-
+        //прочесть список
         protected virtual bool ReadData()
         {
             bool ret = false;
             try
             {
                 IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
-                ITable table = fws.OpenTable(NameTable);
-
+                table = fws.OpenTable(NameTable);
                 this.Text = (table as IObjectClass).AliasName;
-
-                tableWrapper = new TableWraper(table, NameSortFild);
+                tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
 
                 BindingSource dsBinding = new BindingSource();
                 dsBinding.DataSource = tableWrapper;
@@ -119,7 +123,13 @@ namespace WorckWithReestr
             }
             return ret;
         }
-
+        //построить фильтр
+        private IQueryFilter BuildConditions()
+        {
+            IQueryFilter ret = null;
+            return ret;
+        }
+        //настроить грид
         private void SetupDGV()
         {
             int width = 0;
@@ -144,22 +154,17 @@ namespace WorckWithReestr
             if (dgv.Columns.Count > 0)
                 dgv.Columns[0].Visible = false;
         }
-
+        //действия при выборе записи (режим выбор)
         protected virtual void SelectRec(int objectID)
         {
             SelectID = objectID;
             Close();
         }
-
-
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region form  events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        //public frmBaseSpr_list() : this(false, "") { }
         public frmBaseSpr_list() { }
-
         public frmBaseSpr_list(bool isSelectMode = false, string filteredString = "")
         {
             InitializeComponent();
@@ -168,7 +173,6 @@ namespace WorckWithReestr
 
             SelectID = -1;
         }
-
         private void frmBaseSpr_list_Load(object sender, EventArgs e)
         {
 #if (!CONSTRUCT_FORM)
@@ -178,18 +182,14 @@ namespace WorckWithReestr
             }
 #endif
         }
-
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
         {
             SharedClass.GetDisplayOrder(dgv, NameTable);
         }
-
-
         private void cmsAdd_Click(object sender, EventArgs e)
         {
             AddRec();
         }
-
         private void cmsDelete_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -198,7 +198,6 @@ namespace WorckWithReestr
                 DeleteRec(id);
             }
         }
-
         private void cmsEdit_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -207,12 +206,10 @@ namespace WorckWithReestr
                 EditRec(id);
             }
         }
-
         private void tsbAdd_Click(object sender, EventArgs e)
         {
             AddRec();
         }
-
         private void tsdEdit_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -221,7 +218,6 @@ namespace WorckWithReestr
                 EditRec(id);
             }
         }
-
         private void tsdDelete_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -230,7 +226,6 @@ namespace WorckWithReestr
                 DeleteRec(id);
             }
         }
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -242,8 +237,22 @@ namespace WorckWithReestr
                     EditRec(id);
             }
         }
+        private void frmBaseSpr_list_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
+                {
+                    e.Handled = true;
+                    int id = (int)dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0].Value;
+                    if (IsSelectMode)
+                        SelectRec(id);
+                    else
+                        EditRec(id);
+                }
+            }
+        }
         #endregion
-
     }
 }
 

@@ -30,7 +30,7 @@ namespace WorckWithReestr
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsdEdit = new System.Windows.Forms.ToolStripButton();
@@ -98,14 +98,14 @@ namespace WorckWithReestr
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.ContextMenuStrip = this.cmsMain;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -167,17 +167,17 @@ namespace WorckWithReestr
             // 
             // lblDataOt
             // 
-            this.lblDataOt.Location = new System.Drawing.Point(12, 27);
+            this.lblDataOt.Location = new System.Drawing.Point(12, 29);
             this.lblDataOt.Name = "lblDataOt";
-            this.lblDataOt.Size = new System.Drawing.Size(43, 23);
+            this.lblDataOt.Size = new System.Drawing.Size(43, 20);
             this.lblDataOt.TabIndex = 11;
             this.lblDataOt.Text = "Дата с";
             // 
             // lblDatePo
             // 
-            this.lblDatePo.Location = new System.Drawing.Point(185, 27);
+            this.lblDatePo.Location = new System.Drawing.Point(185, 29);
             this.lblDatePo.Name = "lblDatePo";
-            this.lblDatePo.Size = new System.Drawing.Size(19, 23);
+            this.lblDatePo.Size = new System.Drawing.Size(19, 20);
             this.lblDatePo.TabIndex = 12;
             this.lblDatePo.Text = "по";
             // 
@@ -192,10 +192,12 @@ namespace WorckWithReestr
             this.Controls.Add(this.dtpDataOt);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.dgv);
+            this.KeyPreview = true;
             this.Name = "frmBaseJurnal";
             this.Text = "frmBaseJurnal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseJurnal_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseJurnal_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBaseJurnal_KeyDown);
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

@@ -67,13 +67,17 @@ namespace WorckWithReestr
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(281, 285);
+            this.ControlBox = false;
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.Name = "frmBaseDocument";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmBaseDocument";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseDocument_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseDocument_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmBaseDocument_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 

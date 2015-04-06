@@ -4,19 +4,15 @@ using System.Text;
 
 namespace WorckWithReestr
 {
-
+    //запись лога
     public class Logger
     {
         private static object sync = new object();
-
-
         // вывести инвормации о ошибке в лог
         public static void Write(Exception ex, string addetMessage = "")
         {
             try
             {
-
-                // Путь .\\Log
                 string pathToLog = Path.Combine(SharedClass.GetAppDataPathAndCreateDirIfNeed(), "Log");
                 if (!Directory.Exists(pathToLog))
                     Directory.CreateDirectory(pathToLog); // Создаем директорию, если нужно

@@ -12,23 +12,28 @@ namespace WorckWithReestr
         #region  types
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  variables
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        // это режим выбора
         protected bool IsSelectMode;
+        //имя пространства данных
         protected string NameWorkspace = "";
+        //имя таблицы
         protected string NameTable = "";
+        //поле для сортировки
         protected string NameSortFild = "";
+        //поле типа дата для отбора в периоде
         protected string NameDataFilteredFild = "";
-        protected ITable table;
-        protected TableWraper tableWrapper = null;
-
-        public int SelectID { get; protected set; }
+        //строка фильтрации
         public string FilteredString { protected get; set; }
+        //собственно таблица
+        protected ITable table;
+        //обертка над таблицей
+        protected TableWraper tableWrapper = null;
+        //результат выбраного значения
+        public int SelectID { get; protected set; }
         #endregion
-
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,19 +52,16 @@ namespace WorckWithReestr
         {
 
         }
-
         //вернуть строку доаолнительных условий
         protected virtual string GetStringAddetConditions()
         {
             return "";
         }
-
-
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - base
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
+        //добавить запись
         protected virtual void AddRec()
         {
             frmBaseDocument frm = GetDocumentForm(-1, frmBaseDocument.EditMode.ADD);
@@ -72,7 +74,7 @@ namespace WorckWithReestr
             tableWrapper.UpdateData();
             dgv.Refresh();
         }
-
+        //редактировать запись
         protected virtual void EditRec(int objectID)
         {
             frmBaseDocument frm = GetDocumentForm(objectID, frmBaseDocument.EditMode.EDIT);
@@ -85,7 +87,7 @@ namespace WorckWithReestr
             tableWrapper.UpdateData();
             dgv.Refresh();
         }
-
+        //удалить запись
         protected virtual void DeleteRec(int objectID)
         {
             frmBaseDocument frm = GetDocumentForm(objectID, frmBaseDocument.EditMode.DELETE);
@@ -94,11 +96,10 @@ namespace WorckWithReestr
 
             frm.Owner = this;
             frm.ShowDialog();
-
             tableWrapper.UpdateData();
             dgv.Refresh();
         }
-
+        //прочесть список
         protected virtual bool ReadData()
         {
             bool ret = false;
@@ -106,9 +107,7 @@ namespace WorckWithReestr
             {
                 IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
-
                 this.Text = (table as IObjectClass).AliasName;
-
                 tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
                 tableWrapper.AllowNew = false;
                 tableWrapper.AllowRemove = false;
@@ -133,13 +132,12 @@ namespace WorckWithReestr
             }
             return ret;
         }
-
+        //построить фильтр
         private IQueryFilter BuildConditions()
         {
             IQueryFilter ret = null;
             string dopUsl = GetStringAddetConditions();
             string usl = "";
-
 
             if (NameDataFilteredFild != "")
             {
@@ -163,8 +161,7 @@ namespace WorckWithReestr
 
             return ret;
         }
-
-
+        //настроить грид
         private void SetupDGV()
         {
             int width = 0;
@@ -191,19 +188,17 @@ namespace WorckWithReestr
                 dgv.Columns[0].Visible = false;
 
         }
-
+        //действия при выборе записи (режим выбор)
         protected virtual void SelectRec(int objectID)
         {
             SelectID = objectID;
             Close();
         }
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region form  events
         //---------------------------------------------------------------------------------------------------------------------------------------------
         public frmBaseJurnal() : this(false, "") { }
-
         public frmBaseJurnal(bool isSelectMode = false, string filteredString = "")
         {
             InitializeComponent();
@@ -211,8 +206,6 @@ namespace WorckWithReestr
             IsSelectMode = isSelectMode;
 
         }
-
-
         private void frmBaseJurnal_Load(object sender, System.EventArgs e)
         {
             dtpDataOt.Value = SharedClass.GetFirstMonthDayDate( DateTime.Now );
@@ -224,17 +217,14 @@ namespace WorckWithReestr
             }
 #endif
         }
-
         private void frmBaseJurnal_FormClosing(object sender, FormClosingEventArgs e)
         {
             SharedClass.GetDisplayOrder(dgv, NameTable);
         }
-
         private void cmsAdd_Click(object sender, EventArgs e)
         {
             AddRec();
         }
-
         private void cmsDelete_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -243,7 +233,6 @@ namespace WorckWithReestr
                 DeleteRec(id);
             }
         }
-
         private void cmsEdit_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -252,12 +241,10 @@ namespace WorckWithReestr
                 EditRec(id);
             }
         }
-
         private void tsbAdd_Click(object sender, EventArgs e)
         {
             AddRec();
         }
-
         private void tsdEdit_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -266,7 +253,6 @@ namespace WorckWithReestr
                 EditRec(id);
             }
         }
-
         private void tsdDelete_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
@@ -275,7 +261,6 @@ namespace WorckWithReestr
                 DeleteRec(id);
             }
         }
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -287,7 +272,21 @@ namespace WorckWithReestr
                     EditRec(id);
             }
         }
-
+        private void frmBaseJurnal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
+                {
+                    e.Handled = true;
+                    int id = (int)dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0].Value;
+                    if (IsSelectMode)
+                        SelectRec(id);
+                    else
+                        EditRec(id);
+                }
+            }
+        }
         private void dtpDataOt_ValueChanged(object sender, EventArgs e)
         {
             if (tableWrapper != null)
@@ -297,7 +296,6 @@ namespace WorckWithReestr
                 dgv.Refresh();
             }
         }
-
         private void dtpDatePo_ValueChanged(object sender, EventArgs e)
         {
             if (tableWrapper != null)
@@ -308,8 +306,5 @@ namespace WorckWithReestr
             }
         }
         #endregion
-
-
-
     }
 }

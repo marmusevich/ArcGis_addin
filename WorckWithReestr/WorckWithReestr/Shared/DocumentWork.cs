@@ -4,15 +4,13 @@ using System.Collections;
 
 namespace WorckWithReestr
 {
-    class JurnalWork
+    //общие функции для работы с документами
+    class DocumentWork
     {
         //---------------------------------------------------------------------------------------
         #region 
-
-
         #endregion
         //---------------------------------------------------------------------------------------
-
 
         // возвращает максимальное значение цыфрового поля из таблицы например для автоинкриманта порядковых номеров
         public static int GetMaxNumerForAutoicrement(string tableName, string fildName)

@@ -4,31 +4,12 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace WorckWithReestr
 {
-
-    //вспомогательный для выбора значений
-    class DomeinData
-    {
-        public readonly object Value;
-        public readonly string Text;
-        public readonly int Index;
-
-        public DomeinData(int Index, object Value, string Text)
-        {
-            this.Index = Index;
-            this.Value = Value;
-            this.Text = Text;
-        }
-
-        public override string ToString()
-        {
-            return this.Text;
-        }
-    }
-
+    //обертка над перечисляемыми доменнами
     class DomeinDataAdapter
     {
+        //внутреннее представление
         private ArrayList data = null;
-
+        //конструктор
         public DomeinDataAdapter(IDomain domain)
         {
             ICodedValueDomain codedValueDomain = (ICodedValueDomain)domain;
@@ -42,7 +23,7 @@ namespace WorckWithReestr
                 data.Add(new DomeinData(i, codedValueDomain.get_Value(i), codedValueDomain.get_Name(i)));
             }
         }
-
+        //вернуть массив значений
         public object[] ToArray()
         {
             if (data != null)
@@ -50,7 +31,7 @@ namespace WorckWithReestr
             else
                 return null;
         }
-
+        //вернуть значение по индексу
         public object GetValueByIndex(int index)
         {
             object ret = null;
@@ -59,7 +40,7 @@ namespace WorckWithReestr
             
             return ret;
         }
-        
+        //вернуть текстовое наименование по индексу
         public string GetTextByIndex(int index)
         {
             string ret = "";
@@ -68,17 +49,17 @@ namespace WorckWithReestr
 
             return ret;
         }
-
+        //вернуть значение по наименованию
         public object GetValueByText(string text)
         {
             return GetValueByIndex(GetIndexByText(text));
         }
-
+        //вернуть наименование по значению
         public string GetTextByValue(object value)
         {
             return GetTextByValue(GetIndexByValue(value));
         }
-
+        //вернуть индекс по наименованию
         public int GetIndexByText(string text)
         {
             int ret = -1;
@@ -96,7 +77,7 @@ namespace WorckWithReestr
             }
             return ret;
         }
-
+        //вернуть индес по значению
         public int GetIndexByValue(object value)
         {
             int ret = -1;
@@ -114,4 +95,27 @@ namespace WorckWithReestr
             return ret;
         }    
     }
+    //одно значение домена
+    class DomeinData
+    {
+        //значение
+        public readonly object Value;
+        //наименование
+        public readonly string Text;
+        //внутренний индекс
+        public readonly int Index;
+
+        public DomeinData(int Index, object Value, string Text)
+        {
+            this.Index = Index;
+            this.Value = Value;
+            this.Text = Text;
+        }
+        public override string ToString()
+        {
+            return this.Text;
+        }
+    }
+
+
 }

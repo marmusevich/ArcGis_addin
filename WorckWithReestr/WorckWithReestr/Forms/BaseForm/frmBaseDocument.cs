@@ -9,10 +9,10 @@ namespace WorckWithReestr
 {
     public partial class frmBaseDocument : Form
     {
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //виды действий
         public enum EditMode
         {
             UNKNOW,
@@ -20,22 +20,23 @@ namespace WorckWithReestr
             EDIT,
             DELETE
         };
-
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  variables
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //ID - текущей записи
         protected int objectID;
+        //режим формы
         protected EditMode editMode = EditMode.UNKNOW;
+        //данные изменены
         protected bool isModified = false;
-
+        //имя пространства данных
         protected string NameWorkspace = "";
+        //имя таблицы
         protected string NameTable = "";
-
-        protected ITable table;
+        //сама таблица
+        protected ITable table = null;
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,11 +61,11 @@ namespace WorckWithReestr
         protected virtual void DB_DefaultValue_to_FormElement()
         {
         }
-
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - base
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //установить значения по умолчанию
         protected virtual bool SetDefaultValueToNew()
         {
             bool ret = false;
@@ -85,7 +86,7 @@ namespace WorckWithReestr
             }
             return ret;
         }
-
+        //получить общие данные
         protected virtual bool GetSharedData()
         {
             bool ret = false;
@@ -104,7 +105,7 @@ namespace WorckWithReestr
             }
             return ret;
         }
-
+        //читать данные
         protected virtual bool ReadData()
         {
             bool ret = false;
@@ -127,7 +128,7 @@ namespace WorckWithReestr
             isModified = false;
             return ret;
         }
-
+        //сохранить данные
         protected virtual bool SaveData()
         {
             bool ret = false;
@@ -156,9 +157,7 @@ namespace WorckWithReestr
                 // закончить транзакцию
                 wse.StopEditOperation();
                 wse.StopEditing(true);
-
                 ret = true;
-
             }
             catch (Exception ex) // обработка ошибок
             {
@@ -173,10 +172,9 @@ namespace WorckWithReestr
                     wse.StopEditing(false);
                 }
             }
-
             return ret;
         }
-
+        //удалить запись
         protected virtual bool DeleteData()
         {
             bool ret = false;
@@ -197,8 +195,6 @@ namespace WorckWithReestr
                 // закончить транзакцию
                 wse.StopEditOperation();
                 wse.StopEditing(true);
-
-
                 ret = true;
             }
             catch (Exception ex) // обработка ошибок
@@ -214,85 +210,12 @@ namespace WorckWithReestr
                     wse.StopEditing(false);
                 }
             }
-
             return ret;
         }
-        #endregion
-
-        //---------------------------------------------------------------------------------------------------------------------------------------------
-        #region  form events
-        //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmBaseDocument()
-        {
-            InitializeComponent();
-
-            objectID = -1;
-            editMode = EditMode.UNKNOW;
-        }
-
-        public frmBaseDocument(int _objectID, EditMode _editMode)
-        {
-            InitializeComponent();
-
-            objectID = _objectID;
-            editMode = _editMode;
-        }
-
-        private void frmBaseDocument_Load(object sender, EventArgs e)
-        {
-#if (!CONSTRUCT_FORM)
-            if (!this.GetSharedData()) // error
-            {
-                this.Close();
-            }
-
-            if (editMode != EditMode.ADD)
-            {
-                if (!this.ReadData()) // error
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                if (!this.SetDefaultValueToNew()) // error
-                {
-                    this.Close();
-                }
-            }
-
-            //отключить контролы для режыма удаления
-            if (editMode == EditMode.DELETE)
-            {
-                foreach (System.Windows.Forms.Control c in Controls)
-                {
-                    c.Enabled = false;
-                }
-                btnOk.Text = "Удалить";
-                btnOk.Enabled = true;
-                btnCancel.Enabled = true;
-            }
-#endif
-        }
-
-        protected void frmBaseDocument_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (isModified && editMode != EditMode.DELETE)
-            {
-                if (!ValidatingData())
-                    return;
-
-                if (MessageBox.Show("Сохранить внесенные изменения?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    SaveData();
-                }
-            }
-        }
-
-        protected void btnOk_Click(object sender, EventArgs e)
+        //действие для кнопки ОК
+        private void OnOkClick()
         {
             bool ret = false;
-
             if (editMode == EditMode.DELETE)
             {
                 if (MessageBox.Show("Удалить выбранную запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -309,9 +232,85 @@ namespace WorckWithReestr
                 isModified = false;
             }
             this.Close();
-        }
-
+        }        
         #endregion
-    
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  form events
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        public frmBaseDocument()
+        {
+            InitializeComponent();
+            objectID = -1;
+            editMode = EditMode.UNKNOW;
+        }
+        public frmBaseDocument(int _objectID, EditMode _editMode)
+        {
+            InitializeComponent();
+            objectID = _objectID;
+            editMode = _editMode;
+        }
+        private void frmBaseDocument_Load(object sender, EventArgs e)
+        {
+#if (!CONSTRUCT_FORM)
+            if (!this.GetSharedData()) // error
+            {
+                this.Close();
+            }
+            if (editMode != EditMode.ADD)
+            {
+                if (!this.ReadData()) // error
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (!this.SetDefaultValueToNew()) // error
+                {
+                    this.Close();
+                }
+            }
+            //отключить контролы для режыма удаления
+            if (editMode == EditMode.DELETE)
+            {
+                foreach (System.Windows.Forms.Control c in Controls)
+                {
+                    c.Enabled = false;
+                }
+                btnOk.Text = "Удалить";
+                btnOk.Enabled = true;
+                btnCancel.Enabled = true;
+            }
+#endif
+            ToolTip toolTipOk = new ToolTip();
+            toolTipOk.SetToolTip(btnOk, "Ctrl+Enter");
+            ToolTip toolTipCancel = new ToolTip();
+            toolTipCancel.SetToolTip(btnCancel, "Esc");
+        }
+        protected void frmBaseDocument_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isModified && editMode != EditMode.DELETE)
+            {
+                if (!ValidatingData())
+                    return;
+                if (MessageBox.Show("Сохранить внесенные изменения?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SaveData();
+                }
+            }
+        }
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+            OnOkClick();
+        }
+        private void frmBaseDocument_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return && e.Control)
+            {
+                e.Handled = true;
+                OnOkClick();
+            }
+        }
+        #endregion
     }
 }

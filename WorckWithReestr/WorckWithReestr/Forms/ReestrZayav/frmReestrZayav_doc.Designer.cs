@@ -102,6 +102,7 @@ namespace WorckWithReestr
             // 
             // txtSodergan
             // 
+            this.txtSodergan.AcceptsReturn = true;
             this.txtSodergan.Location = new System.Drawing.Point(143, 215);
             this.txtSodergan.Multiline = true;
             this.txtSodergan.Name = "txtSodergan";
@@ -287,6 +288,7 @@ namespace WorckWithReestr
             // 
             // txtForma_Ved
             // 
+            this.txtForma_Ved.AcceptsReturn = true;
             this.txtForma_Ved.Location = new System.Drawing.Point(705, 291);
             this.txtForma_Ved.Multiline = true;
             this.txtForma_Ved.Name = "txtForma_Ved";
@@ -432,6 +434,7 @@ namespace WorckWithReestr
             // 
             // txtPrim
             // 
+            this.txtPrim.AcceptsReturn = true;
             this.txtPrim.Location = new System.Drawing.Point(143, 321);
             this.txtPrim.Multiline = true;
             this.txtPrim.Name = "txtPrim";
@@ -486,6 +489,7 @@ namespace WorckWithReestr
             // 
             // txtOpisan_Ved
             // 
+            this.txtOpisan_Ved.AcceptsReturn = true;
             this.txtOpisan_Ved.Location = new System.Drawing.Point(705, 238);
             this.txtOpisan_Ved.Multiline = true;
             this.txtOpisan_Ved.Name = "txtOpisan_Ved";
@@ -582,6 +586,7 @@ namespace WorckWithReestr
             // 
             // txtDodatok
             // 
+            this.txtDodatok.AcceptsReturn = true;
             this.txtDodatok.Location = new System.Drawing.Point(143, 268);
             this.txtDodatok.Multiline = true;
             this.txtDodatok.Name = "txtDodatok";

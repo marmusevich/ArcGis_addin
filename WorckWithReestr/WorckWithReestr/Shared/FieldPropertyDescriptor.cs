@@ -5,6 +5,7 @@ using ESRI.ArcGIS.Geometry;
 
 namespace WorckWithReestr
 {
+    //описатель полей в таблицах для обертки над АркГИС таблицей
     internal class FieldPropertyDescriptor : PropertyDescriptor
     {
         private int wrappedFieldIndex;

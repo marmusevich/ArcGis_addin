@@ -182,7 +182,7 @@ namespace WorckWithReestr
         protected override void DB_DefaultValue_to_FormElement()
         {
             //алгоритм генерации номера, запрос большего из базы или последнего
-            txtN_Z.Text = JurnalWork.GetNextNumerToReestrZayav().ToString();
+            txtN_Z.Text = DocumentWork.GetNextNumerToReestrZayav().ToString();
         }
 
         private void OnChangedTipDoc()
@@ -489,6 +489,10 @@ namespace WorckWithReestr
         }
 
         #endregion
+
+        private void frmReestrZayav_doc_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+        }
 
 
     }
