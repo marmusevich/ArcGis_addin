@@ -194,6 +194,7 @@ namespace WorckWithReestr
             this.Controls.Add(this.dgv);
             this.KeyPreview = true;
             this.Name = "frmBaseJurnal";
+            this.ShowIcon = false;
             this.Text = "frmBaseJurnal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBaseJurnal_FormClosing);
             this.Load += new System.EventHandler(this.frmBaseJurnal_Load);

@@ -98,7 +98,6 @@ namespace WorckWithReestr
             txtKol_Str_GD.Text = "0";
         }
 
-
         private void OnChangedFIO_Kad()
         {
             txtFIO_Kad.Text = DictionaryWork.GetFIOByIDFromFizLic(mFIO_Kad);
@@ -225,7 +224,7 @@ namespace WorckWithReestr
             isModified = true;
         }
 
-        private void txtN_Kad_VisibleChanged(object sender, EventArgs e)
+        private void txtN_Kad_Validating(object sender, EventArgs e)
         {
             isModified = true;
         }
@@ -240,6 +239,11 @@ namespace WorckWithReestr
             isModified = true;
         }
         #endregion
+
+        private void txtN_Kad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
     }
 }
 

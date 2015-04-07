@@ -156,7 +156,7 @@ namespace WorckWithReestr
             this.txtN_Kad.Name = "txtN_Kad";
             this.txtN_Kad.Size = new System.Drawing.Size(99, 20);
             this.txtN_Kad.TabIndex = 10;
-            this.txtN_Kad.VisibleChanged += new System.EventHandler(this.txtN_Kad_VisibleChanged);
+            this.txtN_Kad.Validating += new System.ComponentModel.CancelEventHandler(this.txtN_Kad_Validating);
             // 
             // txtEl_Format_GD
             // 
@@ -388,6 +388,7 @@ namespace WorckWithReestr
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "frmReestrVedomostey_doc";
+            this.Load += new System.EventHandler(this.frmReestrVedomostey_doc_Load);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOk, 0);
             this.Controls.SetChildIndex(this.lblDocMD, 0);

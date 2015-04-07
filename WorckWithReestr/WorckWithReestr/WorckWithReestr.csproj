@@ -108,6 +108,12 @@
     <Compile Include="Forms\BaseForm\frmBaseSpr_element.Designer.cs">
       <DependentUpon>frmBaseSpr_element.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BaseForm\frmSelectSearchInListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseForm\frmSelectSearchInListForm.Designer.cs">
+      <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\JurLic\frmJurLic_element.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     <EmbeddedResource Include="Forms\BaseForm\frmBaseSpr_list.resx">
       <DependentUpon>frmBaseSpr_list.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BaseForm\frmSelectSearchInListForm.resx">
+      <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FizLic\frmFizLic_element.resx">
       <DependentUpon>frmFizLic_element.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +283,9 @@
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="_Images\arcBtn_Open_TipDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

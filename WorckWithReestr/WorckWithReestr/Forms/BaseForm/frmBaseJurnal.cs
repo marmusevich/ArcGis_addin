@@ -70,6 +70,7 @@ namespace WorckWithReestr
 
             frm.Owner = this;
             frm.ShowDialog();
+            frm.Dispose();
 
             tableWrapper.UpdateData();
             dgv.Refresh();
@@ -83,6 +84,7 @@ namespace WorckWithReestr
 
             frm.Owner = this;
             frm.ShowDialog();
+            frm.Dispose();
 
             tableWrapper.UpdateData();
             dgv.Refresh();
@@ -96,6 +98,7 @@ namespace WorckWithReestr
 
             frm.Owner = this;
             frm.ShowDialog();
+            frm.Dispose();
             tableWrapper.UpdateData();
             dgv.Refresh();
         }

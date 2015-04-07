@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WorckWithReestr.arcBtn_Open_FizLicList" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ArcButtons\arcBtn_Open_FizLicList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.arcBtn_Open_JurLicList" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ArcButtons\arcBtn_Open_JurLicList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.arcBtn_Open_ReestrVedomostey" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ArcButtons\arcBtn_Open_ReestrVedomostey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.arcBtn_Open_ReestrZayav" Collapsed="true">
+    <Position X="11.25" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ArcButtons\arcBtn_Open_ReestrZayav.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.arcBtn_Open_TipDoc" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ArcButtons\arcBtn_Open_TipDoc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmBaseDocument" Collapsed="true">
+    <Position X="7.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>UAAAEIAAAiNFAAFAAACAAAITAAICBkAAAAAQAAgAAAg=</HashCode>
+      <FileName>Forms\BaseForm\frmBaseDocument.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmBaseJurnal" Collapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAJMAACMCCBBTCBAEiGihIgHQAAICIAEIEAAQBMABEA=</HashCode>
+      <FileName>Forms\BaseForm\frmBaseJurnal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmBaseSpr_element" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAAEIAAACFFAAFAAACAAAQTAEICBkBAAAAQAAgAAAA=</HashCode>
+      <FileName>Forms\BaseForm\frmBaseSpr_element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmBaseSpr_list" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJMAEAMCCBBTCBAAiWAAAgDAAAIDIAEIEAAQFEABEA=</HashCode>
+      <FileName>Forms\BaseForm\frmBaseSpr_list.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmFizLic_element" Collapsed="true">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBACUAABACAAAAAAAACAAAAiIAIAAAAAIADAMAAAAAA=</HashCode>
+      <FileName>Forms\FizLic\frmFizLic_element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmFizLic_list" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAQACABAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\FizLic\frmFizLic_list.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmJurLic_element" Collapsed="true">
+    <Position X="0.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EQAAEAAAACAAAAgAAACAgAACAAIAAkAIEAAABEAAAgQ=</HashCode>
+      <FileName>Forms\JurLic\frmJurLic_element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmJurLic_list" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAQACABAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\JurLic\frmJurLic_list.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmReestrVedomostey_doc" Collapsed="true">
+    <Position X="5.75" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>GiAAMBUiIDIAEAKioiCHACACiIoRBwBqBAACACA4wAE=</HashCode>
+      <FileName>Forms\ReestrVedomostey\frmReestrVedomostey_doc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmReestrVedomostey_jurnal" Collapsed="true">
+    <Position X="2.75" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAACAQQAAAAACgBQACAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\ReestrVedomostey\frmReestrVedomostey_jurnal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmReestrZayav_doc" Collapsed="true">
+    <Position X="8.75" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>GBkTMRB9njJEUmqkBFGQbELigDIUCgktRxHQNZQRTUA=</HashCode>
+      <FileName>Forms\ReestrZayav\frmReestrZayav_doc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmReestrZayav_jurnal" Collapsed="true">
+    <Position X="0.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAIAABACBAQAAAAACiBQACAAABCAAAQAAAAAAgAAA=</HashCode>
+      <FileName>Forms\ReestrZayav\frmReestrZayav_jurnal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmTipDoc_element" Collapsed="true">
+    <Position X="3" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAACEAAgACCAAgAAAACAAEECAAIQAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Forms\TipDok\frmTipDoc_element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.frmTipDoc_list" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAQACABAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\TipDok\frmTipDoc_list.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.DictionaryWork" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAMQAAAAAAAACAhAAAAACAgAAACAAASAAAA=</HashCode>
+      <FileName>Shared\DictionaryWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.DocumentWork" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAQEABAAEA=</HashCode>
+      <FileName>Shared\DocumentWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.DomeinDataAdapter" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAECAQAAAgAAAAAAAAAAAAAAAAEAAQAABAAQA=</HashCode>
+      <FileName>Shared\DomeinDataAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.DomeinData" Collapsed="true">
+    <Position X="9.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEgCAAAAAA=</HashCode>
+      <FileName>Shared\DomeinDataAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.FieldPropertyDescriptor" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAAZEBQBgIQUAABAAAAACAQAAQACAICAAAAACA=</HashCode>
+      <FileName>Shared\FieldPropertyDescriptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.Logger" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Shared\Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.SharedClass" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAEAAAYAAABuAAgAACAAAACQQAAgABAAAAAgAAAEA=</HashCode>
+      <FileName>Shared\SharedClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorckWithReestr.TableWraper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggAABAIAUABCAEAAMAgAoAIAACkIADgEAgAAAAUAFAA=</HashCode>
+      <FileName>Shared\TableWraper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WorckWithReestr.Properties.Resources" Collapsed="true">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

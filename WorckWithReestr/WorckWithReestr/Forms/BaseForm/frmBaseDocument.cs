@@ -312,5 +312,9 @@ namespace WorckWithReestr
             }
         }
         #endregion
+
+        private void frmBaseDocument_FormClosed(object sender, FormClosedEventArgs e)
+        {
+        }
     }
 }
