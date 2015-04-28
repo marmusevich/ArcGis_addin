@@ -61,17 +61,22 @@ namespace WorckWithReestr
             this.lblDocMD = new System.Windows.Forms.Label();
             this.btnFIO_Kad = new System.Windows.Forms.Button();
             this.txtFIO_Kad = new System.Windows.Forms.TextBox();
+            this.btnTip_Doc = new System.Windows.Forms.Button();
+            this.txtTip_Doc = new System.Windows.Forms.TextBox();
+            this.lblTip_Doc = new System.Windows.Forms.Label();
+            this.txtTip_Doc_code = new System.Windows.Forms.TextBox();
+            this.lblTip_Doc_code = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(529, 418);
+            this.btnOk.Location = new System.Drawing.Point(529, 450);
             this.btnOk.TabIndex = 14;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(19, 418);
+            this.btnCancel.Location = new System.Drawing.Point(19, 450);
             this.btnCancel.TabIndex = 15;
             // 
             // txtName_GD
@@ -142,7 +147,7 @@ namespace WorckWithReestr
             // 
             // txtPrim
             // 
-            this.txtPrim.Location = new System.Drawing.Point(195, 298);
+            this.txtPrim.Location = new System.Drawing.Point(195, 352);
             this.txtPrim.Multiline = true;
             this.txtPrim.Name = "txtPrim";
             this.txtPrim.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -205,7 +210,7 @@ namespace WorckWithReestr
             // 
             // lblFIO_Kad
             // 
-            this.lblFIO_Kad.Location = new System.Drawing.Point(16, 365);
+            this.lblFIO_Kad.Location = new System.Drawing.Point(16, 419);
             this.lblFIO_Kad.Name = "lblFIO_Kad";
             this.lblFIO_Kad.Size = new System.Drawing.Size(171, 20);
             this.lblFIO_Kad.TabIndex = 151;
@@ -213,7 +218,7 @@ namespace WorckWithReestr
             // 
             // lblPrim
             // 
-            this.lblPrim.Location = new System.Drawing.Point(16, 318);
+            this.lblPrim.Location = new System.Drawing.Point(16, 372);
             this.lblPrim.Name = "lblPrim";
             this.lblPrim.Size = new System.Drawing.Size(171, 20);
             this.lblPrim.TabIndex = 149;
@@ -329,7 +334,7 @@ namespace WorckWithReestr
             // 
             // btnFIO_Kad
             // 
-            this.btnFIO_Kad.Location = new System.Drawing.Point(582, 364);
+            this.btnFIO_Kad.Location = new System.Drawing.Point(582, 418);
             this.btnFIO_Kad.Name = "btnFIO_Kad";
             this.btnFIO_Kad.Size = new System.Drawing.Size(22, 23);
             this.btnFIO_Kad.TabIndex = 166;
@@ -339,17 +344,64 @@ namespace WorckWithReestr
             // 
             // txtFIO_Kad
             // 
-            this.txtFIO_Kad.Location = new System.Drawing.Point(195, 365);
+            this.txtFIO_Kad.Location = new System.Drawing.Point(195, 419);
             this.txtFIO_Kad.Name = "txtFIO_Kad";
             this.txtFIO_Kad.Size = new System.Drawing.Size(380, 20);
             this.txtFIO_Kad.TabIndex = 13;
             this.txtFIO_Kad.Validating += new System.ComponentModel.CancelEventHandler(this.txtFIO_Kad_Validating);
             // 
+            // btnTip_Doc
+            // 
+            this.btnTip_Doc.Location = new System.Drawing.Point(581, 298);
+            this.btnTip_Doc.Name = "btnTip_Doc";
+            this.btnTip_Doc.Size = new System.Drawing.Size(22, 23);
+            this.btnTip_Doc.TabIndex = 169;
+            this.btnTip_Doc.Text = "...";
+            this.btnTip_Doc.UseVisualStyleBackColor = true;
+            this.btnTip_Doc.Click += new System.EventHandler(this.btnTip_Doc_Click);
+            // 
+            // txtTip_Doc
+            // 
+            this.txtTip_Doc.Location = new System.Drawing.Point(195, 299);
+            this.txtTip_Doc.Name = "txtTip_Doc";
+            this.txtTip_Doc.Size = new System.Drawing.Size(380, 20);
+            this.txtTip_Doc.TabIndex = 167;
+            this.txtTip_Doc.Validating += new System.ComponentModel.CancelEventHandler(this.txtTip_Doc_Validating);
+            // 
+            // lblTip_Doc
+            // 
+            this.lblTip_Doc.Location = new System.Drawing.Point(16, 299);
+            this.lblTip_Doc.Name = "lblTip_Doc";
+            this.lblTip_Doc.Size = new System.Drawing.Size(171, 21);
+            this.lblTip_Doc.TabIndex = 168;
+            this.lblTip_Doc.Text = "Тип документа";
+            // 
+            // txtTip_Doc_code
+            // 
+            this.txtTip_Doc_code.Location = new System.Drawing.Point(195, 325);
+            this.txtTip_Doc_code.Name = "txtTip_Doc_code";
+            this.txtTip_Doc_code.ReadOnly = true;
+            this.txtTip_Doc_code.Size = new System.Drawing.Size(130, 20);
+            this.txtTip_Doc_code.TabIndex = 171;
+            // 
+            // lblTip_Doc_code
+            // 
+            this.lblTip_Doc_code.Location = new System.Drawing.Point(16, 325);
+            this.lblTip_Doc_code.Name = "lblTip_Doc_code";
+            this.lblTip_Doc_code.Size = new System.Drawing.Size(171, 20);
+            this.lblTip_Doc_code.TabIndex = 170;
+            this.lblTip_Doc_code.Text = "Код типа документа";
+            // 
             // frmReestrVedomostey_doc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 451);
+            this.ClientSize = new System.Drawing.Size(618, 483);
+            this.Controls.Add(this.txtTip_Doc_code);
+            this.Controls.Add(this.lblTip_Doc_code);
+            this.Controls.Add(this.btnTip_Doc);
+            this.Controls.Add(this.txtTip_Doc);
+            this.Controls.Add(this.lblTip_Doc);
             this.Controls.Add(this.btnFIO_Kad);
             this.Controls.Add(this.txtFIO_Kad);
             this.Controls.Add(this.txtName_GD);
@@ -423,6 +475,11 @@ namespace WorckWithReestr
             this.Controls.SetChildIndex(this.txtName_GD, 0);
             this.Controls.SetChildIndex(this.txtFIO_Kad, 0);
             this.Controls.SetChildIndex(this.btnFIO_Kad, 0);
+            this.Controls.SetChildIndex(this.lblTip_Doc, 0);
+            this.Controls.SetChildIndex(this.txtTip_Doc, 0);
+            this.Controls.SetChildIndex(this.btnTip_Doc, 0);
+            this.Controls.SetChildIndex(this.lblTip_Doc_code, 0);
+            this.Controls.SetChildIndex(this.txtTip_Doc_code, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -463,6 +520,11 @@ namespace WorckWithReestr
         private Label lblDocMD;
         private Button btnFIO_Kad;
         private TextBox txtFIO_Kad;
+        private Button btnTip_Doc;
+        private TextBox txtTip_Doc;
+        private Label lblTip_Doc;
+        private TextBox txtTip_Doc_code;
+        private Label lblTip_Doc_code;
 
     }
 }

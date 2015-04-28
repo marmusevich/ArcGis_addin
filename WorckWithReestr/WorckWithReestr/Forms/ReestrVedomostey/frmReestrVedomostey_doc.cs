@@ -11,6 +11,7 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         // коды значений справочников
         int mFIO_Kad = -1;
+        int mTip_Doc = -1;
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -36,7 +37,9 @@ namespace WorckWithReestr
 
             // справочники
             mFIO_Kad = row.get_Value(base.table.FindField("FIO_Kad"));
+            mTip_Doc = row.get_Value(base.table.FindField("Tip_Doc"));
             OnChangedFIO_Kad();
+            OnChangedTipDoc();
 
             txtKol_Str_GD.Text = "" + row.get_Value(base.table.FindField("Kol_Str_GD")) as string;
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
@@ -62,12 +65,13 @@ namespace WorckWithReestr
             
             // справочники
             row.set_Value(base.table.FindField("FIO_Kad"), mFIO_Kad);
+            row.set_Value(base.table.FindField("Tip_Doc"), mTip_Doc);
 
             row.set_Value(base.table.FindField("Kol_Str_GD"), Convert.ToInt32(txtKol_Str_GD.Text));
 
             //N_Vh, Type = esriFieldTypeInteger, AliasName = Вхідний №
             int N_Vh = Convert.ToInt32(txtN_Vh.Text);
-            if (DocumentWork.IsNumerReestrVedomosteyExist(N_Vh))
+            if (DocumentWork.IsNumerReestrVedomosteyExist(N_Vh) && (editMode != EditMode.EDIT))
             {
                 if (MessageBox.Show(string.Format("Документ с номером [{0}] уже есть. \n Згенерировать следующий доступный? ", N_Vh), "Не унекальный номер", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     N_Vh = DocumentWork.GetNextNumerToReestrZayav();
@@ -81,6 +85,7 @@ namespace WorckWithReestr
             ret = SharedClass.CheckValueIsInt_SetError(txtN_Vh, errorProvider) && ret;
             ret = SharedClass.CheckValueIsInt_SetError(txtKol_Str_GD, errorProvider) && ret;
             ret = DictionaryWork.CheckValueIsContainsFizLic_SetError(txtFIO_Kad, errorProvider, ref mFIO_Kad) && ret;
+            ret = DictionaryWork.CheckValueIsContainsTip_Doc_SetError(txtTip_Doc, errorProvider, ref mTip_Doc, txtTip_Doc_code) && ret;
 
             return ret;
         }
@@ -102,6 +107,15 @@ namespace WorckWithReestr
         {
             txtFIO_Kad.Text = DictionaryWork.GetFIOByIDFromFizLic(mFIO_Kad);
         }
+
+
+        private void OnChangedTipDoc()
+        {
+            txtTip_Doc.Text = DictionaryWork.GetNameByIDFromTip_Doc(mTip_Doc);
+            txtTip_Doc_code.Text = DictionaryWork.GetCodeByIDFromTip_Doc(mTip_Doc);
+        }
+
+
 
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -151,6 +165,16 @@ namespace WorckWithReestr
             OnChangedFIO_Kad();
             errorProvider.SetError(txtFIO_Kad, String.Empty);
         }
+
+        private void btnTip_Doc_Click(object sender, EventArgs e)
+        {
+            string filteredString = "";
+            mTip_Doc = frmTipDoc_list.ShowForSelect(filteredString);
+            OnChangedTipDoc();
+            errorProvider.SetError(txtTip_Doc, String.Empty);
+            //ValidatingData();
+        }
+
         #endregion
 
         //---------------------------------------------------------------------------------------
@@ -244,6 +268,13 @@ namespace WorckWithReestr
         {
 
         }
+
+        private void txtTip_Doc_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+            e.Cancel = !ValidatingData();
+        }
+
     }
 }
 
@@ -269,6 +300,7 @@ namespace WorckWithReestr
 
 //// справочники
 //FIO_Kad, Type = esriFieldTypeInteger, AliasName = ПІБ особи, що розмістила
+//Tip_Doc, Type = esriFieldTypeInteger, AliasName = Тип документа 
 
 ////числа
 //Kol_Str_GD, Type = esriFieldTypeSmallInteger, AliasName = Кількість аркушів

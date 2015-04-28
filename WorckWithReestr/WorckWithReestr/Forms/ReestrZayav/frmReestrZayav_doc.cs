@@ -120,7 +120,7 @@ namespace WorckWithReestr
 
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             int N_Z = Convert.ToInt32(txtN_Z.Text);
-            if (DocumentWork.IsNumerReestrZayavExist(N_Z))
+            if (DocumentWork.IsNumerReestrZayavExist(N_Z) && (editMode != EditMode.EDIT))
             {
                 if (MessageBox.Show(string.Format("Документ с номером [{0}] уже есть. \n Згенерировать следующий доступный? ",N_Z), "Не унекальный номер", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     N_Z = DocumentWork.GetNextNumerToReestrZayav();

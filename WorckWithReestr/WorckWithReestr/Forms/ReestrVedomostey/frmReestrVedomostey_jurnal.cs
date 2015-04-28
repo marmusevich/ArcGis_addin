@@ -6,6 +6,7 @@ namespace WorckWithReestr
     public partial class frmReestrVedomostey_jurnal : frmBaseJurnal
     {
         int indexFIO_Kad;
+        int indexTip_Doc;
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region functions
@@ -40,37 +41,32 @@ namespace WorckWithReestr
         protected override void SetDefaultDisplayOrder()
         {
 
-            //int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
-            //                          base.table.FindField("N_Z"),// 1
-            //                          base.table.FindField("Data_Z"),// 2
-            //                          base.table.FindField("Kod_Z"),// 3
-            //                          base.table.FindField("N_Ish_Z"),// 4
-            //                          base.table.FindField("Data_Ish"),// 5
-            //                          base.table.FindField("Sodergan"),// 6
-            //                          base.table.FindField("Fio_Z"),// 7
-            //                          base.table.FindField("Otkaz"),// 8
-            //                          base.table.FindField("Pr_Otkaz"),// 9
-            //                          base.table.FindField("Tip_Doc"),// 10
-            //                          base.table.FindField("Status"),// 11
-            //                          base.table.FindField("Tel_Z"),// 12
-            //                          base.table.FindField("Dodatok"),// 13
-            //                          base.table.FindField("Cane"),// 14
-            //                          base.table.FindField("Oplata"),// 15
-            //                          base.table.FindField("Data_Oplata"),// 16
-            //                          base.table.FindField("Doc_Oplata"),// 17
-            //                          base.table.FindField("Data_Ved"),// 18
-            //                          base.table.FindField("Opisan_Ved"),// 19
-            //                          base.table.FindField("Forma_Ved"),// 20
-            //                          base.table.FindField("Fio_Ved_Vid"),// 21
-            //                          base.table.FindField("Fio_Ved_Prin"),// 22
-            //                          base.table.FindField("Prim") // 23
-            //                        };
-            //SharedClass.SetDisplayOrderByArray(dgv, displayIndicies);
+            int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
+                                      base.table.FindField("N_Vh"),
+                                      base.table.FindField("Data_Vh"),
+                                      base.table.FindField("Ist_Ved"),
+                                      base.table.FindField("N_Sop_List"),
+                                      base.table.FindField("Data_Otp"),
+                                      base.table.FindField("N_GD"),
+                                      base.table.FindField("N_Doc_GD"),
+                                      base.table.FindField("Name_GD"),
+                                      base.table.FindField("Kol_Str_GD"),
+                                      base.table.FindField("N_Kad"),
+                                      base.table.FindField("Data_Kad"),
+                                      base.table.FindField("Tip_Doc"),
+                                      base.table.FindField("El_Format_GD"),
+                                      base.table.FindField("FIO_Kad"),
+                                      base.table.FindField("Prim")
+
+                                    };
+            SharedClass.SetDisplayOrderByArray(dgv, displayIndicies);
         }
 
         protected override void OtherSetupDGV()
         {
             indexFIO_Kad = dgv.Columns["FIO_Kad"].Index;
+            indexTip_Doc = dgv.Columns["Tip_Doc"].Index;
+
             dgv.CellFormatting += OnCellFormatting;
         }
 
@@ -93,6 +89,18 @@ namespace WorckWithReestr
                 catch (Exception ex) // обработка ошибок
                 {
                     Logger.Write(ex, string.Format("frmReestrVedomostey_jurnal.OnCellFormatting FIO_Kad ={0}", e.Value));
+                }
+            }
+            if (e.ColumnIndex == indexTip_Doc)
+            {
+                try
+                {
+                    e.FormattingApplied = true;
+                    e.Value = DictionaryWork.GetNameByIDFromTip_Doc(Convert.ToInt32(e.Value));
+                }
+                catch (Exception ex) // обработка ошибок
+                {
+                    Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Tip_Doc ={0}", e.Value));
                 }
             }
 

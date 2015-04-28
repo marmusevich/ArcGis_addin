@@ -1,5 +1,4 @@
-﻿//#define CONSTRUCT_FORM
-
+﻿
 using System;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Geodatabase;
@@ -229,7 +228,9 @@ namespace WorckWithReestr
         }
         private void frmBaseSpr_element_Load(object sender, EventArgs e)
         {
-#if (!CONSTRUCT_FORM)
+            if (objectID == -1) // для конструктора форм
+                return;
+
             if (!this.GetSharedData()) // error
             {
                 this.Close();
@@ -254,7 +255,6 @@ namespace WorckWithReestr
                 btnCancel.Enabled = true;
             }
 
-#endif
             ToolTip toolTipOk = new ToolTip();
             toolTipOk.SetToolTip(btnOk, "Ctrl+Enter");
             ToolTip toolTipCancel = new ToolTip();
