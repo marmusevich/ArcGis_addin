@@ -161,7 +161,6 @@ namespace WorckWithReestr
                 base.OnListChanged(e);
         }
 
-
         private bool StartEditOp()
         {
             bool retVal = false;

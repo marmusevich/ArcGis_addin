@@ -332,6 +332,14 @@ namespace WorckWithReestr
         #endregion
         //---------------------------------------------------------------------------------------
     }
+
+
+    interface IFormFilterMetods
+    {
+        //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
+        bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName);
+    }
+
 }
 
 // примеры

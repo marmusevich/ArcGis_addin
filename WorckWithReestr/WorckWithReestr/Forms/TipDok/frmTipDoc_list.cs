@@ -51,6 +51,12 @@ namespace WorckWithReestr
         {
             return new frmTipDoc_element(_objectID, _editMode);
         }
+        //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
+        public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
+        {
+            dictionaryTableName = "";
+            return false;
+        }
 
         #endregion
     }

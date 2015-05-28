@@ -24,13 +24,10 @@ namespace WorckWithReestr
         {
             InitializeComponent();
 
-
             base.NameWorkspace = "reestr";
             base.NameTable = "reestr.DBO.Kn_Reg_Ved";
             base.NameSortFild = "Data_Vh";
             base.NameDataFilteredFild = "Data_Vh";
-
-
         }
 
         protected override frmBaseDocument GetDocumentForm(int _objectID, frmBaseDocument.EditMode _editMode)
@@ -75,6 +72,22 @@ namespace WorckWithReestr
         {
             string ret = base.GetStringAddetConditions();
             return ret;
+        }
+        //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
+        public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
+        {
+
+            if(fildName == "FIO_Kad")
+            {
+                dictionaryTableName = "fizichni_osoby";
+                return true;
+            }
+            else if(fildName == "Tip_Doc")
+            {
+                dictionaryTableName = "Tip_Doc";
+                return true;
+            }
+            return false;
         }
 
         private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

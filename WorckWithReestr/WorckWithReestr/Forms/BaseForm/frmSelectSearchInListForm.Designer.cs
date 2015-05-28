@@ -48,7 +48,7 @@
             this.pnMain.AutoScroll = true;
             this.pnMain.Location = new System.Drawing.Point(12, 28);
             this.pnMain.Name = "pnMain";
-            this.pnMain.Size = new System.Drawing.Size(525, 436);
+            this.pnMain.Size = new System.Drawing.Size(525, 396);
             this.pnMain.TabIndex = 1;
             // 
             // frmSelectSearchInListForm
@@ -60,6 +60,7 @@
             this.Controls.Add(this.tsMain);
             this.Name = "frmSelectSearchInListForm";
             this.Text = "frmSelectSearchInListForm";
+            this.Load += new System.EventHandler(this.frmSelectSearchInListForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

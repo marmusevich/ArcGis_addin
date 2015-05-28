@@ -7,7 +7,7 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace WorckWithReestr
 {
-    public partial class frmBaseSpr_list : Form
+    public partial class frmBaseSpr_list : Form, IFormFilterMetods
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -50,6 +50,12 @@ namespace WorckWithReestr
         protected virtual string GetStringAddetConditions()
         {
             return "";
+        }
+        //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
+        public virtual bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
+        {
+            dictionaryTableName = "";
+            return false;
         }
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -252,6 +258,10 @@ namespace WorckWithReestr
                     else
                         EditRec(id);
                 }
+            }
+            else if (e.KeyCode == Keys.F && e.Control)
+            {
+                frmSelectSearchInListForm.ShowForView(this, table);
             }
         }
         #endregion

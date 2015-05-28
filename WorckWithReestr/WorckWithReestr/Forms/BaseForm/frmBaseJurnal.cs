@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace WorckWithReestr
 {
-    public partial class frmBaseJurnal : Form
+    public partial class frmBaseJurnal : Form, IFormFilterMetods
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -57,6 +57,13 @@ namespace WorckWithReestr
         {
             return "";
         }
+        //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
+        public virtual bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
+        {
+            dictionaryTableName = "";
+            return false;
+        }
+
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - base
@@ -288,6 +295,10 @@ namespace WorckWithReestr
                     else
                         EditRec(id);
                 }
+            }
+            else if (e.KeyCode == Keys.F && e.Control)
+            {
+                frmSelectSearchInListForm.ShowForView(this, table);
             }
         }
         private void dtpDataOt_ValueChanged(object sender, EventArgs e)

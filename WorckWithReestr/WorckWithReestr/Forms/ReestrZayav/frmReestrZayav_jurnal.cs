@@ -104,6 +104,36 @@ namespace WorckWithReestr
 
             return ret;
         }
+        //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
+        public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
+        {
+            if (fildName == "Fio_Ved_Vid")
+            {
+                dictionaryTableName = "fizichni_osoby";
+                return true;
+            }
+            else if (fildName == "Fio_Ved_Vid")
+            {
+                dictionaryTableName = "fizichni_osoby";
+                return true;
+            }
+            else if (fildName == "Fio_Z")
+            {
+                dictionaryTableName = "fizichni_osoby";
+                return true;
+            }
+            else if (fildName == "Kod_Z")
+            {
+                dictionaryTableName = "fizichni_osoby, jur_osoby";
+                return true;
+            }
+            else if (fildName == "Tip_Doc")
+            {
+                dictionaryTableName = "Tip_Doc";
+                return true;
+            }
+            return false;
+        }
 
         private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
