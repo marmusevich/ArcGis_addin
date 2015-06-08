@@ -65,6 +65,9 @@ namespace WorckWithReestr
             public TypeOfType mTOT; // тип поля
             public string mDictionareTableName; // если справочник, то таблица справочника
             //public string mDictionareKeyFildName = ""; //для справочников ключевое поле
+            public int mDictionareValue;
+
+            public DomeinDataAdapter mDomeinDataAdapter;
             public string mAliasName; // представление для пользователя
             public string mName; // внутренее имя поля
             public ArrayList mControls;//ссылки на связаные элементы управления
@@ -74,8 +77,10 @@ namespace WorckWithReestr
                 mTOT = TypeOfType.UNCNOW;
                 mDictionareTableName = "";
                 //mDictionareKeyFildName = "";
+                mDictionareValue = -1;
                 mAliasName = "";
                 mName = "";
+                mDomeinDataAdapter = null;
                 mControls = new ArrayList(4);
             }
         }
@@ -207,6 +212,8 @@ namespace WorckWithReestr
         // построить форму 
         private void ConstructForm()
         {
+            this.Text = "Фильтр для: " + (table as IObjectClass).AliasName;
+
             int y = 0;
             allFilds = new ArrayList(table.Fields.FieldCount);
             //из таблици получить поля
@@ -231,24 +238,19 @@ namespace WorckWithReestr
                 y = 25 * fieldCount;
 
                 // -чек бокс - использование условия
-                sfd.mControls.Add(CreateCheckBox(ref sfd, y, 10, 15));
+                if (sfd.mTOT != TypeOfType.UNCNOW)
+                    sfd.mControls.Add(CreateCheckBox(ref sfd, y, 10, 15));
                 //- надпись - имя поля
                 sfd.mControls.Add(CreateLabel(ref sfd, y, 10 + 15 + 10, 150));
                 // - надпись тип поля + хинт полное указание типа
                 //- комбобокс с типами сравнений
-                ComboBox ctr = CreateComparisonsComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10, 100) as ComboBox;
-                ctr.SelectedIndexChanged += new System.EventHandler(this.cb_Comparisons_SelectedIndexChanged);
-                sfd.mControls.Add(ctr);
-
-                //this.cbIsWorker.CheckedChanged += new System.EventHandler(this.cbIsWorker_CheckedChanged);
-
+                if (sfd.mTOT != TypeOfType.UNCNOW)
+                    sfd.mControls.Add(CreateComparisonsComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10, 100));
 
                 //- поле ввода (текст, число, справочник), комбобокс (домен), выбор даты (даты)
                 //- для справочника кнопка выбора из справочника
                 //- заполнить масивы автозаполнения где надо
                 //- назначить обработчики
-
-
 
                 //должны быть условия для
                 switch (sfd.mTOT)
@@ -267,15 +269,7 @@ namespace WorckWithReestr
                         break;
                     // - домен (=)
                     case TypeOfType.DOMAIN:
-                        if (true)
-                        {
-                            sfd.mControls.Add(CreateBoolValueCheckBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
-                        }
-                        else
-                        {
-                            sfd.mControls.Add(CreateValueDomainComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
-                        }
-
+                        sfd.mControls.Add(CreateValueDomainComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
                         break;
                     // - справочник (=), для основного представления как для текста ??
                     case TypeOfType.DICTIONARY:
@@ -283,9 +277,15 @@ namespace WorckWithReestr
                         sfd.mControls.Add(CreateSelectDictionaryButton(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10 + 150 + 10, 20));
                         break;
                     case TypeOfType.ID:
+                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
                         break;
                     // TypeOfType.UNCNOW
                     default:
+                        {
+                            Label temp = CreateLabel(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150, "lb_uncnow_") as Label;
+                            temp.Text = "Неизвестный тип...";
+                            sfd.mControls.Add(temp);
+                        }
                         break;
                 }
                 allFilds.Add(sfd);
@@ -335,35 +335,27 @@ namespace WorckWithReestr
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 14);
             temp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            temp.SelectedIndexChanged += new System.EventHandler(this.cb_Comparisons_SelectedIndexChanged);
+
             temp.Tag = sfd;
             pnMain.Controls.Add(temp);
             return temp;
         }
-        // -чек бокс - использование условия
-        private Control CreateBoolValueCheckBox(ref sFildsDescription sfd, int y, int x, int w = 15, string prefix = "chb_bv_")
-        {
-            CheckBox temp = new CheckBox();
-            temp.AutoSize = true;
-            temp.Location = new System.Drawing.Point(x, y);
-            temp.Size = new System.Drawing.Size(w, 14);
-            temp.Name = prefix + sfd.mName;
-            temp.Text = "";
-            temp.Tag = sfd;
-            //temp.CheckedChanged += new System.EventHandler(this.cbIsWorker_CheckedChanged);
-            pnMain.Controls.Add(temp);
-            return temp;
-        }
-        //- комбобокс с типами сравнений
+        //- комбобокс с доменных значений
         private Control CreateValueDomainComboBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_vd_")
         {
             ComboBox temp = new ComboBox();
             temp.FormattingEnabled = true;
-            temp.Items.AddRange(ConstructComparisons(sfd.mTOT));
+            //вставить диапозон для доменных значений
+            sfd.mDomeinDataAdapter = new DomeinDataAdapter(table.Fields.get_Field(table.FindField(sfd.mName)).Domain);
+            temp.Items.AddRange(sfd.mDomeinDataAdapter.ToArray());
+
             temp.SelectedIndex = 0;
             temp.Location = new System.Drawing.Point(x, y);
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 14);
             temp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            temp.SelectedIndexChanged += new System.EventHandler(this.cb_Comparisons_SelectedIndexChanged);
             temp.Tag = sfd;
             pnMain.Controls.Add(temp);
             return temp;
@@ -383,15 +375,38 @@ namespace WorckWithReestr
             return temp;
         }
         //- текстовое поле ввода
-        private Control CreateValueTextBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "tb_v_")
+        private Control CreateValueTextBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "txt_v_")
         {
             TextBox temp = new TextBox();
             temp.Location = new System.Drawing.Point(x, y);
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 14);
             temp.Tag = sfd;
-            temp.Validating += new System.ComponentModel.CancelEventHandler(this.tb_v_Validating);
+            temp.Validating += new System.ComponentModel.CancelEventHandler(this.txt_v_Validating);
+            temp.TextChanged += new System.EventHandler(this.txt_v_TextChanged);
+
             pnMain.Controls.Add(temp);
+
+            if (sfd.mTOT == TypeOfType.DICTIONARY)
+            {
+                if (sfd.mDictionareTableName == "fizichni_osoby")
+                {
+                    DictionaryWork.EnableAutoComlectToFizLic(temp);
+                }
+                else if (sfd.mDictionareTableName == "jur_osoby")
+                {
+                    DictionaryWork.EnableAutoComlectToJurLic(temp);
+                }
+                else if (sfd.mDictionareTableName == "Tip_Doc")
+                {
+                    DictionaryWork.EnableAutoComlectToTip_Doc(temp);
+                }
+                else
+                {
+                    temp.Enabled = false;
+                }
+            }
+
             return temp;
         }
         //- кнопка выбора из справочника
@@ -405,7 +420,6 @@ namespace WorckWithReestr
             temp.UseVisualStyleBackColor = true;
             temp.Tag = sfd;
             temp.Text = "...";
-            temp.Click += new System.EventHandler(this.but_sd_Click);
             pnMain.Controls.Add(temp);
             return temp;
         }
@@ -431,10 +445,101 @@ namespace WorckWithReestr
                 }
             }
         }
+
+        private void txt_v_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (txt != null && txt.Tag != null)
+            {
+                sFildsDescription sfd = txt.Tag as sFildsDescription;
+                if (sfd != null)
+                {
+                    CheckBox cb = sfd.mControls[0] as CheckBox;
+                    if (cb != null)
+                    {
+                        if (!cb.Checked) cb.Checked = true;
+                    }
+
+                    //
+                    if (sfd.mTOT == TypeOfType.NUMBER)
+                    {
+                        SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                    }
+                    else if (sfd.mTOT == TypeOfType.ID)
+                    {
+                        SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                    }
+                    else if (sfd.mTOT == TypeOfType.DICTIONARY)
+                    {
+                        if (sfd.mDictionareTableName == "fizichni_osoby")
+                        {
+                            DictionaryWork.CheckValueIsContainsFizLic_SetError(txt, errorProvider, ref sfd.mDictionareValue);
+                        }
+                        else if (sfd.mDictionareTableName == "jur_osoby")
+                        {
+                            DictionaryWork.CheckValueIsContainsJurLic_SetError(txt, errorProvider, ref sfd.mDictionareValue);
+                        }
+                        else if (sfd.mDictionareTableName == "Tip_Doc")
+                        {
+                            DictionaryWork.CheckValueIsContainsTip_Doc_SetError(txt, errorProvider, ref sfd.mDictionareValue);
+                        }
+                        else
+                        {
+                        }
+                    }
+
+                }
+            }
+        }
+
         // кнопка выбора из справочника
         private void but_sd_Click(object sender, EventArgs e)
         {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag != null)
+            {
+                sFildsDescription sfd = btn.Tag as sFildsDescription;
+                if (sfd != null)
+                {
+                    if (sfd.mDictionareTableName == "fizichni_osoby")
+                    {
+                        string filteredString = "";
+                        sfd.mDictionareValue = frmFizLic_list.ShowForSelect(filteredString);
 
+                        TextBox txt = sfd.mControls[3] as TextBox;
+                        if (txt != null)
+                        {
+                            txt.Text = DictionaryWork.GetFIOByIDFromFizLic(sfd.mDictionareValue);
+                            errorProvider.SetError(txt, String.Empty);
+                        }
+                    }
+                    else if (sfd.mDictionareTableName == "jur_osoby")
+                    {
+                        string filteredString = "";
+                        sfd.mDictionareValue = frmJurLic_list.ShowForSelect(filteredString);
+                        TextBox txt = sfd.mControls[4] as TextBox;
+                        if (txt != null)
+                        {
+                            txt.Text = DictionaryWork.GetNameByIDFromJurOsoby(sfd.mDictionareValue);
+                            errorProvider.SetError(txt, String.Empty);
+                        }
+                    }
+                    else if (sfd.mDictionareTableName == "Tip_Doc")
+                    {
+                        string filteredString = "";
+                        sfd.mDictionareValue = frmTipDoc_list.ShowForSelect(filteredString);
+                        TextBox txt = sfd.mControls[4] as TextBox;
+                        if (txt != null)
+                        {
+                            txt.Text = DictionaryWork.GetNameByIDFromTip_Doc(sfd.mDictionareValue);
+                            errorProvider.SetError(txt, String.Empty);
+                        }
+                    }
+                    else
+                    {
+                    }
+                }
+            }
         }
         // валидация даты времени
         private void dtp_v_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -443,10 +548,42 @@ namespace WorckWithReestr
             //e.Cancel = !ValidatingData();
         }
         // валидация текстового поля
-        private void tb_v_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txt_v_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //isModified = true;
-            //e.Cancel = !ValidatingData();
+            TextBox txt = sender as TextBox;
+            if (txt != null && txt.Tag != null)
+            {
+                sFildsDescription sfd = txt.Tag as sFildsDescription;
+                if (sfd != null)
+                {
+                    if (sfd.mTOT == TypeOfType.NUMBER)
+                    {
+                        e.Cancel = SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                    }
+                    else if (sfd.mTOT == TypeOfType.ID)
+                    {
+                        e.Cancel = SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                    }
+                    else if (sfd.mTOT == TypeOfType.DICTIONARY)
+                    {
+                        if (sfd.mDictionareTableName == "fizichni_osoby")
+                        {
+                            e.Cancel = DictionaryWork.CheckValueIsContainsFizLic_SetError(txt, errorProvider, ref sfd.mDictionareValue);
+                        }
+                        else if (sfd.mDictionareTableName == "jur_osoby")
+                        {
+                            e.Cancel = DictionaryWork.CheckValueIsContainsJurLic_SetError(txt, errorProvider, ref sfd.mDictionareValue);
+                        }
+                        else if (sfd.mDictionareTableName == "Tip_Doc")
+                        {
+                            e.Cancel = DictionaryWork.CheckValueIsContainsTip_Doc_SetError(txt, errorProvider, ref sfd.mDictionareValue);
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+            }
         }
         #endregion
 
@@ -467,8 +604,18 @@ namespace WorckWithReestr
                 ConstructForm();
             }
         }
-        #endregion
 
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("btnOk_Click");
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("btnCancel_Click");
+        }
+        
+        #endregion
     }
 }
 
