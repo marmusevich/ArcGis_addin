@@ -134,6 +134,7 @@ namespace WorckWithReestr
         {
             return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
         }
+
         #endregion
         //---------------------------------------------------------------------------------------
         #region преобразование значений

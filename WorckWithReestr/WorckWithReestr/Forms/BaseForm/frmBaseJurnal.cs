@@ -33,6 +33,8 @@ namespace WorckWithReestr
         protected TableWraper tableWrapper = null;
         //результат выбраного значения
         public int SelectID { get; protected set; }
+        //
+        protected bool enable_dtpDataEvent = true;
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
@@ -218,8 +220,8 @@ namespace WorckWithReestr
         }
         private void frmBaseJurnal_Load(object sender, System.EventArgs e)
         {
-            dtpDataOt.Value = SharedClass.GetFirstMonthDayDate( DateTime.Now );
-            dtpDatePo.Value = SharedClass.GetLastMonthDayDate( DateTime.Now );
+            dtpDataOt.Value = SharedClass.GetFirstMonthDayDate(DateTime.Now);
+            dtpDatePo.Value = SharedClass.GetLastMonthDayDate(DateTime.Now);
 #if (!CONSTRUCT_FORM)
             if (!this.ReadData()) // -ok
             {
@@ -303,7 +305,7 @@ namespace WorckWithReestr
         }
         private void dtpDataOt_ValueChanged(object sender, EventArgs e)
         {
-            if (tableWrapper != null)
+            if (tableWrapper != null && enable_dtpDataEvent)
             {
                 tableWrapper.QueryFilter = BuildConditions();
                 tableWrapper.UpdateData();
@@ -312,11 +314,34 @@ namespace WorckWithReestr
         }
         private void dtpDatePo_ValueChanged(object sender, EventArgs e)
         {
-            if (tableWrapper != null)
+            if (tableWrapper != null && enable_dtpDataEvent)
             {
                 tableWrapper.QueryFilter = BuildConditions();
                 tableWrapper.UpdateData();
                 dgv.Refresh();
+            }
+        }
+
+        private void btnChangePeriod(object sender, EventArgs e)
+        {
+            Button but = sender as Button;
+            if (but != null && but.Tag != null)
+            {
+                try
+                {
+                    short add = Convert.ToInt16(but.Tag);
+                    enable_dtpDataEvent = false;
+                    dtpDataOt.Value = SharedClass.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year, dtpDataOt.Value.Month + add, 15));
+                    dtpDatePo.Value = SharedClass.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year, dtpDatePo.Value.Month + add, 15));
+                    tableWrapper.QueryFilter = BuildConditions();
+                    tableWrapper.UpdateData();
+                    dgv.Refresh();
+                }
+                catch { }
+                finally
+                {
+                    enable_dtpDataEvent = true;
+                }
             }
         }
         #endregion

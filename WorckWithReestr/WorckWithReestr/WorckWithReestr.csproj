@@ -284,9 +284,6 @@
   <ItemGroup>
     <AddInContent Include="_Images\arcBtn_Open_TipDoc.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
     <AddInTargetProduct>Desktop</AddInTargetProduct>

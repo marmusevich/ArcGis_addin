@@ -79,7 +79,7 @@ namespace WorckWithReestr
                 mControls = new ArrayList(4);
             }
         }
-        
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,8 +92,6 @@ namespace WorckWithReestr
 
         //собственно таблица
         protected ITable table;
-
-        
         private ArrayList allFilds = null;
         #endregion
 
@@ -102,17 +100,16 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         public static void ShowForView(Form _owner, ITable _table)
         {
-            Form frm = new frmSelectSearchInListForm( _table );
+            Form frm = new frmSelectSearchInListForm(_table);
 
             frm.ShowDialog(_owner);
             frm.Activate();
         }
 
-
         // получить тип поля
         private void GetTypeOfType(ref sFildsDescription sfd, IField f)
         {
-            if (Owner is IFormFilterMetods )
+            if (Owner is IFormFilterMetods)
             {
                 if ((Owner as IFormFilterMetods).ChekFildIsDictionary(f.Name, ref sfd.mDictionareTableName))
                 {
@@ -130,7 +127,7 @@ namespace WorckWithReestr
             if (f.Type == esriFieldType.esriFieldTypeDate)
             {
                 sfd.mTOT = TypeOfType.DATE;
-                return; 
+                return;
             }
             else if (f.Type == esriFieldType.esriFieldTypeOID)
             {
@@ -145,7 +142,7 @@ namespace WorckWithReestr
             else if (f.Type == esriFieldType.esriFieldTypeSingle ||
                         f.Type == esriFieldType.esriFieldTypeDouble ||
                         f.Type == esriFieldType.esriFieldTypeInteger ||
-                        f.Type == esriFieldType.esriFieldTypeSmallInteger  )
+                        f.Type == esriFieldType.esriFieldTypeSmallInteger)
             {
                 sfd.mTOT = TypeOfType.NUMBER;
                 return;
@@ -154,8 +151,7 @@ namespace WorckWithReestr
             //определить не удалось
             sfd.mTOT = TypeOfType.UNCNOW;
         }
-        
-   
+
         //доступные типы сравнения
         private object[] ConstructComparisons(TypeOfType tot)
         {
@@ -186,8 +182,8 @@ namespace WorckWithReestr
                     tmp.Add(new ComparisonsData(TypesOfComparisons.EQUAL, "равно (==, =)"));
                     tmp.Add(new ComparisonsData(TypesOfComparisons.LESS_OR_EQUAL, "меньше или равно (<=)"));
                     tmp.Add(new ComparisonsData(TypesOfComparisons.LESS, "меньше (<)"));
-                    
-                //tmp.Add(new ComparisonsData(TypesOfComparisons., "beetwen"));
+
+                    //tmp.Add(new ComparisonsData(TypesOfComparisons., "beetwen"));
                     break;
                 // - домен (=)
                 case TypeOfType.DOMAIN:
@@ -226,13 +222,9 @@ namespace WorckWithReestr
 
                 GetTypeOfType(ref sfd, f);
 
-
-
                 // специальное поведение 
                 //  -для домена БУЛ
                 //  -для реестра заявлений поле "Kod_Z" может быть ссылкой на таблици"fizichni_osoby, jur_osoby";
-
-
 
                 //сгенерировать контролы с учетом типа
                 //высота ряда
@@ -244,34 +236,66 @@ namespace WorckWithReestr
                 sfd.mControls.Add(CreateLabel(ref sfd, y, 10 + 15 + 10, 150));
                 // - надпись тип поля + хинт полное указание типа
                 //- комбобокс с типами сравнений
-                sfd.mControls.Add(CreateComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10, 100));
+                ComboBox ctr = CreateComparisonsComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10, 100) as ComboBox;
+                ctr.SelectedIndexChanged += new System.EventHandler(this.cb_Comparisons_SelectedIndexChanged);
+                sfd.mControls.Add(ctr);
+
+                //this.cbIsWorker.CheckedChanged += new System.EventHandler(this.cbIsWorker_CheckedChanged);
 
 
-                
                 //- поле ввода (текст, число, справочник), комбобокс (домен), выбор даты (даты)
                 //- для справочника кнопка выбора из справочника
-
-                                    //    // dateTimePicker1
-                                    //    // 
-                                    //    this.dateTimePicker1.Location = new System.Drawing.Point(198, 84);
-                                    //    this.dateTimePicker1.Name = "dateTimePicker1";
-                                    //    this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-                                    //    this.dateTimePicker1.TabIndex = 1;
-
-
-
-
                 //- заполнить масивы автозаполнения где надо
                 //- назначить обработчики
 
 
 
+                //должны быть условия для
+                switch (sfd.mTOT)
+                {
+                    // - текст (=, like "%str", like "%str%", like "str%")
+                    case TypeOfType.TEXT:
+                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        break;
+                    // - число (=, >=, >, <, <=)
+                    case TypeOfType.NUMBER:
+                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        break;
+                    // - дата (=, >=, >, <, <=, beetwen)
+                    case TypeOfType.DATE:
+                        sfd.mControls.Add(CreateValueDateTimePicker(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        break;
+                    // - домен (=)
+                    case TypeOfType.DOMAIN:
+                        if (true)
+                        {
+                            sfd.mControls.Add(CreateBoolValueCheckBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        }
+                        else
+                        {
+                            sfd.mControls.Add(CreateValueDomainComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        }
 
+                        break;
+                    // - справочник (=), для основного представления как для текста ??
+                    case TypeOfType.DICTIONARY:
+                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        sfd.mControls.Add(CreateSelectDictionaryButton(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10 + 150 + 10, 20));
+                        break;
+                    case TypeOfType.ID:
+                        break;
+                    // TypeOfType.UNCNOW
+                    default:
+                        break;
+                }
                 allFilds.Add(sfd);
-            }            
-
+            }
         }
+        #endregion
 
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region form dinamic element creation functions
+        //---------------------------------------------------------------------------------------------------------------------------------------------
         // -чек бокс - использование условия
         private Control CreateCheckBox(ref sFildsDescription sfd, int y, int x, int w = 15, string prefix = "chb_")
         {
@@ -286,7 +310,6 @@ namespace WorckWithReestr
             pnMain.Controls.Add(temp);
             return temp;
         }
-
         //- надпись - имя поля
         private Control CreateLabel(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "lb_")
         {
@@ -301,9 +324,8 @@ namespace WorckWithReestr
             // - надпись тип поля + хинт полное указание типа
             return temp;
         }
-
         //- комбобокс с типами сравнений
-        private Control CreateComboBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_")
+        private Control CreateComparisonsComboBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_Comparisons_")
         {
             ComboBox temp = new ComboBox();
             temp.FormattingEnabled = true;
@@ -312,26 +334,131 @@ namespace WorckWithReestr
             temp.Location = new System.Drawing.Point(x, y);
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 14);
+            temp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             temp.Tag = sfd;
             pnMain.Controls.Add(temp);
             return temp;
         }
+        // -чек бокс - использование условия
+        private Control CreateBoolValueCheckBox(ref sFildsDescription sfd, int y, int x, int w = 15, string prefix = "chb_bv_")
+        {
+            CheckBox temp = new CheckBox();
+            temp.AutoSize = true;
+            temp.Location = new System.Drawing.Point(x, y);
+            temp.Size = new System.Drawing.Size(w, 14);
+            temp.Name = prefix + sfd.mName;
+            temp.Text = "";
+            temp.Tag = sfd;
+            //temp.CheckedChanged += new System.EventHandler(this.cbIsWorker_CheckedChanged);
+            pnMain.Controls.Add(temp);
+            return temp;
+        }
+        //- комбобокс с типами сравнений
+        private Control CreateValueDomainComboBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_vd_")
+        {
+            ComboBox temp = new ComboBox();
+            temp.FormattingEnabled = true;
+            temp.Items.AddRange(ConstructComparisons(sfd.mTOT));
+            temp.SelectedIndex = 0;
+            temp.Location = new System.Drawing.Point(x, y);
+            temp.Name = prefix + sfd.mName;
+            temp.Size = new System.Drawing.Size(w, 14);
+            temp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            temp.Tag = sfd;
+            pnMain.Controls.Add(temp);
+            return temp;
+        }
+        //- поле ввода даты
+        private Control CreateValueDateTimePicker(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "dtp_v_")
+        {
+            DateTimePicker temp = new DateTimePicker();
+            temp.Location = new System.Drawing.Point(x, y);
+            temp.Name = prefix + sfd.mName;
+            temp.Size = new System.Drawing.Size(w, 14);
+            temp.CustomFormat = "dd.MMM.yyyy HH.mm";
 
+            temp.Tag = sfd;
+            temp.Validating += new System.ComponentModel.CancelEventHandler(this.dtp_v_Validating);
+            pnMain.Controls.Add(temp);
+            return temp;
+        }
+        //- текстовое поле ввода
+        private Control CreateValueTextBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "tb_v_")
+        {
+            TextBox temp = new TextBox();
+            temp.Location = new System.Drawing.Point(x, y);
+            temp.Name = prefix + sfd.mName;
+            temp.Size = new System.Drawing.Size(w, 14);
+            temp.Tag = sfd;
+            temp.Validating += new System.ComponentModel.CancelEventHandler(this.tb_v_Validating);
+            pnMain.Controls.Add(temp);
+            return temp;
+        }
+        //- кнопка выбора из справочника
+        private Control CreateSelectDictionaryButton(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "but_sd_")
+        {
+            Button temp = new Button();
+            temp.Location = new System.Drawing.Point(x, y);
+            temp.Name = prefix + sfd.mName;
+            temp.Size = new System.Drawing.Size(w, 23);
+            temp.Click += new System.EventHandler(this.but_sd_Click);
+            temp.UseVisualStyleBackColor = true;
+            temp.Tag = sfd;
+            temp.Text = "...";
+            temp.Click += new System.EventHandler(this.but_sd_Click);
+            pnMain.Controls.Add(temp);
+            return temp;
+        }
+        #endregion
 
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  form dinamic element events
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        // при изменении типа сравнения
+        private void cb_Comparisons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox ctr = sender as ComboBox;
+            if (ctr != null && ctr.Tag != null)
+            {
+                sFildsDescription sfd = ctr.Tag as sFildsDescription;
+                if (sfd != null)
+                {
+                    CheckBox cb = sfd.mControls[0] as CheckBox;
+                    if (cb != null)
+                    {
+                        if (!cb.Checked) cb.Checked = true;
+                    }
+                }
+            }
+        }
+        // кнопка выбора из справочника
+        private void but_sd_Click(object sender, EventArgs e)
+        {
+
+        }
+        // валидация даты времени
+        private void dtp_v_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //isModified = true;
+            //e.Cancel = !ValidatingData();
+        }
+        // валидация текстового поля
+        private void tb_v_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //isModified = true;
+            //e.Cancel = !ValidatingData();
+        }
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
         public frmSelectSearchInListForm(ITable _table = null)
         {
             InitializeComponent();
 
             table = _table;
         }
-        #endregion
 
         private void frmSelectSearchInListForm_Load(object sender, EventArgs e)
         {
@@ -340,6 +467,8 @@ namespace WorckWithReestr
                 ConstructForm();
             }
         }
+        #endregion
+
     }
 }
 

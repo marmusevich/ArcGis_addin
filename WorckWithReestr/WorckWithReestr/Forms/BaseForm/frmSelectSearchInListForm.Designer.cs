@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.pnMain = new System.Windows.Forms.Panel();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tsMain
@@ -42,14 +45,18 @@
             // 
             // pnMain
             // 
-            this.pnMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnMain.AutoScroll = true;
             this.pnMain.Location = new System.Drawing.Point(12, 28);
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(525, 396);
             this.pnMain.TabIndex = 1;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmSelectSearchInListForm
             // 
@@ -61,6 +68,7 @@
             this.Name = "frmSelectSearchInListForm";
             this.Text = "frmSelectSearchInListForm";
             this.Load += new System.EventHandler(this.frmSelectSearchInListForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,5 +78,6 @@
 
         private System.Windows.Forms.ToolStrip tsMain;
         private System.Windows.Forms.Panel pnMain;
+        protected System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

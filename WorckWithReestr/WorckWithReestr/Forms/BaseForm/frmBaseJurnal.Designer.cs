@@ -44,6 +44,8 @@ namespace WorckWithReestr
             this.dtpDatePo = new System.Windows.Forms.DateTimePicker();
             this.lblDataOt = new System.Windows.Forms.Label();
             this.lblDatePo = new System.Windows.Forms.Label();
+            this.btnForvard = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.tsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.cmsMain.SuspendLayout();
@@ -151,7 +153,7 @@ namespace WorckWithReestr
             // 
             // dtpDataOt
             // 
-            this.dtpDataOt.Location = new System.Drawing.Point(60, 27);
+            this.dtpDataOt.Location = new System.Drawing.Point(91, 27);
             this.dtpDataOt.Name = "dtpDataOt";
             this.dtpDataOt.Size = new System.Drawing.Size(119, 20);
             this.dtpDataOt.TabIndex = 9;
@@ -159,7 +161,7 @@ namespace WorckWithReestr
             // 
             // dtpDatePo
             // 
-            this.dtpDatePo.Location = new System.Drawing.Point(211, 27);
+            this.dtpDatePo.Location = new System.Drawing.Point(242, 27);
             this.dtpDatePo.Name = "dtpDatePo";
             this.dtpDatePo.Size = new System.Drawing.Size(119, 20);
             this.dtpDatePo.TabIndex = 10;
@@ -167,7 +169,7 @@ namespace WorckWithReestr
             // 
             // lblDataOt
             // 
-            this.lblDataOt.Location = new System.Drawing.Point(12, 29);
+            this.lblDataOt.Location = new System.Drawing.Point(43, 29);
             this.lblDataOt.Name = "lblDataOt";
             this.lblDataOt.Size = new System.Drawing.Size(43, 20);
             this.lblDataOt.TabIndex = 11;
@@ -175,17 +177,47 @@ namespace WorckWithReestr
             // 
             // lblDatePo
             // 
-            this.lblDatePo.Location = new System.Drawing.Point(185, 29);
+            this.lblDatePo.Location = new System.Drawing.Point(216, 29);
             this.lblDatePo.Name = "lblDatePo";
             this.lblDatePo.Size = new System.Drawing.Size(19, 20);
             this.lblDatePo.TabIndex = 12;
             this.lblDatePo.Text = "по";
+            // 
+            // btnForvard
+            // 
+            this.btnForvard.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnForvard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnForvard.ForeColor = System.Drawing.Color.Yellow;
+            this.btnForvard.Location = new System.Drawing.Point(368, 26);
+            this.btnForvard.Name = "btnForvard";
+            this.btnForvard.Size = new System.Drawing.Size(32, 23);
+            this.btnForvard.TabIndex = 13;
+            this.btnForvard.Tag = "+1";
+            this.btnForvard.Text = ">>";
+            this.btnForvard.UseVisualStyleBackColor = false;
+            this.btnForvard.Click += new System.EventHandler(this.btnChangePeriod);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnBack.ForeColor = System.Drawing.Color.Yellow;
+            this.btnBack.Location = new System.Drawing.Point(8, 26);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(32, 23);
+            this.btnBack.TabIndex = 14;
+            this.btnBack.Tag = "-1";
+            this.btnBack.Text = "<<";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnChangePeriod);
             // 
             // frmBaseJurnal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 275);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnForvard);
             this.Controls.Add(this.lblDatePo);
             this.Controls.Add(this.lblDataOt);
             this.Controls.Add(this.dtpDatePo);
@@ -223,5 +255,7 @@ namespace WorckWithReestr
         private DateTimePicker dtpDatePo;
         private Label lblDataOt;
         private Label lblDatePo;
+        private Button btnForvard;
+        private Button btnBack;
     }
 }
