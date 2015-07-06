@@ -2,7 +2,7 @@
   <Name>WorckWithKadastr</Name>
   <AddInID>{791197f8-be70-496d-a82c-5c3486208df8}</AddInID>
   <Description>Работа с адресным кадастром</Description>
-  <Version>1.0</Version>
+  <Version>0.1.00.0001 in the bild</Version>
   <Image>Images\WorckWithKadastr.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
@@ -14,7 +14,7 @@
     <ArcMap>
       <Commands>
         <Button id="TKC_WorckWithReestr_arcBtn_Open_reestrVulytsDorig" class="arcBtn_Open_reestrVulytsDorig" message="Работа с адресным кадастром - реестр улиц" caption="Реестр улиц" tip="Показать реестр улиц" category="TKC" image="Images\arcBtn_Open_reestrVulytsDorig.png" />
-		</Commands>
+      </Commands>
       <Toolbars>
         <Toolbar id="TKC_WorckWithKadastr_Работа_с_адресным_кадастром" caption="Работа с адресным кадастром" showInitially="true">
           <Items>
