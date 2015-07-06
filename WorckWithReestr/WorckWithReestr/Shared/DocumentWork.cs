@@ -18,9 +18,9 @@ namespace WorckWithReestr
             int ret = 0;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(SharedClass.WorkspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = "reestr.DBO." + tableName;
+                queryDef2.Tables = SharedClass.WorkspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "MAX( " + fildName + " )";
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;

@@ -18,12 +18,17 @@ namespace WorckWithReestr
         #region общее
         //хранит путь к деректории с настройками
         private static string m_applicationDataPath = null;
+        // хранит имя осномного пространства (имя базы данных)
+        public static string WorkspaceName = "AdrReestr";
+
+        //public static string WorkspaceName = "Kadastr"; //AdrReestr.DBO.reestrvulytsdorig_polyline
+
         //получить путь к коталогу с файлами настройкам програмы, при отсутствии, создать
         public static string GetAppDataPathAndCreateDirIfNeed()
         {
             if (m_applicationDataPath == null)
             {
-                m_applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\WorkWithReestr");
+                m_applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\WorckWithKadastr");
             }
             if (!Directory.Exists(m_applicationDataPath))
                 Directory.CreateDirectory(m_applicationDataPath); // Создаем директорию, если нужно
@@ -228,8 +233,8 @@ namespace WorckWithReestr
             object ret = null;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
-                ITable table = fws.OpenTable("reestr.DBO." + tableName);
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(SharedClass.WorkspaceName) as IFeatureWorkspace;
+                ITable table = fws.OpenTable(SharedClass.WorkspaceName + ".DBO." + tableName);
                 IRow row = table.GetRow(id);
                 ret =  row.get_Value(table.FindField(fildName));
             }
@@ -245,9 +250,9 @@ namespace WorckWithReestr
             int ret = -1;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(SharedClass.WorkspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = "reestr.DBO." + tableName;
+                queryDef2.Tables = SharedClass.WorkspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
                 if (strongCompare)
                     queryDef2.WhereClause = fildName + " = '" + textValue + "'";
@@ -273,9 +278,9 @@ namespace WorckWithReestr
             int ret = -1;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(SharedClass.WorkspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = "reestr.DBO." + tableName;
+                queryDef2.Tables = SharedClass.WorkspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
                 queryDef2.WhereClause = fildName + " = " + intValue.ToString();
                 //queryDef2.PostfixClause = "ORDER BY " + fildName;
@@ -303,9 +308,9 @@ namespace WorckWithReestr
             ArrayList data = new ArrayList();
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace("reestr") as IFeatureWorkspace;
+                IFeatureWorkspace fws = SharedClass.GetWorkspace(SharedClass.WorkspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = "reestr.DBO." + tableName;
+                queryDef2.Tables = SharedClass.WorkspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT " + fildName;
                 queryDef2.PostfixClause = "ORDER BY " + fildName;
                 ICursor cursor = queryDef2.Evaluate2(true);

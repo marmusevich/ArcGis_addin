@@ -300,7 +300,7 @@ namespace WorckWithReestr
             }
             else if (e.KeyCode == Keys.F && e.Control)
             {
-                frmSelectSearchInListForm.ShowForView(this, table);
+                //frmSelectSearchInListForm.ShowForView(this, table);
             }
         }
         private void dtpDataOt_ValueChanged(object sender, EventArgs e)

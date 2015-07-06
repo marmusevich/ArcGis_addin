@@ -261,7 +261,7 @@ namespace WorckWithReestr
             }
             else if (e.KeyCode == Keys.F && e.Control)
             {
-                frmSelectSearchInListForm.ShowForView(this, table);
+                //frmSelectSearchInListForm.ShowForView(this, table);
             }
         }
         #endregion

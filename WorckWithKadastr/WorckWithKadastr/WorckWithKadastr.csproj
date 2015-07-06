@@ -75,18 +75,19 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcButtons\arcBtn_Open_reestrVulytsDorig.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-	
     <Compile Include="Forms\BaseForm\frmBaseDocument.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,7 +118,7 @@
     <Compile Include="Shared\DocumentWork.cs" />
     <Compile Include="Shared\Logger.cs" />
     <Compile Include="Shared\SharedClass.cs" />
-    <Compile Include="Shared\TableWraper.cs" />	
+    <Compile Include="Shared\TableWraper.cs" />
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Config.esriaddinx">
@@ -149,6 +150,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_reestrVulytsDorig.png" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

@@ -11,6 +11,17 @@
     <Target name="Desktop" version="10.2" />
   </Targets>
   <AddIn language="CLR4.5" library="WorckWithKadastr.dll" namespace="WorckWithKadastr">
-    <ArcMap />
+    <ArcMap>
+      <Commands>
+        <Button id="TKC_WorckWithReestr_arcBtn_Open_reestrVulytsDorig" class="arcBtn_Open_reestrVulytsDorig" message="Работа с адресным кадастром - реестр улиц" caption="Реестр улиц" tip="Показать реестр улиц" category="TKC" image="Images\arcBtn_Open_reestrVulytsDorig.png" />
+		</Commands>
+      <Toolbars>
+        <Toolbar id="TKC_WorckWithKadastr_Работа_с_адресным_кадастром" caption="Работа с адресным кадастром" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithReestr_arcBtn_Open_reestrVulytsDorig" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+    </ArcMap>
   </AddIn>
 </ESRI.Configuration>
