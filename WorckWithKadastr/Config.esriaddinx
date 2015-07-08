@@ -1,0 +1,27 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>WorckWithKadastr</Name>
+  <AddInID>{791197f8-be70-496d-a82c-5c3486208df8}</AddInID>
+  <Description>Работа с адресным кадастром</Description>
+  <Version>0.0.00.1</Version>
+  <Image>Images\WorckWithKadastr.png</Image>
+  <Author>Владимиров С. К., Мармусевич А.В.</Author>
+  <Company>TKC http://itservis.od.ua </Company>
+  <Date>06.07.2015</Date>
+  <Targets>
+    <Target name="Desktop" version="10.2" />
+  </Targets>
+  <AddIn language="CLR4.5" library="WorckWithKadastr.dll" namespace="WorckWithKadastr">
+    <ArcMap>
+      <Commands>
+        <Button id="TKC_WorckWithReestr_arcBtn_Open_reestrVulytsDorig" class="arcBtn_Open_reestrVulytsDorig" message="Работа с адресным кадастром - реестр улиц" caption="Реестр улиц" tip="Показать реестр улиц" category="TKC" image="Images\arcBtn_Open_reestrVulytsDorig.png" />
+      </Commands>
+      <Toolbars>
+        <Toolbar id="TKC_WorckWithKadastr_Работа_с_адресным_кадастром" caption="Работа с адресным кадастром" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithReestr_arcBtn_Open_reestrVulytsDorig" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>
