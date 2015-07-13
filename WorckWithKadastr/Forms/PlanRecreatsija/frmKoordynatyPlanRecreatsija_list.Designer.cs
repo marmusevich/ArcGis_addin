@@ -1,4 +1,4 @@
-﻿namespace WorckWithKadastr.Forms.PlanRecreatsija
+﻿namespace WorckWithKadastr
 {
     partial class frmKoordynatyPlanRecreatsija_list
     {

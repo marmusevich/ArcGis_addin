@@ -1,4 +1,4 @@
-﻿namespace WorckWithKadastr.Forms.GeneralTables
+﻿namespace WorckWithKadastr
 {
     partial class frmArhivDocument_list
     {

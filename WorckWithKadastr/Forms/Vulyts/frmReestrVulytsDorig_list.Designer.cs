@@ -1,4 +1,4 @@
-﻿namespace WorckWithKadastr.Forms.Vulyts
+﻿namespace WorckWithKadastr
 {
     partial class frmReestrVulytsDorig_list
     {

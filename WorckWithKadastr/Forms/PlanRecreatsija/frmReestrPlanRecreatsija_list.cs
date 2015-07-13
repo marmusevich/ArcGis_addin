@@ -38,7 +38,7 @@ namespace WorckWithKadastr
         }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
-            return new frmFizLic_element(_objectID, _editMode);
+            return new frmReestrPlanRecreatsija_element(_objectID, _editMode);
         }
 
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника

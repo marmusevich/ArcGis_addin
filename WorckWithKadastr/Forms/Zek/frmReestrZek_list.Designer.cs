@@ -1,4 +1,4 @@
-﻿namespace WorckWithKadastr.Forms.Zek
+﻿namespace WorckWithKadastr
 {
     partial class frmReestrZek_list
     {

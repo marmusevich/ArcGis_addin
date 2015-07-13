@@ -1,4 +1,4 @@
-﻿namespace WorckWithKadastr.Forms.Poshta
+﻿namespace WorckWithKadastr
 {
     partial class frmKoordynatyPoshta_element
     {

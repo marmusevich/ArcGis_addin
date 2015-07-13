@@ -1,4 +1,4 @@
-﻿namespace WorckWithKadastr.Forms.Mistzevist
+﻿namespace WorckWithKadastr
 {
     partial class frmReestrMistzevist2_element
     {
