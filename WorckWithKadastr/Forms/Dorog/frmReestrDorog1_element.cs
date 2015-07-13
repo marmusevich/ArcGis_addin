@@ -2,7 +2,6 @@
 using System;
 using SharedClasses;
 
-
 namespace WorckWithKadastr
 {
     public partial class frmReestrDorog1_element : frmBaseSpr_element
@@ -10,7 +9,6 @@ namespace WorckWithKadastr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
         //---------------------------------------------------------------------------------------------------------------------------------------------
-   
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -35,7 +33,6 @@ namespace WorckWithKadastr
             bool ret = base.ValidatingData();
             return ret;
         }
-
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,9 +50,7 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "";
             base.NameTable = "";
-
         }
-
 
         private void frmReestrDorog1_element_Load(object sender, EventArgs e)
         {
@@ -75,10 +70,6 @@ namespace WorckWithKadastr
                     return;
             }
         }
-
-
         #endregion
     }
-
-
 }
