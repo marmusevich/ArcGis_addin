@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            KoordynatyZek_list.ShowForView();
+            frmKoordynatyZek_list.ShowForView();
         }
         protected override void OnUpdate()
         {

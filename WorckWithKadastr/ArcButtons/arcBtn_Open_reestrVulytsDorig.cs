@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            ReestrVulytsDorig_list.ShowForView();
+            frmReestrVulytsDorig_list.ShowForView();
         }
         protected override void OnUpdate()
         {

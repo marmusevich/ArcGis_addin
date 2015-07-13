@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            ReestrZek_list.ShowForView();
+            frmReestrZek_list.ShowForView();
         }
         protected override void OnUpdate()
         {

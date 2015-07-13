@@ -5,7 +5,7 @@ using SharedClasses;
 
 namespace WorckWithKadastr
 {
-    public partial class frmKoordynatyDorog_element : frmBaseSpr_element
+    public partial class frmReestrDorog1_element : frmBaseSpr_element
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -41,12 +41,12 @@ namespace WorckWithKadastr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmKoordynatyDorog_element() : base()
+        public frmReestrDorog1_element() : base()
         {
             InitializeComponent();
         }
 
-        public frmKoordynatyDorog_element(int _objectID, EditMode _editMode)
+        public frmReestrDorog1_element(int _objectID, EditMode _editMode)
             : base(_objectID, _editMode)
         {
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace WorckWithKadastr
         }
 
 
-        private void frmKoordynatyDorog_element_Load(object sender, EventArgs e)
+        private void frmReestrDorog1_element_Load(object sender, EventArgs e)
         {
             switch (editMode)
             {

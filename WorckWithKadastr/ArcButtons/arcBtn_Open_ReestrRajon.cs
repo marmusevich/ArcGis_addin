@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            ReestrRajon_list.ShowForView();
+            frmReestrRajon_list.ShowForView();
         }
         protected override void OnUpdate()
         {

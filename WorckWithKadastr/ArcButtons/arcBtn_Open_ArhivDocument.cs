@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            ArhivDocument_list.ShowForView();
+            frmArhivDocument_list.ShowForView();
         }
         protected override void OnUpdate()
         {

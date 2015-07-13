@@ -1,69 +1,52 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using SharedClasses;
 
-namespace WorckWithReestr
+namespace WorckWithKadastr
 {
-    public partial class frmKoordynatyDorog_list : frmBaseJurnal
+    public partial class frmKoordynatyDorog_list : frmBaseSpr_list
     {
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-        public static void ShowForView()
+        
+        public static void ShowForView(string filteredString = "")
         {
-            Form frm = new frmKoordynatyDorog_list();
+            Form frm = new frmKoordynatyDorog_list(false, filteredString);
             frm.Show();
             frm.Activate();
         }
 
-        public frmKoordynatyDorog_list()
-            : base()
+        public static int ShowForSelect(string filteredString = "")
+        {
+            frmBaseSpr_list frm = new frmKoordynatyDorog_list(true, filteredString);
+            frm.ShowDialog();
+            return frm.SelectID;
+        }
+
+        public frmKoordynatyDorog_list() : base()
+        {
+            InitializeComponent();
+        }
+        
+        public frmKoordynatyDorog_list(bool isSelectMode = false, string filteredString = "") : base(isSelectMode, filteredString)
         {
             InitializeComponent();
 
             base.NameWorkspace = "";
             base.NameTable = "";
             base.NameSortFild = "";
-            base.NameDataFilteredFild = "";
         }
-
-        protected override frmBaseDocument GetDocumentForm(int _objectID, frmBaseDocument.EditMode _editMode)
+        protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
-            return new frmReestrZayav_doc(_objectID, _editMode);
+            return new frmFizLic_element(_objectID, _editMode);
         }
 
-        protected override void SetDefaultDisplayOrder()
-        {
-
-            //int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
-            //                        };
-            SharedClass.SetDisplayOrderByArray(dgv, displayIndicies);
-        }
-
-        protected override void OtherSetupDGV()
-        {
-        }
-
-        //вернуть строку доаолнительных условий
-        protected override string GetStringAddetConditions()
-        {
-            string ret = base.GetStringAddetConditions();
-
-            return ret;
-        }
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
         public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
         {
+            dictionaryTableName = "";
             return false;
-        }
-
-        private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-
         }
         #endregion
     }
 }
-

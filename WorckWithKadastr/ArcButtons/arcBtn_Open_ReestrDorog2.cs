@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            ReestrDorog2_list.ShowForView();
+            frmReestrDorog2_list.ShowForView();
         }
         protected override void OnUpdate()
         {

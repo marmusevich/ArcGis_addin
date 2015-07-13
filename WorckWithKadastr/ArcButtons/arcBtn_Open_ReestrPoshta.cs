@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            ReestrPoshta_list.ShowForView();
+            frmReestrPoshta_list.ShowForView();
         }
         protected override void OnUpdate()
         {

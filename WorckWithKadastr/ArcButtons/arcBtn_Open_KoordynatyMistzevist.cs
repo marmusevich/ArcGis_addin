@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            KoordynatyMistzevist_list.ShowForView();
+            frmKoordynatyMistzevist_list.ShowForView();
         }
         protected override void OnUpdate()
         {

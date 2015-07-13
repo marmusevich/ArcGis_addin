@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            KoordynatyPoshta_list.ShowForView();
+            frmKoordynatyPoshta_list.ShowForView();
         }
         protected override void OnUpdate()
         {

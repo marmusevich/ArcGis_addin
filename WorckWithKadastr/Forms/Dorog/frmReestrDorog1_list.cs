@@ -3,7 +3,7 @@ using SharedClasses;
 
 namespace WorckWithKadastr
 {
-    public partial class frmKategoriiDorog_list : frmBaseSpr_list
+    public partial class frmReestrDorog1_list : frmBaseSpr_list
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region functions
@@ -11,24 +11,24 @@ namespace WorckWithKadastr
         
         public static void ShowForView(string filteredString = "")
         {
-            Form frm = new frmKategoriiDorog_list(false, filteredString);
+            Form frm = new frmReestrDorog1_list(false, filteredString);
             frm.Show();
             frm.Activate();
         }
 
         public static int ShowForSelect(string filteredString = "")
         {
-            frmBaseSpr_list frm = new frmKategoriiDorog_list(true, filteredString);
+            frmBaseSpr_list frm = new frmReestrDorog1_list(true, filteredString);
             frm.ShowDialog();
             return frm.SelectID;
         }
 
-        public frmKategoriiDorog_list() : base()
+        public frmReestrDorog1_list() : base()
         {
             InitializeComponent();
         }
         
-        public frmKategoriiDorog_list(bool isSelectMode = false, string filteredString = "") : base(isSelectMode, filteredString)
+        public frmReestrDorog1_list(bool isSelectMode = false, string filteredString = "") : base(isSelectMode, filteredString)
         {
             InitializeComponent();
 

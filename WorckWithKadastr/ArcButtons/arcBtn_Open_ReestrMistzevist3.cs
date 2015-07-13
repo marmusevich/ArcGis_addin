@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            ReestrMistzevist3_list.ShowForView();
+            frmReestrMistzevist3_list.ShowForView();
         }
         protected override void OnUpdate()
         {

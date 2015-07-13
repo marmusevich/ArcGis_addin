@@ -15,7 +15,7 @@ namespace WorckWithKadastr
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            TipDoc_list.ShowForView();
+            frmTipDoc_list.ShowForView();
         }
         protected override void OnUpdate()
         {
