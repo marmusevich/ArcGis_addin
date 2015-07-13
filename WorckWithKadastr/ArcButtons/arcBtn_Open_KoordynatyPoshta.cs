@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 
 
-namespace WorckWithKadastr.ArcButtons
+namespace WorckWithKadastr
 {
     public class arcBtn_Open_KoordynatyPoshta : ESRI.ArcGIS.Desktop.AddIns.Button
     {
@@ -14,10 +14,12 @@ namespace WorckWithKadastr.ArcButtons
 
         protected override void OnClick()
         {
+            ArcMap.Application.CurrentTool = null;
+            KoordynatyPoshta_list.ShowForView();
         }
-
         protected override void OnUpdate()
         {
+            Enabled = ArcMap.Application != null;
         }
     }
 }

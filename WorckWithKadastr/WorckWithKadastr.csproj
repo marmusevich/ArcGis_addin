@@ -109,6 +109,282 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dorog\frmKategoriiDorog_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmKategoriiDorog_element.Designer.cs">
+      <DependentUpon>frmKategoriiDorog_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmKategoriiDorog_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmKategoriiDorog_list.Designer.cs">
+      <DependentUpon>frmKategoriiDorog_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmKoordynatyDorog_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmKoordynatyDorog_element.Designer.cs">
+      <DependentUpon>frmKoordynatyDorog_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmKoordynatyDorog_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmKoordynatyDorog_list.Designer.cs">
+      <DependentUpon>frmKoordynatyDorog_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog1_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog1_doc.Designer.cs">
+      <DependentUpon>frmReestrDorog1_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog1_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog1_jurnal.Designer.cs">
+      <DependentUpon>frmReestrDorog1_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog2_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog2_doc.Designer.cs">
+      <DependentUpon>frmReestrDorog2_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog2_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dorog\frmReestrDorog2_jurnal.Designer.cs">
+      <DependentUpon>frmReestrDorog2_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmArhivDocument_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmArhivDocument_element.Designer.cs">
+      <DependentUpon>frmArhivDocument_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmArhivDocument_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmArhivDocument_list.Designer.cs">
+      <DependentUpon>frmArhivDocument_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmKoordynatyRajon_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmKoordynatyRajon_element.Designer.cs">
+      <DependentUpon>frmKoordynatyRajon_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmKoordynatyRajon_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmKoordynatyRajon_list.Designer.cs">
+      <DependentUpon>frmKoordynatyRajon_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmReestrRajon_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmReestrRajon_element.Designer.cs">
+      <DependentUpon>frmReestrRajon_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmReestrRajon_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmReestrRajon_list.Designer.cs">
+      <DependentUpon>frmReestrRajon_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmTipDoc_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmTipDoc_element.Designer.cs">
+      <DependentUpon>frmTipDoc_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmTipDoc_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneralTables\frmTipDoc_list.Designer.cs">
+      <DependentUpon>frmTipDoc_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKategoriiMistzevist_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKategoriiMistzevist_element.Designer.cs">
+      <DependentUpon>frmKategoriiMistzevist_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKategoriiMistzevist_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKategoriiMistzevist_list.Designer.cs">
+      <DependentUpon>frmKategoriiMistzevist_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKoordynatyMistzevist_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKoordynatyMistzevist_element.Designer.cs">
+      <DependentUpon>frmKoordynatyMistzevist_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKoordynatyMistzevist_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmKoordynatyMistzevist_list.Designer.cs">
+      <DependentUpon>frmKoordynatyMistzevist_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_doc.Designer.cs">
+      <DependentUpon>frmReestrMistzevist1_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_jurnal.Designer.cs">
+      <DependentUpon>frmReestrMistzevist1_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_document.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_document.Designer.cs">
+      <DependentUpon>frmReestrMistzevist2_document.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_jurnal.Designer.cs">
+      <DependentUpon>frmReestrMistzevist2_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_doc.Designer.cs">
+      <DependentUpon>frmReestrMistzevist3_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_jurnal.Designer.cs">
+      <DependentUpon>frmReestrMistzevist3_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKategoriiPlanRecreatsija_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKategoriiPlanRecreatsija_element.Designer.cs">
+      <DependentUpon>frmKategoriiPlanRecreatsija_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKategoriiPlanRecreatsija_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKategoriiPlanRecreatsija_list.Designer.cs">
+      <DependentUpon>frmKategoriiPlanRecreatsija_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKoordynatyPlanRecreatsija_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKoordynatyPlanRecreatsija_element.Designer.cs">
+      <DependentUpon>frmKoordynatyPlanRecreatsija_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKoordynatyPlanRecreatsija_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmKoordynatyPlanRecreatsija_list.Designer.cs">
+      <DependentUpon>frmKoordynatyPlanRecreatsija_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmReestrPlanRecreatsija_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmReestrPlanRecreatsija_doc.Designer.cs">
+      <DependentUpon>frmReestrPlanRecreatsija_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmReestrPlanRecreatsija_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanRecreatsija\frmReestrPlanRecreatsija_jurnal.Designer.cs">
+      <DependentUpon>frmReestrPlanRecreatsija_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmKoordynatyPoshta_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmKoordynatyPoshta_element.Designer.cs">
+      <DependentUpon>frmKoordynatyPoshta_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmKoordynatyPoshta_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmKoordynatyPoshta_list.Designer.cs">
+      <DependentUpon>frmKoordynatyPoshta_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmReestrPoshta_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmReestrPoshta_doc.Designer.cs">
+      <DependentUpon>frmReestrPoshta_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmReestrPoshta_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Poshta\frmReestrPoshta_jurnal.Designer.cs">
+      <DependentUpon>frmReestrPoshta_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKategoriiVulyts_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKategoriiVulyts_element.Designer.cs">
+      <DependentUpon>frmKategoriiVulyts_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKategoriiVulyts_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKategoriiVulyts_list.Designer.cs">
+      <DependentUpon>frmKategoriiVulyts_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKoordynatyVulyts_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKoordynatyVulyts_element.Designer.cs">
+      <DependentUpon>frmKoordynatyVulyts_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKoordynatyVulyts_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmKoordynatyVulyts_list.Designer.cs">
+      <DependentUpon>frmKoordynatyVulyts_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmReestrVulytsDorig_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmReestrVulytsDorig_doc.Designer.cs">
+      <DependentUpon>frmReestrVulytsDorig_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmReestrVulytsDorig_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Vulyts\frmReestrVulytsDorig_jurnal.Designer.cs">
+      <DependentUpon>frmReestrVulytsDorig_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Zek\frmKoordynatyZek_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Zek\frmKoordynatyZek_element.Designer.cs">
+      <DependentUpon>frmKoordynatyZek_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Zek\frmKoordynatyZek_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Zek\frmKoordynatyZek_list.Designer.cs">
+      <DependentUpon>frmKoordynatyZek_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Zek\frmReestrZek_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Zek\frmReestrZek_doc.Designer.cs">
+      <DependentUpon>frmReestrZek_doc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Zek\frmReestrZek_jurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Zek\frmReestrZek_jurnal.Designer.cs">
+      <DependentUpon>frmReestrZek_jurnal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,9 +422,7 @@
   <ItemGroup>
     <AddInContent Include="Images\arcBtn_Open_ReestrVulytsDorig.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SharedClasses\SharedClasses.csproj">
       <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
