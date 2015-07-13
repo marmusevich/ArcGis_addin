@@ -20,7 +20,7 @@
         <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" class="arcBtn_Open_ReestrVedomostey" message="Работа с реестром - реестр ведомостей" caption="Реестр ведомостей" tip="Показать реестр ведомостей" category="TKC:Работа с реестром" image="Images\arcBtn_Open_ReestrVedomostey.png" />
       </Commands>
       <Toolbars>
-        <Toolbar id="TKC_WorckWithReestr" caption="Работа с реестром" showInitially="true">
+        <Toolbar id="TKC_WorckWithReestr_toolbar" caption="Работа с реестром" showInitially="true">
           <Items>
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_FizLicList" />
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_JurLicList" />
