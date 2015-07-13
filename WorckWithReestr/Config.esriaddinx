@@ -13,14 +13,14 @@
   <AddIn language="CLR4.5" library="WorckWithReestr.dll" namespace="WorckWithReestr">
     <ArcMap>
       <Commands>
-        <Button id="TKC_WorckWithReestr_arcBtn_Open_FizLicList" class="arcBtn_Open_FizLicList" message="Работа с реестром - физические лица" caption="Физические лица" tip="Показать список физических лиц" category="TKC" image="Images\arcBtn_Open_FizLicList.png" />
-        <Button id="TKC_WorckWithReestr_arcBtn_Open_JurLicList" class="arcBtn_Open_JurLicList" message="Работа с реестром - юридические лица" caption="Юридические лица" tip="Показать список юридических лиц" category="TKC" image="Images\arcBtn_Open_JurLicList.png" />
-        <Button id="TKC_WorckWithReestr_arcBtn_Open_TipDoc" class="arcBtn_Open_TipDoc" message="Работа с реестром - тип документа" caption="Типы документов" tip="Показать типов документов" category="TKC" image="Images\arcBtn_Open_TipDoc.png" />
-        <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrZayav" class="arcBtn_Open_ReestrZayav" message="Работа с реестром - реестр заявлений" caption="Реестр заявлений" tip="Показать реестр заявлений" category="TKC" image="Images\arcBtn_Open_ReestrZayav.png" />
-        <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" class="arcBtn_Open_ReestrVedomostey" message="Работа с реестром - реестр ведомостей" caption="Реестр ведомостей" tip="Показать реестр ведомостей" category="TKC" image="Images\arcBtn_Open_ReestrVedomostey.png" />
+        <Button id="TKC_WorckWithReestr_arcBtn_Open_FizLicList" class="arcBtn_Open_FizLicList" message="Работа с реестром - физические лица" caption="Физические лица" tip="Показать список физических лиц" category="TKC:Работа с реестром" image="Images\arcBtn_Open_FizLicList.png" />
+        <Button id="TKC_WorckWithReestr_arcBtn_Open_JurLicList" class="arcBtn_Open_JurLicList" message="Работа с реестром - юридические лица" caption="Юридические лица" tip="Показать список юридических лиц" category="TKC:Работа с реестром" image="Images\arcBtn_Open_JurLicList.png" />
+        <Button id="TKC_WorckWithReestr_arcBtn_Open_TipDoc" class="arcBtn_Open_TipDoc" message="Работа с реестром - тип документа" caption="Типы документов" tip="Показать типов документов" category="TKC:Работа с реестром" image="Images\arcBtn_Open_TipDoc.png" />
+        <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrZayav" class="arcBtn_Open_ReestrZayav" message="Работа с реестром - реестр заявлений" caption="Реестр заявлений" tip="Показать реестр заявлений" category="TKC:Работа с реестром" image="Images\arcBtn_Open_ReestrZayav.png" />
+        <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" class="arcBtn_Open_ReestrVedomostey" message="Работа с реестром - реестр ведомостей" caption="Реестр ведомостей" tip="Показать реестр ведомостей" category="TKC:Работа с реестром" image="Images\arcBtn_Open_ReestrVedomostey.png" />
       </Commands>
       <Toolbars>
-        <Toolbar id="TKC_WorckWithReestr_Работа_с_реестром" caption="Работа с реестром" showInitially="true">
+        <Toolbar id="TKC_WorckWithReestr" caption="Работа с реестром" showInitially="true">
           <Items>
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_FizLicList" />
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_JurLicList" />
