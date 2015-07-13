@@ -82,7 +82,29 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArcButtons\arcBtn_Open_reestrVulytsDorig.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KategoriiDorog.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KategoriiMistzevist.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KategoriiPlanRecreatsija.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ArhivDocument.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KategoriiVulyts.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KoordynatyDorog.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KoordynatyMistzevist.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KoordynatyPlanRecreatsija.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KoordynatyPoshta.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KoordynatyRajon.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KoordynatyVulyts.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_KoordynatyZek.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrDorog1.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrDorog2.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist1.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist2.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist3.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrPlanRecreatsija.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrPoshta.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrRajon.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrVulytsDorig.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrZek.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_TipDoc.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
@@ -122,7 +144,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <AddInContent Include="Images\arcBtn_Open_reestrVulytsDorig.png" />
+    <AddInContent Include="Images\arcBtn_Open_ReestrVulytsDorig.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />
@@ -132,6 +154,66 @@
       <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
       <Name>SharedClasses</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ArhivDocument.png" />
+    <AddInContent Include="Images\arcBtn_Open_KategoriiVulyts.png" />
+    <AddInContent Include="Images\arcBtn_Open_KoordynatyVulyts.png" />
+    <AddInContent Include="Images\arcBtn_Open_ReestrPlanRecreatsija.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KategoriiPlanRecreatsija.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KoordynatyPlanRecreatsija.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrMistzevist1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrMistzevist2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrMistzevist3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KategoriiMistzevist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KoordynatyMistzevist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrDorog1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrDorog2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KategoriiDorog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KoordynatyDorog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrRajon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KoordynatyRajon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrPoshta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KoordynatyPoshta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_ReestrZek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_KoordynatyZek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_TipDoc.png" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

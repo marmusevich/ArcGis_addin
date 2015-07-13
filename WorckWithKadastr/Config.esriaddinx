@@ -6,19 +6,87 @@
   <Image>Images\WorckWithKadastr.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>06.07.2015</Date>
+  <Date>13.07.2015</Date>
   <Targets>
     <Target name="Desktop" version="10.2" />
   </Targets>
   <AddIn language="CLR4.5" library="WorckWithKadastr.dll" namespace="WorckWithKadastr">
     <ArcMap>
       <Commands>
-        <Button id="TKC_WorckWithReestr_arcBtn_Open_reestrVulytsDorig" class="arcBtn_Open_reestrVulytsDorig" message="Работа с адресным кадастром - реестр улиц" caption="Реестр улиц" tip="Показать реестр улиц" category="TKC" image="Images\arcBtn_Open_reestrVulytsDorig.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrVulytsDorig" 		    class="arcBtn_Open_ReestrVulytsDorig" 			message="Работа с адресным кадастром - реестр улиц" 									caption="Реестр улиц" 										tip="Показать реестр улиц" 										category="TKC_Vulyts" image="Images\arcBtn_Open_ReestrVulytsDorig.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KategoriiVulyts" 			    class="arcBtn_Open_KategoriiVulyts" 			message="Работа с адресным кадастром - категории улиц" 									caption="Категории улиц" 									tip="Показать категории улиц" 									category="TKC_Vulyts" image="Images\arcBtn_Open_KategoriiVulyts.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyVulyts" 			    class="arcBtn_Open_KoordynatyVulyts" 			message="Работа с адресным кадастром - координаты улиц" 								caption="Координаты улиц" 									tip="Показать координаты улиц" 									category="TKC_Vulyts" image="Images\arcBtn_Open_KoordynatyVulyts.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrPlanRecreatsija" 	  class="arcBtn_Open_ReestrPlanRecreatsija" 		message="Работа с адресным кадастром - реестр рекреационных объектов" 					caption="Реестр рекреационных объектов" 					tip="Показать реестр рекреационных объектов" 					category="TKC_PlanRecreatsija" image="Images\arcBtn_Open_ReestrPlanRecreatsija.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KategoriiPlanRecreatsija" 	class="arcBtn_Open_KategoriiPlanRecreatsija"	message="Работа с адресным кадастром - категории рекреационных объектов" 				caption="Категории рекреационных объектов" 					tip="Показать категории рекреационных объектов" 				category="TKC_PlanRecreatsija" image="Images\arcBtn_Open_KategoriiPlanRecreatsija.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyPlanRecreatsija" class="arcBtn_Open_KoordynatyPlanRecreatsija" 	message="Работа с адресным кадастром - координаты рекреационных объектов" 				caption="Координаты рекреационных объектов" 				tip="Показать координаты рекреационных объектов" 				category="TKC_PlanRecreatsija" image="Images\arcBtn_Open_KoordynatyPlanRecreatsija.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrMistzevist1" 		    class="arcBtn_Open_ReestrMistzevist1" 			message="Работа с адресным кадастром - реестр природных объектов" 						caption="Реестр природных объектов" 						tip="Показать реестр природных объектов" 						category="TKC_Mistzevist" image="Images\arcBtn_Open_ReestrMistzevist1.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrMistzevist2" 		    class="arcBtn_Open_ReestrMistzevist2" 			message="Работа с адресным кадастром - реестр природных объектов" 						caption="Реестр природных объектов" 						tip="Показать реестр природных объектов" 						category="TKC_Mistzevist" image="Images\arcBtn_Open_ReestrMistzevist2.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrMistzevist3" 		    class="arcBtn_Open_ReestrMistzevist3" 			message="Работа с адресным кадастром - реестр природных объектов" 						caption="Реестр природных объектов" 						tip="Показать реестр природных объектов" 						category="TKC_Mistzevist" image="Images\arcBtn_Open_ReestrMistzevist3.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KategoriiMistzevist" 		  class="arcBtn_Open_KategoriiMistzevist" 		message="Работа с адресным кадастром - категории природных объектов" 					caption="Категории природных объектов" 						tip="Показать категории природных объектов" 					category="TKC_Mistzevist" image="Images\arcBtn_Open_KategoriiMistzevist.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyMistzevist" 		  class="arcBtn_Open_KoordynatyMistzevist" 		message="Работа с адресным кадастром - координаты природных объектов" 					caption="Координаты природных объектов" 					tip="Показать координаты природных объектов" 					category="TKC_Mistzevist" image="Images\arcBtn_Open_KoordynatyMistzevist.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrDorog1" 				      class="arcBtn_Open_ReestrDorog1" 				message="Работа с адресным кадастром - реестр дорожно-транспорьных объектов" 			caption="Реестр дорожно-транспорьных объектов" 				tip="Показать реестр дорожно-транспорьных объектов" 			category="TKC_Dorog" image="Images\arcBtn_Open_ReestrDorog1.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrDorog2" 				      class="arcBtn_Open_ReestrDorog2" 				message="Работа с адресным кадастром - реестр дорожно-транспорьных объектов" 			caption="Реестр дорожно-транспорьных объектов" 				tip="Показать реестр дорожно-транспорьных объектов" 			category="TKC_Dorog" image="Images\arcBtn_Open_ReestrDorog2.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KategoriiDorog" 			      class="arcBtn_Open_KategoriiDorog" 				message="Работа с адресным кадастром - категории дорожно-транспорьных объектов" 		caption="Категории дорожно-транспорьных объектов" 			tip="Показать категории дорожно-транспорьных объектов" 			category="TKC_Dorog" image="Images\arcBtn_Open_KategoriiDorog.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyDorog" 			    class="arcBtn_Open_KoordynatyDorog" 			message="Работа с адресным кадастром - координаты дорожно-транспорьных объектов" 		caption="Координаты дорожно-транспорьных объектов" 			tip="Показать координаты дорожно-транспорьных объектов" 		category="TKC_Dorog" image="Images\arcBtn_Open_KoordynatyDorog.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrRajon" 				      class="arcBtn_Open_ReestrRajon" 				message="Работа с адресным кадастром - реестр районов города" 							caption="Реестр районов города" 							tip="Показать реестр районов города" 							category="TKC_GeneralTables" image="Images\arcBtn_Open_ReestrRajon.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyRajon" 			    class="arcBtn_Open_KoordynatyRajon" 			message="Работа с адресным кадастром - координаты районов города" 						caption="Координаты районов города" 						tip="Показать координаты районов города" 						category="TKC_GeneralTables" image="Images\arcBtn_Open_KoordynatyRajon.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ArhivDocument" 			      class="arcBtn_Open_ArhivDocument" 				message="Работа с адресным кадастром - архив документов" 								caption="Архив документов" 									tip="Показать архив документов" 								category="TKC_GeneralTables" image="Images\arcBtn_Open_ArhivDocument.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_TipDoc" 					          class="arcBtn_Open_TipDoc" 						message="Работа с адресным кадастром - типы документов" 								caption="Типы документов" 									tip="Показать типов документов" 								category="TKC_GeneralTables" image="Images\arcBtn_Open_TipDoc.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrPoshta" 				      class="arcBtn_Open_ReestrPoshta" 				message="Работа с адресным кадастром - реестр почтовых отделений" 						caption="Реестр почтовых отделений" 						tip="Показать реестр почтовых отделений" 						category="TKC_Poshta" image="Images\arcBtn_Open_ReestrPoshta.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyPoshta" 			class="arcBtn_Open_KoordynatyPoshta" 			message="Работа с адресным кадастром - координаты почтовых отделений" 					caption="Координаты почтовых отделений" 					tip="Показать координаты почтовых отделений" 					category="TKC_Poshta" image="Images\arcBtn_Open_KoordynatyPoshta.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_ReestrZek" 				class="arcBtn_Open_ReestrZek" 					message="Работа с адресным кадастром - реестр жилишно-эксплутационных организаций" 		caption="Реестр жилишно-эксплутационных организаций" 		tip="Показать реестр жилишно-эксплутационных организаций" 		category="TKC_Zek" image="Images\arcBtn_Open_ReestrZek.png" />
+        <Button id="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyZek" 			class="arcBtn_Open_KoordynatyZek" 				message="Работа с адресным кадастром - координаты жилишно-эксплутационных организаций" 	caption="Координаты жилишно-эксплутационных организаций" 	tip="Показать координаты жилишно-эксплутационных организаций" 	category="TKC_Zek" image="Images\arcBtn_Open_KoordynatyZek.png" />
       </Commands>
       <Toolbars>
-        <Toolbar id="TKC_WorckWithKadastr_Работа_с_адресным_кадастром" caption="Работа с адресным кадастром" showInitially="true">
+        <Toolbar id="TKC_WorckWithKadastr_toolbar_WorckWithKadastr_Vulyts" caption="Работа с адресным кадастром - реестр улиц" showInitially="true">
           <Items>
-            <Button refID="TKC_WorckWithReestr_arcBtn_Open_reestrVulytsDorig" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrVulytsDorig" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KategoriiVulyts" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyVulyts" />
+          </Items>
+        </Toolbar>
+        <Toolbar id="TKC_WorckWithKadastr_toolbar_WorckWithKadastr_PlanRecreatsija" caption="Работа с адресным кадастром - реестр рекреационных объектов" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrPlanRecreatsija" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KategoriiPlanRecreatsija" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyPlanRecreatsija" />
+          </Items>
+        </Toolbar>
+        <Toolbar id="TKC_WorckWithKadastr_toolbar_WorckWithKadastr_Mistzevist" caption="Работа с адресным кадастром - реестр природных объектов" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrMistzevist1" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrMistzevist2" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrMistzevist3" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KategoriiMistzevist" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyMistzevist" />
+          </Items>
+        </Toolbar>
+        <Toolbar id="TKC_WorckWithKadastr_toolbar_WorckWithKadastr_Dorog" caption="Работа с адресным кадастром - реестр дорожно-транспорьных объектов" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrDorog1" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrDorog2" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KategoriiDorog" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyDorog" />
+          </Items>
+        </Toolbar>
+        <Toolbar id="TKC_WorckWithKadastr_toolbar_WorckWithKadastr_GeneralTables" caption="Работа с адресным кадастром - общие таблицы" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrRajon" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyRajon" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ArhivDocument" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_TipDoc" />
+          </Items>
+        </Toolbar>
+        <Toolbar id="TKC_WorckWithKadastr_toolbar_WorckWithKadastr_Poshta" caption="Работа с адресным кадастром - реестр почтовых отделений" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrPoshta" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyPoshta" />
+          </Items>
+        </Toolbar>
+        <Toolbar id="TKC_WorckWithKadastr_toolbar_WorckWithKadastr_Zek" caption="Работа с адресным кадастром - реестр жилишно-эксплутационных организаций" showInitially="true">
+          <Items>
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_ReestrZek" />
+            <Button refID="TKC_WorckWithKadastr_arcBtn_Open_KoordynatyZek" />
           </Items>
         </Toolbar>
       </Toolbars>

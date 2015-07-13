@@ -4,11 +4,11 @@ using System.Text;
 using System.IO;
 
 
-namespace WorckWithKadastr.ArcButtons
+namespace WorckWithKadastr
 {
-    public class arcBtn_Open_ReestrVulytsDorig : ESRI.ArcGIS.Desktop.AddIns.Button
+    public class arcBtn_Open_KategoriiPlanRecreatsija : ESRI.ArcGIS.Desktop.AddIns.Button
     {
-        public arcBtn_Open_ReestrVulytsDorig()
+        public arcBtn_Open_KategoriiPlanRecreatsija()
         {
         }
 
