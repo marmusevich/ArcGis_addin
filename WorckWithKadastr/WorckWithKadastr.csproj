@@ -157,6 +157,36 @@
     <Compile Include="Forms\Dorog\frmReestrDorog2_list.Designer.cs">
       <DependentUpon>frmReestrDorog2_list.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmBaseAdrKategor_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBaseAdrKategor_element.Designer.cs">
+      <DependentUpon>frmBaseAdrKategor_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBaseAdrReestrSpr_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBaseAdrReestrSpr_element.Designer.cs">
+      <DependentUpon>frmBaseAdrReestrSpr_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBaseAdrReestrSpr_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBaseAdrReestrSpr_list.Designer.cs">
+      <DependentUpon>frmBaseAdrReestrSpr_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBaseKoord_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBaseKoord_element.Designer.cs">
+      <DependentUpon>frmBaseKoord_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBaseKoord_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBaseKoord_list.Designer.cs">
+      <DependentUpon>frmBaseKoord_list.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GeneralTables\frmArhivDocument_element.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -419,7 +449,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SHEM.TXT" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharedClasses\SharedClasses.csproj">
       <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
@@ -450,6 +482,11 @@
     <AddInContent Include="Images\arcBtn_Open_ReestrZek.png" />
     <AddInContent Include="Images\arcBtn_Open_KoordynatyZek.png" />
     <AddInContent Include="Images\arcBtn_Open_TipDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\frmBaseAdrKategor_element.resx">
+      <DependentUpon>frmBaseAdrKategor_element.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

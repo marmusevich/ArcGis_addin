@@ -3,7 +3,7 @@ using SharedClasses;
 
 namespace WorckWithKadastr
 {
-    public partial class frmReestrZek_list : frmBaseSpr_list
+    public partial class frmReestrZek_list : frmBaseAdrReestrSpr_list
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region functions
@@ -32,10 +32,9 @@ namespace WorckWithKadastr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
-            base.NameSortFild = "";
-        }
+            base.NameWorkspace = "AdrReestr";
+            base.NameTable = "AdrReestr.DBO.ReestrZek_point";
+            base.NameSortFild = "KodObject";        }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
             return new frmReestrZek_element(_objectID, _editMode);

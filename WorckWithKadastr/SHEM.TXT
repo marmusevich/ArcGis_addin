@@ -1,0 +1,303 @@
+Table = AdrReestr.DBO.KoordynatyDorogy
+	OBJECTID, Type - esriTypeOID
+	KodObject, Type - esriTypeInteger
+	KoordynatyX, Type - esriTypeDouble
+	KoordynatyY, Type - esriTypeDouble
+	KoordynatyUSKX, Type - esriTypeDouble
+	KoordynatyUSKY, Type - esriTypeDouble
+	TypTochky, Type - esriTypeSmallInteger DomainName - TypPoint
+	OpysTochky, Type - esriTypeString
+
+Table = AdrReestr.DBO.ArhivDocument
+	OBJECTID, Type - esriTypeOID
+	NazvaDocument, Type - esriTypeString
+	DataDocument, Type - esriTypeDate
+	NomerDocument, Type - esriTypeString
+	OpysDocument, Type - esriTypeString
+	LinkDocument, Type - esriTypeString
+	Document, Type - esriTypeInteger
+	KodObject, Type - esriTypeInteger
+
+Table = AdrReestr.DBO.KoordynatyVulyts
+	OBJECTID, Type - esriTypeOID
+	KodObject, Type - esriTypeInteger
+	KoordynatyX, Type - esriTypeDouble
+	KoordynatyY, Type - esriTypeDouble
+	KoordynatyUSKX,Type - esriTypeDouble
+	KoordynatyUSKY,Type - esriTypeDouble
+	TypTochky,Type - esriTypeDouble , DomainName - TypPoint
+	OpysTochky ,Type - esriTypeString
+
+Table = AdrReestr.DBO.ReestrPlanRecreatsija_polygon
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaPovnaRus, Type - String
+	NazvaKorotkaRus, Type - String
+	NazvaPovnaLat, Type - String
+	NazvaKorotkaLat, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	KodKategorii, Type - Integer
+	Document, Type - Integer
+	AdminRajon, Type - Integer
+
+Table = AdrReestr.DBO.KoordynatyPlanRecr
+	OBJECTID, Type - OID
+	KodOdject, Type - Integer
+	KoordynatyX, Type - Double
+	KoordynatyY, Type - Double
+	KoordynatyUSKX, Type - Double
+	KoordynatyUSKY, Type - Double
+	TypTochky, Type - SmallInteger, DomainName - TypPoint
+	OpysTochky, Type - Double
+
+Table = AdrReestr.DBO.KoordynatyMistzevist
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	KoordynatyX, Type - Double
+	KoordynatyY, Type - Double
+	KoordynatyUSKX, Type - Double
+	KoordynatyUSKY, Type - Double
+	TypTochky, Type - SmallInteger, DomainName - TypPoint
+	OpysTochky, Type - Double
+
+Table = AdrReestr.DBO.ReestrDorogy_polygon
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaPovnaRus, Type - String
+	NazvaKorotkaRus, Type - String
+	NazvaPovnaLat, Type - String
+	NazvaKorotkaLat, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	KodKategorii
+	AdminRajon, Type - Integer
+	Document
+
+Table = AdrReestr.DBO.ReestrDorogy_point
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaPovnaRus, Type - String
+	NazvaKorotkaRus, Type - String
+	NazvaPovnaLat, Type - String
+	NazvaKorotkaLat, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	AdminRajon, Type - Integer
+	Document, Type - Integer
+	KodKategorii, Type - Integer
+
+Table = AdrReestr.DBO.ReestrRajon_polygon
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaPovnaRus, Type - String
+	NazvaKorotkaRus, Type - String
+	NazvaPovnaLat, Type - String
+	NazvaKorotkaLat, Type - String
+	KodKOATUU, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	Document, Type - Integer
+
+Table = AdrReestr.DBO.KoordynatyRajon
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	KoordynatyX, Type - Double
+	KoordynatyY, Type - Double
+	KoordynatyUSKX, Type - Double
+	KoordynatyUSKY, Type - Double
+	TypTochky, Type - SmallInteger, DomainName - TypPoint
+	OpysTochky, Type - String
+
+Table = AdrReestr.DBO.ReestrPoshta_point
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	Document, Type - Integer
+	AdminRajon, Type - Integer
+
+Table = AdrReestr.DBO.KoordynatyPoshta
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	KoordynatyX, Type - Double
+	KoordynatyY, Type - Double
+	KoordynatyUSKX, Type - Double
+	KoordynatyUSKY, Type - Double
+	TypTochky, Type - SmallInteger, DomainName - TypPoint
+	OpysTochky, Type - String
+
+Table = AdrReestr.DBO.ReestrZek_point
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	AdminRajon, Type - Integer
+	Document , Type - Integer
+
+Table =  AdrReestr.DBO.KoordynatyZek
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	KoordynatyX, Type - Double
+	KoordynatyY, Type - Double
+	KoordynatyUSKX, Type - Double
+	KoordynatyUSKY, Type - Double
+	TypTochky, Type - SmallInteger, DomainName - TypPoint
+	OpysTochky, Type - String
+
+Table = AdrReestr.DBO.reestrvulytsdorig_polyline
+	OBJECTID, Type - OID
+	KODOBJECT, Type - Integer
+	NAZVAPOVNA, Type - String
+	NAZVAKOROT, Type - String
+	NAZVAPOVN2, Type - String
+	NAZVAKORO2, Type - String
+	NAZVAPOVN3, Type - String
+	NAZVAKORO3, Type - String
+	KODKATEGOR, Type - Integer
+	KODADMINRA, Type - Integer
+	DOCUMENT, Type - Integer
+	NAZVADOCUM, Type - String
+	DATADOCUME, Type - String
+	NOMERDOCUM, Type - String
+	LINKDOCUME, Type - String
+	OPYSV_VARC, Type - String
+	STATUSOBJE, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	DZHERELOKO, Type - SmallInteger, DomainName - TypDzherelo
+
+Table = AdrReestr.DBO.ReestrMistzevist_point
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaPovnaRus, Type - String
+	NazvaKorotkaRus, Type - String
+	NazvaPovnaLat, Type - String
+	NazvaKorotkaLat, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	KodKategorii, Type - Integer
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	Document, Type - Double
+	AdminRajon, Type - Double
+
+Table = AdrReestr.DBO.ReestrMistzevist_polygon
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaPovnaRus, Type - String
+	NazvaKorotkaRus, Type - String
+	NazvaPovnaLat, Type - String
+	NazvaKorotksLat, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LocalType, Type - SmallInteger, DomainName - TypLocal
+	KodKategorii, Type - Integer
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	AdminRajon, Type - Double
+	Document, Type - Double
+
+Table = AdrReestr.DBO.ReestrMistzevist_polyline
+	OBJECTID, Type - OID
+	KodObject, Type - Integer
+	NazvaPovnaUkr, Type - String
+	NazvaKorotkaUkr, Type - String
+	NazvaPovnaRus, Type - String
+	NazvaKorotkaRus, Type - String
+	NazvaPovnaLat, Type - String
+	NazvaKorotkaLat, Type - String
+	NazvaDocument, Type - String
+	DataDocument, Type - Date
+	NomerDocument, Type - String
+	LinkDocument, Type - String
+	Opys, Type - String
+	StatusObject, Type - SmallInteger, DomainName - StatusObject
+	LokalType, Type - SmallInteger, DomainName - TypLocal
+	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
+	KodKategorii, Type - Integer
+	AdminRajon, Type - Double
+	Document, Type - Double
+
+Table = AdrReestr.DBO.KategoriiVulyts
+	OBJECTID, Type - OID
+	KodKategorii, Type - Integer
+	NazvaTypu, Type - String
+	KorotkaNazvaTypu, Type - String
+
+Table = AdrReestr.DBO.KategoriiPlanRecreatsija
+	OBJECTID, Type - OID
+	KodKategorii, Type - Integer
+	NazvaTypu, Type - String
+	KorotkaNazvaTypu, Type - String
+
+Table = AdrReestr.DBO.KategoriiDorogy
+	OBJECTID, Type - OID
+	KodKategorii, Type - Integer
+	NazvaTypu, Type - String
+	KorotkaNazvaTypu, Type - String
+
+Table = AdrReestr.DBO.KategoriiMistzevist
+	OBJECTID, Type - OID
+	KodKategorii, Type - Integer
+	NazvaTypu, Type - String
+	KorotkaNazvaTypu, Type - String
+

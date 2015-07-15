@@ -4,7 +4,7 @@ using SharedClasses;
 
 namespace WorckWithKadastr
 {
-    public partial class frmReestrZek_element : frmBaseSpr_element
+    public partial class frmReestrZek_element : frmBaseAdrReestrSpr_element
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types

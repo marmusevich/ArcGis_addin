@@ -1,10 +1,17 @@
 ﻿using ESRI.ArcGIS.Geodatabase;
 using System;
-using SharedClasses;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace WorckWithKadastr
+namespace SharedClasses
 {
-    public partial class frmTipDoc_element : frmBaseSpr_element
+    public partial class frmBaseAdrKategor_element :frmBaseSpr_element
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -15,89 +22,82 @@ namespace WorckWithKadastr
         #region  variables
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #endregion
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected override void DB_to_FormElement(IRow row)
         {
             // взять из базы
-            txtTip_Doc.Text = "" + row.get_Value(base.table.FindField("Tip_Doc")) as string;
-            txtKod_Doc.Text = "" + row.get_Value(base.table.FindField("Kod_Doc")).ToString();
+            txtKodKategorii.Text = "" + row.get_Value(base.table.FindField("KodKategorii")) as string;
+            txtNazvaTypu.Text = row.get_Value(base.table.FindField("NazvaTypu")) as string;
+            txtKorotkaNazvaTypu.Text = row.get_Value(base.table.FindField("KorotkaNazvaTypu")) as string;
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             // положить в базы
-            row.set_Value(base.table.FindField("Tip_Doc"), txtTip_Doc.Text);
-            row.set_Value(base.table.FindField("Kod_Doc"), Convert.ToInt16(txtKod_Doc.Text));
+            int KodKategorii = Convert.ToInt32(txtKodKategorii.Text);
+            //if (ReestrDocumentWork.IsNumerReestrZayavExist(KodKategorii) && (editMode != EditMode.EDIT))
+            //{
+            //    MessageBox.Show(string.Format("Документ с номером [{0}] уже есть.", KodKategorii), "Не унекальный код");
+            //    return;
+            //}
+            row.set_Value(base.table.FindField("KodKategorii"), KodKategorii);
+
+            row.set_Value(base.table.FindField("NazvaTypu"), txtNazvaTypu.Text);
+            row.set_Value(base.table.FindField("KorotkaNazvaTypu"), txtKorotkaNazvaTypu.Text);
         }
 
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueIsSmalInt_SetError(txtKod_Doc, errorProvider) && ret;
-            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtTip_Doc, errorProvider) && ret;
+            ret = SharedClass.CheckValueIsInt_SetError(txtKodKategorii, errorProvider) && ret;
+            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtNazvaTypu, errorProvider) && ret;
             return ret;
         }
 
         #endregion
 
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmTipDoc_element()
-            : base()
+
+        public frmBaseAdrKategor_element()
+           : base()
         {
             InitializeComponent();
         }
-
-        public frmTipDoc_element(int _objectID, EditMode _editMode)
+        public frmBaseAdrKategor_element(int _objectID, EditMode _editMode)
             : base(_objectID, _editMode)
         {
             InitializeComponent();
 
-            base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.Tip_Doc";
         }
 
-        private void frmTipDoc_element_Load(object sender, EventArgs e)
-        {
-            switch (editMode)
-            {
-                case EditMode.ADD:
-                    Text = "Добавление нового типа документа";
-                    break;
-                case EditMode.EDIT:
-                    Text = "Корректировка данных типа документа";
-                    break;
-                case EditMode.DELETE:
-                    Text = "Удаление типа документа";
-                    break;
-                default:
-                    this.Close();
-                    return;
-            }
-        }
-
-        private void txtTip_Doc_TextChanged(object sender, EventArgs e)
+        private void txtNazvaTypu_TextChanged(object sender, EventArgs e)
         {
             isModified = true;
             ValidatingData();
         }
 
-        private void txtKod_Doc_TextChanged(object sender, EventArgs e)
+        private void txtKorotkaNazvaTypu_TextChanged(object sender, EventArgs e)
+        {
+            isModified = true;
+        }
+
+        private void txtKodKategorii_TextChanged(object sender, EventArgs e)
         {
             isModified = true;
             ValidatingData();
         }
 
-        private void txtKod_Doc_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txtKodKategorii_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !ValidatingData();
         }
 
-        private void txtTip_Doc_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txtNazvaTypu_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !ValidatingData();
         }

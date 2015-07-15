@@ -72,7 +72,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("олучения общих данных в справочника  '{0}' id {1}", NameTable, objectID));
+                Logger.Write(ex, string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
                 SharedClass.ShowErrorMessage(string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }

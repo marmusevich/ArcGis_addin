@@ -4,7 +4,7 @@ using SharedClasses;
 
 namespace WorckWithKadastr
 {
-    public partial class frmKategoriiDorog_element : frmBaseSpr_element
+    public partial class frmKategoriiDorog_element : frmBaseAdrKategor_element
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -19,19 +19,22 @@ namespace WorckWithKadastr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        protected override void DB_to_FormElement(IRow row)
-        {
-        }
+        //protected override void DB_to_FormElement(IRow row)
+        //{
+        //    base.DB_to_FormElement(row);
+        //}
 
-        protected override void FormElement_to_DB(IRow row)
-        {
-        }
+        //protected override void FormElement_to_DB(IRow row)
+        //{
+        //    base.FormElement_to_DB(row);
+        //}
 
-        protected override bool ValidatingData()
-        {
-            bool ret = base.ValidatingData();
-            return ret;
-        }
+
+        //protected override bool ValidatingData()
+        //{
+        //    bool ret = base.ValidatingData();
+        //    return ret;
+        //}
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,8 +50,8 @@ namespace WorckWithKadastr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
+            base.NameWorkspace = "AdrReestr";
+            base.NameTable = "AdrReestr.DBO.KategoriiDorogy";
         }
 
 
@@ -57,13 +60,13 @@ namespace WorckWithKadastr
             switch (editMode)
             {
                 case EditMode.ADD:
-                    Text = "Добавление нового ";
+                    Text = "Добавление нового элемента категорий дорог";
                     break;
                 case EditMode.EDIT:
-                    Text = "Корректировка данных ";
+                    Text = "Корректировка данных элемента категории дорог";
                     break;
                 case EditMode.DELETE:
-                    Text = "Удаление ";
+                    Text = "Удаление элемента категорий дорог";
                     break;
                 default:
                     this.Close();

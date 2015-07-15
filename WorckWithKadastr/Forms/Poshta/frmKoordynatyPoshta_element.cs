@@ -5,7 +5,7 @@ using SharedClasses;
 
 namespace WorckWithKadastr
 {
-    public partial class frmKoordynatyPoshta_element : frmBaseSpr_element
+    public partial class frmKoordynatyPoshta_element : frmBaseKoord_element
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types

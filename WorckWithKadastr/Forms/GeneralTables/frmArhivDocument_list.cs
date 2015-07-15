@@ -32,9 +32,9 @@ namespace WorckWithKadastr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
-            base.NameSortFild = "";
+            base.NameWorkspace = "AdrReestr";
+            base.NameTable = "AdrReestr.DBO.ArhivDocument";
+            base.NameSortFild = "KodObject";
         }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {

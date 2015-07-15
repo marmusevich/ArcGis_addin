@@ -4,7 +4,7 @@ using SharedClasses;
 
 namespace WorckWithKadastr
 {
-    public partial class frmReestrVulytsDorig_element : frmBaseSpr_element
+    public partial class frmReestrVulytsDorig_element : frmBaseAdrReestrSpr_element
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -49,8 +49,8 @@ namespace WorckWithKadastr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
+            base.NameWorkspace = "AdrReestr";
+            base.NameTable = "AdrReestr.DBO.reestrvulytsdorig_polyline";
         }
 
         private void frmReestrVulytsDorig_element_Load(object sender, EventArgs e)
