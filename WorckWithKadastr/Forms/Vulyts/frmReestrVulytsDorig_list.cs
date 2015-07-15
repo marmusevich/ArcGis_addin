@@ -33,7 +33,7 @@ namespace WorckWithKadastr
             InitializeComponent();
 
             base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.reestrvulytsdorig_polyline";
+            base.NameTable = "reestrvulytsdorig_polyline";
             base.NameSortFild = "KODOBJECT";
         }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)

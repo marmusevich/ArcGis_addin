@@ -134,7 +134,7 @@ namespace WorckWithReestr
         {
             InitializeComponent();
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.Kn_Reg_Ved";
+            base.NameTable = "Kn_Reg_Ved";
         }
 
         private void frmReestrVedomostey_doc_Load(object sender, EventArgs e)

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SharedClasses;
+
 using System.Windows.Forms;
 
-namespace SharedClasses
+namespace WorckWithKadastr
 {
     public partial class frmBaseAdrReestrSpr_list : frmBaseSpr_list
     {

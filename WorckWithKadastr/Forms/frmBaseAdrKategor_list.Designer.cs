@@ -1,6 +1,6 @@
 ﻿namespace WorckWithKadastr
 {
-    partial class frmBaseKoord_element
+    partial class frmBaseAdrKategor_list
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "frmBaseKoord_element";
+            this.Text = "frmBaseAdrKategor_list";
         }
 
         #endregion

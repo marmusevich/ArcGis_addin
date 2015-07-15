@@ -37,7 +37,7 @@ namespace WorckWithReestr
 
 
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.Kn_Reg_Zayv";
+            base.NameTable = "Kn_Reg_Zayv";
             base.NameSortFild = "Data_Z";
             base.NameDataFilteredFild = "Data_Z";
         }

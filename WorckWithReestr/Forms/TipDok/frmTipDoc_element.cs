@@ -58,7 +58,7 @@ namespace WorckWithReestr
             InitializeComponent();
 
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.Tip_Doc";
+            base.NameTable = "Tip_Doc";
         }
 
         private void frmTipDoc_element_Load(object sender, EventArgs e)

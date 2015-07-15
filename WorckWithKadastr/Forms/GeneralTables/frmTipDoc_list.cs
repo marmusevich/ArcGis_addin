@@ -43,7 +43,7 @@ namespace WorckWithKadastr
             InitializeComponent();
 
             base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.Tip_Doc";
+            base.NameTable = "Tip_Doc";
             base.NameSortFild = "Kod_Doc";
         }
 

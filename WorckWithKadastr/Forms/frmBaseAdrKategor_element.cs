@@ -1,15 +1,10 @@
 ﻿using ESRI.ArcGIS.Geodatabase;
+using SharedClasses;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SharedClasses
+namespace WorckWithKadastr
 {
     public partial class frmBaseAdrKategor_element :frmBaseSpr_element
     {
@@ -37,11 +32,11 @@ namespace SharedClasses
         {
             // положить в базы
             int KodKategorii = Convert.ToInt32(txtKodKategorii.Text);
-            //if (ReestrDocumentWork.IsNumerReestrZayavExist(KodKategorii) && (editMode != EditMode.EDIT))
-            //{
-            //    MessageBox.Show(string.Format("Документ с номером [{0}] уже есть.", KodKategorii), "Не унекальный код");
-            //    return;
-            //}
+            if (AdresReestrWork.IsCodeKategorExist(NameTable, KodKategorii) && (editMode != EditMode.EDIT))
+            {
+                MessageBox.Show(string.Format("Элемент категории с номером [{0}] уже есть.", KodKategorii), "Не унекальный код");
+                return;
+            }
             row.set_Value(base.table.FindField("KodKategorii"), KodKategorii);
 
             row.set_Value(base.table.FindField("NazvaTypu"), txtNazvaTypu.Text);

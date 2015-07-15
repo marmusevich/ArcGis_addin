@@ -74,7 +74,7 @@ namespace WorckWithReestr
             InitializeComponent();
 
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.fizichni_osoby";
+            base.NameTable = "fizichni_osoby";
 
         }
 

@@ -50,7 +50,7 @@ namespace WorckWithKadastr
             InitializeComponent();
 
             base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.reestrvulytsdorig_polyline";
+            base.NameTable = "reestrvulytsdorig_polyline";
         }
 
         private void frmReestrVulytsDorig_element_Load(object sender, EventArgs e)

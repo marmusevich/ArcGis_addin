@@ -163,6 +163,12 @@
     <Compile Include="Forms\frmBaseAdrKategor_element.Designer.cs">
       <DependentUpon>frmBaseAdrKategor_element.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmBaseAdrKategor_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBaseAdrKategor_list.Designer.cs">
+      <DependentUpon>frmBaseAdrKategor_list.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmBaseAdrReestrSpr_element.cs">
       <SubType>Form</SubType>
     </Compile>

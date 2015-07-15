@@ -26,7 +26,7 @@ namespace WorckWithReestr
             InitializeComponent();
 
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.Kn_Reg_Ved";
+            base.NameTable = "Kn_Reg_Ved";
             base.NameSortFild = "Data_Vh";
             base.NameDataFilteredFild = "Data_Vh";
         }

@@ -58,7 +58,7 @@ namespace WorckWithKadastr
             InitializeComponent();
 
             base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.Tip_Doc";
+            base.NameTable = "Tip_Doc";
         }
 
         private void frmTipDoc_element_Load(object sender, EventArgs e)

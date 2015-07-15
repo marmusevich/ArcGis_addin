@@ -230,7 +230,7 @@ namespace WorckWithReestr
         {
             InitializeComponent();
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.Kn_Reg_Zayv";
+            base.NameTable = "Kn_Reg_Zayv";
         }
 
         private void frmReestrZayav_doc_Load(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-Table = AdrReestr.DBO.KoordynatyDorogy
+Table = KoordynatyDorogy
 	OBJECTID, Type - esriTypeOID
 	KodObject, Type - esriTypeInteger
 	KoordynatyX, Type - esriTypeDouble
@@ -8,7 +8,7 @@ Table = AdrReestr.DBO.KoordynatyDorogy
 	TypTochky, Type - esriTypeSmallInteger DomainName - TypPoint
 	OpysTochky, Type - esriTypeString
 
-Table = AdrReestr.DBO.ArhivDocument
+Table = ArhivDocument
 	OBJECTID, Type - esriTypeOID
 	NazvaDocument, Type - esriTypeString
 	DataDocument, Type - esriTypeDate
@@ -18,7 +18,7 @@ Table = AdrReestr.DBO.ArhivDocument
 	Document, Type - esriTypeInteger
 	KodObject, Type - esriTypeInteger
 
-Table = AdrReestr.DBO.KoordynatyVulyts
+Table = KoordynatyVulyts
 	OBJECTID, Type - esriTypeOID
 	KodObject, Type - esriTypeInteger
 	KoordynatyX, Type - esriTypeDouble
@@ -28,7 +28,7 @@ Table = AdrReestr.DBO.KoordynatyVulyts
 	TypTochky,Type - esriTypeDouble , DomainName - TypPoint
 	OpysTochky ,Type - esriTypeString
 
-Table = AdrReestr.DBO.ReestrPlanRecreatsija_polygon
+Table = ReestrPlanRecreatsija_polygon
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -49,7 +49,7 @@ Table = AdrReestr.DBO.ReestrPlanRecreatsija_polygon
 	Document, Type - Integer
 	AdminRajon, Type - Integer
 
-Table = AdrReestr.DBO.KoordynatyPlanRecr
+Table = KoordynatyPlanRecr
 	OBJECTID, Type - OID
 	KodOdject, Type - Integer
 	KoordynatyX, Type - Double
@@ -59,7 +59,7 @@ Table = AdrReestr.DBO.KoordynatyPlanRecr
 	TypTochky, Type - SmallInteger, DomainName - TypPoint
 	OpysTochky, Type - Double
 
-Table = AdrReestr.DBO.KoordynatyMistzevist
+Table = KoordynatyMistzevist
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	KoordynatyX, Type - Double
@@ -69,7 +69,7 @@ Table = AdrReestr.DBO.KoordynatyMistzevist
 	TypTochky, Type - SmallInteger, DomainName - TypPoint
 	OpysTochky, Type - Double
 
-Table = AdrReestr.DBO.ReestrDorogy_polygon
+Table = ReestrDorogy_polygon
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -90,7 +90,7 @@ Table = AdrReestr.DBO.ReestrDorogy_polygon
 	AdminRajon, Type - Integer
 	Document
 
-Table = AdrReestr.DBO.ReestrDorogy_point
+Table = ReestrDorogy_point
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -111,7 +111,7 @@ Table = AdrReestr.DBO.ReestrDorogy_point
 	Document, Type - Integer
 	KodKategorii, Type - Integer
 
-Table = AdrReestr.DBO.ReestrRajon_polygon
+Table = ReestrRajon_polygon
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -131,7 +131,7 @@ Table = AdrReestr.DBO.ReestrRajon_polygon
 	DzhereloKoord, Type - SmallInteger, DomainName - TypDzherelo
 	Document, Type - Integer
 
-Table = AdrReestr.DBO.KoordynatyRajon
+Table = KoordynatyRajon
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	KoordynatyX, Type - Double
@@ -141,7 +141,7 @@ Table = AdrReestr.DBO.KoordynatyRajon
 	TypTochky, Type - SmallInteger, DomainName - TypPoint
 	OpysTochky, Type - String
 
-Table = AdrReestr.DBO.ReestrPoshta_point
+Table = ReestrPoshta_point
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -157,7 +157,7 @@ Table = AdrReestr.DBO.ReestrPoshta_point
 	Document, Type - Integer
 	AdminRajon, Type - Integer
 
-Table = AdrReestr.DBO.KoordynatyPoshta
+Table = KoordynatyPoshta
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	KoordynatyX, Type - Double
@@ -167,7 +167,7 @@ Table = AdrReestr.DBO.KoordynatyPoshta
 	TypTochky, Type - SmallInteger, DomainName - TypPoint
 	OpysTochky, Type - String
 
-Table = AdrReestr.DBO.ReestrZek_point
+Table = ReestrZek_point
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -183,7 +183,7 @@ Table = AdrReestr.DBO.ReestrZek_point
 	AdminRajon, Type - Integer
 	Document , Type - Integer
 
-Table =  AdrReestr.DBO.KoordynatyZek
+Table =  KoordynatyZek
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	KoordynatyX, Type - Double
@@ -193,7 +193,7 @@ Table =  AdrReestr.DBO.KoordynatyZek
 	TypTochky, Type - SmallInteger, DomainName - TypPoint
 	OpysTochky, Type - String
 
-Table = AdrReestr.DBO.reestrvulytsdorig_polyline
+Table = reestrvulytsdorig_polyline
 	OBJECTID, Type - OID
 	KODOBJECT, Type - Integer
 	NAZVAPOVNA, Type - String
@@ -214,7 +214,7 @@ Table = AdrReestr.DBO.reestrvulytsdorig_polyline
 	LocalType, Type - SmallInteger, DomainName - TypLocal
 	DZHERELOKO, Type - SmallInteger, DomainName - TypDzherelo
 
-Table = AdrReestr.DBO.ReestrMistzevist_point
+Table = ReestrMistzevist_point
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -235,7 +235,7 @@ Table = AdrReestr.DBO.ReestrMistzevist_point
 	Document, Type - Double
 	AdminRajon, Type - Double
 
-Table = AdrReestr.DBO.ReestrMistzevist_polygon
+Table = ReestrMistzevist_polygon
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -256,7 +256,7 @@ Table = AdrReestr.DBO.ReestrMistzevist_polygon
 	AdminRajon, Type - Double
 	Document, Type - Double
 
-Table = AdrReestr.DBO.ReestrMistzevist_polyline
+Table = ReestrMistzevist_polyline
 	OBJECTID, Type - OID
 	KodObject, Type - Integer
 	NazvaPovnaUkr, Type - String
@@ -277,25 +277,25 @@ Table = AdrReestr.DBO.ReestrMistzevist_polyline
 	AdminRajon, Type - Double
 	Document, Type - Double
 
-Table = AdrReestr.DBO.KategoriiVulyts
+Table = KategoriiVulyts
 	OBJECTID, Type - OID
 	KodKategorii, Type - Integer
 	NazvaTypu, Type - String
 	KorotkaNazvaTypu, Type - String
 
-Table = AdrReestr.DBO.KategoriiPlanRecreatsija
+Table = KategoriiPlanRecreatsija
 	OBJECTID, Type - OID
 	KodKategorii, Type - Integer
 	NazvaTypu, Type - String
 	KorotkaNazvaTypu, Type - String
 
-Table = AdrReestr.DBO.KategoriiDorogy
+Table = KategoriiDorogy
 	OBJECTID, Type - OID
 	KodKategorii, Type - Integer
 	NazvaTypu, Type - String
 	KorotkaNazvaTypu, Type - String
 
-Table = AdrReestr.DBO.KategoriiMistzevist
+Table = KategoriiMistzevist
 	OBJECTID, Type - OID
 	KodKategorii, Type - Integer
 	NazvaTypu, Type - String

@@ -51,7 +51,7 @@ namespace WorckWithKadastr
             InitializeComponent();
 
             base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.KategoriiDorogy";
+            base.NameTable = "KategoriiDorogy";
         }
 
 

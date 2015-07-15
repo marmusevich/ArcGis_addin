@@ -1,4 +1,4 @@
-﻿namespace SharedClasses
+﻿namespace WorckWithKadastr
 {
     partial class frmBaseAdrReestrSpr_element
     {

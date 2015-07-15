@@ -43,7 +43,7 @@ namespace WorckWithReestr
             InitializeComponent();
 
             base.NameWorkspace = "reestr";
-            base.NameTable = "reestr.DBO.Tip_Doc";
+            base.NameTable = "Tip_Doc";
             base.NameSortFild = "Kod_Doc";
         }
 

@@ -53,7 +53,7 @@ namespace WorckWithKadastr
             InitializeComponent();
 
             base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.KategoriiMistzevist";
+            base.NameTable = "KategoriiMistzevist";
         }
 
         private void frmKategoriiMistzevist_element_Load(object sender, EventArgs e)

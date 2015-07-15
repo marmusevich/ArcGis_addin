@@ -46,7 +46,7 @@ namespace SharedClasses
         {
             
         }
-        //вернуть строку доаолнительных условий
+        //вернуть строку дополнительных условий
         protected virtual string GetStringAddetConditions()
         {
             return "";

@@ -1,9 +1,9 @@
-﻿using System.Windows.Forms;
-using SharedClasses;
+﻿using SharedClasses;
+using System.Windows.Forms;
 
 namespace WorckWithKadastr
 {
-    public partial class frmKategoriiMistzevist_list : frmBaseSpr_list
+    public partial class frmKategoriiMistzevist_list : frmBaseAdrKategor_list
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region functions
@@ -33,7 +33,7 @@ namespace WorckWithKadastr
             InitializeComponent();
 
             base.NameWorkspace = "AdrReestr";
-            base.NameTable = "AdrReestr.DBO.KategoriiMistzevist";
+            base.NameTable = "KategoriiMistzevist";
             base.NameSortFild = "KodKategorii";
         }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
