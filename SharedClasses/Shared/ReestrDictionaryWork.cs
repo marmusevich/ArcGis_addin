@@ -118,70 +118,70 @@ namespace SharedClasses
         //---------------------------------------------------------------------------------------
         #region методы проверок полей ввода
         // проверка текстового поля на значения из справочника физ лиц и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsContainsFizLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, ref int id, TextBox _codeValue = null)
+        public static bool CheckValueIsContainsFizLic_SetError(TextBox chekedValue, ErrorProvider errorProvider, ref int id, TextBox codeValue = null)
         {
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue("reestr", _chekedValue.Text, "fizichni_osoby", "П_І_Б", true);
+            id_temp = SharedClass.GetIDByTextValue("reestr", chekedValue.Text, "fizichni_osoby", "П_І_Б", true);
 
             if (id_temp != -1)
             {
-                _errorProvider.SetError(_chekedValue, String.Empty);
+                errorProvider.SetError(chekedValue, String.Empty);
                 id = id_temp;
-                _chekedValue.Text = GetFIOByIDFromFizLic(id);
-                if( _codeValue != null)
-                    _codeValue.Text = GetINNByIDFromFizLic(id);
+                chekedValue.Text = GetFIOByIDFromFizLic(id);
+                if( codeValue != null)
+                    codeValue.Text = GetINNByIDFromFizLic(id);
             }
             else
             {
-                _errorProvider.SetError(_chekedValue, "Должно быть значение из справочника физических лиц");
+                errorProvider.SetError(chekedValue, "Должно быть значение из справочника физических лиц");
                 ret = false;
             }
             return ret;
         }
         // проверка текстового поля на значения из справочника юр лиц и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsContainsJurLic_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, ref int id, TextBox _codeValue = null)
+        public static bool CheckValueIsContainsJurLic_SetError(TextBox chekedValue, ErrorProvider errorProvider, ref int id, TextBox codeValue = null)
         {
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue("reestr", _chekedValue.Text, "jur_osoby", "назва", true);
+            id_temp = SharedClass.GetIDByTextValue("reestr", chekedValue.Text, "jur_osoby", "назва", true);
 
             if (id_temp != -1)
             {
-                _errorProvider.SetError(_chekedValue, String.Empty);
+                errorProvider.SetError(chekedValue, String.Empty);
                 id = id_temp;
-                _chekedValue.Text = GetNameByIDFromJurOsoby(id);
-                if( _codeValue != null)
-                    _codeValue.Text = GetINNByIDFromJurOsoby(id);
+                chekedValue.Text = GetNameByIDFromJurOsoby(id);
+                if( codeValue != null)
+                    codeValue.Text = GetINNByIDFromJurOsoby(id);
             }
             else
             {
-                _errorProvider.SetError(_chekedValue, "Должно быть значение из справочника юридических лиц");
+                errorProvider.SetError(chekedValue, "Должно быть значение из справочника юридических лиц");
                 ret = false;
             }
             return ret;
         }
         // проверка текстового поля на значения из справочника типы документов и выстовить ошибку в провайдер ошыбок
-        public static bool CheckValueIsContainsTip_Doc_SetError(TextBox _chekedValue, ErrorProvider _errorProvider, ref int id, TextBox _codeValue = null)
+        public static bool CheckValueIsContainsTip_Doc_SetError(TextBox chekedValue, ErrorProvider errorProvider, ref int id, TextBox codeValue = null)
         {
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue("reestr", _chekedValue.Text, "Tip_Doc", "Tip_Doc", true);
+            id_temp = SharedClass.GetIDByTextValue("reestr", chekedValue.Text, "Tip_Doc", "Tip_Doc", true);
 
             if (id_temp != -1)
             {
-                _errorProvider.SetError(_chekedValue, String.Empty);
+                errorProvider.SetError(chekedValue, String.Empty);
                 id = id_temp;
-                _chekedValue.Text = GetNameByIDFromTip_Doc(id);
-                if( _codeValue != null)
-                    _codeValue.Text = GetCodeByIDFromTip_Doc(id);
+                chekedValue.Text = GetNameByIDFromTip_Doc(id);
+                if( codeValue != null)
+                    codeValue.Text = GetCodeByIDFromTip_Doc(id);
             }
             else
             {
-                _errorProvider.SetError(_chekedValue, "Должно быть значение из справочника типов документов");
+                errorProvider.SetError(chekedValue, "Должно быть значение из справочника типов документов");
                 ret = false;
             }
             return ret;

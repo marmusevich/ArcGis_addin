@@ -32,7 +32,7 @@ namespace WorckWithKadastr
         {
             // положить в базы
             int KodKategorii = Convert.ToInt32(txtKodKategorii.Text);
-            if (AdresReestrWork.IsCodeKategorExist(NameTable, KodKategorii) && (editMode != EditMode.EDIT))
+            if (AdresReestrWork.IsCodeKategorObjExist(NameTable, KodKategorii) && (editMode != EditMode.EDIT))
             {
                 MessageBox.Show(string.Format("Элемент категории с номером [{0}] уже есть.", KodKategorii), "Не унекальный код");
                 return;
