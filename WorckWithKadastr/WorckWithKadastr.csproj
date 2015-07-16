@@ -456,9 +456,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SHEM.TXT" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SharedClasses\SharedClasses.csproj">
       <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
       <Name>SharedClasses</Name>
@@ -505,8 +502,14 @@
     <EmbeddedResource Include="Forms\frmBaseAdrKategor_element.resx">
       <DependentUpon>frmBaseAdrKategor_element.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBaseAdrReestrSpr_element.resx">
+      <DependentUpon>frmBaseAdrReestrSpr_element.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBaseKoord_list.resx">
       <DependentUpon>frmBaseKoord_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GeneralTables\frmArhivDocument_element.resx">
+      <DependentUpon>frmArhivDocument_element.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GeneralTables\frmKoordynatyRajon_element.resx">
       <DependentUpon>frmKoordynatyRajon_element.cs</DependentUpon>

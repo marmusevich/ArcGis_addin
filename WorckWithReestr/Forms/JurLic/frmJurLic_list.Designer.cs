@@ -31,7 +31,7 @@ namespace WorckWithReestr
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Text = "frmJurLic_list";
         }
 

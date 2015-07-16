@@ -98,7 +98,7 @@ namespace WorckWithReestr
             // frmJurLic_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 111);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtOKPO);

@@ -110,7 +110,7 @@ namespace WorckWithReestr
             // frmFizLic_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 136);
             this.Controls.Add(this.txtFIO);
             this.Controls.Add(this.txtINN);

@@ -30,17 +30,19 @@
         {
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
+
             // 
             // frmReestrDorogy_polygon_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 212);
+            this.ClientSize = new System.Drawing.Size(313, 535);
             this.Name = "frmReestrDorogy_polygon_element";
             this.Text = "ReestrDorog1_element";
             this.Load += new System.EventHandler(this.frmReestrDorogy_polygon_element_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
