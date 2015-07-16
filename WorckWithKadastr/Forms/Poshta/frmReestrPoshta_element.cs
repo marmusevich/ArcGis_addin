@@ -49,8 +49,8 @@ namespace WorckWithKadastr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
+            base.NameWorkspace = "AdrReestr";
+            base.NameTable = "ReestrPoshta_point";
         }
 
         private void frmReestrPoshta_element_Load(object sender, EventArgs e)
@@ -58,13 +58,13 @@ namespace WorckWithKadastr
             switch (editMode)
             {
                 case EditMode.ADD:
-                    Text = "Добавление нового ";
+                    Text = "Добавление нового почтового отделения";
                     break;
                 case EditMode.EDIT:
-                    Text = "Корректировка данных ";
+                    Text = "Корректировка данных почтового отделения";
                     break;
                 case EditMode.DELETE:
-                    Text = "Удаление ";
+                    Text = "Удаление почтового отделения";
                     break;
                 default:
                     this.Close();

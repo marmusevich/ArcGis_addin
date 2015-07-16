@@ -28,9 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // frmKoordynatyVulyts_element
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(441, 212);
+            this.Name = "frmKoordynatyVulyts_element";
             this.Text = "KoordynatyVulyts_element";
+            this.Load += new System.EventHandler(this.frmKoordynatyVulyts_element_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion

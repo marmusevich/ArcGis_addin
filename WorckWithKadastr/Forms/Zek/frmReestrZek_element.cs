@@ -49,8 +49,8 @@ namespace WorckWithKadastr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
+            base.NameWorkspace = "AdrReestr";
+            base.NameTable = "ReestrZek_point";
         }
 
         private void frmReestrZek_element_Load(object sender, EventArgs e)
@@ -58,13 +58,13 @@ namespace WorckWithKadastr
             switch (editMode)
             {
                 case EditMode.ADD:
-                    Text = "Добавление нового ";
+                    Text = "Добавление новой жилишно-эксплатоционной организации";
                     break;
                 case EditMode.EDIT:
-                    Text = "Корректировка данных ";
+                    Text = "Корректировка данных жилишно-эксплатоционной организации";
                     break;
                 case EditMode.DELETE:
-                    Text = "Удаление ";
+                    Text = "Удаление жилишно-эксплатоционной организации";
                     break;
                 default:
                     this.Close();

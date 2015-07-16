@@ -94,11 +94,11 @@
     <Compile Include="ArcButtons\arcBtn_Open_KoordynatyRajon.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_KoordynatyVulyts.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_KoordynatyZek.cs" />
-    <Compile Include="ArcButtons\arcBtn_Open_ReestrDorog1.cs" />
-    <Compile Include="ArcButtons\arcBtn_Open_ReestrDorog2.cs" />
-    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist1.cs" />
-    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist2.cs" />
-    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist3.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrDorogy_polygon.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrDorogy_point.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist_polyline.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist_polygon.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_ReestrMistzevist_point.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrPlanRecreatsija.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrPoshta.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrRajon.cs" />
@@ -133,29 +133,29 @@
     <Compile Include="Forms\Dorog\frmKoordynatyDorog_list.Designer.cs">
       <DependentUpon>frmKoordynatyDorog_list.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog1_element.cs">
+    <Compile Include="Forms\Dorog\frmReestrDorogy_polygon_element.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog1_element.Designer.cs">
-      <DependentUpon>frmReestrDorog1_element.cs</DependentUpon>
+    <Compile Include="Forms\Dorog\frmReestrDorogy_polygon_element.Designer.cs">
+      <DependentUpon>frmReestrDorogy_polygon_element.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog1_list.cs">
+    <Compile Include="Forms\Dorog\frmReestrDorogy_polygon_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog1_list.Designer.cs">
-      <DependentUpon>frmReestrDorog1_list.cs</DependentUpon>
+    <Compile Include="Forms\Dorog\frmReestrDorogy_polygon_list.Designer.cs">
+      <DependentUpon>frmReestrDorogy_polygon_list.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog2_element.cs">
+    <Compile Include="Forms\Dorog\frmReestrDorogy_point_element.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog2_element.Designer.cs">
-      <DependentUpon>frmReestrDorog2_element.cs</DependentUpon>
+    <Compile Include="Forms\Dorog\frmReestrDorogy_point_element.Designer.cs">
+      <DependentUpon>frmReestrDorogy_point_element.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog2_list.cs">
+    <Compile Include="Forms\Dorog\frmReestrDorogy_point_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dorog\frmReestrDorog2_list.Designer.cs">
-      <DependentUpon>frmReestrDorog2_list.cs</DependentUpon>
+    <Compile Include="Forms\Dorog\frmReestrDorogy_point_list.Designer.cs">
+      <DependentUpon>frmReestrDorogy_point_list.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmBaseAdrKategor_element.cs">
       <SubType>Form</SubType>
@@ -265,41 +265,41 @@
     <Compile Include="Forms\Mistzevist\frmKoordynatyMistzevist_list.Designer.cs">
       <DependentUpon>frmKoordynatyMistzevist_list.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_element.cs">
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polyline_element.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_element.Designer.cs">
-      <DependentUpon>frmReestrMistzevist1_element.cs</DependentUpon>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polyline_element.Designer.cs">
+      <DependentUpon>frmReestrMistzevist_polyline_element.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_list.cs">
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polyline_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist1_list.Designer.cs">
-      <DependentUpon>frmReestrMistzevist1_list.cs</DependentUpon>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polyline_list.Designer.cs">
+      <DependentUpon>frmReestrMistzevist_polyline_list.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_element.cs">
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polygon_element.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_element.Designer.cs">
-      <DependentUpon>frmReestrMistzevist2_element.cs</DependentUpon>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polygon_element.Designer.cs">
+      <DependentUpon>frmReestrMistzevist_polygon_element.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_list.cs">
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polygon_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist2_list.Designer.cs">
-      <DependentUpon>frmReestrMistzevist2_list.cs</DependentUpon>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_polygon_list.Designer.cs">
+      <DependentUpon>frmReestrMistzevist_polygon_list.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_element.cs">
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_point_element.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_element.Designer.cs">
-      <DependentUpon>frmReestrMistzevist3_element.cs</DependentUpon>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_point_element.Designer.cs">
+      <DependentUpon>frmReestrMistzevist_point_element.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_list.cs">
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_point_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mistzevist\frmReestrMistzevist3_list.Designer.cs">
-      <DependentUpon>frmReestrMistzevist3_list.cs</DependentUpon>
+    <Compile Include="Forms\Mistzevist\frmReestrMistzevist_point_list.Designer.cs">
+      <DependentUpon>frmReestrMistzevist_point_list.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PlanRecreatsija\frmKategoriiPlanRecreatsija_element.cs">
       <SubType>Form</SubType>
@@ -490,8 +490,74 @@
     <AddInContent Include="Images\arcBtn_Open_TipDoc.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Dorog\frmKategoriiDorog_element.resx">
+      <DependentUpon>frmKategoriiDorog_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dorog\frmKoordynatyDorog_element.resx">
+      <DependentUpon>frmKoordynatyDorog_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dorog\frmReestrDorogy_point_element.resx">
+      <DependentUpon>frmReestrDorogy_point_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dorog\frmReestrDorogy_polygon_element.resx">
+      <DependentUpon>frmReestrDorogy_polygon_element.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBaseAdrKategor_element.resx">
       <DependentUpon>frmBaseAdrKategor_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBaseKoord_list.resx">
+      <DependentUpon>frmBaseKoord_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GeneralTables\frmKoordynatyRajon_element.resx">
+      <DependentUpon>frmKoordynatyRajon_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GeneralTables\frmReestrRajon_element.resx">
+      <DependentUpon>frmReestrRajon_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mistzevist\frmKategoriiMistzevist_element.resx">
+      <DependentUpon>frmKategoriiMistzevist_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mistzevist\frmKoordynatyMistzevist_element.resx">
+      <DependentUpon>frmKoordynatyMistzevist_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mistzevist\frmReestrMistzevist_point_element.resx">
+      <DependentUpon>frmReestrMistzevist_point_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mistzevist\frmReestrMistzevist_polygon_element.resx">
+      <DependentUpon>frmReestrMistzevist_polygon_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mistzevist\frmReestrMistzevist_polyline_element.resx">
+      <DependentUpon>frmReestrMistzevist_polyline_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlanRecreatsija\frmKategoriiPlanRecreatsija_element.resx">
+      <DependentUpon>frmKategoriiPlanRecreatsija_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlanRecreatsija\frmKoordynatyPlanRecreatsija_element.resx">
+      <DependentUpon>frmKoordynatyPlanRecreatsija_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlanRecreatsija\frmReestrPlanRecreatsija_element.resx">
+      <DependentUpon>frmReestrPlanRecreatsija_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Poshta\frmKoordynatyPoshta_element.resx">
+      <DependentUpon>frmKoordynatyPoshta_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Poshta\frmReestrPoshta_element.resx">
+      <DependentUpon>frmReestrPoshta_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Vulyts\frmKategoriiVulyts_element.resx">
+      <DependentUpon>frmKategoriiVulyts_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Vulyts\frmKoordynatyVulyts_element.resx">
+      <DependentUpon>frmKoordynatyVulyts_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Vulyts\frmReestrVulytsDorig_element.resx">
+      <DependentUpon>frmReestrVulytsDorig_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Zek\frmKoordynatyZek_element.resx">
+      <DependentUpon>frmKoordynatyZek_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Zek\frmReestrZek_element.resx">
+      <DependentUpon>frmReestrZek_element.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

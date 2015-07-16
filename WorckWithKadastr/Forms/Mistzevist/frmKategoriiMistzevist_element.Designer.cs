@@ -28,9 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // frmKategoriiMistzevist_element
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(426, 146);
+            this.Name = "frmKategoriiMistzevist_element";
             this.Text = "KategoriiMistzevist_element";
+            this.Load += new System.EventHandler(this.frmKategoriiMistzevist_element_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

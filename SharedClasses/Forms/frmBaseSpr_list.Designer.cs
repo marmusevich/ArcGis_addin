@@ -171,12 +171,12 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStripMenuItem cmsAdd;
-        private System.Windows.Forms.ToolStripButton tsbAdd;
-        private System.Windows.Forms.ToolStripButton tsdEdit;
-        private System.Windows.Forms.ToolStripButton tsdDelete;
-        private System.Windows.Forms.ToolStripMenuItem cmsEdit;
-        private System.Windows.Forms.ToolStripMenuItem cmsDelete;
+        protected System.Windows.Forms.ToolStripMenuItem cmsAdd;
+        protected System.Windows.Forms.ToolStripButton tsbAdd;
+        protected System.Windows.Forms.ToolStripButton tsdEdit;
+        protected System.Windows.Forms.ToolStripButton tsdDelete;
+        protected System.Windows.Forms.ToolStripMenuItem cmsEdit;
+        protected System.Windows.Forms.ToolStripMenuItem cmsDelete;
         protected System.Windows.Forms.DataGridView dgv;
         protected System.Windows.Forms.ContextMenuStrip cmsMain;
         protected System.Windows.Forms.ToolStrip tsMain;

@@ -58,13 +58,13 @@ namespace WorckWithKadastr
             switch (editMode)
             {
                 case EditMode.ADD:
-                    Text = "Добавление нового ";
+                    Text = "Добавление нового объекта дорожней сети";
                     break;
                 case EditMode.EDIT:
-                    Text = "Корректировка данных ";
+                    Text = "Корректировка данных объекта дорожней сети";
                     break;
                 case EditMode.DELETE:
-                    Text = "Удаление ";
+                    Text = "Удаление объекта дорожней сети";
                     break;
                 default:
                     this.Close();

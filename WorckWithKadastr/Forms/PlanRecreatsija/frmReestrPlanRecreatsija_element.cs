@@ -49,8 +49,8 @@ namespace WorckWithKadastr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
+            base.NameWorkspace = "AdrReestr";
+            base.NameTable = "ReestrPlanRecreatsija_polygon";
         }
 
         private void frmReestrPlanRecreatsija_element_Load(object sender, EventArgs e)
@@ -58,13 +58,13 @@ namespace WorckWithKadastr
             switch (editMode)
             {
                 case EditMode.ADD:
-                    Text = "Добавление нового ";
+                    Text = "Добавление нового реакреационного объекта";
                     break;
                 case EditMode.EDIT:
-                    Text = "Корректировка данных ";
+                    Text = "Корректировка данных реакреационного объекта";
                     break;
                 case EditMode.DELETE:
-                    Text = "Удаление ";
+                    Text = "Удаление реакреационного объекта";
                     break;
                 default:
                     this.Close();
