@@ -51,6 +51,7 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "AdrReestr";
             base.NameTable = "ReestrMistzevist_polygon";
+            base.mKategorTablName = "KategoriiMistzevist";
         }
 
         private void frmReestrMistzevist_polygon_element_Load(object sender, EventArgs e)

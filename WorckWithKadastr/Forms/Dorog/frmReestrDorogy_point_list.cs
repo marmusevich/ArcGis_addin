@@ -34,7 +34,9 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "AdrReestr";
             base.NameTable = "ReestrDorogy_point";
-            base.NameSortFild = "KodObject";        }
+            base.NameSortFild = "KodObject"; 
+        
+        }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
             return new frmReestrDorogy_point_element(_objectID, _editMode);

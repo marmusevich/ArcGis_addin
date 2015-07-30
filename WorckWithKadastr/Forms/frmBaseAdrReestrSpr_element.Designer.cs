@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblAdminRajo = new System.Windows.Forms.Label();
-            this.txtAdminRajo = new System.Windows.Forms.TextBox();
+            this.txtAdminRajon = new System.Windows.Forms.TextBox();
             this.btnAdminRajo = new System.Windows.Forms.Button();
             this.btnDocument = new System.Windows.Forms.Button();
             this.txtDocument = new System.Windows.Forms.TextBox();
@@ -72,15 +72,15 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(592, 525);
+            this.btnOk.Location = new System.Drawing.Point(592, 530);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 515);
+            this.btnCancel.Location = new System.Drawing.Point(12, 530);
             // 
             // lblAdminRajo
             // 
-            this.lblAdminRajo.Location = new System.Drawing.Point(430, 10);
+            this.lblAdminRajo.Location = new System.Drawing.Point(379, 13);
             this.lblAdminRajo.Name = "lblAdminRajo";
             this.lblAdminRajo.Size = new System.Drawing.Size(100, 21);
             this.lblAdminRajo.TabIndex = 9;
@@ -88,11 +88,12 @@
             // 
             // txtAdminRajo
             // 
-            this.txtAdminRajo.Location = new System.Drawing.Point(536, 10);
-            this.txtAdminRajo.Name = "txtAdminRajo";
-            this.txtAdminRajo.Size = new System.Drawing.Size(100, 20);
-            this.txtAdminRajo.TabIndex = 10;
-            this.txtAdminRajo.Text = "AdminRajo";
+            this.txtAdminRajon.Location = new System.Drawing.Point(486, 10);
+            this.txtAdminRajon.Name = "txtAdminRajo";
+            this.txtAdminRajon.Size = new System.Drawing.Size(150, 20);
+            this.txtAdminRajon.TabIndex = 10;
+            this.txtAdminRajon.Text = "AdminRajo";
+            this.txtAdminRajon.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // btnAdminRajo
             // 
@@ -102,23 +103,26 @@
             this.btnAdminRajo.TabIndex = 11;
             this.btnAdminRajo.Text = "...";
             this.btnAdminRajo.UseVisualStyleBackColor = true;
+            this.btnAdminRajo.Click += new System.EventHandler(this.btnAdminRajo_Click);
             // 
             // btnDocument
             // 
-            this.btnDocument.Location = new System.Drawing.Point(241, 243);
+            this.btnDocument.Location = new System.Drawing.Point(342, 242);
             this.btnDocument.Name = "btnDocument";
             this.btnDocument.Size = new System.Drawing.Size(21, 21);
             this.btnDocument.TabIndex = 14;
             this.btnDocument.Text = "...";
             this.btnDocument.UseVisualStyleBackColor = true;
+            this.btnDocument.Click += new System.EventHandler(this.btnDocument_Click);
             // 
             // txtDocument
             // 
             this.txtDocument.Location = new System.Drawing.Point(122, 243);
             this.txtDocument.Name = "txtDocument";
-            this.txtDocument.Size = new System.Drawing.Size(100, 20);
+            this.txtDocument.Size = new System.Drawing.Size(212, 20);
             this.txtDocument.TabIndex = 13;
             this.txtDocument.Text = "Document";
+            this.txtDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblDocument
             // 
@@ -130,20 +134,22 @@
             // 
             // btnKodKategorii
             // 
-            this.btnKodKategorii.Location = new System.Drawing.Point(241, 34);
+            this.btnKodKategorii.Location = new System.Drawing.Point(342, 33);
             this.btnKodKategorii.Name = "btnKodKategorii";
             this.btnKodKategorii.Size = new System.Drawing.Size(21, 21);
             this.btnKodKategorii.TabIndex = 17;
             this.btnKodKategorii.Text = "...";
             this.btnKodKategorii.UseVisualStyleBackColor = true;
+            this.btnKodKategorii.Click += new System.EventHandler(this.btnKodKategorii_Click);
             // 
             // txtKodKategorii
             // 
             this.txtKodKategorii.Location = new System.Drawing.Point(121, 34);
             this.txtKodKategorii.Name = "txtKodKategorii";
-            this.txtKodKategorii.Size = new System.Drawing.Size(100, 20);
+            this.txtKodKategorii.Size = new System.Drawing.Size(212, 20);
             this.txtKodKategorii.TabIndex = 16;
             this.txtKodKategorii.Text = "KodKategorii";
+            this.txtKodKategorii.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblKodKategorii
             // 
@@ -157,14 +163,15 @@
             // 
             this.cbStatusObject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatusObject.FormattingEnabled = true;
-            this.cbStatusObject.Location = new System.Drawing.Point(536, 36);
+            this.cbStatusObject.Location = new System.Drawing.Point(486, 36);
             this.cbStatusObject.Name = "cbStatusObject";
-            this.cbStatusObject.Size = new System.Drawing.Size(100, 21);
+            this.cbStatusObject.Size = new System.Drawing.Size(150, 21);
             this.cbStatusObject.TabIndex = 18;
+            this.cbStatusObject.SelectedIndexChanged += new System.EventHandler(this.cbStatusObject_SelectedIndexChanged);
             // 
             // lblStatusObject
             // 
-            this.lblStatusObject.Location = new System.Drawing.Point(430, 36);
+            this.lblStatusObject.Location = new System.Drawing.Point(379, 39);
             this.lblStatusObject.Name = "lblStatusObject";
             this.lblStatusObject.Size = new System.Drawing.Size(100, 21);
             this.lblStatusObject.TabIndex = 19;
@@ -174,14 +181,15 @@
             // 
             this.cbLocalType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLocalType.FormattingEnabled = true;
-            this.cbLocalType.Location = new System.Drawing.Point(567, 484);
+            this.cbLocalType.Location = new System.Drawing.Point(514, 484);
             this.cbLocalType.Name = "cbLocalType";
-            this.cbLocalType.Size = new System.Drawing.Size(100, 21);
+            this.cbLocalType.Size = new System.Drawing.Size(150, 21);
             this.cbLocalType.TabIndex = 20;
+            this.cbLocalType.SelectedIndexChanged += new System.EventHandler(this.cbLocalType_SelectedIndexChanged);
             // 
             // lblLocalType
             // 
-            this.lblLocalType.Location = new System.Drawing.Point(461, 484);
+            this.lblLocalType.Location = new System.Drawing.Point(407, 484);
             this.lblLocalType.Name = "lblLocalType";
             this.lblLocalType.Size = new System.Drawing.Size(100, 21);
             this.lblLocalType.TabIndex = 21;
@@ -193,8 +201,9 @@
             this.cbDzhereloKoord.FormattingEnabled = true;
             this.cbDzhereloKoord.Location = new System.Drawing.Point(120, 484);
             this.cbDzhereloKoord.Name = "cbDzhereloKoord";
-            this.cbDzhereloKoord.Size = new System.Drawing.Size(100, 21);
+            this.cbDzhereloKoord.Size = new System.Drawing.Size(179, 21);
             this.cbDzhereloKoord.TabIndex = 22;
+            this.cbDzhereloKoord.SelectedIndexChanged += new System.EventHandler(this.cbDzhereloKoord_SelectedIndexChanged);
             // 
             // lblDzhereloKoord
             // 
@@ -211,6 +220,8 @@
             this.txtKodObject.Size = new System.Drawing.Size(100, 20);
             this.txtKodObject.TabIndex = 25;
             this.txtKodObject.Text = "KodObject";
+            this.txtKodObject.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtKodObject.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblKodObject
             // 
@@ -227,6 +238,8 @@
             this.txtNazvaKorotkaRus.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaKorotkaRus.TabIndex = 27;
             this.txtNazvaKorotkaRus.Text = "NazvaKorotkaRus";
+            this.txtNazvaKorotkaRus.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNazvaKorotkaRus.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaKorotkaRus
             // 
@@ -243,6 +256,8 @@
             this.txtNazvaPovnaRus.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaPovnaRus.TabIndex = 29;
             this.txtNazvaPovnaRus.Text = "NazvaPovnaRus";
+            this.txtNazvaPovnaRus.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNazvaPovnaRus.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaPovnaRus
             // 
@@ -259,6 +274,8 @@
             this.txtNazvaKorotkaUkr.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaKorotkaUkr.TabIndex = 31;
             this.txtNazvaKorotkaUkr.Text = "NazvaKorotkaUkr";
+            this.txtNazvaKorotkaUkr.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNazvaKorotkaUkr.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaKorotkaUkr
             // 
@@ -275,6 +292,8 @@
             this.txtNazvaPovnaUkr.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaPovnaUkr.TabIndex = 33;
             this.txtNazvaPovnaUkr.Text = "NazvaPovnaUkr";
+            this.txtNazvaPovnaUkr.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNazvaPovnaUkr.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaPovnaUkr
             // 
@@ -291,6 +310,8 @@
             this.txtNazvaPovnaLat.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaPovnaLat.TabIndex = 35;
             this.txtNazvaPovnaLat.Text = "NazvaPovnaLat";
+            this.txtNazvaPovnaLat.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNazvaPovnaLat.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaPovnaLat
             // 
@@ -307,6 +328,8 @@
             this.txtNazvaKorotkaLat.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaKorotkaLat.TabIndex = 37;
             this.txtNazvaKorotkaLat.Text = "NazvaKorotkaLat";
+            this.txtNazvaKorotkaLat.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNazvaKorotkaLat.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaKorotkaLat
             // 
@@ -324,6 +347,8 @@
             this.txtNazvaDocument.Size = new System.Drawing.Size(544, 21);
             this.txtNazvaDocument.TabIndex = 39;
             this.txtNazvaDocument.Text = "NazvaDocument";
+            this.txtNazvaDocument.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNazvaDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaDocument
             // 
@@ -340,6 +365,8 @@
             this.txtNomerDocument.Size = new System.Drawing.Size(100, 20);
             this.txtNomerDocument.TabIndex = 41;
             this.txtNomerDocument.Text = "NomerDocument";
+            this.txtNomerDocument.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtNomerDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNomerDocument
             // 
@@ -357,6 +384,8 @@
             this.txtLinkDocument.Size = new System.Drawing.Size(544, 47);
             this.txtLinkDocument.TabIndex = 43;
             this.txtLinkDocument.Text = "LinkDocument";
+            this.txtLinkDocument.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtLinkDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblLinkDocument
             // 
@@ -371,9 +400,11 @@
             this.txtOpys.Location = new System.Drawing.Point(122, 421);
             this.txtOpys.Multiline = true;
             this.txtOpys.Name = "txtOpys";
-            this.txtOpys.Size = new System.Drawing.Size(544, 47);
+            this.txtOpys.Size = new System.Drawing.Size(542, 47);
             this.txtOpys.TabIndex = 45;
             this.txtOpys.Text = "Opys";
+            this.txtOpys.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtOpys.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblOpys
             // 
@@ -385,7 +416,7 @@
             // 
             // lblDataDocument
             // 
-            this.lblDataDocument.Location = new System.Drawing.Point(263, 312);
+            this.lblDataDocument.Location = new System.Drawing.Point(379, 308);
             this.lblDataDocument.Name = "lblDataDocument";
             this.lblDataDocument.Size = new System.Drawing.Size(100, 21);
             this.lblDataDocument.TabIndex = 46;
@@ -395,10 +426,11 @@
             // 
             this.dtpDataDocument.CustomFormat = "dd.MMM.yyyy HH.mm";
             this.dtpDataDocument.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDataDocument.Location = new System.Drawing.Point(383, 312);
+            this.dtpDataDocument.Location = new System.Drawing.Point(486, 309);
             this.dtpDataDocument.Name = "dtpDataDocument";
-            this.dtpDataDocument.Size = new System.Drawing.Size(100, 20);
+            this.dtpDataDocument.Size = new System.Drawing.Size(150, 20);
             this.dtpDataDocument.TabIndex = 47;
+            this.dtpDataDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // frmBaseAdrReestrSpr_element
             // 
@@ -442,14 +474,14 @@
             this.Controls.Add(this.txtDocument);
             this.Controls.Add(this.lblDocument);
             this.Controls.Add(this.btnAdminRajo);
-            this.Controls.Add(this.txtAdminRajo);
+            this.Controls.Add(this.txtAdminRajon);
             this.Controls.Add(this.lblAdminRajo);
             this.Name = "frmBaseAdrReestrSpr_element";
             this.Text = "frmBaseGeoSpr_element";
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOk, 0);
             this.Controls.SetChildIndex(this.lblAdminRajo, 0);
-            this.Controls.SetChildIndex(this.txtAdminRajo, 0);
+            this.Controls.SetChildIndex(this.txtAdminRajon, 0);
             this.Controls.SetChildIndex(this.btnAdminRajo, 0);
             this.Controls.SetChildIndex(this.lblDocument, 0);
             this.Controls.SetChildIndex(this.txtDocument, 0);
@@ -496,7 +528,7 @@
         #endregion
 
         protected System.Windows.Forms.Label lblAdminRajo;
-        protected System.Windows.Forms.TextBox txtAdminRajo;
+        protected System.Windows.Forms.TextBox txtAdminRajon;
         protected System.Windows.Forms.Button btnAdminRajo;
         protected System.Windows.Forms.Button btnDocument;
         protected System.Windows.Forms.TextBox txtDocument;

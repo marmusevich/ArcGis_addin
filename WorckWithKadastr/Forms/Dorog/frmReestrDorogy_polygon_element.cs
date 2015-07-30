@@ -50,6 +50,7 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "AdrReestr";
             base.NameTable = "ReestrDorogy_polygon";
+            base.mKategorTablName = "KategoriiDorog";
         }
 
         private void frmReestrDorogy_polygon_element_Load(object sender, EventArgs e)

@@ -51,6 +51,8 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "AdrReestr";
             base.NameTable = "ReestrPlanRecreatsija_polygon";
+
+            base.mKategorTablName = "KategoriiPlanRecreatsija";
         }
 
         private void frmReestrPlanRecreatsija_element_Load(object sender, EventArgs e)

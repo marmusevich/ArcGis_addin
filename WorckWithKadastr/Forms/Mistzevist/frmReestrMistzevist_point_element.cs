@@ -52,6 +52,7 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "AdrReestr";
             base.NameTable = "ReestrMistzevist_point";
+            base.mKategorTablName = "KategoriiMistzevist";
         }
 
         private void frmReestrMistzevist_point_element_Load(object sender, EventArgs e)

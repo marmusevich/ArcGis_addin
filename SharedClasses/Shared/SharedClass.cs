@@ -18,12 +18,6 @@ namespace SharedClasses
         #region общее
         //хранит путь к деректории с настройками
         private static string m_applicationDataPath = null;
-        // хранит имя осномного пространства (имя базы данных)
-        //public static string WorkspaceName = "AdrReestr";
-        //public static string WorkspaceName = "reestr";
-
-
-        //public static string WorkspaceName = "Kadastr"; //AdrReestr.DBO.reestrvulytsdorig_polyline
 
         //получить путь к коталогу с файлами настройкам програмы, при отсутствии, создать
         public static string GetAppDataPathAndCreateDirIfNeed()

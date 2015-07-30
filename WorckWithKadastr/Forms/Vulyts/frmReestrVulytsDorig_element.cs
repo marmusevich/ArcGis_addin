@@ -51,6 +51,8 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "AdrReestr";
             base.NameTable = "reestrvulytsdorig_polyline";
+
+            base.mKategorTablName = "KategoriiVulyts";
         }
 
         private void frmReestrVulytsDorig_element_Load(object sender, EventArgs e)

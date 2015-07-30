@@ -51,6 +51,7 @@ namespace WorckWithKadastr
 
             base.NameWorkspace = "AdrReestr";
             base.NameTable = "ReestrDorogy_point";
+            base.mKategorTablName = "KategoriiDorog";
         }
 
         private void frmReestrDorogy_point_element_Load(object sender, EventArgs e)
