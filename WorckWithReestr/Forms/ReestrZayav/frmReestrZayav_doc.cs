@@ -152,17 +152,20 @@ namespace WorckWithReestr
             ddaStatus = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Status")).Domain);
             cbStatus.Items.AddRange(ddaStatus.ToArray());
             o = base.table.Fields.get_Field(base.table.FindField("Status")).DefaultValue;
-            cbStatus.SelectedIndex = ddaStatus.GetIndexByValue(Convert.ToInt16(o));
+            if ((o != null) && !Convert.IsDBNull(o))
+                cbStatus.SelectedIndex = ddaStatus.GetIndexByValue(Convert.ToInt16(o));
 
             ddaOtkaz = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Otkaz")).Domain);
             cbOtkaz.Items.AddRange(ddaOtkaz.ToArray());
             o = base.table.Fields.get_Field(base.table.FindField("Otkaz")).DefaultValue;
-            cbOtkaz.SelectedIndex = ddaOtkaz.GetIndexByValue(Convert.ToInt16(o));
+            if ((o != null) && !Convert.IsDBNull(o))
+                cbOtkaz.SelectedIndex = ddaOtkaz.GetIndexByValue(Convert.ToInt16(o));
 
             ddaOplata = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Oplata")).Domain);
             cbOplata.Items.AddRange(ddaOplata.ToArray());
             o = base.table.Fields.get_Field(base.table.FindField("Oplata")).DefaultValue;
-            cbOplata.SelectedIndex = ddaOplata.GetIndexByValue(Convert.ToInt16(o));
+            if ((o != null) && !Convert.IsDBNull(o))
+                cbOplata.SelectedIndex = ddaOplata.GetIndexByValue(Convert.ToInt16(o));
 
             // справочники
             ReestrDictionaryWork.EnableAutoComlectToFizLic(txtFio_Z);

@@ -21,17 +21,27 @@ namespace WorckWithKadastr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected override void DB_to_FormElement(IRow row)
         {
+            base.DB_to_FormElement(row);
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
+            base.FormElement_to_DB(row);
         }
 
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
+            ret = SharedClass.CheckValueIsInt_SetError(txtKodKOATU, errorProvider) && ret;
+
             return ret;
         }
+
+        protected override void DB_SharedData_to_FormElement()
+        {
+            base.DB_SharedData_to_FormElement();
+        }
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -69,6 +79,20 @@ namespace WorckWithKadastr
                     return;
             }
         }
+        
+        
+        private void txtKodKOATU_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtKodKOATU_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        
         #endregion
+
     }
 }

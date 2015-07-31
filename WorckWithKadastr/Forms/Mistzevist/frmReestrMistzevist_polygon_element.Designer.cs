@@ -35,12 +35,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 212);
+            this.ClientSize = new System.Drawing.Size(673, 555);
             this.Name = "frmReestrMistzevist_polygon_element";
             this.Text = "ReestrMistzevist2_element";
             this.Load += new System.EventHandler(this.frmReestrMistzevist_polygon_element_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

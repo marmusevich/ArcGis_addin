@@ -26,6 +26,7 @@ namespace WorckWithKadastr
         #region  functions
         protected override void DB_to_FormElement(IRow row)
         {
+            base.DB_to_FormElement(row);
             //даты
             dtpDataDocument.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("DataDocument")));
 
@@ -90,6 +91,7 @@ namespace WorckWithKadastr
 
         protected override void FormElement_to_DB(IRow row)
         {
+            base.FormElement_to_DB(row);
             //даты
             row.set_Value(base.table.FindField("DataDocument"), dtpDataDocument.Value);
 
@@ -148,7 +150,6 @@ namespace WorckWithKadastr
             bool ret = base.ValidatingData();
             ret = SharedClass.CheckValueIsInt_SetError(txtKodObject, errorProvider) && ret;
 
-
             ret = AdresReestrWork.CheckValueIsContainsTip_Doc_SetError(txtDocument, errorProvider, ref mDocument) && ret;
             ret = AdresReestrWork.CheckValueIsContainsKategorObj_SetError(mKategorTablName, txtKodKategorii, errorProvider, ref mKodKategorii) && ret;
 
@@ -158,22 +159,26 @@ namespace WorckWithKadastr
 
         protected override void DB_SharedData_to_FormElement()
         {
+            base.DB_SharedData_to_FormElement();
             //доменные значения
             object o = null;
             ddaDzhereloKoord = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("DzhereloKoord")).Domain);
             cbDzhereloKoord.Items.AddRange(ddaDzhereloKoord.ToArray());
             o = base.table.Fields.get_Field(base.table.FindField("DzhereloKoord")).DefaultValue;
-            cbDzhereloKoord.SelectedIndex = ddaDzhereloKoord.GetIndexByValue(Convert.ToInt16(o));
+            if ((o != null) && !Convert.IsDBNull(o))
+                cbDzhereloKoord.SelectedIndex = ddaDzhereloKoord.GetIndexByValue(Convert.ToInt16(o));
 
             ddaLocalType = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("LocalType")).Domain);
             cbLocalType.Items.AddRange(ddaLocalType.ToArray());
             o = base.table.Fields.get_Field(base.table.FindField("LocalType")).DefaultValue;
-            cbLocalType.SelectedIndex = ddaLocalType.GetIndexByValue(Convert.ToInt16(o));
+            if ((o != null) && !Convert.IsDBNull(o))
+                cbLocalType.SelectedIndex = ddaLocalType.GetIndexByValue(Convert.ToInt16(o));
 
             ddaStatusObject = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("StatusObject")).Domain);
             cbStatusObject.Items.AddRange(ddaStatusObject.ToArray());
             o = base.table.Fields.get_Field(base.table.FindField("StatusObject")).DefaultValue;
-            cbStatusObject.SelectedIndex = ddaStatusObject.GetIndexByValue(Convert.ToInt16(o));
+            if ((o != null) && !Convert.IsDBNull(o))
+                cbStatusObject.SelectedIndex = ddaStatusObject.GetIndexByValue(Convert.ToInt16(o));
 
             // справочники
             if (txtAdminRajon.Visible)
@@ -223,6 +228,17 @@ namespace WorckWithKadastr
             InitializeComponent();
 
         }
+
+        private void btnShowOnMap_Click(object sender, EventArgs e)
+        {
+            AdresReestrWork.ShowOnMap(NameTable);
+        }
+
+        private void frmBaseAdrReestrSpr_element_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
         #endregion
 
@@ -280,91 +296,19 @@ namespace WorckWithKadastr
 
         private void cbStatusObject_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-
+            isModified = true;
         }
 
         private void cbDzhereloKoord_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-
+            isModified = true;
         }
 
         private void cbLocalType_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-
+            isModified = true;
         }
         #endregion
-
-
-
-        //private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    isModified = true;
-        //    mKod_Z = -1;
-        //    txtKod_Z.Text = "";
-        //    txtKod_Z_code.Text = "";
-
-        //    if (cbStatus.SelectedIndex == 0)
-        //        ReestrDictionaryWork.EnableAutoComlectToJurLic(txtKod_Z);
-        //    else
-        //        ReestrDictionaryWork.EnableAutoComlectToFizLic(txtKod_Z);
-        //}
-
-        //private void cbOplata_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    isModified = true;
-        //    if (cbOplata.SelectedIndex == 0)
-        //    {
-        //        dtpData_Oplata.Enabled = true;
-        //        txtDoc_Oplata.Enabled = true;
-        //    }
-        //    else
-        //    {
-        //        dtpData_Oplata.Enabled = false;
-        //        txtDoc_Oplata.Enabled = false;
-        //        //dtpData_Oplata.Value = DateTime.Now;
-        //        //txtDoc_Oplata.Text = "";
-        //    }
-        //}
-
-        //private void cbOtkaz_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    isModified = true;
-        //    if (cbOtkaz.SelectedIndex == 0)
-        //    {
-        //        txtPr_Otkaz.Enabled = false;
-        //        //txtPr_Otkaz.Text = "";
-
-        //        dtpData_Ved.Enabled = true;
-        //        txtOpisan_Ved.Enabled = true;
-        //        txtForma_Ved.Enabled = true;
-
-        //        txtFio_Ved_Vid.Enabled = true;
-        //        btnFio_Ved_Vid.Enabled = true;
-        //        txtFio_Ved_Prin.Enabled = true;
-        //        btnFio_Ved_Prin.Enabled = true;
-        //    }
-        //    else
-        //    {
-        //        txtPr_Otkaz.Enabled = true;
-
-        //        dtpData_Ved.Enabled = false;
-        //        //dtpData_Ved.Value = DateTime.Now;
-        //        txtOpisan_Ved.Enabled = false;
-        //        //txtOpisan_Ved.Text = "";
-        //        txtForma_Ved.Enabled = false;
-        //        //txtForma_Ved.Text = "";
-
-        //        txtFio_Ved_Vid.Enabled = false;
-        //        //mFio_Ved_Vid = -1;
-        //        //txtFio_Ved_Vid.Text = "";
-        //        btnFio_Ved_Vid.Enabled = false;
-        //        txtFio_Ved_Prin.Enabled = false;
-        //        //mFio_Ved_Prin = -1;
-        //        //txtFio_Ved_Prin.Text = "";
-        //        btnFio_Ved_Prin.Enabled = false;
-        //    }
-        //}
-
 
 
     }

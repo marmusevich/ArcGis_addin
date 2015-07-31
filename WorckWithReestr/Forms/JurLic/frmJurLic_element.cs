@@ -60,7 +60,8 @@ namespace WorckWithReestr
             dda = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("форма_власності")).Domain);
             cbFV.Items.AddRange(dda.ToArray());
             object o = base.table.Fields.get_Field(base.table.FindField("форма_власності")).DefaultValue;
-            cbFV.SelectedIndex = dda.GetIndexByValue(Convert.ToInt16(o));
+            if ((o != null) && !Convert.IsDBNull(o))
+                cbFV.SelectedIndex = dda.GetIndexByValue(Convert.ToInt16(o));
         }
 
         #endregion

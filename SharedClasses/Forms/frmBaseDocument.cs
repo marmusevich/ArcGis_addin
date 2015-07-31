@@ -250,8 +250,8 @@ namespace SharedClasses
         }
         private void frmBaseDocument_Load(object sender, EventArgs e)
         {
-            if (objectID == -1) // для конструктора форм
-                return;
+            //if (objectID == -1) // для конструктора форм
+            //    return;
 
             if (!this.GetSharedData()) // error
             {
@@ -312,10 +312,11 @@ namespace SharedClasses
                 OnOkClick();
             }
         }
-        #endregion
 
         private void frmBaseDocument_FormClosed(object sender, FormClosedEventArgs e)
         {
         }
+        #endregion
+
     }
 }

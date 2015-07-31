@@ -67,6 +67,7 @@
             this.lblOpys = new System.Windows.Forms.Label();
             this.lblDataDocument = new System.Windows.Forms.Label();
             this.dtpDataDocument = new System.Windows.Forms.DateTimePicker();
+            this.btnShowOnMap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,19 +81,18 @@
             // 
             // lblAdminRajo
             // 
-            this.lblAdminRajo.Location = new System.Drawing.Point(379, 13);
+            this.lblAdminRajo.Location = new System.Drawing.Point(379, 7);
             this.lblAdminRajo.Name = "lblAdminRajo";
-            this.lblAdminRajo.Size = new System.Drawing.Size(100, 21);
+            this.lblAdminRajo.Size = new System.Drawing.Size(100, 26);
             this.lblAdminRajo.TabIndex = 9;
-            this.lblAdminRajo.Text = "AdminRajo";
+            this.lblAdminRajo.Text = "Адміністративний район";
             // 
-            // txtAdminRajo
+            // txtAdminRajon
             // 
             this.txtAdminRajon.Location = new System.Drawing.Point(486, 10);
-            this.txtAdminRajon.Name = "txtAdminRajo";
+            this.txtAdminRajon.Name = "txtAdminRajon";
             this.txtAdminRajon.Size = new System.Drawing.Size(150, 20);
             this.txtAdminRajon.TabIndex = 10;
-            this.txtAdminRajon.Text = "AdminRajo";
             this.txtAdminRajon.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // btnAdminRajo
@@ -107,7 +107,7 @@
             // 
             // btnDocument
             // 
-            this.btnDocument.Location = new System.Drawing.Point(342, 242);
+            this.btnDocument.Location = new System.Drawing.Point(342, 238);
             this.btnDocument.Name = "btnDocument";
             this.btnDocument.Size = new System.Drawing.Size(21, 21);
             this.btnDocument.TabIndex = 14;
@@ -117,20 +117,19 @@
             // 
             // txtDocument
             // 
-            this.txtDocument.Location = new System.Drawing.Point(122, 243);
+            this.txtDocument.Location = new System.Drawing.Point(120, 238);
             this.txtDocument.Name = "txtDocument";
             this.txtDocument.Size = new System.Drawing.Size(212, 20);
             this.txtDocument.TabIndex = 13;
-            this.txtDocument.Text = "Document";
             this.txtDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblDocument
             // 
-            this.lblDocument.Location = new System.Drawing.Point(15, 243);
+            this.lblDocument.Location = new System.Drawing.Point(6, 232);
             this.lblDocument.Name = "lblDocument";
-            this.lblDocument.Size = new System.Drawing.Size(100, 21);
+            this.lblDocument.Size = new System.Drawing.Size(110, 32);
             this.lblDocument.TabIndex = 12;
-            this.lblDocument.Text = "Document";
+            this.lblDocument.Text = "Тип документу про найменування";
             // 
             // btnKodKategorii
             // 
@@ -144,20 +143,19 @@
             // 
             // txtKodKategorii
             // 
-            this.txtKodKategorii.Location = new System.Drawing.Point(121, 34);
+            this.txtKodKategorii.Location = new System.Drawing.Point(120, 34);
             this.txtKodKategorii.Name = "txtKodKategorii";
             this.txtKodKategorii.Size = new System.Drawing.Size(212, 20);
             this.txtKodKategorii.TabIndex = 16;
-            this.txtKodKategorii.Text = "KodKategorii";
             this.txtKodKategorii.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblKodKategorii
             // 
-            this.lblKodKategorii.Location = new System.Drawing.Point(14, 34);
+            this.lblKodKategorii.Location = new System.Drawing.Point(6, 34);
             this.lblKodKategorii.Name = "lblKodKategorii";
-            this.lblKodKategorii.Size = new System.Drawing.Size(100, 21);
+            this.lblKodKategorii.Size = new System.Drawing.Size(110, 21);
             this.lblKodKategorii.TabIndex = 15;
-            this.lblKodKategorii.Text = "KodKategorii";
+            this.lblKodKategorii.Text = "Код категорії об\'єкта";
             // 
             // cbStatusObject
             // 
@@ -175,7 +173,7 @@
             this.lblStatusObject.Name = "lblStatusObject";
             this.lblStatusObject.Size = new System.Drawing.Size(100, 21);
             this.lblStatusObject.TabIndex = 19;
-            this.lblStatusObject.Text = "StatusObject";
+            this.lblStatusObject.Text = "Статус";
             // 
             // cbLocalType
             // 
@@ -189,11 +187,11 @@
             // 
             // lblLocalType
             // 
-            this.lblLocalType.Location = new System.Drawing.Point(407, 484);
+            this.lblLocalType.Location = new System.Drawing.Point(342, 484);
             this.lblLocalType.Name = "lblLocalType";
-            this.lblLocalType.Size = new System.Drawing.Size(100, 21);
+            this.lblLocalType.Size = new System.Drawing.Size(165, 21);
             this.lblLocalType.TabIndex = 21;
-            this.lblLocalType.Text = "LocalType";
+            this.lblLocalType.Text = "Тип просторової локалізації";
             // 
             // cbDzhereloKoord
             // 
@@ -207,174 +205,165 @@
             // 
             // lblDzhereloKoord
             // 
-            this.lblDzhereloKoord.Location = new System.Drawing.Point(14, 484);
+            this.lblDzhereloKoord.Location = new System.Drawing.Point(6, 484);
             this.lblDzhereloKoord.Name = "lblDzhereloKoord";
-            this.lblDzhereloKoord.Size = new System.Drawing.Size(100, 21);
+            this.lblDzhereloKoord.Size = new System.Drawing.Size(110, 21);
             this.lblDzhereloKoord.TabIndex = 23;
-            this.lblDzhereloKoord.Text = "DzhereloKoord";
+            this.lblDzhereloKoord.Text = "Джерело координат";
             // 
             // txtKodObject
             // 
-            this.txtKodObject.Location = new System.Drawing.Point(121, 9);
+            this.txtKodObject.Location = new System.Drawing.Point(120, 9);
             this.txtKodObject.Name = "txtKodObject";
             this.txtKodObject.Size = new System.Drawing.Size(100, 20);
             this.txtKodObject.TabIndex = 25;
-            this.txtKodObject.Text = "KodObject";
             this.txtKodObject.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtKodObject.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblKodObject
             // 
-            this.lblKodObject.Location = new System.Drawing.Point(12, 9);
+            this.lblKodObject.Location = new System.Drawing.Point(6, 9);
             this.lblKodObject.Name = "lblKodObject";
-            this.lblKodObject.Size = new System.Drawing.Size(100, 21);
+            this.lblKodObject.Size = new System.Drawing.Size(110, 21);
             this.lblKodObject.TabIndex = 24;
-            this.lblKodObject.Text = "KodObject";
+            this.lblKodObject.Text = "Код об\'єкту";
             // 
             // txtNazvaKorotkaRus
             // 
-            this.txtNazvaKorotkaRus.Location = new System.Drawing.Point(121, 141);
+            this.txtNazvaKorotkaRus.Location = new System.Drawing.Point(120, 141);
             this.txtNazvaKorotkaRus.Name = "txtNazvaKorotkaRus";
             this.txtNazvaKorotkaRus.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaKorotkaRus.TabIndex = 27;
-            this.txtNazvaKorotkaRus.Text = "NazvaKorotkaRus";
             this.txtNazvaKorotkaRus.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNazvaKorotkaRus.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaKorotkaRus
             // 
-            this.lblNazvaKorotkaRus.Location = new System.Drawing.Point(14, 141);
+            this.lblNazvaKorotkaRus.Location = new System.Drawing.Point(6, 141);
             this.lblNazvaKorotkaRus.Name = "lblNazvaKorotkaRus";
-            this.lblNazvaKorotkaRus.Size = new System.Drawing.Size(100, 21);
+            this.lblNazvaKorotkaRus.Size = new System.Drawing.Size(110, 21);
             this.lblNazvaKorotkaRus.TabIndex = 26;
-            this.lblNazvaKorotkaRus.Text = "NazvaKorotkaRus";
+            this.lblNazvaKorotkaRus.Text = "Коротка назва (рус)";
             // 
             // txtNazvaPovnaRus
             // 
-            this.txtNazvaPovnaRus.Location = new System.Drawing.Point(121, 115);
+            this.txtNazvaPovnaRus.Location = new System.Drawing.Point(120, 115);
             this.txtNazvaPovnaRus.Name = "txtNazvaPovnaRus";
             this.txtNazvaPovnaRus.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaPovnaRus.TabIndex = 29;
-            this.txtNazvaPovnaRus.Text = "NazvaPovnaRus";
             this.txtNazvaPovnaRus.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNazvaPovnaRus.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaPovnaRus
             // 
-            this.lblNazvaPovnaRus.Location = new System.Drawing.Point(14, 115);
+            this.lblNazvaPovnaRus.Location = new System.Drawing.Point(6, 115);
             this.lblNazvaPovnaRus.Name = "lblNazvaPovnaRus";
-            this.lblNazvaPovnaRus.Size = new System.Drawing.Size(100, 21);
+            this.lblNazvaPovnaRus.Size = new System.Drawing.Size(110, 21);
             this.lblNazvaPovnaRus.TabIndex = 28;
-            this.lblNazvaPovnaRus.Text = "NazvaPovnaRus";
+            this.lblNazvaPovnaRus.Text = "Повна назва (рус)";
             // 
             // txtNazvaKorotkaUkr
             // 
-            this.txtNazvaKorotkaUkr.Location = new System.Drawing.Point(121, 89);
+            this.txtNazvaKorotkaUkr.Location = new System.Drawing.Point(120, 89);
             this.txtNazvaKorotkaUkr.Name = "txtNazvaKorotkaUkr";
             this.txtNazvaKorotkaUkr.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaKorotkaUkr.TabIndex = 31;
-            this.txtNazvaKorotkaUkr.Text = "NazvaKorotkaUkr";
             this.txtNazvaKorotkaUkr.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNazvaKorotkaUkr.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaKorotkaUkr
             // 
-            this.lblNazvaKorotkaUkr.Location = new System.Drawing.Point(14, 89);
+            this.lblNazvaKorotkaUkr.Location = new System.Drawing.Point(6, 89);
             this.lblNazvaKorotkaUkr.Name = "lblNazvaKorotkaUkr";
-            this.lblNazvaKorotkaUkr.Size = new System.Drawing.Size(100, 21);
+            this.lblNazvaKorotkaUkr.Size = new System.Drawing.Size(110, 21);
             this.lblNazvaKorotkaUkr.TabIndex = 30;
-            this.lblNazvaKorotkaUkr.Text = "NazvaKorotkaUkr";
+            this.lblNazvaKorotkaUkr.Text = "Коротка назва (укр)";
             // 
             // txtNazvaPovnaUkr
             // 
-            this.txtNazvaPovnaUkr.Location = new System.Drawing.Point(121, 61);
+            this.txtNazvaPovnaUkr.Location = new System.Drawing.Point(120, 61);
             this.txtNazvaPovnaUkr.Name = "txtNazvaPovnaUkr";
             this.txtNazvaPovnaUkr.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaPovnaUkr.TabIndex = 33;
-            this.txtNazvaPovnaUkr.Text = "NazvaPovnaUkr";
             this.txtNazvaPovnaUkr.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNazvaPovnaUkr.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaPovnaUkr
             // 
-            this.lblNazvaPovnaUkr.Location = new System.Drawing.Point(14, 61);
+            this.lblNazvaPovnaUkr.Location = new System.Drawing.Point(6, 61);
             this.lblNazvaPovnaUkr.Name = "lblNazvaPovnaUkr";
-            this.lblNazvaPovnaUkr.Size = new System.Drawing.Size(100, 21);
+            this.lblNazvaPovnaUkr.Size = new System.Drawing.Size(110, 21);
             this.lblNazvaPovnaUkr.TabIndex = 32;
-            this.lblNazvaPovnaUkr.Text = "NazvaPovnaUkr";
+            this.lblNazvaPovnaUkr.Text = "Повна назва (укр)";
             // 
             // txtNazvaPovnaLat
             // 
-            this.txtNazvaPovnaLat.Location = new System.Drawing.Point(121, 167);
+            this.txtNazvaPovnaLat.Location = new System.Drawing.Point(120, 167);
             this.txtNazvaPovnaLat.Name = "txtNazvaPovnaLat";
             this.txtNazvaPovnaLat.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaPovnaLat.TabIndex = 35;
-            this.txtNazvaPovnaLat.Text = "NazvaPovnaLat";
             this.txtNazvaPovnaLat.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNazvaPovnaLat.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaPovnaLat
             // 
-            this.lblNazvaPovnaLat.Location = new System.Drawing.Point(14, 167);
+            this.lblNazvaPovnaLat.Location = new System.Drawing.Point(6, 167);
             this.lblNazvaPovnaLat.Name = "lblNazvaPovnaLat";
-            this.lblNazvaPovnaLat.Size = new System.Drawing.Size(100, 21);
+            this.lblNazvaPovnaLat.Size = new System.Drawing.Size(110, 21);
             this.lblNazvaPovnaLat.TabIndex = 34;
-            this.lblNazvaPovnaLat.Text = "NazvaPovnaLat";
+            this.lblNazvaPovnaLat.Text = "Повна назва (лат)";
             // 
             // txtNazvaKorotkaLat
             // 
-            this.txtNazvaKorotkaLat.Location = new System.Drawing.Point(121, 193);
+            this.txtNazvaKorotkaLat.Location = new System.Drawing.Point(120, 193);
             this.txtNazvaKorotkaLat.Name = "txtNazvaKorotkaLat";
             this.txtNazvaKorotkaLat.Size = new System.Drawing.Size(544, 20);
             this.txtNazvaKorotkaLat.TabIndex = 37;
-            this.txtNazvaKorotkaLat.Text = "NazvaKorotkaLat";
             this.txtNazvaKorotkaLat.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNazvaKorotkaLat.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaKorotkaLat
             // 
-            this.lblNazvaKorotkaLat.Location = new System.Drawing.Point(14, 193);
+            this.lblNazvaKorotkaLat.Location = new System.Drawing.Point(6, 193);
             this.lblNazvaKorotkaLat.Name = "lblNazvaKorotkaLat";
-            this.lblNazvaKorotkaLat.Size = new System.Drawing.Size(100, 21);
+            this.lblNazvaKorotkaLat.Size = new System.Drawing.Size(110, 21);
             this.lblNazvaKorotkaLat.TabIndex = 36;
-            this.lblNazvaKorotkaLat.Text = "NazvaKorotkaLat";
+            this.lblNazvaKorotkaLat.Text = "Коротка назва (лат)";
             // 
             // txtNazvaDocument
             // 
-            this.txtNazvaDocument.Location = new System.Drawing.Point(121, 269);
+            this.txtNazvaDocument.Location = new System.Drawing.Point(120, 269);
             this.txtNazvaDocument.Multiline = true;
             this.txtNazvaDocument.Name = "txtNazvaDocument";
             this.txtNazvaDocument.Size = new System.Drawing.Size(544, 21);
             this.txtNazvaDocument.TabIndex = 39;
-            this.txtNazvaDocument.Text = "NazvaDocument";
             this.txtNazvaDocument.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNazvaDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNazvaDocument
             // 
-            this.lblNazvaDocument.Location = new System.Drawing.Point(14, 269);
+            this.lblNazvaDocument.Location = new System.Drawing.Point(6, 269);
             this.lblNazvaDocument.Name = "lblNazvaDocument";
-            this.lblNazvaDocument.Size = new System.Drawing.Size(100, 21);
+            this.lblNazvaDocument.Size = new System.Drawing.Size(110, 21);
             this.lblNazvaDocument.TabIndex = 38;
-            this.lblNazvaDocument.Text = "NazvaDocument";
+            this.lblNazvaDocument.Text = "Назва документу";
             // 
             // txtNomerDocument
             // 
-            this.txtNomerDocument.Location = new System.Drawing.Point(122, 312);
+            this.txtNomerDocument.Location = new System.Drawing.Point(120, 312);
             this.txtNomerDocument.Name = "txtNomerDocument";
             this.txtNomerDocument.Size = new System.Drawing.Size(100, 20);
             this.txtNomerDocument.TabIndex = 41;
-            this.txtNomerDocument.Text = "NomerDocument";
             this.txtNomerDocument.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtNomerDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblNomerDocument
             // 
-            this.lblNomerDocument.Location = new System.Drawing.Point(15, 312);
+            this.lblNomerDocument.Location = new System.Drawing.Point(6, 312);
             this.lblNomerDocument.Name = "lblNomerDocument";
-            this.lblNomerDocument.Size = new System.Drawing.Size(100, 21);
+            this.lblNomerDocument.Size = new System.Drawing.Size(110, 21);
             this.lblNomerDocument.TabIndex = 40;
-            this.lblNomerDocument.Text = "NomerDocument";
+            this.lblNomerDocument.Text = "Номер документу";
             // 
             // txtLinkDocument
             // 
@@ -383,36 +372,34 @@
             this.txtLinkDocument.Name = "txtLinkDocument";
             this.txtLinkDocument.Size = new System.Drawing.Size(544, 47);
             this.txtLinkDocument.TabIndex = 43;
-            this.txtLinkDocument.Text = "LinkDocument";
             this.txtLinkDocument.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtLinkDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblLinkDocument
             // 
-            this.lblLinkDocument.Location = new System.Drawing.Point(16, 338);
+            this.lblLinkDocument.Location = new System.Drawing.Point(6, 338);
             this.lblLinkDocument.Name = "lblLinkDocument";
-            this.lblLinkDocument.Size = new System.Drawing.Size(100, 21);
+            this.lblLinkDocument.Size = new System.Drawing.Size(110, 47);
             this.lblLinkDocument.TabIndex = 42;
-            this.lblLinkDocument.Text = "LinkDocument";
+            this.lblLinkDocument.Text = "Посилання на документ";
             // 
             // txtOpys
             // 
-            this.txtOpys.Location = new System.Drawing.Point(122, 421);
+            this.txtOpys.Location = new System.Drawing.Point(120, 421);
             this.txtOpys.Multiline = true;
             this.txtOpys.Name = "txtOpys";
             this.txtOpys.Size = new System.Drawing.Size(542, 47);
             this.txtOpys.TabIndex = 45;
-            this.txtOpys.Text = "Opys";
             this.txtOpys.TextChanged += new System.EventHandler(this.main_TextChanged);
             this.txtOpys.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
             // lblOpys
             // 
-            this.lblOpys.Location = new System.Drawing.Point(15, 421);
+            this.lblOpys.Location = new System.Drawing.Point(6, 421);
             this.lblOpys.Name = "lblOpys";
-            this.lblOpys.Size = new System.Drawing.Size(100, 21);
+            this.lblOpys.Size = new System.Drawing.Size(110, 47);
             this.lblOpys.TabIndex = 44;
-            this.lblOpys.Text = "Opys";
+            this.lblOpys.Text = "Опис розташування";
             // 
             // lblDataDocument
             // 
@@ -420,7 +407,7 @@
             this.lblDataDocument.Name = "lblDataDocument";
             this.lblDataDocument.Size = new System.Drawing.Size(100, 21);
             this.lblDataDocument.TabIndex = 46;
-            this.lblDataDocument.Text = "DataDocument";
+            this.lblDataDocument.Text = "Дата документу";
             // 
             // dtpDataDocument
             // 
@@ -432,11 +419,22 @@
             this.dtpDataDocument.TabIndex = 47;
             this.dtpDataDocument.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
             // 
+            // btnShowOnMap
+            // 
+            this.btnShowOnMap.Location = new System.Drawing.Point(257, 530);
+            this.btnShowOnMap.Name = "btnShowOnMap";
+            this.btnShowOnMap.Size = new System.Drawing.Size(131, 23);
+            this.btnShowOnMap.TabIndex = 48;
+            this.btnShowOnMap.Text = "Показать на карте";
+            this.btnShowOnMap.UseVisualStyleBackColor = true;
+            this.btnShowOnMap.Click += new System.EventHandler(this.btnShowOnMap_Click);
+            // 
             // frmBaseAdrReestrSpr_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 560);
+            this.Controls.Add(this.btnShowOnMap);
             this.Controls.Add(this.dtpDataDocument);
             this.Controls.Add(this.lblDataDocument);
             this.Controls.Add(this.txtOpys);
@@ -478,6 +476,7 @@
             this.Controls.Add(this.lblAdminRajo);
             this.Name = "frmBaseAdrReestrSpr_element";
             this.Text = "frmBaseGeoSpr_element";
+            this.Load += new System.EventHandler(this.frmBaseAdrReestrSpr_element_Load);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOk, 0);
             this.Controls.SetChildIndex(this.lblAdminRajo, 0);
@@ -519,6 +518,7 @@
             this.Controls.SetChildIndex(this.txtOpys, 0);
             this.Controls.SetChildIndex(this.lblDataDocument, 0);
             this.Controls.SetChildIndex(this.dtpDataDocument, 0);
+            this.Controls.SetChildIndex(this.btnShowOnMap, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -566,6 +566,7 @@
         protected System.Windows.Forms.Label lblOpys;
         protected System.Windows.Forms.Label lblDataDocument;
         protected System.Windows.Forms.DateTimePicker dtpDataDocument;
+        protected System.Windows.Forms.Button btnShowOnMap;
 
     }
 }

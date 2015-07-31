@@ -505,6 +505,9 @@
     <EmbeddedResource Include="Forms\frmBaseAdrReestrSpr_element.resx">
       <DependentUpon>frmBaseAdrReestrSpr_element.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBaseAdrReestrSpr_list.resx">
+      <DependentUpon>frmBaseAdrReestrSpr_list.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBaseKoord_list.resx">
       <DependentUpon>frmBaseKoord_list.cs</DependentUpon>
     </EmbeddedResource>
