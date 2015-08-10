@@ -31,11 +31,174 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
+            // btnDocument
+            // 
+            this.btnDocument.Location = new System.Drawing.Point(367, 119);
+            // 
+            // txtDocument
+            // 
+            this.txtDocument.Location = new System.Drawing.Point(145, 119);
+            // 
+            // lblDocument
+            // 
+            this.lblDocument.Location = new System.Drawing.Point(6, 113);
+            // 
+            // btnKodKategorii
+            // 
+            this.btnKodKategorii.Enabled = false;
+            this.btnKodKategorii.Location = new System.Drawing.Point(342, 568);
+            this.btnKodKategorii.Visible = false;
+            // 
+            // txtKodKategorii
+            // 
+            this.txtKodKategorii.Enabled = false;
+            this.txtKodKategorii.Location = new System.Drawing.Point(120, 569);
+            this.txtKodKategorii.Visible = false;
+            // 
+            // lblKodKategorii
+            // 
+            this.lblKodKategorii.Enabled = false;
+            this.lblKodKategorii.Location = new System.Drawing.Point(6, 569);
+            this.lblKodKategorii.Visible = false;
+            // 
+            // cbLocalType
+            // 
+            this.cbLocalType.Location = new System.Drawing.Point(539, 319);
+            // 
+            // lblLocalType
+            // 
+            this.lblLocalType.Location = new System.Drawing.Point(367, 319);
+            // 
+            // cbDzhereloKoord
+            // 
+            this.cbDzhereloKoord.Location = new System.Drawing.Point(145, 319);
+            // 
+            // lblDzhereloKoord
+            // 
+            this.lblDzhereloKoord.Location = new System.Drawing.Point(6, 319);
+            // 
+            // txtKodObject
+            // 
+            this.txtKodObject.Location = new System.Drawing.Point(145, 9);
+            // 
+            // txtNazvaKorotkaRus
+            // 
+            this.txtNazvaKorotkaRus.Enabled = false;
+            this.txtNazvaKorotkaRus.Location = new System.Drawing.Point(123, 616);
+            this.txtNazvaKorotkaRus.Size = new System.Drawing.Size(100, 20);
+            this.txtNazvaKorotkaRus.Visible = false;
+            // 
+            // lblNazvaKorotkaRus
+            // 
+            this.lblNazvaKorotkaRus.Enabled = false;
+            this.lblNazvaKorotkaRus.Location = new System.Drawing.Point(9, 616);
+            this.lblNazvaKorotkaRus.Visible = false;
+            // 
+            // txtNazvaPovnaRus
+            // 
+            this.txtNazvaPovnaRus.Enabled = false;
+            this.txtNazvaPovnaRus.Location = new System.Drawing.Point(123, 590);
+            this.txtNazvaPovnaRus.Size = new System.Drawing.Size(100, 20);
+            this.txtNazvaPovnaRus.Visible = false;
+            // 
+            // lblNazvaPovnaRus
+            // 
+            this.lblNazvaPovnaRus.Enabled = false;
+            this.lblNazvaPovnaRus.Location = new System.Drawing.Point(9, 590);
+            this.lblNazvaPovnaRus.Visible = false;
+            // 
+            // txtNazvaKorotkaUkr
+            // 
+            this.txtNazvaKorotkaUkr.Location = new System.Drawing.Point(145, 89);
+            // 
+            // txtNazvaPovnaUkr
+            // 
+            this.txtNazvaPovnaUkr.Location = new System.Drawing.Point(145, 61);
+            // 
+            // txtNazvaPovnaLat
+            // 
+            this.txtNazvaPovnaLat.Enabled = false;
+            this.txtNazvaPovnaLat.Location = new System.Drawing.Point(353, 593);
+            this.txtNazvaPovnaLat.Size = new System.Drawing.Size(100, 20);
+            this.txtNazvaPovnaLat.Visible = false;
+            // 
+            // lblNazvaPovnaLat
+            // 
+            this.lblNazvaPovnaLat.Enabled = false;
+            this.lblNazvaPovnaLat.Location = new System.Drawing.Point(239, 593);
+            this.lblNazvaPovnaLat.Visible = false;
+            // 
+            // txtNazvaKorotkaLat
+            // 
+            this.txtNazvaKorotkaLat.Enabled = false;
+            this.txtNazvaKorotkaLat.Location = new System.Drawing.Point(353, 619);
+            this.txtNazvaKorotkaLat.Size = new System.Drawing.Size(100, 20);
+            this.txtNazvaKorotkaLat.Visible = false;
+            // 
+            // lblNazvaKorotkaLat
+            // 
+            this.lblNazvaKorotkaLat.Enabled = false;
+            this.lblNazvaKorotkaLat.Location = new System.Drawing.Point(239, 619);
+            this.lblNazvaKorotkaLat.Visible = false;
+            // 
+            // txtNazvaDocument
+            // 
+            this.txtNazvaDocument.Location = new System.Drawing.Point(145, 150);
+            // 
+            // lblNazvaDocument
+            // 
+            this.lblNazvaDocument.Location = new System.Drawing.Point(6, 150);
+            // 
+            // txtNomerDocument
+            // 
+            this.txtNomerDocument.Location = new System.Drawing.Point(145, 183);
+            // 
+            // lblNomerDocument
+            // 
+            this.lblNomerDocument.Location = new System.Drawing.Point(6, 183);
+            // 
+            // txtLinkDocument
+            // 
+            this.txtLinkDocument.Location = new System.Drawing.Point(145, 209);
+            // 
+            // lblLinkDocument
+            // 
+            this.lblLinkDocument.Location = new System.Drawing.Point(6, 209);
+            // 
+            // txtOpys
+            // 
+            this.txtOpys.Location = new System.Drawing.Point(145, 265);
+            this.txtOpys.Size = new System.Drawing.Size(544, 47);
+            // 
+            // lblOpys
+            // 
+            this.lblOpys.Location = new System.Drawing.Point(6, 265);
+            // 
+            // lblDataDocument
+            // 
+            this.lblDataDocument.Location = new System.Drawing.Point(404, 179);
+            // 
+            // dtpDataDocument
+            // 
+            this.dtpDataDocument.Location = new System.Drawing.Point(511, 180);
+            // 
+            // btnShowOnMap
+            // 
+            this.btnShowOnMap.Location = new System.Drawing.Point(257, 356);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(592, 356);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(12, 356);
+            // 
             // frmReestrPoshta_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 432);
+            this.ClientSize = new System.Drawing.Size(696, 389);
             this.Name = "frmReestrPoshta_element";
             this.Text = "ReestrPoshta_element";
             this.Load += new System.EventHandler(this.frmReestrPoshta_element_Load);

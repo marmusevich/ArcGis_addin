@@ -33,21 +33,166 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
+            // lblAdminRajo
+            // 
+            this.lblAdminRajo.Enabled = false;
+            this.lblAdminRajo.Location = new System.Drawing.Point(379, 631);
+            this.lblAdminRajo.Visible = false;
+            // 
+            // txtAdminRajon
+            // 
+            this.txtAdminRajon.Enabled = false;
+            this.txtAdminRajon.Location = new System.Drawing.Point(486, 634);
+            this.txtAdminRajon.Visible = false;
+            // 
+            // btnAdminRajo
+            // 
+            this.btnAdminRajo.Enabled = false;
+            this.btnAdminRajo.Location = new System.Drawing.Point(646, 633);
+            this.btnAdminRajo.Visible = false;
+            // 
+            // txtDocument
+            // 
+            this.txtDocument.Location = new System.Drawing.Point(146, 220);
+            // 
+            // btnKodKategorii
+            // 
+            this.btnKodKategorii.Enabled = false;
+            this.btnKodKategorii.Location = new System.Drawing.Point(342, 636);
+            this.btnKodKategorii.Visible = false;
+            // 
+            // txtKodKategorii
+            // 
+            this.txtKodKategorii.Enabled = false;
+            this.txtKodKategorii.Location = new System.Drawing.Point(120, 637);
+            this.txtKodKategorii.Visible = false;
+            // 
+            // lblKodKategorii
+            // 
+            this.lblKodKategorii.Enabled = false;
+            this.lblKodKategorii.Location = new System.Drawing.Point(6, 637);
+            this.lblKodKategorii.Visible = false;
+            // 
+            // cbStatusObject
+            // 
+            this.cbStatusObject.Location = new System.Drawing.Point(540, 34);
+            // 
+            // lblStatusObject
+            // 
+            this.lblStatusObject.Location = new System.Drawing.Point(403, 34);
+            // 
+            // cbLocalType
+            // 
+            this.cbLocalType.Location = new System.Drawing.Point(540, 413);
+            // 
+            // lblLocalType
+            // 
+            this.lblLocalType.Location = new System.Drawing.Point(368, 413);
+            // 
+            // cbDzhereloKoord
+            // 
+            this.cbDzhereloKoord.Location = new System.Drawing.Point(146, 413);
+            // 
+            // lblDzhereloKoord
+            // 
+            this.lblDzhereloKoord.Location = new System.Drawing.Point(6, 413);
+            // 
+            // txtKodObject
+            // 
+            this.txtKodObject.Location = new System.Drawing.Point(146, 9);
+            // 
+            // txtNazvaKorotkaRus
+            // 
+            this.txtNazvaKorotkaRus.Location = new System.Drawing.Point(146, 141);
+            // 
+            // txtNazvaPovnaRus
+            // 
+            this.txtNazvaPovnaRus.Location = new System.Drawing.Point(146, 115);
+            // 
+            // txtNazvaKorotkaUkr
+            // 
+            this.txtNazvaKorotkaUkr.Location = new System.Drawing.Point(146, 89);
+            // 
+            // txtNazvaPovnaUkr
+            // 
+            this.txtNazvaPovnaUkr.Location = new System.Drawing.Point(146, 61);
+            // 
+            // txtNazvaPovnaLat
+            // 
+            this.txtNazvaPovnaLat.Location = new System.Drawing.Point(146, 167);
+            // 
+            // txtNazvaKorotkaLat
+            // 
+            this.txtNazvaKorotkaLat.Location = new System.Drawing.Point(146, 193);
+            // 
+            // txtNazvaDocument
+            // 
+            this.txtNazvaDocument.Location = new System.Drawing.Point(146, 248);
+            // 
+            // lblNazvaDocument
+            // 
+            this.lblNazvaDocument.Location = new System.Drawing.Point(6, 248);
+            // 
+            // txtNomerDocument
+            // 
+            this.txtNomerDocument.Location = new System.Drawing.Point(146, 275);
+            // 
+            // lblNomerDocument
+            // 
+            this.lblNomerDocument.Location = new System.Drawing.Point(6, 275);
+            // 
+            // txtLinkDocument
+            // 
+            this.txtLinkDocument.Location = new System.Drawing.Point(146, 300);
+            // 
+            // lblLinkDocument
+            // 
+            this.lblLinkDocument.Location = new System.Drawing.Point(6, 309);
+            // 
+            // txtOpys
+            // 
+            this.txtOpys.Location = new System.Drawing.Point(146, 356);
+            this.txtOpys.Size = new System.Drawing.Size(544, 47);
+            // 
+            // lblOpys
+            // 
+            this.lblOpys.Location = new System.Drawing.Point(6, 367);
+            // 
+            // lblDataDocument
+            // 
+            this.lblDataDocument.Location = new System.Drawing.Point(432, 275);
+            // 
+            // dtpDataDocument
+            // 
+            this.dtpDataDocument.Location = new System.Drawing.Point(538, 275);
+            this.dtpDataDocument.Size = new System.Drawing.Size(152, 20);
+            // 
+            // btnShowOnMap
+            // 
+            this.btnShowOnMap.Location = new System.Drawing.Point(257, 448);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(615, 445);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(12, 448);
+            // 
             // lblKodKOATU
             // 
-            this.lblKodKOATU.Location = new System.Drawing.Point(17, 34);
+            this.lblKodKOATU.Location = new System.Drawing.Point(6, 34);
             this.lblKodKOATU.Name = "lblKodKOATU";
-            this.lblKodKOATU.Size = new System.Drawing.Size(100, 21);
+            this.lblKodKOATU.Size = new System.Drawing.Size(132, 21);
             this.lblKodKOATU.TabIndex = 49;
             this.lblKodKOATU.Text = "Код КОАТУУ";
             // 
             // txtKodKOATU
             // 
-            this.txtKodKOATU.Location = new System.Drawing.Point(121, 34);
+            this.txtKodKOATU.Location = new System.Drawing.Point(146, 34);
             this.txtKodKOATU.Name = "txtKodKOATU";
             this.txtKodKOATU.Size = new System.Drawing.Size(212, 20);
             this.txtKodKOATU.TabIndex = 50;
-            this.txtKodKOATU.Text = "KodKOATU";
             this.txtKodKOATU.TextChanged += new System.EventHandler(this.txtKodKOATU_TextChanged);
             this.txtKodKOATU.Validating += new System.ComponentModel.CancelEventHandler(this.txtKodKOATU_Validating);
             // 
@@ -55,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 680);
+            this.ClientSize = new System.Drawing.Size(698, 480);
             this.Controls.Add(this.txtKodKOATU);
             this.Controls.Add(this.lblKodKOATU);
             this.Name = "frmReestrRajon_element";

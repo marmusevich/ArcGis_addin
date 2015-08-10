@@ -236,7 +236,14 @@ namespace WorckWithKadastr
 
         private void frmBaseAdrReestrSpr_element_Load(object sender, EventArgs e)
         {
-
+            if (editMode == EditMode.EDIT)
+            {
+                btnShowOnMap.Enabled = true;
+            }
+            else
+            {
+                btnShowOnMap.Enabled = false;
+            }
         }
 
 
@@ -309,6 +316,7 @@ namespace WorckWithKadastr
             isModified = true;
         }
         #endregion
+
 
 
     }

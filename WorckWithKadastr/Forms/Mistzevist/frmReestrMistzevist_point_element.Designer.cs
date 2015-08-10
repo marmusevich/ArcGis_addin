@@ -31,11 +31,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
+            // txtOpys
+            // 
+            this.txtOpys.Size = new System.Drawing.Size(544, 47);
+            // 
+            // lblDataDocument
+            // 
+            this.lblDataDocument.Location = new System.Drawing.Point(422, 284);
+            // 
+            // dtpDataDocument
+            // 
+            this.dtpDataDocument.Location = new System.Drawing.Point(538, 285);
+            // 
             // frmReestrMistzevist_point_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 555);
+            this.ClientSize = new System.Drawing.Size(696, 492);
             this.Name = "frmReestrMistzevist_point_element";
             this.Text = "ReestrMistzevist3_element";
             this.Load += new System.EventHandler(this.frmReestrMistzevist_point_element_Load);
