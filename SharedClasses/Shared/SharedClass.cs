@@ -236,7 +236,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClass.GetValueByID('{0}', '{1}', '{2}')", id, tableName, fildName));
+                Logger.Write(ex, string.Format("SharedClass.GetValueByID('{0}', '{1}', '{2}', '{3}')", workspaceName, id, tableName, fildName));
             }
             return ret;
         }
@@ -264,7 +264,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClass.GetIDByTextValue('{0}', '{1}', '{2}', '{3}')", textValue, tableName, fildName, strongCompare));
+                Logger.Write(ex, string.Format("SharedClass.GetIDByTextValue('{0}', '{1}', '{2}', '{3}', '{4}')", workspaceName, textValue, tableName, fildName, strongCompare));
             }
             return ret;
         }
@@ -289,7 +289,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClass.GetIDByIntValue('{0}', '{1}', '{2}')", intValue, tableName, fildName));
+                Logger.Write(ex, string.Format("SharedClass.GetIDByIntValue('{0}', '{1}', '{2}', '{3}')", workspaceName, intValue, tableName, fildName));
             }
             return ret;
         }
@@ -312,7 +312,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClasses.GetMaxNumerForAutoicrement('{0}', '{1}')", tableName, fildName));
+                Logger.Write(ex, string.Format("SharedClasses.GetMaxNumerForAutoicrement('{0}', '{1}', '{2}')", workspaceName, tableName, fildName));
             }
             return ret;
         }

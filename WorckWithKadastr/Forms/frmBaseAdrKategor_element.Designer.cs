@@ -40,17 +40,19 @@
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(341, 115);
+            this.btnOk.TabIndex = 3;
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(15, 115);
+            this.btnCancel.TabIndex = 4;
             // 
             // txtKodKategorii
             // 
             this.txtKodKategorii.Location = new System.Drawing.Point(135, 11);
             this.txtKodKategorii.Name = "txtKodKategorii";
             this.txtKodKategorii.Size = new System.Drawing.Size(100, 20);
-            this.txtKodKategorii.TabIndex = 9;
+            this.txtKodKategorii.TabIndex = 0;
             this.txtKodKategorii.TextChanged += new System.EventHandler(this.txtKodKategorii_TextChanged);
             this.txtKodKategorii.Validating += new System.ComponentModel.CancelEventHandler(this.txtKodKategorii_Validating);
             // 
@@ -75,7 +77,7 @@
             this.txtNazvaTypu.Location = new System.Drawing.Point(135, 35);
             this.txtNazvaTypu.Name = "txtNazvaTypu";
             this.txtNazvaTypu.Size = new System.Drawing.Size(281, 20);
-            this.txtNazvaTypu.TabIndex = 11;
+            this.txtNazvaTypu.TabIndex = 1;
             this.txtNazvaTypu.TextChanged += new System.EventHandler(this.txtNazvaTypu_TextChanged);
             this.txtNazvaTypu.Validating += new System.ComponentModel.CancelEventHandler(this.txtNazvaTypu_Validating);
             // 
@@ -92,7 +94,7 @@
             this.txtKorotkaNazvaTypu.Location = new System.Drawing.Point(135, 73);
             this.txtKorotkaNazvaTypu.Name = "txtKorotkaNazvaTypu";
             this.txtKorotkaNazvaTypu.Size = new System.Drawing.Size(281, 20);
-            this.txtKorotkaNazvaTypu.TabIndex = 13;
+            this.txtKorotkaNazvaTypu.TabIndex = 2;
             this.txtKorotkaNazvaTypu.TextChanged += new System.EventHandler(this.txtKorotkaNazvaTypu_TextChanged);
             // 
             // frmBaseAdrKategor_element

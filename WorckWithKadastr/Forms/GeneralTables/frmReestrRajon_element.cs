@@ -22,13 +22,13 @@ namespace WorckWithKadastr
         protected override void DB_to_FormElement(IRow row)
         {
             base.DB_to_FormElement(row);
-            txtKodKOATU.Text = "" + row.get_Value(base.table.FindField("KodKOATU")) as string;
+            txtKodKOATU.Text = "" + row.get_Value(base.table.FindField("KodKOATUU")) as string;
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             base.FormElement_to_DB(row);
-            row.set_Value(base.table.FindField("KodKOATU"), txtKodKOATU.Text);
+            row.set_Value(base.table.FindField("KodKOATUU"), txtKodKOATU.Text);
         }
 
         protected override bool ValidatingData()

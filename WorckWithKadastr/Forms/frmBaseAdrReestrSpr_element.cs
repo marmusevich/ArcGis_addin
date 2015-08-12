@@ -33,6 +33,7 @@ namespace WorckWithKadastr
             //простые тексты  
             txtLinkDocument.Text = "" + row.get_Value(base.table.FindField("LinkDocument")) as string;
             txtNazvaDocument.Text = "" + row.get_Value(base.table.FindField("NazvaDocument")) as string;
+            txtOpys.Text = "" + row.get_Value(base.table.FindField("Opys")) as string;
             if (txtNazvaKorotkaLat.Visible)
             {
                 txtNazvaKorotkaLat.Text = "" + row.get_Value(base.table.FindField("NazvaKorotkaLat")) as string;
@@ -98,6 +99,7 @@ namespace WorckWithKadastr
             //простые тексты  
             row.set_Value(base.table.FindField("LinkDocument"), txtLinkDocument.Text);
             row.set_Value(base.table.FindField("NazvaDocument"), txtNazvaDocument.Text);
+            row.set_Value(base.table.FindField("Opys"), txtOpys.Text);
             if (txtNazvaKorotkaLat.Visible)
             {
                 row.set_Value(base.table.FindField("NazvaKorotkaLat"), txtNazvaKorotkaLat.Text);
@@ -109,7 +111,7 @@ namespace WorckWithKadastr
             row.set_Value(base.table.FindField("NazvaKorotkaUkr"), txtNazvaKorotkaUkr.Text);
             if (txtNazvaPovnaLat.Visible)
             {
-                row.set_Value(base.table.FindField("txtNazvaPovnaLat"), txtNazvaPovnaLat.Text);
+                row.set_Value(base.table.FindField("NazvaPovnaLat"), txtNazvaPovnaLat.Text);
             }
             if (txtNazvaPovnaRus.Visible)
             {
@@ -151,9 +153,10 @@ namespace WorckWithKadastr
             ret = SharedClass.CheckValueIsInt_SetError(txtKodObject, errorProvider) && ret;
 
             ret = AdresReestrWork.CheckValueIsContainsTip_Doc_SetError(txtDocument, errorProvider, ref mDocument) && ret;
-            ret = AdresReestrWork.CheckValueIsContainsKategorObj_SetError(mKategorTablName, txtKodKategorii, errorProvider, ref mKodKategorii) && ret;
-
-
+            if (txtKodKategorii.Visible)
+            {
+                ret = AdresReestrWork.CheckValueIsContainsKategorObj_SetError(mKategorTablName, txtKodKategorii, errorProvider, ref mKodKategorii) && ret;
+            }
             return ret;
         }
 

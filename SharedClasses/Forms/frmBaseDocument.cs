@@ -250,8 +250,8 @@ namespace SharedClasses
         }
         private void frmBaseDocument_Load(object sender, EventArgs e)
         {
-            //if (objectID == -1) // для конструктора форм
-            //    return;
+            if (editMode == EditMode.UNKNOW) // для конструктора форм
+                return;
 
             if (!this.GetSharedData()) // error
             {

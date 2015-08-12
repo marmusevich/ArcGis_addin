@@ -38,6 +38,7 @@
             // txtDocument
             // 
             this.txtDocument.Location = new System.Drawing.Point(145, 119);
+            this.txtDocument.TabIndex = 5;
             // 
             // lblDocument
             // 
@@ -61,9 +62,14 @@
             this.lblKodKategorii.Location = new System.Drawing.Point(6, 569);
             this.lblKodKategorii.Visible = false;
             // 
+            // cbStatusObject
+            // 
+            this.cbStatusObject.TabIndex = 2;
+            // 
             // cbLocalType
             // 
             this.cbLocalType.Location = new System.Drawing.Point(539, 319);
+            this.cbLocalType.TabIndex = 12;
             // 
             // lblLocalType
             // 
@@ -72,6 +78,7 @@
             // cbDzhereloKoord
             // 
             this.cbDzhereloKoord.Location = new System.Drawing.Point(145, 319);
+            this.cbDzhereloKoord.TabIndex = 11;
             // 
             // lblDzhereloKoord
             // 
@@ -110,10 +117,12 @@
             // txtNazvaKorotkaUkr
             // 
             this.txtNazvaKorotkaUkr.Location = new System.Drawing.Point(145, 89);
+            this.txtNazvaKorotkaUkr.TabIndex = 4;
             // 
             // txtNazvaPovnaUkr
             // 
             this.txtNazvaPovnaUkr.Location = new System.Drawing.Point(145, 61);
+            this.txtNazvaPovnaUkr.TabIndex = 3;
             // 
             // txtNazvaPovnaLat
             // 
@@ -144,6 +153,7 @@
             // txtNazvaDocument
             // 
             this.txtNazvaDocument.Location = new System.Drawing.Point(145, 150);
+            this.txtNazvaDocument.TabIndex = 6;
             // 
             // lblNazvaDocument
             // 
@@ -152,6 +162,7 @@
             // txtNomerDocument
             // 
             this.txtNomerDocument.Location = new System.Drawing.Point(145, 183);
+            this.txtNomerDocument.TabIndex = 7;
             // 
             // lblNomerDocument
             // 
@@ -160,6 +171,7 @@
             // txtLinkDocument
             // 
             this.txtLinkDocument.Location = new System.Drawing.Point(145, 209);
+            this.txtLinkDocument.TabIndex = 9;
             // 
             // lblLinkDocument
             // 
@@ -168,7 +180,7 @@
             // txtOpys
             // 
             this.txtOpys.Location = new System.Drawing.Point(145, 265);
-            this.txtOpys.Size = new System.Drawing.Size(544, 47);
+            this.txtOpys.TabIndex = 10;
             // 
             // lblOpys
             // 
@@ -181,6 +193,7 @@
             // dtpDataDocument
             // 
             this.dtpDataDocument.Location = new System.Drawing.Point(511, 180);
+            this.dtpDataDocument.TabIndex = 8;
             // 
             // btnShowOnMap
             // 
@@ -189,10 +202,12 @@
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(592, 356);
+            this.btnOk.TabIndex = 13;
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(12, 356);
+            this.btnCancel.TabIndex = 14;
             // 
             // frmReestrPoshta_element
             // 

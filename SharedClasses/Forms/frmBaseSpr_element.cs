@@ -228,13 +228,14 @@ namespace SharedClasses
         }
         private void frmBaseSpr_element_Load(object sender, EventArgs e)
         {
+            if (editMode == EditMode.UNKNOW) // для конструктора форм
+                return;
+
             if (!this.GetSharedData()) // error
             {
                 this.Close();
             }
 
-            //if (objectID == -1) // для конструктора форм
-            //    return;
             if (editMode != EditMode.ADD)
             {
                 if (!this.ReadData()) // error
