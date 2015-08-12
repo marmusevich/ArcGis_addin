@@ -79,7 +79,7 @@ namespace SharedClasses
         //вернуть наименование по значению
         public string GetTextByValue(object value)
         {
-            return GetTextByValue(GetIndexByValue(value));
+            return GetTextByIndex(GetIndexByValue(value));
         }
         //вернуть индекс по наименованию
         public int GetIndexByText(string text)

@@ -213,7 +213,6 @@
             // 
             // txtKodObject
             // 
-            this.txtKodObject.Enabled = false;
             this.txtKodObject.Location = new System.Drawing.Point(144, 9);
             this.txtKodObject.Name = "txtKodObject";
             this.txtKodObject.Size = new System.Drawing.Size(100, 20);

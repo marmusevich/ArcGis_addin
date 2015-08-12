@@ -178,7 +178,7 @@ namespace SharedClasses
         public static string GetKodObjectByIDFromAdminRajon(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("AdrReestr", id, "AdminRajon", "KodObject");
+            object o = SharedClass.GetValueByID("AdrReestr", id, "ReestrRajon_polygon", "KodObject");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -186,7 +186,7 @@ namespace SharedClasses
         //вернуть наименование из реестра районов
         public static string GetNazvaByIDFromAdminRajon(int id, eTypeNazvaFromReestr type)
         {
-            return GetNazvaByIDFromReestr("AdminRajon", id, type);
+            return GetNazvaByIDFromReestr("ReestrRajon_polygon", id, type);
         }
         #endregion
 
@@ -225,7 +225,7 @@ namespace SharedClasses
         //включить автозаполнение поля по наименованию для реестра районов
         public static bool EnableAutoComlectToAdminRajon(TextBox adminRajonTextBox)
         {
-            bool ret = EnableAutoComlectToReestr("AdminRajon", adminRajonTextBox, eTypeNazvaFromReestr.All);
+            bool ret = EnableAutoComlectToReestr("ReestrRajon_polygon", adminRajonTextBox, eTypeNazvaFromReestr.All);
             adminRajonTextBox.ReadOnly = !ret;
             return ret;
         }
@@ -280,7 +280,7 @@ namespace SharedClasses
         // проверка текстового поля на значения из реестра районов и выстовить ошибку в провайдер ошыбок
         public static bool CheckValueIsContainsAdminRajon_SetError(TextBox chekedValue, ErrorProvider errorProvider, ref int id, TextBox codeValue = null)
         {
-            bool ret = CheckValueIsContainsReestr_SetError("AdminRajon", chekedValue, errorProvider, ref id, eTypeNazvaFromReestr.All, codeValue);
+            bool ret = CheckValueIsContainsReestr_SetError("ReestrRajon_polygon", chekedValue, errorProvider, ref id, eTypeNazvaFromReestr.All, codeValue);
             return ret;
         }
         #endregion

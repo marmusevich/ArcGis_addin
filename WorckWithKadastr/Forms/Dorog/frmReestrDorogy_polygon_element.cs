@@ -22,10 +22,12 @@ namespace WorckWithKadastr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected override void DB_to_FormElement(IRow row)
         {
+			base.DB_to_FormElement(row);
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
+			base.FormElement_to_DB(row);
         }
 
         protected override bool ValidatingData()

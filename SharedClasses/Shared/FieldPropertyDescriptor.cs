@@ -15,9 +15,10 @@ namespace SharedClasses
         bool isEditable = true;
         private IWorkspaceEdit wkspcEdit;
         private ICodedValueDomain cvDomain;
-        private bool useCVDomain;
+        private bool useCVDomain = true;
         private TypeConverter actualValueConverter;
         private TypeConverter cvDomainValDescriptionConverter;
+        private DomeinDataAdapter dda;
 
         public FieldPropertyDescriptor(ITable wrappedTable, string fieldName, int fieldIndex)
             : base(fieldName, null)
@@ -49,6 +50,8 @@ namespace SharedClasses
                 useCVDomain = value;
                 if (value)
                 {
+                    if(null == dda)
+                        dda = new DomeinDataAdapter((IDomain )cvDomain);
                     netType = typeof(string);
                 }
                 else
@@ -114,9 +117,10 @@ namespace SharedClasses
             {
                 object value = givenRow.get_Value(wrappedFieldIndex);
 
-                if ((null != cvDomain) && useCVDomain)
+                if ((null != cvDomain) && useCVDomain && null != dda)
                 {
-                    value = cvDomain.get_Name(Convert.ToInt32(value));
+                    value = dda.GetTextByValue(value);
+                    //value = cvDomain.get_Name(Convert.ToInt32(value));
                 }
 
                 switch (esriType)
@@ -178,18 +182,24 @@ namespace SharedClasses
                 }
                 else
                 {
-                    bool foundMatch = false;
-                    for (int valueCount = 0; valueCount < cvDomain.CodeCount; valueCount++)
-                    {
-                        if (value.ToString() == cvDomain.get_Name(valueCount))
-                        {
-                            foundMatch = true;
-                            value = valueCount;
-                            break;
-                        }
-                    }
+                    if (null != dda)
+                        value = dda.GetValueByText(value.ToString());
+                    else 
+                        value = null;
 
-                    if (!foundMatch)
+                    //bool foundMatch = false;
+                    //for (int valueCount = 0; valueCount < cvDomain.CodeCount; valueCount++)
+                    //{
+                    //    if (value.ToString() == cvDomain.get_Name(valueCount))
+                    //    {
+                    //        foundMatch = true;
+                    //        value = valueCount;
+                    //        break;
+                    //    }
+                    //}
+
+                    //if (!foundMatch)
+                    if (value == null)
                     {
                         System.Windows.Forms.MessageBox.Show(string.Format(
                           "Value {0} is not valid for coded value domain {1}", value.ToString(), ((IDomain)cvDomain).Name));
@@ -230,6 +240,7 @@ namespace SharedClasses
             cvDomain = field.Domain as ICodedValueDomain;
             if ((null != cvDomain) && useCVDomain)
             {
+                dda = new DomeinDataAdapter(field.Domain);
                 return typeof(string);
             }
 
