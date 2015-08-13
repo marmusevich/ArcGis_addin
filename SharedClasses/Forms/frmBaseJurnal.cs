@@ -117,7 +117,7 @@ namespace SharedClasses
             bool ret = false;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
                 this.Text = (table as IObjectClass).AliasName;
                 tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
@@ -129,7 +129,7 @@ namespace SharedClasses
 
                 dgv.AutoGenerateColumns = false;
 
-                SharedClass.CreateColumIn(dgv, table);
+                GeneralDBWork.CreateColumIn(dgv, table);
                 OtherSetupDGV();
                 dgv.DataSource = dsBinding;
                 SetupDGV();
@@ -139,7 +139,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Чтиение журнала документов  '{0}'", NameTable));
-                SharedClass.ShowErrorMessage(string.Format("Проблема при чтиение журнала документов  '{0}'", NameTable));
+                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при чтиение журнала документов  '{0}'", NameTable));
                 ret = false;
             }
             return ret;
@@ -193,7 +193,7 @@ namespace SharedClasses
             this.StartPosition = FormStartPosition.CenterScreen;
 
 
-            if (!SharedClass.SetDisplayOrder(dgv, NameTable))
+            if (!GeneralDBWork.SetDisplayOrder(dgv, NameTable))
                 SetDefaultDisplayOrder();
 
             if (dgv.Columns.Count > 0)
@@ -220,8 +220,8 @@ namespace SharedClasses
         }
         private void frmBaseJurnal_Load(object sender, System.EventArgs e)
         {
-            dtpDataOt.Value = SharedClass.GetFirstMonthDayDate(DateTime.Now);
-            dtpDatePo.Value = SharedClass.GetLastMonthDayDate(DateTime.Now);
+            dtpDataOt.Value = GeneralDBWork.GetFirstMonthDayDate(DateTime.Now);
+            dtpDatePo.Value = GeneralDBWork.GetLastMonthDayDate(DateTime.Now);
 #if (!CONSTRUCT_FORM)
             if (!this.ReadData()) // -ok
             {
@@ -231,7 +231,7 @@ namespace SharedClasses
         }
         private void frmBaseJurnal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SharedClass.GetDisplayOrder(dgv, NameTable);
+            GeneralDBWork.GetDisplayOrder(dgv, NameTable);
         }
         private void cmsAdd_Click(object sender, EventArgs e)
         {
@@ -331,8 +331,8 @@ namespace SharedClasses
                 {
                     short add = Convert.ToInt16(but.Tag);
                     enable_dtpDataEvent = false;
-                    dtpDataOt.Value = SharedClass.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year, dtpDataOt.Value.Month + add, 15));
-                    dtpDatePo.Value = SharedClass.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year, dtpDatePo.Value.Month + add, 15));
+                    dtpDataOt.Value = GeneralDBWork.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year, dtpDataOt.Value.Month + add, 15));
+                    dtpDatePo.Value = GeneralDBWork.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year, dtpDatePo.Value.Month + add, 15));
                     tableWrapper.QueryFilter = BuildConditions();
                     tableWrapper.UpdateData();
                     dgv.Refresh();

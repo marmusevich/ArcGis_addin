@@ -65,7 +65,7 @@ namespace SharedClasses
             bool ret = false;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
                 DB_SharedData_to_FormElement();
                 ret = true;
@@ -73,7 +73,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
-                SharedClass.ShowErrorMessage(string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
+                GeneralDBWork.ShowErrorMessage(string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             return ret;
@@ -84,7 +84,7 @@ namespace SharedClasses
             bool ret = false;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
 
                 IRow row = table.GetRow(objectID);
@@ -95,7 +95,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
-                SharedClass.ShowErrorMessage(string.Format("Проблема при чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
+                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             isModified = false;
@@ -108,7 +108,7 @@ namespace SharedClasses
             IWorkspaceEdit wse = null;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 // начать транзакцию
                 wse = fws as IWorkspaceEdit;
                 wse.StartEditing(false);
@@ -135,7 +135,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Сохранение данных справочника '{0}' id {1}", NameTable, objectID));
-                SharedClass.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, objectID));
+                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -154,7 +154,7 @@ namespace SharedClasses
             IWorkspaceEdit wse = null;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 // начать транзакцию
                 wse = fws as IWorkspaceEdit;
                 wse.StartEditing(false);
@@ -173,7 +173,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Удаление справочника '{0}' id {1}", NameTable, objectID));
-                SharedClass.ShowErrorMessage(string.Format("Проблема при удаление справочника '{0}' id {1}", NameTable, objectID));
+                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при удаление справочника '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally

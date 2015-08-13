@@ -31,7 +31,7 @@ namespace SharedClasses
             string ret = "";
             if (type != eTypeNazvaFromReestr.All)
             {
-                object o = SharedClass.GetValueByID("AdrReestr", id, tablName, type.ToString("F"));
+                object o = GeneralDBWork.GetValueByID("AdrReestr", id, tablName, type.ToString("F"));
                 if (o != null)
                     ret = o.ToString();
             }
@@ -50,7 +50,7 @@ namespace SharedClasses
                 {
                     if (type == eTypeNazvaFromReestr.All) 
                         continue;
-                    AutoCompleteStringCollection tmp = SharedClass.GenerateAutoCompleteStringCollection("AdrReestr", tablName, t.ToString("F"));
+                    AutoCompleteStringCollection tmp = GeneralDBWork.GenerateAutoCompleteStringCollection("AdrReestr", tablName, t.ToString("F"));
                     if (tmp != null)
                     {
                         string[] arr = new string[0];
@@ -61,7 +61,7 @@ namespace SharedClasses
             }
             else
             {
-                sourse = SharedClass.GenerateAutoCompleteStringCollection("AdrReestr", tablName, type.ToString("F"));
+                sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("AdrReestr", tablName, type.ToString("F"));
             }
             if (sourse != null)
             {
@@ -86,13 +86,13 @@ namespace SharedClasses
                 {
                     if (type == eTypeNazvaFromReestr.All)
                         continue;
-                    id_temp = SharedClass.GetIDByTextValue("AdrReestr", reestrValurChekedValue.Text, tablName, t.ToString("F"), true);
+                    id_temp = GeneralDBWork.GetIDByTextValue("AdrReestr", reestrValurChekedValue.Text, tablName, t.ToString("F"), true);
                     if (id_temp != -1)
                         break;
                 }
             }
             else
-                id_temp = SharedClass.GetIDByTextValue("AdrReestr", reestrValurChekedValue.Text, tablName, type.ToString("F"), true);
+                id_temp = GeneralDBWork.GetIDByTextValue("AdrReestr", reestrValurChekedValue.Text, tablName, type.ToString("F"), true);
 
             if (id_temp != -1)
             {
@@ -116,12 +116,12 @@ namespace SharedClasses
         //проверить существование кода в справочнике категорий
         public static bool IsCodeKategorObjExist(string tablName, int numer)
         {
-            return SharedClass.GetIDByIntValue("AdrReestr", numer, tablName, "KodKategorii") != -1;
+            return GeneralDBWork.GetIDByIntValue("AdrReestr", numer, tablName, "KodKategorii") != -1;
         }
         //вернуть следующий код в справочнике категорий
         public static int GetNextCodeKategorObj(string tablName)
         {
-            return SharedClass.GetMaxNumerForAutoicrement("AdrReestr", tablName, "KodKategorii") + 1;
+            return GeneralDBWork.GetMaxNumerForAutoicrement("AdrReestr", tablName, "KodKategorii") + 1;
         }
         #endregion
 
@@ -131,7 +131,7 @@ namespace SharedClasses
         public static string GetKodKategoriiByIDFromKategorObj(string tablName, int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("AdrReestr", id, tablName, "KodKategorii");
+            object o = GeneralDBWork.GetValueByID("AdrReestr", id, tablName, "KodKategorii");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -140,7 +140,7 @@ namespace SharedClasses
         public static string GetNazvaTypuByIDFromKategorObj(string tablName, int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("AdrReestr", id, tablName, "NazvaTypu");
+            object o = GeneralDBWork.GetValueByID("AdrReestr", id, tablName, "NazvaTypu");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -149,7 +149,7 @@ namespace SharedClasses
         public static string GetKorotkaNazvaTypuByIDFromKategorObj(string tablName, int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("AdrReestr", id, tablName, "KorotkaNazvaTypu");
+            object o = GeneralDBWork.GetValueByID("AdrReestr", id, tablName, "KorotkaNazvaTypu");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -159,7 +159,7 @@ namespace SharedClasses
         public static string GetNameByIDFromTip_Doc(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("AdrReestr", id, "Tip_Doc", "Tip_Doc");
+            object o = GeneralDBWork.GetValueByID("AdrReestr", id, "Tip_Doc", "Tip_Doc");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -168,7 +168,7 @@ namespace SharedClasses
         public static string GetCodeByIDFromTip_Doc(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("AdrReestr", id, "Tip_Doc", "Kod_Doc");
+            object o = GeneralDBWork.GetValueByID("AdrReestr", id, "Tip_Doc", "Kod_Doc");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -178,7 +178,7 @@ namespace SharedClasses
         public static string GetKodObjectByIDFromAdminRajon(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("AdrReestr", id, "ReestrRajon_polygon", "KodObject");
+            object o = GeneralDBWork.GetValueByID("AdrReestr", id, "ReestrRajon_polygon", "KodObject");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -196,7 +196,7 @@ namespace SharedClasses
         public static bool EnableAutoComlectToKategorObj(string tablName, TextBox KategorObjTextBox)
         {
             bool ret = false;
-            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("AdrReestr", tablName, "NazvaTypu");
+            AutoCompleteStringCollection sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("AdrReestr", tablName, "NazvaTypu");
             if (sourse != null)
             {
                 KategorObjTextBox.AutoCompleteCustomSource = sourse;
@@ -211,7 +211,7 @@ namespace SharedClasses
         public static bool EnableAutoComlectToTip_Doc(TextBox tipDocTextBox)
         {
             bool ret = false;
-            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("AdrReestr", "Tip_Doc", "Tip_Doc");
+            AutoCompleteStringCollection sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("AdrReestr", "Tip_Doc", "Tip_Doc");
             if (sourse != null)
             {
                 tipDocTextBox.AutoCompleteCustomSource = sourse;
@@ -238,7 +238,7 @@ namespace SharedClasses
         {
             bool ret = true;
             int id_temp;
-            id_temp = SharedClass.GetIDByTextValue("AdrReestr", chekedValue.Text, tablName, "NazvaTypu", true);
+            id_temp = GeneralDBWork.GetIDByTextValue("AdrReestr", chekedValue.Text, tablName, "NazvaTypu", true);
             if (id_temp != -1)
             {
                 errorProvider.SetError(chekedValue, String.Empty);
@@ -260,7 +260,7 @@ namespace SharedClasses
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue("AdrReestr", chekedValue.Text, "Tip_Doc", "Tip_Doc", true);
+            id_temp = GeneralDBWork.GetIDByTextValue("AdrReestr", chekedValue.Text, "Tip_Doc", "Tip_Doc", true);
 
             if (id_temp != -1)
             {

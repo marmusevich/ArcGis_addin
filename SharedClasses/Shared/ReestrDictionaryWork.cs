@@ -14,7 +14,7 @@ namespace SharedClasses
         public static string GetFIOByIDFromFizLic(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("reestr", id, "fizichni_osoby", "П_І_Б");
+            object o = GeneralDBWork.GetValueByID("reestr", id, "fizichni_osoby", "П_І_Б");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -23,7 +23,7 @@ namespace SharedClasses
         public static string GetINNByIDFromFizLic(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("reestr", id, "fizichni_osoby", "ідент_код");
+            object o = GeneralDBWork.GetValueByID("reestr", id, "fizichni_osoby", "ідент_код");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -32,7 +32,7 @@ namespace SharedClasses
         public static string GetNameByIDFromJurOsoby(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("reestr", id, "jur_osoby", "назва");
+            object o = GeneralDBWork.GetValueByID("reestr", id, "jur_osoby", "назва");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -41,7 +41,7 @@ namespace SharedClasses
         public static string GetINNByIDFromJurOsoby(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("reestr", id, "jur_osoby", "код_ЄДРПОУ");
+            object o = GeneralDBWork.GetValueByID("reestr", id, "jur_osoby", "код_ЄДРПОУ");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -50,7 +50,7 @@ namespace SharedClasses
         public static string GetNameByIDFromTip_Doc(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("reestr", id, "Tip_Doc", "Tip_Doc");
+            object o = GeneralDBWork.GetValueByID("reestr", id, "Tip_Doc", "Tip_Doc");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -59,7 +59,7 @@ namespace SharedClasses
         public static string GetCodeByIDFromTip_Doc(int id)
         {
             string ret = "";
-            object o = SharedClass.GetValueByID("reestr", id, "Tip_Doc", "Kod_Doc");
+            object o = GeneralDBWork.GetValueByID("reestr", id, "Tip_Doc", "Kod_Doc");
             if (o != null)
                 ret = o.ToString();
             return ret;
@@ -72,7 +72,7 @@ namespace SharedClasses
         public static bool EnableAutoComlectToFizLic(TextBox fizLicTextBox)
         {
             bool ret = false;
-            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("reestr", "fizichni_osoby", "П_І_Б");
+            AutoCompleteStringCollection sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("reestr", "fizichni_osoby", "П_І_Б");
             if (sourse != null)
             {
                 fizLicTextBox.AutoCompleteCustomSource = sourse;
@@ -87,7 +87,7 @@ namespace SharedClasses
         public static bool EnableAutoComlectToJurLic(TextBox jurLicTextBox)
         {
             bool ret = false;
-            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("reestr", "jur_osoby", "назва");
+            AutoCompleteStringCollection sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("reestr", "jur_osoby", "назва");
             if (sourse != null)
             {
                 jurLicTextBox.AutoCompleteCustomSource = sourse;
@@ -102,7 +102,7 @@ namespace SharedClasses
         public static bool EnableAutoComlectToTip_Doc(TextBox tipDocTextBox)
         {
             bool ret = false;
-            AutoCompleteStringCollection sourse = SharedClass.GenerateAutoCompleteStringCollection("reestr", "Tip_Doc", "Tip_Doc");
+            AutoCompleteStringCollection sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("reestr", "Tip_Doc", "Tip_Doc");
             if (sourse != null)
             {
                 tipDocTextBox.AutoCompleteCustomSource = sourse;
@@ -123,7 +123,7 @@ namespace SharedClasses
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue("reestr", chekedValue.Text, "fizichni_osoby", "П_І_Б", true);
+            id_temp = GeneralDBWork.GetIDByTextValue("reestr", chekedValue.Text, "fizichni_osoby", "П_І_Б", true);
 
             if (id_temp != -1)
             {
@@ -146,7 +146,7 @@ namespace SharedClasses
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue("reestr", chekedValue.Text, "jur_osoby", "назва", true);
+            id_temp = GeneralDBWork.GetIDByTextValue("reestr", chekedValue.Text, "jur_osoby", "назва", true);
 
             if (id_temp != -1)
             {
@@ -169,7 +169,7 @@ namespace SharedClasses
             bool ret = true;
             int id_temp;
 
-            id_temp = SharedClass.GetIDByTextValue("reestr", chekedValue.Text, "Tip_Doc", "Tip_Doc", true);
+            id_temp = GeneralDBWork.GetIDByTextValue("reestr", chekedValue.Text, "Tip_Doc", "Tip_Doc", true);
 
             if (id_temp != -1)
             {

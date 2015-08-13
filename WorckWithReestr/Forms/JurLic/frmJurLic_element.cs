@@ -51,7 +51,7 @@ namespace WorckWithReestr
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtName, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtName, errorProvider) && ret;
             return ret;
         }
 

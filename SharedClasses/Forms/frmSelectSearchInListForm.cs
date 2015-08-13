@@ -464,11 +464,11 @@ namespace WorckWithReestr
                     //
                     if (sfd.mTOT == TypeOfType.NUMBER)
                     {
-                        SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                        GeneralDBWork.CheckValueIsInt_SetError(txt, errorProvider);
                     }
                     else if (sfd.mTOT == TypeOfType.ID)
                     {
-                        SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                        GeneralDBWork.CheckValueIsInt_SetError(txt, errorProvider);
                     }
                     else if (sfd.mTOT == TypeOfType.DICTIONARY)
                     {
@@ -559,11 +559,11 @@ namespace WorckWithReestr
                 {
                     if (sfd.mTOT == TypeOfType.NUMBER)
                     {
-                        e.Cancel = SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                        e.Cancel = GeneralDBWork.CheckValueIsInt_SetError(txt, errorProvider);
                     }
                     else if (sfd.mTOT == TypeOfType.ID)
                     {
-                        e.Cancel = SharedClass.CheckValueIsInt_SetError(txt, errorProvider);
+                        e.Cancel = GeneralDBWork.CheckValueIsInt_SetError(txt, errorProvider);
                     }
                     else if (sfd.mTOT == TypeOfType.DICTIONARY)
                     {

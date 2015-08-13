@@ -46,8 +46,8 @@ namespace WorckWithKadastr
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueIsInt_SetError(txtKodKategorii, errorProvider) && ret;
-            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtNazvaTypu, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtKodKategorii, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtNazvaTypu, errorProvider) && ret;
             return ret;
         }
 

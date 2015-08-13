@@ -13,7 +13,7 @@ namespace SharedClasses
         {
             try
             {
-                string pathToLog = Path.Combine(SharedClass.GetAppDataPathAndCreateDirIfNeed(), "Log");
+                string pathToLog = Path.Combine(GeneralDBWork.GetAppDataPathAndCreateDirIfNeed(), "Log");
                 if (!Directory.Exists(pathToLog))
                     Directory.CreateDirectory(pathToLog); // Создаем директорию, если нужно
                 string filename = Path.Combine(pathToLog, string.Format("{0}_{1:dd.MM.yyy}.log", AppDomain.CurrentDomain.FriendlyName, DateTime.Now));

@@ -36,8 +36,8 @@ namespace WorckWithKadastr
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueIsSmalInt_SetError(txtKod_Doc, errorProvider) && ret;
-            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtTip_Doc, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsSmalInt_SetError(txtKod_Doc, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtTip_Doc, errorProvider) && ret;
             return ret;
         }
 

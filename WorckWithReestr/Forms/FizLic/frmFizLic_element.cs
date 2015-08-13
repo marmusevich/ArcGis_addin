@@ -34,7 +34,7 @@ namespace WorckWithReestr
             txtCategor.Text = row.get_Value(base.table.FindField("категорія")) as string;
             txtINN.Text = row.get_Value(base.table.FindField("ідент_код")) as string;
 
-            cbIsWorker.Checked = SharedClass.ConvertVolueToBool(base.table.FindField("ЭтоСотрудник"));
+            cbIsWorker.Checked = GeneralDBWork.ConvertVolueToBool(base.table.FindField("ЭтоСотрудник"));
         }
 
         protected override void FormElement_to_DB(IRow row)
@@ -54,7 +54,7 @@ namespace WorckWithReestr
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueStringNotEmpty_SetError(txtFIO, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtFIO, errorProvider) && ret;
             return ret;
         }
 

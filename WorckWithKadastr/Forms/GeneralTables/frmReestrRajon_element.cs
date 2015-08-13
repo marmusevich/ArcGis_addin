@@ -34,7 +34,7 @@ namespace WorckWithKadastr
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueIsInt_SetError(txtKodKOATU, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtKodKOATU, errorProvider) && ret;
 
             return ret;
         }

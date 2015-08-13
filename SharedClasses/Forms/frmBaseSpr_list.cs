@@ -109,7 +109,7 @@ namespace SharedClasses
             bool ret = false;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
                 this.Text = (table as IObjectClass).AliasName;
                 tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
@@ -118,7 +118,7 @@ namespace SharedClasses
                 dsBinding.DataSource = tableWrapper;
 
                 dgv.AutoGenerateColumns = false;
-                SharedClass.CreateColumIn(dgv, table);
+                GeneralDBWork.CreateColumIn(dgv, table);
                 dgv.DataSource = dsBinding;
                 SetupDGV();
                 dgv.Refresh();
@@ -156,7 +156,7 @@ namespace SharedClasses
             }
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            if (!SharedClass.SetDisplayOrder(dgv, NameTable))
+            if (!GeneralDBWork.SetDisplayOrder(dgv, NameTable))
                 SetDefaultDisplayOrder();
 
             if (dgv.Columns.Count > 0)
@@ -192,7 +192,7 @@ namespace SharedClasses
         }
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SharedClass.GetDisplayOrder(dgv, NameTable);
+            GeneralDBWork.GetDisplayOrder(dgv, NameTable);
         }
         private void cmsAdd_Click(object sender, EventArgs e)
         {

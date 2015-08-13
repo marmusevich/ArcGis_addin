@@ -31,10 +31,10 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             //даты
-            dtpData_Z.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Z")));
-            dtpData_Ish.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Ish")));
-            dtpData_Oplata.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Oplata")));
-            dtpData_Ved.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Ved")));
+            dtpData_Z.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Z")));
+            dtpData_Ish.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Ish")));
+            dtpData_Oplata.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Oplata")));
+            dtpData_Ved.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Ved")));
 
             //простые тексты  
             txtTel_Z.Text = "" + row.get_Value(base.table.FindField("Tel_Z")) as string;
@@ -127,7 +127,7 @@ namespace WorckWithReestr
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = SharedClass.CheckValueIsInt_SetError(txtN_Z, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtN_Z, errorProvider) && ret;
             ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Z, errorProvider, ref mFio_Z) && ret;
             ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Vid, errorProvider, ref mFio_Ved_Vid) && ret;
             ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Prin, errorProvider, ref mFio_Ved_Prin) && ret;

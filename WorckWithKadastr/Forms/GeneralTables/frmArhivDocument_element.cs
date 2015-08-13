@@ -25,7 +25,7 @@ namespace WorckWithKadastr
         {
             base.DB_to_FormElement(row);
             //даты
-            dtpDataDocument.Value = SharedClass.ConvertVolueToDateTime(row.get_Value(base.table.FindField("DataDocument")));
+            dtpDataDocument.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("DataDocument")));
 
             //простые тексты  
             txtNazvaDocument.Text = "" + row.get_Value(base.table.FindField("NazvaDocument")) as string;
@@ -65,7 +65,7 @@ namespace WorckWithKadastr
         {
             bool ret = base.ValidatingData();
 
-            ret = SharedClass.CheckValueIsInt_SetError(txtKodObject, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtKodObject, errorProvider) && ret;
             ret = AdresReestrWork.CheckValueIsContainsTip_Doc_SetError(txtDocument, errorProvider, ref mDocument) && ret;
 
 

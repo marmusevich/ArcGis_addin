@@ -57,7 +57,7 @@ namespace WorckWithReestr
                                       base.table.FindField("Prim")
 
                                     };
-            SharedClass.SetDisplayOrderByArray(dgv, displayIndicies);
+            GeneralDBWork.SetDisplayOrderByArray(dgv, displayIndicies);
         }
 
         protected override void OtherSetupDGV()

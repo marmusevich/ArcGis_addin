@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 namespace SharedClasses
 {
     //общие методы
-    public class SharedClass
+    public class GeneralDBWork
     {
         //---------------------------------------------------------------------------------------
         #region общее
@@ -79,7 +79,7 @@ namespace SharedClasses
         //получить и сохранить в файле порядок колонок
         public static void GetDisplayOrder(DataGridView dgv, string tableName)
         {
-            string filename = Path.Combine(SharedClass.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
+            string filename = Path.Combine(GeneralDBWork.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
             using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
             {
                 int[] displayIndices = new int[dgv.ColumnCount];
@@ -98,7 +98,7 @@ namespace SharedClasses
             bool ret = false;
             try
             {
-                string filename = Path.Combine(SharedClass.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
+                string filename = Path.Combine(GeneralDBWork.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
                 if(File.Exists(filename))
                 {
                     using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))
@@ -229,7 +229,7 @@ namespace SharedClasses
             object ret = null;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace( workspaceName ) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace( workspaceName ) as IFeatureWorkspace;
                 ITable table = fws.OpenTable(workspaceName + ".DBO." + tableName);
                 IRow row = table.GetRow(id);
                 ret =  row.get_Value(table.FindField(fildName));
@@ -246,7 +246,7 @@ namespace SharedClasses
             int ret = -1;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(workspaceName) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
                 queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
@@ -274,7 +274,7 @@ namespace SharedClasses
             int ret = -1;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(workspaceName) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
                 queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
@@ -299,7 +299,7 @@ namespace SharedClasses
             int ret = 0;
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(workspaceName) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
                 queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "MAX( " + fildName + " )";
@@ -326,7 +326,7 @@ namespace SharedClasses
             ArrayList data = new ArrayList();
             try
             {
-                IFeatureWorkspace fws = SharedClass.GetWorkspace(workspaceName) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
                 queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.SubFields = "DISTINCT " + fildName;
@@ -365,29 +365,4 @@ namespace SharedClasses
     }
 
 }
-
-// примеры
-
-// текущий документ / карта
-//IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
-//IMap map = mxDoc.FocusMap as IMap;
-
-
-// выбрать по клику мышы видемый объект
-//IMxDocument mxDoc = ArcMap.Document;
-//IActiveView  m_focusMap = mxDoc.FocusMap as IActiveView;
-//IPoint point = m_focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(arg.X, arg.Y) as IPoint;
-//ArcMap.Document.FocusMap.SelectByShape(point, null, false);
-//m_focusMap.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
-
-
-// обратится к катологу 
-//IWorkspace ws = SharedClass.GetWorkspace("reestr") as IWorkspace;
-//IFeatureWorkspace fws = ws as IFeatureWorkspace;
-//ITable tt = fws.OpenTable("reestr.DBO.fizichni_osoby");
-//IDataset ids = tt as IDataset;
-//IObjectClass ob = tt as IObjectClass;
-
-
-
 
