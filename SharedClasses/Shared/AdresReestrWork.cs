@@ -6,12 +6,15 @@ namespace SharedClasses
 {
     public class AdresReestrWork
     {
+        //---------------------------------------------------------------------------------------
+        #region работа с картой
+        //
         public static void ShowOnMap(string tablName)
         {
-        }
 
-        
-        
+        }
+        #endregion
+
         //---------------------------------------------------------------------------------------
         #region работа с таблицами реестров (общее)
         public enum eTypeNazvaFromReestr
