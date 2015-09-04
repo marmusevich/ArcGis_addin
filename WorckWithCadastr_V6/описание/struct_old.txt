@@ -1,0 +1,1963 @@
+﻿<Domains xsi:type='esri:ArrayOfDomain'>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Adm_Rai_Mis</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+
+<Description>Реєстр адміністративних районів міста</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>21010500</Name><Code xsi:type='xs:double'>21010500</Code></CodedValue></CodedValues>
+</Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Rej_Adm_Raj_Mis_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Rule_1</Name>
+<Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Adr_Osnov</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType>
+<Description>Реєстр адрес основний</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>21010100</Name>
+<Code xsi:type='xs:double'>21010100</Code></CodedValue></CodedValues></Domain><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Rej_Adr_Osnov_Kod_Typ_Obj_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+
+<Description>Код типу об’єкта адресації</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Первинний</Name><Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Похідний</Name><Code xsi:type='xs:short'>2</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Osnov_Kod_Typ_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу адреси</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Звичайна</Name>
+<Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Будинок на розі</Name>
+<Code xsi:type='xs:short'>2</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Osnov_Kod_Func_Pryzn</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код переважного функціонального призначення об’єкта</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Жилі</Name><Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Нежилі</Name><Code xsi:type='xs:short'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Громадські</Name>
+<Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Культові</Name><Code xsi:type='xs:short'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Виробничі</Name><Code xsi:type='xs:short'>5</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Учбові</Name><Code xsi:type='xs:short'>6</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Osnov_Kod_Stan_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код стану адреси</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Чинна</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Анульована</Name><Code xsi:type='xs:short'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Змінена у зв&apos;язку з переадресацією</Name><Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Змінена у зв&apos;язку з реструктуризацією</Name><Code xsi:type='xs:short'>4</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Rej_Adr_Osnov_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Rule_1</Name><Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Adr_Poh</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Реєстр адрес будівель похідний</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>21010300</Name>
+<Code xsi:type='xs:double'>21010300</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Typ_Obj_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу об’єкта адресації</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Первинний</Name>
+<Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Похідний</Name><Code xsi:type='xs:short'>2</Code>
+</CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Typ_Obj_Poh_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу об’єкта похідної адреси</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Будівля</Name>
+<Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Споруда</Name><Code xsi:type='xs:short'>2</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Корпус</Name><Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Павільон</Name><Code xsi:type='xs:short'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Квартира</Name>
+<Code xsi:type='xs:short'>5</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Офіс</Name><Code xsi:type='xs:short'>6</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Кімната</Name><Code xsi:type='xs:short'>7</Code></CodedValue></CodedValues>
+</Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Func_Pryzn</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код переважного функціонального призначення об’єкта</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Жилі</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Нежилі</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Громадські</Name>
+<Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Культові</Name><Code xsi:type='xs:short'>4</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Виробничі</Name><Code xsi:type='xs:short'>5</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Учбові</Name><Code xsi:type='xs:short'>6</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Stan_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код стану адреси</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Чинна</Name><Code xsi:type='xs:short'>1</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Анульована</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Змінена у зв&apos;язку з переадресацією</Name><Code xsi:type='xs:short'>3</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Змінена у зв&apos;язку з реструктуризацією</Name>
+<Code xsi:type='xs:short'>4</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Rej_Adr_Poh_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Rule_1</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Bud_Adr</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Реєстр будівельних адрес</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>21010200</Name><Code xsi:type='xs:double'>21010200</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Bud_Adr_Kod_Stan_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код стану адреси</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Чинна</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Закрита у зв&apos;язку з завершенням будівництва</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Закрита з інших причин</Name><Code xsi:type='xs:short'>3</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Rej_Bud_Adr_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Rule_1</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Vul</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Реєстр вулиць</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>21010400</Name>
+<Code xsi:type='xs:double'>21010400</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Vul_Kod_Stan_Vul</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код стану вулиці</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Діюча</Name>
+<Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Недіюча</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Будується</Name><Code xsi:type='xs:short'>3</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Зруйнована</Name><Code xsi:type='xs:short'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Непроїджі ділянки вулиць</Name><Code xsi:type='xs:short'>5</Code></CodedValue></CodedValues>
+</Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Vul_Kod_Kat</DomainName>
+<FieldType>esriFieldTypeSmallInteger</FieldType>
+
+<Description>Код категорії вулиці</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Вулиця</Name>
+<Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Площа</Name>
+<Code xsi:type='xs:short'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Майдан</Name>
+<Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Набережна</Name>
+<Code xsi:type='xs:short'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Шосе</Name>
+<Code xsi:type='xs:short'>5</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Тупик</Name>
+<Code xsi:type='xs:short'>6</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Бульвар</Name>
+<Code xsi:type='xs:short'>7</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Проспект</Name>
+<Code xsi:type='xs:short'>8</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Просіка</Name>
+<Code xsi:type='xs:short'>9</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Алея</Name>
+<Code xsi:type='xs:short'>10</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Провулок</Name>
+<Code xsi:type='xs:short'>11</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Проїзд</Name>
+<Code xsi:type='xs:short'>12</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Узвіз</Name>
+<Code xsi:type='xs:short'>13</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Лінія</Name>
+<Code xsi:type='xs:short'>14</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Дорога</Name>
+<Code xsi:type='xs:short'>15</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Роз&apos;їзд</Name>
+<Code xsi:type='xs:short'>16</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Rej_Vul_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Rule_1</Name>
+<Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+</Domains>
+<Domains xsi:type='esri:ArrayOfDomain'>
+<Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Ztl_Bdn</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType>
+
+<Description>Коди класу Житлові будинки </Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>17010100</Name>
+<Code xsi:type='xs:double'>17010100</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010101</Name>
+<Code xsi:type='xs:double'>17010101</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010102</Name>
+<Code xsi:type='xs:double'>17010102</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010103</Name>
+<Code xsi:type='xs:double'>17010103</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010104</Name>
+<Code xsi:type='xs:double'>17010104</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010105</Name>
+<Code xsi:type='xs:double'>17010105</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010106</Name>
+<Code xsi:type='xs:double'>17010106</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Класифікатор статусу  об&apos;єкта містобудівної діяльност</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>існуючий</Name>
+<Code xsi:type='xs:int'>1</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>проектний</Name><Code xsi:type='xs:int'>2</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>запроектовано раніше</Name><Code xsi:type='xs:int'>3</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>підлягає знесенню</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+</CodedValues>
+</Domain><Domain xsi:type='esri:CodedValueDomain'><DomainName>Ztl_Bdn_Rep_2000_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок існуючий капітальний</Name><Code xsi:type='xs:int'>2</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок існуючий, що реконструюється</Name><Code xsi:type='xs:int'>3</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок існуючий некапітальний</Name><Code xsi:type='xs:int'>4</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок проектний</Name><Code xsi:type='xs:int'>5</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок, що запроектовано раніше</Name><Code xsi:type='xs:int'>6</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Будівля (споруда), що підлягяє знесенню</Name>
+<Code xsi:type='xs:int'>7</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Ztl_Bdn_Rep_5000_Rules</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий капітальний</Name><Code xsi:type='xs:int'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок існуючий, що реконструюється</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий некапітальний</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок проектний</Name><Code xsi:type='xs:int'>5</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Житловий будинок, що запроектовано раніше</Name><Code xsi:type='xs:int'>6</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Будівля (споруда), що підлягає знесенню</Name><Code xsi:type='xs:int'>7</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue>
+</CodedValues>
+</Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Vrb_Bdl_Spr</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Коди класу Виробничі будівлі  і споруди</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010200</Name><Code xsi:type='xs:double'>17010200</Code></CodedValue>
+</CodedValues>
+</Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Vrb_Bdl_Spr_Rep_2000_Rules</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Виробнича будівля та споруда існуюча</Name><Code xsi:type='xs:int'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Виробнича будівля (споруда) проектна</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Виробнича будівля (споруда), запроектована раніше</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code>
+</CodedValue></CodedValues></Domain><Domain xsi:type='esri:CodedValueDomain'><DomainName>Vrb_Bdl_Spr_Rep_5000_Rules</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Виробнича будівля (споруда) існуюча</Name><Code xsi:type='xs:int'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Виробнича будівля (споруда) проектна</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Виробнича будівля (споруда) запроектована раніше</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code>
+</CodedValue></CodedValues></Domain><Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType><Description>Коди Об’єкти соціальної сфери та економіки</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>17010500</Name>
+<Code xsi:type='xs:double'>17010500</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010501</Name>
+<Code xsi:type='xs:double'>17010501</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010502</Name>
+<Code xsi:type='xs:double'>17010502</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010503</Name>
+<Code xsi:type='xs:double'>17010503</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010504</Name>
+<Code xsi:type='xs:double'>17010504</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010505</Name>
+<Code xsi:type='xs:double'>17010505</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010506</Name>
+<Code xsi:type='xs:double'>17010506</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010507</Name>
+<Code xsi:type='xs:double'>17010507</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010508</Name>
+<Code xsi:type='xs:double'>17010508</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010509</Name>
+<Code xsi:type='xs:double'>17010509</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010510</Name>
+<Code xsi:type='xs:double'>17010510</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010511</Name>
+<Code xsi:type='xs:double'>17010511</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010512</Name>
+<Code xsi:type='xs:double'>17010512</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010513</Name>
+<Code xsi:type='xs:double'>17010513</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010514</Name>
+<Code xsi:type='xs:double'>17010514</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010515</Name>
+<Code xsi:type='xs:double'>17010515</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010516</Name>
+<Code xsi:type='xs:double'>17010516</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010517</Name>
+<Code xsi:type='xs:double'>17010517</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010518</Name>
+<Code xsi:type='xs:double'>17010518</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010519</Name>
+<Code xsi:type='xs:double'>17010519</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010520</Name>
+<Code xsi:type='xs:double'>17010520</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010521</Name>
+<Code xsi:type='xs:double'>17010521</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010522</Name>
+<Code xsi:type='xs:double'>17010522</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010523</Name>
+<Code xsi:type='xs:double'>17010523</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010524</Name>
+<Code xsi:type='xs:double'>17010524</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010525</Name>
+<Code xsi:type='xs:double'>17010525</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010526</Name>
+<Code xsi:type='xs:double'>17010526</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010527</Name>
+<Code xsi:type='xs:double'>17010527</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010528</Name>
+<Code xsi:type='xs:double'>17010528</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010529</Name>
+<Code xsi:type='xs:double'>17010529</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010530</Name>
+<Code xsi:type='xs:double'>17010530</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010531</Name>
+<Code xsi:type='xs:double'>17010531</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010532</Name><Code xsi:type='xs:double'>17010532</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010533</Name><Code xsi:type='xs:double'>17010533</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010534</Name><Code xsi:type='xs:double'>17010534</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010535</Name><Code xsi:type='xs:double'>17010535</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010536</Name><Code xsi:type='xs:double'>17010536</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010537</Name><Code xsi:type='xs:double'>17010537</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010538</Name><Code xsi:type='xs:double'>17010538</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010539</Name><Code xsi:type='xs:double'>17010539</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010540</Name><Code xsi:type='xs:double'>17010540</Code></CodedValue>
+</CodedValues></Domain><Domain xsi:type='esri:CodedValueDomain'><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Школа загальноосвітня І-ІІІ ступенів</Name>
+<Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Школа загальноосвітня І-ІІ ступенів</Name>
+<Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Школа загальноосвітня І ступеня</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Дошкільний навчальний заклад</Name>
+<Code xsi:type='xs:int'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Спеціальний навчальний заклад</Name>
+<Code xsi:type='xs:int'>5</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>нший середній навчальний заклад</Name>
+<Code xsi:type='xs:int'>6</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Позашкільний навчальний заклад</Name>
+<Code xsi:type='xs:int'>7</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Школа-інтернат</Name>
+<Code xsi:type='xs:int'>8</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Навчально-виробничий комбінат</Name>
+<Code xsi:type='xs:int'>9</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Вищий навчальний заклад</Name>
+<Code xsi:type='xs:int'>10</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Поліклініка</Name>
+<Code xsi:type='xs:int'>11</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Лікарня</Name>
+<Code xsi:type='xs:int'>12</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Медична амбулаторія</Name>
+<Code xsi:type='xs:int'>13</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Фельдшерсько-акушерський пункт</Name>
+<Code xsi:type='xs:int'>14</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Заклад соціального захисту населення</Name>
+<Code xsi:type='xs:int'>15</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Станція швидкої медичної допомоги</Name>
+<Code xsi:type='xs:int'>16</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Дитячий табір</Name>
+<Code xsi:type='xs:int'>17</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>База відпочинку та туризму</Name>
+<Code xsi:type='xs:int'>18</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Санаторій</Name>
+<Code xsi:type='xs:int'>19</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Готель</Name>
+<Code xsi:type='xs:int'>20</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Місце відпочинку на природі, об&apos;єкт зеленого туризму, місце полювання, рибальства, рекреаційна зона</Name>
+<Code xsi:type='xs:int'>21</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Заклад дозвілля, видовищний заклад</Name>
+<Code xsi:type='xs:int'>22</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Музей</Name>
+<Code xsi:type='xs:int'>23</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Місце проведення культурно-масових заходів </Name>
+<Code xsi:type='xs:int'>24</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Водно-розважальний об&apos;єкт</Name>
+<Code xsi:type='xs:int'>25</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Заклад громадського харчування</Name>
+<Code xsi:type='xs:int'>26</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Торговельний заклад</Name>
+<Code xsi:type='xs:int'>27</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Відділення зв&apos;язку</Name>
+<Code xsi:type='xs:int'>28</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Промислове підприємство</Name>
+<Code xsi:type='xs:int'>29</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Заклад побутового обслуговування</Name>
+<Code xsi:type='xs:int'>30</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Сільськогосподарське підприємство</Name>
+<Code xsi:type='xs:int'>31</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Шламо, -хвостосховище</Name>
+<Code xsi:type='xs:int'>32</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Об&apos;ект рибного господарства</Name>
+<Code xsi:type='xs:int'>33</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Об&apos;кт лісового господарства</Name>
+<Code xsi:type='xs:int'>34</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Бібліотека</Name>
+<Code xsi:type='xs:int'>35</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Кінно-спортивний комплекс</Name>
+<Code xsi:type='xs:int'>36</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Полігон захоронення ТПВ (сміттєзвалище)</Name>
+<Code xsi:type='xs:int'>38</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Сміттєсортувальна станція</Name>
+<Code xsi:type='xs:int'>40</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Місце захоронення трупів тварин</Name>
+<Code xsi:type='xs:int'>42</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Спортивний заклад (об&apos;єкт)</Name>
+<Code xsi:type='xs:int'>44</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues>
+</Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kvt</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Коди класу Квартали</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><
+Name>17010400</Name><Code xsi:type='xs:double'>17010400</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>17010401</Name><Code xsi:type='xs:double'>17010401</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>17010402</Name><Code xsi:type='xs:double'>17010402</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Kvt_Rep_Rules</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Representation rules</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Площа кварталу садибної та блокованої забудови (га) Кількість ділянок</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Площа кварталу багатоквартирної забудови (га) Кількість квартир</Name>
+<Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Grm_Bdl</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType><Description>Коди класу Громадська будівля</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>17010300</Name>
+<Code xsi:type='xs:double'>17010300</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010301</Name>
+<Code xsi:type='xs:double'>17010301</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010302</Name>
+<Code xsi:type='xs:double'>17010302</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Grm_Bdl_Rep_2000_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Горомадська будівля існуюча</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля проектна</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля, запроектована раніше</Name><Code xsi:type='xs:int'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Free Representation</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Grm_Bdl_Rep_5000_Rules</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля існуюча</Name><Code xsi:type='xs:int'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Громадська будівля проектна</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля, запроектована раніше</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Підлягає знесенню</Name><Code xsi:type='xs:int'>5</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues>
+</Domain>
+</Domains>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<esri:Workspace xmlns:esri='http://www.esri.com/schemas/ArcGIS/10.1' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+<WorkspaceDefinition xsi:type='esri:WorkspaceDefinition'>
+<WorkspaceType>esriRemoteDatabaseWorkspace</WorkspaceType>
+
+<DatasetDefinitions xsi:type='esri:ArrayOfDataElement'>
+<DataElement xsi:type='esri:DEFeatureDataset'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.OBJ_ADR_REJ_ZON</CatalogPath>
+<Name>Cadastr_V6.DBO.OBJ_ADR_REJ_ZON</Name>
+<Children xsi:type='esri:ArrayOfDataElement'>
+<DataElement xsi:type='esri:DEFeatureClass'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.OBJ_ADR_REJ_ZON/FC=Cadastr_V6.DBO.Rej_Vul</CatalogPath>
+
+<Name>Cadastr_V6.DBO.Rej_Vul</Name>
+
+<Field xsi:type='esri:Field'>
+	<Name>OBJECTID</Name>
+	<Type>esriFieldTypeOID</Type>
+	<IsNullable>false</IsNullable>
+	<Length>4</Length>
+	<Precision>10</Precision>
+	<Scale>0</Scale>
+	<Required>true</Required>
+	<Editable>false</Editable>
+	<DomainFixed>true</DomainFixed>
+	<AliasName>OBJECTID</AliasName>
+	<ModelName>OBJECTID</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'><Name>KOD_KLS</Name>
+	<Type>esriFieldTypeDouble</Type>
+	<IsNullable>true</IsNullable>
+	<Length>8</Length>
+	<Precision>38</Precision>
+	<Scale>8</Scale>
+	<AliasName>Код за класифікатором</AliasName>
+	<ModelName>KOD_KLS</ModelName>
+	<DefaultValue xsi:type='xs:double'>21010400</DefaultValue>
+	<Domain xsi:type='esri:CodedValueDomain'>
+		<DomainName>Dmn_Kls_Rej_Vul</DomainName>
+		<FieldType>esriFieldTypeDouble</FieldType>
+		<Description>Реєстр вулиць</Description>
+		<CodedValues xsi:type='esri:ArrayOfCodedValue'>
+		<CodedValue xsi:type='esri:CodedValue'>
+		<Name>21010400</Name>
+		<Code xsi:type='xs:double'>21010400</Code>
+		</CodedValue>
+		</CodedValues>
+	</Domain>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>ID_MSB_OBJ</Name>
+	<Type>esriFieldTypeInteger</Type>
+	<IsNullable>true</IsNullable><Length>4</Length>
+	<Precision>10</Precision>
+	<Scale>0</Scale>
+	<AliasName>Ідентифікатор об’єкту</AliasName>
+	<ModelName>ID_MSB_OBJ</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'><Name>KOD_VUL</Name>
+	<Type>esriFieldTypeInteger</Type>
+	<IsNullable>true</IsNullable>
+	<Length>4</Length>
+	<Precision>10</Precision>
+	<Scale>0</Scale>
+	<AliasName>Реестраційний код вулиці</AliasName>
+	<ModelName>ID_VUL</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>KOD_STAN_VUL</Name>
+	<Type>esriFieldTypeSmallInteger</Type>
+	<IsNullable>true</IsNullable>
+	<Length>2</Length>
+	<Precision>5</Precision><Scale>0</Scale>
+	<AliasName>Стан вулиці</AliasName>
+	<ModelName>KOD_STAN_VUL</ModelName>
+	<Domain xsi:type='esri:CodedValueDomain'>
+		<DomainName>Dmn_Rej_Vul_Kod_Stan_Vul</DomainName>
+		<FieldType>esriFieldTypeSmallInteger</FieldType>
+		<Description>Код стану вулиці</Description>
+		<CodedValues xsi:type='esri:ArrayOfCodedValue'>
+		<CodedValue xsi:type='esri:CodedValue'>
+		<Name>Діюча</Name><Code xsi:type='xs:short'>1</Code>
+		</CodedValue>
+		<CodedValue xsi:type='esri:CodedValue'><Name>Недіюча</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+		<CodedValue xsi:type='esri:CodedValue'><Name>Будується</Name><Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Зруйнована</Name><Code xsi:type='xs:short'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Непроїджі ділянки вулиць</Name>
+		<Code xsi:type='xs:short'>5</Code></CodedValue></CodedValues>
+		</Domain>
+	</Field>
+	
+<Field xsi:type='esri:Field'>
+	<Name>NAZVA_UKR</Name>
+	<Type>esriFieldTypeString</Type>
+	<IsNullable>true</IsNullable>
+	<Length>80</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<AliasName>Назва об’єкта українською мовою</AliasName>
+	<ModelName>NAZVA_UKR</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>NAZVA_ROS</Name>
+	<Type>esriFieldTypeString</Type>
+	<IsNullable>true</IsNullable>
+	<Length>80</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<AliasName>Назва об’єкта російською мовою</AliasName>
+	<ModelName>NAZVA_ROS</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>NAZVA_LAT</Name>
+	<Type>esriFieldTypeString</Type>
+	<IsNullable>true</IsNullable>
+	<Length>80</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<AliasName>Назва об’єкта латиницею</AliasName>
+	<ModelName>NAZVA_LAT</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'><Name>KOD_KAT</Name>
+	<Type>esriFieldTypeSmallInteger</Type>
+	<IsNullable>true</IsNullable>
+	<Length>2</Length><Precision>5</Precision>
+	<Scale>0</Scale>
+	<AliasName>Код категорії вулиці</AliasName>
+	<ModelName>KOD_KAT</ModelName>
+	<Domain xsi:type='esri:CodedValueDomain'>
+		<DomainName>Dmn_Rej_Vul_Kod_Kat</DomainName>
+		<FieldType>esriFieldTypeSmallInteger</FieldType>
+		<Description>Код категорії вулиці</Description>
+		<CodedValues xsi:type='esri:ArrayOfCodedValue'>
+		<CodedValue xsi:type='esri:CodedValue'><Name>Вулиця</Name><Code xsi:type='xs:short'>1</Code>
+		</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Площа</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+		<CodedValue xsi:type='esri:CodedValue'><Name>Майдан</Name><Code xsi:type='xs:short'>3</Code>
+		</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Набережна</Name><Code xsi:type='xs:short'>4</Code></CodedValue>
+		<CodedValue xsi:type='esri:CodedValue'><Name>Шосе</Name><Code xsi:type='xs:short'>5</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Тупик</Name><Code xsi:type='xs:short'>6</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Бульвар</Name><Code xsi:type='xs:short'>7</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Проспект</Name><Code xsi:type='xs:short'>8</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Просіка</Name><Code xsi:type='xs:short'>9</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Алея</Name><Code xsi:type='xs:short'>10</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Провулок</Name><Code xsi:type='xs:short'>11</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Проїзд</Name><Code xsi:type='xs:short'>12</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Узвіз</Name><Code xsi:type='xs:short'>13</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Лінія</Name><Code xsi:type='xs:short'>14</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Дорога</Name><Code xsi:type='xs:short'>15</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+		<Name>Роз&apos;їзд</Name><Code xsi:type='xs:short'>16</Code></CodedValue></CodedValues>
+	</Domain>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>IST_DOV</Name>
+	<Type>esriFieldTypeString</Type>
+	<IsNullable>true</IsNullable>
+	<Length>255</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<AliasName>Історична довідка</AliasName>
+	<ModelName>IST_DOV</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>NZV_MSB_OBJ</Name>
+	<Type>esriFieldTypeString</Type>
+	<IsNullable>true</IsNullable>
+	<Length>255</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<AliasName>Загальна назва вулиці</AliasName>
+	<ModelName>NZV_MSB_OBJ</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>KOATUU</Name>
+	<Type>esriFieldTypeInteger</Type>
+	<IsNullable>true</IsNullable>
+	<Length>4</Length>
+	<Precision>10</Precision>
+	<Scale>0</Scale>
+	<AliasName>KOATUU</AliasName>
+	<ModelName>KOATUU</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>RuleID</Name>
+	<Type>esriFieldTypeInteger</Type>
+	<IsNullable>true</IsNullable>
+	<Length>4</Length>
+	<Precision>10</Precision>
+	<Scale>0</Scale>
+	<Required>true</Required>
+	<AliasName>Умовні знаки</AliasName>
+	<ModelName>RuleID</ModelName>
+	<Domain xsi:type='esri:CodedValueDomain'>
+		<DomainName>Rej_Vul_Rep_Rules</DomainName>
+		<FieldType>esriFieldTypeInteger</FieldType>
+		<Description>Правила представления</Description>
+		<CodedValues xsi:type='esri:ArrayOfCodedValue'>
+		<CodedValue xsi:type='esri:CodedValue'>
+		<Name>Rule_1</Name>
+		<Code xsi:type='xs:int'>1</Code>
+		</CodedValue>
+		<CodedValue xsi:type='esri:CodedValue'>
+		<Name>Свободное представление</Name>
+		<Code xsi:type='xs:int'>-1</Code>
+		</CodedValue>
+		</CodedValues>
+	</Domain>
+</Field>
+
+<Field xsi:type='esri:Field'><Name>Override</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><AliasName>Заміщення</AliasName><ModelName>Override</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable>
+<Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName><ModelName>N_Kad</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'><Name>Prymitka</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable>
+<Length>256</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Примітка</AliasName><ModelName>Prymitka</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPolyline</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef>
+<AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+
+<Field xsi:type='esri:Field'><Name>KodObject</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>KodObject</AliasName><ModelName>KodObject</ModelName></Field>
+
+<Field xsi:type='esri:Field'>
+<Name>Назва_вули</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>64</Length>
+<Precision>0</Precision><Scale>0</Scale><AliasName>Назва_вули</AliasName><ModelName>Назва_вули</ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>NomerDocument</Name>
+	<Type>esriFieldTypeString</Type>
+	<IsNullable>true</IsNullable>
+	<Length>255</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<AliasName>NomerDocument</AliasName>
+	<ModelName></ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>DataDocument</Name>
+	<Type>esriFieldTypeDate</Type>
+	<IsNullable>true</IsNullable>
+	<Length>36</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<AliasName>Дата документа</AliasName>
+	<ModelName></ModelName>
+</Field>
+
+<Field xsi:type='esri:Field'>
+	<Name>SHAPE.STLength()</Name>
+	<Type>esriFieldTypeDouble</Type>
+	<IsNullable>false</IsNullable>
+	<Length>0</Length>
+	<Precision>0</Precision>
+	<Scale>0</Scale>
+	<Required>true</Required>
+	<Editable>false</Editable>
+	<ModelName>SHAPE.STLength()</ModelName>
+</Field>
+
+
+</FieldArray>
+</Fields>
+
+
+<Indexes xsi:type='esri:Indexes'><IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'>
+<Name>R119_pk</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required>
+<Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index><Index xsi:type='esri:Index'><Name>S112_idx</Name>
+<IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'>
+<AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPolyline</GeometryType>
+
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName>
+<ModelName>SHAPE</ModelName></Field></FieldArray></Fields></Index></IndexArray></Indexes><CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID>
+<<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames><AliasName>Реєстр вулиць</AliasName>
+<ModelName></ModelName><HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName>
+<ExtensionProperties xsi:type='esri:PropertySet'><PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships><EditorTrackingEnabled>false</EditorTrackingEnabled>
+<CreatorFieldName></CreatorFieldName><CreatedAtFieldName></CreatedAtFieldName><EditorFieldName></EditorFieldName><EditedAtFieldName></EditedAtFieldName>
+<IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType><ShapeType>esriGeometryPolyline</ShapeType><ShapeFieldName>SHAPE</ShapeFieldName>
+<AreaFieldName></AreaFieldName><LengthFieldName>SHAPE.STLength()</LengthFieldName>
+
+<ChangeTracked>false</ChangeTracked>
+</DataElement>
+<DataElement xsi:type='esri:DEFeatureClass'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.OBJ_ADR_REJ_ZON/FC=Cadastr_V6.DBO.Rej_Bud_Adr</CatalogPath><Name>Cadastr_V6.DBO.Rej_Bud_Adr</Name>
+<DSID>294</DSID><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_KLS</Name><Type>esriFieldTypeDouble</Type><IsNullable>true</IsNullable>
+<Length>8</Length><Precision>38</Precision><Scale>8</Scale><AliasName>Код за класифікатором</AliasName><ModelName>KOD_KLS</ModelName>
+<DefaultValue xsi:type='xs:double'>21010200</DefaultValue><Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Bud_Adr</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType><Description>Реєстр будівельних адрес</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>21010200</Name>
+<Code xsi:type='xs:double'>21010200</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>ID_MSB_OBJ</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор об’єкту</AliasName><ModelName>ID_MSB_OBJ</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>KOATUU</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Коатуу</AliasName><ModelName>KOATUU</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>ID_OBJECT</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName> Ідентифікатор об’єкту будівництва, що адресується</AliasName><ModelName>ID_ADRESS</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>ID_ELEMENT</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Ідентифікатор пойменованого елемента вулично-дорожньої мережі</AliasName><ModelName>ID_ELEMENT</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>NAJM_OBJ</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>255</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Найменування об’єкта</AliasName><ModelName>NAJM_OBJ</ModelName></Field><Field xsi:type='esri:Field'><Name>OPYS_ROZTASH</Name>
+<Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>255</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Опис місцерозташування об’єкту </AliasName><ModelName>OPYS_ROZTASH</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>KOD_STAN_ADR</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision>
+<Scale>0</Scale><AliasName>Стан адреси</AliasName><ModelName>KOD_STAN_ADR</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Bud_Adr_Kod_Stan_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код стану адреси</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Чинна</Name><Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Закрита у зв&apos;язку з завершенням будівництва</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Закрита з інших причин</Name><Code xsi:type='xs:short'>3</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>ID_Adm_Rn</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Адміністративний район</AliasName><ModelName>ID_Adm_Rn</ModelName></Field><Field xsi:type='esri:Field'><Name>ID_Obl</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Область</AliasName>
+<ModelName>ID_Obl</ModelName></Field><Field xsi:type='esri:Field'><Name>ID_Nsl_Pnk</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Населений пункт</AliasName><ModelName>ID_Nsl_Pnk</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>ID_Rej_Vul</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Вулиця</AliasName><ModelName>ID_Rej_Vul</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>NumerBud</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>20</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Номер будинку</AliasName><ModelName>NumerBud</ModelName></Field><Field xsi:type='esri:Field'><Name>Korpus</Name><Type>esriFieldTypeString</Type>
+<IsNullable>true</IsNullable><Length>20</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Корпус</AliasName><ModelName>Korpus</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>KOD_KLS_OBJECT</Name><Type>esriFieldTypeDouble</Type><IsNullable>true</IsNullable><Length>8</Length>
+<Precision>38</Precision><Scale>8</Scale><AliasName>Код класу об&apos;єкту, що адресується</AliasName><ModelName>KOD_KLS_OBJECT</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>Address_Str</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>255</Length>
+<Precision>0</Precision><Scale>0</Scale><AliasName>Адреса (для підписів)</AliasName><ModelName>Address_Str</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>RuleID</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Умовні знаки</AliasName><ModelName>RuleID</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Rej_Bud_Adr_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Rule_1</Name><Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>Override</Name>
+<Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required>
+<AliasName>Заміщення</AliasName><ModelName>Override</ModelName></Field><Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPoint</GeometryType>
+
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName><ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>Prymitka</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>256</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Примітка</AliasName><ModelName>Prymitka</ModelName></Field></FieldArray></Fields><Indexes xsi:type='esri:Indexes'>
+<IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R22_pk</Name><IsUnique>true</IsUnique>
+<IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required>
+<Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index>
+<Index xsi:type='esri:Index'><Name>S16_idx</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPoint</GeometryType>
+
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+</FieldArray></Fields></Index></IndexArray></Indexes><CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><
+<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames><AliasName>Реєстр будівельних адрес</AliasName><ModelName>
+</ModelName><HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName>
+<ExtensionProperties xsi:type='esri:PropertySet'><PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray>
+</ExtensionProperties><ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled><CreatorFieldName></CreatorFieldName><CreatedAtFieldName></CreatedAtFieldName>
+<EditorFieldName></EditorFieldName><EditedAtFieldName></EditedAtFieldName><IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType>
+<ShapeType>esriGeometryPoint</ShapeType><ShapeFieldName>SHAPE</ShapeFieldName>
+<AreaFieldName></AreaFieldName><LengthFieldName></LengthFieldName>
+
+<ChangeTracked>false</ChangeTracked></DataElement>
+<DataElement xsi:type='esri:DEFeatureClass'><CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.OBJ_ADR_REJ_ZON/FC=Cadastr_V6.DBO.Rej_Adr_Poh</CatalogPath>
+<Name>Cadastr_V6.DBO.Rej_Adr_Poh</Name><DSID>293</DSID><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_KLS</Name>
+<Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>8</Length>
+<Precision>38</Precision><Scale>8</Scale><AliasName>Код за класифікатором</AliasName><ModelName>KOD_KLS</ModelName>
+<DefaultValue xsi:type='xs:double'>21010300</DefaultValue><Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Adr_Poh</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType><Description>Реєстр адрес будівель похідний</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>21010300</Name><Code xsi:type='xs:double'>21010300</Code>
+</CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>ID_MSB_OBJ</Name><Type>esriFieldTypeDouble</Type>
+<IsNullable>true</IsNullable><Length>8</Length><Precision>38</Precision><Scale>8</Scale><AliasName>Ідентифікатор об’єкту</AliasName>
+<ModelName>ID_MSB_OBJ</ModelName></Field><Field xsi:type='esri:Field'><Name>ID_ADRESS</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName> Ідентифікатор адреси</AliasName>
+<ModelName>ID_ADRESS</ModelName></Field><Field xsi:type='esri:Field'><Name>ID_ELEMENT</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Ідентифікатор пойменованого елемента вулично-дорожньої мережі</AliasName><ModelName>ID_ELEMENT</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>ID_ADR_PERV</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор адреси первинного об’єкта адресації</AliasName><ModelName>NOM_ADR_PERV</ModelName>
+</Field>
+<Field xsi:type='esri:Field'><Name>ID_OBJECT_POH</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатори об’єкта похідної адреси</AliasName><ModelName>NOM_ADR_POH</ModelName>
+</Field><Field xsi:type='esri:Field'><Name>KOD_TYP_OBJ_ADR</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable>
+<Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Тип об’єкта адресації</AliasName><ModelName>KOD_TYP_OBJ_ADR</ModelName>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Typ_Obj_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу об’єкта адресації</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Первинний</Name><Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Похідний</Name><Code xsi:type='xs:short'>2</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>KOD_TYP_OBJ_POH_ADR</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision>
+<Scale>0</Scale><AliasName>Тип об’єкта похідної адреси</AliasName><ModelName>KOD_TYP_OBJ_POH_ADR</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Rej_Adr_Poh_Kod_Typ_Obj_Poh_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу об’єкта похідної адреси</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Будівля</Name><Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Споруда</Name>
+<Code xsi:type='xs:short'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Корпус</Name>
+<Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Павільон</Name>
+<Code xsi:type='xs:short'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Квартира</Name>
+<Code xsi:type='xs:short'>5</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Офіс</Name>
+<Code xsi:type='xs:short'>6</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Кімната</Name>
+<Code xsi:type='xs:short'>7</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>KOD_TYP_ADR</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Тип адреси</AliasName><ModelName>KOD_TYP_ADR</ModelName>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Typ_Obj_Poh_Adr</DomainName>
+<FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу об’єкта похідної адреси</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Будівля</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Споруда</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Корпус</Name><Code xsi:type='xs:short'>3</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Павільон</Name><Code xsi:type='xs:short'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Квартира</Name><Code xsi:type='xs:short'>5</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Офіс</Name><Code xsi:type='xs:short'>6</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Кімната</Name><Code xsi:type='xs:short'>7</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>KOD_FUNC_PRYZN</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable>
+<Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Тип переважного функціонального призначення об’єкта</AliasName>
+<ModelName>KOD_FUNC_PRYZN</ModelName><Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Func_Pryzn</DomainName>
+<FieldType>esriFieldTypeSmallInteger</FieldType><Description>Код переважного функціонального призначення об’єкта</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Жилі</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Нежилі</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Громадські</Name><Code xsi:type='xs:short'>3</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Культові</Name><Code xsi:type='xs:short'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Виробничі</Name><Code xsi:type='xs:short'>5</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Учбові</Name><Code xsi:type='xs:short'>6</Code></CodedValue></CodedValues>
+</Domain></Field><Field xsi:type='esri:Field'><Name>NAJM_OBJ</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>255</Length>
+<Precision>0</Precision><Scale>0</Scale><AliasName>Найменування об’єкта</AliasName><ModelName>NAJM_OBJ</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SKOR_NAJM_OBJ</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>50</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Скорочене найменування об’єкту</AliasName><ModelName>SKOR_NAJM_OBJ</ModelName></Field><Field xsi:type='esri:Field'><Name>ID_Adm_Rn</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Ідентифікатор адміністративного району</AliasName><ModelName>ID_ADMIN_RAJ</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>INDEX_POSH_VID</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Індекс поштового відділення</AliasName><ModelName>INDEX_POSH_VID</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>KOD_STAN_ADR</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>false</IsNullable><Length>2</Length><Precision>5</Precision>
+<Scale>0</Scale><AliasName>Стан адреси</AliasName><ModelName>KOD_STAN_ADR</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Poh_Kod_Stan_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код стану адреси</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Чинна</Name>
+<Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Анульована</Name>
+<Code xsi:type='xs:short'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Змінена у зв&apos;язку з переадресацією</Name>
+<Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Змінена у зв&apos;язку з реструктуризацією</Name>
+<Code xsi:type='xs:short'>4</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>ID_Obl</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>область</AliasName><ModelName>ID_Obl</ModelName></Field><Field xsi:type='esri:Field'><Name>ID_Nsl_Pnk</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>населений пукт</AliasName><ModelName>ID_Nsl_Pnk</ModelName></Field><Field xsi:type='esri:Field'><Name>ID_Rej_Vul</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Посилання на вулицю</AliasName><ModelName>ID_Rej_Vul</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>NumerBud</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>20</Length><Precision>0</Precision>
+<Scale>0</Scale><AliasName>Номер будинку</AliasName><ModelName>NumerBud</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>Korpus</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>50</Length><Precision>0</Precision>
+<Scale>0</Scale><AliasName>Корпус</AliasName><ModelName>Korpus</ModelName></Field><Field xsi:type='esri:Field'><Name>Address_Str</Name>
+<Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>255</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Address_Str</AliasName><ModelName>Address_Str</ModelName></Field><Field xsi:type='esri:Field'><Name>RuleID</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Умовні знаки</AliasName><ModelName>RuleID</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Rej_Adr_Poh_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Rule_1</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>Override</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision>
+<Scale>0</Scale><Required>true</Required><AliasName>Заміщення</AliasName><ModelName>Override</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPoint</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName><ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>Prymitka</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>256</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Примітка</AliasName><ModelName>Prymitka</ModelName></Field></FieldArray></Fields><Indexes xsi:type='esri:Indexes'>
+<IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R21_pk</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index><Index xsi:type='esri:Index'><Name>S15_idx</Name>
+<IsUnique>true</IsUnique><IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPoint</GeometryType>
+
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+</FieldArray></Fields></Index></IndexArray></Indexes><CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><
+<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames><AliasName>Реєстр адрес будівель похідний</AliasName><ModelName></ModelName>
+<HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName><ExtensionProperties xsi:type='esri:PropertySet'>
+<PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled><CreatorFieldName></CreatorFieldName>
+<CreatedAtFieldName></CreatedAtFieldName><EditorFieldName></EditorFieldName><EditedAtFieldName></EditedAtFieldName><IsTimeInUTC>true</IsTimeInUTC>
+<FeatureType>esriFTSimple</FeatureType><ShapeType>esriGeometryPoint</ShapeType><ShapeFieldName>SHAPE</ShapeFieldName><AreaFieldName></AreaFieldName>
+<LengthFieldName></LengthFieldName>
+
+<ChangeTracked>false</ChangeTracked></DataElement>
+<DataElement xsi:type='esri:DEFeatureClass'><CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.OBJ_ADR_REJ_ZON/FC=Cadastr_V6.DBO.Rej_Adr_Osnov</CatalogPath>
+<Name>Cadastr_V6.DBO.Rej_Adr_Osnov</Name><DSID>292</DSID><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>KOD_KLS</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>8</Length><Precision>38</Precision><Scale>8</Scale>
+<AliasName>Код за класифікатором</AliasName><ModelName>KOD_KLS</ModelName><DefaultValue xsi:type='xs:double'>21010100</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Adr_Osnov</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Реєстр адрес основний</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>21010100</Name><Code xsi:type='xs:double'>21010100</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>ID_MSB_OBJ</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Ідентифікатор об’єкту</AliasName><ModelName>ID_MSB_OBJ</ModelName></Field><Field xsi:type='esri:Field'><Name>KOATUU</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Коатуу</AliasName><ModelName>KOATUU</ModelName></Field><Field xsi:type='esri:Field'><Name>NAJM_OBJ</Name>
+<Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>255</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Найменування об’єкта</AliasName><ModelName>NAJM_OBJ</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SKOR_NAJM_OBJ</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>50</Length>
+<Precision>0</Precision><Scale>0</Scale><AliasName>Скорочене найменування об’єкту</AliasName><ModelName>SKOR_NAJM_OBJ</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>ID_ADRESS</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName> Ідентифікатор адреси</AliasName><ModelName>ID_ADRESS</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>ID_ELEMENT</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор пойменованого елемента вулично-дорожньої мережі</AliasName>
+<ModelName>ID_ELEMENT</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_TYP_OBJ_ADR</Name><Type>esriFieldTypeSmallInteger</Type>
+<IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Тип об’єкта адресації</AliasName>
+<ModelName>KOD_TYP_OBJ_ADR</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Rej_Adr_Osnov_Kod_Typ_Obj_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу об’єкта адресації</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Первинний</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Похідний</Name><Code xsi:type='xs:short'>2</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>KOD_TYP_ADR</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Тип адреси</AliasName><ModelName>KOD_TYP_ADR</ModelName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Rej_Adr_Osnov_Kod_Typ_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код типу адреси</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Звичайна</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Будинок на розі</Name><Code xsi:type='xs:short'>2</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>KOD_FUNC_PRYZN</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Код переважного функціонального призначення об’єкта</AliasName>
+<ModelName>KOD_FUNC_PRYZN</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Rej_Adr_Osnov_Kod_Func_Pryzn</DomainName>
+<FieldType>esriFieldTypeSmallInteger</FieldType><Description>Код переважного функціонального призначення об’єкта</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Жилі</Name><Code xsi:type='xs:short'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Нежилі</Name><Code xsi:type='xs:short'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Громадські</Name><Code xsi:type='xs:short'>3</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Культові</Name><Code xsi:type='xs:short'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Виробничі</Name><Code xsi:type='xs:short'>5</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Учбові</Name><Code xsi:type='xs:short'>6</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>KOD_STAN_ADR</Name><Type>esriFieldTypeSmallInteger</Type>
+<IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Статус об&apos;єкту</AliasName>
+<ModelName>KOD_STAN_ADR</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Rej_Adr_Osnov_Kod_Stan_Adr</DomainName><FieldType>esriFieldTypeSmallInteger</FieldType>
+<Description>Код стану адреси</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Чинна</Name><Code xsi:type='xs:short'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Анульована</Name>
+<Code xsi:type='xs:short'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Змінена у зв&apos;язку з переадресацією</Name>
+<Code xsi:type='xs:short'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Змінена у зв&apos;язку з реструктуризацією</Name>
+<Code xsi:type='xs:short'>4</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>ID_Adm_Rn</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Адмінстративний район</AliasName><ModelName>ID_Adm_Rn</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>ID_Obl</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Посилання на область</AliasName><ModelName>ID_Obl</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>ID_Nsl_Pnk</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision>
+<Scale>0</Scale><AliasName>Населений пукт</AliasName><ModelName>ID_Nsl_Pnk</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>ID_Rej_Vul</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Посилання на вулицю</AliasName><ModelName>ID_Rej_Vul</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>NumerBud</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>20</Length><Precision>0</Precision>
+<Scale>0</Scale><AliasName>Номер будинку</AliasName><ModelName>NumerBud</ModelName></Field><Field xsi:type='esri:Field'><Name>Korpus</Name>
+<Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>20</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Корпус</AliasName>
+<ModelName>Korpus</ModelName></Field><Field xsi:type='esri:Field'><Name>INDEX_POSH_VID</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Індекс поштового відділення</AliasName><ModelName>INDEX_POSH_VID</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>RuleID</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><AliasName>Умовні знаки</AliasName><ModelName>RuleID</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Rej_Adr_Osnov_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Rule_1</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>Override</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable>
+<Length>0</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><AliasName>Заміщення</AliasName>
+<ModelName>Override</ModelName></Field><Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required>
+<DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPoint</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision>
+<Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName><ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>Prymitka</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>256</Length><Precision>0</Precision>
+<Scale>0</Scale><AliasName>Примітка</AliasName><ModelName>Prymitka</ModelName></Field></FieldArray></Fields><Indexes xsi:type='esri:Indexes'>
+<IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R20_pk</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index><Index xsi:type='esri:Index'><Name>S14_idx</Name><IsUnique>true</IsUnique>
+<IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPoint</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+</FieldArray></Fields></Index></IndexArray></Indexes><CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><
+<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames><AliasName>Реєстр адрес основний</AliasName><ModelName></ModelName>
+<HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName><ExtensionProperties xsi:type='esri:PropertySet'>
+<PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled><CreatorFieldName></CreatorFieldName><CreatedAtFieldName></CreatedAtFieldName>
+<EditorFieldName></EditorFieldName><EditedAtFieldName></EditedAtFieldName><IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType>
+<ShapeType>esriGeometryPoint</ShapeType><ShapeFieldName>SHAPE</ShapeFieldName><AreaFieldName></AreaFieldName><LengthFieldName></LengthFieldName>
+
+<ChangeTracked>false</ChangeTracked></DataElement>
+<DataElement xsi:type='esri:DEFeatureClass'><CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.OBJ_ADR_REJ_ZON/FC=Cadastr_V6.DBO.Rej_Adm_Raj_Mis</CatalogPath>
+<Name>Cadastr_V6.DBO.Rej_Adm_Raj_Mis</Name><DSID>291</DSID><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>KOD_KLS</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>8</Length><Precision>38</Precision>
+<Scale>8</Scale><AliasName>Код за класифікатором</AliasName><ModelName>KOD_KLS</ModelName><DefaultValue xsi:type='xs:double'>21010500</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kls_Rej_Adm_Rai_Mis</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Реєстр адміністративних районів міста</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>21010500</Name>
+<Code xsi:type='xs:double'>21010500</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>ID_MSB_OBJ</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор об’єкту</AliasName><ModelName>ID_MSB_OBJ</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>ID_RAI</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор району</AliasName><ModelName>ID_RAI</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>KOD_KOATUU_RAI</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Код КОАТУУ адміністративного району міста</AliasName>
+<ModelName>KOD_KOATUU_RAI</ModelName></Field><Field xsi:type='esri:Field'><Name>NAZVA_UKR</Name><Type>esriFieldTypeString</Type>
+<IsNullable>true</IsNullable><Length>80</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Назва району українською мовою</AliasName>
+<ModelName>NAZVA_UKR</ModelName></Field><Field xsi:type='esri:Field'><Name>NAZVA_ROS</Name><Type>esriFieldTypeString</Type>
+<IsNullable>true</IsNullable><Length>80</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Назва району російською мовою</AliasName>
+<ModelName>NAZVA_ROS</ModelName></Field><Field xsi:type='esri:Field'><Name>NAZVA_LAT</Name><Type>esriFieldTypeString</Type>
+<IsNullable>true</IsNullable><Length>80</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Назва району латиницею</AliasName>
+<ModelName>NAZVA_LAT</ModelName></Field><Field xsi:type='esri:Field'><Name>RuleID</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required>
+<AliasName>Умовні знаки</AliasName><ModelName>RuleID</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Rej_Adm_Raj_Mis_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Rule_1</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>Override</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable>
+<Length>0</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><AliasName>Заміщення</AliasName>
+<ModelName>Override</ModelName></Field><Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required>
+<DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPolygon</GeometryType>
+
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName><ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>Prymitka</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>256</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Примітка</AliasName><ModelName>Prymitka</ModelName></Field><Field xsi:type='esri:Field'><Name>SHAPE.STLength()</Name><
+Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STLength()</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SHAPE.STArea()</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length><Precision>0</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STArea()</ModelName></Field></FieldArray></Fields>
+<Indexes xsi:type='esri:Indexes'><IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R19_pk</Name>
+<IsUnique>true</IsUnique><IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index>
+<Index xsi:type='esri:Index'><Name>S13_idx</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending><Field xsi:type='esri:Field'>
+<Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPolygon</GeometryType><GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName>
+<ModelName>SHAPE</ModelName></Field></FieldArray></Fields></Index></IndexArray></Indexes>
+<CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames>
+<AliasName>Реєстр адміністративних районів міста</AliasName><ModelName></ModelName><HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName>
+<RasterFieldName></RasterFieldName><ExtensionProperties xsi:type='esri:PropertySet'>
+<PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled><CreatorFieldName></CreatorFieldName>
+<CreatedAtFieldName></CreatedAtFieldName><EditorFieldName></EditorFieldName><EditedAtFieldName></EditedAtFieldName>
+<IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType><ShapeType>esriGeometryPolygon</ShapeType>
+<ShapeFieldName>SHAPE</ShapeFieldName><AreaFieldName>SHAPE.STArea()</AreaFieldName><LengthFieldName>SHAPE.STLength()</LengthFieldName>
+<ChangeTracked>false</ChangeTracked></DataElement></Children>
+<DatasetType>esriDTFeatureDataset</DatasetType><DSID>290</DSID>
+
+<ChangeTracked>false</ChangeTracked></DataElement></DatasetDefinitions></WorkspaceDefinition>
+<WorkspaceData xsi:type='esri:WorkspaceData'>
+</WorkspaceData>
+</esri:Workspace>
+
+
+
+
+
+
+
+<esri:Workspace xmlns:esri='http://www.esri.com/schemas/ArcGIS/10.1' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema'><WorkspaceDefinition xsi:type='esri:WorkspaceDefinition'>
+<WorkspaceType>esriRemoteDatabaseWorkspace</WorkspaceType>
+
+<DatasetDefinitions xsi:type='esri:ArrayOfDataElement'><DataElement xsi:type='esri:DEFeatureDataset'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.BDL_SPR</CatalogPath>
+<Name>Cadastr_V6.DBO.BDL_SPR</Name>
+<Children xsi:type='esri:ArrayOfDataElement'><DataElement xsi:type='esri:DEFeatureClass'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.BDL_SPR/FC=Cadastr_V6.DBO.Grm_Bdl</CatalogPath><Name>Cadastr_V6.DBO.Grm_Bdl</Name>
+<DSID>395</DSID><Versioned>false</Versioned><Field xsi:type='esri:Field'>
+<Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required>
+<Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_KLS</Name>
+<Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>8</Length>
+<Precision>38</Precision><Scale>8</Scale><AliasName>Код за класифікатором</AliasName>
+<ModelName>KOD_KLS</ModelName><DefaultValue xsi:type='xs:double'>17010300</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Grm_Bdl</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType><Description>Коди класу Громадська будівля</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>17010300</Name>
+<Code xsi:type='xs:double'>17010300</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010301</Name>
+<Code xsi:type='xs:double'>17010301</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010302</Name>
+<Code xsi:type='xs:double'>17010302</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>ID_MSB_OBJ</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор об’єкту</AliasName><ModelName>ID_MSB_OBJ</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>KOD_STS</Name><Type>esriFieldTypeInteger</Type><IsNullable>false</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Статус об&apos;єкту</AliasName><ModelName>KOD_STS</ModelName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue><Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Класифікатор статусу  об&apos;єкта містобудівної діяльност</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>існуючий</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>проектний</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>запроектовано раніше</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>підлягає знесенню</Name><Code xsi:type='xs:int'>4</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>KLK_PVH</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Кількість поверхів</AliasName><ModelName>KLK_PVH</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>RuleID_2000</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><AliasName>Умовні знаки (1:2 000 і кр.)</AliasName><ModelName>RuleID_2000</ModelName>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Grm_Bdl_Rep_2000_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Горомадська будівля існуюча</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля проектна</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля, запроектована раніше</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Free Representation</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>Override_2000</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable>
+<Length>0</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><AliasName>Заміщення (1:2 000 і кр.)</AliasName>
+<ModelName>Override_2000</ModelName></Field><Field xsi:type='esri:Field'><Name>RuleID_5000</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required>
+<AliasName>Умовні знаки (1:5 000)</AliasName><ModelName>RuleID_5000</ModelName>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Grm_Bdl_Rep_5000_Rules</DomainName>
+<FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля існуюча</Name><Code xsi:type='xs:int'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Громадська будівля проектна</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Громадська будівля, запроектована раніше</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Підлягає знесенню</Name><Code xsi:type='xs:int'>5</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>Override_5000</Name><Type>esriFieldTypeBlob</Type>
+<IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Заміщення (1:5 000)</AliasName><ModelName>Override_5000</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>KOD_TYP_BDN</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>KOD_TYP_BDN</AliasName><ModelName>KOD_TYP_BDN</ModelName>
+<DefaultValue xsi:type='xs:double'>0</DefaultValue></Field><Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPolygon</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type>
+<IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName>
+<ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'><Name>Pidcode</Name><Type>esriFieldTypeSmallInteger</Type>
+<IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Підкод типу документа</AliasName>
+<ModelName>Pidcode</ModelName></Field><Field xsi:type='esri:Field'><Name>Prymitka</Name><Type>esriFieldTypeString</Type>
+<IsNullable>true</IsNullable><Length>256</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Примітка</AliasName>
+<ModelName></ModelName></Field><Field xsi:type='esri:Field'><Name>SHAPE.STArea()</Name><Type>esriFieldTypeDouble</Type>
+<IsNullable>false</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required>
+<Editable>false</Editable><ModelName>SHAPE.STArea()</ModelName></Field><Field xsi:type='esri:Field'><Name>SHAPE.STLength()</Name>
+<Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STLength()</ModelName></Field></FieldArray></Fields>
+<Indexes xsi:type='esri:Indexes'><IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R112_pk</Name>
+<IsUnique>true</IsUnique><IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index>
+<Index xsi:type='esri:Index'><Name>S106_idx</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPolygon</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field></FieldArray></Fields></Index>
+</IndexArray></Indexes><CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><
+<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames><AliasName>Громадські будівлі</AliasName><ModelName></ModelName>
+<HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName>
+<ExtensionProperties xsi:type='esri:PropertySet'><PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'>
+</PropertyArray></ExtensionProperties><SubtypeFieldName>KOD_TYP_BDN</SubtypeFieldName><DefaultSubtypeCode>0</DefaultSubtypeCode>
+<Subtypes xsi:type='esri:ArrayOfSubtype'><Subtype xsi:type='esri:Subtype'><SubtypeName>Не визначено</SubtypeName>
+<SubtypeCode>0</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Grm_Bdl</DomainName>
+<DefaultValue xsi:type='xs:double'>17010300</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID_2000</FieldName>
+<DomainName>Grm_Bdl_Rep_2000_Rules</DomainName></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID_5000</FieldName>
+<DomainName>Grm_Bdl_Rep_5000_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Громадська будівля</SubtypeName>
+<SubtypeCode>1</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Grm_Bdl</DomainName><DefaultValue xsi:type='xs:double'>17010301</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID_2000</FieldName>
+<DomainName>Grm_Bdl_Rep_2000_Rules</DomainName></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID_5000</FieldName>
+<DomainName>Grm_Bdl_Rep_5000_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Громадська будівля запроектована раніше</SubtypeName>
+<SubtypeCode>2</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Grm_Bdl</DomainName><DefaultValue xsi:type='xs:double'>17010302</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID_2000</FieldName>
+<DomainName>Grm_Bdl_Rep_2000_Rules</DomainName></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID_5000</FieldName>
+<DomainName>Grm_Bdl_Rep_5000_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype></Subtypes>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled><CreatorFieldName></CreatorFieldName>
+<CreatedAtFieldName></CreatedAtFieldName><EditorFieldName></EditorFieldName>
+<EditedAtFieldName></EditedAtFieldName><IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType>
+<ShapeType>esriGeometryPolygon</ShapeType><ShapeFieldName>SHAPE</ShapeFieldName>
+<AreaFieldName>SHAPE.STArea()</AreaFieldName><LengthFieldName>SHAPE.STLength()</LengthFieldName>
+<ChangeTracked>false</ChangeTracked></DataElement>
+<DataElement xsi:type='esri:DEFeatureClass'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.BDL_SPR/FC=Cadastr_V6.DBO.Kvt</CatalogPath><Name>Cadastr_V6.DBO.Kvt</Name>
+<DSID>394</DSID><Versioned>false</Versioned><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required>
+<Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>KOD_KLS</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable>
+<Length>8</Length><Precision>38</Precision><Scale>8</Scale><AliasName>Код за класифікатором</AliasName>
+<ModelName>KOD_KLS</ModelName><DefaultValue xsi:type='xs:double'>17010400</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Kvt</DomainName>
+<FieldType>esriFieldTypeDouble</FieldType><Description>Коди класу Квартали</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>17010400</Name>
+<Code xsi:type='xs:double'>17010400</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>17010401</Name><Code xsi:type='xs:double'>17010401</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>17010402</Name><Code xsi:type='xs:double'>17010402</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>ID_MSB_OBJ</Name><Type>esriFieldTypeDouble</Type><IsNullable>true</IsNullable>
+<Length>8</Length><Precision>38</Precision><Scale>8</Scale><AliasName>Ідентифікатор об’єкту</AliasName>
+<ModelName>ID_MSB_OBJ</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_STS</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Статус об&apos;єкту</AliasName><ModelName>KOD_STS</ModelName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Класифікатор статусу  об&apos;єкта містобудівної діяльност</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>існуючий</Name><Code xsi:type='xs:int'>1</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>проектний</Name><Code xsi:type='xs:int'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>запроектовано раніше</Name>
+<Code xsi:type='xs:int'>3</Code>
+</CodedValue>
+<CodedValue xsi:type='esri:CodedValue'>
+<Name>підлягає знесенню</Name>
+<Code xsi:type='xs:int'>4</Code>
+</CodedValue>
+</CodedValues>
+</Domain>
+</Field>
+<Field xsi:type='esri:Field'><Name>NMR_KVT</Name>
+<Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable>
+<Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Номер кварталу</AliasName>
+<ModelName>NMR_KVT</ModelName>
+</Field>
+<Field xsi:type='esri:Field'><Name>KLK_DLK</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Кількість ділянок</AliasName><ModelName>KLK_DLK</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>PLH_BLK</Name><Type>esriFieldTypeDouble</Type><IsNullable>true</IsNullable>
+<Length>8</Length><Precision>38</Precision><Scale>8</Scale><AliasName>Площа ділянок</AliasName>
+<ModelName>PLH_BLK</ModelName></Field><Field xsi:type='esri:Field'><Name>RuleID</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><AliasName>Умовні знаки</AliasName>
+<ModelName>RuleID</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Kvt_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Representation rules</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'>
+<Name>Площа кварталу садибної та блокованої забудови (га) Кількість ділянок</Name>
+<Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Площа кварталу багатоквартирної забудови (га) Кількість квартир</Name>
+<Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name>
+<Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>Override</Name>
+<Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<AliasName>Заміщення</AliasName><ModelName>Override</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_TYP_KVT</Name>
+<Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>KOD_TYP_KVT</AliasName><ModelName>KOD_TYP_KVT</ModelName><DefaultValue xsi:type='xs:double'>0</DefaultValue></Field>
+<Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPolygon</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable>
+<Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName>
+<ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'><Name>Pidcode</Name>
+<Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Підкод типу документа</AliasName>
+<ModelName>Pidcode</ModelName></Field><Field xsi:type='esri:Field'><Name>Prymitka</Name>
+<Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>256</Length>
+<Precision>0</Precision><Scale>0</Scale><AliasName>Примітка</AliasName><ModelName></ModelName></Field>
+<Field xsi:type='esri:Field'><Name>SHAPE.STArea()</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable>
+<Length>0</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<ModelName>SHAPE.STArea()</ModelName></Field><Field xsi:type='esri:Field'><Name>SHAPE.STLength()</Name>
+<Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length><Precision>0</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STLength()</ModelName>
+</Field></FieldArray></Fields><Indexes xsi:type='esri:Indexes'><IndexArray xsi:type='esri:ArrayOfIndex'>
+<Index xsi:type='esri:Index'><Name>R111_pk</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field></FieldArray>
+</Fields></Index><Index xsi:type='esri:Index'><Name>S105_idx</Name><IsUnique>true</IsUnique>
+<IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>SHAPE</Name>
+<Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision>
+<Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'>
+<AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPolygon</GeometryType><GridSize0>-6</GridSize0></GeometryDef>
+<AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field></FieldArray></Fields></Index></IndexArray></Indexes>
+<CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><
+<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames>
+<AliasName>Квартали</AliasName><ModelName></ModelName><HasGlobalID>false</HasGlobalID>
+<GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName>
+<ExtensionProperties xsi:type='esri:PropertySet'>
+<PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<SubtypeFieldName>KOD_TYP_KVT</SubtypeFieldName><DefaultSubtypeCode>0</DefaultSubtypeCode>
+<Subtypes xsi:type='esri:ArrayOfSubtype'><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Не визначено</SubtypeName><SubtypeCode>0</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Kvt</DomainName>
+<DefaultValue xsi:type='xs:double'>17010400</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Kvt_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Квартал садибної та блокованої забудови</SubtypeName><SubtypeCode>1</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Kvt</DomainName><DefaultValue xsi:type='xs:double'>17010401</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Kvt_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Квартал багатоквартирноїї забудови</SubtypeName><SubtypeCode>2</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Kvt</DomainName><DefaultValue xsi:type='xs:double'>17010402</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Kvt_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype></Subtypes>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled><CreatorFieldName></CreatorFieldName><CreatedAtFieldName></CreatedAtFieldName>
+<EditorFieldName></EditorFieldName><EditedAtFieldName></EditedAtFieldName><IsTimeInUTC>true</IsTimeInUTC>
+<FeatureType>esriFTSimple</FeatureType><ShapeType>esriGeometryPolygon</ShapeType><ShapeFieldName>SHAPE</ShapeFieldName>
+<AreaFieldName>SHAPE.STArea()</AreaFieldName><LengthFieldName>SHAPE.STLength()</LengthFieldName>
+<ChangeTracked>false</ChangeTracked></DataElement><DataElement xsi:type='esri:DEFeatureClass'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.BDL_SPR/FC=Cadastr_V6.DBO.Obj_Scl_Sft_Ecn</CatalogPath>
+<Name>Cadastr_V6.DBO.Obj_Scl_Sft_Ecn</Name><DSID>393</DSID><Versioned>false</Versioned><Field xsi:type='esri:Field'>
+<Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_KLS</Name><Type>esriFieldTypeDouble</Type>
+<IsNullable>false</IsNullable><Length>8</Length><Precision>38</Precision><Scale>8</Scale>
+<AliasName>Код за класифікатором</AliasName><ModelName>KOD_KLS</ModelName><DefaultValue xsi:type='xs:double'>17010500</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><FieldType>esriFieldTypeDouble</FieldType>
+<Description>Коди Об’єкти соціальної сфери та економіки</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010500</Name><Code xsi:type='xs:double'>17010500</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010501</Name><Code xsi:type='xs:double'>17010501</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010502</Name><Code xsi:type='xs:double'>17010502</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010503</Name><Code xsi:type='xs:double'>17010503</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010504</Name><Code xsi:type='xs:double'>17010504</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010505</Name><Code xsi:type='xs:double'>17010505</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010506</Name><Code xsi:type='xs:double'>17010506</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010507</Name><Code xsi:type='xs:double'>17010507</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010508</Name><Code xsi:type='xs:double'>17010508</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010509</Name><Code xsi:type='xs:double'>17010509</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010510</Name><Code xsi:type='xs:double'>17010510</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010511</Name><Code xsi:type='xs:double'>17010511</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010512</Name><Code xsi:type='xs:double'>17010512</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010513</Name><Code xsi:type='xs:double'>17010513</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010514</Name><Code xsi:type='xs:double'>17010514</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010515</Name><Code xsi:type='xs:double'>17010515</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010516</Name><Code xsi:type='xs:double'>17010516</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010517</Name><Code xsi:type='xs:double'>17010517</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010518</Name><Code xsi:type='xs:double'>17010518</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010519</Name><Code xsi:type='xs:double'>17010519</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010520</Name><Code xsi:type='xs:double'>17010520</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010521</Name><Code xsi:type='xs:double'>17010521</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010522</Name><Code xsi:type='xs:double'>17010522</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010523</Name><Code xsi:type='xs:double'>17010523</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010524</Name><Code xsi:type='xs:double'>17010524</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010525</Name><Code xsi:type='xs:double'>17010525</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010526</Name><Code xsi:type='xs:double'>17010526</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010527</Name><Code xsi:type='xs:double'>17010527</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010528</Name><Code xsi:type='xs:double'>17010528</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010529</Name><Code xsi:type='xs:double'>17010529</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010530</Name><Code xsi:type='xs:double'>17010530</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010531</Name><Code xsi:type='xs:double'>17010531</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010532</Name><Code xsi:type='xs:double'>17010532</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010533</Name><Code xsi:type='xs:double'>17010533</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010534</Name><Code xsi:type='xs:double'>17010534</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010535</Name><Code xsi:type='xs:double'>17010535</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010536</Name><Code xsi:type='xs:double'>17010536</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010537</Name><Code xsi:type='xs:double'>17010537</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010538</Name><Code xsi:type='xs:double'>17010538</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010539</Name><Code xsi:type='xs:double'>17010539</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010540</Name><Code xsi:type='xs:double'>17010540</Code></CodedValue>
+</CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>ID_MSB_OBJ</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор об’єкту</AliasName>
+<ModelName>ID_MSB_OBJ</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_STS</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Статус об&apos;єкту</AliasName>
+<ModelName>KOD_STS</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Класифікатор статусу  об&apos;єкта містобудівної діяльност</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>існуючий</Name><Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>проектний</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>запроектовано раніше</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>підлягає знесенню</Name><Code xsi:type='xs:int'>4</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>KOD_TYP_OBJ</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Код типу Об’єкту</AliasName><ModelName>KOD_TYP_OBJ</ModelName>
+<DefaultValue xsi:type='xs:double'>0</DefaultValue></Field>
+<Field xsi:type='esri:Field'><Name>RuleID</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required>
+<AliasName>Умовні знаки</AliasName><ModelName>RuleID</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>Школа загальноосвітня І-ІІІ ступенів</Name>
+<Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Школа загальноосвітня І-ІІ ступенів</Name><Code xsi:type='xs:int'>2</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Школа загальноосвітня І ступеня</Name><Code xsi:type='xs:int'>3</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Дошкільний навчальний заклад</Name><Code xsi:type='xs:int'>4</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Спеціальний навчальний заклад</Name><Code xsi:type='xs:int'>5</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>нший середній навчальний заклад</Name><Code xsi:type='xs:int'>6</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Позашкільний навчальний заклад</Name><Code xsi:type='xs:int'>7</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Школа-інтернат</Name><Code xsi:type='xs:int'>8</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Навчально-виробничий комбінат</Name><Code xsi:type='xs:int'>9</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Вищий навчальний заклад</Name><Code xsi:type='xs:int'>10</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Поліклініка</Name><Code xsi:type='xs:int'>11</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Лікарня</Name><Code xsi:type='xs:int'>12</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Медична амбулаторія</Name>
+<Code xsi:type='xs:int'>13</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Фельдшерсько-акушерський пункт</Name>
+<Code xsi:type='xs:int'>14</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Заклад соціального захисту населення</Name>
+<Code xsi:type='xs:int'>15</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Станція швидкої медичної допомоги</Name>
+<Code xsi:type='xs:int'>16</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Дитячий табір</Name>
+<Code xsi:type='xs:int'>17</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>База відпочинку та туризму</Name>
+<Code xsi:type='xs:int'>18</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Санаторій</Name>
+<Code xsi:type='xs:int'>19</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Готель</Name>
+<Code xsi:type='xs:int'>20</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Місце відпочинку на природі, об&apos;єкт зеленого туризму, місце полювання, рибальства, рекреаційна зона</Name>
+<Code xsi:type='xs:int'>21</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Заклад дозвілля, видовищний заклад</Name>
+<Code xsi:type='xs:int'>22</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Музей</Name><Code xsi:type='xs:int'>23</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Місце проведення культурно-масових заходів </Name><Code xsi:type='xs:int'>24</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Водно-розважальний об&apos;єкт</Name><Code xsi:type='xs:int'>25</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Заклад громадського харчування</Name><Code xsi:type='xs:int'>26</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Торговельний заклад</Name><Code xsi:type='xs:int'>27</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Відділення зв&apos;язку</Name><Code xsi:type='xs:int'>28</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Промислове підприємство</Name><Code xsi:type='xs:int'>29</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Заклад побутового обслуговування</Name><Code xsi:type='xs:int'>30</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Сільськогосподарське підприємство</Name><Code xsi:type='xs:int'>31</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Шламо, -хвостосховище</Name><Code xsi:type='xs:int'>32</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Об&apos;ект рибного господарства</Name><Code xsi:type='xs:int'>33</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Об&apos;кт лісового господарства</Name><Code xsi:type='xs:int'>34</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Бібліотека</Name><Code xsi:type='xs:int'>35</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Кінно-спортивний комплекс</Name><Code xsi:type='xs:int'>36</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Полігон захоронення ТПВ (сміттєзвалище)</Name><Code xsi:type='xs:int'>38</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Сміттєсортувальна станція</Name><Code xsi:type='xs:int'>40</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Місце захоронення трупів тварин</Name><Code xsi:type='xs:int'>42</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Спортивний заклад (об&apos;єкт)</Name><Code xsi:type='xs:int'>44</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>Override</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><AliasName>Заміщення</AliasName><ModelName>Override</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPoint</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision>
+<Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName><ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>Pidcode</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision>
+<Scale>0</Scale><AliasName>Підкод типу документа</AliasName><ModelName>Pidcode</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>Prymitka</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>256</Length><Precision>0</Precision>
+<Scale>0</Scale><AliasName>Примітка</AliasName><ModelName></ModelName></Field></FieldArray></Fields><Indexes xsi:type='esri:Indexes'>
+<IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R110_pk</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>OBJECTID</Name>
+<Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable>
+<Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed>
+<AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index><Index xsi:type='esri:Index'>
+<Name>S104_idx</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>SHAPE</Name>
+<Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPoint</GeometryType><GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName>
+<ModelName>SHAPE</ModelName></Field></FieldArray></Fields></Index></IndexArray></Indexes>
+<CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><<RelationshipClassNames xsi:type='esri:Names'>
+</RelationshipClassNames><AliasName>Об’єкти соціальної сфери та економіки</AliasName><ModelName></ModelName>
+<HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName>
+<ExtensionProperties xsi:type='esri:PropertySet'><PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<SubtypeFieldName>KOD_TYP_OBJ</SubtypeFieldName><DefaultSubtypeCode>0</DefaultSubtypeCode>
+<Subtypes xsi:type='esri:ArrayOfSubtype'>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Місця проведення культурно-масових заходів</SubtypeName><SubtypeCode>27</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010527</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_TYP_OBJ</FieldName><DomainName></DomainName><DefaultValue xsi:type='xs:int'>27</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo>
+</FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Полігон захоронення ТПВ (сміттєзвалища)</SubtypeName>
+<SubtypeCode>37</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010537</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:double'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_TYP_OBJ</FieldName><DomainName></DomainName>
+<DefaultValue xsi:type='xs:int'>37</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo>
+</FieldInfos>
+</Subtype>
+<Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Не визначено</SubtypeName>
+<SubtypeCode>0</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010500</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Лікарня</SubtypeName><SubtypeCode>1</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010501</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo>
+</FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Поліклініка</SubtypeName>
+<SubtypeCode>2</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010502</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Медична амбулаторія</SubtypeName><SubtypeCode>3</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010503</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Фельдшерсько-акушерський пункт</SubtypeName><SubtypeCode>4</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010504</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Заклад соціального захисту населення</SubtypeName><SubtypeCode>5</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010505</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Станція швидкої медичної допомоги</SubtypeName><SubtypeCode>6</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010506</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Школа загальноосвітня І-ІІІ ступенів</SubtypeName><SubtypeCode>7</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010507</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo>
+</FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Школа загальноосвітня І-ІІ ступенів</SubtypeName><SubtypeCode>8</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010508</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Школа загальноосвітня І ступеню</SubtypeName><SubtypeCode>9</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010509</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Дошкільний навчальний заклад</SubtypeName><SubtypeCode>10</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010510</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>озашкільний навчальний заклад</SubtypeName>
+<SubtypeCode>11</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010511</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Інший середній навчальний заклад</SubtypeName><SubtypeCode>12</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010512</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Спеціальний навчальний заклад</SubtypeName>
+<SubtypeCode>13</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010513</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Вищий навчальний заклад</SubtypeName><SubtypeCode>14</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010514</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Навчально-виробничий комбінат</SubtypeName><SubtypeCode>15</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010515</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Заклад побутового обслуговування</SubtypeName><SubtypeCode>16</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010516</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Відділення зв&apos;язку</SubtypeName>
+<SubtypeCode>17</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010517</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Заклад громадського харчування</SubtypeName><SubtypeCode>18</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010518</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Школа-інтернат</SubtypeName><SubtypeCode>19</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010519</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Бібліотека</SubtypeName>
+<SubtypeCode>20</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010520</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Спортивний заклад та об’єкт</SubtypeName>
+<SubtypeCode>21</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010521</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Дитячий табір</SubtypeName><SubtypeCode>22</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010522</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>База відпочинку та туризму</SubtypeName><SubtypeCode>23</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010523</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Місце відпочинку на природі, зелений туризм</SubtypeName><SubtypeCode>24</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010524</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Санаторій</SubtypeName><SubtypeCode>25</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010525</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Готель</SubtypeName><SubtypeCode>26</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010526</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Місця проведення культурно-масових заходів</SubtypeName><SubtypeCode>28</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010528</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Водно-розважальні об’єкти</SubtypeName><SubtypeCode>29</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010529</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Кінно-спортивний комплекс</SubtypeName><SubtypeCode>30</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010530</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Заклад дозвілля, видовищний </SubtypeName><SubtypeCode>31</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010531</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Промислові підприємства</SubtypeName><SubtypeCode>32</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010532</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Торговельний заклад</SubtypeName><SubtypeCode>33</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010533</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Сільськогосподарські підприємства</SubtypeName><SubtypeCode>34</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010534</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Об’єкт лісового господарства</SubtypeName><SubtypeCode>35</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010535</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos>
+</Subtype>
+<Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Об’єкт рибного господарства</SubtypeName>
+<SubtypeCode>36</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010536</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>RuleID</FieldName>
+<DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName>
+</SubtypeFieldInfo>
+</FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Шламо-, Хвостосховище</SubtypeName><SubtypeCode>38</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010538</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Сміттєсортувальна станція</SubtypeName><SubtypeCode>39</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010539</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Місце захоронення трупів тварин</SubtypeName><SubtypeCode>40</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Obj_Scl_Sft_Ecn</DomainName><DefaultValue xsi:type='xs:double'>17010540</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID</FieldName><DomainName>Obj_Scl_Sft_Ecn_Rep_Rules</DomainName></SubtypeFieldInfo>
+</FieldInfos></Subtype></Subtypes>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled>
+<CreatorFieldName></CreatorFieldName><CreatedAtFieldName></CreatedAtFieldName><EditorFieldName></EditorFieldName>
+<EditedAtFieldName></EditedAtFieldName>
+<IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType><ShapeType>esriGeometryPoint</ShapeType>
+<ShapeFieldName>SHAPE</ShapeFieldName><AreaFieldName></AreaFieldName><LengthFieldName>
+</LengthFieldName><ChangeTracked>false</ChangeTracked></DataElement><DataElement xsi:type='esri:DEFeatureClass'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.BDL_SPR/FC=Cadastr_V6.DBO.Vrb_Bdl_Spr</CatalogPath>
+<Name>Cadastr_V6.DBO.Vrb_Bdl_Spr</Name><DSID>392</DSID><Versioned>false</Versioned><Field xsi:type='esri:Field'>
+<Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_KLS</Name><Type>esriFieldTypeDouble</Type>
+<IsNullable>false</IsNullable><Length>8</Length><Precision>38</Precision><Scale>8</Scale><AliasName>Код за класифікатором</AliasName>
+<ModelName>KOD_KLS</ModelName><DefaultValue xsi:type='xs:double'>17010200</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Vrb_Bdl_Spr</DomainName><FieldType>esriFieldTypeDouble</FieldType><Description>Коди класу Виробничі будівлі  і споруди</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>17010200</Name>
+<Code xsi:type='xs:double'>17010200</Code>
+</CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>ID_MSB_OBJ</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Ідентифікатор об’єкту</AliasName>
+<ModelName>ID_MSB_OBJ</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_STS</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Статус об&apos;єкту</AliasName>
+<ModelName>KOD_STS</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Класифікатор статусу  об&apos;єкта містобудівної діяльност</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>існуючий</Name><Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>проектний</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>запроектовано раніше</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>підлягає знесенню</Name><Code xsi:type='xs:int'>4</Code></CodedValue></CodedValues></Domain></Field>
+<Field xsi:type='esri:Field'><Name>KLK_PVH</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Кількість поверхів</AliasName><ModelName>KLK_PVH</ModelName>
+</Field><Field xsi:type='esri:Field'><Name>RuleID_2000</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length>
+<Precision>10</Precision><Scale>0</Scale><Required>true</Required><AliasName>Умовні знаки (1:2 000 і кр.)</AliasName><ModelName>RuleID_2000</ModelName>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Vrb_Bdl_Spr_Rep_2000_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Виробнича будівля та споруда існуюча</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Виробнича будівля (споруда) проектна</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Виробнича будівля (споруда), запроектована раніше</Name><Code xsi:type='xs:int'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>Override_2000</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Заміщення (1:2 000 і кр.)</AliasName><ModelName>Override_2000</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>RuleID_5000</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Умовні знаки (1:5 000)</AliasName><ModelName>RuleID_5000</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Vrb_Bdl_Spr_Rep_5000_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType><Description>Правила представления</Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>Виробнича будівля (споруда) існуюча</Name>
+<Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Виробнича будівля (споруда) проектна</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Виробнича будівля (споруда) запроектована раніше</Name>
+<Code xsi:type='xs:int'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code>
+</CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>Override_5000</Name><Type>esriFieldTypeBlob</Type>
+<IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required>
+<AliasName>Заміщення (1:5 000)</AliasName><ModelName>Override_5000</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPolygon</GeometryType><GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName>
+</Field><Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable><Length>2</Length>
+<Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName><ModelName>N_Kad</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>Pidcode</Name><Type>esriFieldTypeSmallInteger</Type><IsNullable>true</IsNullable>
+<Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Підкод типу документа</AliasName><ModelName>Pidcode</ModelName>
+</Field><Field xsi:type='esri:Field'><Name>Prymitka</Name><Type>esriFieldTypeString</Type><IsNullable>true</IsNullable><Length>256</Length>
+<Precision>0</Precision><Scale>0</Scale><AliasName>Примітка</AliasName><ModelName></ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SHAPE.STLength()</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length><Precision>0</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STLength()</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SHAPE.STArea()</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STArea()</ModelName></Field></FieldArray></Fields><Indexes xsi:type='esri:Indexes'>
+<IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R109_pk</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending>
+<Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index><Index xsi:type='esri:Index'><Name>S103_idx</Name><IsUnique>true</IsUnique>
+<IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable>
+<Length>4</Length><Precision>0</Precision><Scale>0</Scale><Required>true</Required><DomainFixed>true</DomainFixed>
+<GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints><GeometryType>esriGeometryPolygon</GeometryType>
+<GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName><ModelName>SHAPE</ModelName></Field></FieldArray></Fields>
+</Index></IndexArray></Indexes><CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID><<RelationshipClassNames xsi:type='esri:Names'>
+</RelationshipClassNames><AliasName>Виробничі будівлі  і споруди</AliasName><ModelName></ModelName><HasGlobalID>false</HasGlobalID>
+<GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName><ExtensionProperties xsi:type='esri:PropertySet'>
+<PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships><EditorTrackingEnabled>false</EditorTrackingEnabled>
+<CreatorFieldName></CreatorFieldName><CreatedAtFieldName></CreatedAtFieldName><EditorFieldName></EditorFieldName><EditedAtFieldName>
+</EditedAtFieldName><IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType><ShapeType>esriGeometryPolygon</ShapeType>
+<ShapeFieldName>SHAPE</ShapeFieldName><AreaFieldName>SHAPE.STArea()</AreaFieldName><LengthFieldName>SHAPE.STLength()</LengthFieldName>
+<ChangeTracked>false</ChangeTracked></DataElement><DataElement xsi:type='esri:DEFeatureClass'>
+<CatalogPath>/V=dbo.DEFAULT/FD=Cadastr_V6.DBO.BDL_SPR/FC=Cadastr_V6.DBO.Ztl_Bdn</CatalogPath>
+<Name>Cadastr_V6.DBO.Ztl_Bdn</Name><DSID>391</DSID><Versioned>false</Versioned><Field xsi:type='esri:Field'>
+<Name>OBJECTID</Name><Type>esriFieldTypeOID</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><Editable>false</Editable><DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName>
+<ModelName>OBJECTID</ModelName></Field><Field xsi:type='esri:Field'><Name>KOD_KLS</Name><Type>esriFieldTypeDouble</Type>
+<IsNullable>false</IsNullable><Length>8</Length><Precision>38</Precision><Scale>8</Scale><AliasName>Код за класифікатором</AliasName>
+<ModelName>KOD_KLS</ModelName><DefaultValue xsi:type='xs:double'>17010100</DefaultValue><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Dmn_Ztl_Bdn</DomainName><FieldType>esriFieldTypeDouble</FieldType><Description>Коди класу Житлові будинки </Description>
+<CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'><Name>17010100</Name><Code xsi:type='xs:double'>17010100</Code>
+</CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>17010101</Name><Code xsi:type='xs:double'>17010101</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010102</Name><Code xsi:type='xs:double'>17010102</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010103</Name><Code xsi:type='xs:double'>17010103</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010104</Name><Code xsi:type='xs:double'>17010104</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010105</Name><Code xsi:type='xs:double'>17010105</Code></CodedValue>
+<CodedValue xsi:type='esri:CodedValue'><Name>17010106</Name><Code xsi:type='xs:double'>17010106</Code></CodedValue>
+</CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>ID_MSB_OBJ</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<AliasName>Ідентифікатор об’єкту</AliasName><ModelName>ID_MSB_OBJ</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>KOD_STS</Name><Type>esriFieldTypeInteger</Type><IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Статус об&apos;єкту</AliasName><ModelName>KOD_STS</ModelName><DefaultValue xsi:type='xs:double'>1</DefaultValue>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Класифікатор статусу  об&apos;єкта містобудівної діяльност</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'>
+<CodedValue xsi:type='esri:CodedValue'><Name>існуючий</Name><Code xsi:type='xs:int'>1</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>проектний</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>запроектовано раніше</Name>
+<Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'><Name>підлягає знесенню</Name><Code xsi:type='xs:int'>4</Code>
+</CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'><Name>KOD_TYP_BDN</Name><Type>esriFieldTypeInteger</Type>
+<IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><AliasName>Тип будинку</AliasName>
+<ModelName>KOD_TYP_BDN</ModelName><DefaultValue xsi:type='xs:double'>0</DefaultValue></Field><Field xsi:type='esri:Field'>
+<Name>KLK_PVH</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><AliasName>Кількість поверхів</AliasName><ModelName>KLK_PVH</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>RuleID_2000</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision>
+<Scale>0</Scale><Required>true</Required><AliasName>Умовні знаки (1:2 000 і кр.)</AliasName><ModelName>RuleID_2000</ModelName>
+<Domain xsi:type='esri:CodedValueDomain'><DomainName>Ztl_Bdn_Rep_2000_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий капітальний</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий, що реконструюється</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий некапітальний</Name><Code xsi:type='xs:int'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок проектний</Name><Code xsi:type='xs:int'>5</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок, що запроектовано раніше</Name><Code xsi:type='xs:int'>6</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Будівля (споруда), що підлягяє знесенню</Name><Code xsi:type='xs:int'>7</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>Override_2000</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Заміщення (1:2 000 і кр.)</AliasName><ModelName>Override_2000</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>RuleID_5000</Name><Type>esriFieldTypeInteger</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Умовні знаки (1:5 000)</AliasName><ModelName>RuleID_5000</ModelName><Domain xsi:type='esri:CodedValueDomain'>
+<DomainName>Ztl_Bdn_Rep_5000_Rules</DomainName><FieldType>esriFieldTypeInteger</FieldType>
+<Description>Правила представления</Description><CodedValues xsi:type='esri:ArrayOfCodedValue'><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий капітальний</Name><Code xsi:type='xs:int'>2</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий, що реконструюється</Name><Code xsi:type='xs:int'>3</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок існуючий некапітальний</Name><Code xsi:type='xs:int'>4</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок проектний</Name><Code xsi:type='xs:int'>5</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Житловий будинок, що запроектовано раніше</Name><Code xsi:type='xs:int'>6</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Будівля (споруда), що підлягає знесенню</Name><Code xsi:type='xs:int'>7</Code></CodedValue><CodedValue xsi:type='esri:CodedValue'>
+<Name>Свободное представление</Name><Code xsi:type='xs:int'>-1</Code></CodedValue></CodedValues></Domain></Field><Field xsi:type='esri:Field'>
+<Name>Override_5000</Name><Type>esriFieldTypeBlob</Type><IsNullable>true</IsNullable><Length>0</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><AliasName>Заміщення (1:5 000)</AliasName><ModelName>Override_5000</ModelName></Field><Field xsi:type='esri:Field'>
+<Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPolygon</GeometryType><GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName>
+<ModelName>SHAPE</ModelName></Field><Field xsi:type='esri:Field'><Name>N_Kad</Name><Type>esriFieldTypeSmallInteger</Type>
+<IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Кадастровий № ДПТ</AliasName>
+<ModelName>N_Kad</ModelName></Field><Field xsi:type='esri:Field'><Name>Pidcode</Name><Type>esriFieldTypeSmallInteger</Type>
+<IsNullable>true</IsNullable><Length>2</Length><Precision>5</Precision><Scale>0</Scale><AliasName>Підкод типу документа</AliasName>
+<ModelName>Pidcode</ModelName></Field><Field xsi:type='esri:Field'><Name>Prymitka</Name><Type>esriFieldTypeString</Type>
+<IsNullable>true</IsNullable><Length>256</Length><Precision>0</Precision><Scale>0</Scale><AliasName>Примітка</AliasName><ModelName></ModelName>
+</Field><Field xsi:type='esri:Field'><Name>SHAPE.STArea()</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STArea()</ModelName></Field>
+<Field xsi:type='esri:Field'><Name>SHAPE.STLength()</Name><Type>esriFieldTypeDouble</Type><IsNullable>false</IsNullable><Length>0</Length>
+<Precision>0</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable><ModelName>SHAPE.STLength()</ModelName></Field>
+</FieldArray></Fields><Indexes xsi:type='esri:Indexes'><IndexArray xsi:type='esri:ArrayOfIndex'><Index xsi:type='esri:Index'><Name>R108_pk</Name>
+<IsUnique>true</IsUnique><IsAscending>true</IsAscending><Field xsi:type='esri:Field'><Name>OBJECTID</Name><Type>esriFieldTypeOID</Type>
+<IsNullable>false</IsNullable><Length>4</Length><Precision>10</Precision><Scale>0</Scale><Required>true</Required><Editable>false</Editable>
+<DomainFixed>true</DomainFixed><AliasName>OBJECTID</AliasName><ModelName>OBJECTID</ModelName></Field></FieldArray></Fields></Index>
+<Index xsi:type='esri:Index'><Name>S102_idx</Name><IsUnique>true</IsUnique><IsAscending>true</IsAscending><Field xsi:type='esri:Field'>
+<Name>SHAPE</Name><Type>esriFieldTypeGeometry</Type><IsNullable>true</IsNullable><Length>4</Length><Precision>0</Precision><Scale>0</Scale>
+<Required>true</Required><DomainFixed>true</DomainFixed><GeometryDef xsi:type='esri:GeometryDef'><AvgNumPoints>0</AvgNumPoints>
+<GeometryType>esriGeometryPolygon</GeometryType><GridSize0>-6</GridSize0></GeometryDef><AliasName>SHAPE</AliasName>
+<ModelName>SHAPE</ModelName></Field></FieldArray></Fields></Index></IndexArray></Indexes><CLSID>{52353152-891A-11D0-BEC6-00805F7C4268}</CLSID>
+<RelationshipClassNames xsi:type='esri:Names'></RelationshipClassNames><AliasName>Житлові будинки</AliasName><ModelName></ModelName>
+<HasGlobalID>false</HasGlobalID><GlobalIDFieldName></GlobalIDFieldName><RasterFieldName></RasterFieldName>
+<ExtensionProperties xsi:type='esri:PropertySet'><PropertyArray xsi:type='esri:ArrayOfPropertySetProperty'></PropertyArray></ExtensionProperties>
+<SubtypeFieldName>KOD_TYP_BDN</SubtypeFieldName><DefaultSubtypeCode>0</DefaultSubtypeCode><Subtypes xsi:type='esri:ArrayOfSubtype'>
+<Subtype xsi:type='esri:Subtype'><SubtypeName>Житловий будинок, що запроектованго раніш</SubtypeName><SubtypeCode>5</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Ztl_Bdn</DomainName><DefaultValue xsi:type='xs:double'>17010105</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_TYP_BDN</FieldName><DomainName></DomainName><DefaultValue xsi:type='xs:int'>5</DefaultValue></SubtypeFieldInfo>
+</FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Житловий будинок  існуючий некапітальний</SubtypeName>
+<SubtypeCode>3</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Ztl_Bdn</DomainName><DefaultValue xsi:type='xs:double'>17010103</DefaultValue></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_TYP_BDN</FieldName><DomainName></DomainName><DefaultValue xsi:type='xs:int'>3</DefaultValue></SubtypeFieldInfo>
+</FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Житловий будинок  існуючий що реконструюється</SubtypeName>
+<SubtypeCode>2</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Ztl_Bdn</DomainName><DefaultValue xsi:type='xs:double'>17010102</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_TYP_BDN</FieldName><DomainName></DomainName><DefaultValue xsi:type='xs:int'>2</DefaultValue></SubtypeFieldInfo>
+</FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'><SubtypeName>Житловий будинок існуючий капітальний</SubtypeName>
+<SubtypeCode>1</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName><DomainName>Dmn_Ztl_Bdn</DomainName><DefaultValue xsi:type='xs:double'>17010101</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:double'>1</DefaultValue></SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_TYP_BDN</FieldName>
+<DomainName></DomainName><DefaultValue xsi:type='xs:int'>1</DefaultValue></SubtypeFieldInfo></FieldInfos></Subtype><Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Житловий будинок  проектний</SubtypeName><SubtypeCode>4</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_KLS</FieldName><DomainName>Dmn_Ztl_Bdn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010104</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName><DefaultValue xsi:type='xs:double'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'><FieldName>KOD_TYP_BDN</FieldName><DomainName>
+</DomainName><DefaultValue xsi:type='xs:int'>4</DefaultValue>
+</SubtypeFieldInfo></FieldInfos>
+</Subtype>
+<Subtype xsi:type='esri:Subtype'>
+<SubtypeName>Не визначено</SubtypeName>
+<SubtypeCode>0</SubtypeCode>
+<FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Ztl_Bdn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010100</DefaultValue>
+</SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo></FieldInfos></Subtype>
+<Subtype xsi:type='esri:Subtype'>
+<SubtypeName>будівля (сgоруда) що підлягає знесенню</SubtypeName>
+<SubtypeCode>6</SubtypeCode><FieldInfos xsi:type='esri:ArrayOfSubtypeFieldInfo'>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_KLS</FieldName>
+<DomainName>Dmn_Ztl_Bdn</DomainName>
+<DefaultValue xsi:type='xs:double'>17010106</DefaultValue>
+</SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>KOD_STS</FieldName><DomainName>Dmn_Sts_Obj_Msb_Dln</DomainName>
+<DefaultValue xsi:type='xs:int'>1</DefaultValue>
+</SubtypeFieldInfo><SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID_2000</FieldName>
+<DomainName>Ztl_Bdn_Rep_2000_Rules</DomainName></SubtypeFieldInfo>
+<SubtypeFieldInfo xsi:type='esri:SubtypeFieldInfo'>
+<FieldName>RuleID_5000</FieldName><DomainName>Ztl_Bdn_Rep_5000_Rules</DomainName>
+</SubtypeFieldInfo></FieldInfos></Subtype></Subtypes>
+<ControllerMemberships xsi:type='esri:ArrayOfControllerMembership'></ControllerMemberships>
+<EditorTrackingEnabled>false</EditorTrackingEnabled>
+<CreatorFieldName></CreatorFieldName><CreatedAtFieldName></CreatedAtFieldName>
+<EditorFieldName></EditorFieldName>
+<EditedAtFieldName></EditedAtFieldName><IsTimeInUTC>true</IsTimeInUTC><FeatureType>esriFTSimple</FeatureType>
+<ShapeType>esriGeometryPolygon</ShapeType>
+<ShapeFieldName>SHAPE</ShapeFieldName>
+<AreaFieldName>SHAPE.STArea()</AreaFieldName>
+<LengthFieldName>SHAPE.STLength()</LengthFieldName>
+<ChangeTracked>false</ChangeTracked>
+</DataElement></Children>
+<DatasetType>esriDTFeatureDataset</DatasetType>
+<DSID>390</DSID><Versioned>false</Versioned>
+<ChangeTracked>false</ChangeTracked>
+</DataElement>
+</DatasetDefinitions>
+</WorkspaceDefinition>
+<WorkspaceData xsi:type='esri:WorkspaceData'>
+</WorkspaceData>
+</esri:Workspace>

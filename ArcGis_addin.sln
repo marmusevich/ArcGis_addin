@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedClasses", "SharedClasses\SharedClasses.csproj", "{C4C9ED2E-460E-46B6-AD41-F119EB2CFD29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorckWithKadastr", "WorckWithKadastr\WorckWithKadastr.csproj", "{C37767BB-18E6-4743-A5EC-1D7F2B38F487}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorckWithReestr", "WorckWithReestr\WorckWithReestr.csproj", "{D3EE92A9-52B0-4236-A811-8A6545EAE7BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorckWithCadastr_V6", "WorckWithCadastr_V6\WorckWithCadastr_V6.csproj", "{15848C76-8AB3-462A-B44F-E97000F6999B}"
