@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SharedClasses;
 
-namespace WorckWithCadastr_V6.Forms.Base
+
+namespace WorckWithCadastr_V6
 {
-    public partial class frmBase_list : Form
+    public partial class frmBase_list  :frmBaseSpr_list
     {
         public frmBase_list()
         {
