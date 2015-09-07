@@ -34,9 +34,9 @@ namespace WorckWithCadastr_V6
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
-            base.NameSortFild = "";
+            base.NameWorkspace = "Cadastr_V6";
+            base.NameTable = "Vrb_Bdl_Spr";
+            base.NameSortFild = "ID_MSB_OBJ";
         }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {

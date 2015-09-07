@@ -51,8 +51,8 @@ namespace WorckWithCadastr_V6
         {
             InitializeComponent();
 
-            base.NameWorkspace = "";
-            base.NameTable = "";
+            base.NameWorkspace = "Cadastr_V6";
+            base.NameTable = "Rej_Vul";
         }
 
         private void frmReestrZek_element_Load(object sender, EventArgs e)
