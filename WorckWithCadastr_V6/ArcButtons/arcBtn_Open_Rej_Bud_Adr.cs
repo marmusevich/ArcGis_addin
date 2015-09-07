@@ -4,19 +4,20 @@ using System.Text;
 using System.IO;
 
 
-namespace WorckWithCadastr_V6
+namespace WorckWithCadastr_V6.ArcButtons
 {
-    public class arcBtn_Open_ArhivDocument : ESRI.ArcGIS.Desktop.AddIns.Button
+    public class arcBtn_Open_Rej_Bud_Adr : ESRI.ArcGIS.Desktop.AddIns.Button
     {
-        public arcBtn_Open_ArhivDocument()
+        public arcBtn_Open_Rej_Bud_Adr()
         {
         }
 
         protected override void OnClick()
         {
             ArcMap.Application.CurrentTool = null;
-            //frm.ShowForView();
+//            frm.ShowForView();
         }
+
         protected override void OnUpdate()
         {
             Enabled = ArcMap.Application != null;

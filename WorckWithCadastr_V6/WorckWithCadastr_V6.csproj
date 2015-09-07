@@ -82,9 +82,139 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcButtons\arcBtn_Open_Grm_Bdl.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Kvt.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Obj_Scl_Sft_Ecn.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Rej_Adm_Raj_Mis.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Rej_Adr_Osnov.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Rej_Adr_Poh.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Rej_Bud_Adr.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Rej_Vul.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Vrb_Bdl_Spr.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_Ztl_Bdn.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\frmBaseElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\frmBaseElement.Designer.cs">
+      <DependentUpon>frmBaseElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\frmBase_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\frmBase_list.Designer.cs">
+      <DependentUpon>frmBase_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Vul_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Vul_element.Designer.cs">
+      <DependentUpon>frmRej_Vul_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Vul_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Vul_list.Designer.cs">
+      <DependentUpon>frmRej_Vul_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmKvt_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmKvt_element.Designer.cs">
+      <DependentUpon>frmKvt_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmKvt_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmKvt_list.Designer.cs">
+      <DependentUpon>frmKvt_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmObj_Scl_Sft_Ecn_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmObj_Scl_Sft_Ecn_element.Designer.cs">
+      <DependentUpon>frmObj_Scl_Sft_Ecn_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmObj_Scl_Sft_Ecn_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmObj_Scl_Sft_Ecn_list.Designer.cs">
+      <DependentUpon>frmObj_Scl_Sft_Ecn_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adm_Raj_Mis_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adm_Raj_Mis_element.Designer.cs">
+      <DependentUpon>frmRej_Adm_Raj_Mis_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adm_Raj_Mis_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adm_Raj_Mis_list.Designer.cs">
+      <DependentUpon>frmRej_Adm_Raj_Mis_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Osnov_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Osnov_element.Designer.cs">
+      <DependentUpon>frmRej_Adr_Osnov_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Osnov_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Osnov_list.Designer.cs">
+      <DependentUpon>frmRej_Adr_Osnov_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Poh_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Poh_element.Designer.cs">
+      <DependentUpon>frmRej_Adr_Poh_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Poh_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Adr_Poh_list.Designer.cs">
+      <DependentUpon>frmRej_Adr_Poh_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Bud_Adr_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Bud_Adr_element.Designer.cs">
+      <DependentUpon>frmRej_Bud_Adr_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRej_Bud_Adr_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRej_Bud_Adr_list.Designer.cs">
+      <DependentUpon>frmRej_Bud_Adr_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmVrb_Bdl_Spr_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmVrb_Bdl_Spr_element.Designer.cs">
+      <DependentUpon>frmVrb_Bdl_Spr_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmVrb_Bdl_Spr_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmVrb_Bdl_Spr_list.Designer.cs">
+      <DependentUpon>frmVrb_Bdl_Spr_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmZtl_Bdn_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmZtl_Bdn_element.Designer.cs">
+      <DependentUpon>frmZtl_Bdn_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmZtl_Bdn_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmZtl_Bdn_list.Designer.cs">
+      <DependentUpon>frmZtl_Bdn_list.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +254,36 @@
       <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
       <Name>SharedClasses</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Rej_Adr_Osnov.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Rej_Bud_Adr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Rej_Vul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Rej_Adr_Poh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Rej_Adm_Raj_Mis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Grm_Bdl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Kvt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Obj_Scl_Sft_Ecn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Vrb_Bdl_Spr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_Ztl_Bdn.png" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
