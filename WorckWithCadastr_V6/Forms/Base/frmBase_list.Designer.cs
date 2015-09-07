@@ -1,4 +1,4 @@
-﻿namespace WorckWithCadastr_V6.Forms.Base
+﻿namespace WorckWithCadastr_V6
 {
     partial class frmBase_list
     {
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmBase_list
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(615, 510);
+            this.Name = "frmBase_list";
             this.Text = "frmBase_list";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -285,6 +285,11 @@
   <ItemGroup>
     <AddInContent Include="Images\arcBtn_Open_Ztl_Bdn.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\Base\frmBase_list.resx">
+      <DependentUpon>frmBase_list.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
     <AddInTargetProduct>Desktop</AddInTargetProduct>

@@ -18,7 +18,7 @@ namespace WorckWithCadastr_V6
         
         public static void ShowForView(string filteredString = "")
         {
-            Form frm = new frmGrm_Bdl_list(false, filteredString);
+            frmBaseSpr_list frm = new frmGrm_Bdl_list(false, filteredString);
             frm.Show();
             frm.Activate();
         }

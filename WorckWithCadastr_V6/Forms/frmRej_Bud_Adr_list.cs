@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SharedClasses;
 using System.Windows.Forms;
 
 namespace WorckWithCadastr_V6
@@ -15,10 +8,10 @@ namespace WorckWithCadastr_V6
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        
+
         public static void ShowForView(string filteredString = "")
         {
-            Form frm = new frmRej_Bud_Adr_list(false, filteredString);
+            frmBaseSpr_list frm = new frmRej_Bud_Adr_list(false, filteredString);
             frm.Show();
             frm.Activate();
         }
@@ -30,18 +23,21 @@ namespace WorckWithCadastr_V6
             return frm.SelectID;
         }
 
-        public frmRej_Bud_Adr_list() : base()
+        public frmRej_Bud_Adr_list()
+            : base()
         {
             InitializeComponent();
         }
-        
-        public frmRej_Bud_Adr_list(bool isSelectMode = false, string filteredString = "") : base(isSelectMode, filteredString)
+
+        public frmRej_Bud_Adr_list(bool isSelectMode = false, string filteredString = "")
+            : base(isSelectMode, filteredString)
         {
             InitializeComponent();
 
             base.NameWorkspace = "";
             base.NameTable = "";
-            base.NameSortFild = "";        }
+            base.NameSortFild = "";
+        }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
             return new frmRej_Bud_Adr_element(_objectID, _editMode);

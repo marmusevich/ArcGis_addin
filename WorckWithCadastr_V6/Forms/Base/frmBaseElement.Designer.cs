@@ -1,4 +1,4 @@
-﻿namespace WorckWithCadastr_V6.Forms.Base
+﻿namespace WorckWithCadastr_V6
 {
     partial class frmBaseElement
     {

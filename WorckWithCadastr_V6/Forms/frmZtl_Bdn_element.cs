@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ESRI.ArcGIS.Geodatabase;
+using System;
 
 namespace WorckWithCadastr_V6
 {
     public partial class frmZtl_Bdn_element : frmBaseElement
     {
-		
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -29,12 +22,12 @@ namespace WorckWithCadastr_V6
 
         protected override void DB_to_FormElement(IRow row)
         {
-			base.DB_to_FormElement(row);
+            base.DB_to_FormElement(row);
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
-			base.FormElement_to_DB(row);
+            base.FormElement_to_DB(row);
         }
 
         protected override bool ValidatingData()
@@ -48,7 +41,8 @@ namespace WorckWithCadastr_V6
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmZtl_Bdn_element() : base()
+        public frmZtl_Bdn_element()
+            : base()
         {
             InitializeComponent();
         }
@@ -80,6 +74,6 @@ namespace WorckWithCadastr_V6
                     return;
             }
         }
-        #endregion	
+        #endregion
     }
 }
