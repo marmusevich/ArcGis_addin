@@ -1,6 +1,4 @@
-﻿//#define CONSTRUCT_FORM
-
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
@@ -32,6 +30,10 @@ namespace SharedClasses
         protected TableWraper tableWrapper = null;
         //результат выбраного значения
         public int SelectID { get; protected set; }
+        // признак того что не надо считывать данные, конструируется форма
+        private bool IsNotReadData_FormIsConstruct = false;
+
+
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
@@ -41,7 +43,7 @@ namespace SharedClasses
         {
             return null;
         }
-        //устоновит порядок колонок по умолчанию
+        //устоновить порядок колонок по умолчанию
         protected virtual void SetDefaultDisplayOrder()
         {
             
@@ -172,7 +174,11 @@ namespace SharedClasses
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region form  events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmBaseSpr_list() { }
+        public frmBaseSpr_list() 
+        {
+            InitializeComponent();
+            IsNotReadData_FormIsConstruct = true;
+        }
         public frmBaseSpr_list(bool isSelectMode = false, string filteredString = "")
         {
             InitializeComponent();
@@ -183,12 +189,13 @@ namespace SharedClasses
         }
         private void frmBaseSpr_list_Load(object sender, EventArgs e)
         {
-#if (!CONSTRUCT_FORM)
-            if(!this.ReadData()) // -ok
+            if (!IsNotReadData_FormIsConstruct)
             {
-                this.Close();
+                if(!this.ReadData()) // -ok
+                {
+                    this.Close();
+                }
             }
-#endif
         }
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
         {

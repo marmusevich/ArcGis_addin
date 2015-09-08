@@ -1,5 +1,4 @@
-﻿//#define CONSTRUCT_FORM
-
+﻿
 using ESRI.ArcGIS.Geodatabase;
 using System;
 using System.Windows.Forms;
@@ -35,6 +34,9 @@ namespace SharedClasses
         public int SelectID { get; protected set; }
         //
         protected bool enable_dtpDataEvent = true;
+        // признак того что не надо считывать данные, конструируется форма
+        private bool IsNotReadData_FormIsConstruct = false;
+
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - call back
@@ -210,7 +212,10 @@ namespace SharedClasses
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region form  events
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        public frmBaseJurnal() : this(false, "") { }
+        public frmBaseJurnal() : this(false, "") 
+        {
+            IsNotReadData_FormIsConstruct = true;
+        }
         public frmBaseJurnal(bool isSelectMode = false, string filteredString = "")
         {
             InitializeComponent();
@@ -222,12 +227,13 @@ namespace SharedClasses
         {
             dtpDataOt.Value = GeneralDBWork.GetFirstMonthDayDate(DateTime.Now);
             dtpDatePo.Value = GeneralDBWork.GetLastMonthDayDate(DateTime.Now);
-#if (!CONSTRUCT_FORM)
-            if (!this.ReadData()) // -ok
+            if (!IsNotReadData_FormIsConstruct)
             {
-                this.Close();
+                if (!this.ReadData()) // -ok
+                {
+                    this.Close();
+                }
             }
-#endif
         }
         private void frmBaseJurnal_FormClosing(object sender, FormClosingEventArgs e)
         {

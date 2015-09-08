@@ -81,7 +81,7 @@ namespace WorckWithReestr
         protected override void OtherSetupDGV()
         {
             //доменные значения
-            object o = null;
+            //object o = null;
             ddaStatus = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Status")).Domain);
 
             indexFio_Ved_Vid = dgv.Columns["Fio_Ved_Vid"].Index;

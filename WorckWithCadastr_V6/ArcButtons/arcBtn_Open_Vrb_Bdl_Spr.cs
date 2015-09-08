@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 
 
-namespace WorckWithCadastr_V6.ArcButtons
+namespace WorckWithCadastr_V6
 {
     public class arcBtn_Open_Vrb_Bdl_Spr : ESRI.ArcGIS.Desktop.AddIns.Button
     {
@@ -14,10 +14,13 @@ namespace WorckWithCadastr_V6.ArcButtons
 
         protected override void OnClick()
         {
+            ArcMap.Application.CurrentTool = null;
+            frmVrb_Bdl_Spr_list.ShowForView();
         }
 
         protected override void OnUpdate()
         {
+            Enabled = ArcMap.Application != null;
         }
     }
 }

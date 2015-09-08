@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 
 
-namespace WorckWithCadastr_V6.ArcButtons
+namespace WorckWithCadastr_V6
 {
     public class arcBtn_Open_Rej_Adm_Raj_Mis : ESRI.ArcGIS.Desktop.AddIns.Button
     {
@@ -14,10 +14,13 @@ namespace WorckWithCadastr_V6.ArcButtons
 
         protected override void OnClick()
         {
+            ArcMap.Application.CurrentTool = null;
+            frmRej_Adm_Raj_Mis_list.ShowForView();
         }
 
         protected override void OnUpdate()
         {
+            Enabled = ArcMap.Application != null;
         }
     }
 }

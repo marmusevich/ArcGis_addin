@@ -7,6 +7,7 @@ using System.IO.IsolatedStorage;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
+using ESRI.ArcGIS.Framework;
 
 
 namespace SharedClasses

@@ -28,19 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
+ 
             // 
             // frmBase_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 510);
+            //this.ClientSize = new System.Drawing.Size(420, 301);
             this.Name = "frmBase_list";
             this.Text = "frmBase_list";
+            this.Load += new System.EventHandler(this.frmBase_list_Load);
+            this.Controls.SetChildIndex(this.dgv, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
+
         #endregion
+
+
+
     }
 }

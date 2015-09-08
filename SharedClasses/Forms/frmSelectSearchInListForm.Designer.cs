@@ -1,4 +1,4 @@
-﻿namespace WorckWithReestr
+﻿namespace SharedClasses
 {
     partial class frmSelectSearchInListForm
     {

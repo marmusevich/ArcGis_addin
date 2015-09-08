@@ -233,7 +233,7 @@ namespace WorckWithCadastr_V6
             AdresReestrWork.ShowOnMap(NameTable);
         }
 
-        private void frmBaseAdrReestrSpr_element_Load(object sender, EventArgs e)
+        private void frmBaseElement_Load(object sender, EventArgs e)
         {
             //if (editMode == EditMode.EDIT)
             //{
@@ -247,6 +247,7 @@ namespace WorckWithCadastr_V6
 
 
         #endregion
+
 
 
         //---------------------------------------------------------------------------------------------------------------------------------------------

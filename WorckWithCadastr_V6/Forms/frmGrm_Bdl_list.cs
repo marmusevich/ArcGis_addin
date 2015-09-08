@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using SharedClasses;
 
 namespace WorckWithCadastr_V6
 {
@@ -44,7 +36,7 @@ namespace WorckWithCadastr_V6
             base.NameSortFild = "ID_MSB_OBJ";        }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
-            return new frmGrm_Bdl_list_element(_objectID, _editMode);
+            return new frmGrm_Bdl_element(_objectID, _editMode);
         }
 
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника

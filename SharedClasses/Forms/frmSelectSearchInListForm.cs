@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SharedClasses;
 
-namespace WorckWithReestr
+namespace SharedClasses
 {
     public partial class frmSelectSearchInListForm : Form
     {
@@ -99,6 +99,7 @@ namespace WorckWithReestr
         //собственно таблица
         protected ITable table;
         private ArrayList allFilds = null;
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -594,7 +595,6 @@ namespace WorckWithReestr
         public frmSelectSearchInListForm(ITable _table = null)
         {
             InitializeComponent();
-
             table = _table;
         }
 

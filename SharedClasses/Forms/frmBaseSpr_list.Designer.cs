@@ -1,5 +1,11 @@
 ﻿namespace SharedClasses
 {
+
+    //[System.ComponentModel.Designer("System.Windows.Forms.Design.ControlDesigner, System.Design")]
+    //public class myDataGridView : DataGridView
+    //{
+    //}
+    
     partial class frmBaseSpr_list
     {
         /// <summary>
@@ -31,6 +37,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new System.Windows.Forms.DataGridView();
+            //this.dgv = new myDataGridView();
             this.cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,6 +185,7 @@
         protected System.Windows.Forms.ToolStripMenuItem cmsEdit;
         protected System.Windows.Forms.ToolStripMenuItem cmsDelete;
         protected System.Windows.Forms.DataGridView dgv;
+        //protected myDataGridView dgv;
         protected System.Windows.Forms.ContextMenuStrip cmsMain;
         protected System.Windows.Forms.ToolStrip tsMain;
     }
