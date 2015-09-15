@@ -26,19 +26,16 @@ namespace WorckWithCadastr_V6
 
         private void cmsShowOnMap_Click(object sender, EventArgs e)
         {
-            AdresReestrWork.ShowOnMap(NameTable);
+            //AdresReestrWork.ShowOnMap(NameTable);
         }
 
         private void tsbtsdShowOnMap_Click(object sender, EventArgs e)
         {
-            AdresReestrWork.ShowOnMap(NameTable);
-
+            //AdresReestrWork.ShowOnMap(NameTable);
         }
 
         private void frmBase_list_Load(object sender, EventArgs e)
         {
-
-
             // 
             // dgv
             // 

@@ -31,39 +31,27 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             //даты
-            dtpData_Z.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Z")));
-            dtpData_Ish.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Ish")));
-            dtpData_Oplata.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Oplata")));
-            dtpData_Ved.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Ved")));
+            SetDateValueFromDBToDateTimePicker(ref row, "Data_Z", dtpData_Z);
+            SetDateValueFromDBToDateTimePicker(ref row, "Data_Ish", dtpData_Ish);
+            SetDateValueFromDBToDateTimePicker(ref row, "Data_Oplata", dtpData_Oplata);
+            SetDateValueFromDBToDateTimePicker(ref row, "Data_Ved", dtpData_Ved);
 
             //простые тексты  
-            txtTel_Z.Text = "" + row.get_Value(base.table.FindField("Tel_Z")) as string;
-            txtPrim.Text = "" + row.get_Value(base.table.FindField("Prim")) as string;
-            txtOpisan_Ved.Text = "" + row.get_Value(base.table.FindField("Opisan_Ved")) as string;
-            txtForma_Ved.Text = "" + row.get_Value(base.table.FindField("Forma_Ved")) as string;
-            txtN_Ish_Z.Text = "" + row.get_Value(base.table.FindField("N_Ish_Z")) as string;
-            txtSodergan.Text = "" + row.get_Value(base.table.FindField("Sodergan")) as string;
-            txtDoc_Oplata.Text = "" + row.get_Value(base.table.FindField("Doc_Oplata")) as string;
-            txtPr_Otkaz.Text = "" + row.get_Value(base.table.FindField("Pr_Otkaz")) as string;
-            txtDodatok.Text = "" + row.get_Value(base.table.FindField("Dodatok")) as string;
-            txtCane.Text = "" + row.get_Value(base.table.FindField("Cane")) as string;
+            SetStringValueFromDBToTextBox(ref row, "Tel_Z", txtTel_Z);
+            SetStringValueFromDBToTextBox(ref row, "Prim", txtPrim);
+            SetStringValueFromDBToTextBox(ref row, "Opisan_Ved", txtOpisan_Ved);
+            SetStringValueFromDBToTextBox(ref row, "Forma_Ved", txtForma_Ved);
+            SetStringValueFromDBToTextBox(ref row, "N_Ish_Z", txtN_Ish_Z);
+            SetStringValueFromDBToTextBox(ref row, "Sodergan", txtSodergan);
+            SetStringValueFromDBToTextBox(ref row, "Doc_Oplata", txtDoc_Oplata);
+            SetStringValueFromDBToTextBox(ref row, "Pr_Otkaz", txtPr_Otkaz);
+            SetStringValueFromDBToTextBox(ref row, "Dodatok", txtDodatok);
+            SetStringValueFromDBToTextBox(ref row, "Cane", txtCane);
 
             //доменные значения
-            object o = null;
-            o = row.get_Value(base.table.FindField("Status"));
-            if (o == null)
-                o = row.Fields.get_Field(base.table.FindField("Status")).DefaultValue;
-            cbStatus.SelectedIndex = ddaStatus.GetIndexByValue(o);
-
-            o = row.get_Value(base.table.FindField("Otkaz"));
-            if (o == null)
-                o = row.Fields.get_Field(base.table.FindField("Otkaz")).DefaultValue;
-            cbOtkaz.SelectedIndex = ddaOtkaz.GetIndexByValue(Convert.ToInt16(o));
-
-            o = row.get_Value(base.table.FindField("Oplata"));
-            if (o == null)
-                o = row.Fields.get_Field(base.table.FindField("Oplata")).DefaultValue;
-            cbOplata.SelectedIndex = ddaOplata.GetIndexByValue(Convert.ToInt16(o)); 
+            CheсkValueAndSetToComboBox(ref cbStatus, ref ddaStatus, "Status", GetValueFromDB(ref row, "Status"));
+            CheсkValueAndSetToComboBox(ref cbOtkaz, ref ddaOtkaz, "Otkaz", GetValueFromDB(ref row, "Otkaz"));
+            CheсkValueAndSetToComboBox(ref cbOplata, ref ddaOplata, "Oplata", GetValueFromDB(ref row, "Oplata"));
 
             // справочники
             mTip_Doc = row.get_Value(base.table.FindField("Tip_Doc"));
@@ -79,33 +67,34 @@ namespace WorckWithReestr
             OnChangedTipDoc();
 
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
-            txtN_Z.Text = "" + row.get_Value(base.table.FindField("N_Z")) as string;
+            SetIntValueFromDBToTextBox(ref row, "N_Z", txtN_Z);
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             //даты
-            row.set_Value(base.table.FindField("Data_Z"), dtpData_Z.Value);
-            row.set_Value(base.table.FindField("Data_Ish"), dtpData_Ish.Value);
-            row.set_Value(base.table.FindField("Data_Oplata"), dtpData_Oplata.Value);
-            row.set_Value(base.table.FindField("Data_Ved"), dtpData_Ved.Value);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Data_Z", dtpData_Z);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Data_Ish", dtpData_Ish);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Data_Oplata", dtpData_Oplata);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Data_Ved", dtpData_Ved);
 
             //простые тексты  
-            row.set_Value(base.table.FindField("Tel_Z"), txtTel_Z.Text);
-            row.set_Value(base.table.FindField("Prim"), txtPrim.Text);
-            row.set_Value(base.table.FindField("Opisan_Ved"), txtOpisan_Ved.Text);
-            row.set_Value(base.table.FindField("Forma_Ved"), txtForma_Ved.Text);
-            row.set_Value(base.table.FindField("N_Ish_Z"), txtN_Ish_Z.Text);
-            row.set_Value(base.table.FindField("Sodergan"), txtSodergan.Text);
-            row.set_Value(base.table.FindField("Doc_Oplata"), txtDoc_Oplata.Text);
-            row.set_Value(base.table.FindField("Pr_Otkaz"), txtPr_Otkaz.Text);
-            row.set_Value(base.table.FindField("Dodatok"), txtDodatok.Text);
-            row.set_Value(base.table.FindField("Cane"), txtCane.Text);
+            SaveStringValueFromTextBoxToDB(ref row, "Tel_Z", txtTel_Z);
+            SaveStringValueFromTextBoxToDB(ref row, "Prim", txtPrim);
+            SaveStringValueFromTextBoxToDB(ref row, "Opisan_Ved", txtOpisan_Ved);
+            SaveStringValueFromTextBoxToDB(ref row, "Opisan_Ved", txtOpisan_Ved);
+            SaveStringValueFromTextBoxToDB(ref row, "Forma_Ved", txtForma_Ved);
+            SaveStringValueFromTextBoxToDB(ref row, "N_Ish_Z", txtN_Ish_Z);
+            SaveStringValueFromTextBoxToDB(ref row, "Sodergan", txtSodergan);
+            SaveStringValueFromTextBoxToDB(ref row, "Doc_Oplata", txtDoc_Oplata);
+            SaveStringValueFromTextBoxToDB(ref row, "Pr_Otkaz", txtPr_Otkaz);
+            SaveStringValueFromTextBoxToDB(ref row, "Dodatok", txtDodatok);
+            SaveStringValueFromTextBoxToDB(ref row, "Cane", txtCane);
 
             //доменные значения
-            row.set_Value(base.table.FindField("Status"), ((DomeinDataAdapter.DomeinData)cbStatus.SelectedItem).Value);
-            row.set_Value(base.table.FindField("Otkaz"), ((DomeinDataAdapter.DomeinData)cbOtkaz.SelectedItem).Value);
-            row.set_Value(base.table.FindField("Oplata"), ((DomeinDataAdapter.DomeinData)cbOplata.SelectedItem).Value);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "Status", ref cbStatus);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "Otkaz", ref cbOtkaz);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "Oplata", ref cbOplata);
 
             // справочники
             row.set_Value(base.table.FindField("Tip_Doc"), mTip_Doc);
@@ -148,24 +137,10 @@ namespace WorckWithReestr
         protected override void DB_SharedData_to_FormElement()
         {
             //доменные значения
-            object o = null;
-            ddaStatus = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Status")).Domain);
-            cbStatus.Items.AddRange(ddaStatus.ToArray());
-            o = base.table.Fields.get_Field(base.table.FindField("Status")).DefaultValue;
-            if ((o != null) && !Convert.IsDBNull(o))
-                cbStatus.SelectedIndex = ddaStatus.GetIndexByValue(Convert.ToInt16(o));
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbStatus, ref ddaStatus, "Status");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbOtkaz, ref ddaOtkaz, "Otkaz");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbOplata, ref ddaOplata, "Oplata");
 
-            ddaOtkaz = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Otkaz")).Domain);
-            cbOtkaz.Items.AddRange(ddaOtkaz.ToArray());
-            o = base.table.Fields.get_Field(base.table.FindField("Otkaz")).DefaultValue;
-            if ((o != null) && !Convert.IsDBNull(o))
-                cbOtkaz.SelectedIndex = ddaOtkaz.GetIndexByValue(Convert.ToInt16(o));
-
-            ddaOplata = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("Oplata")).Domain);
-            cbOplata.Items.AddRange(ddaOplata.ToArray());
-            o = base.table.Fields.get_Field(base.table.FindField("Oplata")).DefaultValue;
-            if ((o != null) && !Convert.IsDBNull(o))
-                cbOplata.SelectedIndex = ddaOplata.GetIndexByValue(Convert.ToInt16(o));
 
             // справочники
             ReestrDictionaryWork.EnableAutoComlectToFizLic(txtFio_Z);

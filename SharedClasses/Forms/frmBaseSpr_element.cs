@@ -5,7 +5,7 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace SharedClasses
 {
-    public partial class frmBaseSpr_element : Form
+    public partial class frmBaseSpr_element : Form, IElementFormWorckWithControlsAndDB
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -207,7 +207,66 @@ namespace SharedClasses
             }
 
             this.Close();
-        }        
+        }
+        
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        #region  работа с элементами управления
+        //создать адаптер домена, установить лист значений комбобокса, и установить значение по умолчанию
+        public void CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName)
+        {
+            DomeinDataAdapter.CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cb, ref dda, ref table, fildName);
+        }
+        //устоновить значение комбобокса по значению, если нет адаптера - создать, если нет значения устоновить по умолчанию
+        public void CheсkValueAndSetToComboBox(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName, object value)
+        {
+            DomeinDataAdapter.CheсkValueAndSetToComboBox(ref cb, ref dda, ref table, fildName, value);
+        }
+
+        //прочесть значение из базы
+        public object GetValueFromDB(ref IRow row, string fildName)
+        {
+            return row.get_Value(table.FindField(fildName));
+        }
+        //установить значение элемента управления тип текст
+        public void SetStringValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox)
+        {
+            textBox.Text = "" + GetValueFromDB(ref row, fildName) as string;
+        }
+        //установить значение элемента управления тип число
+        public void SetIntValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox)
+        {
+            textBox.Text = "" + GetValueFromDB(ref row, fildName) as string;
+        }
+        //установить значение элемента управления тип дата
+        public void SetDateValueFromDBToDateTimePicker(ref IRow row, string fildName, DateTimePicker dateTimePicker)
+        {
+            dateTimePicker.Value = GeneralDBWork.ConvertVolueToDateTime(GetValueFromDB(ref row, fildName));
+        }
+
+        //сохранить в базу значение элемента управления тип доменные значения
+        public void SaveDomeinDataValueFromComboBoxToDB(ref IRow row, string fildName, ref ComboBox cb)
+        {
+            row.set_Value(table.FindField(fildName), ((DomeinDataAdapter.DomeinData)cb.SelectedItem).Value);
+        }
+        //сохранить в базу значение элемента управления тип текст
+        public void SaveStringValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox)
+        {
+            row.set_Value(table.FindField(fildName), textBox.Text);
+        }
+        //сохранить в базу значение элемента управления тип число
+        public void SaveIntValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox)
+        {
+            int tmp = Convert.ToInt32(textBox.Text);
+            row.set_Value(table.FindField(fildName), tmp);
+        }
+        //сохранить в базу значение элемента управления тип дата
+        public void SaveDateValueFromDateTimePickerToDB(ref IRow row, string fildName, DateTimePicker dateTimePicker)
+        {
+            row.set_Value(table.FindField(fildName), dateTimePicker.Value);
+        }
+
+        #endregion
+        //---------------------------------------------------------------------------------------------------------------------------------------------
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events

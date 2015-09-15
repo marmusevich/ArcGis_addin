@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace SharedClasses
 {
-    public partial class frmBaseJurnal : Form, IFormFilterMetods
+    public partial class frmBaseJurnal : Form, IListFormFilterMetods
     {
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  types
@@ -131,7 +131,7 @@ namespace SharedClasses
 
                 dgv.AutoGenerateColumns = false;
 
-                GeneralDBWork.CreateColumIn(dgv, table);
+                GeneralDBWork.CreateColumIn(ref dgv, ref table);
                 OtherSetupDGV();
                 dgv.DataSource = dsBinding;
                 SetupDGV();
@@ -195,7 +195,7 @@ namespace SharedClasses
             this.StartPosition = FormStartPosition.CenterScreen;
 
 
-            if (!GeneralDBWork.SetDisplayOrder(dgv, NameTable))
+            if (!GeneralDBWork.SetDisplayOrder(ref dgv, NameTable))
                 SetDefaultDisplayOrder();
 
             if (dgv.Columns.Count > 0)
@@ -237,7 +237,7 @@ namespace SharedClasses
         }
         private void frmBaseJurnal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GeneralDBWork.GetDisplayOrder(dgv, NameTable);
+            GeneralDBWork.GetDisplayOrder(ref dgv, NameTable);
         }
         private void cmsAdd_Click(object sender, EventArgs e)
         {

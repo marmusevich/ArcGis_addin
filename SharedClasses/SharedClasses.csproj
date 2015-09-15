@@ -97,7 +97,6 @@
       <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shared\AdresReestrWork.cs" />
     <Compile Include="Shared\GeneralMapWork.cs" />
     <Compile Include="Shared\ReestrDictionaryWork.cs" />
     <Compile Include="Shared\ReestrDocumentWork.cs" />

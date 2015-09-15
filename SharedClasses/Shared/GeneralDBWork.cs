@@ -55,7 +55,7 @@ namespace SharedClasses
             MessageBox.Show(errorText, errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         // создать колонки в гриде по таблице ArcGIS
-        public static void CreateColumIn(DataGridView dgv, ITable tableToWrap)
+        public static void CreateColumIn(ref DataGridView dgv, ref ITable tableToWrap)
         {
             dgv.Columns.Clear();
             for (int fieldCount = 0; fieldCount < tableToWrap.Fields.FieldCount; fieldCount++)
@@ -78,7 +78,7 @@ namespace SharedClasses
             }
         }
         //получить и сохранить в файле порядок колонок
-        public static void GetDisplayOrder(DataGridView dgv, string tableName)
+        public static void GetDisplayOrder(ref DataGridView dgv, string tableName)
         {
             string filename = Path.Combine(GeneralDBWork.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
             using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
@@ -94,7 +94,7 @@ namespace SharedClasses
             }
         }
         //устоновить порядок колонок из файла
-        public static bool SetDisplayOrder(DataGridView dgv, string tableName)
+        public static bool SetDisplayOrder(ref DataGridView dgv, string tableName)
         {
             bool ret = false;
             try
@@ -106,7 +106,7 @@ namespace SharedClasses
                     {
                         XmlSerializer ser = new XmlSerializer(typeof(int[]));
                         int[] displayIndicies = (int[])ser.Deserialize(isoStream);
-                        SetDisplayOrderByArray(dgv, displayIndicies);
+                        SetDisplayOrderByArray(ref dgv, displayIndicies);
                         ret = true;
                     }
                 }
@@ -118,7 +118,7 @@ namespace SharedClasses
                 return ret;
         }
         //устоновить порядок колонок по массиву
-        public static void SetDisplayOrderByArray(DataGridView dgv, int[] displayIndices)
+        public static void SetDisplayOrderByArray(ref DataGridView dgv, int[] displayIndices)
         {
             for (int i = 0; i < displayIndices.Length; i++)
             {
@@ -358,12 +358,37 @@ namespace SharedClasses
         //---------------------------------------------------------------------------------------
     }
 
-
-    interface IFormFilterMetods
+    //для форм списков котрые будут поддерживать поиск в таблице
+    interface IListFormFilterMetods
     {
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
         bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName);
     }
 
-}
+    //для форм элементов, работа с элементами управления и значениями из базы
+    interface IElementFormWorckWithControlsAndDB
+    {
+        //создать адаптер домена, установить лист значений комбобокса, и установить значение по умолчанию
+        void CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName);
+        //устоновить значение комбобокса по значению, если нет адаптера - создать, если нет значения устоновить по умолчанию
+        void CheсkValueAndSetToComboBox(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName, object value);
+        
+        //прочесть значение из базы
+        object GetValueFromDB(ref IRow row, string fildName);
+        //установить значение элемента управления тип текст
+        void SetStringValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox);
+        //установить значение элемента управления тип число
+        void SetIntValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox);
+        //установить значение элемента управления тип дата
+        void SetDateValueFromDBToDateTimePicker(ref IRow row, string fildName, DateTimePicker dateTimePicker);
 
+        //сохранить в базу значение элемента управления тип доменные значения
+        void SaveDomeinDataValueFromComboBoxToDB(ref IRow row, string fildName, ref ComboBox cb);
+        //сохранить в базу значение элемента управления тип текст
+        void SaveStringValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox);
+        //сохранить в базу значение элемента управления тип число
+        void SaveIntValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox);
+        //сохранить в базу значение элемента управления тип дата
+        void SaveDateValueFromDateTimePickerToDB(ref IRow row, string fildName, DateTimePicker dateTimePicker);
+    }
+}

@@ -30,9 +30,9 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             // взять из базы
-            txtFIO.Text = row.get_Value(base.table.FindField("П_І_Б")) as string;
-            txtCategor.Text = row.get_Value(base.table.FindField("категорія")) as string;
-            txtINN.Text = row.get_Value(base.table.FindField("ідент_код")) as string;
+            SetStringValueFromDBToTextBox(ref row, "П_І_Б", txtFIO);
+            SetStringValueFromDBToTextBox(ref row, "категорія", txtCategor);
+            SetStringValueFromDBToTextBox(ref row, "ідент_код", txtINN);
 
             cbIsWorker.Checked = GeneralDBWork.ConvertVolueToBool(base.table.FindField("ЭтоСотрудник"));
         }
@@ -40,15 +40,14 @@ namespace WorckWithReestr
         protected override void FormElement_to_DB(IRow row)
         {
             // положить в базы
-            row.set_Value(base.table.FindField("П_І_Б"), txtFIO.Text);
-            row.set_Value(base.table.FindField("категорія"), txtCategor.Text);
-            row.set_Value(base.table.FindField("ідент_код"), txtINN.Text);
+            SaveStringValueFromTextBoxToDB(ref row, "П_І_Б", txtFIO);
+            SaveStringValueFromTextBoxToDB(ref row, "категорія", txtCategor);
+            SaveStringValueFromTextBoxToDB(ref row, "ідент_код", txtINN);
 
             if (cbIsWorker.Checked)
                 row.set_Value(base.table.FindField("ЭтоСотрудник"), 1);
             else
                 row.set_Value(base.table.FindField("ЭтоСотрудник"), 0);
-
         }
 
         protected override bool ValidatingData()

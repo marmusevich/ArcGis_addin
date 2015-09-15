@@ -24,19 +24,19 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             //даты
-            dtpData_Vh.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Vh")));
-            dtpData_Otp.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Otp")));
-            dtpData_Kad.Value = GeneralDBWork.ConvertVolueToDateTime(row.get_Value(base.table.FindField("Data_Kad")));
+            SetDateValueFromDBToDateTimePicker(ref row, "Data_Vh", dtpData_Vh);
+            SetDateValueFromDBToDateTimePicker(ref row, "Data_Otp", dtpData_Otp);
+            SetDateValueFromDBToDateTimePicker(ref row, "Data_Kad", dtpData_Kad);
 
-            ////простые тексты  
-            txtIst_Ved.Text = "" + row.get_Value(base.table.FindField("Ist_Ved")) as string;
-            txtN_Sop_List.Text = "" + row.get_Value(base.table.FindField("N_Sop_List")) as string;
-            txtN_GD.Text = "" + row.get_Value(base.table.FindField("N_GD")) as string;
-            txtN_Doc_GD.Text = "" + row.get_Value(base.table.FindField("N_Doc_GD")) as string;
-            txtName_GD.Text = "" + row.get_Value(base.table.FindField("Name_GD")) as string;
-            txtEl_Format_GD.Text = "" + row.get_Value(base.table.FindField("El_Format_GD")) as string;
-            txtN_Kad.Text = "" + row.get_Value(base.table.FindField("N_Kad")) as string;
-            txtPrim.Text = "" + row.get_Value(base.table.FindField("Prim")) as string;
+            //простые тексты  
+            SetStringValueFromDBToTextBox(ref row, "Ist_Ved", txtIst_Ved);
+            SetStringValueFromDBToTextBox(ref row, "N_Sop_List", txtN_Sop_List);
+            SetStringValueFromDBToTextBox(ref row, "N_GD", txtN_GD);
+            SetStringValueFromDBToTextBox(ref row, "N_Doc_GD", txtN_Doc_GD);
+            SetStringValueFromDBToTextBox(ref row, "Name_GD", txtName_GD);
+            SetStringValueFromDBToTextBox(ref row, "El_Format_GD", txtEl_Format_GD);
+            SetStringValueFromDBToTextBox(ref row, "N_Kad", txtN_Kad);
+            SetStringValueFromDBToTextBox(ref row, "Prim", txtPrim);
 
             // справочники
             mFIO_Kad = row.get_Value(base.table.FindField("FIO_Kad"));
@@ -44,33 +44,32 @@ namespace WorckWithReestr
             OnChangedFIO_Kad();
             OnChangedTipDoc();
 
-            txtKol_Str_GD.Text = "" + row.get_Value(base.table.FindField("Kol_Str_GD")) as string;
-            //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
-            txtN_Vh.Text = "" + row.get_Value(base.table.FindField("N_Vh")) as string;
+            SetIntValueFromDBToTextBox(ref row, "Kol_Str_GD", txtKol_Str_GD);
+            SetIntValueFromDBToTextBox(ref row, "N_Vh", txtN_Vh);
         }
         //сохранение значений элементов управления в базу данных
         protected override void FormElement_to_DB(IRow row)
         {
             //даты
-            row.set_Value(base.table.FindField("Data_Vh"), dtpData_Vh.Value);
-            row.set_Value(base.table.FindField("Data_Otp"), dtpData_Otp.Value);
-            row.set_Value(base.table.FindField("Data_Kad"), dtpData_Kad.Value);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Data_Vh", dtpData_Vh);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Data_Otp", dtpData_Otp);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Data_Kad", dtpData_Kad);
 
             //простые тексты  
-            row.set_Value(base.table.FindField("Ist_Ved"), txtIst_Ved.Text);
-            row.set_Value(base.table.FindField("N_Sop_List"), txtN_Sop_List.Text);
-            row.set_Value(base.table.FindField("N_GD"), txtN_GD.Text);
-            row.set_Value(base.table.FindField("N_Doc_GD"), txtN_Doc_GD.Text);
-            row.set_Value(base.table.FindField("Name_GD"), txtName_GD.Text);
-            row.set_Value(base.table.FindField("El_Format_GD"), txtEl_Format_GD.Text);
-            row.set_Value(base.table.FindField("N_Kad"), txtN_Kad.Text);
-            row.set_Value(base.table.FindField("Prim"), txtPrim.Text);
+            SaveStringValueFromTextBoxToDB(ref row, "Ist_Ved", txtIst_Ved);
+            SaveStringValueFromTextBoxToDB(ref row, "N_Sop_List", txtN_Sop_List);
+            SaveStringValueFromTextBoxToDB(ref row, "N_GD", txtN_GD);
+            SaveStringValueFromTextBoxToDB(ref row, "N_Doc_GD", txtN_Doc_GD);
+            SaveStringValueFromTextBoxToDB(ref row, "Name_GD", txtName_GD);
+            SaveStringValueFromTextBoxToDB(ref row, "El_Format_GD", txtEl_Format_GD);
+            SaveStringValueFromTextBoxToDB(ref row, "N_Kad", txtN_Kad);
+            SaveStringValueFromTextBoxToDB(ref row, "Prim", txtPrim);
             
             // справочники
             row.set_Value(base.table.FindField("FIO_Kad"), mFIO_Kad);
             row.set_Value(base.table.FindField("Tip_Doc"), mTip_Doc);
 
-            row.set_Value(base.table.FindField("Kol_Str_GD"), Convert.ToInt32(txtKol_Str_GD.Text));
+            SaveIntValueFromTextBoxToDB(ref row, "Kol_Str_GD", txtKol_Str_GD);
 
             //N_Vh, Type = esriFieldTypeInteger, AliasName = Вхідний №
             int N_Vh = Convert.ToInt32(txtN_Vh.Text);
@@ -121,6 +120,7 @@ namespace WorckWithReestr
 
 
         #endregion
+        
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  form events
         //---------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using ESRI.ArcGIS.Geodatabase;
+using System;
 
 
 namespace SharedClasses
@@ -7,6 +8,30 @@ namespace SharedClasses
     //обертка над перечисляемыми доменнами
     public class DomeinDataAdapter
     {
+        //создать адаптер домена, установить лист значений комбобокса, и установить значение по умолчанию
+        public static void CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref System.Windows.Forms.ComboBox cb, ref DomeinDataAdapter dda, ref ITable table, string fildName)
+        {
+            dda = new DomeinDataAdapter(table.Fields.get_Field(table.FindField(fildName)).Domain);
+            cb.Items.AddRange(dda.ToArray());
+            CheсkValueAndSetToComboBox(ref cb, ref dda, ref table, fildName, null);
+        }
+        //устоновить значение комбобокса по значению, если нет адаптера - создать, если нет значения устоновить по умолчанию
+        public static void CheсkValueAndSetToComboBox(ref System.Windows.Forms.ComboBox cb, ref DomeinDataAdapter dda, ref ITable table, string fildName, object value)
+        {
+            if (dda == null)
+                CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cb, ref dda, ref table, fildName); 
+            if (value == null || Convert.IsDBNull(value))
+                value = table.Fields.get_Field(table.FindField(fildName)).DefaultValue;
+            if ((value != null) && !Convert.IsDBNull(value))
+                cb.SelectedIndex = dda.GetIndexByValue(value);
+        }
+
+
+
+
+
+
+
         //одно значение домена
         public class DomeinData
         {

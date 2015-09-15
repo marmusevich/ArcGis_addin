@@ -22,30 +22,25 @@ namespace WorckWithReestr
         
         #endregion
 
-
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
         protected override void DB_to_FormElement(IRow row)
         {
             // взять из базы
-            txtName.Text = "" + row.get_Value(base.table.FindField("назва")) as string;
-            txtOKPO.Text = "" + row.get_Value(base.table.FindField("код_ЄДРПОУ")) as string;
-            
-            object o = row.get_Value(base.table.FindField("форма_власності"));
-            if(o == null )
-                o = row.Fields.get_Field(base.table.FindField("форма_власності")).DefaultValue;
-            cbFV.SelectedIndex = dda.GetIndexByValue(Convert.ToInt16(o)); 
+            SetStringValueFromDBToTextBox(ref row, "назва", txtName);
+            SetStringValueFromDBToTextBox(ref row, "код_ЄДРПОУ", txtOKPO);
+
+            CheсkValueAndSetToComboBox(ref cbFV, ref dda, "форма_власності", GetValueFromDB(ref row, "форма_власності"));
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             // положить в базы
-            row.set_Value(base.table.FindField("назва"), txtName.Text);
-            row.set_Value(base.table.FindField("код_ЄДРПОУ"), txtOKPO.Text);
-            row.set_Value(base.table.FindField("форма_власності"), ((DomeinDataAdapter.DomeinData)cbFV.SelectedItem).Value);
+            SaveStringValueFromTextBoxToDB(ref row, "назва", txtName);
+            SaveStringValueFromTextBoxToDB(ref row, "код_ЄДРПОУ", txtOKPO);
+
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "форма_власності", ref cbFV);
         }
 
         protected override bool ValidatingData()
@@ -57,11 +52,7 @@ namespace WorckWithReestr
 
         protected override void DB_SharedData_to_FormElement()
         {
-            dda = new DomeinDataAdapter(base.table.Fields.get_Field(base.table.FindField("форма_власності")).Domain);
-            cbFV.Items.AddRange(dda.ToArray());
-            object o = base.table.Fields.get_Field(base.table.FindField("форма_власності")).DefaultValue;
-            if ((o != null) && !Convert.IsDBNull(o))
-                cbFV.SelectedIndex = dda.GetIndexByValue(Convert.ToInt16(o));
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbFV, ref dda, "форма_власності");
         }
 
         #endregion

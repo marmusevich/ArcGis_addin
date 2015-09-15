@@ -75,7 +75,7 @@ namespace WorckWithReestr
                                       base.table.FindField("Fio_Ved_Prin"),// 22
                                       base.table.FindField("Prim") // 23
                                     };
-            GeneralDBWork.SetDisplayOrderByArray(dgv, displayIndicies);
+            GeneralDBWork.SetDisplayOrderByArray(ref dgv, displayIndicies);
         }
 
         protected override void OtherSetupDGV()

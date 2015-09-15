@@ -22,15 +22,15 @@ namespace WorckWithReestr
         protected override void DB_to_FormElement(IRow row)
         {
             // взять из базы
-            txtTip_Doc.Text = "" + row.get_Value(base.table.FindField("Tip_Doc")) as string;
-            txtKod_Doc.Text = "" + row.get_Value(base.table.FindField("Kod_Doc")).ToString();
+            SetStringValueFromDBToTextBox(ref row, "Tip_Doc", txtTip_Doc);
+            SetIntValueFromDBToTextBox(ref row, "Kod_Doc", txtKod_Doc);
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             // положить в базы
-            row.set_Value(base.table.FindField("Tip_Doc"), txtTip_Doc.Text);
-            row.set_Value(base.table.FindField("Kod_Doc"), Convert.ToInt16(txtKod_Doc.Text));
+            SaveStringValueFromTextBoxToDB(ref row, "Tip_Doc", txtTip_Doc);
+            SaveIntValueFromTextBoxToDB(ref row, "Kod_Doc", txtKod_Doc);
         }
 
         protected override bool ValidatingData()

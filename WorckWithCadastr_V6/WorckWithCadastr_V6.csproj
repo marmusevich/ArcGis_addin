@@ -310,6 +310,9 @@
     <EmbeddedResource Include="Forms\Base\frmBase_list.resx">
       <DependentUpon>frmBase_list.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRej_Vul_element.resx">
+      <DependentUpon>frmRej_Vul_element.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

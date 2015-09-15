@@ -114,11 +114,11 @@ namespace SharedClasses
         }
 
         // получить тип поля
-        private void GetTypeOfType(ref sFildsDescription sfd, IField f)
+        private void GetTypeOfType(sFildsDescription sfd, IField f)
         {
-            if (Owner is IFormFilterMetods)
+            if (Owner is IListFormFilterMetods)
             {
-                if ((Owner as IFormFilterMetods).ChekFildIsDictionary(f.Name, ref sfd.mDictionareTableName))
+                if ((Owner as IListFormFilterMetods).ChekFildIsDictionary(f.Name, ref sfd.mDictionareTableName))
                 {
                     sfd.mTOT = TypeOfType.DICTIONARY;
                     return; // это ссылка на справочник
@@ -229,7 +229,7 @@ namespace SharedClasses
                 sfd.mAliasName = f.AliasName;
                 sfd.mName = f.Name;
 
-                GetTypeOfType(ref sfd, f);
+                GetTypeOfType(sfd, f);
 
                 // специальное поведение 
                 //  -для домена БУЛ
@@ -241,13 +241,13 @@ namespace SharedClasses
 
                 // -чек бокс - использование условия
                 if (sfd.mTOT != TypeOfType.UNCNOW)
-                    sfd.mControls.Add(CreateCheckBox(ref sfd, y, 10, 15));
+                    sfd.mControls.Add(CreateCheckBox(sfd, y, 10, 15));
                 //- надпись - имя поля
-                sfd.mControls.Add(CreateLabel(ref sfd, y, 10 + 15 + 10, 150));
+                sfd.mControls.Add(CreateLabel(sfd, y, 10 + 15 + 10, 150));
                 // - надпись тип поля + хинт полное указание типа
                 //- комбобокс с типами сравнений
                 if (sfd.mTOT != TypeOfType.UNCNOW)
-                    sfd.mControls.Add(CreateComparisonsComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10, 100));
+                    sfd.mControls.Add(CreateComparisonsComboBox(sfd, y, 10 + 15 + 10 + 150 + 10, 100));
 
                 //- поле ввода (текст, число, справочник), комбобокс (домен), выбор даты (даты)
                 //- для справочника кнопка выбора из справочника
@@ -259,32 +259,32 @@ namespace SharedClasses
                 {
                     // - текст (=, like "%str", like "%str%", like "str%")
                     case TypeOfType.TEXT:
-                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        sfd.mControls.Add(CreateValueTextBox(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
                         break;
                     // - число (=, >=, >, <, <=)
                     case TypeOfType.NUMBER:
-                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        sfd.mControls.Add(CreateValueTextBox(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
                         break;
                     // - дата (=, >=, >, <, <=, beetwen)
                     case TypeOfType.DATE:
-                        sfd.mControls.Add(CreateValueDateTimePicker(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        sfd.mControls.Add(CreateValueDateTimePicker(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
                         break;
                     // - домен (=)
                     case TypeOfType.DOMAIN:
-                        sfd.mControls.Add(CreateValueDomainComboBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        sfd.mControls.Add(CreateValueDomainComboBox(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
                         break;
                     // - справочник (=), для основного представления как для текста ??
                     case TypeOfType.DICTIONARY:
-                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
-                        sfd.mControls.Add(CreateSelectDictionaryButton(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10 + 150 + 10, 20));
+                        sfd.mControls.Add(CreateValueTextBox(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        sfd.mControls.Add(CreateSelectDictionaryButton(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10 + 150 + 10, 20));
                         break;
                     case TypeOfType.ID:
-                        sfd.mControls.Add(CreateValueTextBox(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
+                        sfd.mControls.Add(CreateValueTextBox(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150));
                         break;
                     // TypeOfType.UNCNOW
                     default:
                         {
-                            Label temp = CreateLabel(ref sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150, "lb_uncnow_") as Label;
+                            Label temp = CreateLabel(sfd, y, 10 + 15 + 10 + 150 + 10 + 100 + 10, 150, "lb_uncnow_") as Label;
                             temp.Text = "Неизвестный тип...";
                             sfd.mControls.Add(temp);
                         }
@@ -299,7 +299,7 @@ namespace SharedClasses
         #region form dinamic element creation functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
         // -чек бокс - использование условия
-        private Control CreateCheckBox(ref sFildsDescription sfd, int y, int x, int w = 15, string prefix = "chb_")
+        private Control CreateCheckBox(sFildsDescription sfd, int y, int x, int w = 15, string prefix = "chb_")
         {
             CheckBox temp = new CheckBox();
             temp.AutoSize = true;
@@ -313,7 +313,7 @@ namespace SharedClasses
             return temp;
         }
         //- надпись - имя поля
-        private Control CreateLabel(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "lb_")
+        private Control CreateLabel(sFildsDescription sfd, int y, int x, int w = 50, string prefix = "lb_")
         {
             Label temp = new Label();
             temp.AutoSize = false;
@@ -327,7 +327,7 @@ namespace SharedClasses
             return temp;
         }
         //- комбобокс с типами сравнений
-        private Control CreateComparisonsComboBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_Comparisons_")
+        private Control CreateComparisonsComboBox(sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_Comparisons_")
         {
             ComboBox temp = new ComboBox();
             temp.FormattingEnabled = true;
@@ -344,7 +344,7 @@ namespace SharedClasses
             return temp;
         }
         //- комбобокс с доменных значений
-        private Control CreateValueDomainComboBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_vd_")
+        private Control CreateValueDomainComboBox(sFildsDescription sfd, int y, int x, int w = 50, string prefix = "cb_vd_")
         {
             ComboBox temp = new ComboBox();
             temp.FormattingEnabled = true;
@@ -363,7 +363,7 @@ namespace SharedClasses
             return temp;
         }
         //- поле ввода даты
-        private Control CreateValueDateTimePicker(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "dtp_v_")
+        private Control CreateValueDateTimePicker(sFildsDescription sfd, int y, int x, int w = 50, string prefix = "dtp_v_")
         {
             DateTimePicker temp = new DateTimePicker();
             temp.Location = new System.Drawing.Point(x, y);
@@ -377,7 +377,7 @@ namespace SharedClasses
             return temp;
         }
         //- текстовое поле ввода
-        private Control CreateValueTextBox(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "txt_v_")
+        private Control CreateValueTextBox(sFildsDescription sfd, int y, int x, int w = 50, string prefix = "txt_v_")
         {
             TextBox temp = new TextBox();
             temp.Location = new System.Drawing.Point(x, y);
@@ -412,7 +412,7 @@ namespace SharedClasses
             return temp;
         }
         //- кнопка выбора из справочника
-        private Control CreateSelectDictionaryButton(ref sFildsDescription sfd, int y, int x, int w = 50, string prefix = "but_sd_")
+        private Control CreateSelectDictionaryButton(sFildsDescription sfd, int y, int x, int w = 50, string prefix = "but_sd_")
         {
             Button temp = new Button();
             temp.Location = new System.Drawing.Point(x, y);
