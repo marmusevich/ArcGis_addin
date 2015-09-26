@@ -14,6 +14,7 @@ namespace WorckWithReestr
 
         protected override void OnClick()
         {
+            //AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmReestrVedomostey_jurnal.ShowForView();
         }

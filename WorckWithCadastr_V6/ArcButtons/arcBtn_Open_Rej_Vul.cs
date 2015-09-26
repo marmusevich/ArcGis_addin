@@ -15,20 +15,7 @@ namespace WorckWithCadastr_V6
 
         protected override void OnClick()
         {
-            //ESRI.ArcGIS.Framework.IApplication app = ArcMap.Application;
-            //ESRI.ArcGIS.esriSystem.IStatusBar statusBar = app.StatusBar;
-            //statusBar.set_Message(0, "dfslkgsdfkglksdlf!!!");
-
-            //IMouseCursor appCursor = new MouseCursorClass();
-            //appCursor.SetCursor(2);
-
-            //IMouseCursor appCursor = new MouseCursorClass();
-            //appCursor.SetCursor(2);
-            //for (int i = 0; i <= 10000; i++)
-            //    app.StatusBar.set_Message(0, i.ToString());
-
-
-
+            //AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmRej_Vul_list.ShowForView();
         }

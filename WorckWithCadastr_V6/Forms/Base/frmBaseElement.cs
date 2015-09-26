@@ -35,7 +35,7 @@ namespace WorckWithCadastr_V6
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = GeneralDBWork.CheckValueIsInt_SetError(txtN_Kad, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsSmalInt_SetError(txtN_Kad, errorProvider) && ret;
             return ret;
         }
 
@@ -76,6 +76,11 @@ namespace WorckWithCadastr_V6
             //}
         }
 
+        private void btnShowOnMap_Click_1(object sender, EventArgs e)
+        {
+            //AdresReestrWork.ShowOnMap(NameTable);
+        }
+
 
         #endregion
 
@@ -107,5 +112,6 @@ namespace WorckWithCadastr_V6
             e.Cancel = !ValidatingData();
         }
         #endregion
+
     }
 }

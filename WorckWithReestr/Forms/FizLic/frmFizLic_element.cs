@@ -34,7 +34,7 @@ namespace WorckWithReestr
             SetStringValueFromDBToTextBox(ref row, "категорія", txtCategor);
             SetStringValueFromDBToTextBox(ref row, "ідент_код", txtINN);
 
-            cbIsWorker.Checked = GeneralDBWork.ConvertVolueToBool(base.table.FindField("ЭтоСотрудник"));
+            cbIsWorker.Checked = GeneralApp.ConvertVolueToBool(base.table.FindField("ЭтоСотрудник"));
         }
 
         protected override void FormElement_to_DB(IRow row)

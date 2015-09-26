@@ -5,7 +5,7 @@ using System.Collections;
 namespace SharedClasses
 {
     //общие функции для работы с документами
-    public class ReestrDocumentWork
+    public static class ReestrDocumentWork
     {
         //---------------------------------------------------------------------------------------
         #region 

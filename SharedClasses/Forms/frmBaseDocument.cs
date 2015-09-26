@@ -78,7 +78,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Установка значений по умолчанию в документе  '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема установки значений по умолчанию в документе  '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема установки значений по умолчанию в документе  '{0}' id {1}", NameTable, objectID));
 
                 ret = false;
             }
@@ -98,7 +98,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Получения общих данных в документе  '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема получения общих данных в документе  '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема получения общих данных в документе  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             return ret;
@@ -120,7 +120,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Чтиение данных документа  '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при чтиение данных документа  '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при чтиение данных документа  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             isModified = false;
@@ -160,7 +160,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Сохранение данных документа '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при сохранение данных документа '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при сохранение данных документа '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -198,7 +198,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Удаление документа '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при удаление документа '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при удаление документа '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -263,7 +263,7 @@ namespace SharedClasses
         //установить значение элемента управления тип дата
         public void SetDateValueFromDBToDateTimePicker(ref IRow row, string fildName, DateTimePicker dateTimePicker)
         {
-            dateTimePicker.Value = GeneralDBWork.ConvertVolueToDateTime(GetValueFromDB(ref row, fildName));
+            dateTimePicker.Value = GeneralApp.ConvertVolueToDateTime(GetValueFromDB(ref row, fildName));
         }
 
         //сохранить в базу значение элемента управления тип доменные значения

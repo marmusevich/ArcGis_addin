@@ -32,6 +32,7 @@
             this.txtPrymitka = new System.Windows.Forms.TextBox();
             this.lblN_Kad = new System.Windows.Forms.Label();
             this.txtN_Kad = new System.Windows.Forms.TextBox();
+            this.btnShowOnMap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             this.txtPrymitka.Location = new System.Drawing.Point(141, 383);
             this.txtPrymitka.Multiline = true;
             this.txtPrymitka.Name = "txtPrymitka";
+            this.txtPrymitka.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtPrymitka.Size = new System.Drawing.Size(447, 61);
             this.txtPrymitka.TabIndex = 10;
             this.txtPrymitka.TextChanged += new System.EventHandler(this.txtPrymitka_TextChanged);
@@ -75,14 +77,26 @@
             this.txtN_Kad.Name = "txtN_Kad";
             this.txtN_Kad.Size = new System.Drawing.Size(100, 20);
             this.txtN_Kad.TabIndex = 12;
+            this.txtN_Kad.Text = "0";
             this.txtN_Kad.TextChanged += new System.EventHandler(this.txtN_Kad_TextChanged);
             this.txtN_Kad.Validating += new System.ComponentModel.CancelEventHandler(this.txtN_Kad_Validating);
+            // 
+            // btnShowOnMap
+            // 
+            this.btnShowOnMap.Location = new System.Drawing.Point(156, 468);
+            this.btnShowOnMap.Name = "btnShowOnMap";
+            this.btnShowOnMap.Size = new System.Drawing.Size(119, 25);
+            this.btnShowOnMap.TabIndex = 13;
+            this.btnShowOnMap.Text = "Показать на карте";
+            this.btnShowOnMap.UseVisualStyleBackColor = true;
+            this.btnShowOnMap.Click += new System.EventHandler(this.btnShowOnMap_Click_1);
             // 
             // frmBaseElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 506);
+            this.Controls.Add(this.btnShowOnMap);
             this.Controls.Add(this.txtN_Kad);
             this.Controls.Add(this.lblN_Kad);
             this.Controls.Add(this.txtPrymitka);
@@ -96,6 +110,7 @@
             this.Controls.SetChildIndex(this.txtPrymitka, 0);
             this.Controls.SetChildIndex(this.lblN_Kad, 0);
             this.Controls.SetChildIndex(this.txtN_Kad, 0);
+            this.Controls.SetChildIndex(this.btnShowOnMap, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,5 +123,6 @@
         protected System.Windows.Forms.TextBox txtPrymitka;
         protected System.Windows.Forms.Label lblN_Kad;
         protected System.Windows.Forms.TextBox txtN_Kad;
+        protected System.Windows.Forms.Button btnShowOnMap;
     }
 }

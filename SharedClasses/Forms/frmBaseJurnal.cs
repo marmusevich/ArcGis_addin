@@ -131,17 +131,17 @@ namespace SharedClasses
 
                 dgv.AutoGenerateColumns = false;
 
-                GeneralDBWork.CreateColumIn(ref dgv, ref table);
-                OtherSetupDGV();
+                GeneralApp.CreateColumIn(ref dgv, ref table);
                 dgv.DataSource = dsBinding;
                 SetupDGV();
+                OtherSetupDGV();
                 dgv.Refresh();
                 ret = true;
             }
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Чтиение журнала документов  '{0}'", NameTable));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при чтиение журнала документов  '{0}'", NameTable));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при чтиение журнала документов  '{0}'", NameTable));
                 ret = false;
             }
             return ret;
@@ -195,7 +195,7 @@ namespace SharedClasses
             this.StartPosition = FormStartPosition.CenterScreen;
 
 
-            if (!GeneralDBWork.SetDisplayOrder(ref dgv, NameTable))
+            if (!GeneralApp.SetDisplayOrder(ref dgv, NameTable))
                 SetDefaultDisplayOrder();
 
             if (dgv.Columns.Count > 0)
@@ -225,8 +225,8 @@ namespace SharedClasses
         }
         private void frmBaseJurnal_Load(object sender, System.EventArgs e)
         {
-            dtpDataOt.Value = GeneralDBWork.GetFirstMonthDayDate(DateTime.Now);
-            dtpDatePo.Value = GeneralDBWork.GetLastMonthDayDate(DateTime.Now);
+            dtpDataOt.Value = GeneralApp.GetFirstMonthDayDate(DateTime.Now);
+            dtpDatePo.Value = GeneralApp.GetLastMonthDayDate(DateTime.Now);
             if (!IsNotReadData_FormIsConstruct)
             {
                 if (!this.ReadData()) // -ok
@@ -237,7 +237,7 @@ namespace SharedClasses
         }
         private void frmBaseJurnal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GeneralDBWork.GetDisplayOrder(ref dgv, NameTable);
+            GeneralApp.GetDisplayOrder(ref dgv, NameTable);
         }
         private void cmsAdd_Click(object sender, EventArgs e)
         {
@@ -337,8 +337,8 @@ namespace SharedClasses
                 {
                     short add = Convert.ToInt16(but.Tag);
                     enable_dtpDataEvent = false;
-                    dtpDataOt.Value = GeneralDBWork.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year, dtpDataOt.Value.Month + add, 15));
-                    dtpDatePo.Value = GeneralDBWork.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year, dtpDatePo.Value.Month + add, 15));
+                    dtpDataOt.Value = GeneralApp.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year, dtpDataOt.Value.Month + add, 15));
+                    dtpDatePo.Value = GeneralApp.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year, dtpDatePo.Value.Month + add, 15));
                     tableWrapper.QueryFilter = BuildConditions();
                     tableWrapper.UpdateData();
                     dgv.Refresh();

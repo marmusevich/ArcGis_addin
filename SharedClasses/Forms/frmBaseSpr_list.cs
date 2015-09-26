@@ -48,6 +48,11 @@ namespace SharedClasses
         {
             
         }
+        //доп настройка грида
+        protected virtual void OtherSetupDGV()
+        {
+
+        }
         //вернуть строку дополнительных условий
         protected virtual string GetStringAddetConditions()
         {
@@ -120,9 +125,10 @@ namespace SharedClasses
                 dsBinding.DataSource = tableWrapper;
 
                 dgv.AutoGenerateColumns = false;
-                GeneralDBWork.CreateColumIn(ref dgv, ref table);
+                GeneralApp.CreateColumIn(ref dgv, ref table);
                 dgv.DataSource = dsBinding;
                 SetupDGV();
+                OtherSetupDGV();
                 dgv.Refresh();
                 ret = true;
             }
@@ -158,7 +164,7 @@ namespace SharedClasses
             }
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            if (!GeneralDBWork.SetDisplayOrder(ref dgv, NameTable))
+            if (!GeneralApp.SetDisplayOrder(ref dgv, NameTable))
                 SetDefaultDisplayOrder();
 
             if (dgv.Columns.Count > 0)
@@ -199,7 +205,7 @@ namespace SharedClasses
         }
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GeneralDBWork.GetDisplayOrder(ref dgv, NameTable);
+            GeneralApp.GetDisplayOrder(ref dgv, NameTable);
         }
         private void cmsAdd_Click(object sender, EventArgs e)
         {

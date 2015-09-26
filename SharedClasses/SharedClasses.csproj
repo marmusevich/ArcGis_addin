@@ -97,14 +97,15 @@
       <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\GeneralApp.cs" />
     <Compile Include="Shared\GeneralMapWork.cs" />
     <Compile Include="Shared\ReestrDictionaryWork.cs" />
     <Compile Include="Shared\ReestrDocumentWork.cs" />
     <Compile Include="Shared\DomeinDataAdapter.cs" />
-    <Compile Include="Shared\FieldPropertyDescriptor.cs" />
+    <Compile Include="Shared\TableWraper\FieldPropertyDescriptor.cs" />
     <Compile Include="Shared\Logger.cs" />
     <Compile Include="Shared\GeneralDBWork.cs" />
-    <Compile Include="Shared\TableWraper.cs" />
+    <Compile Include="Shared\TableWraper\TableWraper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmSelectSearchInListForm.resx">

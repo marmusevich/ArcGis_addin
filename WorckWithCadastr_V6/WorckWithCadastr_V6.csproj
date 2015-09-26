@@ -88,6 +88,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcButtons\AppStartPoint.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_Grm_Bdl.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_Kvt.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_Obj_Scl_Sft_Ecn.cs" />
@@ -271,6 +272,7 @@
     <ProjectReference Include="..\SharedClasses\SharedClasses.csproj">
       <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
       <Name>SharedClasses</Name>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -310,8 +312,35 @@
     <EmbeddedResource Include="Forms\Base\frmBase_list.resx">
       <DependentUpon>frmBase_list.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGrm_Bdl_element.resx">
+      <DependentUpon>frmGrm_Bdl_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmKvt_element.resx">
+      <DependentUpon>frmKvt_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmObj_Scl_Sft_Ecn_element.resx">
+      <DependentUpon>frmObj_Scl_Sft_Ecn_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRej_Adm_Raj_Mis_element.resx">
+      <DependentUpon>frmRej_Adm_Raj_Mis_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRej_Adr_Osnov_element.resx">
+      <DependentUpon>frmRej_Adr_Osnov_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRej_Adr_Poh_element.resx">
+      <DependentUpon>frmRej_Adr_Poh_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRej_Bud_Adr_element.resx">
+      <DependentUpon>frmRej_Bud_Adr_element.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRej_Vul_element.resx">
       <DependentUpon>frmRej_Vul_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmVrb_Bdl_Spr_element.resx">
+      <DependentUpon>frmVrb_Bdl_Spr_element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmZtl_Bdn_element.resx">
+      <DependentUpon>frmZtl_Bdn_element.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

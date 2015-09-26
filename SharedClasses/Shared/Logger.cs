@@ -5,7 +5,7 @@ using System.Text;
 namespace SharedClasses
 {
     //запись лога
-    public class Logger
+    public static class Logger
     {
         private static object sync = new object();
         // вывести инвормации о ошибке в лог
@@ -13,7 +13,7 @@ namespace SharedClasses
         {
             try
             {
-                string pathToLog = Path.Combine(GeneralDBWork.GetAppDataPathAndCreateDirIfNeed(), "Log");
+                string pathToLog = Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), "Log");
                 if (!Directory.Exists(pathToLog))
                     Directory.CreateDirectory(pathToLog); // Создаем директорию, если нужно
                 string filename = Path.Combine(pathToLog, string.Format("{0}_{1:dd.MM.yyy}.log", AppDomain.CurrentDomain.FriendlyName, DateTime.Now));

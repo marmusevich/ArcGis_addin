@@ -82,6 +82,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcButtons\AppStartPoint.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_JurLicList.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrVedomostey.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrZayav.cs" />
@@ -236,6 +237,7 @@
     <ProjectReference Include="..\SharedClasses\SharedClasses.csproj">
       <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
       <Name>SharedClasses</Name>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -14,6 +14,7 @@ namespace WorckWithCadastr_V6
 
         protected override void OnClick()
         {
+            //AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmRej_Adm_Raj_Mis_list.ShowForView();
         }

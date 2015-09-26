@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace SharedClasses
 {
     //общие функции для работы со справочниками
-    public class ReestrDictionaryWork
+    public static class ReestrDictionaryWork
     {
         //---------------------------------------------------------------------------------------
         #region получение значения из справочника

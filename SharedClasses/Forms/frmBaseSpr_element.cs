@@ -73,7 +73,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема получения общих данных в справочнике  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             return ret;
@@ -95,7 +95,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при чтиение данных справочника  '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             isModified = false;
@@ -135,7 +135,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Сохранение данных справочника '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -173,7 +173,7 @@ namespace SharedClasses
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, string.Format("Удаление справочника '{0}' id {1}", NameTable, objectID));
-                GeneralDBWork.ShowErrorMessage(string.Format("Проблема при удаление справочника '{0}' id {1}", NameTable, objectID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при удаление справочника '{0}' id {1}", NameTable, objectID));
                 ret = false;
             }
             finally
@@ -240,7 +240,7 @@ namespace SharedClasses
         //установить значение элемента управления тип дата
         public void SetDateValueFromDBToDateTimePicker(ref IRow row, string fildName, DateTimePicker dateTimePicker)
         {
-            dateTimePicker.Value = GeneralDBWork.ConvertVolueToDateTime(GetValueFromDB(ref row, fildName));
+            dateTimePicker.Value = GeneralApp.ConvertVolueToDateTime(GetValueFromDB(ref row, fildName));
         }
 
         //сохранить в базу значение элемента управления тип доменные значения

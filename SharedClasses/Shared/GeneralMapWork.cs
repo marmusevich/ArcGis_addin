@@ -9,7 +9,7 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace SharedClasses
 {
-    public class GeneralMapWork
+    public static class GeneralMapWork
     {
         //соответствие таблиц данных с таблицами графики
         //    - пространства имен, имена таблиц, имена полей

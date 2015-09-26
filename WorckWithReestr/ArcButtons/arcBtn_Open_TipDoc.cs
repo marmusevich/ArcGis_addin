@@ -14,8 +14,8 @@ namespace WorckWithReestr
 
         protected override void OnClick()
         {
+            //AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
-
             frmTipDoc_list.ShowForView();
         }
         protected override void OnUpdate()

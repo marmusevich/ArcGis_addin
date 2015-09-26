@@ -265,8 +265,7 @@ namespace WorckWithReestr
         {
             isModified = true;
         }
-        #endregion
-
+        
         private void txtN_Kad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
@@ -277,7 +276,8 @@ namespace WorckWithReestr
             isModified = true;
             e.Cancel = !ValidatingData();
         }
-
+       
+        #endregion
     }
 }
 

@@ -13,25 +13,10 @@ using ESRI.ArcGIS.Framework;
 namespace SharedClasses
 {
     //общие методы
-    public class GeneralDBWork
+    public static class GeneralDBWork
     {
         //---------------------------------------------------------------------------------------
         #region общее
-        //хранит путь к деректории с настройками
-        private static string m_applicationDataPath = null;
-
-        //получить путь к коталогу с файлами настройкам програмы, при отсутствии, создать
-        public static string GetAppDataPathAndCreateDirIfNeed()
-        {
-            if (m_applicationDataPath == null)
-            {
-                m_applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\WorckWithKadastr");
-            }
-            if (!Directory.Exists(m_applicationDataPath))
-                Directory.CreateDirectory(m_applicationDataPath); // Создаем директорию, если нужно
-
-            return m_applicationDataPath;
-        }
         // получить рабочее пространство связоное с базой данных из сервера баз данных
         // dataBase - открываеммая база на сервере
         public static IWorkspace GetWorkspace(string dataBase)
@@ -49,114 +34,9 @@ namespace SharedClasses
             IWorkspaceFactory workspaceFactory = (IWorkspaceFactory)Activator.CreateInstance(factoryType);
             return workspaceFactory.Open(propertySet, 0);
         }
-        //унифицированый вызов сообщения об ошибке
-        public static void ShowErrorMessage(string errorText = "Произошла какая то ошибка!!", string errorCaption = "Ошибка в расширении")
-        {
-            MessageBox.Show(errorText, errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-        // создать колонки в гриде по таблице ArcGIS
-        public static void CreateColumIn(ref DataGridView dgv, ref ITable tableToWrap)
-        {
-            dgv.Columns.Clear();
-            for (int fieldCount = 0; fieldCount < tableToWrap.Fields.FieldCount; fieldCount++)
-            {
-                IField f = tableToWrap.Fields.get_Field(fieldCount);
-
-                DataGridViewColumn dGVC = null;
-                //if ((f.Domain != null) && (string.Compare(f.Domain.Name, "bool", true) == 0))
-                //    dGVC = new DataGridViewCheckBoxColumn();
-                //else
-                    dGVC = new DataGridViewTextBoxColumn();
-
-                dGVC.Name = f.Name;
-                dGVC.DataPropertyName = f.Name;
-                dGVC.HeaderText = f.AliasName;
-                dGVC.ReadOnly = true;
-                dGVC.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                dgv.Columns.Add(dGVC);
-                f = null;
-            }
-        }
-        //получить и сохранить в файле порядок колонок
-        public static void GetDisplayOrder(ref DataGridView dgv, string tableName)
-        {
-            string filename = Path.Combine(GeneralDBWork.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
-            using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
-            {
-                int[] displayIndices = new int[dgv.ColumnCount];
-                for (int i = 0; i < dgv.ColumnCount; i++)
-                {
-                    //displayIndices[i] = dgv.Columns[i].DisplayIndex;
-                    displayIndices[dgv.Columns[i].DisplayIndex] = i;
-                }
-                XmlSerializer ser = new XmlSerializer(typeof(int[]));
-                ser.Serialize(isoStream, displayIndices);
-            }
-        }
-        //устоновить порядок колонок из файла
-        public static bool SetDisplayOrder(ref DataGridView dgv, string tableName)
-        {
-            bool ret = false;
-            try
-            {
-                string filename = Path.Combine(GeneralDBWork.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
-                if(File.Exists(filename))
-                {
-                    using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))
-                    {
-                        XmlSerializer ser = new XmlSerializer(typeof(int[]));
-                        int[] displayIndicies = (int[])ser.Deserialize(isoStream);
-                        SetDisplayOrderByArray(ref dgv, displayIndicies);
-                        ret = true;
-                    }
-                }
-            }
-            catch (Exception ex) // обработка ошибок
-            {
-                Logger.Write(ex, string.Format("SharedClass.SetDisplayOrder('{0}')", tableName));
-            }
-                return ret;
-        }
-        //устоновить порядок колонок по массиву
-        public static void SetDisplayOrderByArray(ref DataGridView dgv, int[] displayIndices)
-        {
-            for (int i = 0; i < displayIndices.Length; i++)
-            {
-                //dgv.Columns[i].DisplayIndex = displayIndicies[i];
-                dgv.Columns[displayIndices[i]].DisplayIndex = i;
-            }
-        }
-        //получить дату первого дня месяца
-        public static DateTime GetFirstMonthDayDate(DateTime date)
-        {
-            return new DateTime(date.Year, date.Month, 1);
-        }
-        //получить дату последнего дня месяца
-        public static DateTime GetLastMonthDayDate(DateTime date)
-        {
-            return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
-        }
-
+        
         #endregion
-        //---------------------------------------------------------------------------------------
-        #region преобразование значений
-        //преобразует значение из базы с предпологаемым домено BOOL  в  BOOL
-        public static bool ConvertVolueToBool(object obj)
-        {
-            if ((obj != null) && !Convert.IsDBNull(obj) && Convert.ToBoolean(obj))
-                return true;
-            else
-                return false;
-        }
-        //преобразует значение из базы в DateTime
-        public static DateTime ConvertVolueToDateTime(object obj)
-        {
-            if ((obj != null) && !Convert.IsDBNull(obj))
-                return Convert.ToDateTime(obj);
-            else
-                return DateTime.Now;
-        }
-        #endregion
+
         //---------------------------------------------------------------------------------------
         #region методы проверок полей ввода
         // проверка текстового поля на содержание Smal Int (16 бит) и выстовить ошибку в провайдер ошыбок
@@ -187,6 +67,27 @@ namespace SharedClasses
             try
             {
                 int numVal = Convert.ToInt32(_chekedValue.Text);
+                _errorProvider.SetError(_chekedValue, String.Empty);
+            }
+            catch (FormatException)
+            {
+                _errorProvider.SetError(_chekedValue, "Должно быть число.");
+                ret = false;
+            }
+            catch (OverflowException)
+            {
+                _errorProvider.SetError(_chekedValue, "Слишком большое число.");
+                ret = false;
+            }
+            return ret;
+        }
+        // проверка текстового поля на содержание Double и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsDouble_SetError(TextBox _chekedValue, ErrorProvider _errorProvider)
+        {
+            bool ret = true;
+            try
+            {
+                double numVal = Convert.ToDouble(_chekedValue.Text);
                 _errorProvider.SetError(_chekedValue, String.Empty);
             }
             catch (FormatException)
@@ -356,13 +257,6 @@ namespace SharedClasses
         }
         #endregion
         //---------------------------------------------------------------------------------------
-    }
-
-    //для форм списков котрые будут поддерживать поиск в таблице
-    interface IListFormFilterMetods
-    {
-        //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
-        bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName);
     }
 
     //для форм элементов, работа с элементами управления и значениями из базы
