@@ -39,29 +39,16 @@ namespace SharedClasses
         bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName);
     }
 
-    ////информация об текущем приложении
-    //public interface IAddInsAppInfo
-    //{
-    //    IApplication GetThisAddInnApp();
-    //    IMxDocument GetDocument();
-    //    IMxApplication GetHostApplication();
-    //    IDockableWindowManager GetDockableWindowManager();
-    //    IDocumentEvents_Event GetEvents();
+    public abstract class AddInsAppInfo
+    {
+        public abstract IApplication GetThisAddInnApp();
+        public abstract IMxDocument GetDocument();
+        public abstract IMxApplication GetHostApplication();
+        public abstract IDockableWindowManager GetDockableWindowManager();
+        public abstract IDocumentEvents_Event GetEvents();
 
-    //    string GetNameApp();
-
-    //}
-
-    //public abstract class AddInsAppInfo 
-    //{
-    //    public abstract IApplication GetThisAddInnApp();
-    //    public abstract IMxDocument GetDocument();
-    //    public abstract IMxApplication GetHostApplication();
-    //    public abstract IDockableWindowManager GetDockableWindowManager();
-    //    public abstract IDocumentEvents_Event GetEvents();
-
-    //    public abstract string GetNameApp();
-    //}
+        public abstract string GetNameApp();
+    }
     
     public static class GeneralApp
     {
@@ -70,18 +57,18 @@ namespace SharedClasses
 
         //хранит путь к деректории с настройками
         private static string m_applicationDataPath = null;
-        //private static AddInsAppInfo m_AddInsAppInfo = null;
+        private static AddInsAppInfo m_AddInsAppInfo = null;
 
-        ////установить ссылку на класс информации об текущем приложении
-        //public static void SetAddInsAppInfo( AddInsAppInfo addInsAppInfo)
-        //{
-        //    m_AddInsAppInfo = addInsAppInfo;
-        //}
-        //// вернуть ссылку на класс информации об текущем приложении
-        //public static AddInsAppInfo GetAddInsAppInfo()
-        //{
-        //    return m_AddInsAppInfo;
-        //}
+        //установить ссылку на класс информации об текущем приложении
+        public static void SetAddInsAppInfo(AddInsAppInfo addInsAppInfo)
+        {
+            m_AddInsAppInfo = addInsAppInfo;
+        }
+        // вернуть ссылку на класс информации об текущем приложении
+        public static AddInsAppInfo GetAddInsAppInfo()
+        {
+            return m_AddInsAppInfo;
+        }
 
         //получить путь к коталогу с файлами настройкам програмы, при отсутствии, создать
         public static string GetAppDataPathAndCreateDirIfNeed()
@@ -89,8 +76,8 @@ namespace SharedClasses
             if (m_applicationDataPath == null)
             {
                 string thisAppName = "defaultName";
-                //if (m_AddInsAppInfo != null && GetAddInsAppInfo().GetNameApp() != "")
-                //    thisAppName = GetAddInsAppInfo().GetNameApp();
+                if (m_AddInsAppInfo != null && GetAddInsAppInfo().GetNameApp() != "")
+                    thisAppName = GetAddInsAppInfo().GetNameApp();
 
                 m_applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\" + thisAppName);
             }

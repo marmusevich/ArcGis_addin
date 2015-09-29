@@ -14,7 +14,7 @@ namespace WorckWithCadastr_V6
 
         protected override void OnClick()
         {
-            //AppStartPoint.Init();
+            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmZtl_Bdn_list.ShowForView();
         }

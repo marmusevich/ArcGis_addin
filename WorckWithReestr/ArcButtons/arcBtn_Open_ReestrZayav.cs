@@ -14,7 +14,7 @@ namespace WorckWithReestr
 
         protected override void OnClick()
         {
-            //AppStartPoint.Init();
+            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmReestrZayav_jurnal.ShowForView();
         }

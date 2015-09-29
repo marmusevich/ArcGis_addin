@@ -14,7 +14,7 @@ namespace WorckWithCadastr_V6
 
         protected override void OnClick()
         {
-            //AppStartPoint.Init();
+            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmRej_Bud_Adr_list.ShowForView();
         }
