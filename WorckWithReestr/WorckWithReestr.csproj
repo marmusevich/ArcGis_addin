@@ -157,8 +157,51 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+      <Compile Include="..\SharedClasses\Forms\frmBaseDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmBaseDocument.Designer.cs">
+      <DependentUpon>frmBaseDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmBaseJurnal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmBaseJurnal.Designer.cs">
+      <DependentUpon>frmBaseJurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmBaseSpr_element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmBaseSpr_element.Designer.cs">
+      <DependentUpon>frmBaseSpr_element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmBaseSpr_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmBaseSpr_list.Designer.cs">
+      <DependentUpon>frmBaseSpr_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmSelectSearchInListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmSelectSearchInListForm.Designer.cs">
+      <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\SharedClasses\Shared\GeneralApp.cs" />
+    <Compile Include="..\SharedClasses\Shared\GeneralMapWork.cs" />
+    <Compile Include="..\SharedClasses\Shared\ReestrDictionaryWork.cs" />
+    <Compile Include="..\SharedClasses\Shared\ReestrDocumentWork.cs" />
+    <Compile Include="..\SharedClasses\Shared\DomeinDataAdapter.cs" />
+    <Compile Include="..\SharedClasses\Shared\TableWraper\FieldPropertyDescriptor.cs" />
+    <Compile Include="..\SharedClasses\Shared\Logger.cs" />
+    <Compile Include="..\SharedClasses\Shared\GeneralDBWork.cs" />
+    <Compile Include="..\SharedClasses\Shared\TableWraper\TableWraper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\SharedClasses\Forms\frmSelectSearchInListForm.resx">
+      <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup><ItemGroup>
     <AddInContent Include="Config.esriaddinx">
       <Generator>ArcGISAddInHostGenerator</Generator>
       <LastGenOutput>Config.Designer.cs</LastGenOutput>
@@ -232,13 +275,6 @@
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Images\arcBtn_Open_TipDoc.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SharedClasses\SharedClasses.csproj">
-      <Project>{c4c9ed2e-460e-46b6-ad41-f119eb2cfd29}</Project>
-      <Name>SharedClasses</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
