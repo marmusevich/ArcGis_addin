@@ -54,8 +54,6 @@
             this.lblID_Rej_Vul = new System.Windows.Forms.Label();
             this.txtID_Nsl_Pnk = new System.Windows.Forms.TextBox();
             this.lblID_Nsl_Pnk = new System.Windows.Forms.Label();
-            this.txtKOATUU = new System.Windows.Forms.TextBox();
-            this.lblKOATUU = new System.Windows.Forms.Label();
             this.txtID_ELEMENT = new System.Windows.Forms.TextBox();
             this.lblID_ELEMENT = new System.Windows.Forms.Label();
             this.txtID_ADRESS = new System.Windows.Forms.TextBox();
@@ -72,6 +70,8 @@
             this.lblID_OBJECT_POH = new System.Windows.Forms.Label();
             this.txtAddress_Str = new System.Windows.Forms.TextBox();
             this.lblAddress_Str = new System.Windows.Forms.Label();
+            this.lblID_ADR_PERV = new System.Windows.Forms.Label();
+            this.txtID_ADR_PERV = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -340,23 +340,6 @@
             this.lblID_Nsl_Pnk.TabIndex = 230;
             this.lblID_Nsl_Pnk.Text = "Населений пукт";
             // 
-            // txtKOATUU
-            // 
-            this.txtKOATUU.Location = new System.Drawing.Point(474, 12);
-            this.txtKOATUU.Name = "txtKOATUU";
-            this.txtKOATUU.Size = new System.Drawing.Size(150, 20);
-            this.txtKOATUU.TabIndex = 1;
-            this.txtKOATUU.TextChanged += new System.EventHandler(this.main_TextChanged);
-            this.txtKOATUU.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
-            // 
-            // lblKOATUU
-            // 
-            this.lblKOATUU.Location = new System.Drawing.Point(323, 12);
-            this.lblKOATUU.Name = "lblKOATUU";
-            this.lblKOATUU.Size = new System.Drawing.Size(147, 20);
-            this.lblKOATUU.TabIndex = 228;
-            this.lblKOATUU.Text = "КОАТУУ";
-            // 
             // txtID_ELEMENT
             // 
             this.txtID_ELEMENT.Location = new System.Drawing.Point(162, 353);
@@ -493,6 +476,23 @@
             this.lblAddress_Str.TabIndex = 244;
             this.lblAddress_Str.Text = "Address_Str";
             // 
+            // lblID_ADR_PERV
+            // 
+            this.lblID_ADR_PERV.Location = new System.Drawing.Point(323, 12);
+            this.lblID_ADR_PERV.Name = "lblID_ADR_PERV";
+            this.lblID_ADR_PERV.Size = new System.Drawing.Size(147, 31);
+            this.lblID_ADR_PERV.TabIndex = 228;
+            this.lblID_ADR_PERV.Text = "Ідентифікатор адреси первинного об’єкта адресації";
+            // 
+            // txtID_ADR_PERV
+            // 
+            this.txtID_ADR_PERV.Location = new System.Drawing.Point(474, 12);
+            this.txtID_ADR_PERV.Name = "txtID_ADR_PERV";
+            this.txtID_ADR_PERV.Size = new System.Drawing.Size(150, 20);
+            this.txtID_ADR_PERV.TabIndex = 1;
+            this.txtID_ADR_PERV.TextChanged += new System.EventHandler(this.main_TextChanged);
+            this.txtID_ADR_PERV.Validating += new System.ComponentModel.CancelEventHandler(this.main_Validating);
+            // 
             // frmRej_Adr_Poh_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,8 +514,8 @@
             this.Controls.Add(this.lblID_Rej_Vul);
             this.Controls.Add(this.txtID_Nsl_Pnk);
             this.Controls.Add(this.lblID_Nsl_Pnk);
-            this.Controls.Add(this.txtKOATUU);
-            this.Controls.Add(this.lblKOATUU);
+            this.Controls.Add(this.txtID_ADR_PERV);
+            this.Controls.Add(this.lblID_ADR_PERV);
             this.Controls.Add(this.txtID_ELEMENT);
             this.Controls.Add(this.lblID_ELEMENT);
             this.Controls.Add(this.txtID_ADRESS);
@@ -545,13 +545,6 @@
             this.Name = "frmRej_Adr_Poh_element";
             this.Text = "frmRej_Vul_element";
             this.Load += new System.EventHandler(this.frmReestrZek_element_Load);
-            this.Controls.SetChildIndex(this.btnCancel, 0);
-            this.Controls.SetChildIndex(this.btnOk, 0);
-            this.Controls.SetChildIndex(this.lblPrymitka, 0);
-            this.Controls.SetChildIndex(this.txtPrymitka, 0);
-            this.Controls.SetChildIndex(this.lblN_Kad, 0);
-            this.Controls.SetChildIndex(this.txtN_Kad, 0);
-            this.Controls.SetChildIndex(this.btnShowOnMap, 0);
             this.Controls.SetChildIndex(this.lblKOD_KLS, 0);
             this.Controls.SetChildIndex(this.cbKOD_KLS, 0);
             this.Controls.SetChildIndex(this.lblKOD_STAN_ADR, 0);
@@ -578,8 +571,8 @@
             this.Controls.SetChildIndex(this.txtID_ADRESS, 0);
             this.Controls.SetChildIndex(this.lblID_ELEMENT, 0);
             this.Controls.SetChildIndex(this.txtID_ELEMENT, 0);
-            this.Controls.SetChildIndex(this.lblKOATUU, 0);
-            this.Controls.SetChildIndex(this.txtKOATUU, 0);
+            this.Controls.SetChildIndex(this.lblID_ADR_PERV, 0);
+            this.Controls.SetChildIndex(this.txtID_ADR_PERV, 0);
             this.Controls.SetChildIndex(this.lblID_Nsl_Pnk, 0);
             this.Controls.SetChildIndex(this.txtID_Nsl_Pnk, 0);
             this.Controls.SetChildIndex(this.lblID_Rej_Vul, 0);
@@ -596,6 +589,13 @@
             this.Controls.SetChildIndex(this.txtID_OBJECT_POH, 0);
             this.Controls.SetChildIndex(this.lblAddress_Str, 0);
             this.Controls.SetChildIndex(this.txtAddress_Str, 0);
+            this.Controls.SetChildIndex(this.btnCancel, 0);
+            this.Controls.SetChildIndex(this.btnOk, 0);
+            this.Controls.SetChildIndex(this.lblPrymitka, 0);
+            this.Controls.SetChildIndex(this.txtPrymitka, 0);
+            this.Controls.SetChildIndex(this.lblN_Kad, 0);
+            this.Controls.SetChildIndex(this.txtN_Kad, 0);
+            this.Controls.SetChildIndex(this.btnShowOnMap, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -630,8 +630,6 @@
         private System.Windows.Forms.Label lblID_Rej_Vul;
         private System.Windows.Forms.TextBox txtID_Nsl_Pnk;
         private System.Windows.Forms.Label lblID_Nsl_Pnk;
-        private System.Windows.Forms.TextBox txtKOATUU;
-        private System.Windows.Forms.Label lblKOATUU;
         private System.Windows.Forms.TextBox txtID_ELEMENT;
         private System.Windows.Forms.Label lblID_ELEMENT;
         private System.Windows.Forms.TextBox txtID_ADRESS;
@@ -648,5 +646,7 @@
         private System.Windows.Forms.Label lblID_OBJECT_POH;
         private System.Windows.Forms.TextBox txtAddress_Str;
         private System.Windows.Forms.Label lblAddress_Str;
+        private System.Windows.Forms.Label lblID_ADR_PERV;
+        private System.Windows.Forms.TextBox txtID_ADR_PERV;
     }
 }

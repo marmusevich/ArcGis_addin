@@ -29,6 +29,11 @@ namespace WorckWithCadastr_V6
             //даты
 
             //простые тексты  
+            SetStringValueFromDBToTextBox(ref row, "NAJM_OBJ", txtNAJM_OBJ);
+            SetStringValueFromDBToTextBox(ref row, "OPYS_ROZTASH", txtOPYS_ROZTASH);
+            SetStringValueFromDBToTextBox(ref row, "Korpus", txtKorpus);
+            SetStringValueFromDBToTextBox(ref row, "NumerBud", txtNumerBud);
+            SetStringValueFromDBToTextBox(ref row, "Address_Str", txtAddress_Str);
 
             //доменные значения
             CheсkValueAndSetToComboBox(ref cbKOD_KLS, ref ddaKOD_KLS, "KOD_KLS", GetValueFromDB(ref row, "KOD_KLS"));
@@ -36,7 +41,15 @@ namespace WorckWithCadastr_V6
             CheсkValueAndSetToComboBox(ref cbRuleID, ref ddaRuleID, "RuleID", GetValueFromDB(ref row, "RuleID"));
 
             //числовые значения
-
+            SetIntValueFromDBToTextBox(ref row, "ID_MSB_OBJ", txtID_MSB_OBJ);
+            SetIntValueFromDBToTextBox(ref row, "KOATUU", txtKOATUU);
+            SetIntValueFromDBToTextBox(ref row, "ID_OBJECT", txtID_OBJECT);
+            SetIntValueFromDBToTextBox(ref row, "KOD_KLS_OBJECT", txtKOD_KLS_OBJECT);
+            SetIntValueFromDBToTextBox(ref row, "ID_ELEMENT", txtID_ELEMENT);
+            SetIntValueFromDBToTextBox(ref row, "ID_Adm_Rn", txtID_Adm_Rn);
+            SetIntValueFromDBToTextBox(ref row, "ID_Obl", txtID_Obl);
+            SetIntValueFromDBToTextBox(ref row, "ID_Nsl_Pnk", txtID_Nsl_Pnk);
+            SetIntValueFromDBToTextBox(ref row, "ID_Rej_Vul", txtID_Rej_Vul);
         }
 
         protected override void FormElement_to_DB(IRow row)
@@ -45,6 +58,11 @@ namespace WorckWithCadastr_V6
             //даты
 
             //простые тексты  
+            SaveStringValueFromTextBoxToDB(ref row, "NAJM_OBJ", txtNAJM_OBJ);
+            SaveStringValueFromTextBoxToDB(ref row, "OPYS_ROZTASH", txtOPYS_ROZTASH);
+            SaveStringValueFromTextBoxToDB(ref row, "Korpus", txtKorpus);
+            SaveStringValueFromTextBoxToDB(ref row, "NumerBud", txtNumerBud);
+            SaveStringValueFromTextBoxToDB(ref row, "Address_Str", txtAddress_Str);
 
             //доменные значения
             SaveDomeinDataValueFromComboBoxToDB(ref row, "KOD_KLS", ref cbKOD_KLS);
@@ -52,11 +70,27 @@ namespace WorckWithCadastr_V6
             SaveDomeinDataValueFromComboBoxToDB(ref row, "RuleID", ref cbRuleID);
 
             //числовые значения
+            SaveIntValueFromTextBoxToDB(ref row, "ID_MSB_OBJ", txtID_MSB_OBJ);
+            SaveIntValueFromTextBoxToDB(ref row, "KOATUU", txtKOATUU);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_OBJECT", txtID_OBJECT);
+            SaveIntValueFromTextBoxToDB(ref row, "KOD_KLS_OBJECT", txtKOD_KLS_OBJECT);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_ELEMENT", txtID_ELEMENT);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Adm_Rn", txtID_Adm_Rn);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Obl", txtID_Obl);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Nsl_Pnk", txtID_Nsl_Pnk);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Rej_Vul", txtID_Rej_Vul);
         }
 
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
+
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtID_MSB_OBJ, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtID_OBJECT, errorProvider) && ret;
+
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtNAJM_OBJ, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtNumerBud, errorProvider) && ret;
+
             return ret;
         }
 

@@ -1,4 +1,5 @@
 ﻿using ESRI.ArcGIS.Geodatabase;
+using SharedClasses;
 using System;
 
 namespace WorckWithCadastr_V6
@@ -13,28 +14,103 @@ namespace WorckWithCadastr_V6
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  variables
         //---------------------------------------------------------------------------------------------------------------------------------------------
+        //адаптеры доменов
+        DomeinDataAdapter ddaKOD_KLS;
+        DomeinDataAdapter ddaKOD_TYP_OBJ_ADR;
+        DomeinDataAdapter ddaKOD_TYP_ADR;
+        DomeinDataAdapter ddaKOD_FUNC_PRYZN;
+        DomeinDataAdapter ddaKOD_STAN_ADR;
+        DomeinDataAdapter ddaRuleID;
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions
-        //---------------------------------------------------------------------------------------------------------------------------------------------
-
         protected override void DB_to_FormElement(IRow row)
         {
             base.DB_to_FormElement(row);
+            //даты
+
+            //простые тексты  
+            SetStringValueFromDBToTextBox(ref row, "NAJM_OBJ", txtNAJM_OBJ);
+            SetStringValueFromDBToTextBox(ref row, "SKOR_NAJM_OBJ", txtSKOR_NAJM_OBJ);
+            SetStringValueFromDBToTextBox(ref row, "Korpus", txtKorpus);
+            SetStringValueFromDBToTextBox(ref row, "NumerBud", txtNumerBud);
+
+            //доменные значения
+            CheсkValueAndSetToComboBox(ref cbKOD_KLS, ref ddaKOD_KLS, "KOD_KLS", GetValueFromDB(ref row, "KOD_KLS"));
+            CheсkValueAndSetToComboBox(ref cbKOD_TYP_OBJ_ADR, ref ddaKOD_TYP_OBJ_ADR, "KOD_TYP_OBJ_ADR", GetValueFromDB(ref row, "KOD_TYP_OBJ_ADR"));
+            CheсkValueAndSetToComboBox(ref cbKOD_TYP_ADR, ref ddaKOD_TYP_ADR, "KOD_TYP_ADR", GetValueFromDB(ref row, "KOD_TYP_ADR"));
+            CheсkValueAndSetToComboBox(ref cbKOD_FUNC_PRYZN, ref ddaKOD_FUNC_PRYZN, "KOD_FUNC_PRYZN", GetValueFromDB(ref row, "KOD_FUNC_PRYZN"));
+            CheсkValueAndSetToComboBox(ref cbKOD_STAN_ADR, ref ddaKOD_STAN_ADR, "KOD_STAN_ADR", GetValueFromDB(ref row, "KOD_STAN_ADR"));
+            CheсkValueAndSetToComboBox(ref cbRuleID, ref ddaRuleID, "RuleID", GetValueFromDB(ref row, "RuleID"));
+
+            //числовые значения
+            SetIntValueFromDBToTextBox(ref row, "ID_MSB_OBJ", txtID_MSB_OBJ);
+            SetIntValueFromDBToTextBox(ref row, "KOATUU", txtKOATUU);
+            SetIntValueFromDBToTextBox(ref row, "ID_ADRESS", txtID_ADRESS);
+            SetIntValueFromDBToTextBox(ref row, "ID_ELEMENT", txtID_ELEMENT);
+            SetIntValueFromDBToTextBox(ref row, "ID_Adm_Rn", txtID_Adm_Rn);
+            SetIntValueFromDBToTextBox(ref row, "ID_Obl", txtID_Obl);
+            SetIntValueFromDBToTextBox(ref row, "ID_Nsl_Pnk", txtID_Nsl_Pnk);
+            SetIntValueFromDBToTextBox(ref row, "ID_Rej_Vul", txtID_Rej_Vul);
+            SetIntValueFromDBToTextBox(ref row, "INDEX_POSH_VID", txtINDEX_POSH_VID);
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             base.FormElement_to_DB(row);
+            //даты
+
+            //простые тексты  
+            SaveStringValueFromTextBoxToDB(ref row, "NAJM_OBJ", txtNAJM_OBJ);
+            SaveStringValueFromTextBoxToDB(ref row, "SKOR_NAJM_OBJ", txtSKOR_NAJM_OBJ);
+            SaveStringValueFromTextBoxToDB(ref row, "Korpus", txtKorpus);
+            SaveStringValueFromTextBoxToDB(ref row, "NumerBud", txtNumerBud);
+
+            //доменные значения
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "KOD_KLS", ref cbKOD_KLS);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "KOD_TYP_OBJ_ADR", ref cbKOD_TYP_OBJ_ADR);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "KOD_TYP_ADR", ref cbKOD_TYP_ADR);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "KOD_FUNC_PRYZN", ref cbKOD_FUNC_PRYZN);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "KOD_STAN_ADR", ref cbKOD_STAN_ADR);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "RuleID", ref cbRuleID);
+
+            //числовые значения
+            SaveIntValueFromTextBoxToDB(ref row, "ID_MSB_OBJ", txtID_MSB_OBJ);
+            SaveIntValueFromTextBoxToDB(ref row, "KOATUU", txtKOATUU);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_ADRESS", txtID_ADRESS);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_ELEMENT", txtID_ELEMENT);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Adm_Rn", txtID_Adm_Rn);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Obl", txtID_Obl);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Nsl_Pnk", txtID_Nsl_Pnk);
+            SaveIntValueFromTextBoxToDB(ref row, "ID_Rej_Vul", txtID_Rej_Vul);
+            SaveIntValueFromTextBoxToDB(ref row, "INDEX_POSH_VID", txtINDEX_POSH_VID);
         }
 
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
+
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtID_MSB_OBJ, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueIsInt_SetError(txtKOATUU, errorProvider) && ret;
+
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtNAJM_OBJ, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtNumerBud, errorProvider) && ret;
+
             return ret;
         }
 
+        protected override void DB_SharedData_to_FormElement()
+        {
+            base.DB_SharedData_to_FormElement();
+            //доменные значения
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbKOD_KLS, ref ddaKOD_KLS, "KOD_KLS");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbKOD_TYP_OBJ_ADR, ref ddaKOD_TYP_OBJ_ADR, "KOD_TYP_OBJ_ADR");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbKOD_TYP_ADR, ref ddaKOD_TYP_ADR, "KOD_TYP_ADR");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbKOD_FUNC_PRYZN, ref ddaKOD_FUNC_PRYZN, "KOD_FUNC_PRYZN");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbKOD_STAN_ADR, ref ddaKOD_STAN_ADR, "KOD_STAN_ADR");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbRuleID, ref ddaRuleID, "RuleID");
+        }
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------

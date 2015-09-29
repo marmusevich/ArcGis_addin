@@ -66,6 +66,8 @@
             this.lblKorpus = new System.Windows.Forms.Label();
             this.txtSKOR_NAJM_OBJ = new System.Windows.Forms.TextBox();
             this.lblSKOR_NAJM_OBJ = new System.Windows.Forms.Label();
+            this.txtKOATUU = new System.Windows.Forms.TextBox();
+            this.lblKOATUU = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -435,11 +437,28 @@
             this.lblSKOR_NAJM_OBJ.TabIndex = 208;
             this.lblSKOR_NAJM_OBJ.Text = "Скорочене найменування об’єкту";
             // 
+            // txtKOATUU
+            // 
+            this.txtKOATUU.Location = new System.Drawing.Point(484, 36);
+            this.txtKOATUU.Name = "txtKOATUU";
+            this.txtKOATUU.Size = new System.Drawing.Size(150, 20);
+            this.txtKOATUU.TabIndex = 215;
+            // 
+            // lblKOATUU
+            // 
+            this.lblKOATUU.Location = new System.Drawing.Point(339, 36);
+            this.lblKOATUU.Name = "lblKOATUU";
+            this.lblKOATUU.Size = new System.Drawing.Size(147, 20);
+            this.lblKOATUU.TabIndex = 216;
+            this.lblKOATUU.Text = "КОАТУУ";
+            // 
             // frmRej_Adr_Osnov_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(653, 473);
+            this.Controls.Add(this.txtKOATUU);
+            this.Controls.Add(this.lblKOATUU);
             this.Controls.Add(this.txtNAJM_OBJ);
             this.Controls.Add(this.lblNAJM_OBJ);
             this.Controls.Add(this.txtNumerBud);
@@ -526,6 +545,8 @@
             this.Controls.SetChildIndex(this.txtNumerBud, 0);
             this.Controls.SetChildIndex(this.lblNAJM_OBJ, 0);
             this.Controls.SetChildIndex(this.txtNAJM_OBJ, 0);
+            this.Controls.SetChildIndex(this.lblKOATUU, 0);
+            this.Controls.SetChildIndex(this.txtKOATUU, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -572,6 +593,8 @@
         private System.Windows.Forms.Label lblKorpus;
         private System.Windows.Forms.TextBox txtSKOR_NAJM_OBJ;
         private System.Windows.Forms.Label lblSKOR_NAJM_OBJ;
+        private System.Windows.Forms.TextBox txtKOATUU;
+        private System.Windows.Forms.Label lblKOATUU;
 
     }
 }
