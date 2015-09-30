@@ -35,7 +35,10 @@ namespace WorckWithCadastr_V6
         protected override bool ValidatingData()
         {
             bool ret = base.ValidatingData();
-            ret = GeneralDBWork.CheckValueIsSmalInt_SetError(txtN_Kad, errorProvider) && ret;
+            if (  txtN_Kad.Text.Trim().Length != 0)
+            {
+                ret = GeneralDBWork.CheckValueIsSmalInt_SetError(txtN_Kad, errorProvider) && ret;
+            }
             return ret;
         }
 
@@ -61,7 +64,7 @@ namespace WorckWithCadastr_V6
 
         private void btnShowOnMap_Click(object sender, EventArgs e)
         {
-            //AdresReestrWork.ShowOnMap(NameTable);
+            GeneralMapWork.ShowOnMap(NameTable);
         }
 
         private void frmBaseElement_Load(object sender, EventArgs e)
@@ -75,13 +78,6 @@ namespace WorckWithCadastr_V6
             //    btnShowOnMap.Enabled = false;
             //}
         }
-
-        private void btnShowOnMap_Click_1(object sender, EventArgs e)
-        {
-            //AdresReestrWork.ShowOnMap(NameTable);
-        }
-
-
         #endregion
 
 

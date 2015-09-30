@@ -56,7 +56,7 @@ namespace SharedClasses
         #region общее
 
         //хранит путь к деректории с настройками
-        private static string m_applicationDataPath = null;
+        private static string m_ApplicationDataPath = null;
         private static AddInsAppInfo m_AddInsAppInfo = null;
 
         //установить ссылку на класс информации об текущем приложении
@@ -72,18 +72,18 @@ namespace SharedClasses
         //получить путь к коталогу с файлами настройкам програмы, при отсутствии, создать
         public static string GetAppDataPathAndCreateDirIfNeed()
         {
-            if (m_applicationDataPath == null)
+            if (m_ApplicationDataPath == null)
             {
                 string thisAppName = "defaultName";
                 if (m_AddInsAppInfo != null && GetAddInsAppInfo().GetNameApp() != "")
                     thisAppName = GetAddInsAppInfo().GetNameApp();
 
-                m_applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\" + thisAppName);
+                m_ApplicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\" + thisAppName);
             }
-            if (!Directory.Exists(m_applicationDataPath))
-                Directory.CreateDirectory(m_applicationDataPath); // Создаем директорию, если нужно
+            if (!Directory.Exists(m_ApplicationDataPath))
+                Directory.CreateDirectory(m_ApplicationDataPath); // Создаем директорию, если нужно
 
-            return m_applicationDataPath;
+            return m_ApplicationDataPath;
         }
         //унифицированый вызов сообщения об ошибке
         public static void ShowErrorMessage(string errorText = "Произошла какая то ошибка!!", string errorCaption = "Ошибка в расширении")
@@ -113,10 +113,15 @@ namespace SharedClasses
                 f = null;
             }
         }
-        //получить и сохранить в файле порядок колонок
-        public static void GetDisplayOrder(ref DataGridView dgv, string tableName)
+        //получить путь и имя к файлу порядок колонок в гриде
+        private static string GetFileName_GridColumDisplayOrder(string tableName)
         {
-            string filename = Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
+            return Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
+        }
+        //получить и сохранить в файле порядок колонок
+        public static void SaveDisplayOrderToDisk(ref DataGridView dgv, string tableName)
+        {
+            string filename = GetFileName_GridColumDisplayOrder(tableName);
             using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
             {
                 int[] displayIndices = new int[dgv.ColumnCount];
@@ -130,12 +135,12 @@ namespace SharedClasses
             }
         }
         //устоновить порядок колонок из файла
-        public static bool SetDisplayOrder(ref DataGridView dgv, string tableName)
+        public static bool LoadDisplayOrderFromDisk_AndSetToDGV(ref DataGridView dgv, string tableName)
         {
             bool ret = false;
             try
             {
-                string filename = Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("{0}_gridColumOrder.config.xml", tableName));
+                string filename = GetFileName_GridColumDisplayOrder(tableName);
                 if (File.Exists(filename))
                 {
                     using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))

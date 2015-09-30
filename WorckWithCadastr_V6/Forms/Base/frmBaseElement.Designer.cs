@@ -89,7 +89,7 @@
             this.btnShowOnMap.TabIndex = 13;
             this.btnShowOnMap.Text = "Показать на карте";
             this.btnShowOnMap.UseVisualStyleBackColor = true;
-            this.btnShowOnMap.Click += new System.EventHandler(this.btnShowOnMap_Click_1);
+            this.btnShowOnMap.Click += new System.EventHandler(this.btnShowOnMap_Click);
             // 
             // frmBaseElement
             // 

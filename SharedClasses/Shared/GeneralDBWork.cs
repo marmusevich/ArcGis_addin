@@ -8,33 +8,148 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
 using ESRI.ArcGIS.Framework;
-
+using System.Collections.Generic;
 
 namespace SharedClasses
 {
-    //общие методы
+    //для форм элементов, работа с элементами управления и значениями из базы
+    interface IElementFormWorckWithControlsAndDB
+    {
+        //создать адаптер домена, установить лист значений комбобокса, и установить значение по умолчанию
+        void CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName);
+        //устоновить значение комбобокса по значению, если нет адаптера - создать, если нет значения устоновить по умолчанию
+        void CheсkValueAndSetToComboBox(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName, object value);
+
+        //прочесть значение из базы
+        object GetValueFromDB(ref IRow row, string fildName);
+        //установить значение элемента управления тип текст
+        void SetStringValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox);
+        //установить значение элемента управления тип число
+        void SetIntValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox);
+        //установить значение элемента управления тип дата
+        void SetDateValueFromDBToDateTimePicker(ref IRow row, string fildName, DateTimePicker dateTimePicker);
+
+        //сохранить в базу значение элемента управления тип доменные значения
+        void SaveDomeinDataValueFromComboBoxToDB(ref IRow row, string fildName, ref ComboBox cb);
+        //сохранить в базу значение элемента управления тип текст
+        void SaveStringValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox);
+        //сохранить в базу значение элемента управления тип число
+        void SaveIntValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox);
+        //сохранить в базу значение элемента управления тип дата
+        void SaveDateValueFromDateTimePickerToDB(ref IRow row, string fildName, DateTimePicker dateTimePicker);
+    }
+
+    
+    //работа с баззой
     public static class GeneralDBWork
     {
+        //класс для хранения пары ключ-значение параметров подключен к БД
+        public class DataItemForXmlSerialize_IPropertySet
+        {
+            public string Key = "";
+            public string Value = "";
+            public DataItemForXmlSerialize_IPropertySet(string key, string value)
+            {
+                Key = key;
+                Value = value;
+            }
+            public DataItemForXmlSerialize_IPropertySet()
+            {
+                Key = "";
+                Value = "";
+            }
+        }
+
         //---------------------------------------------------------------------------------------
         #region общее
+        //параметры подключения к базе
+        private static IPropertySet m_DBConnectPropertySet = null;
+
         // получить рабочее пространство связоное с базой данных из сервера баз данных
         // dataBase - открываеммая база на сервере
         public static IWorkspace GetWorkspace(string dataBase)
         {
-            IPropertySet propertySet = new PropertySetClass();
-            propertySet.SetProperty("DB_CONNECTION_PROPERTIES", "KADASTER12_DATA1");
-            propertySet.SetProperty("INSTANCE", @"sde:sqlserver:KADASTER12\DATA1");
-            propertySet.SetProperty("DATABASE", dataBase);
-            propertySet.SetProperty("VERSION", "DBO.DEFAULT");
-            propertySet.SetProperty("AUTHENTICATION_MODE", "OSA"); // аунтификация средствами виндовса
+            IWorkspace ret = null;
+            try
+            {
+                // параметры подключения есть?
+                if (m_DBConnectPropertySet == null)
+                {
+                    List<DataItemForXmlSerialize_IPropertySet> ips = new List<DataItemForXmlSerialize_IPropertySet>(5);
+                    //прочесть с диска
+                    if (!LoadDBConnectPropertySetFromDisk(ref ips) && ips.Count != 5)
+                    {
+                        //устоновить и сохранить на диск
+                        ips.Add(new DataItemForXmlSerialize_IPropertySet("DB_CONNECTION_PROPERTIES", "KADASTER12_DATA1"));
+                        ips.Add(new DataItemForXmlSerialize_IPropertySet("INSTANCE", @"sde:sqlserver:KADASTER12\DATA1"));
+                        ips.Add(new DataItemForXmlSerialize_IPropertySet("DATABASE", dataBase));
+                        ips.Add(new DataItemForXmlSerialize_IPropertySet("VERSION", "DBO.DEFAULT"));
+                        ips.Add(new DataItemForXmlSerialize_IPropertySet("AUTHENTICATION_MODE", "OSA")); // аунтификация средствами виндовса
 
-            // добавить обработку ошибки
+                        SaveDBConnectPropertySetToDisk(ref ips);
+                    }
 
-            Type factoryType = Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory");
-            IWorkspaceFactory workspaceFactory = (IWorkspaceFactory)Activator.CreateInstance(factoryType);
-            return workspaceFactory.Open(propertySet, 0);
+                    if (ips.Count == 5)
+                    {
+                        m_DBConnectPropertySet = new PropertySetClass();
+                        foreach (DataItemForXmlSerialize_IPropertySet dps in ips)
+                            m_DBConnectPropertySet.SetProperty(dps.Key, dps.Value);
+                    }
+                    else
+                        throw new Exception("in loaded file not 5 parametrs...");
+                }
+
+                Type factoryType = Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory");
+                IWorkspaceFactory workspaceFactory = (IWorkspaceFactory)Activator.CreateInstance(factoryType);
+            
+                 ret = workspaceFactory.Open(m_DBConnectPropertySet, 0);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                m_DBConnectPropertySet = null;
+                Logger.Write(ex, string.Format("GeneralDBWork.GetWorkspace({0})", dataBase));
+                GeneralApp.ShowErrorMessage(string.Format("Подключение к базе не возможно!!\r\nПроверте параметры подключения в файле:\r\n{0}", GetFileName_DBConnectPropertySet()));
+            }
+            return ret;
         }
-        
+        //получить путь и имя к файлу параметров подключения
+        private static string GetFileName_DBConnectPropertySet()
+        {
+            return Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("DB_ConnectPropertySet.config.xml"));
+        }
+        //сохранить на диск параметры подключения к базе
+        private static void SaveDBConnectPropertySetToDisk(ref List<DataItemForXmlSerialize_IPropertySet> ips)
+        {
+            string filename = GetFileName_DBConnectPropertySet();
+            using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
+            {
+                XmlSerializer ser = new XmlSerializer(typeof(List<DataItemForXmlSerialize_IPropertySet>));
+                ser.Serialize(isoStream, ips);
+            }
+        }
+        //считать параметры подключения к базе с диска
+        private static bool LoadDBConnectPropertySetFromDisk(ref List<DataItemForXmlSerialize_IPropertySet> ips)
+        {
+            bool ret = false;
+            try
+            {
+                string filename = GetFileName_DBConnectPropertySet();
+                if (File.Exists(filename))
+                {
+                    using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))
+                    {
+                        XmlSerializer ser = new XmlSerializer(typeof(List<DataItemForXmlSerialize_IPropertySet>));
+                        ips = (List<DataItemForXmlSerialize_IPropertySet>)ser.Deserialize(isoStream);
+                        ret = true;
+                    }
+                }
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("GeneralDBWork.LoadDBConnectPropertySetFromDisk"));
+            }
+            return ret;
+        } 
         #endregion
 
         //---------------------------------------------------------------------------------------
@@ -138,7 +253,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClass.GetValueByID('{0}', '{1}', '{2}', '{3}')", workspaceName, id, tableName, fildName));
+                Logger.Write(ex, string.Format("GeneralDBWork.GetValueByID('{0}', '{1}', '{2}', '{3}')", workspaceName, id, tableName, fildName));
             }
             return ret;
         }
@@ -166,7 +281,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClass.GetIDByTextValue('{0}', '{1}', '{2}', '{3}', '{4}')", workspaceName, textValue, tableName, fildName, strongCompare));
+                Logger.Write(ex, string.Format("GeneralDBWork.GetIDByTextValue('{0}', '{1}', '{2}', '{3}', '{4}')", workspaceName, textValue, tableName, fildName, strongCompare));
             }
             return ret;
         }
@@ -191,7 +306,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClass.GetIDByIntValue('{0}', '{1}', '{2}', '{3}')", workspaceName, intValue, tableName, fildName));
+                Logger.Write(ex, string.Format("GeneralDBWork.GetIDByIntValue('{0}', '{1}', '{2}', '{3}')", workspaceName, intValue, tableName, fildName));
             }
             return ret;
         }
@@ -214,7 +329,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClasses.GetMaxNumerForAutoicrement('{0}', '{1}', '{2}')", workspaceName, tableName, fildName));
+                Logger.Write(ex, string.Format("GeneralDBWork.GetMaxNumerForAutoicrement('{0}', '{1}', '{2}')", workspaceName, tableName, fildName));
             }
             return ret;
         }
@@ -242,7 +357,7 @@ namespace SharedClasses
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("SharedClass.GenerateAutoCompleteStringCollection('{0}', '{1}')", tableName, fildName));
+                Logger.Write(ex, string.Format("GeneralDBWork.GenerateAutoCompleteStringCollection('{0}', '{1}')", tableName, fildName));
             }
 
             if (data != null && data.Count > 0)
@@ -257,32 +372,5 @@ namespace SharedClasses
         }
         #endregion
         //---------------------------------------------------------------------------------------
-    }
-
-    //для форм элементов, работа с элементами управления и значениями из базы
-    interface IElementFormWorckWithControlsAndDB
-    {
-        //создать адаптер домена, установить лист значений комбобокса, и установить значение по умолчанию
-        void CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName);
-        //устоновить значение комбобокса по значению, если нет адаптера - создать, если нет значения устоновить по умолчанию
-        void CheсkValueAndSetToComboBox(ref ComboBox cb, ref DomeinDataAdapter dda, string fildName, object value);
-        
-        //прочесть значение из базы
-        object GetValueFromDB(ref IRow row, string fildName);
-        //установить значение элемента управления тип текст
-        void SetStringValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox);
-        //установить значение элемента управления тип число
-        void SetIntValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox);
-        //установить значение элемента управления тип дата
-        void SetDateValueFromDBToDateTimePicker(ref IRow row, string fildName, DateTimePicker dateTimePicker);
-
-        //сохранить в базу значение элемента управления тип доменные значения
-        void SaveDomeinDataValueFromComboBoxToDB(ref IRow row, string fildName, ref ComboBox cb);
-        //сохранить в базу значение элемента управления тип текст
-        void SaveStringValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox);
-        //сохранить в базу значение элемента управления тип число
-        void SaveIntValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox);
-        //сохранить в базу значение элемента управления тип дата
-        void SaveDateValueFromDateTimePickerToDB(ref IRow row, string fildName, DateTimePicker dateTimePicker);
     }
 }

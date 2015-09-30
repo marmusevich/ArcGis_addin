@@ -164,7 +164,7 @@ namespace SharedClasses
             }
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            if (!GeneralApp.SetDisplayOrder(ref dgv, NameTable))
+            if (!GeneralApp.LoadDisplayOrderFromDisk_AndSetToDGV(ref dgv, NameTable))
                 SetDefaultDisplayOrder();
 
             if (dgv.Columns.Count > 0)
@@ -205,7 +205,7 @@ namespace SharedClasses
         }
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GeneralApp.GetDisplayOrder(ref dgv, NameTable);
+            GeneralApp.SaveDisplayOrderToDisk(ref dgv, NameTable);
         }
         private void cmsAdd_Click(object sender, EventArgs e)
         {

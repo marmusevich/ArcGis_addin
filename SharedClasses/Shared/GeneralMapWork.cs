@@ -31,6 +31,8 @@ namespace SharedClasses
         public static void ShowOnMap(string tablName)
         {
 
+
+            System.Windows.Forms.MessageBox.Show(tablName + " - " + GeneralApp.GetAddInsAppInfo().GetNameApp());
         }
 
 
