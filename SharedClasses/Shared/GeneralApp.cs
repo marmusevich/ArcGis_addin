@@ -78,7 +78,7 @@ namespace SharedClasses
                 if (m_AddInsAppInfo != null && GetAddInsAppInfo().GetNameApp() != "")
                     thisAppName = GetAddInsAppInfo().GetNameApp();
 
-                m_ApplicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI\\AddInns\\" + thisAppName);
+                m_ApplicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ESRI","AddInns", thisAppName);
             }
             if (!Directory.Exists(m_ApplicationDataPath))
                 Directory.CreateDirectory(m_ApplicationDataPath); // Создаем директорию, если нужно

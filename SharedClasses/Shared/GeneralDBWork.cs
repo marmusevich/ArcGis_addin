@@ -12,6 +12,9 @@ using System.Collections.Generic;
 
 namespace SharedClasses
 {
+    //псевдоним для списка хранения значений параметров подключения
+    using ListPropertySet = List<GeneralDBWork.DataItemForXmlSerialize_IPropertySet>;
+
     //для форм элементов, работа с элементами управления и значениями из базы
     interface IElementFormWorckWithControlsAndDB
     {
@@ -38,6 +41,7 @@ namespace SharedClasses
         //сохранить в базу значение элемента управления тип дата
         void SaveDateValueFromDateTimePickerToDB(ref IRow row, string fildName, DateTimePicker dateTimePicker);
     }
+
 
     
     //работа с баззой
@@ -75,7 +79,7 @@ namespace SharedClasses
                 // параметры подключения есть?
                 if (m_DBConnectPropertySet == null)
                 {
-                    List<DataItemForXmlSerialize_IPropertySet> ips = new List<DataItemForXmlSerialize_IPropertySet>(5);
+                    ListPropertySet ips = new ListPropertySet(5);
                     //прочесть с диска
                     if (!LoadDBConnectPropertySetFromDisk(ref ips) && ips.Count != 5)
                     {
@@ -118,17 +122,17 @@ namespace SharedClasses
             return Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("DB_ConnectPropertySet.config.xml"));
         }
         //сохранить на диск параметры подключения к базе
-        private static void SaveDBConnectPropertySetToDisk(ref List<DataItemForXmlSerialize_IPropertySet> ips)
+        private static void SaveDBConnectPropertySetToDisk(ref ListPropertySet ips)
         {
             string filename = GetFileName_DBConnectPropertySet();
             using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
             {
-                XmlSerializer ser = new XmlSerializer(typeof(List<DataItemForXmlSerialize_IPropertySet>));
+                XmlSerializer ser = new XmlSerializer(typeof(ListPropertySet));
                 ser.Serialize(isoStream, ips);
             }
         }
         //считать параметры подключения к базе с диска
-        private static bool LoadDBConnectPropertySetFromDisk(ref List<DataItemForXmlSerialize_IPropertySet> ips)
+        private static bool LoadDBConnectPropertySetFromDisk(ref ListPropertySet ips)
         {
             bool ret = false;
             try
@@ -138,8 +142,8 @@ namespace SharedClasses
                 {
                     using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))
                     {
-                        XmlSerializer ser = new XmlSerializer(typeof(List<DataItemForXmlSerialize_IPropertySet>));
-                        ips = (List<DataItemForXmlSerialize_IPropertySet>)ser.Deserialize(isoStream);
+                        XmlSerializer ser = new XmlSerializer(typeof(ListPropertySet));
+                        ips = (ListPropertySet)ser.Deserialize(isoStream);
                         ret = true;
                     }
                 }
