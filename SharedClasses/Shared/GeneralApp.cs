@@ -69,7 +69,6 @@ namespace SharedClasses
         {
             return m_AddInsAppInfo;
         }
-
         //получить путь к коталогу с файлами настройкам програмы, при отсутствии, создать
         public static string GetAppDataPathAndCreateDirIfNeed()
         {
