@@ -2,7 +2,7 @@
   <Name>WorckWithCadastr_V6</Name>
   <AddInID>{791197f8-be70-496d-a82c-5c3486208df8}</AddInID>
   <Description>Работа с адресным кадастром V6</Description>
-  <Version>0.0.00.2</Version>
+  <Version>0.0.00.3</Version>
   <Image>Images\WorckWithCadastr_V6.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
@@ -10,7 +10,7 @@
   <Targets>
     <Target name="Desktop" version="10.2" />
   </Targets>
-  <AddIn language="CLR4.5" library="WorckWithCadastr_V6.dll" namespace="WorckWithCadastr_V6">
+  <AddIn language="CLR4.0" library="WorckWithCadastr_V6.dll" namespace="WorckWithCadastr_V6">
     <ArcMap>
       <Commands>
 		<Button id="TKC_arcBtn_Open_Rej_Bud_Adr" class="arcBtn_Open_Rej_Bud_Adr" message="Работа с адресным кадастром - Реєстр будівельних адрес" caption="Реєстр будівельних адрес" tip="Показать список будівельних адрес" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Rej_Bud_Adr.png" />

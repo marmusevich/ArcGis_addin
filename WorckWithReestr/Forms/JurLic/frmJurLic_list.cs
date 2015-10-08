@@ -30,7 +30,7 @@ namespace WorckWithReestr
             InitializeComponent();
         }
 
-        public frmJurLic_list(bool isSelectMode = false, string filteredString = "")
+        public frmJurLic_list(bool isSelectMode, string filteredString)
             : base(isSelectMode, filteredString)
         {
             InitializeComponent();

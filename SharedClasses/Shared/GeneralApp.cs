@@ -1,33 +1,11 @@
 ﻿using System;
 
 using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.esriSystem;
-using System.Collections;
-using System.IO.IsolatedStorage;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
 using ESRI.ArcGIS.Framework;
 using ESRI.ArcGIS.ArcMapUI;
-
-
-//
-//1
-////      MessageBox.Show( ThisAddIn.Name );
-//
-//2
-////ESRI.ArcGIS.Framework.IApplication app = ArcMap.Application;
-////ESRI.ArcGIS.esriSystem.IStatusBar statusBar = app.StatusBar;
-////statusBar.set_Message(0, "dfslkgsdfkglksdlf!!!");
-//
-////IMouseCursor appCursor = new MouseCursorClass();
-////appCursor.SetCursor(2);
-//
-////IMouseCursor appCursor = new MouseCursorClass();
-////appCursor.SetCursor(2);
-////for (int i = 0; i <= 10000; i++)
-////    app.StatusBar.set_Message(0, i.ToString());
-
 
 namespace SharedClasses
 {

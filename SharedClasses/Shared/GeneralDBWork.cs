@@ -3,7 +3,6 @@
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.esriSystem;
 using System.Collections;
-using System.IO.IsolatedStorage;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
@@ -42,8 +41,7 @@ namespace SharedClasses
         void SaveDateValueFromDateTimePickerToDB(ref IRow row, string fildName, DateTimePicker dateTimePicker);
     }
 
-
-    
+  
     //работа с баззой
     public static class GeneralDBWork
     {
@@ -74,39 +72,21 @@ namespace SharedClasses
         public static IWorkspace GetWorkspace(string dataBase)
         {
             IWorkspace ret = null;
+
+            // обертка для индикации пользователю
+            AddInsAppInfo ai = GeneralApp.GetAddInsAppInfo();
+            IMouseCursor appCursor = null;
+
+            if (ai != null && ai.GetThisAddInnApp() != null)
+            {
+                appCursor = new MouseCursorClass();
+                appCursor.SetCursor(2);
+            }
+
             try
             {
-                // параметры подключения есть?
-                if (m_DBConnectPropertySet == null)
-                {
-                    ListPropertySet ips = new ListPropertySet(5);
-                    //прочесть с диска
-                    if (!LoadDBConnectPropertySetFromDisk(ref ips) && ips.Count != 5)
-                    {
-                        //устоновить и сохранить на диск
-                        ips.Add(new DataItemForXmlSerialize_IPropertySet("DB_CONNECTION_PROPERTIES", "KADASTER12_DATA1"));
-                        ips.Add(new DataItemForXmlSerialize_IPropertySet("INSTANCE", @"sde:sqlserver:KADASTER12\DATA1"));
-                        ips.Add(new DataItemForXmlSerialize_IPropertySet("DATABASE", dataBase));
-                        ips.Add(new DataItemForXmlSerialize_IPropertySet("VERSION", "DBO.DEFAULT"));
-                        ips.Add(new DataItemForXmlSerialize_IPropertySet("AUTHENTICATION_MODE", "OSA")); // аунтификация средствами виндовса
-
-                        SaveDBConnectPropertySetToDisk(ref ips);
-                    }
-
-                    if (ips.Count == 5)
-                    {
-                        m_DBConnectPropertySet = new PropertySetClass();
-                        foreach (DataItemForXmlSerialize_IPropertySet dps in ips)
-                            m_DBConnectPropertySet.SetProperty(dps.Key, dps.Value);
-                    }
-                    else
-                        throw new Exception("in loaded file not 5 parametrs...");
-                }
-
-                Type factoryType = Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory");
-                IWorkspaceFactory workspaceFactory = (IWorkspaceFactory)Activator.CreateInstance(factoryType);
-            
-                 ret = workspaceFactory.Open(m_DBConnectPropertySet, 0);
+                // подключится
+                ret = GetWorkSpace_Implementation(dataBase);
             }
             catch (Exception ex) // обработка ошибок
             {
@@ -114,6 +94,49 @@ namespace SharedClasses
                 Logger.Write(ex, string.Format("GeneralDBWork.GetWorkspace({0})", dataBase));
                 GeneralApp.ShowErrorMessage(string.Format("Подключение к базе не возможно!!\r\nПроверте параметры подключения в файле:\r\n{0}", GetFileName_DBConnectPropertySet()));
             }
+            finally
+            {
+                if (appCursor != null)
+                    appCursor.SetCursor(0);
+            }
+
+            return ret;
+        }
+        //собственно подключение здесь
+        private static IWorkspace GetWorkSpace_Implementation(string dataBase)
+        {
+            IWorkspace ret = null;
+            // параметры подключения есть?
+            if (m_DBConnectPropertySet == null)
+            {
+                ListPropertySet ips = new ListPropertySet(5);
+                //прочесть с диска
+                if (!LoadDBConnectPropertySetFromDisk(ref ips) && ips.Count != 5)
+                {
+                    //устоновить и сохранить на диск
+                    ips.Add(new DataItemForXmlSerialize_IPropertySet("DB_CONNECTION_PROPERTIES", "KADASTER12_DATA1"));
+                    ips.Add(new DataItemForXmlSerialize_IPropertySet("INSTANCE", @"sde:sqlserver:KADASTER12\DATA1"));
+                    ips.Add(new DataItemForXmlSerialize_IPropertySet("DATABASE", dataBase));
+                    ips.Add(new DataItemForXmlSerialize_IPropertySet("VERSION", "DBO.DEFAULT"));
+                    ips.Add(new DataItemForXmlSerialize_IPropertySet("AUTHENTICATION_MODE", "OSA")); // аунтификация средствами виндовса
+
+                    SaveDBConnectPropertySetToDisk(ref ips);
+                }
+
+                if (ips.Count == 5)
+                {
+                    m_DBConnectPropertySet = new PropertySetClass();
+                    foreach (DataItemForXmlSerialize_IPropertySet dps in ips)
+                        m_DBConnectPropertySet.SetProperty(dps.Key, dps.Value);
+                }
+                else
+                    throw new Exception("in loaded file not 5 parametrs...");
+            }
+
+            Type factoryType = Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory");
+            IWorkspaceFactory workspaceFactory = (IWorkspaceFactory)Activator.CreateInstance(factoryType);
+
+            ret = workspaceFactory.Open(m_DBConnectPropertySet, 0);
             return ret;
         }
         //получить путь и имя к файлу параметров подключения

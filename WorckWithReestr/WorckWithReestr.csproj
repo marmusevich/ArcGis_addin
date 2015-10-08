@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WorckWithReestr</RootNamespace>
     <AssemblyName>WorckWithReestr</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -31,6 +31,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +57,9 @@
     </Reference>
     <Reference Include="ESRI.ArcGIS.Desktop.AddIns">
       <Private>False</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Framework">
       <Private>False</Private>
@@ -159,76 +163,76 @@
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseDocument.cs">
       <SubType>Form</SubType>
-      <Link>SharedClasses\Forms\frmBaseDocument.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseDocument.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseDocument.Designer.cs">
       <DependentUpon>frmBaseDocument.cs</DependentUpon>
-      <Link>SharedClasses\Forms\frmBaseDocument.Designer.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseDocument.Designer.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseJurnal.cs">
       <SubType>Form</SubType>
-      <Link>SharedClasses\Forms\frmBaseJurnal.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseJurnal.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseJurnal.Designer.cs">
       <DependentUpon>frmBaseJurnal.cs</DependentUpon>
-      <Link>SharedClasses\Forms\frmBaseJurnal.Designer.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseJurnal.Designer.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseSpr_element.cs">
       <SubType>Form</SubType>
-      <Link>SharedClasses\Forms\frmBaseSpr_element.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseSpr_element.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseSpr_element.Designer.cs">
       <DependentUpon>frmBaseSpr_element.cs</DependentUpon>
-      <Link>SharedClasses\Forms\frmBaseSpr_element.Designer.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseSpr_element.Designer.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseSpr_list.cs">
       <SubType>Form</SubType>
-      <Link>SharedClasses\Forms\frmBaseSpr_list.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseSpr_list.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmBaseSpr_list.Designer.cs">
       <DependentUpon>frmBaseSpr_list.cs</DependentUpon>
-      <Link>SharedClasses\Forms\frmBaseSpr_list.Designer.cs</Link>	  
+      <Link>SharedClasses\Forms\frmBaseSpr_list.Designer.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmSelectSearchInListForm.cs">
       <SubType>Form</SubType>
-      <Link>SharedClasses\Forms\frmSelectSearchInListForm.cs</Link>	  
+      <Link>SharedClasses\Forms\frmSelectSearchInListForm.cs</Link>
     </Compile>
     <Compile Include="..\SharedClasses\Forms\frmSelectSearchInListForm.Designer.cs">
       <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
-      <Link>SharedClasses\Forms\frmSelectSearchInListForm.Designer.cs</Link>	  
+      <Link>SharedClasses\Forms\frmSelectSearchInListForm.Designer.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\GeneralApp.cs" >
-	<Link>SharedClasses\Shared\GeneralApp.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\GeneralApp.cs">
+      <Link>SharedClasses\Shared\GeneralApp.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\GeneralMapWork.cs" >
-	<Link>SharedClasses\Shared\GeneralMapWork.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\GeneralMapWork.cs">
+      <Link>SharedClasses\Shared\GeneralMapWork.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\ReestrDictionaryWork.cs" >
-	<Link>SharedClasses\Shared\ReestrDictionaryWork.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\ReestrDictionaryWork.cs">
+      <Link>SharedClasses\Shared\ReestrDictionaryWork.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\ReestrDocumentWork.cs" >
-	<Link>SharedClasses\Shared\ReestrDocumentWork.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\ReestrDocumentWork.cs">
+      <Link>SharedClasses\Shared\ReestrDocumentWork.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\DomeinDataAdapter.cs" >
-	<Link>SharedClasses\Shared\DomeinDataAdapter.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\DomeinDataAdapter.cs">
+      <Link>SharedClasses\Shared\DomeinDataAdapter.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\TableWraper\FieldPropertyDescriptor.cs" >
-	<Link>SharedClasses\Shared\TableWraper\FieldPropertyDescriptor.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\TableWraper\FieldPropertyDescriptor.cs">
+      <Link>SharedClasses\Shared\TableWraper\FieldPropertyDescriptor.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\Logger.cs" >
-	<Link>SharedClasses\Shared\Logger.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\Logger.cs">
+      <Link>SharedClasses\Shared\Logger.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\GeneralDBWork.cs" >
-	<Link>SharedClasses\Shared\GeneralDBWork.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\GeneralDBWork.cs">
+      <Link>SharedClasses\Shared\GeneralDBWork.cs</Link>
     </Compile>
-    <Compile Include="..\SharedClasses\Shared\TableWraper\TableWraper.cs" >
-	<Link>SharedClasses\Shared\TableWraper\TableWraper.cs</Link>	  
+    <Compile Include="..\SharedClasses\Shared\TableWraper\TableWraper.cs">
+      <Link>SharedClasses\Shared\TableWraper\TableWraper.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\SharedClasses\Forms\frmSelectSearchInListForm.resx">
       <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
-	<Link>SharedClasses\Forms\frmSelectSearchInListForm.resx</Link>	  
+      <Link>SharedClasses\Forms\frmSelectSearchInListForm.resx</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

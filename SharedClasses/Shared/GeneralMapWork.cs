@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.ArcMapUI;
+using ESRI.ArcGIS.Carto;
 
 namespace SharedClasses
 {
@@ -31,8 +33,31 @@ namespace SharedClasses
         public static void ShowOnMap(string tablName)
         {
 
+            string l = "Laers:\n";
 
-            System.Windows.Forms.MessageBox.Show(tablName + " - " + GeneralApp.GetAddInsAppInfo().GetNameApp());
+
+            AddInsAppInfo ai = GeneralApp.GetAddInsAppInfo();
+            if (ai != null && ai.GetDocument() != null)
+            {
+                IMxDocument mxdoc = ai.GetDocument() as IMxDocument;
+                IMap map = mxdoc.FocusMap;
+
+                IEnumLayer enumLayer = map.Layers;
+                ILayer layer = enumLayer.Next();
+
+                while (layer != null)
+                {
+                    IDataLayer2 idl = layer as IDataLayer2;
+                    if (idl != null)
+                        l += idl.DataSourceName.NameString + "\n";
+                    
+                    layer = enumLayer.Next();
+                }
+
+            }
+
+
+            System.Windows.Forms.MessageBox.Show(tablName + "\n" + l);
         }
 
 

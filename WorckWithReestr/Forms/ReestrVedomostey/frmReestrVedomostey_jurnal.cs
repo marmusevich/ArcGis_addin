@@ -13,15 +13,21 @@ namespace WorckWithReestr
         #region functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
-        public static void ShowForView()
+        public static void ShowForView(string filteredString = "")
         {
-            Form frm = new frmReestrVedomostey_jurnal();
+            Form frm = new frmReestrVedomostey_jurnal(false, filteredString);
             frm.Show();
             frm.Activate();
         }
 
         public frmReestrVedomostey_jurnal()
             : base()
+        {
+            InitializeComponent();
+        }
+
+        public frmReestrVedomostey_jurnal(bool isSelectMode, string filteredString)
+            : base(isSelectMode, filteredString)
         {
             InitializeComponent();
 

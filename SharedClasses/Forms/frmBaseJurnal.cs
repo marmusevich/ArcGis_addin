@@ -1,7 +1,9 @@
 ﻿
-using ESRI.ArcGIS.Geodatabase;
 using System;
 using System.Windows.Forms;
+
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.esriSystem;
 
 namespace SharedClasses
 {
@@ -117,10 +119,32 @@ namespace SharedClasses
         protected virtual bool ReadData()
         {
             bool ret = false;
+
+            // обертка для индикации пользователю
+            AddInsAppInfo ai = GeneralApp.GetAddInsAppInfo();
+            IStatusBar statusBar = null;
+            ESRI.ArcGIS.Framework.IMouseCursor appCursor = null;
+
+            if (ai != null && ai.GetThisAddInnApp() != null)
+            {
+                statusBar = ai.GetThisAddInnApp().StatusBar;
+                statusBar.ShowProgressBar("Connect to DataBase...", 0, 3, 1, false);
+                statusBar.ProgressBar.Position = 0;
+                statusBar.StepProgressBar();
+
+                appCursor = new ESRI.ArcGIS.Framework.MouseCursorClass();
+                appCursor.SetCursor(2);
+            }
+
             try
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
+
+                appCursor.SetCursor(2);
+                statusBar.ProgressBar.Message = "Read Data...";
+                statusBar.StepProgressBar();
+
                 this.Text = (table as IObjectClass).AliasName;
                 tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
                 tableWrapper.AllowNew = false;
@@ -144,6 +168,20 @@ namespace SharedClasses
                 GeneralApp.ShowErrorMessage(string.Format("Проблема при чтиение журнала документов  '{0}'", NameTable));
                 ret = false;
             }
+            finally
+            {
+                if (statusBar != null)
+                {
+                    statusBar.HideProgressBar();
+                    statusBar = null;
+                }
+                if (appCursor != null)
+                {
+                    appCursor.SetCursor(0);
+                    appCursor = null;
+                }
+            }
+
             return ret;
         }
         //построить фильтр
@@ -216,7 +254,7 @@ namespace SharedClasses
         {
             IsNotReadData_FormIsConstruct = true;
         }
-        public frmBaseJurnal(bool isSelectMode = false, string filteredString = "")
+        public frmBaseJurnal(bool isSelectMode, string filteredString)
         {
             InitializeComponent();
             FilteredString = filteredString;

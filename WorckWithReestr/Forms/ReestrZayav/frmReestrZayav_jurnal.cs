@@ -23,9 +23,9 @@ namespace WorckWithReestr
         #region functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
-        public static void ShowForView()
+        public static void ShowForView(string filteredString = "")
         {
-            Form frm = new frmReestrZayav_jurnal();
+            Form frm = new frmReestrZayav_jurnal(false, filteredString);
             frm.Show();
             frm.Activate();
         }
@@ -34,7 +34,12 @@ namespace WorckWithReestr
             : base()
         {
             InitializeComponent();
+        }
 
+        public frmReestrZayav_jurnal(bool isSelectMode, string filteredString)
+            : base(isSelectMode, filteredString)
+        {
+            InitializeComponent();
 
             base.NameWorkspace = "reestr";
             base.NameTable = "Kn_Reg_Zayv";
