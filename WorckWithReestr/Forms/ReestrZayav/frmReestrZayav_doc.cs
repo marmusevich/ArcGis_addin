@@ -54,11 +54,11 @@ namespace WorckWithReestr
             CheсkValueAndSetToComboBox(ref cbOplata, ref ddaOplata, "Oplata", GetValueFromDB(ref row, "Oplata"));
 
             // справочники
-            mTip_Doc = row.get_Value(base.table.FindField("Tip_Doc"));
-            mKod_Z = row.get_Value(base.table.FindField("Kod_Z"));
-            mFio_Ved_Vid = row.get_Value(base.table.FindField("Fio_Ved_Vid"));
-            mFio_Ved_Prin = row.get_Value(base.table.FindField("Fio_Ved_Prin"));
-            mFio_Z = row.get_Value(base.table.FindField("Fio_Z"));
+            mTip_Doc = (int)GetValueFromDB(ref row, "Tip_Doc");
+            mKod_Z = (int)GetValueFromDB(ref row, "Kod_Z");
+            mFio_Ved_Vid = (int)GetValueFromDB(ref row, "Fio_Ved_Vid");
+            mFio_Ved_Prin = (int)GetValueFromDB(ref row, "Fio_Ved_Prin");
+            mFio_Z = (int)GetValueFromDB(ref row, "Fio_Z");
 
             OnChangedFio_Z();
             OnChangedKod_Z();

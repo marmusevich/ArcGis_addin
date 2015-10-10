@@ -9,11 +9,11 @@ namespace WorckWithReestr
     {
         public arcBtn_Open_FizLicList()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmFizLic_list.ShowForView();
         }

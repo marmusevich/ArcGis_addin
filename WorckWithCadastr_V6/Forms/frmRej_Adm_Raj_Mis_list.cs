@@ -43,12 +43,53 @@ namespace WorckWithCadastr_V6
             return new frmRej_Adm_Raj_Mis_element(_objectID, _editMode);
         }
 
+        protected override void SetDefaultDisplayOrder()
+        {
+            int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
+                        base.table.FindField("KOD_KLS"),
+                        base.table.FindField("NAZVA_UKR"),
+                        base.table.FindField("NAZVA_ROS"),
+                        base.table.FindField("NAZVA_LAT"),
+                        base.table.FindField("ID_MSB_OBJ"),
+                        base.table.FindField("ID_RAI"),
+                        base.table.FindField("KOD_KOATUU_RAI"),
+                        base.table.FindField("N_Kad"),
+                        base.table.FindField("Prymitka"),
+                        base.table.FindField("RuleID"),
+
+                        base.table.FindField("SHAPE.STLength()"),
+                        base.table.FindField("SHAPE.STArea()"),
+                        base.table.FindField("Override"),
+                        base.table.FindField("SHAPE")
+                       };
+            GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
+        }
+        //доп настройка грида
+        protected override void OtherSetupDGV()
+        {
+            dgv.Columns["SHAPE"].Visible = false;
+            dgv.Columns["SHAPE.STLength()"].Visible = false;
+            dgv.Columns["SHAPE.STArea()"].Visible = false;
+            dgv.Columns["Override"].Visible = false;
+
+            dgv.CellFormatting += OnCellFormatting;
+        }
+        //вернуть строку доаолнительных условий
+        protected override string GetStringAddetConditions()
+        {
+            string ret = base.GetStringAddetConditions();
+            return ret;
+        }
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
         public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
         {
-            dictionaryTableName = "";
             return false;
         }
+
+        private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+        }
+
         #endregion
     }
 }

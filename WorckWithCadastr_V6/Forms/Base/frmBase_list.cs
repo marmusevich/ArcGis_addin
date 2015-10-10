@@ -26,12 +26,20 @@ namespace WorckWithCadastr_V6
 
         private void cmsShowOnMap_Click(object sender, EventArgs e)
         {
-            GeneralMapWork.ShowOnMap(NameTable);
+            if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
+            {
+                int id = (int)dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0].Value;
+                GeneralMapWork.ShowOnMap(table, id);
+            }
         }
 
         private void tsbtsdShowOnMap_Click(object sender, EventArgs e)
         {
-            GeneralMapWork.ShowOnMap(NameTable);
+            if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
+            {
+                int id = (int)dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0].Value;
+                GeneralMapWork.ShowOnMap(table, id);
+            }
         }
 
         private void frmBase_list_Load(object sender, EventArgs e)

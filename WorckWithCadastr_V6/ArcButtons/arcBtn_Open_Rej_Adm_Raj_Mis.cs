@@ -10,11 +10,11 @@ namespace WorckWithCadastr_V6
     {
         public arcBtn_Open_Rej_Adm_Raj_Mis()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmRej_Adm_Raj_Mis_list.ShowForView();
         }

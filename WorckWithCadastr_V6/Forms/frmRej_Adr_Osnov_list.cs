@@ -43,12 +43,73 @@ namespace WorckWithCadastr_V6
             return new frmRej_Adr_Osnov_element(_objectID, _editMode);
         }
 
+        protected override void SetDefaultDisplayOrder()
+        {
+            int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
+                        base.table.FindField("KOD_KLS"),
+                        base.table.FindField("NAJM_OBJ"),
+                        base.table.FindField("SKOR_NAJM_OBJ"),
+                        base.table.FindField("Korpus"),
+                        base.table.FindField("NumerBud"),
+
+                        base.table.FindField("ID_MSB_OBJ"),
+                        base.table.FindField("KOATUU"),
+                        base.table.FindField("ID_ADRESS"),
+                        base.table.FindField("ID_ELEMENT"),
+                        base.table.FindField("ID_Adm_Rn"),
+                        base.table.FindField("ID_Obl"),
+                        base.table.FindField("ID_Nsl_Pnk"),
+                        base.table.FindField("ID_Rej_Vul"),
+                        base.table.FindField("INDEX_POSH_VID"),
+                        base.table.FindField("N_Kad"),
+
+                        base.table.FindField("Prymitka"),
+                        base.table.FindField("KOD_TYP_OBJ_ADR"),
+                        base.table.FindField("KOD_TYP_ADR"),
+                        base.table.FindField("KOD_FUNC_PRYZN"),
+                        base.table.FindField("KOD_STAN_ADR"),
+                        base.table.FindField("RuleID"),
+
+                        base.table.FindField("ID_MSB_OBJ"),
+                        base.table.FindField("KOATUU"),
+                        base.table.FindField("ID_ADRESS"),
+                        base.table.FindField("ID_ELEMENT"),
+                        base.table.FindField("ID_Adm_Rn"),
+                        base.table.FindField("ID_Obl"),
+                        base.table.FindField("ID_Nsl_Pnk"),
+                        base.table.FindField("ID_Rej_Vul"),
+                        base.table.FindField("INDEX_POSH_VID"),
+                        base.table.FindField("N_Kad"),
+
+                        base.table.FindField("Override"),
+                        base.table.FindField("SHAPE")
+                       };
+            GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
+        }
+        //доп настройка грида
+        protected override void OtherSetupDGV()
+        {
+            dgv.Columns["SHAPE"].Visible = false;
+            dgv.Columns["Override"].Visible = false;
+
+            dgv.CellFormatting += OnCellFormatting;
+        }
+        //вернуть строку доаолнительных условий
+        protected override string GetStringAddetConditions()
+        {
+            string ret = base.GetStringAddetConditions();
+            return ret;
+        }
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
         public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
         {
-            dictionaryTableName = "";
             return false;
         }
+
+        private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+        }
+
         #endregion
     }
 }

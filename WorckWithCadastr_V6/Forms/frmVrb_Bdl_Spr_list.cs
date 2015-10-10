@@ -29,7 +29,7 @@ namespace WorckWithCadastr_V6
             InitializeComponent();
         }
 
-        public frmVrb_Bdl_Spr_list(bool isSelectMode = false, string filteredString = "")
+        public frmVrb_Bdl_Spr_list(bool isSelectMode, string filteredString)
             : base(isSelectMode, filteredString)
         {
             InitializeComponent();
@@ -43,12 +43,52 @@ namespace WorckWithCadastr_V6
             return new frmVrb_Bdl_Spr_element(_objectID, _editMode);
         }
 
+        protected override void SetDefaultDisplayOrder()
+        {
+            int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
+                        base.table.FindField("KOD_KLS"),
+                        base.table.FindField("KOD_STS"),
+
+                        base.table.FindField("ID_MSB_OBJ"),
+                        base.table.FindField("KLK_PVH"),
+                        base.table.FindField("N_Kad"),
+                        base.table.FindField("Pidcode"),
+                        base.table.FindField("RuleID_2000"),
+
+                        base.table.FindField("Prymitka"),
+
+                        base.table.FindField("SHAPE.STLength()"),
+                        base.table.FindField("Override_5000"),
+                        base.table.FindField("SHAPE"),
+                        base.table.FindField("SHAPE.STArea()")};
+            GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
+        }
+        //доп настройка грида
+        protected override void OtherSetupDGV()
+        {
+            dgv.Columns["SHAPE"].Visible = false;
+            dgv.Columns["SHAPE.STLength()"].Visible = false;
+            dgv.Columns["SHAPE.STArea()"].Visible = false;
+            dgv.Columns["Override_5000"].Visible = false;
+
+            dgv.CellFormatting += OnCellFormatting;
+        }
+        //вернуть строку доаолнительных условий
+        protected override string GetStringAddetConditions()
+        {
+            string ret = base.GetStringAddetConditions();
+            return ret;
+        }
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
         public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
         {
-            dictionaryTableName = "";
             return false;
         }
+
+        private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+        }
+
         #endregion
     }
 }

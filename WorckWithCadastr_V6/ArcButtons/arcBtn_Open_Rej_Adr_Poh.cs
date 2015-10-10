@@ -10,11 +10,11 @@ namespace WorckWithCadastr_V6
     {
         public arcBtn_Open_Rej_Adr_Poh()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmRej_Adr_Poh_list.ShowForView();
         }

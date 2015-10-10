@@ -11,11 +11,11 @@ namespace WorckWithCadastr_V6
     {
         public arcBtn_Open_Rej_Vul()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmRej_Vul_list.ShowForView();
         }

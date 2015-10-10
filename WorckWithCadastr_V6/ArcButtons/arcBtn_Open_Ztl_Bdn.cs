@@ -10,11 +10,11 @@ namespace WorckWithCadastr_V6
     {
         public arcBtn_Open_Ztl_Bdn()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmZtl_Bdn_list.ShowForView();
         }

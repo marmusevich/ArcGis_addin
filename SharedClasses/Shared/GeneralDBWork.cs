@@ -303,7 +303,7 @@ namespace SharedClasses
                 IRow row = null;
                 if ((row = cursor.NextRow()) != null)
                 {
-                    ret = row.get_Value(0);
+                    ret = (int)row.get_Value(0);
                 }
             }
             catch (Exception ex) // обработка ошибок
@@ -328,7 +328,7 @@ namespace SharedClasses
                 IRow row = null;
                 if ((row = cursor.NextRow()) != null)
                 {
-                    ret = row.get_Value(0);
+                    ret = (int)row.get_Value(0);
                 }
             }
             catch (Exception ex) // обработка ошибок
@@ -351,7 +351,7 @@ namespace SharedClasses
                 IRow row = null;
                 if ((row = cursor.NextRow()) != null)
                 {
-                    ret = row.get_Value(0);
+                    ret = (int)row.get_Value(0);
                 }
             }
             catch (Exception ex) // обработка ошибок

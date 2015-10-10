@@ -10,11 +10,11 @@ namespace WorckWithCadastr_V6
     {
         public arcBtn_Open_Grm_Bdl()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmGrm_Bdl_list.ShowForView();
         }

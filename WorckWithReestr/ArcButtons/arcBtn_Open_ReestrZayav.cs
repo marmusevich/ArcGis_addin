@@ -10,15 +10,13 @@ namespace WorckWithReestr
     {
         public arcBtn_Open_ReestrZayav()
         {
+            AppStartPoint.Init();
         }
-
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmReestrZayav_jurnal.ShowForView();
         }
-
         protected override void OnUpdate()
         {
             Enabled = ArcMap.Application != null;

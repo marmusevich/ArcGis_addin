@@ -10,11 +10,11 @@ namespace WorckWithCadastr_V6
     {
         public arcBtn_Open_Rej_Adr_Osnov()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmRej_Adr_Osnov_list.ShowForView();
         }

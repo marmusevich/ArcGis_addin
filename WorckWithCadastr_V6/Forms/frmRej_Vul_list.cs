@@ -30,7 +30,7 @@ namespace WorckWithCadastr_V6
             InitializeComponent();
         }
 
-        public frmRej_Vul_list(bool isSelectMode = false, string filteredString = "")
+        public frmRej_Vul_list(bool isSelectMode, string filteredString)
             : base(isSelectMode, filteredString)
         {
             InitializeComponent();
@@ -39,13 +39,6 @@ namespace WorckWithCadastr_V6
             base.NameTable = "Rej_Vul";
             base.NameSortFild = "ID_MSB_OBJ";
         }
-
-
-
-
-
-
-
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
             return new frmRej_Vul_element(_objectID, _editMode);
@@ -53,7 +46,6 @@ namespace WorckWithCadastr_V6
 
         protected override void SetDefaultDisplayOrder()
         {
-
             int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
                         base.table.FindField("KOD_KLS"),
                         base.table.FindField("ID_MSB_OBJ"),
@@ -79,7 +71,6 @@ namespace WorckWithCadastr_V6
                        };
             GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
         }
-
         //доп настройка грида
         protected override void OtherSetupDGV()
         {
@@ -90,14 +81,12 @@ namespace WorckWithCadastr_V6
 
             dgv.CellFormatting += OnCellFormatting;
         }
-
         //вернуть строку доаолнительных условий
         protected override string GetStringAddetConditions()
         {
             string ret = base.GetStringAddetConditions();
             return ret;
         }
-        
         //проверить поле на принадлежность к справочнику, вернуть имя таблици справочника
         public override bool ChekFildIsDictionary(string fildName, ref string dictionaryTableName)
         {
@@ -106,13 +95,9 @@ namespace WorckWithCadastr_V6
 
         private void OnCellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
-
         }        
         
         #endregion
-
-
     }
 }
 

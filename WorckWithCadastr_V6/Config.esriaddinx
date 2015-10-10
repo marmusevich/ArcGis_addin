@@ -6,14 +6,14 @@
   <Image>Images\WorckWithCadastr_V6.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>07.09.2015</Date>
+  <Date>10.10.2015</Date>
   <Targets>
     <Target name="Desktop" version="10.2" />
   </Targets>
   <AddIn language="CLR4.0" library="WorckWithCadastr_V6.dll" namespace="WorckWithCadastr_V6">
     <ArcMap>
       <Commands>
-		<Button id="TKC_arcBtn_Open_Rej_Bud_Adr" class="arcBtn_Open_Rej_Bud_Adr" message="Работа с адресным кадастром - Реєстр будівельних адрес" caption="Реєстр будівельних адрес" tip="Показать список будівельних адрес" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Rej_Bud_Adr.png" />
+        <Button id="TKC_arcBtn_Open_Rej_Bud_Adr" class="arcBtn_Open_Rej_Bud_Adr" message="Работа с адресным кадастром - Реєстр будівельних адрес" caption="Реєстр будівельних адрес" tip="Показать список будівельних адрес" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Rej_Bud_Adr.png" />
         <Button id="TKC_arcBtn_Open_Rej_Vul" class="arcBtn_Open_Rej_Vul" message="Работа с адресным кадастром - Реєстр вулиць" caption="Реєстр вулиць" tip="Показать список вулиць" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Rej_Vul.png" />
         <Button id="TKC_arcBtn_Open_Rej_Adr_Poh" class="arcBtn_Open_Rej_Adr_Poh" message="Работа с адресным кадастром - Реєстр адрес будівель похідний" caption="Реєстр адрес будівель похідний" tip="Показать список адрес будівель похідний" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Rej_Adr_Poh.png" />
         <Button id="TKC_arcBtn_Open_Rej_Adr_Osnov" class="arcBtn_Open_Rej_Adr_Osnov" message="Работа с адресным кадастром - Реєстр адрес основний" caption="Реєстр адрес основний" tip="Показать список адрес основний" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Rej_Adr_Osnov.png" />
@@ -23,17 +23,17 @@
         <Button id="TKC_arcBtn_Open_Obj_Scl_Sft_Ecn" class="arcBtn_Open_Obj_Scl_Sft_Ecn" message="Работа с адресным кадастром - Об’єкти соціальної сфери та економіки" caption="Об’єкти соціальної сфери та економіки" tip="Показать список Об’єкти соціальної сфери та економіки" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Obj_Scl_Sft_Ecn.png" />
         <Button id="TKC_arcBtn_Open_Vrb_Bdl_Spr" class="arcBtn_Open_Vrb_Bdl_Spr" message="Работа с адресным кадастром - Виробничі будівлі і споруди" caption="Виробничі будівлі і споруди" tip="Показать список Виробничі будівлі і споруди" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Vrb_Bdl_Spr.png" />
         <Button id="TKC_arcBtn_Open_Ztl_Bdn" class="arcBtn_Open_Ztl_Bdn" message="Работа с адресным кадастром - Житлові будинки" caption="Житлові будинки" tip="Показать список Житлові будинки" category="TKC:Работа с адресным кадастром V6" image="Images\arcBtn_Open_Ztl_Bdn.png" />
+        <Tool id="TKC_arcTool_ShowObjInfa" class="arcTool_ShowObjInfa" message="Работа с адресным кадастром - Показать информацию по объекту на карте" caption="Показать информацию по объекту на карте" tip="Показать информацию по объекту на карте" category="TKC:Работа с адресным кадастром V6" image="Images\arcTool_ShowObjInfa.png" />
       </Commands>
-	  
       <Toolbars>
         <Toolbar id="TKC_WorckWithCadastr_V6_toolbar" caption="Работа с адресным кадастром V6" showInitially="true">
           <Items>
+            <Button refID="TKC_arcTool_ShowObjInfa" separator="true" />
             <Button refID="TKC_arcBtn_Open_Rej_Vul" />
             <Button refID="TKC_arcBtn_Open_Rej_Adm_Raj_Mis" />
             <Button refID="TKC_arcBtn_Open_Rej_Bud_Adr" />
             <Button refID="TKC_arcBtn_Open_Rej_Adr_Poh" />
-            <Button refID="TKC_arcBtn_Open_Kvt"  separator="true" />
-
+            <Button refID="TKC_arcBtn_Open_Kvt" separator="true" />
             <Button refID="TKC_arcBtn_Open_Ztl_Bdn" />
             <Button refID="TKC_arcBtn_Open_Vrb_Bdl_Spr" />
             <Button refID="TKC_arcBtn_Open_Grm_Bdl" />

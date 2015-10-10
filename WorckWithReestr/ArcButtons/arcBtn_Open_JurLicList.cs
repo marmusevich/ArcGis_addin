@@ -10,15 +10,14 @@ namespace WorckWithReestr
     {
         public arcBtn_Open_JurLicList()
         {
+            AppStartPoint.Init();
         }
 
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmJurLic_list.ShowForView();
         }
-
         protected override void OnUpdate()
         {
             Enabled = ArcMap.Application != null;

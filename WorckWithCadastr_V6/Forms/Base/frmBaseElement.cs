@@ -64,7 +64,7 @@ namespace WorckWithCadastr_V6
 
         private void btnShowOnMap_Click(object sender, EventArgs e)
         {
-            GeneralMapWork.ShowOnMap(NameTable);
+            GeneralMapWork.ShowOnMap(table, objectID);
         }
 
         private void frmBaseElement_Load(object sender, EventArgs e)

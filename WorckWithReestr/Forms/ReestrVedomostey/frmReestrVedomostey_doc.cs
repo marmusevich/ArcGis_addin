@@ -39,8 +39,9 @@ namespace WorckWithReestr
             SetStringValueFromDBToTextBox(ref row, "Prim", txtPrim);
 
             // справочники
-            mFIO_Kad = row.get_Value(base.table.FindField("FIO_Kad"));
-            mTip_Doc = row.get_Value(base.table.FindField("Tip_Doc"));
+            //mFIO_Kad = row.get_Value(base.table.FindField("FIO_Kad"));
+            mFIO_Kad = (int)GetValueFromDB(ref row, "FIO_Kad");
+            mTip_Doc = (int)GetValueFromDB(ref row, "Tip_Doc");
             OnChangedFIO_Kad();
             OnChangedTipDoc();
 

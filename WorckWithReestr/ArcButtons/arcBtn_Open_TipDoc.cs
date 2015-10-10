@@ -10,11 +10,10 @@ namespace WorckWithReestr
     {
         public arcBtn_Open_TipDoc()
         {
+            AppStartPoint.Init();
         }
-
         protected override void OnClick()
         {
-            AppStartPoint.Init();
             ArcMap.Application.CurrentTool = null;
             frmTipDoc_list.ShowForView();
         }
