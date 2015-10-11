@@ -3,6 +3,10 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geometry;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
+using System;
+using System.Collections.Generic;
 
 
 
@@ -11,231 +15,275 @@ namespace SharedClasses
 {
     public static class GeneralMapWork
     {
-        //соответствие таблиц данных с таблицами графики
-        //    - пространства имен, имена таблиц, имена полей
-
-        //показать на карте
-        //    - проверить и получить связаный слой
-        //    - показать, отмаштабировать
-
-        //из карты в карточьку
-        //    - получит все выделеные объекты
-        //    - запросить (форма список) (если объект один не спрашивать) нужный объект
-        //    - открыть карточьку
-        //        - получть имя формы из соответствия
-        //        - вызвать (имя формы).ShowForView();
-
-
-
-        //
-        public static void ShowOnMap(ITable table, int objectID)
+        //вспомогательный для выбора значений
+        class SelectedTableNameAndObjectID
         {
-            string l = "Laers:\n";
+            public readonly string aliasName;
+            public readonly string tabName;
+            public readonly int id;
 
+            public SelectedTableNameAndObjectID(string aliasName, string tabName, int id)
+            {
+                this.aliasName = aliasName;
+                this.tabName = tabName;
+                this.id = id;
+            }
+
+            public override string ToString()
+            {
+                return this.aliasName;
+            }
+        }
+
+        //---------------------------------------------------------------------------------------
+        #region ---
+
+        //радиус чуствительности
+        private static int g_pixelTolRound = 1;
+        //коэфициэнт маштобирования при просмотре объекта на карте
+        private static double g_scaleFactorForShowObject = 3.0;
+
+        //текущий документ 
+        public static IMxDocument GetMxDocument()
+        {
             AddInsAppInfo ai = GeneralApp.GetAddInsAppInfo();
             if (ai != null && ai.GetDocument() != null)
             {
-                IMxDocument mxdoc = ai.GetDocument() as IMxDocument;
-                IMap map = mxdoc.FocusMap;
+                return ai.GetDocument() as IMxDocument;
+            }
+            else
+                return null;
+        }
 
-                IEnumLayer enumLayer = map.Layers;
+        // вернуть имя выбраного слоя и объекта
+        // если несколько - запрос какой
+        public static void GetSelectedTableNameAndObjectID(out string table_name, out int objectID, ref string[] allTableName)
+        {
+            table_name = "";
+            objectID = -1;
+
+            List<SelectedTableNameAndObjectID> arr = new List<SelectedTableNameAndObjectID>();
+            SelectedTableNameAndObjectID tmp = null;
+
+            IMxDocument mxDoc = GetMxDocument();
+            if (mxDoc != null)
+            {
+                //переберем все выбранные объекты на карте
+                IEnumFeature enumFeature = mxDoc.FocusMap.FeatureSelection as IEnumFeature;
+                IFeature feature = enumFeature.Next();
+                while (feature != null)
+                {
+                    //если можем добовляем в масив для выбора
+                    tmp = null;
+                    string aliasName = "";
+                    string tabName = "";
+                    if (feature.Class != null)
+                    {
+                        aliasName = feature.Class.AliasName;
+                        if ((feature.Class) is IDataset)
+                        {
+                            tabName = (feature.Class as IDataset).Name;
+                            //проверка на принадлежность нашему проекту
+                            if (ChekTablNameIsThisPrj(ref tabName, ref allTableName))
+                                tmp = new SelectedTableNameAndObjectID(string.Format("{0} (ID = {1})", aliasName, feature.get_Value(feature.Table.FindField("ID_MSB_OBJ"))), tabName, feature.OID);
+                        }
+                    }
+                    if (tmp != null)
+                        arr.Add(tmp);
+
+                    feature = enumFeature.Next();
+                }
+            }
+            SelectedTableNameAndObjectID sel = null;
+
+            //если отобрано больше чем 1, спросить у пользователя
+            if (arr.Count > 1)
+            {
+                frmSelectObjAndLayerForToolShowObjInfo frm = new frmSelectObjAndLayerForToolShowObjInfo();
+                frm.lsbSelectedLayers.Items.AddRange(arr.ToArray());
+                frm.ShowDialog();
+                sel = frm.lsbSelectedLayers.SelectedItem as SelectedTableNameAndObjectID;
+                frm.Dispose();
+            }
+            else // или последний
+            {
+                sel = tmp;
+            }
+
+            // если есть что вернуть то вернуть
+            if (sel != null)
+            {
+                table_name = sel.tabName;
+                objectID = sel.id;
+            }
+        }
+
+        //проверка на принадлежность нашему проекту имини таблицы
+        private static bool ChekTablNameIsThisPrj(ref string tabName, ref string[] allTableName)
+        {
+            bool ret = false;
+            foreach (string str in allTableName)
+                if (tabName.Contains(str))
+                {
+                    ret = true;
+                    break;
+                }
+            return ret;
+        }
+
+        //показать на карте
+        public static void ShowOnMap(ITable table, int objectID)
+        {
+            try
+            {
+
+                bool isShow = false;
+                //- проверить и получить связаный слой
+                IMxDocument mxDoc = GetMxDocument();
+                if (mxDoc != null)
+                {
+                    IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
+                    ILayer layer = enumLayer.Next();
+                    while (layer != null)
+                    {
+                        if (layer is IFeatureLayer2)
+                        {
+                            IFeatureClass fc = (layer as IFeatureLayer2).FeatureClass;
+                            if (fc != null && fc.CLSID.Compare(table.CLSID))
+                            {
+                                //выбрать в слое объект
+                                SelectLayersFeatures(layer as IFeatureLayer, string.Format("OBJECTID = {0}", objectID));
+                                //спозиционироваться на выбранном объекте, установить масштаб
+                                PositionedOnSelectedObjectAndSetScale(mxDoc, mxDoc.FocusMap);
+                                isShow = true;
+                                break;
+                            }
+                        }
+                        layer = enumLayer.Next();
+                    }
+                }
+
+                if (!isShow)
+                    System.Windows.Forms.MessageBox.Show("Немогу получить связаный слой.\n(Добавте нужный слой в таблицу содержания.)");
+
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("Показать на карте объект '{0}' id {1}", table, objectID));
+                //GeneralApp.ShowErrorMessage(string.Format("Ошибка при показе на карте объекта '{0}' id {1}", table, objectID));
+            }
+        }
+
+        //спозиционироваться на выбранном объекте, установить масштаб
+        public static void PositionedOnSelectedObjectAndSetScale(IMxDocument mxDoc, IMap map)
+        {
+            IFeature selectedFeature = (map.FeatureSelection as IEnumFeature).Next();
+            if (selectedFeature != null)
+            {
+                IEnvelope envelope = selectedFeature.Shape.Envelope;
+                envelope.Expand(g_scaleFactorForShowObject, g_scaleFactorForShowObject, true);
+                mxDoc.ActiveView.Extent = envelope;
+                mxDoc.ActiveView.Refresh();
+            }
+        }
+        #endregion
+
+        //---------------------------------------------------------------------------------------
+        #region выбор объекта на карте, отмена выбора
+        //выбрать по клику мышы видемый объект на текущей карте
+        public static void SelectFeaturesScreenAndPartialRefresh(int x, int y)
+        {
+            IMxDocument mxDoc = GetMxDocument();
+            if (mxDoc != null)
+            {
+                IActiveView m_focusMap = mxDoc.FocusMap as IActiveView;
+                SelectFeaturesScreenPoint(mxDoc.FocusMap, x, y, g_pixelTolRound);
+                m_focusMap.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+            }
+        }
+        //очистить выделение в текущей карте
+        public static void ClearMapSelection()
+        {
+            IMxDocument mxDoc = GetMxDocument();
+            if (mxDoc != null)
+            {
+                ClearMapSelection(mxDoc.FocusMap);
+            }
+        }
+        //очистить выделение во всех слоях
+        public static void ClearAllLayerSelection()
+        {
+            IMxDocument mxDoc = GetMxDocument();
+            if (mxDoc != null)
+            {
+                IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
                 ILayer layer = enumLayer.Next();
-
                 while (layer != null)
                 {
-                    if (layer is IFeatureLayer2)
+                    if (layer is IFeatureLayer)
                     {
-                        IFeatureClass fc = (layer as IFeatureLayer2).FeatureClass;
-                        //System.Windows.Forms.MessageBox.Show(string.Format("fc.CLSID = {0}, table.CLSID = {1}", fc.CLSID.Value.ToString(), table.CLSID.Value.ToString()));
-
-                        if (fc != null && fc.CLSID.Compare(table.CLSID))
-                        {
-                            IQueryFilter qf = new QueryFilter();
-                            qf.WhereClause = string.Format("OBJECTID = {0}", objectID);
-                            IFeatureCursor fcursor = fc.Search(qf, true);
-                            IFeature selectedSFeature = fcursor.NextFeature();
-                            IGeometry5 shapeOfSelected = selectedSFeature.Shape as IGeometry5;
-
-                            ISpatialFilter sF = new SpatialFilterClass();
-                            sF.Geometry = shapeOfSelected;
-                            sF.SpatialRel = esriSpatialRelEnum.esriSpatialRelContains;
-                            IFeatureSelection featureSelection = (layer as IFeatureLayer2) as IFeatureSelection;
-                            featureSelection.SelectFeatures(sF, esriSelectionResultEnum.esriSelectionResultNew, false);
-
-                            //активировать и маштаб
-                            mxdoc.ActiveView.Extent = shapeOfSelected.Envelope;
-                            mxdoc.ActiveView.Refresh();
-                        }
+                        ClearLayerSelection(layer as IFeatureLayer);
                     }
                     layer = enumLayer.Next();
                 }
             }
         }
 
+        //выбрать по клику мышы видемый объект
+        public static void SelectFeaturesScreenPoint(IMap pMap, int x, int y, int pixelTol)
+        {
+            tagRECT r;
+            //Construct a small rectangle out of the x,y coordinates' pixel tolerance.
+            r.left = x - pixelTol; //Upper left x, top left is 0,0.  
+            r.top = y - pixelTol; //Upper left y, top left is 0,0.
+            r.right = x + pixelTol; //Lower right x, top left is 0,0. 
+            r.bottom = y + pixelTol; //Lower right y, top left is 0,0.
 
-        //---------------------------------------------------------------------------------------
-        #region общее
-        //***
-        //private static string m_senpl = null;
+            //Transform the device rectangle into a geographic rectangle via the display transformation.  
+            IEnvelope pEnvelope = new EnvelopeClass();
+            IActiveView pActiveView = pMap as IActiveView;
+            IDisplayTransformation pDisplayTrans = pActiveView.ScreenDisplay.DisplayTransformation;
+            pDisplayTrans.TransformRect(pEnvelope, ref r, 5);
 
-        //
-        //public static string senpl()
-        //{
-        //    return null;
-        //}
+            pEnvelope.SpatialReference = pMap.SpatialReference;
 
-
+            ISelectionEnvironment pSelectionEnvironment = new SelectionEnvironmentClass();
+            pSelectionEnvironment.CombinationMethod = esriSelectionResultEnum.esriSelectionResultNew;
+            pMap.SelectByShape(pEnvelope, pSelectionEnvironment, false);
+        }
+        //выбрать в слое объект
+        public static void SelectLayersFeatures(IFeatureLayer pFeatureLayer, string WhereClause)
+        {
+            IFeatureSelection pFeatureSelection = pFeatureLayer as IFeatureSelection;
+            if (pFeatureSelection != null)
+            {
+                IQueryFilter pQueryFilter = new QueryFilterClass();
+                pQueryFilter.WhereClause = WhereClause;
+                pFeatureSelection.SelectFeatures(pQueryFilter, esriSelectionResultEnum.esriSelectionResultNew, false);
+            }
+        }
+        //выбрать по полигону
+        public static void SelectFeaturesPolygon(IMap pMap, IPolygon pPolygon)
+        {
+            ISelectionEnvironment pSelectionEnvironment = new SelectionEnvironmentClass();
+            pSelectionEnvironment.CombinationMethod = esriSelectionResultEnum.esriSelectionResultNew;
+            pMap.SelectByShape(pPolygon, pSelectionEnvironment, false);
+        }
+        //очистить выделение
+        public static void ClearMapSelection(IMap pMap)
+        {
+            pMap.ClearSelection();
+        }
+        //очистить выделение в слое
+        public static void ClearLayerSelection(IFeatureLayer pFeatureLayer)
+        {
+            IFeatureSelection pFeatureSelection = pFeatureLayer as IFeatureSelection;
+            if (pFeatureSelection != null)
+            {
+                pFeatureSelection.Clear();
+            }
+        }
         #endregion
     }
 }
-
-
-// string selectedState = null;
-// IFeatureLayer2 citiesFL = null;
-// IFeatureLayer2 statesLayer = null;
-
-
-// //заполнить список даннымы из слоя
-// private void btnPopulateList_Click(object sender, EventArgs e)
-// {
-// lstStates.Items.Clear();
-// IMxDocument mxdoc = m_application.Document as IMxDocument;
-// IMap map = mxdoc.FocusMap;
-
-// IEnumLayer enumLayer = map.Layers;
-// ILayer layer = enumLayer.Next();
-
-// while (layer != null)
-// {
-// if (layer is IFeatureLayer2 && layer.Name == "U.S. States (Generalized)")
-// {
-// statesLayer = layer as IFeatureLayer2;
-// }
-// layer = enumLayer.Next();
-// }
-
-// if (statesLayer == null)
-// { return; }
-
-// IFeatureCursor statesFCursor = statesLayer.FeatureClass.Search(null, true);
-// int state_nameIndex = statesFCursor.Fields.FindField("STATE_NAME");
-// IFeature state = statesFCursor.NextFeature();
-
-// if (state_nameIndex < 0)
-// { return; }
-
-// while (state != null)
-// {
-// lstStates.Items.Add(state.Value[state_nameIndex]);
-// state = statesFCursor.NextFeature();
-// }
-// }
-
-// //показать выбронное на карте
-// private void btnSelect_Click(object sender, EventArgs e)
-// {
-// IMxDocument mxdoc = m_application.Document as IMxDocument;
-// IMap map = mxdoc.FocusMap;
-// IEnumLayer enumLayer = map.Layers;
-// ILayer layer = enumLayer.Next();
-
-// while (layer != null)
-// {
-// if (layer.Name == "U.S. Cities" && layer is IFeatureLayer2)
-// {
-// citiesFL = layer as IFeatureLayer2;
-// }
-// layer = enumLayer.Next();
-// }
-
-// IFeatureClass stateFC = statesLayer.FeatureClass;
-// IQueryFilter2 qF = new QueryFilterClass();
-// qF.WhereClause = string.Format("STATE_NAME='{0}'", selectedState);
-// IFeatureCursor stateFCursor = stateFC.Search(qF, true);
-// //just one state is selected
-// IFeature selectedStateFeature = stateFCursor.NextFeature();
-// IGeometry5 shapeOfSelectedState = selectedStateFeature.Shape as IGeometry5;
-
-
-// ISpatialFilter sF = new SpatialFilterClass();
-// sF.Geometry = shapeOfSelectedState;
-// sF.SpatialRel = esriSpatialRelEnum.esriSpatialRelContains;
-
-// IFeatureSelection citiesFeatureSelection = citiesFL as IFeatureSelection;
-// citiesFeatureSelection.SelectFeatures(sF, esriSelectionResultEnum.esriSelectionResultNew, false);
-
-
-// //zoom to selected features
-// mxdoc.ActiveView.Extent = shapeOfSelectedState.Envelope;
-// //IFeatureClass citiesFC = citiesFL.FeatureClass;
-// mxdoc.ActiveView.Refresh();
-
-// //***   - 
-
-// ICursor citiesCursor = null;
-// citiesFeatureSelection.SelectionSet.Search(null, true, out citiesCursor);
-// int pop1990Index = citiesCursor.Fields.FindField("POP1990");
-// long totalPopulation = 0;
-// IRow city = citiesCursor.NextRow();
-// while (city != null)
-// {
-// totalPopulation += long.Parse(city.Value[pop1990Index].ToString());
-// city = citiesCursor.NextRow();
-// }
-// lblReport.Text = String.Format("Number of Selected Cities: {0} \n",
-// citiesFeatureSelection.SelectionSet.Count);
-// lblReport.Text += String.Format("Total Population: {0}", totalPopulation);
-// }
-
-// //очистить список и т.д.
-// private void btnClear_Click(object sender, EventArgs e)
-// {
-// selectedState = "";
-// lstStates.ClearSelected();
-// lblReport.Text = "";
-// //todo: clear selected features in specified layer
-// (citiesFL as IFeatureSelection).Clear();
-
-// IMxDocument mxdoc = m_application.Document as IMxDocument;
-// if (statesLayer != null)
-// {
-// mxdoc.ActiveView.Extent = (statesLayer as ILayer).AreaOfInterest;
-// }
-// mxdoc.ActiveView.Refresh();
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// примеры
-
-// текущий документ / карта
-//IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
-//IMap map = mxDoc.FocusMap as IMap;
-
-
-// выбрать по клику мышы видемый объект
-//IMxDocument mxDoc = ArcMap.Document;
-//IActiveView  m_focusMap = mxDoc.FocusMap as IActiveView;
-//IPoint point = m_focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(arg.X, arg.Y) as IPoint;
-//ArcMap.Document.FocusMap.SelectByShape(point, null, false);
-//m_focusMap.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 
