@@ -2,11 +2,11 @@
   <Name>WorckWithCadastr_V6</Name>
   <AddInID>{791197f8-be70-496d-a82c-5c3486208df8}</AddInID>
   <Description>Работа с адресным кадастром V6</Description>
-  <Version>0.0.00.3</Version>
+  <Version>15.10.12.0850</Version>
   <Image>Images\WorckWithCadastr_V6.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>10.10.2015</Date>
+  <Date>12.10.2015</Date>
   <Targets>
     <Target name="Desktop" version="10.2" />
   </Targets>
