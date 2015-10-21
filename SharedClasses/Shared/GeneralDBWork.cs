@@ -5,9 +5,9 @@ using ESRI.ArcGIS.esriSystem;
 using System.Collections;
 using System.Windows.Forms;
 using System.IO;
-using System.Xml.Serialization;
 using ESRI.ArcGIS.Framework;
 using System.Collections.Generic;
+
 
 namespace SharedClasses
 {
@@ -41,7 +41,6 @@ namespace SharedClasses
         void SaveDateValueFromDateTimePickerToDB(ref IRow row, string fildName, DateTimePicker dateTimePicker);
     }
 
-  
     //работа с баззой
     public static class GeneralDBWork
     {
@@ -142,16 +141,17 @@ namespace SharedClasses
         //получить путь и имя к файлу параметров подключения
         private static string GetFileName_DBConnectPropertySet()
         {
-            return Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("DB_ConnectPropertySet.config.xml"));
+            return Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("DB_ConnectPropertySet.config.ini"));
         }
         //сохранить на диск параметры подключения к базе
         private static void SaveDBConnectPropertySetToDisk(ref ListPropertySet ips)
         {
             string filename = GetFileName_DBConnectPropertySet();
-            using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
+            using (StreamWriter outputFile = new StreamWriter(filename))
             {
-                XmlSerializer ser = new XmlSerializer(typeof(ListPropertySet));
-                ser.Serialize(isoStream, ips);
+
+                foreach (DataItemForXmlSerialize_IPropertySet dps in ips)
+                    outputFile.WriteLine(dps.Key+"="+ dps.Value);
             }
         }
         //считать параметры подключения к базе с диска
@@ -163,10 +163,19 @@ namespace SharedClasses
                 string filename = GetFileName_DBConnectPropertySet();
                 if (File.Exists(filename))
                 {
-                    using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))
+                    using (StreamReader sr = new StreamReader(filename))
                     {
-                        XmlSerializer ser = new XmlSerializer(typeof(ListPropertySet));
-                        ips = (ListPropertySet)ser.Deserialize(isoStream);
+                        string line;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                         
+                            
+                            string [] spl = line.Split('=');
+                            if (spl.Length == 2)
+                            {
+                                ips.Add(new DataItemForXmlSerialize_IPropertySet(spl[0].Trim(), spl[1].Trim()));
+                            }
+                        }
                         ret = true;
                     }
                 }
@@ -176,7 +185,44 @@ namespace SharedClasses
                 Logger.Write(ex, string.Format("GeneralDBWork.LoadDBConnectPropertySetFromDisk"));
             }
             return ret;
-        } 
+        }
+
+
+
+        ////сохранить на диск параметры подключения к базе
+        //private static void SaveDBConnectPropertySetToDisk(ref ListPropertySet ips)
+        //{
+        //    string filename = GetFileName_DBConnectPropertySet();
+        //    using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Create, FileAccess.Write))
+        //    {
+        //        XmlSerializer ser = new XmlSerializer(typeof(ListPropertySet));
+        //        ser.Serialize(isoStream, ips);
+        //    }
+        //}
+        ////считать параметры подключения к базе с диска
+        //private static bool LoadDBConnectPropertySetFromDisk(ref ListPropertySet ips)
+        //{
+        //    bool ret = false;
+        //    try
+        //    {
+        //        string filename = GetFileName_DBConnectPropertySet();
+        //        if (File.Exists(filename))
+        //        {
+        //            using (System.IO.FileStream isoStream = new System.IO.FileStream(filename, FileMode.Open, FileAccess.Read))
+        //            {
+        //                XmlSerializer ser = new XmlSerializer(typeof(ListPropertySet));
+        //                ips = (ListPropertySet)ser.Deserialize(isoStream);
+
+        //                ret = true;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex) // обработка ошибок
+        //    {
+        //        Logger.Write(ex, string.Format("GeneralDBWork.LoadDBConnectPropertySetFromDisk"));
+        //    }
+        //    return ret;
+        //}
         #endregion
 
         //---------------------------------------------------------------------------------------
@@ -273,10 +319,10 @@ namespace SharedClasses
             object ret = null;
             try
             {
-                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace( workspaceName ) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 ITable table = fws.OpenTable(workspaceName + ".DBO." + tableName);
                 IRow row = table.GetRow(id);
-                ret =  row.get_Value(table.FindField(fildName));
+                ret = row.get_Value(table.FindField(fildName));
             }
             catch (Exception ex) // обработка ошибок
             {
