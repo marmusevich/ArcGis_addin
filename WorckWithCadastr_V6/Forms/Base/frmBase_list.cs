@@ -1,6 +1,7 @@
 ﻿using System;
 using SharedClasses;
 using ESRI.ArcGIS.Framework;
+using System.Windows.Forms;
 
 namespace WorckWithCadastr_V6
 {
@@ -9,6 +10,18 @@ namespace WorckWithCadastr_V6
         protected System.Windows.Forms.ToolStripMenuItem cmsShowOnMap;
         protected System.Windows.Forms.ToolStripButton tsdShowOnMap;
 
+
+        //добавить запись
+        protected override void AddRec()
+        {
+            MessageBox.Show("Добавление новых записей только средствами ArkGIS", "Функция заблокирована", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //удалить запись
+        protected override void DeleteRec(int objectID)
+        {
+            MessageBox.Show("Удаление записей только средствами ArkGIS", "Функция заблокирована", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         
         public frmBase_list()
@@ -69,6 +82,10 @@ namespace WorckWithCadastr_V6
             this.tsdShowOnMap.Click += new System.EventHandler(this.tsbtsdShowOnMap_Click);
             this.tsMain.Items.Add(tsdShowOnMap);
 
+            //this.tsbAdd.Enabled = false;
+            //this.tsdDelete.Enabled = false;
+            //this.cmsAdd.Enabled = false;
+            //this.cmsDelete.Enabled = false;
         }
     }
 }

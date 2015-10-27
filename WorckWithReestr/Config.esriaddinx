@@ -6,7 +6,7 @@
   <Image>Images\DemoTest.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>12.10.2015</Date>
+  <Date>15.10.2015</Date>
   <Targets>
     <Target name="Desktop" version="10.2" />
   </Targets>

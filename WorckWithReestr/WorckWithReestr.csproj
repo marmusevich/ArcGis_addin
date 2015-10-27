@@ -46,7 +46,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\ArcGis_addin_Bilds\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -246,7 +246,6 @@
       <DependentUpon>frmSelectObjAndLayerForToolShowObjInfo.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.resx</Link>
     </EmbeddedResource>
-	
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Config.esriaddinx">
