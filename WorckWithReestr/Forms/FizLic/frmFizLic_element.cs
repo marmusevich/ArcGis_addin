@@ -29,6 +29,8 @@ namespace WorckWithReestr
 
         protected override void DB_to_FormElement(IRow row)
         {
+            base.DB_to_FormElement(row);
+
             // взять из базы
             SetStringValueFromDBToTextBox(ref row, "П_І_Б", txtFIO);
             SetStringValueFromDBToTextBox(ref row, "категорія", txtCategor);
@@ -39,6 +41,7 @@ namespace WorckWithReestr
 
         protected override void FormElement_to_DB(IRow row)
         {
+            base.FormElement_to_DB(row);
             // положить в базы
             SaveStringValueFromTextBoxToDB(ref row, "П_І_Б", txtFIO);
             SaveStringValueFromTextBoxToDB(ref row, "категорія", txtCategor);
@@ -55,6 +58,15 @@ namespace WorckWithReestr
             bool ret = base.ValidatingData();
             ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtFIO, errorProvider) && ret;
             return ret;
+        }
+
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+            //простые тексты  
+            SetMaxLengthStringValueToTextBox("П_І_Б", txtFIO);
+            SetMaxLengthStringValueToTextBox("категорія", txtCategor);
+            SetMaxLengthStringValueToTextBox("ідент_код", txtINN);
         }
 
         #endregion

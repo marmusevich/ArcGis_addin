@@ -103,6 +103,16 @@ namespace WorckWithCadastr_V6
             CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbRuleID, ref ddaRuleID, "RuleID");
         }
 
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+            //простые тексты  
+            SetMaxLengthStringValueToTextBox("NAJM_OBJ", txtNAJM_OBJ);
+            SetMaxLengthStringValueToTextBox("OPYS_ROZTASH", txtOPYS_ROZTASH);
+            SetMaxLengthStringValueToTextBox("Korpus", txtKorpus);
+            SetMaxLengthStringValueToTextBox("NumerBud", txtNumerBud);
+            SetMaxLengthStringValueToTextBox("Address_Str", txtAddress_Str);
+        }
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------

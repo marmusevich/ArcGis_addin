@@ -27,6 +27,8 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected override void DB_to_FormElement(IRow row)
         {
+            base.DB_to_FormElement(row);
+
             // взять из базы
             SetStringValueFromDBToTextBox(ref row, "назва", txtName);
             SetStringValueFromDBToTextBox(ref row, "код_ЄДРПОУ", txtOKPO);
@@ -36,6 +38,7 @@ namespace WorckWithReestr
 
         protected override void FormElement_to_DB(IRow row)
         {
+            base.FormElement_to_DB(row);
             // положить в базы
             SaveStringValueFromTextBoxToDB(ref row, "назва", txtName);
             SaveStringValueFromTextBoxToDB(ref row, "код_ЄДРПОУ", txtOKPO);
@@ -52,7 +55,17 @@ namespace WorckWithReestr
 
         protected override void DB_SharedData_to_FormElement()
         {
+            base.DB_SharedData_to_FormElement();
+
             CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbFV, ref dda, "форма_власності");
+        }
+
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+            //простые тексты  
+            SetMaxLengthStringValueToTextBox("назва", txtName);
+            SetMaxLengthStringValueToTextBox("код_ЄДРПОУ", txtOKPO);
         }
 
         #endregion

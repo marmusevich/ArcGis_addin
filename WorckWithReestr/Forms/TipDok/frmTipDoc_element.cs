@@ -21,6 +21,8 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected override void DB_to_FormElement(IRow row)
         {
+            base.DB_to_FormElement(row);
+
             // взять из базы
             SetStringValueFromDBToTextBox(ref row, "Tip_Doc", txtTip_Doc);
             SetIntValueFromDBToTextBox(ref row, "Kod_Doc", txtKod_Doc);
@@ -28,6 +30,7 @@ namespace WorckWithReestr
 
         protected override void FormElement_to_DB(IRow row)
         {
+            base.FormElement_to_DB(row);
             // положить в базы
             SaveStringValueFromTextBoxToDB(ref row, "Tip_Doc", txtTip_Doc);
             SaveIntValueFromTextBoxToDB(ref row, "Kod_Doc", txtKod_Doc);
@@ -39,6 +42,13 @@ namespace WorckWithReestr
             ret = GeneralDBWork.CheckValueIsSmalInt_SetError(txtKod_Doc, errorProvider) && ret;
             ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtTip_Doc, errorProvider) && ret;
             return ret;
+        }
+
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+            //простые тексты  
+            SetMaxLengthStringValueToTextBox("Tip_Doc", txtTip_Doc);
         }
 
         #endregion
