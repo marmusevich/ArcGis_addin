@@ -228,6 +228,9 @@
     <Compile Include="..\SharedClasses\Shared\TableWraper\TableWraper.cs">
       <Link>SharedClasses\Shared\TableWraper\TableWraper.cs</Link>
     </Compile>
+    <Compile Include="..\SharedClasses\Shared\TranslitUaToLat.cs">
+      <Link>SharedClasses\Shared\TranslitUaToLat.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\SharedClasses\Forms\frmSelectSearchInListForm.resx">

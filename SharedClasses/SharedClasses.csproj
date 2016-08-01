@@ -106,6 +106,7 @@
     <Compile Include="Shared\Logger.cs" />
     <Compile Include="Shared\GeneralDBWork.cs" />
     <Compile Include="Shared\TableWraper\TableWraper.cs" />
+    <Compile Include="Shared\TableWraper\TranslitUaToLat.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmSelectSearchInListForm.resx">
