@@ -70,22 +70,12 @@ namespace WorckWithCadastr_V6
                         base.table.FindField("KOD_STAN_ADR"),
                         base.table.FindField("RuleID"),
 
-                        base.table.FindField("ID_MSB_OBJ"),
-                        base.table.FindField("KOATUU"),
-                        base.table.FindField("ID_ADRESS"),
-                        base.table.FindField("ID_ELEMENT"),
-                        base.table.FindField("ID_Adm_Rn"),
-                        base.table.FindField("ID_Obl"),
-                        base.table.FindField("ID_Nsl_Pnk"),
-                        base.table.FindField("ID_Rej_Vul"),
-                        base.table.FindField("INDEX_POSH_VID"),
-                        base.table.FindField("N_Kad"),
-
                         base.table.FindField("Override"),
                         base.table.FindField("SHAPE")
                        };
             GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
         }
+
         //доп настройка грида
         protected override void OtherSetupDGV()
         {

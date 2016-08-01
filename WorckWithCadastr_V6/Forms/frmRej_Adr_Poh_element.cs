@@ -121,6 +121,17 @@ namespace WorckWithCadastr_V6
             CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbKOD_STAN_ADR, ref ddaKOD_STAN_ADR, "KOD_STAN_ADR");
             CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbRuleID, ref ddaRuleID, "RuleID");
         }
+
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+            //простые тексты  
+            SetMaxLengthStringValueToTextBox("NAJM_OBJ", txtNAJM_OBJ);
+            SetMaxLengthStringValueToTextBox("SKOR_NAJM_OBJ", txtSKOR_NAJM_OBJ);
+            SetMaxLengthStringValueToTextBox("Korpus", txtKorpus);
+            SetMaxLengthStringValueToTextBox("NumerBud", txtNumerBud);
+            SetMaxLengthStringValueToTextBox("Address_Str", txtAddress_Str);
+        }
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------

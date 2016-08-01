@@ -55,6 +55,10 @@ namespace SharedClasses
         protected virtual void DB_SharedData_to_FormElement()
         {
         }
+        //установить максимальную длину элементов управления для значения типа текст
+        protected virtual void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+        }
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions - base
@@ -68,6 +72,7 @@ namespace SharedClasses
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
                 DB_SharedData_to_FormElement();
+                SetMaxLengthStringValueToTextBoxFromDB();
                 ret = true;
             }
             catch (Exception ex) // обработка ошибок
@@ -222,6 +227,13 @@ namespace SharedClasses
             DomeinDataAdapter.CheсkValueAndSetToComboBox(ref cb, ref dda, ref table, fildName, value);
         }
 
+        //установить максимальную длину элемента управления для значения типа текст
+        public void SetMaxLengthStringValueToTextBox(string fildName, TextBox textBox)
+        {
+            textBox.MaxLength = table.Fields.get_Field(table.Fields.FindField(fildName)).Length;
+        }
+
+
         //прочесть значение из базы
         public object GetValueFromDB(ref IRow row, string fildName)
         {
@@ -230,6 +242,7 @@ namespace SharedClasses
         //установить значение элемента управления тип текст
         public void SetStringValueFromDBToTextBox(ref IRow row, string fildName, TextBox textBox)
         {
+            SetMaxLengthStringValueToTextBox(fildName, textBox);
             textBox.Text = "" + GetValueFromDB(ref row, fildName) as string;
         }
         //установить значение элемента управления тип число
@@ -251,6 +264,12 @@ namespace SharedClasses
         //сохранить в базу значение элемента управления тип текст
         public void SaveStringValueFromTextBoxToDB(ref IRow row, string fildName, TextBox textBox)
         {
+            int MaxLength = row.Fields.get_Field(row.Fields.FindField(fildName)).Length;
+            if (textBox.Text.Length > MaxLength)
+            {
+                string s = textBox.Text.Trim().Substring(0, MaxLength - 1);
+                textBox.Text = s;
+            } 
             row.set_Value(table.FindField(fildName), textBox.Text);
         }
         //сохранить в базу значение элемента управления тип число

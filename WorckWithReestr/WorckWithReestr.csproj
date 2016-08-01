@@ -46,7 +46,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\ArcGis_addin_Bilds\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -201,6 +201,14 @@
       <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmSelectSearchInListForm.Designer.cs</Link>
     </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.cs">
+      <SubType>Form</SubType>
+      <Link>SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.Designer.cs">
+      <DependentUpon>frmSelectObjAndLayerForToolShowObjInfo.cs</DependentUpon>
+      <Link>SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.Designer.cs</Link>
+    </Compile>
     <Compile Include="..\SharedClasses\Shared\GeneralApp.cs">
       <Link>SharedClasses\Shared\GeneralApp.cs</Link>
     </Compile>
@@ -236,6 +244,10 @@
     <EmbeddedResource Include="..\SharedClasses\Forms\frmSelectSearchInListForm.resx">
       <DependentUpon>frmSelectSearchInListForm.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmSelectSearchInListForm.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.resx">
+      <DependentUpon>frmSelectObjAndLayerForToolShowObjInfo.cs</DependentUpon>
+      <Link>SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.resx</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

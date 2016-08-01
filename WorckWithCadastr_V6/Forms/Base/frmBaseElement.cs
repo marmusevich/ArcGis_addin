@@ -46,6 +46,13 @@ namespace WorckWithCadastr_V6
         {
             base.DB_SharedData_to_FormElement();
         }
+
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+
+            SetMaxLengthStringValueToTextBox("Prymitka", txtPrymitka);
+        }
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------

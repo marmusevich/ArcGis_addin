@@ -83,6 +83,10 @@ namespace WorckWithCadastr_V6
 
         }
 
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+        }
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------

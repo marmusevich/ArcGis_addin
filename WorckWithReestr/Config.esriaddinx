@@ -2,11 +2,11 @@
   <Name>WorckWithReestr</Name>
   <AddInID>{a3901e4d-bd63-4196-a8ae-2624c565cdae}</AddInID>
   <Description>Работа с реестром</Description>
-  <Version>0.1.04.1</Version>
+  <Version>15.11.22.2003</Version>
   <Image>Images\DemoTest.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>07.04.2015</Date>
+  <Date>22.11.2015</Date>
   <Targets>
     <Target name="Desktop" version="10.2" />
   </Targets>

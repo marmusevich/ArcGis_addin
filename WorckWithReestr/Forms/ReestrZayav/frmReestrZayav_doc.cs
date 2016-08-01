@@ -30,6 +30,8 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         protected override void DB_to_FormElement(IRow row)
         {
+            base.DB_to_FormElement(row);
+
             //даты
             SetDateValueFromDBToDateTimePicker(ref row, "Data_Z", dtpData_Z);
             SetDateValueFromDBToDateTimePicker(ref row, "Data_Ish", dtpData_Ish);
@@ -72,6 +74,7 @@ namespace WorckWithReestr
 
         protected override void FormElement_to_DB(IRow row)
         {
+            base.FormElement_to_DB(row);
             //даты
             SaveDateValueFromDateTimePickerToDB(ref row, "Data_Z", dtpData_Z);
             SaveDateValueFromDateTimePickerToDB(ref row, "Data_Ish", dtpData_Ish);
@@ -136,6 +139,7 @@ namespace WorckWithReestr
 
         protected override void DB_SharedData_to_FormElement()
         {
+            base.DB_SharedData_to_FormElement();
             //доменные значения
             CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbStatus, ref ddaStatus, "Status");
             CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbOtkaz, ref ddaOtkaz, "Otkaz");
@@ -155,8 +159,25 @@ namespace WorckWithReestr
 
         protected override void DB_DefaultValue_to_FormElement()
         {
+            base.DB_DefaultValue_to_FormElement();
             //алгоритм генерации номера, запрос большего из базы или последнего
             txtN_Z.Text = ReestrDocumentWork.GetNextNumerToReestrZayav().ToString();
+        }
+
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+            //простые тексты  
+            SetMaxLengthStringValueToTextBox("Tel_Z", txtTel_Z);
+            SetMaxLengthStringValueToTextBox("Prim", txtPrim);
+            SetMaxLengthStringValueToTextBox("Opisan_Ved", txtOpisan_Ved);
+            SetMaxLengthStringValueToTextBox("Forma_Ved", txtForma_Ved);
+            SetMaxLengthStringValueToTextBox("N_Ish_Z", txtN_Ish_Z);
+            SetMaxLengthStringValueToTextBox("Sodergan", txtSodergan);
+            SetMaxLengthStringValueToTextBox("Doc_Oplata", txtDoc_Oplata);
+            SetMaxLengthStringValueToTextBox("Pr_Otkaz", txtPr_Otkaz);
+            SetMaxLengthStringValueToTextBox("Dodatok", txtDodatok);
+            SetMaxLengthStringValueToTextBox("Cane", txtCane);
         }
 
         private void OnChangedTipDoc()

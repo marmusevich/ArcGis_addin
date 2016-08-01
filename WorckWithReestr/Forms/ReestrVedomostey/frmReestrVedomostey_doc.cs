@@ -23,6 +23,8 @@ namespace WorckWithReestr
         //получение данных из базы и иницилизация значений элементов управлений
         protected override void DB_to_FormElement(IRow row)
         {
+            base.DB_to_FormElement(row);
+
             //даты
             SetDateValueFromDBToDateTimePicker(ref row, "Data_Vh", dtpData_Vh);
             SetDateValueFromDBToDateTimePicker(ref row, "Data_Otp", dtpData_Otp);
@@ -51,6 +53,7 @@ namespace WorckWithReestr
         //сохранение значений элементов управления в базу данных
         protected override void FormElement_to_DB(IRow row)
         {
+            base.FormElement_to_DB(row);
             //даты
             SaveDateValueFromDateTimePickerToDB(ref row, "Data_Vh", dtpData_Vh);
             SaveDateValueFromDateTimePickerToDB(ref row, "Data_Otp", dtpData_Otp);
@@ -95,15 +98,31 @@ namespace WorckWithReestr
         //получение обобщеных данных для элементов данных (например: списки доменных значений, данные для автодополнения)
         protected override void DB_SharedData_to_FormElement()
         {
+            base.DB_SharedData_to_FormElement();
             // справочники
             ReestrDictionaryWork.EnableAutoComlectToFizLic(txtFIO_Kad);
         }
         //присвоение значений по умалчанию для полей при создании нового
         protected override void DB_DefaultValue_to_FormElement()
         {
+            base.DB_DefaultValue_to_FormElement();
             //алгоритм генерации номера, запрос большего из базы или последнего
             txtN_Vh.Text = ReestrDocumentWork.GetNextNumerToReestrVedomostey().ToString();
             txtKol_Str_GD.Text = "0";
+        }
+        //установить максимальную длину элементов управления для значения типа текст
+        protected override void SetMaxLengthStringValueToTextBoxFromDB()
+        {
+            base.SetMaxLengthStringValueToTextBoxFromDB();
+            //простые тексты  
+            SetMaxLengthStringValueToTextBox("Ist_Ved", txtIst_Ved);
+            SetMaxLengthStringValueToTextBox("N_Sop_List", txtN_Sop_List);
+            SetMaxLengthStringValueToTextBox("N_GD", txtN_GD);
+            SetMaxLengthStringValueToTextBox("N_Doc_GD", txtN_Doc_GD);
+            SetMaxLengthStringValueToTextBox("Name_GD", txtName_GD);
+            SetMaxLengthStringValueToTextBox("El_Format_GD", txtEl_Format_GD);
+            SetMaxLengthStringValueToTextBox("N_Kad", txtN_Kad);
+            SetMaxLengthStringValueToTextBox("Prim", txtPrim);
         }
 
         private void OnChangedFIO_Kad()
