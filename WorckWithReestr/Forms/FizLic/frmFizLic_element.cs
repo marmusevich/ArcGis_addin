@@ -104,7 +104,7 @@ namespace WorckWithReestr
                     Text = "Удаление физического лица";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

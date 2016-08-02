@@ -130,7 +130,7 @@ namespace WorckWithCadastr_V6
             : base(_objectID, _editMode)
         {
             InitializeComponent();
-
+            //Kadastr2016.DBO.Rej_Vul_1
             base.NameWorkspace = "Cadastr_V6";
             base.NameTable = "Rej_Vul";
         }
@@ -149,7 +149,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление записи о Реєстр вулиць";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }
@@ -175,7 +175,7 @@ namespace WorckWithCadastr_V6
         {
             isModified = true;
         }
-        
+
         #endregion
     }
 }

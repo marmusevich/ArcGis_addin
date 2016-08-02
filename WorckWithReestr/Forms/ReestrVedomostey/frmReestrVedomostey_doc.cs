@@ -171,7 +171,7 @@ namespace WorckWithReestr
                     Text = "Удаление ведомости";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

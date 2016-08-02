@@ -147,7 +147,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Реєстр будівельних адрес";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

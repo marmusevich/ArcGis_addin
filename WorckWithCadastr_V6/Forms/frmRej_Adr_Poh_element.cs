@@ -166,7 +166,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Реєстр адрес будівель похідний";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

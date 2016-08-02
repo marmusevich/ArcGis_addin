@@ -125,7 +125,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Реєстр адміністративних районів міста";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

@@ -126,7 +126,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Житлові будинки";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

@@ -125,7 +125,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Квартал багатоквартирноїї забудови";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

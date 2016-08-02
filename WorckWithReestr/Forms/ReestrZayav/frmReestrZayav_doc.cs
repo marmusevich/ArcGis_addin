@@ -246,7 +246,7 @@ namespace WorckWithReestr
                     Text = "Удаление заявления / обращения";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

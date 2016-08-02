@@ -12,7 +12,7 @@ namespace SharedClasses
 
         private void lsbSelectedLayers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
     }

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorckWithReestr", "WorckWithReestr\WorckWithReestr.csproj", "{D3EE92A9-52B0-4236-A811-8A6545EAE7BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorckWithCadastr_V6", "WorckWithCadastr_V6\WorckWithCadastr_V6.csproj", "{15848C76-8AB3-462A-B44F-E97000F6999B}"

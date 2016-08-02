@@ -145,7 +145,7 @@ namespace SharedClasses
                 statusBar.ProgressBar.Message = "Read Data...";
                 statusBar.StepProgressBar();
 
-                this.Text = (table as IObjectClass).AliasName;
+                Text = (table as IObjectClass).AliasName;
                 tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
                 tableWrapper.AllowNew = false;
                 tableWrapper.AllowRemove = false;
@@ -223,14 +223,14 @@ namespace SharedClasses
             }
             if (Screen.PrimaryScreen.WorkingArea.Width < width)
             {
-                this.Width = Screen.PrimaryScreen.WorkingArea.Width / 2;
+                Width = Screen.PrimaryScreen.WorkingArea.Width / 2;
 
                 //   this.WindowState = FormWindowState.Maximized;
             }
             else
-                this.Width = width;
+                Width = width;
 
-            this.StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
 
 
             if (!GeneralApp.LoadDisplayOrderFromDisk_AndSetToDGV(ref dgv, NameTable))
@@ -267,9 +267,9 @@ namespace SharedClasses
             dtpDatePo.Value = GeneralApp.GetLastMonthDayDate(DateTime.Now);
             if (!IsNotReadData_FormIsConstruct)
             {
-                if (!this.ReadData()) // -ok
+                if (!ReadData()) // -ok
                 {
-                    this.Close();
+                    Close();
                 }
             }
         }

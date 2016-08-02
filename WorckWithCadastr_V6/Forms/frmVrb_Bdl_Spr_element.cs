@@ -121,7 +121,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Виробничі будівлі  і споруди";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

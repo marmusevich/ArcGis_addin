@@ -50,7 +50,7 @@ namespace SharedClasses
             }
             public override string ToString()
             {
-                return this.Text;
+                return Text;
             }
         }
 

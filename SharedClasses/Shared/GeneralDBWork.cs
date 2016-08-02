@@ -113,8 +113,8 @@ namespace SharedClasses
                 if (!LoadDBConnectPropertySetFromDisk(ref ips) && ips.Count != 5)
                 {
                     //устоновить и сохранить на диск
-                    ips.Add(new DataItemForXmlSerialize_IPropertySet("DB_CONNECTION_PROPERTIES", "KADASTER12_DATA1"));
-                    ips.Add(new DataItemForXmlSerialize_IPropertySet("INSTANCE", @"sde:sqlserver:KADASTER12\DATA1"));
+                    ips.Add(new DataItemForXmlSerialize_IPropertySet("DB_CONNECTION_PROPERTIES", "kadaster12_data2"));
+                    ips.Add(new DataItemForXmlSerialize_IPropertySet("INSTANCE", @"sde:sqlserver:kadaster12\data2"));
                     ips.Add(new DataItemForXmlSerialize_IPropertySet("DATABASE", dataBase));
                     ips.Add(new DataItemForXmlSerialize_IPropertySet("VERSION", "DBO.DEFAULT"));
                     ips.Add(new DataItemForXmlSerialize_IPropertySet("AUTHENTICATION_MODE", "OSA")); // аунтификация средствами виндовса

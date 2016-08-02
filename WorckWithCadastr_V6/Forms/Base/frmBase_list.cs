@@ -63,23 +63,23 @@ namespace WorckWithCadastr_V6
             // 
             // cmsShowOnMap
             // 
-            this.cmsShowOnMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsShowOnMap.Name = "cmsShowOnMap";
-            this.cmsShowOnMap.Size = new System.Drawing.Size(173, 22);
-            this.cmsShowOnMap.Text = "Показать на карте";
-            this.cmsShowOnMap.Click += new System.EventHandler(this.cmsShowOnMap_Click);
-            this.cmsMain.Items.Add(this.cmsShowOnMap);
+            cmsShowOnMap = new System.Windows.Forms.ToolStripMenuItem();
+            cmsShowOnMap.Name = "cmsShowOnMap";
+            cmsShowOnMap.Size = new System.Drawing.Size(173, 22);
+            cmsShowOnMap.Text = "Показать на карте";
+            cmsShowOnMap.Click += new System.EventHandler(cmsShowOnMap_Click);
+            cmsMain.Items.Add(cmsShowOnMap);
             // 
             // tsdShowOnMap
             // 
-            this.tsdShowOnMap = new System.Windows.Forms.ToolStripButton();
-            this.tsdShowOnMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsdShowOnMap.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsdShowOnMap.Name = "tsdShowOnMap";
-            this.tsdShowOnMap.Size = new System.Drawing.Size(110, 22);
-            this.tsdShowOnMap.Text = "Показать на карте";
-            this.tsdShowOnMap.Click += new System.EventHandler(this.tsbtsdShowOnMap_Click);
-            this.tsMain.Items.Add(tsdShowOnMap);
+            tsdShowOnMap = new System.Windows.Forms.ToolStripButton();
+            tsdShowOnMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            tsdShowOnMap.ImageTransparentColor = System.Drawing.Color.Magenta;
+            tsdShowOnMap.Name = "tsdShowOnMap";
+            tsdShowOnMap.Size = new System.Drawing.Size(110, 22);
+            tsdShowOnMap.Text = "Показать на карте";
+            tsdShowOnMap.Click += new System.EventHandler(tsbtsdShowOnMap_Click);
+            tsMain.Items.Add(tsdShowOnMap);
 
             //this.tsbAdd.Enabled = false;
             //this.tsdDelete.Enabled = false;

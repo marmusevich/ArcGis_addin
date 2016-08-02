@@ -124,7 +124,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Громадські будівлі";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

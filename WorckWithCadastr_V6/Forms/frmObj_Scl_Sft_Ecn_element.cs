@@ -116,7 +116,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Об’єкти соціальної сфери та економіки";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

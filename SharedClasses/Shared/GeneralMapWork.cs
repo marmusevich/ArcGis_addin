@@ -31,7 +31,7 @@ namespace SharedClasses
 
             public override string ToString()
             {
-                return this.aliasName;
+                return aliasName;
             }
         }
 

@@ -211,7 +211,7 @@ namespace SharedClasses
                 isModified = false;
             }
 
-            this.Close();
+            Close();
         }
         
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -309,16 +309,16 @@ namespace SharedClasses
             if (editMode == EditMode.UNKNOW) // для конструктора форм
                 return;
 
-            if (!this.GetSharedData()) // error
+            if (!GetSharedData()) // error
             {
-                this.Close();
+                Close();
             }
 
             if (editMode != EditMode.ADD)
             {
-                if (!this.ReadData()) // error
+                if (!ReadData()) // error
                 {
-                    this.Close();
+                    Close();
                 }
             }
             //отключить контролы для режыма удаления

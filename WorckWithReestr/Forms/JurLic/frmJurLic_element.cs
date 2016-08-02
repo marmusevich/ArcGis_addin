@@ -100,7 +100,7 @@ namespace WorckWithReestr
                     Text = "Удаление юридического лица";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

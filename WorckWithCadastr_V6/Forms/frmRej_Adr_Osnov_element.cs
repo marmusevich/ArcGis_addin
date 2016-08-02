@@ -155,7 +155,7 @@ namespace WorckWithCadastr_V6
                     Text = "Удаление Реєстр адрес основний";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

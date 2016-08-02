@@ -85,7 +85,7 @@ namespace WorckWithReestr
                     Text = "Удаление типа документа";
                     break;
                 default:
-                    this.Close();
+                    Close();
                     return;
             }
         }

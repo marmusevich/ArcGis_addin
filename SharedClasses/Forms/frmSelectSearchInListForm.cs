@@ -49,7 +49,7 @@ namespace SharedClasses
             }
             public override string ToString()
             {
-                return this.Text;
+                return Text;
             }
         }
         // информация об одном поле
@@ -206,7 +206,7 @@ namespace SharedClasses
         // построить форму 
         private void ConstructForm()
         {
-            this.Text = "Фильтр для: " + (table as IObjectClass).AliasName;
+            Text = "Фильтр для: " + (table as IObjectClass).AliasName;
 
             int y = 0;
             allFilds = new ArrayList(table.Fields.FieldCount);
@@ -329,7 +329,7 @@ namespace SharedClasses
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 14);
             temp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            temp.SelectedIndexChanged += new System.EventHandler(this.cb_Comparisons_SelectedIndexChanged);
+            temp.SelectedIndexChanged += new System.EventHandler(cb_Comparisons_SelectedIndexChanged);
 
             temp.Tag = sfd;
             pnMain.Controls.Add(temp);
@@ -349,7 +349,7 @@ namespace SharedClasses
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 14);
             temp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            temp.SelectedIndexChanged += new System.EventHandler(this.cb_Comparisons_SelectedIndexChanged);
+            temp.SelectedIndexChanged += new System.EventHandler(cb_Comparisons_SelectedIndexChanged);
             temp.Tag = sfd;
             pnMain.Controls.Add(temp);
             return temp;
@@ -364,7 +364,7 @@ namespace SharedClasses
             temp.CustomFormat = "dd.MMM.yyyy HH.mm";
 
             temp.Tag = sfd;
-            temp.Validating += new System.ComponentModel.CancelEventHandler(this.dtp_v_Validating);
+            temp.Validating += new System.ComponentModel.CancelEventHandler(dtp_v_Validating);
             pnMain.Controls.Add(temp);
             return temp;
         }
@@ -376,8 +376,8 @@ namespace SharedClasses
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 14);
             temp.Tag = sfd;
-            temp.Validating += new System.ComponentModel.CancelEventHandler(this.txt_v_Validating);
-            temp.TextChanged += new System.EventHandler(this.txt_v_TextChanged);
+            temp.Validating += new System.ComponentModel.CancelEventHandler(txt_v_Validating);
+            temp.TextChanged += new System.EventHandler(txt_v_TextChanged);
 
             pnMain.Controls.Add(temp);
 
@@ -410,7 +410,7 @@ namespace SharedClasses
             temp.Location = new System.Drawing.Point(x, y);
             temp.Name = prefix + sfd.mName;
             temp.Size = new System.Drawing.Size(w, 23);
-            temp.Click += new System.EventHandler(this.but_sd_Click);
+            temp.Click += new System.EventHandler(but_sd_Click);
             temp.UseVisualStyleBackColor = true;
             temp.Tag = sfd;
             temp.Text = "...";
