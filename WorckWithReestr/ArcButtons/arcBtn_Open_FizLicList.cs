@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-
-namespace WorckWithReestr
+﻿namespace WorckWithReestr
 {
     public class arcBtn_Open_FizLicList : ESRI.ArcGIS.Desktop.AddIns.Button
     {

@@ -1,8 +1,4 @@
-﻿using ESRI.ArcGIS.Geodatabase;
-using System;
-using System.Collections;
-
-namespace SharedClasses
+﻿namespace SharedClasses
 {
     //общие функции для работы с документами
     public static class ReestrDocumentWork

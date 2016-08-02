@@ -10,7 +10,7 @@
   <Targets>
     <Target name="Desktop" version="10.2" />
   </Targets>
-  <AddIn language="CLR4.0" library="WorckWithReestr.dll" namespace="WorckWithReestr">
+  <AddIn language="CLR4.5" library="WorckWithReestr.dll" namespace="WorckWithReestr">
     <ArcMap>
       <Commands>
         <Button id="TKC_WorckWithReestr_arcBtn_Open_FizLicList" class="arcBtn_Open_FizLicList" message="Работа с реестром - физические лица" caption="Физические лица" tip="Показать список физических лиц" category="TKC:Работа с реестром" image="Images\arcBtn_Open_FizLicList.png" />

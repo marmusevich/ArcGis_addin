@@ -1,6 +1,4 @@
-﻿using ESRI.ArcGIS.Geodatabase;
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using SharedClasses;
 
 namespace WorckWithReestr

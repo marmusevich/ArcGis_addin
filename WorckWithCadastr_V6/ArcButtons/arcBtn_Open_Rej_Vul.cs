@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using ESRI.ArcGIS.Framework;
-
-
-namespace WorckWithCadastr_V6
+﻿namespace WorckWithCadastr_V6
 {
     public class arcBtn_Open_Rej_Vul : ESRI.ArcGIS.Desktop.AddIns.Button
     {

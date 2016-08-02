@@ -1,6 +1,5 @@
 ﻿using System;
 using SharedClasses;
-using ESRI.ArcGIS.Framework;
 using System.Windows.Forms;
 
 namespace WorckWithCadastr_V6

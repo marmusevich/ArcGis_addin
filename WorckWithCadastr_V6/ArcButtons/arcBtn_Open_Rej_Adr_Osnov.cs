@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-
-
-namespace WorckWithCadastr_V6
+﻿namespace WorckWithCadastr_V6
 {
     public class arcBtn_Open_Rej_Adr_Osnov : ESRI.ArcGIS.Desktop.AddIns.Button
     {
