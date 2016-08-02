@@ -1,7 +1,9 @@
 ﻿using System;
-using SharedClasses;
 using System.Windows.Forms;
 
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.esriSystem;
+using SharedClasses;
 
 namespace WorckWithCadastr_V6
 {
@@ -128,7 +130,96 @@ namespace WorckWithCadastr_V6
 
         private void tsbtsdTranslitName_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Rename?", "Функция заблокирована", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ///-------------------------------
+            ///
+            
+            // какието делегаты или еще както универсализировать
+            // обертка для индикации пользователю
+            AddInsAppInfo ai = GeneralApp.GetAddInsAppInfo();
+            IStatusBar statusBar = null;
+
+            IWorkspaceEdit wse = null;
+            try
+            {
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
+                // начать транзакцию
+                wse = fws as IWorkspaceEdit;
+                wse.StartEditing(false);
+                wse.StartEditOperation();
+
+                table = fws.OpenTable(NameTable);
+
+                ICursor cursor = table.Search(null, false);
+
+                // количество строк
+                int rowCount = table.RowCount(null);
+
+                // статус бар, иницилизация
+                if (ai != null && ai.GetThisAddInnApp() != null)
+                {
+                    statusBar = ai.GetThisAddInnApp().StatusBar;
+                    statusBar.ShowProgressBar("", 0, rowCount, 1, false);
+                    statusBar.ProgressBar.Position = 0;
+                    statusBar.StepProgressBar();
+                }
+
+                //индексы полей
+                int fieldIndex_NAZVA_UKR = table.FindField("NAZVA_UKR");
+                int fieldIndex_NAZVA_LAT = table.FindField("NAZVA_LAT");
+
+                // здесь перебор в цикле и менять поля
+                IRow row = null;
+                int i = 0;//счетчик
+                while ((row = cursor.NextRow()) != null)
+                {
+                    //получить
+                    string txtNAZVA_UKR = "" + row.get_Value(fieldIndex_NAZVA_UKR) as string;
+                    //транслитировать
+                    string txtNAZVA_LAT = SharedClasses.TranslitUaToLat.Convert(txtNAZVA_UKR);
+                    //изменить
+                    row.set_Value(fieldIndex_NAZVA_LAT, txtNAZVA_LAT);
+                    //сохранить                
+                    row.Store();
+
+                    //счетчик
+                    i++;
+
+                    // статус бар
+                    statusBar.ProgressBar.Message = "Транслитерация " + i.ToString() + " из " + rowCount.ToString();
+                    statusBar.StepProgressBar();
+                }
+
+                MessageBox.Show("Транслитерация " + i.ToString() + " из " + rowCount.ToString(), "Выполнено транслитерация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // закончить транзакцию
+                wse.StopEditOperation();
+                wse.StopEditing(true);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("Сохранение данных справочника '{0}' id {1}", NameTable, ""));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, "objectID"));
+            }
+            finally
+            {
+                if ((wse != null) && wse.IsBeingEdited())
+                {
+                    wse.StopEditing(false);
+                }
+
+
+                if (statusBar != null)
+                {
+                    statusBar.HideProgressBar();
+                    statusBar = null;
+                }
+            }
+
+            ///---------------------------------
+            ///
+
+            tableWrapper.UpdateData();
+            dgv.Refresh();
         }
     }
 }

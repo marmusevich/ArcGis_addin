@@ -186,6 +186,6 @@
         //protected myDataGridView dgv;
         protected System.Windows.Forms.ContextMenuStrip cmsMain;
         protected System.Windows.Forms.ToolStrip tsMain;
-        public System.Windows.Forms.DataGridView dgv;
+        protected System.Windows.Forms.DataGridView dgv;
     }
 }

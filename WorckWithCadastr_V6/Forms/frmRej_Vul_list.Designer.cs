@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 266);
+            this.ClientSize = new System.Drawing.Size(287, 266);
             this.Name = "frmRej_Vul_list";
             this.Text = "frmRej_Vul_list";
             this.Load += new System.EventHandler(this.frmRej_Vul_list_Load);
