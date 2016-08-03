@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.esriSystem;
+using System.Windows.Forms;
+using System;
 
 namespace SharedClasses
 {
@@ -101,7 +105,7 @@ namespace SharedClasses
         // транслитирировать строку
         // input - строка на украинском языке
         // возвращает строку латинницей
-        public static string Convert(string input)
+        public static string ConvertOneString(string input)
         {
             if (input == null)
                 return "";
@@ -141,6 +145,81 @@ namespace SharedClasses
         }
 
 
+        // транслитировать заданные поля в указанной таблице
+        public static void DoTranslitInTable(string _NameWorkspace, string _NameTable, string _NameFieldUkr, string _NameFieldLat1, string _NameFieldLat2 = null)
+        {
+            IWorkspaceEdit wse = null;
+            try
+            {
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(_NameWorkspace) as IFeatureWorkspace;
+                // начать транзакцию
+                wse = fws as IWorkspaceEdit;
+                wse.StartEditing(false);
+                wse.StartEditOperation();
 
+                ITable table = fws.OpenTable(_NameTable);
+
+                ICursor cursor = table.Search(null, false);
+
+                // количество строк
+                int rowCount = table.RowCount(null);
+
+                // статус бар, иницилизация
+                IndicateWaitingOperation.Init("", 0, rowCount, 1);
+
+
+                //индексы полей
+                int fieldIndex_ukr = table.FindField(_NameFieldUkr);
+                int fieldIndex_lat1 = table.FindField(_NameFieldLat1);
+
+                int fieldIndex_lat2 = -1;
+                if (_NameFieldLat2 != null && _NameFieldLat2 != "")
+                    fieldIndex_lat2 = table.FindField(_NameFieldLat2);
+
+                // здесь перебор в цикле и менять поля
+                IRow row = null;
+                int i = 0;//счетчик
+                while ((row = cursor.NextRow()) != null)
+                {
+                    //получить
+                    string txtNAZVA_UKR = "" + row.get_Value(fieldIndex_ukr) as string;
+                    //транслитировать
+                    string txtNAZVA_LAT = SharedClasses.TranslitUaToLat.ConvertOneString(txtNAZVA_UKR);
+                    //изменить
+                    row.set_Value(fieldIndex_lat1, txtNAZVA_LAT);
+                    if (fieldIndex_lat2 != -1)
+                        row.set_Value(fieldIndex_lat2, txtNAZVA_LAT);
+                    //сохранить                
+                    row.Store();
+
+                    //счетчик
+                    i++;
+
+                    // статус бар
+                    IndicateWaitingOperation.Do("Транслитерация записи №" + i.ToString() + " из " + rowCount.ToString());
+                }
+
+                MessageBox.Show("Транслитерация выполнена." + "\n" + "Изменено строк " + i.ToString() + " из " + rowCount.ToString(), "Выполнена транслитерация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // закончить транзакцию
+                wse.StopEditOperation();
+                wse.StopEditing(true);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("Ошибка транслитерации таблици '{0}'", _NameTable));
+                GeneralApp.ShowErrorMessage(string.Format("Ошибка транслитерации таблици '{0}'", _NameTable));
+            }
+            finally
+            {
+                if ((wse != null) && wse.IsBeingEdited())
+                {
+                    wse.StopEditing(false);
+                }
+
+                // спрятоть статусную строку
+                IndicateWaitingOperation.Finalize();
+            }
+        }
     }
 }

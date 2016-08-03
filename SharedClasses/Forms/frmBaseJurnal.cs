@@ -120,30 +120,16 @@ namespace SharedClasses
         {
             bool ret = false;
 
-            // обертка для индикации пользователю
-            AddInsAppInfo ai = GeneralApp.GetAddInsAppInfo();
-            IStatusBar statusBar = null;
-            ESRI.ArcGIS.Framework.IMouseCursor appCursor = null;
-
-            if (ai != null && ai.GetThisAddInnApp() != null)
-            {
-                statusBar = ai.GetThisAddInnApp().StatusBar;
-                statusBar.ShowProgressBar("Connect to DataBase...", 0, 3, 1, false);
-                statusBar.ProgressBar.Position = 0;
-                statusBar.StepProgressBar();
-
-                appCursor = new ESRI.ArcGIS.Framework.MouseCursorClass();
-                appCursor.SetCursor(2);
-            }
+            // статус бар, иницилизация
+            IndicateWaitingOperation.Init("Connect to DataBase...", 0, 3, 1);
 
             try
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
 
-                appCursor.SetCursor(2);
-                statusBar.ProgressBar.Message = "Read Data...";
-                statusBar.StepProgressBar();
+                // статус бар
+                IndicateWaitingOperation.Do("Read Data...");
 
                 Text = (table as IObjectClass).AliasName;
                 tableWrapper = new TableWraper(table, NameSortFild, BuildConditions());
@@ -170,16 +156,8 @@ namespace SharedClasses
             }
             finally
             {
-                if (statusBar != null)
-                {
-                    statusBar.HideProgressBar();
-                    statusBar = null;
-                }
-                if (appCursor != null)
-                {
-                    appCursor.SetCursor(0);
-                    appCursor = null;
-                }
+                // спрятоть статусную строку
+                IndicateWaitingOperation.Finalize();
             }
 
             return ret;
