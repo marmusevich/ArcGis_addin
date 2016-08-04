@@ -43,7 +43,7 @@ namespace WorckWithCadastr_V6
             //base.NameWorkspace = "Cadastr_V6";
             //base.NameTable = "Rej_Vul";
             base.NameWorkspace = "Kadastr2016";
-            base.NameTable = "Rej_Vul_1";
+            base.NameTable = "Rej_Vul";
             base.NameSortFild = "ID_MSB_OBJ";
         }
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
@@ -128,7 +128,7 @@ namespace WorckWithCadastr_V6
 
         private void tsbtsdTranslitName_Click(object sender, EventArgs e)
         {
-            SharedClasses.TranslitUaToLat.DoTranslitInTable(NameWorkspace, NameTable, "NAZVA_UKR", "NAZVA_LAT", null);
+            SharedClasses.TranslitUaToLat.DoTranslitInTable(NameWorkspace, NameTable, "NAZVA_UKR", "NAZVA_LAT", "NAZVA_ANH");
             tableWrapper.UpdateData();
             dgv.Refresh();
         }
