@@ -29,20 +29,20 @@ namespace WorckWithReestr
             base.DB_to_FormElement(row);
 
             // взять из базы
-            SetStringValueFromDBToTextBox(ref row, "назва", txtName);
-            SetStringValueFromDBToTextBox(ref row, "код_ЄДРПОУ", txtOKPO);
+            SetStringValueFromDBToTextBox(ref row, "nazva", txtName);
+            SetStringValueFromDBToTextBox(ref row, "kod_EDRPOY", txtOKPO);
 
-            CheсkValueAndSetToComboBox(ref cbFV, ref dda, "форма_власності", GetValueFromDB(ref row, "форма_власності"));
+            CheсkValueAndSetToComboBox(ref cbFV, ref dda, "forma_vlasnosti", GetValueFromDB(ref row, "forma_vlasnosti"));
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             base.FormElement_to_DB(row);
             // положить в базы
-            SaveStringValueFromTextBoxToDB(ref row, "назва", txtName);
-            SaveStringValueFromTextBoxToDB(ref row, "код_ЄДРПОУ", txtOKPO);
+            SaveStringValueFromTextBoxToDB(ref row, "nazva", txtName);
+            SaveStringValueFromTextBoxToDB(ref row, "kod_EDRPOY", txtOKPO);
 
-            SaveDomeinDataValueFromComboBoxToDB(ref row, "форма_власності", ref cbFV);
+            SaveDomeinDataValueFromComboBoxToDB(ref row, "forma_vlasnosti", ref cbFV);
         }
 
         protected override bool ValidatingData()
@@ -56,15 +56,15 @@ namespace WorckWithReestr
         {
             base.DB_SharedData_to_FormElement();
 
-            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbFV, ref dda, "форма_власності");
+            CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cbFV, ref dda, "forma_vlasnosti");
         }
 
         protected override void SetMaxLengthStringValueToTextBoxFromDB()
         {
             base.SetMaxLengthStringValueToTextBoxFromDB();
             //простые тексты  
-            SetMaxLengthStringValueToTextBox("назва", txtName);
-            SetMaxLengthStringValueToTextBox("код_ЄДРПОУ", txtOKPO);
+            SetMaxLengthStringValueToTextBox("nazva", txtName);
+            SetMaxLengthStringValueToTextBox("kod_EDRPOY", txtOKPO);
         }
 
         #endregion
@@ -81,7 +81,7 @@ namespace WorckWithReestr
             : base(_objectID, _editMode)
         {
             InitializeComponent();
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "jur_osoby";
 
         }

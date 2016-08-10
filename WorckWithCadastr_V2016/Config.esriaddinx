@@ -1,0 +1,47 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>WorckWithCadastr_V2016</Name>
+  <AddInID>{791197f8-be70-496d-a82c-5c3486208df8}</AddInID>
+  <Description>Работа с адресным кадастром V2016</Description>
+  <Version>16-08-10 13-08</Version>
+  <Image>Images\WorckWithKadastr2016.png</Image>
+  <Author>Владимиров С. К., Мармусевич А.В.</Author>
+  <Company>TKC http://itservis.od.ua </Company>
+  <Date>10.08.2016</Date>
+  <Targets>
+    <Target name="Desktop" version="10.4" />
+  </Targets>
+  <AddIn language="CLR" library="WorckWithKadastr2016.dll" namespace="WorckWithKadastr2016">
+    <ArcMap>
+      <Commands>
+        <Button id="TKC_arcBtn_Open_Rej_Bud_Adr" class="arcBtn_Open_Rej_Bud_Adr" message="Работа с адресным кадастром - Реєстр будівельних адрес" caption="Реєстр будівельних адрес" tip="Показать список будівельних адрес" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Rej_Bud_Adr.png" />
+        <Button id="TKC_arcBtn_Open_Rej_Vul" class="arcBtn_Open_Rej_Vul" message="Работа с адресным кадастром - Реєстр вулиць" caption="Реєстр вулиць" tip="Показать список вулиць" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Rej_Vul.png" />
+        <Button id="TKC_arcBtn_Open_Rej_Adr_Poh" class="arcBtn_Open_Rej_Adr_Poh" message="Работа с адресным кадастром - Реєстр адрес будівель похідний" caption="Реєстр адрес будівель похідний" tip="Показать список адрес будівель похідний" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Rej_Adr_Poh.png" />
+        <Button id="TKC_arcBtn_Open_Rej_Adr_Osnov" class="arcBtn_Open_Rej_Adr_Osnov" message="Работа с адресным кадастром - Реєстр адрес основний" caption="Реєстр адрес основний" tip="Показать список адрес основний" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Rej_Adr_Osnov.png" />
+        <Button id="TKC_arcBtn_Open_Rej_Adm_Raj_Mis" class="arcBtn_Open_Rej_Adm_Raj_Mis" message="Работа с адресным кадастром - Реєстр адміністративних районів міста" caption="Реєстр адміністративних районів міста" tip="Показать список адміністративних районів міста" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Rej_Adm_Raj_Mis.png" />
+        <Button id="TKC_arcBtn_Open_Grm_Bdl" class="arcBtn_Open_Grm_Bdl" message="Работа с адресным кадастром - Громадські будівлі" caption="Громадські будівлі" tip="Показать список Громадські будівлі" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Grm_Bdl.png" />
+        <Button id="TKC_arcBtn_Open_Kvt" class="arcBtn_Open_Kvt" message="Работа с адресным кадастром - Квартал багатоквартирноїї забудови" caption="Квартал багатоквартирноїї забудови" tip="Показать список Квартал багатоквартирноїї забудови" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Kvt.png" />
+        <Button id="TKC_arcBtn_Open_Obj_Scl_Sft_Ecn" class="arcBtn_Open_Obj_Scl_Sft_Ecn" message="Работа с адресным кадастром - Об’єкти соціальної сфери та економіки" caption="Об’єкти соціальної сфери та економіки" tip="Показать список Об’єкти соціальної сфери та економіки" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Obj_Scl_Sft_Ecn.png" />
+        <Button id="TKC_arcBtn_Open_Vrb_Bdl_Spr" class="arcBtn_Open_Vrb_Bdl_Spr" message="Работа с адресным кадастром - Виробничі будівлі і споруди" caption="Виробничі будівлі і споруди" tip="Показать список Виробничі будівлі і споруди" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Vrb_Bdl_Spr.png" />
+        <Button id="TKC_arcBtn_Open_Ztl_Bdn" class="arcBtn_Open_Ztl_Bdn" message="Работа с адресным кадастром - Житлові будинки" caption="Житлові будинки" tip="Показать список Житлові будинки" category="TKC:Работа с адресным кадастром V2016" image="Images\arcBtn_Open_Ztl_Bdn.png" />
+        <Tool id="TKC_arcTool_ShowObjInfa" class="arcTool_ShowObjInfa" message="Работа с адресным кадастром - Показать информацию по объекту на карте" caption="Показать информацию по объекту на карте" tip="Показать информацию по объекту на карте" category="TKC:Работа с адресным кадастром V2016" image="Images\arcTool_ShowObjInfa.png" />
+      </Commands>
+      <Toolbars>
+        <Toolbar id="TKC_WorckWithCadastr_V2016_toolbar" caption="Работа с адресным кадастром V2016" showInitially="true">
+          <Items>
+            <Button refID="TKC_arcTool_ShowObjInfa" separator="true" />
+            <Button refID="TKC_arcBtn_Open_Rej_Vul" />
+            <Button refID="TKC_arcBtn_Open_Rej_Adm_Raj_Mis" />
+            <Button refID="TKC_arcBtn_Open_Rej_Bud_Adr" />
+            <Button refID="TKC_arcBtn_Open_Rej_Adr_Poh" />
+            <Button refID="TKC_arcBtn_Open_Kvt" separator="true" />
+            <Button refID="TKC_arcBtn_Open_Ztl_Bdn" />
+            <Button refID="TKC_arcBtn_Open_Vrb_Bdl_Spr" />
+            <Button refID="TKC_arcBtn_Open_Grm_Bdl" />
+            <Button refID="TKC_arcBtn_Open_Obj_Scl_Sft_Ecn" />
+            <Button refID="TKC_arcBtn_Open_Rej_Adr_Osnov" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>

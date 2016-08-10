@@ -32,25 +32,25 @@ namespace WorckWithReestr
             base.DB_to_FormElement(row);
 
             // взять из базы
-            SetStringValueFromDBToTextBox(ref row, "П_І_Б", txtFIO);
-            SetStringValueFromDBToTextBox(ref row, "категорія", txtCategor);
-            SetStringValueFromDBToTextBox(ref row, "ідент_код", txtINN);
+            SetStringValueFromDBToTextBox(ref row, "P_I_B", txtFIO);
+            SetStringValueFromDBToTextBox(ref row, "kategoriya", txtCategor);
+            SetStringValueFromDBToTextBox(ref row, "ident_kod", txtINN);
 
-            cbIsWorker.Checked = GeneralApp.ConvertVolueToBool(base.table.FindField("ЭтоСотрудник"));
+            cbIsWorker.Checked = GeneralApp.ConvertVolueToBool(base.table.FindField("EtoSotrydnik"));
         }
 
         protected override void FormElement_to_DB(IRow row)
         {
             base.FormElement_to_DB(row);
             // положить в базы
-            SaveStringValueFromTextBoxToDB(ref row, "П_І_Б", txtFIO);
-            SaveStringValueFromTextBoxToDB(ref row, "категорія", txtCategor);
-            SaveStringValueFromTextBoxToDB(ref row, "ідент_код", txtINN);
+            SaveStringValueFromTextBoxToDB(ref row, "P_I_B", txtFIO);
+            SaveStringValueFromTextBoxToDB(ref row, "kategoriya", txtCategor);
+            SaveStringValueFromTextBoxToDB(ref row, "ident_kod", txtINN);
 
             if (cbIsWorker.Checked)
-                row.set_Value(base.table.FindField("ЭтоСотрудник"), 1);
+                row.set_Value(base.table.FindField("EtoSotrydnik"), 1);
             else
-                row.set_Value(base.table.FindField("ЭтоСотрудник"), 0);
+                row.set_Value(base.table.FindField("EtoSotrydnik"), 0);
         }
 
         protected override bool ValidatingData()
@@ -64,9 +64,9 @@ namespace WorckWithReestr
         {
             base.SetMaxLengthStringValueToTextBoxFromDB();
             //простые тексты  
-            SetMaxLengthStringValueToTextBox("П_І_Б", txtFIO);
-            SetMaxLengthStringValueToTextBox("категорія", txtCategor);
-            SetMaxLengthStringValueToTextBox("ідент_код", txtINN);
+            SetMaxLengthStringValueToTextBox("P_I_B", txtFIO);
+            SetMaxLengthStringValueToTextBox("kategoriya", txtCategor);
+            SetMaxLengthStringValueToTextBox("ident_kod", txtINN);
         }
 
         #endregion
@@ -84,7 +84,7 @@ namespace WorckWithReestr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "fizichni_osoby";
 
         }

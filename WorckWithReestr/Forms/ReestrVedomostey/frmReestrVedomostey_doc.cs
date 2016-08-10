@@ -41,7 +41,6 @@ namespace WorckWithReestr
             SetStringValueFromDBToTextBox(ref row, "Prim", txtPrim);
 
             // справочники
-            //mFIO_Kad = row.get_Value(base.table.FindField("FIO_Kad"));
             mFIO_Kad = (int)GetValueFromDB(ref row, "FIO_Kad");
             mTip_Doc = (int)GetValueFromDB(ref row, "Tip_Doc");
             OnChangedFIO_Kad();
@@ -153,7 +152,7 @@ namespace WorckWithReestr
             : base(_objectID, _editMode)
         {
             InitializeComponent();
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "Kn_Reg_Ved";
         }
 
@@ -300,34 +299,3 @@ namespace WorckWithReestr
         #endregion
     }
 }
-
-#region  описание полей
-
-////ключь
-//OBJECTID, Type = esriFieldTypeOID
-
-////даты
-//Data_Vh, Type = esriFieldTypeDate, AliasName = Дата внесення документа
-//Data_Otp, Type = esriFieldTypeDate, AliasName = Дата відправлення
-//Data_Kad, Type = esriFieldTypeDate, AliasName = Дата розміщення в кадастрі
-
-//////простые тексты 
-//Ist_Ved, Type = esriFieldTypeString, AliasName = Джерело відомостей
-//N_Sop_List, Type = esriFieldTypeString, AliasName = Вихідий № супровідного листа
-//N_GD, Type = esriFieldTypeString, AliasName = № п/п
-//N_Doc_GD, Type = esriFieldTypeString, AliasName = Номер документу МД
-//Name_GD, Type = esriFieldTypeString, AliasName = Назва документу МД
-//El_Format_GD, Type = esriFieldTypeString, AliasName = Електронна форма подання
-//N_Kad, Type = esriFieldTypeString, AliasName = Реєстраційний № в кадастрі
-//Prim, Type = esriFieldTypeString, AliasName = Примечание 
-
-//// справочники
-//FIO_Kad, Type = esriFieldTypeInteger, AliasName = ПІБ особи, що розмістила
-//Tip_Doc, Type = esriFieldTypeInteger, AliasName = Тип документа 
-
-////числа
-//Kol_Str_GD, Type = esriFieldTypeSmallInteger, AliasName = Кількість аркушів
-//N_Vh, Type = esriFieldTypeInteger, AliasName = Вхідний №
-
-
-#endregion

@@ -33,13 +33,18 @@ namespace WorckWithReestr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "fizichni_osoby";
-            base.NameSortFild = "П_І_Б";
+            base.NameSortFild = "P_I_B";
 
             //this.Text = "";
         }
 
+        //доп настройка грида
+        protected override void OtherSetupDGV()
+        {
+            dgv.Columns["GlobalID"].Visible = false;
+        }
 
         protected override frmBaseSpr_element GetElementForm(int _objectID, frmBaseSpr_element.EditMode _editMode)
         {
@@ -52,7 +57,6 @@ namespace WorckWithReestr
             dictionaryTableName = "";
             return false;
         }
-
 
         #endregion
     }

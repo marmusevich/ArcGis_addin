@@ -41,7 +41,7 @@ namespace WorckWithReestr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "Kn_Reg_Zayv";
             base.NameSortFild = "Data_Z";
             base.NameDataFilteredFild = "Data_Z";
@@ -100,7 +100,9 @@ namespace WorckWithReestr
             indexTip_Doc = dgv.Columns["Tip_Doc"].Index;
             //indexTip_code = dgv.Columns.Add("Tip_code", "Код типа документа");
 
-            dgv.CellFormatting += OnCellFormatting;
+            dgv.Columns["GlobalID"].Visible = false;
+
+        dgv.CellFormatting += OnCellFormatting;
         }
 
         //вернуть строку доаолнительных условий

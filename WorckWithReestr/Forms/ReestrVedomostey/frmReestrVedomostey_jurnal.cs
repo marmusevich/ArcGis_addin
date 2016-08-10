@@ -31,7 +31,7 @@ namespace WorckWithReestr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "Kn_Reg_Ved";
             base.NameSortFild = "Data_Vh";
             base.NameDataFilteredFild = "Data_Vh";
@@ -70,6 +70,9 @@ namespace WorckWithReestr
         {
             indexFIO_Kad = dgv.Columns["FIO_Kad"].Index;
             indexTip_Doc = dgv.Columns["Tip_Doc"].Index;
+
+            dgv.Columns["GlobalID"].Visible = false;
+
 
             dgv.CellFormatting += OnCellFormatting;
         }

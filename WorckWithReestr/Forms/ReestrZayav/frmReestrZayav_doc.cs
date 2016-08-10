@@ -228,7 +228,7 @@ namespace WorckWithReestr
             : base(_objectID, _editMode)
         {
             InitializeComponent();
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "Kn_Reg_Zayv";
         }
 
@@ -498,58 +498,3 @@ namespace WorckWithReestr
 
     }
 }
-
-#region  описание полей
-
-
-////ключь
-//OBJECTID, Type = esriFieldTypeOID 
-
-////даты
-//Data_Z, Type = esriFieldTypeDate, AliasName = Дата звернення 
-//Data_Ish, Type = esriFieldTypeDate, AliasName = Дата листа 
-//Data_Oplata, Type = esriFieldTypeDate, AliasName = Дата оплати 
-//Data_Ved, Type = esriFieldTypeDate, AliasName = Дата видачі 
-
-////простые тексты  
-//N_Ish_Z, Type = esriFieldTypeString, AliasName = Вихідний № листа 
-//Sodergan, Type = esriFieldTypeString, AliasName = Стислий зміст 
-//Pr_Otkaz, Type = esriFieldTypeString, AliasName = Причина відмови 
-//Tel_Z, Type = esriFieldTypeString, AliasName = Телефон / e-mail заявника 
-//Doc_Oplata, Type = esriFieldTypeString, AliasName = Документ підтвердження оплати 
-//Opisan_Ved, Type = esriFieldTypeString, AliasName = Опис наданних документів 
-//Forma_Ved, Type = esriFieldTypeString, AliasName = Форма передачі документа 
-//Prim, Type = esriFieldTypeString, AliasName = Примечание 
-//Dodatok, Type = esriFieldTypeString, AliasName = Перелік доданніх матеріалів 
-//Cane, Type = esriFieldTypeString, AliasName = Канцелярскій № входящій
-
-
-////доменные значения
-//Status, Type = esriFieldTypeString, AliasName = Статус заявника 
-//Domain = StatusZayavitelya xsi:type="esri:CodedValue"
-//Code xsi:type="xs:string" (Ю = Юредическое лицо )
-//Code xsi:type="xs:string" (Ф = Физическое лицо )
-////--
-//Otkaz, Type = esriFieldTypeSmallInteger, AliasName = Відмітка про відмову 
-//Domain = OtmetkaProOtkaz xsi:type="esri:CodedValueDomain"
-//Code xsi:type="xs:short" (0 = Прийнято )
-//Code xsi:type="xs:short" (1 = Відмова )
-////--
-//Oplata, Type = esriFieldTypeSmallInteger, AliasName = Статус надання послуги 
-//Domain = StatusNadannaPjslugi xsi:type="esri:CodedValueDomain"  
-//Code xsi:type="xs:short" (0 = Платна)
-//Code xsi:type="xs:short" (1 = Безоплатна)
-
-// // справочники
-//Tip_Doc, Type = esriFieldTypeInteger, AliasName = Тип документа 
-////--
-//Fio_Z, Type = esriFieldTypeInteger, AliasName = ПІБ особи, що прийняла звернення 
-//Fio_Ved_Vid, Type = esriFieldTypeInteger, AliasName = ФІО особи , що видала документ 
-//Fio_Ved_Prin, Type = esriFieldTypeInteger, AliasName = ФІО особи , що прийняла документ 
-//Kod_Z, Type = esriFieldTypeInteger, AliasName = Код заявника 
-
-//// порядковый номер ??
-//N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
-
-#endregion
-

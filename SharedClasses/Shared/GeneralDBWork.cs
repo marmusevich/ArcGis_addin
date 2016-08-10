@@ -320,7 +320,8 @@ namespace SharedClasses
             try
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
-                ITable table = fws.OpenTable(workspaceName + ".DBO." + tableName);
+                //ITable table = fws.OpenTable(workspaceName + ".DBO." + tableName);
+                ITable table = fws.OpenTable(tableName);
                 IRow row = table.GetRow(id);
                 ret = row.get_Value(table.FindField(fildName));
             }
@@ -338,7 +339,8 @@ namespace SharedClasses
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                //queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                queryDef2.Tables = tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
                 if (strongCompare)
                     queryDef2.WhereClause = fildName + " = '" + textValue + "'";
@@ -366,7 +368,8 @@ namespace SharedClasses
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                //queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                queryDef2.Tables = tableName;
                 queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
                 queryDef2.WhereClause = fildName + " = " + intValue.ToString();
                 //queryDef2.PostfixClause = "ORDER BY " + fildName;
@@ -391,7 +394,8 @@ namespace SharedClasses
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                //queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                queryDef2.Tables = tableName;
                 queryDef2.SubFields = "MAX( " + fildName + " )";
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;
@@ -418,7 +422,8 @@ namespace SharedClasses
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(workspaceName) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                //queryDef2.Tables = workspaceName + ".DBO." + tableName;
+                queryDef2.Tables = tableName;
                 queryDef2.SubFields = "DISTINCT " + fildName;
                 queryDef2.PostfixClause = "ORDER BY " + fildName;
                 ICursor cursor = queryDef2.Evaluate2(true);

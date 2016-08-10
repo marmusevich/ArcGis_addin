@@ -34,9 +34,15 @@ namespace WorckWithReestr
         {
             InitializeComponent();
 
-            base.NameWorkspace = "reestr";
+            base.NameWorkspace = "Kadastr2016";
             base.NameTable = "Tip_Doc";
             base.NameSortFild = "Kod_Doc";
+        }
+
+        //доп настройка грида
+        protected override void OtherSetupDGV()
+        {
+            dgv.Columns["GlobalID"].Visible = false;
         }
 
 
