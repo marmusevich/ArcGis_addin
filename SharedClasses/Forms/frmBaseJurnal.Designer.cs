@@ -65,10 +65,8 @@ namespace SharedClasses
             // 
             // tsbAdd
             // 
-            this.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAdd.Name = "tsbAdd";
-            this.tsbAdd.Size = new System.Drawing.Size(63, 22);
+            this.tsbAdd.Size = new System.Drawing.Size(79, 22);
             this.tsbAdd.Text = "Добавить";
             this.tsbAdd.Click += new System.EventHandler(this.tsbAdd_Click);
             // 

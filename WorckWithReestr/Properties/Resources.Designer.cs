@@ -59,5 +59,7 @@ namespace WorckWithReestr.Properties {
                 resourceCulture = value;
             }
         }
+        
+  
     }
 }

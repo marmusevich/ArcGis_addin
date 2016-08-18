@@ -19,17 +19,22 @@ namespace SharedClasses
         public static void CheсkValueAndSetToComboBox(ref System.Windows.Forms.ComboBox cb, ref DomeinDataAdapter dda, ref ITable table, string fildName, object value)
         {
             if (dda == null)
-                CreateDomeinDataAdapterAndAddRangeToComboBoxAndSetDefaultValue(ref cb, ref dda, ref table, fildName); 
+            {
+                GeneralApp.ShowErrorMessage("dda == null");
+            }
             if (value == null || Convert.IsDBNull(value))
-                value = table.Fields.get_Field(table.FindField(fildName)).DefaultValue;
+            {
+                IField fild = table.Fields.get_Field(table.FindField(fildName));
+                value = fild.DefaultValue;
+                //костыль. почемуто значение по умолчанию имеет тип double, а тип домена и поля приетом short
+                if (fild.Type == esriFieldType.esriFieldTypeSmallInteger && value is double)
+                {
+                    value = Convert.ToInt16(value);
+                }
+            }
             if ((value != null) && !Convert.IsDBNull(value))
                 cb.SelectedIndex = dda.GetIndexByValue(value);
         }
-
-
-
-
-
 
 
         //одно значение домена
@@ -132,7 +137,7 @@ namespace SharedClasses
             {
                 for (int i = 0; i < data.Count; i++)
                 {
-                    if( ((DomeinData)data[i]).Value.Equals(value) )
+                    if ( ((DomeinData)data[i]).Value.Equals(value) )
                     {
                         ret = i;
                         break;
@@ -140,7 +145,7 @@ namespace SharedClasses
                 }
             }
             return ret;
-        }    
+        }
     }
 
 }

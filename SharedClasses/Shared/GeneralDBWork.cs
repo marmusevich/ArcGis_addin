@@ -351,7 +351,9 @@ namespace SharedClasses
                 IRow row = null;
                 if ((row = cursor.NextRow()) != null)
                 {
-                    ret = (int)row.get_Value(0);
+                    object o = row.get_Value(0);
+                    if ((o != null) && !Convert.IsDBNull(o))
+                        ret = (int)o;
                 }
             }
             catch (Exception ex) // обработка ошибок
@@ -377,7 +379,9 @@ namespace SharedClasses
                 IRow row = null;
                 if ((row = cursor.NextRow()) != null)
                 {
-                    ret = (int)row.get_Value(0);
+                    object o = row.get_Value(0);
+                    if ((o != null) && !Convert.IsDBNull(o))
+                        ret = (int)o;
                 }
             }
             catch (Exception ex) // обработка ошибок
@@ -401,7 +405,9 @@ namespace SharedClasses
                 IRow row = null;
                 if ((row = cursor.NextRow()) != null)
                 {
-                    ret = (int)row.get_Value(0);
+                    object o = row.get_Value(0);
+                    if ( (o != null) && !Convert.IsDBNull(o) )
+                        ret = (int)o;
                 }
             }
             catch (Exception ex) // обработка ошибок
@@ -430,7 +436,9 @@ namespace SharedClasses
                 IRow row = null;
                 while ((row = cursor.NextRow()) != null)
                 {
-                    data.Add(row.get_Value(0));
+                    object o = row.get_Value(0);
+                    if ((o != null) && !Convert.IsDBNull(o))
+                        data.Add(o);
                 }
             }
             catch (Exception ex) // обработка ошибок

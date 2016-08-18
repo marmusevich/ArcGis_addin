@@ -75,7 +75,6 @@ namespace SharedClasses
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
-
                 DB_DefaultValue_to_FormElement();
                 ret = true;
             }
