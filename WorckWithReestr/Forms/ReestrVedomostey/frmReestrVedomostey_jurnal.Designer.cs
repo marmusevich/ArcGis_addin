@@ -30,9 +30,32 @@ namespace WorckWithReestr
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.SuspendLayout();
+            // 
+            // dtpDataOt
+            // 
+            this.dtpDataOt.Value = new System.DateTime(2016, 8, 1, 0, 0, 0, 0);
+            // 
+            // dtpDatePo
+            // 
+            this.dtpDatePo.Value = new System.DateTime(2016, 8, 31, 0, 0, 0, 0);
+            // 
+            // frmReestrVedomostey_jurnal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(544, 275);
+            this.Name = "frmReestrVedomostey_jurnal";
             this.Text = "frmReestrVedomostey_jurnal";
+            this.Controls.SetChildIndex(this.dtpDataOt, 0);
+            this.Controls.SetChildIndex(this.dtpDatePo, 0);
+            this.Controls.SetChildIndex(this.lblDataOt, 0);
+            this.Controls.SetChildIndex(this.lblDatePo, 0);
+            this.Controls.SetChildIndex(this.btnForvard, 0);
+            this.Controls.SetChildIndex(this.btnBack, 0);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

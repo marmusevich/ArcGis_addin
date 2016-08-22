@@ -336,6 +336,16 @@
       <DependentUpon>frmSelectObjAndLayerForToolShowObjInfo.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.resx</Link>
     </EmbeddedResource>
+	
+    <EmbeddedResource Include="..\SharedClasses\Forms\frmBaseJurnal.resx">
+      <DependentUpon>frmBaseJurnal.cs</DependentUpon>
+      <Link>SharedClasses\Forms\frmBaseJurnal.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SharedClasses\Forms\frmBaseSpr_list.resx">
+      <DependentUpon>frmBaseSpr_list.cs</DependentUpon>
+      <Link>SharedClasses\Forms\frmBaseSpr_list.resx</Link>
+    </EmbeddedResource>
+	
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Config.esriaddinx">

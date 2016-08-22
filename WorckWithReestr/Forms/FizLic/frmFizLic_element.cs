@@ -97,6 +97,9 @@ namespace WorckWithReestr
                 case EditMode.ADD:
                     Text = "Добавление нового физического лица";
                     break;
+                case EditMode.ADD_COPY:
+                    Text = "Добавление нового физического лица копированием";
+                    break;
                 case EditMode.EDIT:
                     Text = "Корректировка данных физического лица";
                     break;

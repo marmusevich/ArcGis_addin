@@ -244,11 +244,6 @@
     <Compile Include="..\SharedClasses\Shared\IndicateWaitingOperation.cs">
       <Link>SharedClasses\Shared\IndicateWaitingOperation.cs</Link>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\SharedClasses\Forms\frmSelectSearchInListForm.resx">
@@ -258,6 +253,14 @@
     <EmbeddedResource Include="..\SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.resx">
       <DependentUpon>frmSelectObjAndLayerForToolShowObjInfo.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SharedClasses\Forms\frmBaseJurnal.resx">
+      <DependentUpon>frmBaseJurnal.cs</DependentUpon>
+      <Link>SharedClasses\Forms\frmBaseJurnal.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\SharedClasses\Forms\frmBaseSpr_list.resx">
+      <DependentUpon>frmBaseSpr_list.cs</DependentUpon>
+      <Link>SharedClasses\Forms\frmBaseSpr_list.resx</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +309,9 @@
     <EmbeddedResource Include="Forms\ReestrVedomostey\frmReestrVedomostey_doc.resx">
       <DependentUpon>frmReestrVedomostey_doc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReestrVedomostey\frmReestrVedomostey_jurnal.resx">
+      <DependentUpon>frmReestrVedomostey_jurnal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReestrZayav\frmReestrZayav_doc.resx">
       <DependentUpon>frmReestrZayav_doc.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,10 +323,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TipDok\frmTipDoc_list.resx">
       <DependentUpon>frmTipDoc_list.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

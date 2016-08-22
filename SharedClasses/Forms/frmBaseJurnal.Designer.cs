@@ -30,16 +30,21 @@ namespace SharedClasses
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBaseJurnal));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddCopy = new System.Windows.Forms.ToolStripButton();
             this.tsdEdit = new System.Windows.Forms.ToolStripButton();
             this.tsdDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbReflesh = new System.Windows.Forms.ToolStripButton();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsAddCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsReflesh = new System.Windows.Forms.ToolStripMenuItem();
             this.dtpDataOt = new System.Windows.Forms.DateTimePicker();
             this.dtpDatePo = new System.Windows.Forms.DateTimePicker();
             this.lblDataOt = new System.Windows.Forms.Label();
@@ -55,8 +60,10 @@ namespace SharedClasses
             // 
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
+            this.tsbAddCopy,
             this.tsdEdit,
-            this.tsdDelete});
+            this.tsdDelete,
+            this.tsbReflesh});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
             this.tsMain.Size = new System.Drawing.Size(544, 25);
@@ -65,28 +72,43 @@ namespace SharedClasses
             // 
             // tsbAdd
             // 
+            this.tsbAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbAdd.Image")));
             this.tsbAdd.Name = "tsbAdd";
             this.tsbAdd.Size = new System.Drawing.Size(79, 22);
             this.tsbAdd.Text = "Добавить";
             this.tsbAdd.Click += new System.EventHandler(this.tsbAdd_Click);
             // 
+            // tsbAddCopy
+            // 
+            this.tsbAddCopy.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddCopy.Image")));
+            this.tsbAddCopy.Name = "tsbAddCopy";
+            this.tsbAddCopy.Size = new System.Drawing.Size(164, 22);
+            this.tsbAddCopy.Text = "Добавить копированием";
+            this.tsbAddCopy.Click += new System.EventHandler(this.tsbAddCopy_Click);
+            // 
             // tsdEdit
             // 
-            this.tsdEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsdEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsdEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsdEdit.Image")));
             this.tsdEdit.Name = "tsdEdit";
-            this.tsdEdit.Size = new System.Drawing.Size(91, 22);
+            this.tsdEdit.Size = new System.Drawing.Size(107, 22);
             this.tsdEdit.Text = "Редактировать";
             this.tsdEdit.Click += new System.EventHandler(this.tsdEdit_Click);
             // 
             // tsdDelete
             // 
-            this.tsdDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsdDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsdDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsdDelete.Image")));
             this.tsdDelete.Name = "tsdDelete";
-            this.tsdDelete.Size = new System.Drawing.Size(95, 22);
+            this.tsdDelete.Size = new System.Drawing.Size(111, 22);
             this.tsdDelete.Text = "Удалить запись";
             this.tsdDelete.Click += new System.EventHandler(this.tsdDelete_Click);
+            // 
+            // tsbReflesh
+            // 
+            this.tsbReflesh.Image = ((System.Drawing.Image)(resources.GetObject("tsbReflesh.Image")));
+            this.tsbReflesh.Name = "tsbReflesh";
+            this.tsbReflesh.Size = new System.Drawing.Size(81, 22);
+            this.tsbReflesh.Text = "Обновить";
+            this.tsbReflesh.Click += new System.EventHandler(this.tsbReflesh_Click);
             // 
             // dgv
             // 
@@ -122,32 +144,52 @@ namespace SharedClasses
             // 
             this.cmsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsAdd,
+            this.cmsAddCopy,
             this.cmsEdit,
-            this.cmsDelete});
+            this.cmsDelete,
+            this.cmsReflesh});
             this.cmsMain.Name = "cmsMain";
-            this.cmsMain.Size = new System.Drawing.Size(155, 70);
-            this.cmsMain.Text = "Физ. лица";
+            this.cmsMain.Size = new System.Drawing.Size(212, 136);
             // 
             // cmsAdd
             // 
+            this.cmsAdd.Image = ((System.Drawing.Image)(resources.GetObject("cmsAdd.Image")));
             this.cmsAdd.Name = "cmsAdd";
-            this.cmsAdd.Size = new System.Drawing.Size(154, 22);
+            this.cmsAdd.Size = new System.Drawing.Size(211, 22);
             this.cmsAdd.Text = "Добавить";
             this.cmsAdd.Click += new System.EventHandler(this.cmsAdd_Click);
             // 
+            // cmsAddCopy
+            // 
+            this.cmsAddCopy.Image = ((System.Drawing.Image)(resources.GetObject("cmsAddCopy.Image")));
+            this.cmsAddCopy.Name = "cmsAddCopy";
+            this.cmsAddCopy.Size = new System.Drawing.Size(211, 22);
+            this.cmsAddCopy.Text = "Добавить копированием";
+            this.cmsAddCopy.Click += new System.EventHandler(this.cmsAddCopy_Click);
+            // 
             // cmsEdit
             // 
+            this.cmsEdit.Image = ((System.Drawing.Image)(resources.GetObject("cmsEdit.Image")));
             this.cmsEdit.Name = "cmsEdit";
-            this.cmsEdit.Size = new System.Drawing.Size(154, 22);
+            this.cmsEdit.Size = new System.Drawing.Size(211, 22);
             this.cmsEdit.Text = "Редактировать";
             this.cmsEdit.Click += new System.EventHandler(this.cmsEdit_Click);
             // 
             // cmsDelete
             // 
+            this.cmsDelete.Image = ((System.Drawing.Image)(resources.GetObject("cmsDelete.Image")));
             this.cmsDelete.Name = "cmsDelete";
-            this.cmsDelete.Size = new System.Drawing.Size(154, 22);
+            this.cmsDelete.Size = new System.Drawing.Size(211, 22);
             this.cmsDelete.Text = "Удалить";
             this.cmsDelete.Click += new System.EventHandler(this.cmsDelete_Click);
+            // 
+            // cmsReflesh
+            // 
+            this.cmsReflesh.Image = ((System.Drawing.Image)(resources.GetObject("cmsReflesh.Image")));
+            this.cmsReflesh.Name = "cmsReflesh";
+            this.cmsReflesh.Size = new System.Drawing.Size(211, 22);
+            this.cmsReflesh.Text = "Обновить";
+            this.cmsReflesh.Click += new System.EventHandler(this.cmsReflesh_Click);
             // 
             // dtpDataOt
             // 
@@ -241,19 +283,24 @@ namespace SharedClasses
         #endregion
 
         protected ToolStrip tsMain;
-        private ToolStripButton tsbAdd;
-        private ToolStripButton tsdEdit;
-        private ToolStripButton tsdDelete;
+        protected ToolStripButton tsbAdd;
+        protected ToolStripButton tsdEdit;
+        protected ToolStripButton tsdDelete;
+        protected ToolStripButton tsbAddCopy;
+        protected ToolStripButton tsbReflesh;
         protected DataGridView dgv;
         protected ContextMenuStrip cmsMain;
-        private ToolStripMenuItem cmsAdd;
-        private ToolStripMenuItem cmsEdit;
-        private ToolStripMenuItem cmsDelete;
-        private DateTimePicker dtpDataOt;
-        private DateTimePicker dtpDatePo;
-        private Label lblDataOt;
-        private Label lblDatePo;
-        private Button btnForvard;
-        private Button btnBack;
+        protected ToolStripMenuItem cmsAdd;
+        protected ToolStripMenuItem cmsEdit;
+        protected ToolStripMenuItem cmsDelete;
+        protected ToolStripMenuItem cmsReflesh;
+        protected ToolStripMenuItem cmsAddCopy;
+
+        protected DateTimePicker dtpDataOt;
+        protected DateTimePicker dtpDatePo;
+        protected Label lblDataOt;
+        protected Label lblDatePo;
+        protected Button btnForvard;
+        protected Button btnBack;
     }
 }

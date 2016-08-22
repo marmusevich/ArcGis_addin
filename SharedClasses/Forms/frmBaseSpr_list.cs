@@ -80,8 +80,21 @@ namespace SharedClasses
             frm.ShowDialog();
             frm.Dispose();
 
-            tableWrapper.UpdateData();
-            dgv.Refresh();
+            Reflesh();
+        }
+
+        //добавить запись копированием
+        protected virtual void AddCopyRec(int objectID)
+        {
+            frmBaseSpr_element frm = GetElementForm(objectID, frmBaseSpr_element.EditMode.ADD_COPY);
+            if (frm == null)
+                return;
+
+            frm.Owner = this;
+            frm.ShowDialog();
+            frm.Dispose();
+
+            Reflesh();
         }
         //редактировать запись
         protected virtual void EditRec(int objectID)
@@ -93,9 +106,7 @@ namespace SharedClasses
             frm.Owner = this;
             frm.ShowDialog();
 
-            tableWrapper.UpdateData();
-            dgv.Refresh();
-            
+            Reflesh();
         }
         //удалить запись
         protected virtual void DeleteRec(int objectID)
@@ -108,8 +119,7 @@ namespace SharedClasses
             frm.ShowDialog();
             frm.Dispose();
 
-            tableWrapper.UpdateData();
-            dgv.Refresh();
+            Reflesh();
         }
         //прочесть список
         protected virtual bool ReadData()
@@ -192,6 +202,13 @@ namespace SharedClasses
             SelectID = objectID;
             Close();
         }
+
+        private void Reflesh()
+        {
+            tableWrapper.UpdateData();
+            dgv.Refresh();
+        }
+
         #endregion
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region form  events
@@ -293,6 +310,36 @@ namespace SharedClasses
                 //frmSelectSearchInListForm.ShowForView(this, table);
             }
         }
+		
+		
+		
+        private void tsbReflesh_Click(object sender, EventArgs e)
+        {
+            Reflesh();
+        }
+        private void cmsReflesh_Click(object sender, EventArgs e)
+        {
+            Reflesh();
+        }
+        private void cmsAddCopy_Click(object sender, EventArgs e)
+        {
+            if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
+            {
+                int id = (int)dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0].Value;
+                AddCopyRec(id);
+            }
+
+        }
+        private void tsbAddCopy_Click(object sender, EventArgs e)
+        {
+            if (dgv.CurrentCell != null && dgv.CurrentCell.RowIndex > -1)
+            {
+                int id = (int)dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0].Value;
+                AddCopyRec(id);
+            }
+
+        }
+
         #endregion
     }
 }

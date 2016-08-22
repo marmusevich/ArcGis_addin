@@ -15,6 +15,7 @@ namespace SharedClasses
         {
             UNKNOW,
             ADD,
+            ADD_COPY,
             EDIT,
             DELETE
         };
@@ -91,10 +92,8 @@ namespace SharedClasses
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(NameWorkspace) as IFeatureWorkspace;
                 table = fws.OpenTable(NameTable);
-
                 IRow row = table.GetRow(objectID);
                 DB_to_FormElement(row);
-
                 ret = true;
             }
             catch (Exception ex) // обработка ошибок
@@ -122,7 +121,7 @@ namespace SharedClasses
                 table = fws.OpenTable(NameTable);
                 IRow row = null;
 
-                if (editMode == EditMode.ADD)
+                if (editMode == EditMode.ADD || editMode == EditMode.ADD_COPY)
                     row = table.CreateRow();
                 else if (editMode == EditMode.EDIT)
                     row = table.GetRow(objectID);
@@ -313,7 +312,6 @@ namespace SharedClasses
             {
                 Close();
             }
-
             if (editMode != EditMode.ADD)
             {
                 if (!ReadData()) // error

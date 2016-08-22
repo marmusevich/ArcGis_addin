@@ -79,7 +79,7 @@ namespace WorckWithReestr
             if (ReestrDocumentWork.IsNumerReestrVedomosteyExist(N_Vh) && (editMode != EditMode.EDIT))
             {
                 if (MessageBox.Show(string.Format("Документ с номером [{0}] уже есть. \n Згенерировать следующий доступный? ", N_Vh), "Не унекальный номер", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    N_Vh = ReestrDocumentWork.GetNextNumerToReestrZayav();
+                    N_Vh = ReestrDocumentWork.GetNextNumerToReestrVedomostey();
             }
             row.set_Value(base.table.FindField("N_Vh"), N_Vh);
         }
@@ -162,6 +162,9 @@ namespace WorckWithReestr
             {
                 case EditMode.ADD:
                     Text = "Добавление нового ведомости";
+                    break;
+                case EditMode.ADD_COPY:
+                    Text = "Добавление нового ведомости копированием";
                     break;
                 case EditMode.EDIT:
                     Text = "Корректировка данных ведомости";

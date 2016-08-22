@@ -15,6 +15,7 @@ namespace SharedClasses
         {
             UNKNOW,
             ADD,
+            ADD_COPY,
             EDIT,
             DELETE
         };
@@ -146,7 +147,7 @@ namespace SharedClasses
                 table = fws.OpenTable(NameTable);
                 IRow row = null;
 
-                if (editMode == EditMode.ADD)
+                if (editMode == EditMode.ADD || editMode == EditMode.ADD_COPY)
                     row = table.CreateRow();
                 else if (editMode == EditMode.EDIT)
                     row = table.GetRow(objectID);

@@ -78,6 +78,9 @@ namespace WorckWithReestr
                 case EditMode.ADD:
                     Text = "Добавление нового типа документа";
                     break;
+                case EditMode.ADD_COPY:
+                    Text = "Добавление нового типа документа копированием";
+                    break;
                 case EditMode.EDIT:
                     Text = "Корректировка данных типа документа";
                     break;

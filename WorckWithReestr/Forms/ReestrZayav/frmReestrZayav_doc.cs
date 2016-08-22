@@ -239,6 +239,9 @@ namespace WorckWithReestr
                 case EditMode.ADD:
                     Text = "Добавление нового заявления / обращения";
                     break;
+                case EditMode.ADD_COPY:
+                    Text = "Добавление нового заявления / обращения копированием";
+                    break;
                 case EditMode.EDIT:
                     Text = "Корректировка данных заявления / обращения";
                     break;
