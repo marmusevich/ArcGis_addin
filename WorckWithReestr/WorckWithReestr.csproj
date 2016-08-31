@@ -77,6 +77,9 @@
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.4.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Output, Version=10.4.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.System">
       <Private>False</Private>
     </Reference>
@@ -93,12 +96,40 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcButtons\arcBtn_Open_dwCadastralReference.cs" />
     <Compile Include="ArcButtons\AppStartPoint.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_JurLicList.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrVedomostey.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrZayav.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_TipDoc.cs" />
-    <Compile Include="Config.Designer.cs">
+    <Compile Include="CadastralReference\arcDW_CadastralReference.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\arcDW_CadastralReference.Designer.cs">
+      <DependentUpon>arcDW_CadastralReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastralReference\CadastralReferenceData.cs" />
+    <Compile Include="CadastralReference\frmPrevImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmPrevImage.Designer.cs">
+      <DependentUpon>frmPrevImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastralReference\frmRTF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmRTF.Designer.cs">
+      <DependentUpon>frmRTF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastralReference\frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastralReference\WorckWithRTF.cs" />
+    <Compile Include="CadastralReference\WorkCadastralReference.cs" />
+    <Compile Include="Config1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
     </Compile>
@@ -300,6 +331,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CadastralReference\arcDW_CadastralReference.resx">
+      <DependentUpon>arcDW_CadastralReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmPrevImage.resx">
+      <DependentUpon>frmPrevImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmRTF.resx">
+      <DependentUpon>frmRTF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FizLic\frmFizLic_element.resx">
       <DependentUpon>frmFizLic_element.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,6 +379,13 @@
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Images\arcBtn_Open_TipDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcDW_CadastralReference.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_dwCadastralReference.png" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
