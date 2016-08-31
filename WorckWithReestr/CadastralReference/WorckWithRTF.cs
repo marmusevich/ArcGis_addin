@@ -21,7 +21,7 @@ namespace CadastralReference
             //AddToRTF_Const(ref rtb);
 
             //AddToRTF_NewPage(ref rtb);
-            //AddToRTF_AllImage(ref rtb);
+            AddToRTF_AllImage(ref rtb);
 
             //AddToRTF_NewPage(ref rtb);
             //AddToRTF_Raspiska(ref rtb);
@@ -82,7 +82,7 @@ namespace CadastralReference
 
             int i = rtb.Rtf.LastIndexOf("}");
             string str = rtb.Rtf;
-            str = str.Insert(i, @" \\page ");
+            str = str.Insert(i, @" \page ");
             rtb.Rtf = str;
 
         }

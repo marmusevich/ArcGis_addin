@@ -6,6 +6,9 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Output;
 using ESRI.ArcGIS.Carto;
 using WorckWithReestr;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.Geodatabase;
+using System;
 
 namespace CadastralReference
 {
@@ -82,15 +85,55 @@ namespace CadastralReference
         #endregion
 
 
-        // получить изображенние карты из Арк ГИСа 
-        public static Image GetImageFromArcGis()
+        //Настроить макет
+        public static void GenerateMaket(OnePageDescriptions opd)
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
-            if (! (activeView is IPageLayout) )
+            CheckAndSetPageLayoutMode(mxdoc);
+
+            mxdoc.FocusMap.MapScale = 5000;
+
+            AddScalebar(mxdoc, activeView);
+            AddNorthArrowTool(mxdoc, activeView);
+            AddText(mxdoc, activeView);
+
+
+            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+            activeView.Refresh();
+        }
+
+        //Переключить слои
+        public static void EnableLawrsFropPage(OnePageDescriptions opd, bool enable)
+        {
+            //MessageBox.Show("EnableLawrsFropPage ->" + opd.Caption + "  \n enable =" + enable);
+        }
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region  дополнительные функции
+        //переключится в режим разметки страницы при необходимости
+        private static void CheckAndSetPageLayoutMode(IMxDocument mxdoc)
+        {
+            if (!(mxdoc.ActiveView is IPageLayout))
             {
-                SetPageLayoutMode();
+                //прямой способ
+                mxdoc.ActiveView = mxdoc.PageLayout as IActiveView;
+
+                //способ через команду
+                //UID uid = new UID();
+                //uid.Value = "{6570248A-A258-11D1-8740-0000F8751720}";
+                //ESRI.ArcGIS.Framework.ICommandItem cmdItem = ArcMap.Application.Document.CommandBars.Find(uid, false, false);
+                //cmdItem.Execute();
             }
+        }
+
+        // получить изображенние карты из Арк ГИСа 
+        private static Image GetImageFromArcGis()
+        {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            IActiveView activeView = mxdoc.ActiveView;
+            CheckAndSetPageLayoutMode(mxdoc);
 
             string tmpFileName = System.IO.Path.GetTempFileName();
 
@@ -116,48 +159,299 @@ namespace CadastralReference
             return img;
         }
 
-        //Настроить макет
-        public static void GenerateMaket(OnePageDescriptions opd)
+
+        private static void f1(IMxDocument mxdoc)
         {
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
+            CheckAndSetPageLayoutMode(mxdoc);
+        }
 
-            SetPageLayoutMode();
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private static void AddNorthArrowTool(IMxDocument mxdoc, IActiveView activeView)
+        {
+            DeleteNordArrow(mxdoc);
+
+            IEnvelope envelope = new EnvelopeClass();
+            envelope.PutCoords(1, 1, 6, 6); // Specify the location and size of the scalebar
+
+            IStyleGallery styleGallery = mxdoc.StyleGallery;
+            IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("North Arrows", "ESRI.STYLE", "Default");
+
+            IStyleGalleryItem northArrowStyle = enumStyleGallery.Next();
+            while (northArrowStyle != null)
+            {
+                if (northArrowStyle.Name == "ESRI North 1")
+                {
+                    break;
+                }
+                northArrowStyle = enumStyleGallery.Next();
+            }
+
+            INorthArrow northArrow = northArrowStyle.Item as INorthArrow;
+            northArrow.Map = mxdoc.FocusMap;
+
+            IMapSurroundFrame pMSFrame = new MapSurroundFrameClass();
+            pMSFrame.MapSurround = northArrow;
+            IElement MSElement = pMSFrame as IElement;
+            MSElement.Geometry = envelope as IGeometry;
+
+            IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
+            gc.AddElement(MSElement, 0);
+        }
+
+        private static void DeleteNordArrow(IMxDocument mxdoc)
+        {
+            IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
+            gc.Reset();
+
+            //only one North Arrow should be in a Layout
+            IElement element = gc.Next();
+            while (element != null)
+            {
+                if (element is IMapSurroundFrame)
+                {
+                    IMapSurroundFrame MSF = element as IMapSurroundFrame;
+                    if (MSF.MapSurround is INorthArrow)
+                    {
+                        gc.DeleteElement(element);
+                    }
+                }
+                element = gc.Next();
+            }
 
         }
 
-        public static void SetPageLayoutMode()
+        protected static void AddScalebar(IMxDocument mxdoc, IActiveView activeView)
         {
-            //прямой способ
+            DeleteScalebar(mxdoc);
+
+            IStyleGallery styleGallery = mxdoc.StyleGallery;
+            IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("Scale Bars", "ESRI.Style", "");
+
+            IStyleGalleryItem scalebarStyle = enumStyleGallery.Next();
+            for (int i = 0; i < 4; i++)
+            {
+                scalebarStyle = enumStyleGallery.Next();
+            }
+
+            IScaleBar scalebar = scalebarStyle.Item as IScaleBar;
+            scalebar.Map = mxdoc.FocusMap;
+
+            scalebar.Units = esriUnits.esriKilometers;
+
+            IMapSurroundFrame pMSFrame = new MapSurroundFrameClass();
+            pMSFrame.MapSurround = scalebar;
+            IElement MSElement = pMSFrame as IElement;
+            
+            IPage page = new Page();
+            double x = 0;
+            double y = 0;
+            page = mxdoc.PageLayout.Page;
+            page.QuerySize(out x, out y);
+            IEnvelope envelope = new EnvelopeClass();
+            envelope.PutCoords(x - 15, 1, x, 2.5); // Specify the location and size of the scalebar
+            
+            MSElement.Geometry = envelope as IGeometry;
+
+            IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
+            gc.AddElement(MSElement, 0);
+        }
+
+        private static void DeleteScalebar(IMxDocument mxdoc)
+        {
+            IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
+
+            //only one scale bar should be in a Layout
+            gc.Reset();
+            IElement element = gc.Next();
+            while (element != null)
+            {
+                if (element is IMapSurroundFrame)
+                {
+                    IMapSurroundFrame MSF = element as IMapSurroundFrame;
+                    if (MSF.MapSurround is IScaleBar)
+                    {
+                        gc.DeleteElement(element);
+                    }
+                }
+                element = gc.Next();
+            }
+        }
+
+        private static void AddText(IMxDocument mxdoc, IActiveView activeView)
+        {
+            IPage page = new Page();
+            double x = 0;
+            double y = 0;
+            page = mxdoc.PageLayout.Page;
+            page.QuerySize(out x, out y);
+
+            IPoint point = new ESRI.ArcGIS.Geometry.Point();
+            point.PutCoords(x / 2, y-2);
+
+            ITextElement textElement = new TextElementClass();
+            textElement.Text = "Маштаб ( 1:" + Math.Round(mxdoc.FocusMap.MapScale).ToString() + ")";
+            ((TextElementClass)textElement).Size = 22;
+
+            IElement element = textElement as IElement;
+            element.Geometry = point;
+
+            IGraphicsContainer graphicsContainer = activeView as IGraphicsContainer;
+            graphicsContainer.AddElement(element, 0);
+        }
+
+        //The following code shows one method for adding a new text element onto the page layout.In this example, ITool is used to get a mouse down event so users can place the text element anywhere on the page layout. The script only adds a new element if ArcMap is in layout view.To use this sample, paste the code into the OnMouseDown event in a newly created ITool. 
+        //Note: This sub would be the MouseDown Event for AxPageLayoutControl in Engine or the PageLayout in ArcMap.
+        //Where the following member variables would have already been set in other code: 
+        //m_hookHelper is a ESRI.ArcGIS.Controls.IHookHelper
+        //m_PageLayout is a ESRI.ArcGIS.Carto.IPageLayout
+        public static void AddText(int Button, int Shift, int X, int Y)
+        {
+            //IActiveView activeView = m_PageLayout as IActiveView;
+            //IGraphicsContainer graphicsContainer = m_PageLayout as IGraphicsContainer;
+
+            ////Use the hookhelper to obtain the loaded doc's page layout.
+            //m_PageLayout = m_hookHelper.PageLayout;
+
+            ////Verify ArcMap is in layout view.
+            //if (m_hookHelper.ActiveView is IPageLayout)
+            //{
+            //    //Create a point from the x,y coordinate parameters.
+            //    IScreenDisplay screenDisplay = activeView.ScreenDisplay;
+            //    IDisplayTransformation displayTransformation =
+            //      screenDisplay.DisplayTransformation;
+            //    ESRI.ArcGIS.Geometry.IPoint point = displayTransformation.ToMapPoint(X, Y);
+
+            //    ITextElement textElement = new TextElementClass();
+            //    textElement.Text = "My Map";
+
+            //    IElement element = textElement as IElement;
+            //    element.Geometry = point;
+
+            //    graphicsContainer.AddElement(element, 0);
+
+            //    //Refresh only the page layout's graphics.
+            //    activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("This tool only works in layout view");
+            //}
+        }
+
+
+
+
+
+
+
+        //показать текущий моштаб карты
+        private static double GetShowMapScale()
+        {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            mxdoc.ActiveView = mxdoc.PageLayout as IActiveView;
-            //mxdoc.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
-
-            //способ через команду
-            //UID uid = new UID();
-            //uid.Value = "{6570248A-A258-11D1-8740-0000F8751720}";
-            //ESRI.ArcGIS.Framework.ICommandItem cmdItem = ArcMap.Application.Document.CommandBars.Find(uid, false, false);
-            //cmdItem.Execute();
+            IMap m = mxdoc.FocusMap;
+            return m.MapScale;
         }
 
 
-        //Переключить слои
-        public static void EnableLawrsFropPage(OnePageDescriptions opd, bool enable)
+        //изменить рразмер на экране
+        public void ZoomToPercent(IActiveView activeView)
         {
-            //MessageBox.Show("EnableLawrsFropPage ->" + opd.Caption + "  \n enable =" + enable);
+            IPageLayout pageLayout = activeView as IPageLayout;
+            if (activeView is IPageLayout)
+            {
+                pageLayout.ZoomToPercent(50);
+            }
+            else
+            {
+                MessageBox.Show("This tool only functions in layout view");
+            }
+            activeView.Refresh();
         }
+
+
+
+        //IGraphicsContainer
+        //IGraphicsContainer provides access to the PageLayout object's graphic elements. Use this interface to add new elements or access existing ones. For example, a title at the top of a layout is a text element stored in the layout's graphics container.
+        //The following code example moves all the elements in the layout 1 inch to the right:
+        public void MoveAllElements(IActiveView activeView)
+        {
+            IPageLayout pageLayout = new PageLayoutClass();
+
+            if (activeView is IPageLayout)
+            {
+                pageLayout = activeView as IPageLayout;
+                IGraphicsContainer graphicsContainer = pageLayout as IGraphicsContainer;
+
+                //Loop through all the elements and move each one inch.
+                graphicsContainer.Reset();
+                ITransform2D transform2D = null;
+                IElement element = graphicsContainer.Next();
+                while (element != null)
+                {
+                    transform2D = element as ITransform2D;
+                    transform2D.Move(1, 0);
+                    element = graphicsContainer.Next();
+                }
+            }
+            else
+            {
+                MessageBox.Show("This tool only works in pagelayout view.");
+            }
+
+            //Refresh only the page layout's graphics.
+            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+        }
+
+
+        //IGraphicsContainerSelect(selecting graphics)
+        //Most objects that are graphics containers, such as PageLayout and Map, implement the IGraphicsContainerSelect interface to expose additional members for managing their element selection.For example, IGraphicsContainerSelect.UnselectAllElements can be used to clear an object's graphic element selection.
+        //The following example returns the number of elements currently selected in the focus Map and PageLayout object:
+        public void GraphicSelectionCount(IActiveView activeView)
+        {
+            IMap map = activeView.FocusMap;
+            IPageLayout pageLayout = activeView as IPageLayout;
+            IGraphicsContainer graphicsContainer = map as IGraphicsContainer;
+
+            IGraphicsContainerSelect graphicsContainerSelect_Map = graphicsContainer as IGraphicsContainerSelect;
+            IGraphicsContainerSelect graphicsContainerSelect_PageLayout = pageLayout as IGraphicsContainerSelect;
+
+            int elementSelectionCount_Map =graphicsContainerSelect_Map.ElementSelectionCount;
+            MessageBox.Show("Selected elements in the map: " + elementSelectionCount_Map.ToString());
+
+            int elementSelectionCount_PageLayout = graphicsContainerSelect_PageLayout.ElementSelectionCount;
+            MessageBox.Show("Selected elements in the page layout: " + elementSelectionCount_PageLayout.ToString());
+        }
+
+        //IPage is the primary interface on the Page object. Use this interface to access all the properties of an ArcMap page, including the page's border, background, background color, orientation, and size.
+        //The esriPageFormID enumeration provides a convenient list of preselected page sizes for use by the Page object. For example, to change the layout to standard legal page size, pass in esriPageFormLegal to IPage.FormID.This is much quicker than setting a custom size with IPage.PutCustomSize.
+        //The following code uses the esriPageFormID enumeration to quickly change the page size.It is beneficial if you used the previous code sample to change the page's size and color.
+        public void SetLegalPageSize(IPageLayout pageLayout)
+        {
+            IPage page = new Page();
+            double x = 0;
+            double y = 0;
+            page = pageLayout.Page;
+            page.FormID = esriPageFormID.esriPageFormLegal;
+            page.QuerySize(out x, out y);
+            MessageBox.Show("The page size is now: " + x + " x " + y);
+        }
+
+
+
+        #endregion
     }
 }
 
 
-
-//Listening to map events
-//The following code example demonstrates listening to map events:
-
-//[C#]
-//private IMapEvents_FeatureClassChangedEventHandler dFeatClsChangedE;
-//private IMapEvents_VersionChangedEventHandler dVerChangedE;
-
+////Listening to map events
+////The following code example demonstrates listening to map events:
+////private IMapEvents_FeatureClassChangedEventHandler dFeatClsChangedE;
+////private IMapEvents_VersionChangedEventHandler dVerChangedE;
 //private void ListenToMapEvents(IApplication application)
 //{
 //    IDocument document = application.Document;
@@ -168,10 +462,8 @@ namespace CadastralReference
 //    IMapEvents_Event mapEvents = map as IMapEvents_Event;
 
 //    //Initialize the delegate to point to a function where you respond to the event being raised.
-//    dFeatClsChangedE = new IMapEvents_FeatureClassChangedEventHandler
-//      (OnFeatureClassChangedFunction);
-//    dVerChangedE = new IMapEvents_VersionChangedEventHandler
-//      (OnVersionChangedFunction);
+//    dFeatClsChangedE = new IMapEvents_FeatureClassChangedEventHandler(OnFeatureClassChangedFunction);
+//    dVerChangedE = new IMapEvents_VersionChangedEventHandler(OnVersionChangedFunction);
 
 //    mapEvents.VersionChanged += dVerChangedE;
 
@@ -192,10 +484,9 @@ namespace CadastralReference
 //}
 
 
-//Loading a table
-//The following code example loads a table into the focus map:
 
-//[C#]
+////Loading a table
+////The following code example loads a table into the focus map:
 //public void AddTable(IMap map, IMxDocument mxDocument)
 //{
 //    ITableCollection tableCollection = map as ITableCollection;
@@ -234,281 +525,4 @@ namespace CadastralReference
 //    return table;
 //}
 
-//IPage
-//IPage is the primary interface on the Page object. Use this interface to access all the properties of an ArcMap page, including the page's border, background, background color, orientation, and size.
- 
-//The following code changes the size and color of the page:
- 
 
-//[C#]
-//public void CheckPageSize(IPageLayout pageLayout)
-//{
-//    //If page size is letter, change the page size to 5 by 5.
-//    IPage page = new PageClass();
-
-//    double dHeight = 0;
-//    double dWidth = 0;
-
-//    page = pageLayout.Page;
-//    page.QuerySize(out dWidth, out dHeight);
-
-//    if ((dWidth == 8.5) & (dHeight == 11))
-//    {
-//        page.PutCustomSize(5, 5);
-//    }
-//}
-
-//public void ChangePageColor(IPageLayout pageLayout)
-//{
-//    IPage page = pageLayout.Page;
-
-//    IRgbColor rgbColor = new RgbColor();
-//    rgbColor.Blue = 204;
-//    rgbColor.Red = 255;
-//    rgbColor.Green = 255;
-
-//    //Change the background color of the page.
-//    page.BackgroundColor = rgbColor;
-//}
-
-
-//The esriPageFormID enumeration provides a convenient list of preselected page sizes for use by the Page object. For example, to change the layout to standard legal page size, pass in esriPageFormLegal to IPage.FormID.This is much quicker than setting a custom size with IPage.PutCustomSize.
-
-//The following code uses the esriPageFormID enumeration to quickly change the page size.It is beneficial if you used the previous code sample to change the page's size and color.
-
-//[C#]
-//public void SetLegalPageSize(IPageLayout pageLayout)
-//{
-//    IPage page = new Page();
-
-//    double x = 0;
-//    double y = 0;
-
-//    page = pageLayout.Page;
-//    page.FormID = esriPageFormID.esriPageFormLegal;
-//    page.QuerySize(out x, out y);
-
-//    MessageBox.Show("The page size is now: " + x + " x " + y);
-//}
-
-
-//IGraphicsContainerSelect(selecting graphics)
-//Most objects that are graphics containers, such as PageLayout and Map, implement the IGraphicsContainerSelect interface to expose additional members for managing their element selection.For example, IGraphicsContainerSelect.UnselectAllElements can be used to clear an object's graphic element selection.
-
-
-//The following example returns the number of elements currently selected in the focus Map and PageLayout object:
-
-
-
-//[C#]
-//public void GraphicSelectionCount(IActiveView activeView)
-//{
-//    IMap map = activeView.FocusMap;
-//    IPageLayout pageLayout = activeView as IPageLayout;
-//    IGraphicsContainer graphicsContainer = map as IGraphicsContainer;
-
-//    IGraphicsContainerSelect graphicsContainerSelect_Map = graphicsContainer as
-//      IGraphicsContainerSelect;
-//    IGraphicsContainerSelect graphicsContainerSelect_PageLayout = pageLayout as
-//      IGraphicsContainerSelect;
-
-//    Int32 elementSelectionCount_Map =
-//      graphicsContainerSelect_Map.ElementSelectionCount;
-//    MessageBox.Show("Selected elements in the map: " +
-//      elementSelectionCount_Map.ToString());
-
-//    Int32 elementSelectionCount_PageLayout =
-//      graphicsContainerSelect_PageLayout.ElementSelectionCount;
-//    MessageBox.Show("Selected elements in the page layout: " +
-//      elementSelectionCount_PageLayout.ToString());
-//}
-
-
-
-//Working with PageLayout elements
-//The IPageLayout interface is the primary interface implemented by the PageLayout object. 
-//Use this interface to access the ruler settings, snap grid, snap guides, and page objects.IPageLayout also has methods for zooming the view and changing the map's focus.
-//The following code demonstrates zooming:
-
-
-
-//[C#]
-//public void ZoomToPercent(IActiveView activeView)
-//{
-//    IPageLayout pageLayout = activeView as IPageLayout;
-//    if (activeView is IPageLayout)
-//    {
-//        pageLayout.ZoomToPercent(50);
-//    }
-//    else
-//    {
-//        MessageBox.Show("This tool only functions in layout view");
-//    }
-//    activeView.Refresh();
-//}
-
-//IGraphicsContainer
-//IGraphicsContainer provides access to the PageLayout object's graphic elements. Use this interface to add new elements or access existing ones. For example, a title at the top of a layout is a text element stored in the layout's graphics container.
-
-//The following code example moves all the elements in the layout 1 inch to the right:
- 
-
-//[C#]
-//public void MoveAllElements(IActiveView activeView)
-//{
-//    IPageLayout pageLayout = new PageLayoutClass();
-
-//    if (activeView is IPageLayout)
-//    {
-//        pageLayout = activeView as IPageLayout;
-//        IGraphicsContainer graphicsContainer = pageLayout as IGraphicsContainer;
-
-//        //Loop through all the elements and move each one inch.
-//        graphicsContainer.Reset();
-//        ITransform2D transform2D = null;
-//        IElement element = graphicsContainer.Next();
-//        while (element != null)
-//        {
-//            transform2D = element as ITransform2D;
-//            transform2D.Move(1, 0);
-//            element = graphicsContainer.Next();
-//        }
-//    }
-//    else
-//    {
-//        MessageBox.Show("This tool only works in pagelayout view.");
-//    }
-
-//    //Refresh only the page layout's graphics.
-//    activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
-//}
-
-//The following code shows one method for adding a new text element onto the page layout.In this example, ITool is used to get a mouse down event so users can place the text element anywhere on the page layout. The script only adds a new element if ArcMap is in layout view.To use this sample, paste the code into the OnMouseDown event in a newly created ITool. 
-
-
-
-//[C#]
-////Note: This sub would be the MouseDown Event for AxPageLayoutControl in Engine or the PageLayout in ArcMap.
-////Where the following member variables would have already been set in other code: 
-////m_hookHelper is a ESRI.ArcGIS.Controls.IHookHelper
-////m_PageLayout is a ESRI.ArcGIS.Carto.IPageLayout
-//public void OnMouseDown(int Button, int Shift, int X, int Y)
-//{
-//    IActiveView activeView = m_PageLayout as IActiveView;
-//    IGraphicsContainer graphicsContainer = m_PageLayout as IGraphicsContainer;
-
-//    //Use the hookhelper to obtain the loaded doc's page layout.
-//    m_PageLayout = m_hookHelper.PageLayout;
-
-//    //Verify ArcMap is in layout view.
-//    if (m_hookHelper.ActiveView is IPageLayout)
-//    {
-//        //Create a point from the x,y coordinate parameters.
-//        IScreenDisplay screenDisplay = activeView.ScreenDisplay;
-//        IDisplayTransformation displayTransformation =
-//          screenDisplay.DisplayTransformation;
-//        ESRI.ArcGIS.Geometry.IPoint point = displayTransformation.ToMapPoint(X, Y);
-
-//        ITextElement textElement = new TextElementClass();
-//        textElement.Text = "My Map";
-
-//        IElement element = textElement as IElement;
-//        element.Geometry = point;
-
-//        graphicsContainer.AddElement(element, 0);
-
-//        //Refresh only the page layout's graphics.
-//        activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
-//    }
-//    else
-//    {
-//        MessageBox.Show("This tool only works in layout view");
-//    }
-//}
-
-
-//IGraphicsContainerSelect(selecting graphics)
-//Most objects that are graphics containers, such as PageLayout and Map, implement the IGraphicsContainerSelect interface to expose additional members for managing their element selection.For example, IGraphicsContainerSelect.UnselectAllElements can be used to clear an object's graphic element selection.
-
-
-//The following example returns the number of elements currently selected in the focus Map and PageLayout object:
-
-
-
-//[C#]
-//public void GraphicSelectionCount(IActiveView activeView)
-//{
-//    IMap map = activeView.FocusMap;
-//    IPageLayout pageLayout = activeView as IPageLayout;
-//    IGraphicsContainer graphicsContainer = map as IGraphicsContainer;
-
-//    IGraphicsContainerSelect graphicsContainerSelect_Map = graphicsContainer as
-//      IGraphicsContainerSelect;
-//    IGraphicsContainerSelect graphicsContainerSelect_PageLayout = pageLayout as
-//      IGraphicsContainerSelect;
-
-//    Int32 elementSelectionCount_Map =
-//      graphicsContainerSelect_Map.ElementSelectionCount;
-//    MessageBox.Show("Selected elements in the map: " +
-//      elementSelectionCount_Map.ToString());
-
-//    Int32 elementSelectionCount_PageLayout =
-//      graphicsContainerSelect_PageLayout.ElementSelectionCount;
-//    MessageBox.Show("Selected elements in the page layout: " +
-//      elementSelectionCount_PageLayout.ToString());
-//}
-
-//IPage is the primary interface on the Page object. Use this interface to access all the properties of an ArcMap page, including the page's border, background, background color, orientation, and size.
- 
-//The following code changes the size and color of the page:
- 
-
-//[C#]
-//public void CheckPageSize(IPageLayout pageLayout)
-//{
-//    //If page size is letter, change the page size to 5 by 5.
-//    IPage page = new PageClass();
-
-//    double dHeight = 0;
-//    double dWidth = 0;
-
-//    page = pageLayout.Page;
-//    page.QuerySize(out dWidth, out dHeight);
-
-//    if ((dWidth == 8.5) & (dHeight == 11))
-//    {
-//        page.PutCustomSize(5, 5);
-//    }
-//}
-
-//public void ChangePageColor(IPageLayout pageLayout)
-//{
-//    IPage page = pageLayout.Page;
-
-//    IRgbColor rgbColor = new RgbColor();
-//    rgbColor.Blue = 204;
-//    rgbColor.Red = 255;
-//    rgbColor.Green = 255;
-
-//    //Change the background color of the page.
-//    page.BackgroundColor = rgbColor;
-//}
-
-//The esriPageFormID enumeration provides a convenient list of preselected page sizes for use by the Page object. For example, to change the layout to standard legal page size, pass in esriPageFormLegal to IPage.FormID.This is much quicker than setting a custom size with IPage.PutCustomSize.
-
-//The following code uses the esriPageFormID enumeration to quickly change the page size.It is beneficial if you used the previous code sample to change the page's size and color.
-
-//[C#]
-//public void SetLegalPageSize(IPageLayout pageLayout)
-//{
-//    IPage page = new Page();
-
-//    double x = 0;
-//    double y = 0;
-
-//    page = pageLayout.Page;
-//    page.FormID = esriPageFormID.esriPageFormLegal;
-//    page.QuerySize(out x, out y);
-
-//    MessageBox.Show("The page size is now: " + x + " x " + y);
-//}
