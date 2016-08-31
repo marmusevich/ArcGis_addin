@@ -129,7 +129,7 @@
     </Compile>
     <Compile Include="CadastralReference\WorckWithRTF.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference.cs" />
-    <Compile Include="Config1.Designer.cs">
+    <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
     </Compile>
@@ -298,7 +298,7 @@
     <AddInContent Include="Config.esriaddinx">
       <Generator>ArcGISAddInHostGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Config1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Config.Designer.cs</LastGenOutput>
     </AddInContent>
   </ItemGroup>
   <ItemGroup>

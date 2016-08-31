@@ -27,7 +27,8 @@
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_JurLicList" />
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_TipDoc" />
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_ReestrZayav" />
-            <Button refID="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" />
+            <Button refID="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" separator="true" />
+            <Button refID="TKC_arcBtn_Open_dwCadastralReference" />
           </Items>
         </Toolbar>
       </Toolbars>

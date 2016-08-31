@@ -60,13 +60,13 @@ namespace WorckWithReestr
             this.tlpPages.Name = "tlpPages";
             this.tlpPages.RowCount = 1;
             this.tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpPages.Size = new System.Drawing.Size(449, 346);
+            this.tlpPages.Size = new System.Drawing.Size(449, 358);
             this.tlpPages.TabIndex = 0;
             // 
             // btnSetting
             // 
             this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetting.Location = new System.Drawing.Point(378, 452);
+            this.btnSetting.Location = new System.Drawing.Point(378, 481);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(75, 23);
             this.btnSetting.TabIndex = 1;
@@ -84,16 +84,18 @@ namespace WorckWithReestr
             this.pnRtf.Controls.Add(this.btnRTFPrev);
             this.pnRtf.Controls.Add(this.btnRTFSaveToDB);
             this.pnRtf.Controls.Add(this.btnRtfGenerate);
-            this.pnRtf.Location = new System.Drawing.Point(4, 384);
+            this.pnRtf.Location = new System.Drawing.Point(4, 396);
             this.pnRtf.Name = "pnRtf";
-            this.pnRtf.Size = new System.Drawing.Size(449, 62);
+            this.pnRtf.Size = new System.Drawing.Size(449, 79);
             this.pnRtf.TabIndex = 3;
             // 
             // lblRTF
             // 
+            this.lblRTF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRTF.Location = new System.Drawing.Point(6, 4);
             this.lblRTF.Name = "lblRTF";
-            this.lblRTF.Size = new System.Drawing.Size(306, 23);
+            this.lblRTF.Size = new System.Drawing.Size(438, 23);
             this.lblRTF.TabIndex = 3;
             this.lblRTF.Text = "RTF";
             this.lblRTF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -172,7 +174,7 @@ namespace WorckWithReestr
             this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.tlpPages);
             this.Name = "arcDW_CadastralReference";
-            this.Size = new System.Drawing.Size(460, 482);
+            this.Size = new System.Drawing.Size(460, 511);
             this.pnRtf.ResumeLayout(false);
             this.ResumeLayout(false);
 
