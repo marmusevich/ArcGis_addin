@@ -131,8 +131,8 @@ namespace WorckWithReestr
             p.Controls.Add(Create_btnPreviewMaket(pd));
             p.Controls.Add(Create_btnGenerateMaket(pd));
             p.Location = new System.Drawing.Point(5, 30);
-            //p.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            //| System.Windows.Forms.AnchorStyles.Right)));
+            p.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             p.Name = prefix_pnlPage + pd.NameFromDB;
             p.Size = new System.Drawing.Size(215, 89);
             p.Tag = pd;
@@ -244,7 +244,6 @@ namespace WorckWithReestr
         // изменение текста выбора листов в зависимости от наличия макета
         private void SetTextToxbSelect(OnePageDescriptions opd)
         {
-            
             Control c = GetControlByName(prefix_xbSelect + opd.NameFromDB);
 
             if (opd.Image == null)

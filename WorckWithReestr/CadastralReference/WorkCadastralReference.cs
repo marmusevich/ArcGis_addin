@@ -105,6 +105,8 @@ namespace CadastralReference
         //Переключить слои
         public static void EnableLawrsFropPage(OnePageDescriptions opd, bool enable)
         {
+            if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().CadastralReferenceID == -1)
+                return;
             //MessageBox.Show("EnableLawrsFropPage ->" + opd.Caption + "  \n enable =" + enable);
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
@@ -123,13 +125,13 @@ namespace CadastralReference
             if (!(mxdoc.ActiveView is IPageLayout))
             {
                 //прямой способ
-                //mxdoc.ActiveView = mxdoc.PageLayout as IActiveView;
+                mxdoc.ActiveView = mxdoc.PageLayout as IActiveView;
 
-                //способ через команду
-                UID uid = new UID();
-                uid.Value = "{6570248A-A258-11D1-8740-0000F8751720}";
-                ESRI.ArcGIS.Framework.ICommandItem cmdItem = ArcMap.Application.Document.CommandBars.Find(uid, false, false);
-                cmdItem.Execute();
+                ////способ через команду
+                //UID uid = new UID();
+                //uid.Value = "{6570248A-A258-11D1-8740-0000F8751720}";
+                //ESRI.ArcGIS.Framework.ICommandItem cmdItem = ArcMap.Application.Document.CommandBars.Find(uid, false, false);
+                //cmdItem.Execute();
             }
         }
 
@@ -299,7 +301,7 @@ namespace CadastralReference
 
             ITextElement textElement = new TextElementClass();
             textElement.Text = "Маштаб ( 1:" + Math.Round(GetShowMapScale()).ToString() + ")";
-            //((TextElementClass)textElement).Size = 22;
+            ((TextElementClass)textElement).Size = 22;
 
             IPoint pageSaze = GetPageSaze();
             IPoint point = new ESRI.ArcGIS.Geometry.Point();
