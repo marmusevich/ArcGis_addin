@@ -131,8 +131,7 @@ namespace WorckWithReestr
             p.Controls.Add(Create_btnPreviewMaket(pd));
             p.Controls.Add(Create_btnGenerateMaket(pd));
             p.Location = new System.Drawing.Point(5, 30);
-            p.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            p.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right)));
             p.Name = prefix_pnlPage + pd.NameFromDB;
             p.Size = new System.Drawing.Size(215, 89);
             p.Tag = pd;
@@ -144,10 +143,10 @@ namespace WorckWithReestr
         private PictureBox Create_pbPreviewMaket(OnePageDescriptions pd)
         {
             PictureBox pb = new PictureBox();
-            pb.Location = new System.Drawing.Point(4, 4);
+            pb.Location = new System.Drawing.Point(3, 3);
             pb.BackColor = System.Drawing.Color.White;
             pb.Name = prefix_pbPrev + pd.NameFromDB; ;
-            pb.Size = new System.Drawing.Size(61, 60);
+            pb.Size = new System.Drawing.Size(75, 75);
             pb.TabStop = false;
             pb.Tag = pd;
             pb.Click += new System.EventHandler(this.PreviewMaket_Click);
@@ -160,9 +159,9 @@ namespace WorckWithReestr
         private Button Create_btnGenerateMaket(OnePageDescriptions pd)
         {
             Button b = new Button();
-            b.Location = new System.Drawing.Point(91, 4);
+            b.Location = new System.Drawing.Point(85, 3);
             b.Name = prefix_btnGenerate + pd.NameFromDB;
-            b.Size = new System.Drawing.Size(121, 23);
+            b.Size = new System.Drawing.Size(150, 23);
             b.Text = "Сформировать макет";
             b.UseVisualStyleBackColor = true;
             b.Tag = pd;
@@ -173,9 +172,9 @@ namespace WorckWithReestr
         private Button Create_btnSaveToDBMaket(OnePageDescriptions pd)
         {
             Button b = new Button();
-            b.Location = new System.Drawing.Point(91, 30);
+            b.Location = new System.Drawing.Point(85, 29);
             b.Name = prefix_btnSaveToDB + pd.NameFromDB;
-            b.Size = new System.Drawing.Size(121, 23);
+            b.Size = new System.Drawing.Size(150, 23);
             b.Text = "Сохрвеить в базу";
             b.UseVisualStyleBackColor = true;
             b.Tag = pd;
@@ -186,9 +185,9 @@ namespace WorckWithReestr
         private Button Create_btnPreviewMaket(OnePageDescriptions pd)
         {
             Button b = new Button();
-            b.Location = new System.Drawing.Point(91, 56);
+            b.Location = new System.Drawing.Point(85, 55);
             b.Name = prefix_btnPrev + pd.NameFromDB;
-            b.Size = new System.Drawing.Size(121, 23);
+            b.Size = new System.Drawing.Size(150, 23);
             b.Text = "Посмотреть";
             b.UseVisualStyleBackColor = true;
             b.Tag = pd;

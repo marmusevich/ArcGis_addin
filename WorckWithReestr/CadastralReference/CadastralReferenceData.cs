@@ -57,10 +57,14 @@ namespace CadastralReference
                 return m_ZayavkaID; 
             } 
             set 
-            { 
+            {
+                if(m_ZayavkaID != value)
+                { 
                 m_ZayavkaID = value;
-                OnZayavkaID_Change();
-            } 
+                if (ZayavkaID_Change != null)
+                    ZayavkaID_Change(this, EventArgs.Empty);
+                }
+            }
         }
         public int CadastralReferenceID
         {
@@ -70,8 +74,12 @@ namespace CadastralReference
             }
             set
             {
+                if(m_CadastralReferenceID != value)
+                { 
                 m_CadastralReferenceID = value;
-                OnCadastralReferenceID_Change();
+                if (CadastralReferenceID_Change != null)
+                    CadastralReferenceID_Change(this, EventArgs.Empty);
+                }
             }
         }
         public string AllRTF { get { return m_AllRTF; } set { m_AllRTF = value; } }
@@ -85,18 +93,8 @@ namespace CadastralReference
         #region события
         // смена заявки
         public event EventHandler<EventArgs> ZayavkaID_Change;
-        private void OnZayavkaID_Change()
-        {
-            if (ZayavkaID_Change != null)
-                ZayavkaID_Change(this, EventArgs.Empty);
-        }
         // смена справки
         public event EventHandler<EventArgs> CadastralReferenceID_Change;
-        private void OnCadastralReferenceID_Change()
-        {
-            if (CadastralReferenceID_Change != null)
-                CadastralReferenceID_Change(this, EventArgs.Empty);
-        }
         //смена изображения
         public event EventHandler<EventArgs> Image_Change;
         private void OnImage_Change(object sender, EventArgs e)
@@ -127,8 +125,12 @@ namespace CadastralReference
             }
             set
             {
-                m_Image = value;
-                OnImage_Change();
+                if(m_Image != value)
+                {
+                    m_Image = value;
+                    if (Image_Change != null)
+                        Image_Change(this, EventArgs.Empty);
+                }
             }
         }
         // индекс в масиве
@@ -136,11 +138,6 @@ namespace CadastralReference
         #region события
         //смена изображения
         public event EventHandler<EventArgs> Image_Change;
-        private void OnImage_Change()
-        {
-            if (Image_Change != null)
-                Image_Change(this, EventArgs.Empty);
-        }
         #endregion
     }
 }

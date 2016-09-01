@@ -92,16 +92,14 @@ namespace CadastralReference
             IActiveView activeView = mxdoc.ActiveView;
             CheckAndSetPageLayoutMode();
 
-            
+            ChangeSizeDateFrame();
             AddScalebar();
             AddNorthArrowTool();
             AddText();
 
-
             activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             activeView.Refresh();
         }
-
         //Переключить слои
         public static void EnableLawrsFropPage(OnePageDescriptions opd, bool enable)
         {
@@ -265,7 +263,7 @@ namespace CadastralReference
             IPoint pageSaze = GetPageSaze();
 
             IEnvelope envelope = new EnvelopeClass();
-            envelope.PutCoords(pageSaze.X - 15, 1, pageSaze.X, 2.5); // Specify the location and size of the scalebar
+            envelope.PutCoords(pageSaze.X - 8, 1, pageSaze.X-1, 2.5); // Specify the location and size of the scalebar
             
             MSElement.Geometry = envelope as IGeometry;
 
@@ -298,10 +296,13 @@ namespace CadastralReference
         private static void AddText()
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            string name = "ScaleCaption";
+            DeleteElementByName(name);
 
             ITextElement textElement = new TextElementClass();
             textElement.Text = "Маштаб ( 1:" + Math.Round(GetShowMapScale()).ToString() + ")";
             ((TextElementClass)textElement).Size = 22;
+            ((TextElementClass)textElement).Name = name;
 
             IPoint pageSaze = GetPageSaze();
             IPoint point = new ESRI.ArcGIS.Geometry.Point();
@@ -313,6 +314,60 @@ namespace CadastralReference
             gc.AddElement(element, 0);
         }
 
+
+        private static void DeleteElementByName( string name)
+        {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
+
+            //only one scale bar should be in a Layout
+            gc.Reset();
+            IElement element = gc.Next();
+            while (element != null)
+            {
+                IElementProperties elementProp = element as IElementProperties;
+                if (elementProp.Name == name)
+                        gc.DeleteElement(element);
+                element = gc.Next();
+            }
+        }
+
+
+        // изменить размер фрейма данных
+        private static void ChangeSizeDateFrame()
+        {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            IGraphicsContainer graphicsContainer = mxdoc.PageLayout as IGraphicsContainer;
+            graphicsContainer.Reset();
+
+            IElement dateFrameElement = null;
+            IElement element = graphicsContainer.Next();
+            while (element != null)
+            {
+                //use IElementProperties interface to get or set the Name of an 
+                //Element
+                IElementProperties elementProp = element as IElementProperties;
+                if (elementProp.Type == "Data Frame")
+                    dateFrameElement = element;
+                element = graphicsContainer.Next();
+            }
+
+            if (dateFrameElement != null)
+            {
+                IPoint pageSaze = GetPageSaze();
+
+                // старый размер 
+                // dateFrameElement.Geometry.Envelope
+
+                IEnvelope envelope = new EnvelopeClass();
+                envelope.PutCoords(1, 2.5, pageSaze.X -1, pageSaze.Y - 2.5);
+                dateFrameElement.Geometry = envelope as IGeometry;
+            }
+        }
+
+
+
+        //получить размер листа
         private static IPoint GetPageSaze()
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
