@@ -8,12 +8,14 @@ namespace CadastralReference
     {
         #region // для теста
         private static string captionsPrefex = "Лист: ";
-        private static string[] m_ArrayDBNamesPages = new string[4]
+        private static string[] m_ArrayDBNamesPages = new string[6]
                   {
-                    "Первый",
-                    "Второй",
-                    "Третий",
-                    "Четвертый"
+                    "Выкопировка с топологии",
+                    "Генеральный план",
+                    "Генеральный план: планировочные ограничения",
+                    "Детальный план: схема зонирования територий",
+                    "Детальный план: схема планировочные ограничения",
+                    "Граници участков смежных землепользователей"
                   };
         #endregion // для теста
 

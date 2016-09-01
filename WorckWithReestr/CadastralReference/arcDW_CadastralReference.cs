@@ -131,6 +131,8 @@ namespace WorckWithReestr
             p.Controls.Add(Create_btnPreviewMaket(pd));
             p.Controls.Add(Create_btnGenerateMaket(pd));
             p.Location = new System.Drawing.Point(5, 30);
+            //p.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            //| System.Windows.Forms.AnchorStyles.Right)));
             p.Name = prefix_pnlPage + pd.NameFromDB;
             p.Size = new System.Drawing.Size(215, 89);
             p.Tag = pd;
@@ -161,7 +163,7 @@ namespace WorckWithReestr
             b.Location = new System.Drawing.Point(91, 4);
             b.Name = prefix_btnGenerate + pd.NameFromDB;
             b.Size = new System.Drawing.Size(121, 23);
-            b.Text = "Генерировать";
+            b.Text = "Сформировать макет";
             b.UseVisualStyleBackColor = true;
             b.Tag = pd;
             b.Click += new System.EventHandler(this.btnGenerateMaket_Click);
@@ -217,25 +219,43 @@ namespace WorckWithReestr
         }
 
         //действия при выборе листа
-        private void xbSelect_OnChecked(OnePageDescriptions opg)
+        private void xbSelect_OnChecked(OnePageDescriptions opd)
         {
-            Panel p = GetControlByName(prefix_pnlPage + opg.NameFromDB) as Panel;
-            Control c = GetControlByName(prefix_xbSelect + opg.NameFromDB);
-
+            Panel p = GetControlByName(prefix_pnlPage + opd.NameFromDB) as Panel;
+            Control c = GetControlByName(prefix_xbSelect + opd.NameFromDB);
             RadioButton rb = c as RadioButton;
             CheckBox сb = c as CheckBox;
-
             if (rb != null)
             {
                 if (p != null)
                     p.Visible = rb.Checked;
-                WorkCadastralReference.EnableLawrsFropPage(opg, rb.Checked);
+                WorkCadastralReference.EnableLawrsFropPage(opd, rb.Checked);
             }
             if (сb != null)
             {
                 if (p != null)
                     p.Visible = сb.Checked;
-                WorkCadastralReference.EnableLawrsFropPage(opg, сb.Checked);
+                WorkCadastralReference.EnableLawrsFropPage(opd, сb.Checked);
+            }
+
+            SetTextToxbSelect(opd);
+        }
+
+        // изменение текста выбора листов в зависимости от наличия макета
+        private void SetTextToxbSelect(OnePageDescriptions opd)
+        {
+            
+            Control c = GetControlByName(prefix_xbSelect + opd.NameFromDB);
+
+            if (opd.Image == null)
+            {
+                c.Text = "(нет) " + opd.Caption;
+                c.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                c.Text = opd.Caption;
+                c.ForeColor = System.Drawing.Color.Green;
             }
         }
 
@@ -328,11 +348,16 @@ namespace WorckWithReestr
             PictureBox controlByName = this.GetControlByName(this.prefix_pbPrev + opd.NameFromDB) as PictureBox;
             if (controlByName != null)
                 controlByName.Image = opd.Image;
+
+            SetTextToxbSelect(opd);
+
         }
         #endregion нашы события
-	
-	
-	
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region штатные функции
+
         public arcDW_CadastralReference(object hook)
         {
             InitializeComponent();
@@ -378,5 +403,7 @@ namespace WorckWithReestr
             }
 
         }
+        #endregion 
+
     }
 }

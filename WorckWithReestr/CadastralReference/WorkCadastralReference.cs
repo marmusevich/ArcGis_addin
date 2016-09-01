@@ -90,13 +90,12 @@ namespace CadastralReference
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
-            CheckAndSetPageLayoutMode(mxdoc);
+            CheckAndSetPageLayoutMode();
 
-            mxdoc.FocusMap.MapScale = 5000;
-
-            AddScalebar(mxdoc, activeView);
-            AddNorthArrowTool(mxdoc, activeView);
-            AddText(mxdoc, activeView);
+            
+            AddScalebar();
+            AddNorthArrowTool();
+            AddText();
 
 
             activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
@@ -107,24 +106,30 @@ namespace CadastralReference
         public static void EnableLawrsFropPage(OnePageDescriptions opd, bool enable)
         {
             //MessageBox.Show("EnableLawrsFropPage ->" + opd.Caption + "  \n enable =" + enable);
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            IActiveView activeView = mxdoc.ActiveView;
+            CheckAndSetPageLayoutMode();
+
+            mxdoc.FocusMap.MapScale = 5000;
         }
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region  дополнительные функции
         //переключится в режим разметки страницы при необходимости
-        private static void CheckAndSetPageLayoutMode(IMxDocument mxdoc)
+        private static void CheckAndSetPageLayoutMode()
         {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             if (!(mxdoc.ActiveView is IPageLayout))
             {
                 //прямой способ
-                mxdoc.ActiveView = mxdoc.PageLayout as IActiveView;
+                //mxdoc.ActiveView = mxdoc.PageLayout as IActiveView;
 
                 //способ через команду
-                //UID uid = new UID();
-                //uid.Value = "{6570248A-A258-11D1-8740-0000F8751720}";
-                //ESRI.ArcGIS.Framework.ICommandItem cmdItem = ArcMap.Application.Document.CommandBars.Find(uid, false, false);
-                //cmdItem.Execute();
+                UID uid = new UID();
+                uid.Value = "{6570248A-A258-11D1-8740-0000F8751720}";
+                ESRI.ArcGIS.Framework.ICommandItem cmdItem = ArcMap.Application.Document.CommandBars.Find(uid, false, false);
+                cmdItem.Execute();
             }
         }
 
@@ -133,7 +138,7 @@ namespace CadastralReference
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
-            CheckAndSetPageLayoutMode(mxdoc);
+            CheckAndSetPageLayoutMode();
 
             string tmpFileName = System.IO.Path.GetTempFileName();
 
@@ -160,21 +165,25 @@ namespace CadastralReference
         }
 
 
-        private static void f1(IMxDocument mxdoc)
+        private static void f1()
         {
-            mxdoc = ArcMap.Application.Document as IMxDocument;
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
-            CheckAndSetPageLayoutMode(mxdoc);
+            CheckAndSetPageLayoutMode();
         }
 
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private static void AddNorthArrowTool(IMxDocument mxdoc, IActiveView activeView)
+        private static void AddNorthArrowTool()
         {
-            DeleteNordArrow(mxdoc);
+            DeleteNordArrow();
 
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
+            //IPoint pageSaze = GetPageSaze();
+            //point.PutCoords(pageSaze.X / 2, pageSaze.Y - 2);
             IEnvelope envelope = new EnvelopeClass();
             envelope.PutCoords(1, 1, 6, 6); // Specify the location and size of the scalebar
 
@@ -203,8 +212,9 @@ namespace CadastralReference
             gc.AddElement(MSElement, 0);
         }
 
-        private static void DeleteNordArrow(IMxDocument mxdoc)
+        private static void DeleteNordArrow()
         {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
             gc.Reset();
 
@@ -225,9 +235,11 @@ namespace CadastralReference
 
         }
 
-        protected static void AddScalebar(IMxDocument mxdoc, IActiveView activeView)
+        protected static void AddScalebar()
         {
-            DeleteScalebar(mxdoc);
+            DeleteScalebar();
+
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 
             IStyleGallery styleGallery = mxdoc.StyleGallery;
             IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("Scale Bars", "ESRI.Style", "");
@@ -246,14 +258,12 @@ namespace CadastralReference
             IMapSurroundFrame pMSFrame = new MapSurroundFrameClass();
             pMSFrame.MapSurround = scalebar;
             IElement MSElement = pMSFrame as IElement;
-            
-            IPage page = new Page();
-            double x = 0;
-            double y = 0;
-            page = mxdoc.PageLayout.Page;
-            page.QuerySize(out x, out y);
+
+
+            IPoint pageSaze = GetPageSaze();
+
             IEnvelope envelope = new EnvelopeClass();
-            envelope.PutCoords(x - 15, 1, x, 2.5); // Specify the location and size of the scalebar
+            envelope.PutCoords(pageSaze.X - 15, 1, pageSaze.X, 2.5); // Specify the location and size of the scalebar
             
             MSElement.Geometry = envelope as IGeometry;
 
@@ -261,8 +271,9 @@ namespace CadastralReference
             gc.AddElement(MSElement, 0);
         }
 
-        private static void DeleteScalebar(IMxDocument mxdoc)
+        private static void DeleteScalebar()
         {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
 
             //only one scale bar should be in a Layout
@@ -282,8 +293,27 @@ namespace CadastralReference
             }
         }
 
-        private static void AddText(IMxDocument mxdoc, IActiveView activeView)
+        private static void AddText()
         {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
+            ITextElement textElement = new TextElementClass();
+            textElement.Text = "Маштаб ( 1:" + Math.Round(GetShowMapScale()).ToString() + ")";
+            //((TextElementClass)textElement).Size = 22;
+
+            IPoint pageSaze = GetPageSaze();
+            IPoint point = new ESRI.ArcGIS.Geometry.Point();
+            point.PutCoords(pageSaze.X / 2, pageSaze.Y - 2);
+            IElement element = textElement as IElement;
+            element.Geometry = point;
+
+            IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
+            gc.AddElement(element, 0);
+        }
+
+        private static IPoint GetPageSaze()
+        {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IPage page = new Page();
             double x = 0;
             double y = 0;
@@ -291,17 +321,8 @@ namespace CadastralReference
             page.QuerySize(out x, out y);
 
             IPoint point = new ESRI.ArcGIS.Geometry.Point();
-            point.PutCoords(x / 2, y-2);
-
-            ITextElement textElement = new TextElementClass();
-            textElement.Text = "Маштаб ( 1:" + Math.Round(mxdoc.FocusMap.MapScale).ToString() + ")";
-            ((TextElementClass)textElement).Size = 22;
-
-            IElement element = textElement as IElement;
-            element.Geometry = point;
-
-            IGraphicsContainer graphicsContainer = activeView as IGraphicsContainer;
-            graphicsContainer.AddElement(element, 0);
+            point.PutCoords(x, y);
+            return point;
         }
 
         //The following code shows one method for adding a new text element onto the page layout.In this example, ITool is used to get a mouse down event so users can place the text element anywhere on the page layout. The script only adds a new element if ArcMap is in layout view.To use this sample, paste the code into the OnMouseDown event in a newly created ITool. 

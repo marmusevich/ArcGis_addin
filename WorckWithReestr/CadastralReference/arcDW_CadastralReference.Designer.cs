@@ -78,7 +78,6 @@ namespace WorckWithReestr
             // 
             this.pnRtf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnRtf.AutoScroll = true;
             this.pnRtf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnRtf.Controls.Add(this.lblRTF);
             this.pnRtf.Controls.Add(this.btnRTFPrev);
