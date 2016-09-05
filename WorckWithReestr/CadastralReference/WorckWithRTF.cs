@@ -13,18 +13,18 @@ namespace CadastralReference
             System.Windows.Forms.RichTextBox rtb = new RichTextBox();
             rtb.Text = "";
 
-            //AddToRTF_Titul(ref rtb);
-            AddToRTF_NewPage(ref rtb);
+            AddToRTF_Titul(ref rtb);
+            //AddToRTF_NewPage(ref rtb);
 
-            //AddToRTF_Page1(ref rtb);
-            //AddToRTF_Dinamic(ref rtb);
-            //AddToRTF_Const(ref rtb);
+            AddToRTF_Page1(ref rtb);
+            AddToRTF_Dinamic(ref rtb);
+            AddToRTF_Const(ref rtb);
 
             //AddToRTF_NewPage(ref rtb);
-            AddToRTF_AllImage(ref rtb);
+            //AddToRTF_AllImage(ref rtb);
 
             //AddToRTF_NewPage(ref rtb);
-            //AddToRTF_Raspiska(ref rtb);
+            AddToRTF_Raspiska(ref rtb);
 
             // итоговый документ
 

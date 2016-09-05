@@ -234,7 +234,7 @@ namespace WorckWithReestr
             {
                 if (p != null)
                     p.Visible = сb.Checked;
-                WorkCadastralReference.EnableLawrsFropPage(opd, сb.Checked);
+                //WorkCadastralReference.EnableLawrsFropPage(opd, сb.Checked);
             }
 
             SetTextToxbSelect(opd);

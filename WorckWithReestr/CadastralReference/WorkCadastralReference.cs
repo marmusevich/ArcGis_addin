@@ -165,6 +165,7 @@ namespace CadastralReference
         }
 
 
+        //заготовка
         private static void f1()
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
@@ -348,7 +349,10 @@ namespace CadastralReference
                 //Element
                 IElementProperties elementProp = element as IElementProperties;
                 if (elementProp.Type == "Data Frame")
+                { 
                     dateFrameElement = element;
+                    break;
+                }
                 element = graphicsContainer.Next();
             }
 
@@ -382,52 +386,7 @@ namespace CadastralReference
             return point;
         }
 
-        //The following code shows one method for adding a new text element onto the page layout.In this example, ITool is used to get a mouse down event so users can place the text element anywhere on the page layout. The script only adds a new element if ArcMap is in layout view.To use this sample, paste the code into the OnMouseDown event in a newly created ITool. 
-        //Note: This sub would be the MouseDown Event for AxPageLayoutControl in Engine or the PageLayout in ArcMap.
-        //Where the following member variables would have already been set in other code: 
-        //m_hookHelper is a ESRI.ArcGIS.Controls.IHookHelper
-        //m_PageLayout is a ESRI.ArcGIS.Carto.IPageLayout
-        public static void AddText(int Button, int Shift, int X, int Y)
-        {
-            //IActiveView activeView = m_PageLayout as IActiveView;
-            //IGraphicsContainer graphicsContainer = m_PageLayout as IGraphicsContainer;
-
-            ////Use the hookhelper to obtain the loaded doc's page layout.
-            //m_PageLayout = m_hookHelper.PageLayout;
-
-            ////Verify ArcMap is in layout view.
-            //if (m_hookHelper.ActiveView is IPageLayout)
-            //{
-            //    //Create a point from the x,y coordinate parameters.
-            //    IScreenDisplay screenDisplay = activeView.ScreenDisplay;
-            //    IDisplayTransformation displayTransformation =
-            //      screenDisplay.DisplayTransformation;
-            //    ESRI.ArcGIS.Geometry.IPoint point = displayTransformation.ToMapPoint(X, Y);
-
-            //    ITextElement textElement = new TextElementClass();
-            //    textElement.Text = "My Map";
-
-            //    IElement element = textElement as IElement;
-            //    element.Geometry = point;
-
-            //    graphicsContainer.AddElement(element, 0);
-
-            //    //Refresh only the page layout's graphics.
-            //    activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("This tool only works in layout view");
-            //}
-        }
-
-
-
-
-
-
-
-        //показать текущий моштаб карты
+        //получить текущий моштаб карты
         private static double GetShowMapScale()
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
@@ -437,12 +396,23 @@ namespace CadastralReference
 
 
         //изменить рразмер на экране
-        public void ZoomToPercent(IActiveView activeView)
+        public void ZoomToPercent( int zoomFactor = 50)
         {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            IActiveView activeView = mxdoc.ActiveView;
             IPageLayout pageLayout = activeView as IPageLayout;
             if (activeView is IPageLayout)
             {
-                pageLayout.ZoomToPercent(50);
+                pageLayout.ZoomToPercent(zoomFactor);
+
+                //The current zoom percent. 100 means 1:1. 200 means twice normal size, etc.
+                //double ZoomPercent { get; }
+                //Magnify the page by a certain percentage. 100 means actual size. 200 means twice normal size, etc.
+                //void ZoomToPercent(int percent);
+                //Fit the whole page in the window.
+                //void ZoomToWhole();
+                //Fit the width of the page to the screen.
+                //void ZoomToWidth();
             }
             else
             {
@@ -451,9 +421,10 @@ namespace CadastralReference
             activeView.Refresh();
         }
 
+        #endregion
 
+        // примеры
 
-        //IGraphicsContainer
         //IGraphicsContainer provides access to the PageLayout object's graphic elements. Use this interface to add new elements or access existing ones. For example, a title at the top of a layout is a text element stored in the layout's graphics container.
         //The following code example moves all the elements in the layout 1 inch to the right:
         public void MoveAllElements(IActiveView activeView)
@@ -498,30 +469,12 @@ namespace CadastralReference
             IGraphicsContainerSelect graphicsContainerSelect_Map = graphicsContainer as IGraphicsContainerSelect;
             IGraphicsContainerSelect graphicsContainerSelect_PageLayout = pageLayout as IGraphicsContainerSelect;
 
-            int elementSelectionCount_Map =graphicsContainerSelect_Map.ElementSelectionCount;
+            int elementSelectionCount_Map = graphicsContainerSelect_Map.ElementSelectionCount;
             MessageBox.Show("Selected elements in the map: " + elementSelectionCount_Map.ToString());
 
             int elementSelectionCount_PageLayout = graphicsContainerSelect_PageLayout.ElementSelectionCount;
             MessageBox.Show("Selected elements in the page layout: " + elementSelectionCount_PageLayout.ToString());
         }
-
-        //IPage is the primary interface on the Page object. Use this interface to access all the properties of an ArcMap page, including the page's border, background, background color, orientation, and size.
-        //The esriPageFormID enumeration provides a convenient list of preselected page sizes for use by the Page object. For example, to change the layout to standard legal page size, pass in esriPageFormLegal to IPage.FormID.This is much quicker than setting a custom size with IPage.PutCustomSize.
-        //The following code uses the esriPageFormID enumeration to quickly change the page size.It is beneficial if you used the previous code sample to change the page's size and color.
-        public void SetLegalPageSize(IPageLayout pageLayout)
-        {
-            IPage page = new Page();
-            double x = 0;
-            double y = 0;
-            page = pageLayout.Page;
-            page.FormID = esriPageFormID.esriPageFormLegal;
-            page.QuerySize(out x, out y);
-            MessageBox.Show("The page size is now: " + x + " x " + y);
-        }
-
-
-
-        #endregion
     }
 }
 
