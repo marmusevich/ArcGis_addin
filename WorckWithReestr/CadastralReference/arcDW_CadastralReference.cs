@@ -45,16 +45,21 @@ namespace WorckWithReestr
         // генерировать автоматом
         private void Generate_AndAddToTableLayoutPanel()
         {
-            //
+
             this.tlpPages.SuspendLayout();
             this.SuspendLayout();
+
+            this.tlpPages.Controls.Clear();
+            this.tlpPages.RowCount = 1;
 
             //графические листы
             for (int i = 0; i < WorkCadastralReference.GetCadastralReferenceData().Pages.Length; i++)
             {
+                if (!WorkCadastralReference.GetCadastralReferenceData().Pages[i].Enable)
+                    continue;
+
                 tlpPages.RowCount++;
                 tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-                //tlpPages.Controls.Add(Create_cbSelect(m_CadastralReferenceData[i]), 0, i * 2);
                 tlpPages.Controls.Add(Create_rbSelect(WorkCadastralReference.GetCadastralReferenceData().Pages[i]), 0, i * 2);
                 tlpPages.RowCount++;
                 tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -79,6 +84,8 @@ namespace WorckWithReestr
             //
             this.tlpPages.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.Update();
+            this.Refresh();
         }
 
         // лист текстового описания справки
@@ -322,13 +329,30 @@ namespace WorckWithReestr
         private void btnSetting_Click(object sender, EventArgs e)
         {
             frmSetting frm = new frmSetting();
-            frm.ShowDialog();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+
+                //пересоздать
+                Generate_AndAddToTableLayoutPanel();
+            }
         }
 
         private void ZayavkaChange_Click(object sender, EventArgs e)
         {
             WorkCadastralReference.SelectZayavka();
         }
+
+
+        private void btnCloseEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSetObject_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion События элементов управления
 
 
@@ -401,7 +425,6 @@ namespace WorckWithReestr
             }
 
         }
-        #endregion 
-
+        #endregion
     }
 }

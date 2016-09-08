@@ -43,6 +43,8 @@ namespace WorckWithReestr
             this.lblZayavka = new System.Windows.Forms.Label();
             this.lblZayavkaDiscriptions = new System.Windows.Forms.Label();
             this.btnZayavkaChange = new System.Windows.Forms.Button();
+            this.btnSetObject = new System.Windows.Forms.Button();
+            this.btnCloseEdit = new System.Windows.Forms.Button();
             this.pnRtf.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,11 +58,11 @@ namespace WorckWithReestr
             this.tlpPages.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tlpPages.ColumnCount = 1;
             this.tlpPages.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpPages.Location = new System.Drawing.Point(4, 32);
+            this.tlpPages.Location = new System.Drawing.Point(4, 59);
             this.tlpPages.Name = "tlpPages";
             this.tlpPages.RowCount = 1;
             this.tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpPages.Size = new System.Drawing.Size(449, 358);
+            this.tlpPages.Size = new System.Drawing.Size(449, 347);
             this.tlpPages.TabIndex = 0;
             // 
             // btnSetting
@@ -83,9 +85,9 @@ namespace WorckWithReestr
             this.pnRtf.Controls.Add(this.btnRTFPrev);
             this.pnRtf.Controls.Add(this.btnRTFSaveToDB);
             this.pnRtf.Controls.Add(this.btnRtfGenerate);
-            this.pnRtf.Location = new System.Drawing.Point(4, 396);
+            this.pnRtf.Location = new System.Drawing.Point(4, 412);
             this.pnRtf.Name = "pnRtf";
-            this.pnRtf.Size = new System.Drawing.Size(449, 79);
+            this.pnRtf.Size = new System.Drawing.Size(449, 63);
             this.pnRtf.TabIndex = 3;
             // 
             // lblRTF
@@ -164,8 +166,34 @@ namespace WorckWithReestr
             this.btnZayavkaChange.UseVisualStyleBackColor = true;
             this.btnZayavkaChange.Click += new System.EventHandler(this.ZayavkaChange_Click);
             // 
+            // btnSetObject
+            // 
+            this.btnSetObject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetObject.Location = new System.Drawing.Point(165, 30);
+            this.btnSetObject.Name = "btnSetObject";
+            this.btnSetObject.Size = new System.Drawing.Size(134, 23);
+            this.btnSetObject.TabIndex = 7;
+            this.btnSetObject.Text = "Указать объект";
+            this.btnSetObject.UseVisualStyleBackColor = true;
+            this.btnSetObject.Click += new System.EventHandler(this.btnSetObject_Click);
+            // 
+            // btnCloseEdit
+            // 
+            this.btnCloseEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCloseEdit.ForeColor = System.Drawing.Color.Maroon;
+            this.btnCloseEdit.Location = new System.Drawing.Point(4, 480);
+            this.btnCloseEdit.Name = "btnCloseEdit";
+            this.btnCloseEdit.Size = new System.Drawing.Size(160, 23);
+            this.btnCloseEdit.TabIndex = 8;
+            this.btnCloseEdit.Text = "Закрыть для изменения";
+            this.btnCloseEdit.UseVisualStyleBackColor = true;
+            this.btnCloseEdit.Click += new System.EventHandler(this.btnCloseEdit_Click);
+            // 
             // arcDW_CadastralReference
             // 
+            this.Controls.Add(this.btnCloseEdit);
+            this.Controls.Add(this.btnSetObject);
             this.Controls.Add(this.btnZayavkaChange);
             this.Controls.Add(this.pnRtf);
             this.Controls.Add(this.lblZayavkaDiscriptions);
@@ -190,5 +218,7 @@ namespace WorckWithReestr
     private Label lblZayavka;
     private Label lblZayavkaDiscriptions;
     private Button btnZayavkaChange;
+        private Button btnSetObject;
+        private Button btnCloseEdit;
     }
 }

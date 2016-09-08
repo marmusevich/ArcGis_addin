@@ -31,6 +31,7 @@ namespace CadastralReference
                 m_Pages[index].Caption = captionsPrefex + str;
                 m_Pages[index].Image = (Image)null;
                 m_Pages[index].index = index;
+                m_Pages[index].Enable = true;
                 m_Pages[index].Image_Change += new EventHandler<EventArgs>(OnImage_Change);
             }
         }
@@ -135,9 +136,15 @@ namespace CadastralReference
         }
         // индекс в масиве
         public int index { get; set; }
+        // включен ли лист
+        public bool Enable { get; set; }
         #region события
         //смена изображения
         public event EventHandler<EventArgs> Image_Change;
         #endregion
+        public override string ToString()
+        {
+            return Caption;
+        }
     }
 }
