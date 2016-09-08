@@ -27,7 +27,8 @@ namespace WorckWithReestr
         {
             Generate_AndAddToTableLayoutPanel();
             WorkCadastralReference.GetCadastralReferenceData().Image_Change += new EventHandler<EventArgs>(OnImage_Change);
-
+            WorkCadastralReference.GetCadastralReferenceData().ZayavkaID_Change += new EventHandler<EventArgs>(ZayavkaID_Change);
+            WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID_Change += new EventHandler<EventArgs>(ObjektInMapID_Change);
             EnablePanels();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -360,11 +361,18 @@ namespace WorckWithReestr
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region нашы события
-        // изменение кода кадастровой справки
-        private void CadastralReferenceID_Change(object sender, EventArgs e)
+        // изменение кода заявления
+        private void ZayavkaID_Change(object sender, EventArgs e)
         {
             this.EnablePanels();
         }
+
+        // изменение кода выделенного объекта
+        private void ObjektInMapID_Change(object sender, EventArgs e)
+        {
+            this.EnablePanels();
+        }
+        
         //изменение изабражения
         private void OnImage_Change(object sender, EventArgs e)
         {

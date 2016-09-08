@@ -40,16 +40,25 @@ namespace CadastralReference
         List<OnePageDescriptions> m_Pages = null;
 
         private int m_ZayavkaID = -1;
+        private int m_ObjektInMapID = -1;
         private string m_AllRTF = "";
-        private string m_TitulRTF = " Титул ";
-        private string m_Page1RTF = " начало динамической части";
-        private string m_ConstRTF = " постоянная часть";
-        private string m_RaspiskaRTF = " расписка";
+        private string m_TitulRTF_Template = " Титул ";
+        private string m_Page1RTF_Template = " начало динамической части";
+        private StringCollection m_DinamicRTF_Template = null;
+        private StringCollection m_DinamicRTF = null;
+        private string m_ConstRTF_Template = " постоянная часть";
+        private string m_RaspiskaRTF_Template = " расписка";
         #endregion
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
         #region публичные свойства
+        /// <summary>
+        /// свойства графических листов
+        /// </summary>
         public List<OnePageDescriptions> Pages { get { return m_Pages; } private set { m_Pages = value; } }
+        /// <summary>
+        /// код заявления
+        /// </summary>
         public int ZayavkaID 
         { 
             get 
@@ -66,31 +75,96 @@ namespace CadastralReference
                 }
             }
         }
+        /// <summary>
+        /// код объекта
+        /// </summary>
+        public int ObjektInMapID
+        {
+            get
+            {
+                return m_ObjektInMapID;
+            }
+            set
+            {
+                if (m_ObjektInMapID != value)
+                {
+                    m_ObjektInMapID = value;
+                    if (ObjektInMapID_Change != null)
+                        ObjektInMapID_Change(this, EventArgs.Empty);
+                }
+            }
+        }
+        /// <summary>
+        /// весь текст итогового документа
+        /// </summary>
         public string AllRTF { get { return m_AllRTF; } set { m_AllRTF = value; } }
-        public string TitulRTF { get { return m_TitulRTF; } set { m_TitulRTF = value; } }
-        public string Page1RTF { get { return m_Page1RTF; } set { m_Page1RTF = value; } }
-        public string ConstRTF { get { return m_ConstRTF; } set { m_ConstRTF = value; } }
-        public string RaspiskaRTF { get { return m_RaspiskaRTF; } set { m_RaspiskaRTF = value; } }
+        /// <summary>
+        /// титульный лист - шаблон
+        /// </summary>
+        public string TitulRTF_Template { get { return m_TitulRTF_Template; } set { m_TitulRTF_Template = value; } }
+        /// <summary>
+        /// надпись до динамической части - шаблон
+        /// </summary>
+        public string Page1RTF_Template { get { return m_Page1RTF_Template; } set { m_Page1RTF_Template = value; } }
+        /// <summary>
+        /// Динамическая часть - шаблон
+        /// </summary>
+        public StringCollection DinamicRTF_Template { get { return m_DinamicRTF_Template; } set { m_DinamicRTF_Template = value; } }
+        /// <summary>
+        /// Динамическая часть из документа
+        /// </summary>
+        public StringCollection DinamicRTF { get { return m_DinamicRTF; } set { m_DinamicRTF = value; } }
+        /// <summary>
+        /// окончание документа - шаблон
+        /// </summary>
+        public string ConstRTF_Template { get { return m_ConstRTF_Template; } set { m_ConstRTF_Template = value; } }
+        /// <summary>
+        /// расписка - шаблон
+        /// </summary>
+        public string RaspiskaRTF_Template { get { return m_RaspiskaRTF_Template; } set { m_RaspiskaRTF_Template = value; } }
+        /// <summary>
+        /// справка закрыта для редактирования
+        /// </summary>
+        public bool IsCloseToEdit { get; set; }
+
+        #endregion
+
+        #region функции
+
         #endregion
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         #region события
-        // смена заявки
+        /// <summary>
+        /// смена заявления
+        /// </summary>
         public event EventHandler<EventArgs> ZayavkaID_Change;
-        //смена изображения
+        /// <summary>
+        /// смена объекта
+        /// </summary>
+        public event EventHandler<EventArgs> ObjektInMapID_Change;
+        /// <summary>
+        ///смена изображения
+        /// </summary>
         public event EventHandler<EventArgs> Image_Change;
         private void OnImage_Change(object sender, EventArgs e)
         {
             if (Image_Change != null)
                 Image_Change(sender, EventArgs.Empty);
         }
-        #endregion 
+        #endregion
     }
 
-
-    // Информация об одном листе
+    /// <summary>
+    /// Информация об одном листе
+    /// </summary>
     public class OnePageDescriptions : IEquatable<OnePageDescriptions>
     {
+        /// <summary>
+        /// иницилизация 
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <param name="enable"></param>
         public OnePageDescriptions(string caption, bool enable = false)
         {
             Caption = caption;
@@ -101,17 +175,25 @@ namespace CadastralReference
         }
 
         #region свойсва / поля
-        // имя из базы Данных для поля
+        /// <summary>
+        ///  имя из базы Данных для поля 
+        /// </summary>
         public int PagesID { get; private set; }
-        // Назвение листа
+        /// <summary>
+        /// Назвение листа
+        /// </summary>
         public string Caption { get; set; }
-        // включен ли лист
+        /// <summary>
+        /// включен ли лист
+        /// </summary>
         public bool Enable { get; set; }
-        // Слои этого листа
-
+        /// <summary>
+        ///  Слои этого листа
+        /// </summary>
         public StringCollection Layers { get; set; }
-        // макет
-        private Image m_Image;
+        /// <summary>
+        /// макет 
+        /// </summary>
         public Image Image
         {
             get
@@ -128,11 +210,15 @@ namespace CadastralReference
                 }
             }
         }
+        private Image m_Image;
+
 
         #endregion
 
         #region события
-        //смена изображения
+        /// <summary>
+        /// смена изображения
+        /// </summary>
         public event EventHandler<EventArgs> Image_Change;
         #endregion
 

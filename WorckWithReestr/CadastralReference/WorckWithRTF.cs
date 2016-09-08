@@ -37,11 +37,11 @@ namespace CadastralReference
         // это шаблоны, сгенерировать из шаблонов
         private static void AddToRTF_Titul(ref RichTextBox rtb)
         {
-            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().TitulRTF;
+            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().TitulRTF_Template;
         }
         private static void AddToRTF_Page1(ref RichTextBox rtb)
         {
-            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().Page1RTF;
+            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().Page1RTF_Template;
         }
         private static void AddToRTF_Dinamic(ref RichTextBox rtb)
         {
@@ -49,14 +49,14 @@ namespace CadastralReference
         }
         private static void AddToRTF_Const(ref RichTextBox rtb)
         {
-            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().ConstRTF;
+            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().ConstRTF_Template;
         }
 
 
 
         private static void AddToRTF_Raspiska(ref RichTextBox rtb)
         {
-            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().RaspiskaRTF;
+            rtb.Text += WorkCadastralReference.GetCadastralReferenceData().RaspiskaRTF_Template;
         }
 
         //новая страница

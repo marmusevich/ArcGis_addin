@@ -55,8 +55,7 @@ namespace CadastralReference
         public static void SaveToDBImage(OnePageDescriptions opd)
         {
             Image img = GetImageFromArcGis();
-
-            //m_CadastralReferenceData.Pages[opd.index].Image = img;
+            opd.Image = img;
         }
         public static void LoadToDBImage(OnePageDescriptions opd)
         {
@@ -103,7 +102,7 @@ namespace CadastralReference
         //Переключить слои
         public static void EnableLawrsFropPage(OnePageDescriptions opd, bool enable)
         {
-            if (GetCadastralReferenceData().ZayavkaID == -1 /*|| GetCadastralReferenceData().CadastralReferenceID == -1*/)
+            if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().ObjektInMapID == -1)
                 return;
             //MessageBox.Show("EnableLawrsFropPage ->" + opd.Caption + "  \n enable =" + enable);
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;

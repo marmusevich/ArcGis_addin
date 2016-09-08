@@ -170,9 +170,9 @@ namespace WorckWithReestr
             // 
             this.btnSetObject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetObject.Location = new System.Drawing.Point(165, 30);
+            this.btnSetObject.Location = new System.Drawing.Point(134, 30);
             this.btnSetObject.Name = "btnSetObject";
-            this.btnSetObject.Size = new System.Drawing.Size(134, 23);
+            this.btnSetObject.Size = new System.Drawing.Size(183, 23);
             this.btnSetObject.TabIndex = 7;
             this.btnSetObject.Text = "Указать объект";
             this.btnSetObject.UseVisualStyleBackColor = true;
