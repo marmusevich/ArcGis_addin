@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace CadastralReference
 {
@@ -7,7 +9,6 @@ namespace CadastralReference
     public class CadastralReferenceData
     {
         #region // для теста
-        private static string captionsPrefex = "Лист: ";
         private static string[] m_ArrayDBNamesPages = new string[6]
                   {
                     "Выкопировка с топологии",
@@ -19,28 +20,26 @@ namespace CadastralReference
                   };
         #endregion // для теста
 
-        
+
         public void InitPagesDescription()
         {
-            m_Pages = new OnePageDescriptions[m_ArrayDBNamesPages.Length];
-            for (int index = 0; index < m_ArrayDBNamesPages.Length; ++index)
+            m_Pages = new List<OnePageDescriptions>();
+            foreach (string str in m_ArrayDBNamesPages)
             {
-                string str = m_ArrayDBNamesPages[index];
-                m_Pages[index] = new OnePageDescriptions();
-                m_Pages[index].NameFromDB = str;
-                m_Pages[index].Caption = captionsPrefex + str;
-                m_Pages[index].Image = (Image)null;
-                m_Pages[index].index = index;
-                m_Pages[index].Enable = true;
-                m_Pages[index].Image_Change += new EventHandler<EventArgs>(OnImage_Change);
+                OnePageDescriptions opd = new OnePageDescriptions(str, true);
+                opd.Image_Change += new EventHandler<EventArgs>(OnImage_Change);
+                m_Pages.Add(opd);
             }
+            m_Pages[0].Enable = false;
+
         }
+
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
         #region внутренние переменные
-        private OnePageDescriptions[] m_Pages = null;
+        List<OnePageDescriptions> m_Pages = null;
+
         private int m_ZayavkaID = -1;
-        private int m_CadastralReferenceID = -1;
         private string m_AllRTF = "";
         private string m_TitulRTF = " Титул ";
         private string m_Page1RTF = " начало динамической части";
@@ -50,7 +49,7 @@ namespace CadastralReference
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
         #region публичные свойства
-        public OnePageDescriptions[] Pages { get { return m_Pages; } set { m_Pages = value; } }
+        public List<OnePageDescriptions> Pages { get { return m_Pages; } private set { m_Pages = value; } }
         public int ZayavkaID 
         { 
             get 
@@ -67,22 +66,6 @@ namespace CadastralReference
                 }
             }
         }
-        public int CadastralReferenceID
-        {
-            get
-            {
-                return m_CadastralReferenceID;
-            }
-            set
-            {
-                if(m_CadastralReferenceID != value)
-                { 
-                m_CadastralReferenceID = value;
-                if (CadastralReferenceID_Change != null)
-                    CadastralReferenceID_Change(this, EventArgs.Empty);
-                }
-            }
-        }
         public string AllRTF { get { return m_AllRTF; } set { m_AllRTF = value; } }
         public string TitulRTF { get { return m_TitulRTF; } set { m_TitulRTF = value; } }
         public string Page1RTF { get { return m_Page1RTF; } set { m_Page1RTF = value; } }
@@ -94,8 +77,6 @@ namespace CadastralReference
         #region события
         // смена заявки
         public event EventHandler<EventArgs> ZayavkaID_Change;
-        // смена справки
-        public event EventHandler<EventArgs> CadastralReferenceID_Change;
         //смена изображения
         public event EventHandler<EventArgs> Image_Change;
         private void OnImage_Change(object sender, EventArgs e)
@@ -108,16 +89,29 @@ namespace CadastralReference
 
 
     // Информация об одном листе
-    public class OnePageDescriptions
+    public class OnePageDescriptions : IEquatable<OnePageDescriptions>
     {
+        public OnePageDescriptions(string caption, bool enable = false)
+        {
+            Caption = caption;
+            Enable = enable;
+            PagesID = Caption.GetHashCode();
+            Layers = new StringCollection();
+            m_Image = null;
+        }
+
+        #region свойсва / поля
         // имя из базы Данных для поля
-        public string NameFromDB { get; set; }
+        public int PagesID { get; private set; }
         // Назвение листа
         public string Caption { get; set; }
+        // включен ли лист
+        public bool Enable { get; set; }
         // Слои этого листа
-        public string[] Layers { get; set; }
+
+        public StringCollection Layers { get; set; }
         // макет
-        private Image m_Image = null;
+        private Image m_Image;
         public Image Image
         {
             get
@@ -126,7 +120,7 @@ namespace CadastralReference
             }
             set
             {
-                if(m_Image != value)
+                if (m_Image != value)
                 {
                     m_Image = value;
                     if (Image_Change != null)
@@ -134,17 +128,37 @@ namespace CadastralReference
                 }
             }
         }
-        // индекс в масиве
-        public int index { get; set; }
-        // включен ли лист
-        public bool Enable { get; set; }
+
+        #endregion
+
         #region события
         //смена изображения
         public event EventHandler<EventArgs> Image_Change;
         #endregion
+
+        #region перегрузка стандартных функций
         public override string ToString()
         {
             return Caption;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            OnePageDescriptions objAsPart = obj as OnePageDescriptions;
+            if (objAsPart == null) return false;
+            else return Equals(objAsPart);
+        }
+        public override int GetHashCode()
+        {
+            return PagesID;
+        }
+        public bool Equals(OnePageDescriptions other)
+        {
+            if (other == null) return false;
+            return (this.PagesID.Equals(other.PagesID));
+        }
+        #endregion
     }
+
 }

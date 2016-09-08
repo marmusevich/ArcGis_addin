@@ -26,7 +26,6 @@ namespace WorckWithReestr
         private void InitControls()
         {
             Generate_AndAddToTableLayoutPanel();
-            WorkCadastralReference.GetCadastralReferenceData().CadastralReferenceID_Change += new EventHandler<EventArgs>(CadastralReferenceID_Change);
             WorkCadastralReference.GetCadastralReferenceData().Image_Change += new EventHandler<EventArgs>(OnImage_Change);
 
             EnablePanels();
@@ -46,46 +45,48 @@ namespace WorckWithReestr
         private void Generate_AndAddToTableLayoutPanel()
         {
 
-            this.tlpPages.SuspendLayout();
-            this.SuspendLayout();
+            tlpPages.SuspendLayout();
+            SuspendLayout();
 
-            this.tlpPages.Controls.Clear();
-            this.tlpPages.RowCount = 1;
+            tlpPages.Controls.Clear();
+            tlpPages.RowCount = 1;
+            tlpPages.Visible = false;
+
+            int colum = 0;
 
             //графические листы
-            for (int i = 0; i < WorkCadastralReference.GetCadastralReferenceData().Pages.Length; i++)
+            foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
             {
-                if (!WorkCadastralReference.GetCadastralReferenceData().Pages[i].Enable)
+                if (!pd.Enable)
                     continue;
 
                 tlpPages.RowCount++;
                 tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-                tlpPages.Controls.Add(Create_rbSelect(WorkCadastralReference.GetCadastralReferenceData().Pages[i]), 0, i * 2);
+                tlpPages.Controls.Add(Create_rbSelect(pd), 0, colum * 2);
                 tlpPages.RowCount++;
                 tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-                tlpPages.Controls.Add(Create_pnlPageMaket(WorkCadastralReference.GetCadastralReferenceData().Pages[i]), 0, i * 2 + 1);
+                tlpPages.Controls.Add(Create_pnlPageMaket(pd), 0, colum * 2 + 1);
 
                 //первичная иницилизация
-                xbSelect_OnChecked(WorkCadastralReference.GetCadastralReferenceData().Pages[i]);
+                xbSelect_OnChecked(pd);
+
+                colum++;
             }
 
             //текстовый лист
-            OnePageDescriptions pd = new OnePageDescriptions();
-            pd.Caption = "Описательная часть";
-            pd.NameFromDB = "WorkText";
+            OnePageDescriptions opd = new OnePageDescriptions("Описательная часть", true);
             tlpPages.RowCount++;
             tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tlpPages.Controls.Add(Create_cbSelect(pd), 0, WorkCadastralReference.GetCadastralReferenceData().Pages.Length * 2);
+            tlpPages.Controls.Add(Create_cbSelect(opd), 0, colum * 2);
             tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tlpPages.Controls.Add(Create_pnlWorckText(prefix_pnlPage + pd.NameFromDB), 0, WorkCadastralReference.GetCadastralReferenceData().Pages.Length * 2 + 1);
+            tlpPages.Controls.Add(Create_pnlWorckText(prefix_pnlPage + opd.PagesID.ToString()), 0, colum * 2 + 1);
             //
-            xbSelect_OnChecked(pd);
+            xbSelect_OnChecked(opd);
 
             //
-            this.tlpPages.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.Update();
-            this.Refresh();
+            tlpPages.ResumeLayout(false);
+            ResumeLayout(false);
+            tlpPages.Visible = true; 
         }
 
         // лист текстового описания справки
@@ -97,13 +98,15 @@ namespace WorckWithReestr
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // элементы выбора листов
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // элементы выбора листов
         private CheckBox Create_cbSelect(OnePageDescriptions pd)
         {
             CheckBox cb = new CheckBox();
             cb.AutoSize = true;
             cb.Dock = System.Windows.Forms.DockStyle.Fill;
             cb.Location = new System.Drawing.Point(5, 5);
-            cb.Name = prefix_xbSelect + pd.NameFromDB;
+            cb.Name = prefix_xbSelect + pd.PagesID.ToString();
             cb.Size = new System.Drawing.Size(396, 17);
             cb.Text = pd.Caption;
             cb.UseVisualStyleBackColor = true;
@@ -118,7 +121,7 @@ namespace WorckWithReestr
             rb.AutoSize = true;
             rb.Dock = System.Windows.Forms.DockStyle.Fill;
             rb.Location = new System.Drawing.Point(5, 5);
-            rb.Name = prefix_xbSelect + pd.NameFromDB;
+            rb.Name = prefix_xbSelect + pd.PagesID.ToString();
             rb.Size = new System.Drawing.Size(396, 17);
             rb.Text = pd.Caption;
             rb.UseVisualStyleBackColor = true;
@@ -138,8 +141,7 @@ namespace WorckWithReestr
             p.Controls.Add(Create_btnPreviewMaket(pd));
             p.Controls.Add(Create_btnGenerateMaket(pd));
             p.Location = new System.Drawing.Point(5, 30);
-            p.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right)));
-            p.Name = prefix_pnlPage + pd.NameFromDB;
+            p.Name = prefix_pnlPage + pd.PagesID.ToString();
             p.Size = new System.Drawing.Size(215, 89);
             p.Tag = pd;
             p.ResumeLayout(false);
@@ -150,10 +152,10 @@ namespace WorckWithReestr
         private PictureBox Create_pbPreviewMaket(OnePageDescriptions pd)
         {
             PictureBox pb = new PictureBox();
-            pb.Location = new System.Drawing.Point(3, 3);
+            pb.Location = new System.Drawing.Point(4, 4);
             pb.BackColor = System.Drawing.Color.White;
-            pb.Name = prefix_pbPrev + pd.NameFromDB; ;
-            pb.Size = new System.Drawing.Size(75, 75);
+            pb.Name = prefix_pbPrev + pd.PagesID.ToString(); ;
+            pb.Size = new System.Drawing.Size(61, 60);
             pb.TabStop = false;
             pb.Tag = pd;
             pb.Click += new System.EventHandler(this.PreviewMaket_Click);
@@ -166,10 +168,10 @@ namespace WorckWithReestr
         private Button Create_btnGenerateMaket(OnePageDescriptions pd)
         {
             Button b = new Button();
-            b.Location = new System.Drawing.Point(85, 3);
-            b.Name = prefix_btnGenerate + pd.NameFromDB;
-            b.Size = new System.Drawing.Size(150, 23);
-            b.Text = "Сформировать макет";
+            b.Location = new System.Drawing.Point(91, 4);
+            b.Name = prefix_btnGenerate + pd.PagesID.ToString();
+            b.Size = new System.Drawing.Size(121, 23);
+            b.Text = "Генерировать";
             b.UseVisualStyleBackColor = true;
             b.Tag = pd;
             b.Click += new System.EventHandler(this.btnGenerateMaket_Click);
@@ -179,9 +181,9 @@ namespace WorckWithReestr
         private Button Create_btnSaveToDBMaket(OnePageDescriptions pd)
         {
             Button b = new Button();
-            b.Location = new System.Drawing.Point(85, 29);
-            b.Name = prefix_btnSaveToDB + pd.NameFromDB;
-            b.Size = new System.Drawing.Size(150, 23);
+            b.Location = new System.Drawing.Point(91, 30);
+            b.Name = prefix_btnSaveToDB + pd.PagesID.ToString();
+            b.Size = new System.Drawing.Size(121, 23);
             b.Text = "Сохрвеить в базу";
             b.UseVisualStyleBackColor = true;
             b.Tag = pd;
@@ -192,9 +194,9 @@ namespace WorckWithReestr
         private Button Create_btnPreviewMaket(OnePageDescriptions pd)
         {
             Button b = new Button();
-            b.Location = new System.Drawing.Point(85, 55);
-            b.Name = prefix_btnPrev + pd.NameFromDB;
-            b.Size = new System.Drawing.Size(150, 23);
+            b.Location = new System.Drawing.Point(91, 56);
+            b.Name = prefix_btnPrev + pd.PagesID.ToString();
+            b.Size = new System.Drawing.Size(121, 23);
             b.Text = "Посмотреть";
             b.UseVisualStyleBackColor = true;
             b.Tag = pd;
@@ -227,8 +229,8 @@ namespace WorckWithReestr
         //действия при выборе листа
         private void xbSelect_OnChecked(OnePageDescriptions opd)
         {
-            Panel p = GetControlByName(prefix_pnlPage + opd.NameFromDB) as Panel;
-            Control c = GetControlByName(prefix_xbSelect + opd.NameFromDB);
+            Panel p = GetControlByName(prefix_pnlPage + opd.PagesID.ToString()) as Panel;
+            Control c = GetControlByName(prefix_xbSelect + opd.PagesID.ToString());
             RadioButton rb = c as RadioButton;
             CheckBox сb = c as CheckBox;
             if (rb != null)
@@ -250,7 +252,7 @@ namespace WorckWithReestr
         // изменение текста выбора листов в зависимости от наличия макета
         private void SetTextToxbSelect(OnePageDescriptions opd)
         {
-            Control c = GetControlByName(prefix_xbSelect + opd.NameFromDB);
+            Control c = GetControlByName(prefix_xbSelect + opd.PagesID.ToString());
 
             if (opd.Image == null)
             {
@@ -367,7 +369,7 @@ namespace WorckWithReestr
         private void OnImage_Change(object sender, EventArgs e)
         {
             OnePageDescriptions opd = (OnePageDescriptions )sender;
-            PictureBox controlByName = this.GetControlByName(this.prefix_pbPrev + opd.NameFromDB) as PictureBox;
+            PictureBox controlByName = this.GetControlByName(this.prefix_pbPrev + opd.PagesID.ToString()) as PictureBox;
             if (controlByName != null)
                 controlByName.Image = opd.Image;
 

@@ -48,26 +48,26 @@ namespace CadastralReference
 
         private void FillclbListOfPages()
         {
-            for (int i = 0; i < WorkCadastralReference.GetCadastralReferenceData().Pages.Length; i++)
+            foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
             {
-                clbListOfPages.Items.Add(WorkCadastralReference.GetCadastralReferenceData().Pages[i], WorkCadastralReference.GetCadastralReferenceData().Pages[i].Enable);
+                clbListOfPages.Items.Add(pd, pd.Enable);
             }
         }
 
 
         private void CreateTabsTotcPages()
         {
-            for (int i = 0; i < WorkCadastralReference.GetCadastralReferenceData().Pages.Length; i++)
+            foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
             {
 
 
                 TabPage tp = new TabPage();
                 tp.Location = new System.Drawing.Point(4, 22);
-                tp.Name = WorkCadastralReference.GetCadastralReferenceData().Pages[i].NameFromDB;
+                tp.Name = pd.PagesID.ToString();
                 tp.Padding = new System.Windows.Forms.Padding(3);
                 tp.Size = new System.Drawing.Size(637, 389);
                 //tp.TabIndex = 0;
-                tp.Text = WorkCadastralReference.GetCadastralReferenceData().Pages[i].Caption;
+                tp.Text = pd.Caption;
                 tp.UseVisualStyleBackColor = true;
 
 

@@ -21,7 +21,6 @@ namespace CadastralReference
             AddToRTF_Const(ref rtb);
 
             //AddToRTF_NewPage(ref rtb);
-            //AddToRTF_AllImage(ref rtb);
 
             //AddToRTF_NewPage(ref rtb);
             AddToRTF_Raspiska(ref rtb);
@@ -53,21 +52,6 @@ namespace CadastralReference
             rtb.Text += WorkCadastralReference.GetCadastralReferenceData().ConstRTF;
         }
 
-        private static void AddToRTF_AllImage(ref RichTextBox rtb)
-        {
-            for (int index = 0; index < WorkCadastralReference.GetCadastralReferenceData().Pages.Length; ++index)
-            {
-                Image image = WorkCadastralReference.GetCadastralReferenceData().Pages[index].Image;
-                if (image != null)
-                {
-                    object dataObject = (object)Clipboard.GetDataObject();
-                    Clipboard.SetImage(image);
-                    rtb.Paste();
-                    Clipboard.SetDataObject(dataObject);
-                    WorckWithRTF.AddToRTF_NewPage(ref rtb);
-                }
-            }
-        }
 
 
         private static void AddToRTF_Raspiska(ref RichTextBox rtb)
