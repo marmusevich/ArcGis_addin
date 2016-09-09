@@ -163,8 +163,8 @@ namespace CadastralReference
         /// <summary>
         /// иницилизация 
         /// </summary>
-        /// <param name="caption"></param>
-        /// <param name="enable"></param>
+        /// <param name="caption"> название </param>
+        /// <param name="enable"> включен ли?</param>
         public OnePageDescriptions(string caption, bool enable = false)
         {
             Caption = caption;

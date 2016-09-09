@@ -93,8 +93,8 @@ namespace CadastralReference
 
         private void btnPageSetap_Click(object sender, EventArgs e)
         {
-            if (prntPageSetupDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                ;
+            //if (prntPageSetupDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                prntPageSetupDialog.ShowDialog();
             //prntPageSetupDialog.
         }
 

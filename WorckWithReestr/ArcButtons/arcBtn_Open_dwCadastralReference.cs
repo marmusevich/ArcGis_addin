@@ -21,7 +21,8 @@ namespace WorckWithReestr
             IDockableWindow statsticsDockableWin = ArcMap.DockableWindowManager.GetDockableWindow(dockableWinUID);
             //statsticsDockableWin.Show(true);
             statsticsDockableWin.Show(!statsticsDockableWin.IsVisible());
-
+            //if (statsticsDockableWin.IsVisible())
+            //    CadastralReference.WorkCadastralReference.SetZayavka(111);
         }
 
         protected override void OnUpdate()

@@ -5,13 +5,10 @@ using CadastralReference;
 namespace WorckWithReestr
 {
     /// <summary>
-    /// Designer class of the dockable window add-in. It contains user interfaces that
-    /// make up the dockable window.
+    /// 
     /// </summary>
     public partial class arcDW_CadastralReference : UserControl
     {
-	
-	
         //префиксы к элементам управления
         private string prefix_xbSelect = "xbSelect_";
         private string prefix_pnlPage = "pnlPageMaket_";
@@ -238,13 +235,12 @@ namespace WorckWithReestr
             {
                 if (p != null)
                     p.Visible = rb.Checked;
-                WorkCadastralReference.EnableLawrsFropPage(opd, rb.Checked);
+                WorkCadastralReference.EnableLawrsFropPage(opd /*, rb.Checked*/);
             }
             if (сb != null)
             {
                 if (p != null)
                     p.Visible = сb.Checked;
-                //WorkCadastralReference.EnableLawrsFropPage(opd, сb.Checked);
             }
 
             SetTextToxbSelect(opd);
@@ -270,9 +266,10 @@ namespace WorckWithReestr
         //включение/выключение панелей от наличия заявки
         private void EnablePanels()
         {
-            bool f = (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1);
+            bool f = (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1) && (WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID != -1);
             pnRtf.Enabled = f;
             tlpPages.Enabled = f;
+            btnSetObject.Enabled = f;
         }
         #endregion вспомогательные функции
 
@@ -302,7 +299,7 @@ namespace WorckWithReestr
         private void btnSaveToDBMaket_Click(object sender, EventArgs e)
         {
             OnePageDescriptions opd = this.GetPageDescriptionsFromControlTag(sender as Control);
-            WorkCadastralReference.SaveToDBImage(opd);
+            WorkCadastralReference_DB.SaveToDBImage(opd);
             //PictureBox controlByName = this.GetControlByName(this.prefix_pbPrev + opd.NameFromDB) as PictureBox;
             //if (controlByName != null)
             //    controlByName.Image = opd.Image;
@@ -318,7 +315,7 @@ namespace WorckWithReestr
 
         private void btnRTFSaveToDB_Click(object sender, EventArgs e)
         {
-            WorkCadastralReference.SaveToDBRTF();
+            WorkCadastralReference_DB.SaveToDBRTF();
         }
 
         private void btnRTFPrev_Click(object sender, EventArgs e)
@@ -348,12 +345,12 @@ namespace WorckWithReestr
 
         private void btnCloseEdit_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Закрыть для редактирования");
         }
 
         private void btnSetObject_Click(object sender, EventArgs e)
         {
-
+            WorkCadastralReference.SelectObjektInMap();
         }
 
         #endregion События элементов управления
@@ -364,15 +361,26 @@ namespace WorckWithReestr
         // изменение кода заявления
         private void ZayavkaID_Change(object sender, EventArgs e)
         {
-            this.EnablePanels();
+            bool f = (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1);
+            if (f)
+                lblZayavkaDiscriptions.Text = WorkCadastralReference.GetZayavkaDiscription();
+            else
+                lblZayavkaDiscriptions.Text = "Заявка не указана";
+
+            btnSetObject.Enabled = f;
+            lblObjectMapIDDiscriptions.Enabled = f;
         }
 
         // изменение кода выделенного объекта
         private void ObjektInMapID_Change(object sender, EventArgs e)
         {
-            this.EnablePanels();
+            EnablePanels();
+            if (WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID == -1)
+                lblObjectMapIDDiscriptions.Text = "Объект не выбран";
+            else
+                lblObjectMapIDDiscriptions.Text = WorkCadastralReference.GetObjektInMapDiscription();
         }
-        
+
         //изменение изабражения
         private void OnImage_Change(object sender, EventArgs e)
         {
