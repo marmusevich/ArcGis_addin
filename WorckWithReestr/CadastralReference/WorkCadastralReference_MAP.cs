@@ -63,11 +63,6 @@ namespace CadastralReference
         }
 
 
-
-
-
-
-
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static void AddNorthArrowTool()
@@ -224,6 +219,43 @@ namespace CadastralReference
                     gc.DeleteElement(element);
                 element = gc.Next();
             }
+        }
+
+
+
+        ///<summary>Add a Legend to the Page Layout from the Map.</summary>
+        ///<param name="pageLayout">An IPageLayout interface.</param>
+        ///<param name="map">An IMap interface.</param>
+        ///<param name="posX">A System.Double that is X coordinate value in page units for the start of the Legend. Example: 2.0</param>
+        ///<param name="posY">A System.Double that is Y coordinate value in page units for the start of the Legend. Example: 2.0</param>
+        ///<param name="legW">A System.Double that is length in page units of the Legend in both the X and Y direction. Example: 5.0</param>
+        /// 
+        ///<remarks></remarks>
+        public static void AddLegend(ESRI.ArcGIS.Carto.IPageLayout pageLayout, ESRI.ArcGIS.Carto.IMap map, System.Double posX, System.Double posY, System.Double legW)
+        {
+
+            if (pageLayout == null || map == null)
+            {
+                return;
+            }
+            ESRI.ArcGIS.Carto.IGraphicsContainer graphicsContainer = pageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IMapFrame mapFrame = graphicsContainer.FindFrame(map) as ESRI.ArcGIS.Carto.IMapFrame; // Dynamic Cast
+            ESRI.ArcGIS.esriSystem.IUID uid = new ESRI.ArcGIS.esriSystem.UIDClass();
+            uid.Value = "esriCarto.Legend";
+            ESRI.ArcGIS.Carto.IMapSurroundFrame mapSurroundFrame = mapFrame.CreateSurroundFrame((ESRI.ArcGIS.esriSystem.UID)uid, null); // Explicit Cast
+
+            //Get aspect ratio
+            ESRI.ArcGIS.Carto.IQuerySize querySize = mapSurroundFrame.MapSurround as ESRI.ArcGIS.Carto.IQuerySize; // Dynamic Cast
+            System.Double w = 0;
+            System.Double h = 0;
+            querySize.QuerySize(ref w, ref h);
+            System.Double aspectRatio = w / h;
+
+            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+            envelope.PutCoords(posX, posY, (posX * legW), (posY * legW / aspectRatio));
+            ESRI.ArcGIS.Carto.IElement element = mapSurroundFrame as ESRI.ArcGIS.Carto.IElement; // Dynamic Cast
+            element.Geometry = envelope;
+            graphicsContainer.AddElement(element, 0);
         }
 
 

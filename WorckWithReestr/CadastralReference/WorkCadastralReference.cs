@@ -39,6 +39,12 @@ namespace CadastralReference
         /// </summary>
         public static void SelectZayavka()
         {
+            string filteredString = "";
+            int i = frmReestrZayav_jurnal.ShowForSelect(filteredString);
+            if (i == 0) i = -1;
+            MessageBox.Show(string.Format("zayavka ID ={0} ", i));
+
+
             Random rnd = new Random();
             SetZayavka(rnd.Next());
         }
@@ -125,6 +131,8 @@ namespace CadastralReference
             WorkCadastralReference_MAP.AddNorthArrowTool();
             WorkCadastralReference_MAP.AddText();
 
+            WorkCadastralReference_MAP.AddLegend(mxdoc.PageLayout, mxdoc.FocusMap, 5, 5, 20);
+
             activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             activeView.Refresh();
         }
@@ -140,17 +148,39 @@ namespace CadastralReference
 
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
-           //
-           //зделать - сначала выбрать нужный объект потом спозиционировать
-            SharedClasses.GeneralMapWork.PositionedOnSelectedObjectAndSetScale(mxdoc, mxdoc.FocusMap);
+
+
+
+            //зделать - сначала выбрать нужный объект потом спозиционировать
+            {
+                //
+                //показать на карте
+                //SharedClasses.GeneralMapWork.ShowOnMap(ITable table, int objectID)
+                //спозиционироваться на выбранном объекте, установить масштаб
+                //SharedClasses.GeneralMapWork.PositionedOnSelectedObjectAndSetScale(IMxDocument mxDoc, IMap map)
+
+
+                if ((mxdoc.ActiveView is IPageLayout))
+                    mxdoc.ActiveView = mxdoc.FocusMap as IActiveView;
+
+                IFeature selectedFeature = null;
+                selectedFeature = (mxdoc.FocusMap.FeatureSelection as IEnumFeature).Next();
+
+                if (selectedFeature != null)
+                {
+                    IEnvelope envelope = selectedFeature.Shape.Envelope;
+                    envelope.Expand(2, 2, true);
+                    mxdoc.ActiveView.Extent = envelope;
+                    //mxdoc.ActiveView.Refresh();
+                }
+            }
 
             WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
 
             SetStandartMapSkale();
 
-            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+            mxdoc.PageLayout.ZoomToWhole();
             activeView.Refresh();
-
         }
 
 
@@ -174,8 +204,7 @@ namespace CadastralReference
                     break;
                 }
             }
-
-            MessageBox.Show(string.Format("curSkale ={0} newSkale = {1}", curSkale, newSkale));
+            //MessageBox.Show(string.Format("curSkale ={0} newSkale = {1}", curSkale, newSkale));
             mxdoc.FocusMap.MapScale = newSkale;
         }
 

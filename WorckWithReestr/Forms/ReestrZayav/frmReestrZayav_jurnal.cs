@@ -30,6 +30,14 @@ namespace WorckWithReestr
             frm.Activate();
         }
 
+        public static int ShowForSelect(string filteredString = "")
+        {
+            frmReestrZayav_jurnal frm = new frmReestrZayav_jurnal(true, filteredString);
+            frm.ShowDialog();
+            return frm.SelectID;
+        }
+
+
         public frmReestrZayav_jurnal()
             : base()
         {
