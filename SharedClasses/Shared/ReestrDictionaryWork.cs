@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 
+
 namespace SharedClasses
 {
     //общие функции для работы со справочниками
     public static class ReestrDictionaryWork
     {
+        public enum AdmRajFieldSufix
+        {
+            UKR, ROS, LAT
+        }
+
+
         //---------------------------------------------------------------------------------------
         #region получение значения из справочника
         //вернуть Ф.И.О. из справочника физлиц
@@ -62,6 +69,21 @@ namespace SharedClasses
                 ret = o.ToString();
             return ret;
         }
+        //вернуть название района из справочника районов
+        public static string GetFIOByIDFromAdmRaj(int id, AdmRajFieldSufix arfs = AdmRajFieldSufix.UKR)
+        {
+            string fildname = "NAZVA_UKR";
+            if(arfs ==AdmRajFieldSufix.ROS)
+                fildname = "NAZVA_ROS";
+            if (arfs == AdmRajFieldSufix.LAT)
+                fildname = "NAZVA_LAT";
+
+            string ret = "";
+            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "Rej_Adm_Raj_Mis", fildname);
+            if (o != null)
+                ret = o.ToString();
+            return ret;
+        }
 
         #endregion
         //---------------------------------------------------------------------------------------
@@ -111,7 +133,28 @@ namespace SharedClasses
             tipDocTextBox.ReadOnly = !ret;
             return ret;
         }
-        
+        //включить автозаполнение поля по  название района для справочника районов
+        public static bool EnableAutoComlectToAdmRaj(TextBox fizLicTextBox, AdmRajFieldSufix arfs = AdmRajFieldSufix.UKR)
+        {
+            string fildname = "NAZVA_UKR";
+            if (arfs == AdmRajFieldSufix.ROS)
+                fildname = "NAZVA_ROS";
+            if (arfs == AdmRajFieldSufix.LAT)
+                fildname = "NAZVA_LAT";
+
+            bool ret = false;
+            AutoCompleteStringCollection sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("Kadastr2016", "Rej_Adm_Raj_Mis", fildname);
+            if (sourse != null)
+            {
+                fizLicTextBox.AutoCompleteCustomSource = sourse;
+                fizLicTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                fizLicTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                ret = true;
+            }
+            fizLicTextBox.ReadOnly = !ret;
+            return ret;
+        }
+
         #endregion
         //---------------------------------------------------------------------------------------
         #region методы проверок полей ввода
@@ -180,6 +223,35 @@ namespace SharedClasses
             else
             {
                 errorProvider.SetError(chekedValue, "Должно быть значение из справочника типов документов");
+                ret = false;
+            }
+            return ret;
+        }
+        // проверка текстового поля на значения из справочника районов и выстовить ошибку в провайдер ошыбок
+        public static bool CheckValueIsContainsAdmRaj_SetError(TextBox chekedValue, ErrorProvider errorProvider, ref int id, TextBox codeValue = null, AdmRajFieldSufix arfs = AdmRajFieldSufix.UKR)
+        {
+            string fildname = "NAZVA_UKR";
+            if (arfs == AdmRajFieldSufix.ROS)
+                fildname = "NAZVA_ROS";
+            if (arfs == AdmRajFieldSufix.LAT)
+                fildname = "NAZVA_LAT";
+
+            bool ret = true;
+            int id_temp;
+
+            id_temp = GeneralDBWork.GetIDByTextValue("Kadastr2016", chekedValue.Text, "Rej_Adm_Raj_Mis", fildname, true);
+
+            if (id_temp != -1)
+            {
+                errorProvider.SetError(chekedValue, String.Empty);
+                id = id_temp;
+                chekedValue.Text = GetFIOByIDFromFizLic(id);
+                if (codeValue != null)
+                    codeValue.Text = GetINNByIDFromFizLic(id);
+            }
+            else
+            {
+                errorProvider.SetError(chekedValue, "Должно быть значение из справочника административных районов города");
                 ret = false;
             }
             return ret;

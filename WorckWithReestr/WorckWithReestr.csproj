@@ -101,6 +101,7 @@
     <Compile Include="ArcButtons\arcBtn_Open_JurLicList.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrVedomostey.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_ReestrZayav.cs" />
+    <Compile Include="ArcButtons\arcBtn_Open_RejAdmRajMis.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_TipDoc.cs" />
     <Compile Include="CadastralReference\arcDW_CadastralReference.cs">
       <SubType>UserControl</SubType>
@@ -164,6 +165,12 @@
     </Compile>
     <Compile Include="Forms\ReestrZayav\frmReestrZayav_jurnal.Designer.cs">
       <DependentUpon>frmReestrZayav_jurnal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RejAdmRajMis\frmRejAdmRajMis_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RejAdmRajMis\frmRejAdmRajMis_list.Designer.cs">
+      <DependentUpon>frmRejAdmRajMis_list.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TipDok\frmTipDoc_element.cs">
       <SubType>Form</SubType>
@@ -385,7 +392,9 @@
   <ItemGroup>
     <AddInContent Include="Images\arcDW_CadastralReference.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AddInContent Include="Images\arcBtn_Open_RejAdmRajMis.png" />
+  </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Images\arcBtn_Open_dwCadastralReference.png" />
   </ItemGroup>

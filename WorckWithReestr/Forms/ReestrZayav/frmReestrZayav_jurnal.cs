@@ -19,6 +19,8 @@ namespace WorckWithReestr
         int indexTip_Doc;
         //int indexTip_Doc_code;
 
+        int indexRajon;
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,7 +88,13 @@ namespace WorckWithReestr
                                       base.table.FindField("Forma_Ved"),// 20
                                       base.table.FindField("Fio_Ved_Vid"),// 21
                                       base.table.FindField("Fio_Ved_Prin"),// 22
-                                      base.table.FindField("Prim") // 23
+                                      base.table.FindField("Prim"), // 23
+                                      base.table.FindField("Cane_Date"),
+                                      base.table.FindField("Adress_Text"),
+                                      base.table.FindField("Rajon"), 
+                                      base.table.FindField("IsHaveReferense"),
+                                      base.table.FindField("IsReferenceClose") 
+
                                     };
             GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
         }
@@ -107,6 +115,8 @@ namespace WorckWithReestr
 
             indexTip_Doc = dgv.Columns["Tip_Doc"].Index;
             //indexTip_code = dgv.Columns.Add("Tip_code", "Код типа документа");
+
+            indexRajon = dgv.Columns["Rajon"].Index;
 
             dgv.Columns["GlobalID"].Visible = false;
 
@@ -146,6 +156,11 @@ namespace WorckWithReestr
             else if (fildName == "Tip_Doc")
             {
                 dictionaryTableName = "Tip_Doc";
+                return true;
+            }
+            else if (fildName == "Rajon")
+            {
+                dictionaryTableName = "Rej_Adm_Raj_Mis";
                 return true;
             }
             return false;
@@ -243,7 +258,55 @@ namespace WorckWithReestr
             //    catch (FormatException ee)
             //    { }
             //}
+
+
+            if (e.ColumnIndex == indexRajon)
+            {
+                try
+                {
+                    e.FormattingApplied = true;
+                    e.Value = ReestrDictionaryWork.GetFIOByIDFromAdmRaj(Convert.ToInt32(e.Value));
+                }
+                catch (Exception ex) // обработка ошибок
+                {
+                    Logger.Write(ex, string.Format("frmReestrZayav_jurnal.OnCellFormatting Rajon ={0}", e.Value));
+                }
+            }
+
         }
         #endregion
     }
 }
+
+
+
+    
+//base.table.FindField("Cane_Date"), 
+//base.table.FindField("Adress_Text"), 
+
+//base.table.FindField("Rajon"), 
+//base.table.FindField("IsHaveReferense"),
+//base.table.FindField("IsReferenceClose") 
+
+
+
+//Kadastr2016.DBO.Rej_Adm_Raj_Mis
+//
+//  <Name>ID_RAI</Name> 
+//  <Type>esriFieldTypeInteger</Type> 
+//  <AliasName>Ідентифікатор району</AliasName>
+
+//  < Name > NAZVA_UKR </ Name >
+//  < Type > esriFieldTypeString </ Type >
+//  < Length > 80 </ Length >
+//  < AliasName > Назва району українською мовою</AliasName>
+
+//  < Name > NAZVA_ROS </ Name >
+//  < Type > esriFieldTypeString </ Type >
+//  < Length > 80 </ Length >
+//  < AliasName > Назва району російською мовою</AliasName>
+
+//  < Name > NAZVA_LAT </ Name >
+//  < Type > esriFieldTypeString </ Type >
+//  < Length > 80 </ Length >
+//  < AliasName > Назва району латиницею</AliasName> 
