@@ -3,7 +3,12 @@ using System;
 using System.Windows.Forms;
 using SharedClasses;
 
+//base.table.FindField("Cane_Date"), 
+//base.table.FindField("Adress_Text"), 
 
+//base.table.FindField("Rajon"), 
+//base.table.FindField("IsHaveReferense"),
+//base.table.FindField("IsReferenceClose") 
 
 namespace WorckWithReestr
 {
@@ -16,15 +21,17 @@ namespace WorckWithReestr
         DomeinDataAdapter ddaStatus;
         DomeinDataAdapter ddaOtkaz;
         DomeinDataAdapter ddaOplata;
+ 
         // коды значений справочников
         int mTip_Doc = -1;
         int mKod_Z = -1;
         int mFio_Ved_Vid = -1;
         int mFio_Ved_Prin = -1;
         int mFio_Z = -1;
+        int mRajon = -1;
 
         #endregion
-        
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
         #region  functions
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,6 +44,7 @@ namespace WorckWithReestr
             SetDateValueFromDBToDateTimePicker(ref row, "Data_Ish", dtpData_Ish);
             SetDateValueFromDBToDateTimePicker(ref row, "Data_Oplata", dtpData_Oplata);
             SetDateValueFromDBToDateTimePicker(ref row, "Data_Ved", dtpData_Ved);
+            SetDateValueFromDBToDateTimePicker(ref row, "Cane_Date", dtpCane_Date);
 
             //простые тексты  
             SetStringValueFromDBToTextBox(ref row, "Tel_Z", txtTel_Z);
@@ -49,6 +57,7 @@ namespace WorckWithReestr
             SetStringValueFromDBToTextBox(ref row, "Pr_Otkaz", txtPr_Otkaz);
             SetStringValueFromDBToTextBox(ref row, "Dodatok", txtDodatok);
             SetStringValueFromDBToTextBox(ref row, "Cane", txtCane);
+            SetStringValueFromDBToTextBox(ref row, "Adress_Text", txtAdress_Text);
 
             //доменные значения
             CheсkValueAndSetToComboBox(ref cbStatus, ref ddaStatus, "Status", GetValueFromDB(ref row, "Status"));
@@ -61,15 +70,34 @@ namespace WorckWithReestr
             mFio_Ved_Vid = (int)GetValueFromDB(ref row, "Fio_Ved_Vid");
             mFio_Ved_Prin = (int)GetValueFromDB(ref row, "Fio_Ved_Prin");
             mFio_Z = (int)GetValueFromDB(ref row, "Fio_Z");
+            mRajon = (int)GetValueFromDB(ref row, "Rajon");
 
             OnChangedFio_Z();
             OnChangedKod_Z();
             OnChangedFio_Ved_Vid();
             OnChangedFio_Ved_Prin();
             OnChangedTipDoc();
+            OnChangedRajon();
 
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             SetIntValueFromDBToTextBox(ref row, "N_Z", txtN_Z);
+
+            
+            
+            bool IsHaveReferense = GeneralApp.ConvertVolueToBool(base.table.FindField("IsHaveReferense"));
+            bool IsReferenceClose = GeneralApp.ConvertVolueToBool(base.table.FindField("IsReferenceClose"));
+            string tmp = "";
+            if (IsHaveReferense)
+                tmp += "Кадастровой справки нет.";
+            else
+            { 
+                tmp += "Есть кадастровая справка.";
+                if (IsReferenceClose)
+                    tmp += " Не заблокирована.";
+                else
+                    tmp += " Заблокирована для редоктирования.";
+            }
+            llblHaveReferense.Text = tmp;
         }
 
         protected override void FormElement_to_DB(IRow row)
@@ -80,6 +108,7 @@ namespace WorckWithReestr
             SaveDateValueFromDateTimePickerToDB(ref row, "Data_Ish", dtpData_Ish);
             SaveDateValueFromDateTimePickerToDB(ref row, "Data_Oplata", dtpData_Oplata);
             SaveDateValueFromDateTimePickerToDB(ref row, "Data_Ved", dtpData_Ved);
+            SaveDateValueFromDateTimePickerToDB(ref row, "Cane_Date", dtpCane_Date);
 
             //простые тексты  
             SaveStringValueFromTextBoxToDB(ref row, "Tel_Z", txtTel_Z);
@@ -93,6 +122,7 @@ namespace WorckWithReestr
             SaveStringValueFromTextBoxToDB(ref row, "Pr_Otkaz", txtPr_Otkaz);
             SaveStringValueFromTextBoxToDB(ref row, "Dodatok", txtDodatok);
             SaveStringValueFromTextBoxToDB(ref row, "Cane", txtCane);
+            SaveStringValueFromTextBoxToDB(ref row, "Adress_Text", txtAdress_Text);
 
             //доменные значения
             SaveDomeinDataValueFromComboBoxToDB(ref row, "Status", ref cbStatus);
@@ -105,6 +135,7 @@ namespace WorckWithReestr
             row.set_Value(base.table.FindField("Fio_Ved_Vid"), mFio_Ved_Vid);
             row.set_Value(base.table.FindField("Fio_Ved_Prin"), mFio_Ved_Prin);
             row.set_Value(base.table.FindField("Fio_Z"), mFio_Z);
+            row.set_Value(base.table.FindField("Rajon"), mRajon);
 
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             int N_Z = Convert.ToInt32(txtN_Z.Text);
@@ -121,17 +152,18 @@ namespace WorckWithReestr
             bool ret = base.ValidatingData();
             ret = GeneralDBWork.CheckValueIsInt_SetError(txtN_Z, errorProvider) && ret;
             ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Z, errorProvider, ref mFio_Z) && ret;
-            ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Vid, errorProvider, ref mFio_Ved_Vid) && ret;
-            ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Prin, errorProvider, ref mFio_Ved_Prin) && ret;
+            //ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Vid, errorProvider, ref mFio_Ved_Vid) && ret;
+            //ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Prin, errorProvider, ref mFio_Ved_Prin) && ret;
             if (cbStatus.SelectedIndex == 0)
             {
-                ret = ReestrDictionaryWork.CheckValueIsContainsJurLic_SetError(txtKod_Z, errorProvider, ref mKod_Z, txtKod_Z_code) && ret;
+                ret = ReestrDictionaryWork.CheckValueIsContainsJurLic_SetError(txtKod_Z, errorProvider, ref mKod_Z, null) && ret;
             }
             else
             {
-                ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtKod_Z, errorProvider, ref mKod_Z, txtKod_Z_code) && ret;
+                ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtKod_Z, errorProvider, ref mKod_Z, null) && ret;
             }
-            ret = ReestrDictionaryWork.CheckValueIsContainsTip_Doc_SetError(txtTip_Doc, errorProvider, ref mTip_Doc, txtTip_Doc_code) && ret;
+            ret = ReestrDictionaryWork.CheckValueIsContainsTip_Doc_SetError(txtTip_Doc, errorProvider, ref mTip_Doc, null) && ret;
+            ret = ReestrDictionaryWork.CheckValueIsContainsAdmRaj_SetError(txtRajon, errorProvider, ref mRajon, null) && ret;
 
 
             return ret;
@@ -155,6 +187,9 @@ namespace WorckWithReestr
                 ReestrDictionaryWork.EnableAutoComlectToJurLic(txtKod_Z);
             else
                 ReestrDictionaryWork.EnableAutoComlectToFizLic(txtKod_Z);
+
+            ReestrDictionaryWork.EnableAutoComlectToAdmRaj(txtRajon);
+
         }
 
         protected override void DB_DefaultValue_to_FormElement()
@@ -178,12 +213,12 @@ namespace WorckWithReestr
             SetMaxLengthStringValueToTextBox("Pr_Otkaz", txtPr_Otkaz);
             SetMaxLengthStringValueToTextBox("Dodatok", txtDodatok);
             SetMaxLengthStringValueToTextBox("Cane", txtCane);
+            SetMaxLengthStringValueToTextBox("Adress_Text", txtAdress_Text);
         }
 
         private void OnChangedTipDoc()
         {
             txtTip_Doc.Text = ReestrDictionaryWork.GetNameByIDFromTip_Doc(mTip_Doc);
-            txtTip_Doc_code.Text = ReestrDictionaryWork.GetCodeByIDFromTip_Doc(mTip_Doc);
         }
 
         private void OnChangedFio_Ved_Prin()
@@ -201,18 +236,21 @@ namespace WorckWithReestr
             if (cbStatus.SelectedIndex == 0)
             {
                 txtKod_Z.Text = ReestrDictionaryWork.GetNameByIDFromJurOsoby(mKod_Z);
-                txtKod_Z_code.Text = ReestrDictionaryWork.GetINNByIDFromJurOsoby(mKod_Z);
             }
             else
             {
                 txtKod_Z.Text = ReestrDictionaryWork.GetFIOByIDFromFizLic(mKod_Z);
-                txtKod_Z_code.Text = ReestrDictionaryWork.GetINNByIDFromFizLic(mKod_Z);
             }
         }
 
         private void OnChangedFio_Z()
         {
             txtFio_Z.Text = ReestrDictionaryWork.GetFIOByIDFromFizLic(mFio_Z);
+        }
+
+        private void OnChangedRajon()
+        {
+            txtRajon.Text = ReestrDictionaryWork.GetNazvaByIDFromAdmRaj(mRajon);
         }
 
         #endregion
@@ -252,6 +290,13 @@ namespace WorckWithReestr
                     Close();
                     return;
             }
+        }
+
+        private void llblHaveReferense_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //arcBtn_Open_dwCadastralReference.Show(objectID, true);
+            //сохранить и закрыть
+            
         }
 
         #endregion
@@ -310,6 +355,13 @@ namespace WorckWithReestr
             errorProvider.SetError(txtFio_Ved_Vid, String.Empty);
             //ValidatingData();
         }
+        private void btnRajon_Click(object sender, EventArgs e)
+        {
+            string filteredString = "";
+            mRajon = frmRejAdmRajMis_list.ShowForSelect(filteredString);
+            OnChangedRajon();
+            errorProvider.SetError(txtRajon, String.Empty);
+        }
         #endregion
 
         //---------------------------------------------------------------------------------------
@@ -331,7 +383,6 @@ namespace WorckWithReestr
             isModified = true;
             mKod_Z = -1;
             txtKod_Z.Text = "";
-            txtKod_Z_code.Text = "";
 
             if (cbStatus.SelectedIndex == 0)
                 ReestrDictionaryWork.EnableAutoComlectToJurLic(txtKod_Z);
@@ -424,7 +475,13 @@ namespace WorckWithReestr
             isModified = true;
             e.Cancel = !ValidatingData();
         }
-        
+
+        private void txtRajon_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+            e.Cancel = !ValidatingData();
+        }
+
         //---
         private void txtTel_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -495,7 +552,17 @@ namespace WorckWithReestr
         {
             isModified = true;
         }
-        
+
+        private void dtpCane_Date_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+        }
+
+        private void txtAdress_Text_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+        }
         #endregion
+
     }
 }

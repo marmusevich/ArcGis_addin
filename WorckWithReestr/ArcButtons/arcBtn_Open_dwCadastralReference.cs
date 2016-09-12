@@ -13,18 +13,23 @@ namespace WorckWithReestr
 
         protected override void OnClick()
         {
+            Show(-1);
+        }
+
+        public static void Show( int id, bool show = false)
+        {
             ArcMap.Application.CurrentTool = null;
 
             UID dockableWinUID = new UIDClass();
             dockableWinUID.Value = ThisAddIn.IDs.arcDW_CadastralReference;
 
             IDockableWindow statsticsDockableWin = ArcMap.DockableWindowManager.GetDockableWindow(dockableWinUID);
-            //statsticsDockableWin.Show(true);
-            statsticsDockableWin.Show(!statsticsDockableWin.IsVisible());
-            //if (statsticsDockableWin.IsVisible())
-            //    CadastralReference.WorkCadastralReference.SetZayavka(111);
-        }
 
+            statsticsDockableWin.Show(!statsticsDockableWin.IsVisible() || show);
+
+            if (id != -1)
+                CadastralReference.WorkCadastralReference.SetZayavka(id);
+        }
         protected override void OnUpdate()
         {
             Enabled = ArcMap.Application != null;

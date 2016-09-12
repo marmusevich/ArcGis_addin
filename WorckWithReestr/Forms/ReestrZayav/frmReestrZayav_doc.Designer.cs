@@ -62,7 +62,6 @@ namespace WorckWithReestr
             this.lblDoc_Oplata = new System.Windows.Forms.Label();
             this.lblData_Ved = new System.Windows.Forms.Label();
             this.lblOplata = new System.Windows.Forms.Label();
-            this.lblTip_Doc_code = new System.Windows.Forms.Label();
             this.lblServicesProvided = new System.Windows.Forms.Label();
             this.txtKod_Z = new System.Windows.Forms.TextBox();
             this.btnKod_Z = new System.Windows.Forms.Button();
@@ -77,33 +76,38 @@ namespace WorckWithReestr
             this.txtOpisan_Ved = new System.Windows.Forms.TextBox();
             this.txtDoc_Oplata = new System.Windows.Forms.TextBox();
             this.cbOplata = new System.Windows.Forms.ComboBox();
-            this.txtTip_Doc_code = new System.Windows.Forms.TextBox();
             this.cbOtkaz = new System.Windows.Forms.ComboBox();
             this.txtCane = new System.Windows.Forms.TextBox();
             this.txtPr_Otkaz = new System.Windows.Forms.TextBox();
             this.btnFio_Z = new System.Windows.Forms.Button();
             this.txtFio_Z = new System.Windows.Forms.TextBox();
-            this.txtKod_Z_code = new System.Windows.Forms.TextBox();
-            this.lblKod_Z_code = new System.Windows.Forms.Label();
             this.txtDodatok = new System.Windows.Forms.TextBox();
             this.lblDodatok = new System.Windows.Forms.Label();
+            this.lblCane_Date = new System.Windows.Forms.Label();
+            this.dtpCane_Date = new System.Windows.Forms.DateTimePicker();
+            this.txtAdress_Text = new System.Windows.Forms.TextBox();
+            this.lblAdress_Text = new System.Windows.Forms.Label();
+            this.btnRajon = new System.Windows.Forms.Button();
+            this.txtRajon = new System.Windows.Forms.TextBox();
+            this.lblRajon = new System.Windows.Forms.Label();
+            this.llblHaveReferense = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(1030, 443);
+            this.btnOk.Location = new System.Drawing.Point(1030, 406);
             this.btnOk.TabIndex = 23;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(15, 443);
+            this.btnCancel.Location = new System.Drawing.Point(11, 406);
             this.btnCancel.TabIndex = 25;
             // 
             // txtSodergan
             // 
             this.txtSodergan.AcceptsReturn = true;
-            this.txtSodergan.Location = new System.Drawing.Point(143, 215);
+            this.txtSodergan.Location = new System.Drawing.Point(143, 242);
             this.txtSodergan.Multiline = true;
             this.txtSodergan.Name = "txtSodergan";
             this.txtSodergan.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -113,7 +117,7 @@ namespace WorckWithReestr
             // 
             // txtTel_Z
             // 
-            this.txtTel_Z.Location = new System.Drawing.Point(143, 123);
+            this.txtTel_Z.Location = new System.Drawing.Point(143, 173);
             this.txtTel_Z.Name = "txtTel_Z";
             this.txtTel_Z.Size = new System.Drawing.Size(400, 20);
             this.txtTel_Z.TabIndex = 4;
@@ -123,7 +127,7 @@ namespace WorckWithReestr
             // 
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(143, 53);
+            this.cbStatus.Location = new System.Drawing.Point(143, 126);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(151, 21);
             this.cbStatus.TabIndex = 2;
@@ -133,7 +137,7 @@ namespace WorckWithReestr
             // 
             this.dtpData_Ish.CustomFormat = "dd.MMM.yyyy HH.mm";
             this.dtpData_Ish.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpData_Ish.Location = new System.Drawing.Point(392, 192);
+            this.dtpData_Ish.Location = new System.Drawing.Point(392, 219);
             this.dtpData_Ish.Name = "dtpData_Ish";
             this.dtpData_Ish.Size = new System.Drawing.Size(151, 20);
             this.dtpData_Ish.TabIndex = 7;
@@ -141,7 +145,7 @@ namespace WorckWithReestr
             // 
             // txtN_Ish_Z
             // 
-            this.txtN_Ish_Z.Location = new System.Drawing.Point(143, 192);
+            this.txtN_Ish_Z.Location = new System.Drawing.Point(143, 219);
             this.txtN_Ish_Z.Name = "txtN_Ish_Z";
             this.txtN_Ish_Z.Size = new System.Drawing.Size(130, 20);
             this.txtN_Ish_Z.TabIndex = 6;
@@ -149,7 +153,7 @@ namespace WorckWithReestr
             // 
             // lblCane
             // 
-            this.lblCane.Location = new System.Drawing.Point(564, 30);
+            this.lblCane.Location = new System.Drawing.Point(8, 53);
             this.lblCane.Name = "lblCane";
             this.lblCane.Size = new System.Drawing.Size(125, 20);
             this.lblCane.TabIndex = 18;
@@ -157,7 +161,7 @@ namespace WorckWithReestr
             // 
             // lblPr_Otkaz
             // 
-            this.lblPr_Otkaz.Location = new System.Drawing.Point(564, 192);
+            this.lblPr_Otkaz.Location = new System.Drawing.Point(564, 144);
             this.lblPr_Otkaz.Name = "lblPr_Otkaz";
             this.lblPr_Otkaz.Size = new System.Drawing.Size(103, 20);
             this.lblPr_Otkaz.TabIndex = 17;
@@ -165,7 +169,7 @@ namespace WorckWithReestr
             // 
             // lblOtkaz
             // 
-            this.lblOtkaz.Location = new System.Drawing.Point(564, 169);
+            this.lblOtkaz.Location = new System.Drawing.Point(564, 121);
             this.lblOtkaz.Name = "lblOtkaz";
             this.lblOtkaz.Size = new System.Drawing.Size(125, 20);
             this.lblOtkaz.TabIndex = 16;
@@ -173,7 +177,7 @@ namespace WorckWithReestr
             // 
             // lblFio_Z
             // 
-            this.lblFio_Z.Location = new System.Drawing.Point(8, 375);
+            this.lblFio_Z.Location = new System.Drawing.Point(8, 349);
             this.lblFio_Z.Name = "lblFio_Z";
             this.lblFio_Z.Size = new System.Drawing.Size(391, 20);
             this.lblFio_Z.TabIndex = 15;
@@ -209,7 +213,7 @@ namespace WorckWithReestr
             // 
             // lblSodergan
             // 
-            this.lblSodergan.Location = new System.Drawing.Point(8, 230);
+            this.lblSodergan.Location = new System.Drawing.Point(8, 257);
             this.lblSodergan.Name = "lblSodergan";
             this.lblSodergan.Size = new System.Drawing.Size(125, 20);
             this.lblSodergan.TabIndex = 10;
@@ -217,7 +221,7 @@ namespace WorckWithReestr
             // 
             // lblTel_Z
             // 
-            this.lblTel_Z.Location = new System.Drawing.Point(8, 123);
+            this.lblTel_Z.Location = new System.Drawing.Point(8, 173);
             this.lblTel_Z.Name = "lblTel_Z";
             this.lblTel_Z.Size = new System.Drawing.Size(125, 20);
             this.lblTel_Z.TabIndex = 9;
@@ -225,7 +229,7 @@ namespace WorckWithReestr
             // 
             // lblStatus
             // 
-            this.lblStatus.Location = new System.Drawing.Point(8, 53);
+            this.lblStatus.Location = new System.Drawing.Point(8, 126);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(125, 21);
             this.lblStatus.TabIndex = 7;
@@ -233,7 +237,7 @@ namespace WorckWithReestr
             // 
             // lblTip_Doc
             // 
-            this.lblTip_Doc.Location = new System.Drawing.Point(8, 146);
+            this.lblTip_Doc.Location = new System.Drawing.Point(8, 196);
             this.lblTip_Doc.Name = "lblTip_Doc";
             this.lblTip_Doc.Size = new System.Drawing.Size(125, 21);
             this.lblTip_Doc.TabIndex = 6;
@@ -241,7 +245,7 @@ namespace WorckWithReestr
             // 
             // lblData_Ish
             // 
-            this.lblData_Ish.Location = new System.Drawing.Point(288, 192);
+            this.lblData_Ish.Location = new System.Drawing.Point(288, 219);
             this.lblData_Ish.Name = "lblData_Ish";
             this.lblData_Ish.Size = new System.Drawing.Size(101, 20);
             this.lblData_Ish.TabIndex = 5;
@@ -249,7 +253,7 @@ namespace WorckWithReestr
             // 
             // lblN_Ish_Z
             // 
-            this.lblN_Ish_Z.Location = new System.Drawing.Point(8, 192);
+            this.lblN_Ish_Z.Location = new System.Drawing.Point(8, 219);
             this.lblN_Ish_Z.Name = "lblN_Ish_Z";
             this.lblN_Ish_Z.Size = new System.Drawing.Size(125, 20);
             this.lblN_Ish_Z.TabIndex = 4;
@@ -265,7 +269,7 @@ namespace WorckWithReestr
             // 
             // lblKod_Z
             // 
-            this.lblKod_Z.Location = new System.Drawing.Point(8, 77);
+            this.lblKod_Z.Location = new System.Drawing.Point(8, 150);
             this.lblKod_Z.Name = "lblKod_Z";
             this.lblKod_Z.Size = new System.Drawing.Size(125, 21);
             this.lblKod_Z.TabIndex = 2;
@@ -291,7 +295,7 @@ namespace WorckWithReestr
             // txtForma_Ved
             // 
             this.txtForma_Ved.AcceptsReturn = true;
-            this.txtForma_Ved.Location = new System.Drawing.Point(705, 291);
+            this.txtForma_Ved.Location = new System.Drawing.Point(705, 243);
             this.txtForma_Ved.Multiline = true;
             this.txtForma_Ved.Name = "txtForma_Ved";
             this.txtForma_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -303,7 +307,7 @@ namespace WorckWithReestr
             // 
             this.dtpData_Ved.CustomFormat = "dd.MMM.yyyy HH.mm";
             this.dtpData_Ved.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpData_Ved.Location = new System.Drawing.Point(705, 215);
+            this.dtpData_Ved.Location = new System.Drawing.Point(705, 167);
             this.dtpData_Ved.Name = "dtpData_Ved";
             this.dtpData_Ved.Size = new System.Drawing.Size(151, 20);
             this.dtpData_Ved.TabIndex = 18;
@@ -313,7 +317,7 @@ namespace WorckWithReestr
             // 
             this.dtpData_Oplata.CustomFormat = "dd.MMM.yyyy HH.mm";
             this.dtpData_Oplata.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpData_Oplata.Location = new System.Drawing.Point(705, 77);
+            this.dtpData_Oplata.Location = new System.Drawing.Point(705, 53);
             this.dtpData_Oplata.Name = "dtpData_Oplata";
             this.dtpData_Oplata.Size = new System.Drawing.Size(151, 20);
             this.dtpData_Oplata.TabIndex = 14;
@@ -321,7 +325,7 @@ namespace WorckWithReestr
             // 
             // lblFio_Ved_Prin
             // 
-            this.lblFio_Ved_Prin.Location = new System.Drawing.Point(564, 372);
+            this.lblFio_Ved_Prin.Location = new System.Drawing.Point(564, 324);
             this.lblFio_Ved_Prin.Name = "lblFio_Ved_Prin";
             this.lblFio_Ved_Prin.Size = new System.Drawing.Size(140, 14);
             this.lblFio_Ved_Prin.TabIndex = 20;
@@ -329,7 +333,7 @@ namespace WorckWithReestr
             // 
             // lblFio_Ved_Vid
             // 
-            this.lblFio_Ved_Vid.Location = new System.Drawing.Point(564, 348);
+            this.lblFio_Ved_Vid.Location = new System.Drawing.Point(564, 300);
             this.lblFio_Ved_Vid.Name = "lblFio_Ved_Vid";
             this.lblFio_Ved_Vid.Size = new System.Drawing.Size(140, 14);
             this.lblFio_Ved_Vid.TabIndex = 19;
@@ -337,7 +341,7 @@ namespace WorckWithReestr
             // 
             // lblForma_Ved
             // 
-            this.lblForma_Ved.Location = new System.Drawing.Point(564, 309);
+            this.lblForma_Ved.Location = new System.Drawing.Point(564, 261);
             this.lblForma_Ved.Name = "lblForma_Ved";
             this.lblForma_Ved.Size = new System.Drawing.Size(125, 14);
             this.lblForma_Ved.TabIndex = 18;
@@ -345,7 +349,7 @@ namespace WorckWithReestr
             // 
             // lblOpisan_Ved
             // 
-            this.lblOpisan_Ved.Location = new System.Drawing.Point(564, 256);
+            this.lblOpisan_Ved.Location = new System.Drawing.Point(564, 208);
             this.lblOpisan_Ved.Name = "lblOpisan_Ved";
             this.lblOpisan_Ved.Size = new System.Drawing.Size(125, 14);
             this.lblOpisan_Ved.TabIndex = 17;
@@ -353,7 +357,7 @@ namespace WorckWithReestr
             // 
             // lblData_Oplata
             // 
-            this.lblData_Oplata.Location = new System.Drawing.Point(564, 215);
+            this.lblData_Oplata.Location = new System.Drawing.Point(564, 167);
             this.lblData_Oplata.Name = "lblData_Oplata";
             this.lblData_Oplata.Size = new System.Drawing.Size(126, 20);
             this.lblData_Oplata.TabIndex = 16;
@@ -361,7 +365,7 @@ namespace WorckWithReestr
             // 
             // lblDoc_Oplata
             // 
-            this.lblDoc_Oplata.Location = new System.Drawing.Point(564, 100);
+            this.lblDoc_Oplata.Location = new System.Drawing.Point(564, 76);
             this.lblDoc_Oplata.Name = "lblDoc_Oplata";
             this.lblDoc_Oplata.Size = new System.Drawing.Size(125, 20);
             this.lblDoc_Oplata.TabIndex = 15;
@@ -369,7 +373,7 @@ namespace WorckWithReestr
             // 
             // lblData_Ved
             // 
-            this.lblData_Ved.Location = new System.Drawing.Point(564, 77);
+            this.lblData_Ved.Location = new System.Drawing.Point(564, 53);
             this.lblData_Ved.Name = "lblData_Ved";
             this.lblData_Ved.Size = new System.Drawing.Size(83, 21);
             this.lblData_Ved.TabIndex = 14;
@@ -377,24 +381,16 @@ namespace WorckWithReestr
             // 
             // lblOplata
             // 
-            this.lblOplata.Location = new System.Drawing.Point(564, 53);
+            this.lblOplata.Location = new System.Drawing.Point(564, 29);
             this.lblOplata.Name = "lblOplata";
             this.lblOplata.Size = new System.Drawing.Size(125, 21);
             this.lblOplata.TabIndex = 13;
             this.lblOplata.Text = "Статус надання послуг";
             // 
-            // lblTip_Doc_code
-            // 
-            this.lblTip_Doc_code.Location = new System.Drawing.Point(8, 169);
-            this.lblTip_Doc_code.Name = "lblTip_Doc_code";
-            this.lblTip_Doc_code.Size = new System.Drawing.Size(125, 20);
-            this.lblTip_Doc_code.TabIndex = 12;
-            this.lblTip_Doc_code.Text = "Код типа документа";
-            // 
             // lblServicesProvided
             // 
             this.lblServicesProvided.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblServicesProvided.Location = new System.Drawing.Point(564, 147);
+            this.lblServicesProvided.Location = new System.Drawing.Point(564, 99);
             this.lblServicesProvided.Name = "lblServicesProvided";
             this.lblServicesProvided.Size = new System.Drawing.Size(188, 19);
             this.lblServicesProvided.TabIndex = 32;
@@ -402,7 +398,7 @@ namespace WorckWithReestr
             // 
             // txtKod_Z
             // 
-            this.txtKod_Z.Location = new System.Drawing.Point(143, 77);
+            this.txtKod_Z.Location = new System.Drawing.Point(143, 150);
             this.txtKod_Z.Name = "txtKod_Z";
             this.txtKod_Z.Size = new System.Drawing.Size(372, 20);
             this.txtKod_Z.TabIndex = 3;
@@ -410,7 +406,7 @@ namespace WorckWithReestr
             // 
             // btnKod_Z
             // 
-            this.btnKod_Z.Location = new System.Drawing.Point(521, 76);
+            this.btnKod_Z.Location = new System.Drawing.Point(521, 149);
             this.btnKod_Z.Name = "btnKod_Z";
             this.btnKod_Z.Size = new System.Drawing.Size(22, 23);
             this.btnKod_Z.TabIndex = 34;
@@ -420,7 +416,7 @@ namespace WorckWithReestr
             // 
             // txtTip_Doc
             // 
-            this.txtTip_Doc.Location = new System.Drawing.Point(143, 146);
+            this.txtTip_Doc.Location = new System.Drawing.Point(143, 196);
             this.txtTip_Doc.Name = "txtTip_Doc";
             this.txtTip_Doc.Size = new System.Drawing.Size(372, 20);
             this.txtTip_Doc.TabIndex = 5;
@@ -428,7 +424,7 @@ namespace WorckWithReestr
             // 
             // btnTip_Doc
             // 
-            this.btnTip_Doc.Location = new System.Drawing.Point(521, 145);
+            this.btnTip_Doc.Location = new System.Drawing.Point(521, 195);
             this.btnTip_Doc.Name = "btnTip_Doc";
             this.btnTip_Doc.Size = new System.Drawing.Size(22, 23);
             this.btnTip_Doc.TabIndex = 36;
@@ -439,7 +435,7 @@ namespace WorckWithReestr
             // txtPrim
             // 
             this.txtPrim.AcceptsReturn = true;
-            this.txtPrim.Location = new System.Drawing.Point(143, 321);
+            this.txtPrim.Location = new System.Drawing.Point(705, 349);
             this.txtPrim.Multiline = true;
             this.txtPrim.Name = "txtPrim";
             this.txtPrim.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -449,7 +445,7 @@ namespace WorckWithReestr
             // 
             // lblPrim
             // 
-            this.lblPrim.Location = new System.Drawing.Point(8, 336);
+            this.lblPrim.Location = new System.Drawing.Point(570, 364);
             this.lblPrim.Name = "lblPrim";
             this.lblPrim.Size = new System.Drawing.Size(125, 20);
             this.lblPrim.TabIndex = 38;
@@ -457,7 +453,7 @@ namespace WorckWithReestr
             // 
             // btnFio_Ved_Vid
             // 
-            this.btnFio_Ved_Vid.Location = new System.Drawing.Point(1083, 344);
+            this.btnFio_Ved_Vid.Location = new System.Drawing.Point(1083, 296);
             this.btnFio_Ved_Vid.Name = "btnFio_Ved_Vid";
             this.btnFio_Ved_Vid.Size = new System.Drawing.Size(22, 23);
             this.btnFio_Ved_Vid.TabIndex = 40;
@@ -467,7 +463,7 @@ namespace WorckWithReestr
             // 
             // txtFio_Ved_Vid
             // 
-            this.txtFio_Ved_Vid.Location = new System.Drawing.Point(705, 345);
+            this.txtFio_Ved_Vid.Location = new System.Drawing.Point(705, 297);
             this.txtFio_Ved_Vid.Name = "txtFio_Ved_Vid";
             this.txtFio_Ved_Vid.Size = new System.Drawing.Size(372, 20);
             this.txtFio_Ved_Vid.TabIndex = 21;
@@ -475,7 +471,7 @@ namespace WorckWithReestr
             // 
             // btnFio_Ved_Prin
             // 
-            this.btnFio_Ved_Prin.Location = new System.Drawing.Point(1083, 368);
+            this.btnFio_Ved_Prin.Location = new System.Drawing.Point(1083, 320);
             this.btnFio_Ved_Prin.Name = "btnFio_Ved_Prin";
             this.btnFio_Ved_Prin.Size = new System.Drawing.Size(22, 23);
             this.btnFio_Ved_Prin.TabIndex = 42;
@@ -485,7 +481,7 @@ namespace WorckWithReestr
             // 
             // txtFio_Ved_Prin
             // 
-            this.txtFio_Ved_Prin.Location = new System.Drawing.Point(705, 369);
+            this.txtFio_Ved_Prin.Location = new System.Drawing.Point(705, 321);
             this.txtFio_Ved_Prin.Name = "txtFio_Ved_Prin";
             this.txtFio_Ved_Prin.Size = new System.Drawing.Size(372, 20);
             this.txtFio_Ved_Prin.TabIndex = 22;
@@ -494,7 +490,7 @@ namespace WorckWithReestr
             // txtOpisan_Ved
             // 
             this.txtOpisan_Ved.AcceptsReturn = true;
-            this.txtOpisan_Ved.Location = new System.Drawing.Point(705, 238);
+            this.txtOpisan_Ved.Location = new System.Drawing.Point(705, 190);
             this.txtOpisan_Ved.Multiline = true;
             this.txtOpisan_Ved.Name = "txtOpisan_Ved";
             this.txtOpisan_Ved.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -504,7 +500,7 @@ namespace WorckWithReestr
             // 
             // txtDoc_Oplata
             // 
-            this.txtDoc_Oplata.Location = new System.Drawing.Point(705, 100);
+            this.txtDoc_Oplata.Location = new System.Drawing.Point(705, 76);
             this.txtDoc_Oplata.Name = "txtDoc_Oplata";
             this.txtDoc_Oplata.Size = new System.Drawing.Size(400, 20);
             this.txtDoc_Oplata.TabIndex = 15;
@@ -514,25 +510,17 @@ namespace WorckWithReestr
             // 
             this.cbOplata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOplata.FormattingEnabled = true;
-            this.cbOplata.Location = new System.Drawing.Point(705, 53);
+            this.cbOplata.Location = new System.Drawing.Point(705, 29);
             this.cbOplata.Name = "cbOplata";
             this.cbOplata.Size = new System.Drawing.Size(130, 21);
             this.cbOplata.TabIndex = 13;
             this.cbOplata.SelectedIndexChanged += new System.EventHandler(this.cbOplata_SelectedIndexChanged);
             // 
-            // txtTip_Doc_code
-            // 
-            this.txtTip_Doc_code.Location = new System.Drawing.Point(143, 169);
-            this.txtTip_Doc_code.Name = "txtTip_Doc_code";
-            this.txtTip_Doc_code.ReadOnly = true;
-            this.txtTip_Doc_code.Size = new System.Drawing.Size(130, 20);
-            this.txtTip_Doc_code.TabIndex = 15;
-            // 
             // cbOtkaz
             // 
             this.cbOtkaz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOtkaz.FormattingEnabled = true;
-            this.cbOtkaz.Location = new System.Drawing.Point(705, 169);
+            this.cbOtkaz.Location = new System.Drawing.Point(705, 121);
             this.cbOtkaz.Name = "cbOtkaz";
             this.cbOtkaz.Size = new System.Drawing.Size(130, 21);
             this.cbOtkaz.TabIndex = 16;
@@ -540,7 +528,7 @@ namespace WorckWithReestr
             // 
             // txtCane
             // 
-            this.txtCane.Location = new System.Drawing.Point(705, 30);
+            this.txtCane.Location = new System.Drawing.Point(143, 53);
             this.txtCane.Name = "txtCane";
             this.txtCane.Size = new System.Drawing.Size(130, 20);
             this.txtCane.TabIndex = 12;
@@ -548,7 +536,7 @@ namespace WorckWithReestr
             // 
             // txtPr_Otkaz
             // 
-            this.txtPr_Otkaz.Location = new System.Drawing.Point(705, 192);
+            this.txtPr_Otkaz.Location = new System.Drawing.Point(705, 144);
             this.txtPr_Otkaz.Name = "txtPr_Otkaz";
             this.txtPr_Otkaz.Size = new System.Drawing.Size(400, 20);
             this.txtPr_Otkaz.TabIndex = 17;
@@ -556,7 +544,7 @@ namespace WorckWithReestr
             // 
             // btnFio_Z
             // 
-            this.btnFio_Z.Location = new System.Drawing.Point(521, 393);
+            this.btnFio_Z.Location = new System.Drawing.Point(521, 367);
             this.btnFio_Z.Name = "btnFio_Z";
             this.btnFio_Z.Size = new System.Drawing.Size(22, 23);
             this.btnFio_Z.TabIndex = 45;
@@ -566,32 +554,16 @@ namespace WorckWithReestr
             // 
             // txtFio_Z
             // 
-            this.txtFio_Z.Location = new System.Drawing.Point(143, 394);
+            this.txtFio_Z.Location = new System.Drawing.Point(143, 368);
             this.txtFio_Z.Name = "txtFio_Z";
             this.txtFio_Z.Size = new System.Drawing.Size(372, 20);
             this.txtFio_Z.TabIndex = 11;
             this.txtFio_Z.Validating += new System.ComponentModel.CancelEventHandler(this.txtFio_Z_Validating);
             // 
-            // txtKod_Z_code
-            // 
-            this.txtKod_Z_code.Location = new System.Drawing.Point(144, 100);
-            this.txtKod_Z_code.Name = "txtKod_Z_code";
-            this.txtKod_Z_code.ReadOnly = true;
-            this.txtKod_Z_code.Size = new System.Drawing.Size(130, 20);
-            this.txtKod_Z_code.TabIndex = 47;
-            // 
-            // lblKod_Z_code
-            // 
-            this.lblKod_Z_code.Location = new System.Drawing.Point(8, 100);
-            this.lblKod_Z_code.Name = "lblKod_Z_code";
-            this.lblKod_Z_code.Size = new System.Drawing.Size(125, 20);
-            this.lblKod_Z_code.TabIndex = 46;
-            this.lblKod_Z_code.Text = "Код заявника";
-            // 
             // txtDodatok
             // 
             this.txtDodatok.AcceptsReturn = true;
-            this.txtDodatok.Location = new System.Drawing.Point(143, 268);
+            this.txtDodatok.Location = new System.Drawing.Point(143, 295);
             this.txtDodatok.Multiline = true;
             this.txtDodatok.Name = "txtDodatok";
             this.txtDodatok.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -601,21 +573,98 @@ namespace WorckWithReestr
             // 
             // lblDodatok
             // 
-            this.lblDodatok.Location = new System.Drawing.Point(12, 286);
+            this.lblDodatok.Location = new System.Drawing.Point(12, 313);
             this.lblDodatok.Name = "lblDodatok";
             this.lblDodatok.Size = new System.Drawing.Size(125, 14);
             this.lblDodatok.TabIndex = 48;
             this.lblDodatok.Text = "Перелік доданніх матеріалів";
             // 
+            // lblCane_Date
+            // 
+            this.lblCane_Date.Location = new System.Drawing.Point(279, 53);
+            this.lblCane_Date.Name = "lblCane_Date";
+            this.lblCane_Date.Size = new System.Drawing.Size(101, 20);
+            this.lblCane_Date.TabIndex = 50;
+            this.lblCane_Date.Text = "Дата входящая";
+            // 
+            // dtpCane_Date
+            // 
+            this.dtpCane_Date.CustomFormat = "dd.MMM.yyyy HH.mm";
+            this.dtpCane_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpCane_Date.Location = new System.Drawing.Point(392, 53);
+            this.dtpCane_Date.Name = "dtpCane_Date";
+            this.dtpCane_Date.Size = new System.Drawing.Size(151, 20);
+            this.dtpCane_Date.TabIndex = 49;
+            this.dtpCane_Date.Validating += new System.ComponentModel.CancelEventHandler(this.dtpCane_Date_Validating);
+            // 
+            // txtAdress_Text
+            // 
+            this.txtAdress_Text.Location = new System.Drawing.Point(143, 101);
+            this.txtAdress_Text.Name = "txtAdress_Text";
+            this.txtAdress_Text.Size = new System.Drawing.Size(400, 20);
+            this.txtAdress_Text.TabIndex = 51;
+            this.txtAdress_Text.Validating += new System.ComponentModel.CancelEventHandler(this.txtAdress_Text_Validating);
+            // 
+            // lblAdress_Text
+            // 
+            this.lblAdress_Text.Location = new System.Drawing.Point(8, 101);
+            this.lblAdress_Text.Name = "lblAdress_Text";
+            this.lblAdress_Text.Size = new System.Drawing.Size(125, 20);
+            this.lblAdress_Text.TabIndex = 52;
+            this.lblAdress_Text.Text = "Описательный адресс";
+            // 
+            // btnRajon
+            // 
+            this.btnRajon.Location = new System.Drawing.Point(300, 76);
+            this.btnRajon.Name = "btnRajon";
+            this.btnRajon.Size = new System.Drawing.Size(22, 23);
+            this.btnRajon.TabIndex = 55;
+            this.btnRajon.Text = "...";
+            this.btnRajon.UseVisualStyleBackColor = true;
+            this.btnRajon.Click += new System.EventHandler(this.btnRajon_Click);
+            // 
+            // txtRajon
+            // 
+            this.txtRajon.Location = new System.Drawing.Point(143, 77);
+            this.txtRajon.Name = "txtRajon";
+            this.txtRajon.Size = new System.Drawing.Size(151, 20);
+            this.txtRajon.TabIndex = 53;
+            this.txtRajon.Validating += new System.ComponentModel.CancelEventHandler(this.txtRajon_Validating);
+            // 
+            // lblRajon
+            // 
+            this.lblRajon.Location = new System.Drawing.Point(8, 77);
+            this.lblRajon.Name = "lblRajon";
+            this.lblRajon.Size = new System.Drawing.Size(125, 21);
+            this.lblRajon.TabIndex = 54;
+            this.lblRajon.Text = "Админ. район";
+            // 
+            // llblHaveReferense
+            // 
+            this.llblHaveReferense.Location = new System.Drawing.Point(92, 406);
+            this.llblHaveReferense.Name = "llblHaveReferense";
+            this.llblHaveReferense.Size = new System.Drawing.Size(932, 23);
+            this.llblHaveReferense.TabIndex = 56;
+            this.llblHaveReferense.TabStop = true;
+            this.llblHaveReferense.Text = "linkLabel1";
+            this.llblHaveReferense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.llblHaveReferense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblHaveReferense_LinkClicked);
+            // 
             // frmReestrZayav_doc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 476);
+            this.ClientSize = new System.Drawing.Size(1115, 434);
+            this.Controls.Add(this.llblHaveReferense);
+            this.Controls.Add(this.btnRajon);
+            this.Controls.Add(this.txtRajon);
+            this.Controls.Add(this.lblRajon);
+            this.Controls.Add(this.txtAdress_Text);
+            this.Controls.Add(this.lblAdress_Text);
+            this.Controls.Add(this.lblCane_Date);
+            this.Controls.Add(this.dtpCane_Date);
             this.Controls.Add(this.txtDodatok);
             this.Controls.Add(this.lblDodatok);
-            this.Controls.Add(this.txtKod_Z_code);
-            this.Controls.Add(this.lblKod_Z_code);
             this.Controls.Add(this.btnFio_Z);
             this.Controls.Add(this.txtFio_Z);
             this.Controls.Add(this.txtPr_Otkaz);
@@ -634,7 +683,6 @@ namespace WorckWithReestr
             this.Controls.Add(this.txtCane);
             this.Controls.Add(this.txtForma_Ved);
             this.Controls.Add(this.txtOpisan_Ved);
-            this.Controls.Add(this.txtTip_Doc_code);
             this.Controls.Add(this.cbOplata);
             this.Controls.Add(this.cbOtkaz);
             this.Controls.Add(this.dtpData_Ved);
@@ -655,7 +703,6 @@ namespace WorckWithReestr
             this.Controls.Add(this.lblN_Ish_Z);
             this.Controls.Add(this.lblOplata);
             this.Controls.Add(this.cbStatus);
-            this.Controls.Add(this.lblTip_Doc_code);
             this.Controls.Add(this.lblData_Ish);
             this.Controls.Add(this.lblTip_Doc);
             this.Controls.Add(this.dtpData_Ish);
@@ -691,7 +738,6 @@ namespace WorckWithReestr
             this.Controls.SetChildIndex(this.dtpData_Ish, 0);
             this.Controls.SetChildIndex(this.lblTip_Doc, 0);
             this.Controls.SetChildIndex(this.lblData_Ish, 0);
-            this.Controls.SetChildIndex(this.lblTip_Doc_code, 0);
             this.Controls.SetChildIndex(this.cbStatus, 0);
             this.Controls.SetChildIndex(this.lblOplata, 0);
             this.Controls.SetChildIndex(this.lblN_Ish_Z, 0);
@@ -712,7 +758,6 @@ namespace WorckWithReestr
             this.Controls.SetChildIndex(this.dtpData_Ved, 0);
             this.Controls.SetChildIndex(this.cbOtkaz, 0);
             this.Controls.SetChildIndex(this.cbOplata, 0);
-            this.Controls.SetChildIndex(this.txtTip_Doc_code, 0);
             this.Controls.SetChildIndex(this.txtOpisan_Ved, 0);
             this.Controls.SetChildIndex(this.txtForma_Ved, 0);
             this.Controls.SetChildIndex(this.txtCane, 0);
@@ -733,10 +778,16 @@ namespace WorckWithReestr
             this.Controls.SetChildIndex(this.txtPr_Otkaz, 0);
             this.Controls.SetChildIndex(this.txtFio_Z, 0);
             this.Controls.SetChildIndex(this.btnFio_Z, 0);
-            this.Controls.SetChildIndex(this.lblKod_Z_code, 0);
-            this.Controls.SetChildIndex(this.txtKod_Z_code, 0);
             this.Controls.SetChildIndex(this.lblDodatok, 0);
             this.Controls.SetChildIndex(this.txtDodatok, 0);
+            this.Controls.SetChildIndex(this.dtpCane_Date, 0);
+            this.Controls.SetChildIndex(this.lblCane_Date, 0);
+            this.Controls.SetChildIndex(this.lblAdress_Text, 0);
+            this.Controls.SetChildIndex(this.txtAdress_Text, 0);
+            this.Controls.SetChildIndex(this.lblRajon, 0);
+            this.Controls.SetChildIndex(this.txtRajon, 0);
+            this.Controls.SetChildIndex(this.btnRajon, 0);
+            this.Controls.SetChildIndex(this.llblHaveReferense, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -778,7 +829,6 @@ namespace WorckWithReestr
         private Label lblDoc_Oplata;
         private Label lblData_Ved;
         private Label lblOplata;
-        private Label lblTip_Doc_code;
         private Label lblServicesProvided;
         private TextBox txtKod_Z;
         private Button btnKod_Z;
@@ -793,15 +843,20 @@ namespace WorckWithReestr
         private TextBox txtOpisan_Ved;
         private TextBox txtDoc_Oplata;
         private ComboBox cbOplata;
-        private TextBox txtTip_Doc_code;
         private ComboBox cbOtkaz;
         private TextBox txtCane;
         private TextBox txtPr_Otkaz;
         private Button btnFio_Z;
         private TextBox txtFio_Z;
-        private TextBox txtKod_Z_code;
-        private Label lblKod_Z_code;
         private TextBox txtDodatok;
         private Label lblDodatok;
+        private Label lblCane_Date;
+        private DateTimePicker dtpCane_Date;
+        private TextBox txtAdress_Text;
+        private Label lblAdress_Text;
+        private Button btnRajon;
+        private TextBox txtRajon;
+        private Label lblRajon;
+        private LinkLabel llblHaveReferense;
     }
 }

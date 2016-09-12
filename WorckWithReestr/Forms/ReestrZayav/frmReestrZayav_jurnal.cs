@@ -72,6 +72,7 @@ namespace WorckWithReestr
                                       base.table.FindField("N_Ish_Z"),// 4
                                       base.table.FindField("Data_Ish"),// 5
                                       base.table.FindField("Sodergan"),// 6
+                                      base.table.FindField("Adress_Text"),
                                       base.table.FindField("Fio_Z"),// 7
                                       base.table.FindField("Otkaz"),// 8
                                       base.table.FindField("Pr_Otkaz"),// 9
@@ -80,6 +81,7 @@ namespace WorckWithReestr
                                       base.table.FindField("Tel_Z"),// 12
                                       base.table.FindField("Dodatok"),// 13
                                       base.table.FindField("Cane"),// 14
+                                      base.table.FindField("Cane_Date"),
                                       base.table.FindField("Oplata"),// 15
                                       base.table.FindField("Data_Oplata"),// 16
                                       base.table.FindField("Doc_Oplata"),// 17
@@ -89,8 +91,6 @@ namespace WorckWithReestr
                                       base.table.FindField("Fio_Ved_Vid"),// 21
                                       base.table.FindField("Fio_Ved_Prin"),// 22
                                       base.table.FindField("Prim"), // 23
-                                      base.table.FindField("Cane_Date"),
-                                      base.table.FindField("Adress_Text"),
                                       base.table.FindField("Rajon"), 
                                       base.table.FindField("IsHaveReferense"),
                                       base.table.FindField("IsReferenceClose") 
@@ -265,7 +265,7 @@ namespace WorckWithReestr
                 try
                 {
                     e.FormattingApplied = true;
-                    e.Value = ReestrDictionaryWork.GetFIOByIDFromAdmRaj(Convert.ToInt32(e.Value));
+                    e.Value = ReestrDictionaryWork.GetNazvaByIDFromAdmRaj(Convert.ToInt32(e.Value));
                 }
                 catch (Exception ex) // обработка ошибок
                 {
