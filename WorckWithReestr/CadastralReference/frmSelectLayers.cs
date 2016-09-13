@@ -77,10 +77,12 @@ namespace CadastralReference
 
             foreach (object o in lbSelectedLayers.Items)
             {
-                string tmp = (string)lbSelectedLayers.SelectedItem;
+                string tmp = (string)o;
                 if (tmp != null)
+                { 
                     retVal.Add(tmp);
-             }
+                }
+            }
             DialogResult = DialogResult.OK;
             this.Close();
         }

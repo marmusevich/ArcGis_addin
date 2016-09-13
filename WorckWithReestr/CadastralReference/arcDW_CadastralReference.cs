@@ -328,29 +328,12 @@ namespace WorckWithReestr
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            frmSelectLayers frm1 = new frmSelectLayers();
-            frm1.ShowDialog();
-            System.Collections.Specialized.StringCollection retVal = frm1.retVal;
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach (string s in retVal)
+            frmSetting frm = new frmSetting();
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                sb.Append("[");
-                sb.Append(s);
-                sb.Append("] ");
+                //пересоздать
+                Generate_AndAddToTableLayoutPanel();
             }
-
-            MessageBox.Show(sb.ToString());
-
-
-
-
-            //frmSetting frm = new frmSetting();
-            //if (frm.ShowDialog() == DialogResult.OK)
-            //{
-
-            //    //пересоздать
-            //    Generate_AndAddToTableLayoutPanel();
-            //}
         }
 
         private void ZayavkaChange_Click(object sender, EventArgs e)
