@@ -128,6 +128,7 @@
     <Compile Include="CadastralReference\frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastralReference\OnePageDescriptions.cs" />
     <Compile Include="CadastralReference\WorckWithRTF.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference_DB.cs" />

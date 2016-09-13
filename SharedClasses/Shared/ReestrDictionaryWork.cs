@@ -70,7 +70,7 @@ namespace SharedClasses
             return ret;
         }
         //вернуть название района из справочника районов
-        public static string GetFIOByIDFromAdmRaj(int id, AdmRajFieldSufix arfs = AdmRajFieldSufix.UKR)
+        public static string GetNazvaByIDFromAdmRaj(int id, AdmRajFieldSufix arfs = AdmRajFieldSufix.UKR)
         {
             string fildname = "NAZVA_UKR";
             if(arfs ==AdmRajFieldSufix.ROS)
@@ -245,9 +245,9 @@ namespace SharedClasses
             {
                 errorProvider.SetError(chekedValue, String.Empty);
                 id = id_temp;
-                chekedValue.Text = GetFIOByIDFromFizLic(id);
-                if (codeValue != null)
-                    codeValue.Text = GetINNByIDFromFizLic(id);
+                chekedValue.Text = GetNazvaByIDFromAdmRaj(id);
+                //if (codeValue != null)
+                //    codeValue.Text = (id);
             }
             else
             {

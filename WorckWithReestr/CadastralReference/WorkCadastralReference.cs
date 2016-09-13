@@ -15,6 +15,8 @@ namespace CadastralReference
     // работа со справкой
     class WorkCadastralReference
     {
+
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region  вся информация по справке - синглитон
         private static CadastralReferenceData m_CadastralReferenceData = null;
@@ -42,11 +44,8 @@ namespace CadastralReference
             string filteredString = "";
             int i = frmReestrZayav_jurnal.ShowForSelect(filteredString);
             if (i == 0) i = -1;
-            MessageBox.Show(string.Format("zayavka ID ={0} ", i));
 
-
-            Random rnd = new Random();
-            SetZayavka(rnd.Next());
+            SetZayavka(i);
         }
         /// <summary>
         /// указать заявку
@@ -54,6 +53,7 @@ namespace CadastralReference
         /// <param name="zayavkaID"> код заявка</param>
         public static void SetZayavka(int zayavkaID)
         {
+            GetCadastralReferenceData().ZayavkaData = WorkCadastralReference_DB.GetZayavkaData(zayavkaID);
             GetCadastralReferenceData().ZayavkaID = zayavkaID;
             GetCadastralReferenceData().ObjektInMapID = -1;
         }
@@ -63,8 +63,22 @@ namespace CadastralReference
         /// <returns></returns>
         public static string GetZayavkaDiscription()
         {
-            return "Заявка №123 от 01.01.2000г. ООО \"Рога и копыта\" (id=" + GetCadastralReferenceData().ZayavkaID.ToString() + ")";
+            if (GetCadastralReferenceData().ZayavkaID == -1)
+                return "Не выбрана заявка.";
+
+
+            string strKod_Z = "";
+            string N_Z = "";
+            DateTime Data_Z = new DateTime();
+            if (GetCadastralReferenceData().ZayavkaData != null)
+            {
+                strKod_Z = GetCadastralReferenceData().ZayavkaData["strKod_Z"] as string;
+                N_Z = GetCadastralReferenceData().ZayavkaData["N_Z"] as string;
+                Data_Z = (DateTime)GetCadastralReferenceData().ZayavkaData["Data_Z"];
+            }
+            return string.Format("Заявка №{0} от {1}г. {2} (id = {3}))", N_Z, Data_Z, strKod_Z,  GetCadastralReferenceData().ZayavkaID.ToString() );
         }
+
 
         /// <summary>
         /// Запоменание выбранного юъекта на карте с проверками
