@@ -76,6 +76,7 @@ namespace CadastralReference
             this.Controls.Add(this.btnSaveToFile);
             this.Controls.Add(this.rtbMain);
             this.Name = "frmRTF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.frmRTF_Load);
             this.ResumeLayout(false);

@@ -235,7 +235,7 @@ namespace WorckWithReestr
             {
                 if (p != null)
                     p.Visible = rb.Checked;
-                WorkCadastralReference.EnableLawrsFropPage(opd /*, rb.Checked*/);
+                WorkCadastralReference.EnableLayersFropPage(opd /*, rb.Checked*/);
             }
             if (сb != null)
             {
@@ -328,13 +328,29 @@ namespace WorckWithReestr
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            frmSetting frm = new frmSetting();
-            if (frm.ShowDialog() == DialogResult.OK)
+            frmSelectLayers frm1 = new frmSelectLayers();
+            frm1.ShowDialog();
+            System.Collections.Specialized.StringCollection retVal = frm1.retVal;
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (string s in retVal)
             {
-
-                //пересоздать
-                Generate_AndAddToTableLayoutPanel();
+                sb.Append("[");
+                sb.Append(s);
+                sb.Append("] ");
             }
+
+            MessageBox.Show(sb.ToString());
+
+
+
+
+            //frmSetting frm = new frmSetting();
+            //if (frm.ShowDialog() == DialogResult.OK)
+            //{
+
+            //    //пересоздать
+            //    Generate_AndAddToTableLayoutPanel();
+            //}
         }
 
         private void ZayavkaChange_Click(object sender, EventArgs e)

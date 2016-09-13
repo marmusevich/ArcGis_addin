@@ -35,7 +35,7 @@ namespace CadastralReference
             this.btnSave = new System.Windows.Forms.Button();
             this.tcSetting = new System.Windows.Forms.TabControl();
             this.tpMain = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnListOfPages = new System.Windows.Forms.Panel();
             this.lblListOfPages = new System.Windows.Forms.Label();
             this.clbListOfPages = new System.Windows.Forms.CheckedListBox();
             this.tpRTF = new System.Windows.Forms.TabPage();
@@ -43,7 +43,7 @@ namespace CadastralReference
             this.tcPages = new System.Windows.Forms.TabControl();
             this.tcSetting.SuspendLayout();
             this.tpMain.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnListOfPages.SuspendLayout();
             this.tpPages.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +86,7 @@ namespace CadastralReference
             // 
             // tpMain
             // 
-            this.tpMain.Controls.Add(this.panel1);
+            this.tpMain.Controls.Add(this.pnListOfPages);
             this.tpMain.Location = new System.Drawing.Point(4, 22);
             this.tpMain.Name = "tpMain";
             this.tpMain.Padding = new System.Windows.Forms.Padding(3);
@@ -95,14 +95,14 @@ namespace CadastralReference
             this.tpMain.Text = "Главное";
             this.tpMain.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // pnListOfPages
             // 
-            this.panel1.Controls.Add(this.lblListOfPages);
-            this.panel1.Controls.Add(this.clbListOfPages);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(286, 258);
-            this.panel1.TabIndex = 2;
+            this.pnListOfPages.Controls.Add(this.lblListOfPages);
+            this.pnListOfPages.Controls.Add(this.clbListOfPages);
+            this.pnListOfPages.Location = new System.Drawing.Point(0, 0);
+            this.pnListOfPages.Name = "pnListOfPages";
+            this.pnListOfPages.Size = new System.Drawing.Size(286, 258);
+            this.pnListOfPages.TabIndex = 2;
             // 
             // lblListOfPages
             // 
@@ -160,11 +160,12 @@ namespace CadastralReference
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Name = "frmSetting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSetting";
             this.Load += new System.EventHandler(this.frmSetting_Load);
             this.tcSetting.ResumeLayout(false);
             this.tpMain.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.pnListOfPages.ResumeLayout(false);
             this.tpPages.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -179,7 +180,7 @@ namespace CadastralReference
         private TabPage tpRTF;
         private TabPage tpPages;
         private TabControl tcPages;
-        private Panel panel1;
+        private Panel pnListOfPages;
         private Label lblListOfPages;
         private CheckedListBox clbListOfPages;
     }

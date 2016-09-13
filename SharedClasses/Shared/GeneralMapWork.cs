@@ -16,7 +16,7 @@ namespace SharedClasses
     public static class GeneralMapWork
     {
         //вспомогательный для выбора значений
-        class SelectedTableNameAndObjectID
+        public class SelectedTableNameAndObjectID
         {
             public readonly string aliasName;
             public readonly string tabName;

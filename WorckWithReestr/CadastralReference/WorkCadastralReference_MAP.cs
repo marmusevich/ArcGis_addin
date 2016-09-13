@@ -9,10 +9,13 @@ using WorckWithReestr;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+
 
 namespace CadastralReference
 {
-    class WorkCadastralReference_MAP
+    public static class WorkCadastralReference_MAP
     {
         //переключится в режим разметки страницы при необходимости
         public static void CheckAndSetPageLayoutMode()
@@ -61,6 +64,27 @@ namespace CadastralReference
             //System.IO.File.Delete(tmpFileName);
             return img;
         }
+
+
+        public static StringCollection GetListOfAllLaers()
+
+        {
+            StringCollection ret = new StringCollection();
+            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+            if (mxDoc != null)
+            {
+                IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
+                ILayer layer = enumLayer.Next();
+                while (layer != null)
+                {
+                    ret.Add(layer.Name);
+                    layer = enumLayer.Next();
+                }
+            }
+            return ret;
+        }
+
+
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////

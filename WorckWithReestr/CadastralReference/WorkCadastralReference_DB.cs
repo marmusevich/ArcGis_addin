@@ -15,7 +15,7 @@ using System.Collections.Specialized;
 
 namespace CadastralReference
 {
-    class WorkCadastralReference_DB
+    public static class WorkCadastralReference_DB
     {
         //
         public const string ReestrZayav_NameWorkspace = "Kadastr2016";

@@ -122,6 +122,12 @@
     <Compile Include="CadastralReference\frmRTF.Designer.cs">
       <DependentUpon>frmRTF.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastralReference\frmSelectLayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmSelectLayers.Designer.cs">
+      <DependentUpon>frmSelectLayers.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastralReference\frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmRTF.resx">
       <DependentUpon>frmRTF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmSelectLayers.resx">
+      <DependentUpon>frmSelectLayers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>

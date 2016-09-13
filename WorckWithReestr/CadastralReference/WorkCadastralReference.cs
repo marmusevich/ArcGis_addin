@@ -10,10 +10,14 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using System;
 
+
+//Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX
+
+
 namespace CadastralReference
 {
     // работа со справкой
-    class WorkCadastralReference
+    public static class WorkCadastralReference
     {
 
 
@@ -88,7 +92,7 @@ namespace CadastralReference
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
 
-            string table_name = "";
+            string table_name = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX";
             int objectID = -1;
 
             IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
@@ -109,8 +113,11 @@ namespace CadastralReference
                         {
                             tabName = (feature.Class as IDataset).Name;
                             //проверка на принадлежность нашему проекту
-                            objectID = feature.OID;
-                            //MessageBox.Show(string.Format("{0} (ID = {1})", aliasName, objectID));
+                            if (table_name.ToLower() == tabName.ToLower())
+                            {
+                                objectID = feature.OID;
+                                //MessageBox.Show(string.Format("{0}[{1}] (ID = {2})", aliasName, tabName, objectID));
+                            }
                         }
                     }
 
@@ -126,7 +133,7 @@ namespace CadastralReference
         /// <returns></returns>
         public static string GetObjektInMapDiscription()
         {
-            return "Указан объект №" + GetCadastralReferenceData().ObjektInMapID.ToString(); ;
+            return "Указан объект №" + GetCadastralReferenceData().ObjektInMapID.ToString();
         }
 
 
@@ -155,7 +162,7 @@ namespace CadastralReference
         /// Переключить слои
         /// </summary>
         /// <param name="opd"> описание листа</param>
-        public static void EnableLawrsFropPage(OnePageDescriptions opd)
+        public static void EnableLayersFropPage(OnePageDescriptions opd)
         {
             if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().ObjektInMapID == -1)
                 return;
@@ -163,6 +170,22 @@ namespace CadastralReference
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
 
+            // выключить все слои
+            if (mxdoc != null)
+            {
+                IMap map = mxdoc.FocusMap;
+                IEnumLayer enumLayer = map.Layers;
+                ILayer layer = enumLayer.Next();
+                while (layer != null)
+                {
+                    layer.Visible = false;
+                    layer = enumLayer.Next();
+                }
+                mxdoc.ActiveView.ContentsChanged();
+                //activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+                mxdoc.ActiveView.Refresh();
+
+            }
 
 
             //зделать - сначала выбрать нужный объект потом спозиционировать
