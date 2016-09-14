@@ -2,12 +2,15 @@
 using System.Drawing;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CadastralReference
 {
     /// <summary>
     /// Информация об одном листе
     /// </summary>
+    [Serializable]
     public class OnePageDescriptions : IEquatable<OnePageDescriptions>
     {
         /// <summary>
@@ -19,6 +22,15 @@ namespace CadastralReference
         {
             Caption = caption;
             Enable = enable;
+            //            PagesID = Caption.GetHashCode();
+            Layers = new StringCollection();
+            m_Image = null;
+        }
+
+        public OnePageDescriptions()
+        {
+            Caption = "";
+            Enable = false;
             PagesID = Caption.GetHashCode();
             Layers = new StringCollection();
             m_Image = null;
@@ -28,22 +40,42 @@ namespace CadastralReference
         /// <summary>
         ///  имя из базы Данных для поля 
         /// </summary>
+        [XmlIgnore]
         public int PagesID { get; private set; }
         /// <summary>
         /// Назвение листа
         /// </summary>
-        public string Caption { get; set; }
+        [XmlElement("Caption")]
+        public string Caption
+        {
+            get
+            {
+                return m_Caption;
+            }
+            set
+            {
+                if (m_Caption != value)
+                {
+                    m_Caption = value;
+                    PagesID = m_Caption.GetHashCode();
+                }
+            }
+        }
+        string m_Caption;
         /// <summary>
         /// включен ли лист
         /// </summary>
+        [XmlElement("Enable", Type = typeof(bool))]
         public bool Enable { get; set; }
         /// <summary>
         ///  Слои этого листа
         /// </summary>
+        [XmlArray("Layers"), XmlArrayItem("Layer")]
         public StringCollection Layers { get; set; }
         /// <summary>
         /// макет 
         /// </summary>
+        [XmlIgnore]
         public Image Image
         {
             get
@@ -61,8 +93,6 @@ namespace CadastralReference
             }
         }
         private Image m_Image;
-
-
         #endregion
 
         #region события
@@ -96,5 +126,6 @@ namespace CadastralReference
         }
         #endregion
     }
+
 
 }
