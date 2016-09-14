@@ -41,11 +41,19 @@ namespace CadastralReference
             if (retVal != null)
             {
                 String[] ar = new String[retVal.Count];
-                retVal.CopyTo(arr, 0);
+                retVal.CopyTo(ar, 0);
                 lbSelectedLayers.Items.AddRange(ar);
+
+                // убрать выбранное
+                foreach (object o in lbSelectedLayers.Items)
+                {
+                    if (lbAllLayers.Items.Contains(o))
+                    {
+                        lbAllLayers.Items.Remove(o);
+                    }
+                }
+
             }
-
-
         }
 
         private void Add()
@@ -55,7 +63,7 @@ namespace CadastralReference
             {
                 lbSelectedLayers.Items.Add(tmp);
                 lbAllLayers.Items.Remove(tmp);
-                lbAllLayers.SelectedIndex = -1;
+                //lbAllLayers.SelectedIndex = -1;
             }
         }
 
@@ -66,7 +74,7 @@ namespace CadastralReference
             {
                 lbAllLayers.Items.Add(tmp);
                 lbSelectedLayers.Items.Remove(tmp);
-                lbSelectedLayers.SelectedIndex = -1;
+                //lbSelectedLayers.SelectedIndex = -1;
             }
         }
 
@@ -74,6 +82,8 @@ namespace CadastralReference
         {
             if(retVal == null)
                 retVal = new StringCollection();
+
+            retVal.Clear();
 
             foreach (object o in lbSelectedLayers.Items)
             {

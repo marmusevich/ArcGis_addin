@@ -9,6 +9,7 @@ using WorckWithReestr;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using System;
+using System.Collections.Specialized;
 
 
 //Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX
@@ -91,40 +92,30 @@ namespace CadastralReference
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
-
-            string table_name = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX";
+            
             int objectID = -1;
 
             IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
-            if (mxDoc != null)
+            //переберем все выбранные объекты на карте
+            IEnumFeature enumFeature = mxDoc.FocusMap.FeatureSelection as IEnumFeature;
+            IFeature feature = enumFeature.Next();
+            while (feature != null)
             {
-                //переберем все выбранные объекты на карте
-                IEnumFeature enumFeature = mxDoc.FocusMap.FeatureSelection as IEnumFeature;
-                IFeature feature = enumFeature.Next();
-                while (feature != null)
+                string tabName = "";
+                if (feature.Class != null)
                 {
-                    //если можем добовляем в масив для выбора
-                    string aliasName = "";
-                    string tabName = "";
-                    if (feature.Class != null)
+                    if ((feature.Class) is IDataset)
                     {
-                        aliasName = feature.Class.AliasName;
-                        if ((feature.Class) is IDataset)
+                        tabName = (feature.Class as IDataset).Name;
+                        //проверка на принадлежность нашему проекту
+                        //if (GetCadastralReferenceData().ObjectLayerName.ToLower() == tabName.ToLower())
                         {
-                            tabName = (feature.Class as IDataset).Name;
-                            //проверка на принадлежность нашему проекту
-                            if (table_name.ToLower() == tabName.ToLower())
-                            {
-                                objectID = feature.OID;
-                                //MessageBox.Show(string.Format("{0}[{1}] (ID = {2})", aliasName, tabName, objectID));
-                            }
+                            objectID = feature.OID;
                         }
                     }
-
-                    feature = enumFeature.Next();
                 }
+                feature = enumFeature.Next();
             }
-
             GetCadastralReferenceData().ObjektInMapID = objectID;
         }
         /// <summary>
@@ -162,88 +153,31 @@ namespace CadastralReference
         /// Переключить слои
         /// </summary>
         /// <param name="opd"> описание листа</param>
-        public static void EnableLayersFropPage(OnePageDescriptions opd)
+        public static void EnableLayersFropPageAndSetScale(OnePageDescriptions opd)
         {
+
             if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().ObjektInMapID == -1)
                 return;
 
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            IActiveView activeView = mxdoc.ActiveView;
+            WorkCadastralReference_MAP.EnableLayersFromPages(opd);
 
-            // выключить все слои
-            if (mxdoc != null)
-            {
-                IMap map = mxdoc.FocusMap;
-                IEnumLayer enumLayer = map.Layers;
-                ILayer layer = enumLayer.Next();
-                while (layer != null)
-                {
-                    layer.Visible = false;
-                    layer = enumLayer.Next();
-                }
-                mxdoc.ActiveView.ContentsChanged();
-                //activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
-                mxdoc.ActiveView.Refresh();
-
-            }
-
-
-            //зделать - сначала выбрать нужный объект потом спозиционировать
-            {
-                //
-                //показать на карте
-                //SharedClasses.GeneralMapWork.ShowOnMap(ITable table, int objectID)
-                //спозиционироваться на выбранном объекте, установить масштаб
-                //SharedClasses.GeneralMapWork.PositionedOnSelectedObjectAndSetScale(IMxDocument mxDoc, IMap map)
-
-
-                if ((mxdoc.ActiveView is IPageLayout))
-                    mxdoc.ActiveView = mxdoc.FocusMap as IActiveView;
-
-                IFeature selectedFeature = null;
-                selectedFeature = (mxdoc.FocusMap.FeatureSelection as IEnumFeature).Next();
-
-                if (selectedFeature != null)
-                {
-                    IEnvelope envelope = selectedFeature.Shape.Envelope;
-                    envelope.Expand(2, 2, true);
-                    mxdoc.ActiveView.Extent = envelope;
-                    //mxdoc.ActiveView.Refresh();
-                }
-            }
+            WorkCadastralReference_MAP.SetScaleAndCentred();
 
             WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
+            WorkCadastralReference_MAP.SetStandartMapSkale();
 
-            SetStandartMapSkale();
-
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             mxdoc.PageLayout.ZoomToWhole();
-            activeView.Refresh();
+            mxdoc.ActiveView.Refresh();
         }
-
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region  дополнительные функции
 
-        /// <summary>
-        /// выбрать ближайшеий больший стандартный маштаб
-        /// </summary>
-        private static void SetStandartMapSkale()
-        {
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            int curSkale = Convert.ToInt32( mxdoc.FocusMap.MapScale);
-            int newSkale = -1;
-            int[] standartSkale = { 1, 4, 5, 10, 15, 20, 25, 40, 50, 75, 100, 200, 400, 500, 800, 1000, 2000, 5000, 10000, 20000, 25000, 50000};
-            foreach (int ss in standartSkale)
-            {
-                if(ss >= curSkale)
-                {
-                    newSkale = ss;
-                    break;
-                }
-            }
-            //MessageBox.Show(string.Format("curSkale ={0} newSkale = {1}", curSkale, newSkale));
-            mxdoc.FocusMap.MapScale = newSkale;
-        }
+
+
+
+
 
 
         //заготовка

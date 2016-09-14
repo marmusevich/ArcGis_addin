@@ -34,6 +34,76 @@ namespace CadastralReference
             }
         }
 
+        //спозиционировать на выбраном объекте, отценриовать
+        public static void SetScaleAndCentred()
+        {
+            //
+            //показать на карте
+            //SharedClasses.GeneralMapWork.ShowOnMap(ITable table, int objectID)
+            //спозиционироваться на выбранном объекте, установить масштаб
+            //SharedClasses.GeneralMapWork.PositionedOnSelectedObjectAndSetScale(IMxDocument mxDoc, IMap map)
+
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
+            if ((mxdoc.ActiveView is IPageLayout))
+                mxdoc.ActiveView = mxdoc.FocusMap as IActiveView;
+
+            IFeature selectedFeature = null;
+            selectedFeature = (mxdoc.FocusMap.FeatureSelection as IEnumFeature).Next();
+
+            if (selectedFeature != null)
+            {
+                IEnvelope envelope = selectedFeature.Shape.Envelope;
+                envelope.Expand(2, 2, true);
+                mxdoc.ActiveView.Extent = envelope;
+                //mxdoc.ActiveView.Refresh();
+            }
+        }
+
+        // переключить слои
+        public static void EnableLayersFromPages(OnePageDescriptions opd)
+        {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
+            StringCollection tmp = new StringCollection();
+            foreach (string s in opd.Layers)
+                tmp.Add(s.ToLower());
+
+            IEnumLayer enumLayer = mxdoc.FocusMap.Layers;
+            ILayer layer = enumLayer.Next();
+            while (layer != null)
+            {
+                if (tmp.Contains(layer.Name.ToLower()))
+                {
+                    layer.Visible = true;
+                    tmp.Remove(layer.Name.ToLower());
+                }
+                else
+                    layer.Visible = false;
+                // всегда показывать слой где расположены объекты
+                //if (WorkCadastralReference.GetCadastralReferenceData().ObjectLayerName.ToLower() == layer.Name.ToLower())
+                //    layer.Visible = true;
+
+                layer = enumLayer.Next();
+            }
+
+            if (tmp.Count > 0)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append("Лист \"" + opd.Caption + "\". Отсутствуют слои:\n");
+                foreach (string s in tmp)
+                {
+                    sb.Append("[");
+                    sb.Append(s);
+                    sb.Append("]\n");
+                }
+                MessageBox.Show(sb.ToString());
+            }
+            mxdoc.ActiveView.ContentsChanged();
+        }
+
+
+
         // получить изображенние карты из Арк ГИСа 
         public static Image GetImageFromArcGis()
         {
@@ -71,17 +141,72 @@ namespace CadastralReference
         {
             StringCollection ret = new StringCollection();
             IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
-            if (mxDoc != null)
-            {
+
                 IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
                 ILayer layer = enumLayer.Next();
+                string str = "";
+                string str1 = "";
                 while (layer != null)
                 {
-                    ret.Add(layer.Name);
+                    string ln = layer.Name;
+                    //string tn = "";
+                    //int iii = -1;
+
+                    //IFeatureLayer pFeatureLayer = layer as IFeatureLayer;
+                    //if (pFeatureLayer != null)
+                    //{
+                    //    //string s = string.Format("LN({0}) FC_AN({1}) OC_ID({2})", pFeatureLayer.Name, pFeatureLayer.FeatureClass.AliasName, pFeatureLayer.FeatureClass.ObjectClassID);
+                    //    //MessageBox.Show(s);
+                    //    iii = pFeatureLayer.FeatureClass.ObjectClassID;
+                    //    //ret.Add(s);
+                    //    //ret.Add(layer.Name);
+                    //}
+                    //else
+                    //    str += "\n" + layer.Name;
+
+                    //IDisplayTable pDisplayTable = layer as IDisplayTable;
+                    //if (pDisplayTable != null)
+                    //{
+                    //     IDataset dsTable = pDisplayTable.DisplayTable as IDataset;
+                    //    if (dsTable != null)
+                    //        //MessageBox.Show(string.Format("dsTable.Name({0})", dsTable.Name ));
+                    //        tn = dsTable.Name;
+                    //    else
+                    //        str1 += "\n" + layer.Name;
+                    //}
+
+                    //string s = string.Format("({0})[{1}]-{2}", iii , tn, ln );
+                    ret.Add(ln);
+
                     layer = enumLayer.Next();
                 }
-            }
+                if(str != "")
+                    MessageBox.Show("not IFeatureLayer: " + str);
+                if (str1 != "")
+                    MessageBox.Show("not IDataset: " + str1);
             return ret;
+        }
+
+
+        /// <summary>
+        /// выбрать ближайшеий больший стандартный маштаб
+        /// </summary>
+        public static void SetStandartMapSkale()
+        {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            int curSkale = Convert.ToInt32(mxdoc.FocusMap.MapScale);
+            int newSkale = -1;
+            int[] standartSkale = { 1, 4, 5, 10, 15, 20, 25, 40, 50, 75, 100, 200, 400, 500, 800, 1000, 2000, 5000, 10000, 20000, 25000, 50000 };
+            foreach (int ss in standartSkale)
+            {
+                if (ss >= curSkale)
+                {
+                    newSkale = ss;
+                    break;
+                }
+            }
+            //MessageBox.Show(string.Format("curSkale ={0} newSkale = {1}", curSkale, newSkale));
+            mxdoc.FocusMap.MapScale = newSkale;
         }
 
 
@@ -128,6 +253,7 @@ namespace CadastralReference
         public static void DeleteNordArrow()
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
             IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
             gc.Reset();
 
@@ -187,6 +313,7 @@ namespace CadastralReference
         public static void DeleteScalebar()
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
             IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
 
             //only one scale bar should be in a Layout
@@ -209,6 +336,7 @@ namespace CadastralReference
         public static void AddText()
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
             string name = "ScaleCaption";
             DeleteElementByName(name);
 
@@ -231,6 +359,7 @@ namespace CadastralReference
         public static void DeleteElementByName(string name)
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
             IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
 
             //only one scale bar should be in a Layout

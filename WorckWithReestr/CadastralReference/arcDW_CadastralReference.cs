@@ -48,7 +48,7 @@ namespace WorckWithReestr
 
             tlpPages.Controls.Clear();
             tlpPages.RowCount = 1;
-            tlpPages.Visible = false;
+            //tlpPages.Visible = false;
 
             int colum = 0;
 
@@ -66,7 +66,8 @@ namespace WorckWithReestr
                 tlpPages.Controls.Add(Create_pnlPageMaket(pd), 0, colum * 2 + 1);
 
                 //первичная иницилизация
-                xbSelect_OnChecked(pd);
+                //xbSelect_OnChecked(pd);
+                SetTextToxbSelect(pd);
 
                 colum++;
             }
@@ -79,9 +80,11 @@ namespace WorckWithReestr
             tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tlpPages.Controls.Add(Create_pnlWorckText(prefix_pnlPage + opd.PagesID.ToString()), 0, colum * 2 + 1);
             //
-            xbSelect_OnChecked(opd);
+            //xbSelect_OnChecked(opd);
+            SetTextToxbSelect(opd);
 
             //
+            tlpPages.Visible = false;
             tlpPages.ResumeLayout(false);
             ResumeLayout(false);
             tlpPages.Visible = true; 
@@ -125,6 +128,8 @@ namespace WorckWithReestr
             rb.UseVisualStyleBackColor = true;
             rb.Tag = pd;
             rb.CheckedChanged += new System.EventHandler(this.xbSelect_CheckedChanged);
+            rb.Click += new System.EventHandler(this.rbSelect_Click);
+
             return rb;
         }
 
@@ -142,6 +147,7 @@ namespace WorckWithReestr
             p.Name = prefix_pnlPage + pd.PagesID.ToString();
             p.Size = new System.Drawing.Size(215, 89);
             p.Tag = pd;
+            p.Visible = false;
             p.ResumeLayout(false);
             p.PerformLayout();
             return p;
@@ -235,7 +241,8 @@ namespace WorckWithReestr
             {
                 if (p != null)
                     p.Visible = rb.Checked;
-                WorkCadastralReference.EnableLayersFropPage(opd /*, rb.Checked*/);
+                //if(rb.Checked)
+                //    WorkCadastralReference.EnableLayersFropPageAndSetScale(opd);
             }
             if (сb != null)
             {
@@ -280,7 +287,21 @@ namespace WorckWithReestr
         private void xbSelect_CheckedChanged(object sender, EventArgs e)
         {
             xbSelect_OnChecked(GetPageDescriptionsFromControlTag(sender as Control));
+            //MessageBox.Show("xbSelect_CheckedChanged");
         }
+        private void rbSelect_Click(object sender, EventArgs e)
+        {
+            OnePageDescriptions opd = GetPageDescriptionsFromControlTag(sender as Control);
+            RadioButton rb = GetControlByName(prefix_xbSelect + opd.PagesID.ToString()) as RadioButton;
+            if (rb != null)
+            {
+                //MessageBox.Show("rbSelect_Click");
+
+                if (rb.Checked)
+                    WorkCadastralReference.EnableLayersFropPageAndSetScale(opd);
+            }
+        }
+
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //  Maket
@@ -344,7 +365,8 @@ namespace WorckWithReestr
 
         private void btnCloseEdit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Закрыть для редактирования");
+            //MessageBox.Show("Закрыть для редактирования");
+            WorkCadastralReference_MAP.SetStandartMapSkale();
         }
 
         private void btnSetObject_Click(object sender, EventArgs e)

@@ -1,20 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CadastralReference
 {
     public partial class frmSetting : Form
     {
-        private string prefix_TabsTotcPages = "tpPage_";
+        private string prefix_tpPages = "tpPage_";
 
         private string prefix_txtSelectedLayers = "txtSelectedLayers_";
         private string prefix_lblLayers = "lblLayers_";
         private string prefix_btnSelectedLayers = "btnSelectedLayers_";
 
 
+
+        List<OnePageDescriptions> m_Pages = null;
+
         public frmSetting()
         {
             InitializeComponent();
+
+            m_Pages = WorkCadastralReference.GetCadastralReferenceData().Pages;
         }
 
 
@@ -47,7 +53,7 @@ namespace CadastralReference
 
         private void FillclbListOfPages()
         {
-            foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
+            foreach (OnePageDescriptions pd in m_Pages)
             {
                 clbListOfPages.Items.Add(pd, pd.Enable);
             }
@@ -57,29 +63,42 @@ namespace CadastralReference
         private void CreateTabsTotcPages()
         {
 
-            foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
+            foreach (OnePageDescriptions pd in m_Pages)
             {
-                TabPage tp = new TabPage();
-                tp.SuspendLayout();
-                tp.Location = new System.Drawing.Point(4, 22);
-                tp.Name = prefix_TabsTotcPages + pd.PagesID.ToString();
-                tp.Padding = new System.Windows.Forms.Padding(3);
-                tp.Size = new System.Drawing.Size(637, 389);
-                //tp.TabIndex = 0;
-                tp.Text = pd.Caption;
-                tp.UseVisualStyleBackColor = true;
-                tp.Visible = pd.Enable;
-
-                tp.Controls.Add(this.Create_txtSelectedLayers(pd));
-                tp.Controls.Add(this.Create_lblLayers(pd));
-                tp.Controls.Add(this.Create_btnSelectedLayers(pd));
-
-                //остальные элементы управления
-                    
-                this.tcPages.Controls.Add(tp);
-                tp.ResumeLayout(false);
-                tp.PerformLayout();
+                Create_tpPages(pd);
             }
+        }
+
+        private void Create_tpPages(OnePageDescriptions pd)
+        {
+            TabPage tp = new TabPage();
+            tp.SuspendLayout();
+            tp.Location = new System.Drawing.Point(4, 22);
+            tp.Name = prefix_tpPages + pd.PagesID.ToString();
+            tp.Padding = new System.Windows.Forms.Padding(3);
+            tp.Size = new System.Drawing.Size(637, 389);
+            //tp.TabIndex = 0;
+            tp.Text = pd.Caption;
+            tp.UseVisualStyleBackColor = true;
+            
+
+            tp.Controls.Add(this.Create_txtSelectedLayers(pd));
+            tp.Controls.Add(this.Create_lblLayers(pd));
+            tp.Controls.Add(this.Create_btnSelectedLayers(pd));
+
+            //остальные элементы управления
+
+            this.tcPages.Controls.Add(tp);
+
+
+            if (pd.Enable)
+                tp.Parent = this.tcPages;// -- Показать
+            else
+                tp.Parent = null;// -- Скрыть
+
+
+            tp.ResumeLayout(false);
+            tp.PerformLayout();
         }
 
         private TextBox Create_txtSelectedLayers(OnePageDescriptions pd)
@@ -226,9 +245,15 @@ namespace CadastralReference
         {
             OnePageDescriptions pd = clbListOfPages.Items[e.Index] as OnePageDescriptions;
             pd.Enable = e.NewValue == CheckState.Checked;
-            TabControl p = GetControlByName(prefix_TabsTotcPages + pd.PagesID.ToString()) as TabControl;
+            TabPage p = GetControlByName(prefix_tpPages + pd.PagesID.ToString()) as TabPage;
+
             if (p != null)
-                p.Visible = pd.Enable;
+            {
+                if (pd.Enable)
+                    p.Parent = this.tcPages;// -- Показать
+                else
+                    p.Parent = null;// -- Скрыть
+            }
         }
         #endregion 
 
