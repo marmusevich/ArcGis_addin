@@ -13,29 +13,6 @@ namespace CadastralReference
     [Serializable]
     public class OnePageDescriptions : IEquatable<OnePageDescriptions>
     {
-        /// <summary>
-        /// иницилизация 
-        /// </summary>
-        /// <param name="caption"> название </param>
-        /// <param name="enable"> включен ли?</param>
-        public OnePageDescriptions(string caption, bool enable = false)
-        {
-            Caption = caption;
-            Enable = enable;
-            //            PagesID = Caption.GetHashCode();
-            Layers = new StringCollection();
-            m_Image = null;
-        }
-
-        public OnePageDescriptions()
-        {
-            Caption = "";
-            Enable = false;
-            PagesID = Caption.GetHashCode();
-            Layers = new StringCollection();
-            m_Image = null;
-        }
-
         #region свойсва / поля
         /// <summary>
         ///  имя из базы Данных для поля 
@@ -125,7 +102,50 @@ namespace CadastralReference
             return (this.PagesID.Equals(other.PagesID));
         }
         #endregion
+
+
+        /// <summary>
+        /// иницилизация 
+        /// </summary>
+        /// <param name="caption"> название </param>
+        /// <param name="enable"> включен ли?</param>
+        public OnePageDescriptions(string caption, bool enable = false)
+        {
+            Caption = caption;
+            Enable = enable;
+            Layers = new StringCollection();
+            m_Image = null;
+        }
+
+        public OnePageDescriptions()
+        {
+            Caption = "";
+            Enable = false;
+            Layers = new StringCollection();
+            m_Image = null;
+        }
+
+        //скопировать настройки
+        public void CopySetingFrom(OnePageDescriptions opd)
+        {
+            this.Caption = opd.Caption;
+            this.Enable = opd.Enable;
+            Layers = new StringCollection();
+            foreach (string s in opd.Layers)
+                this.Layers.Add(s);
+        }
+
+        //предстовленеие перечня слоев
+        public string LayersToString()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (string s in Layers)
+            {
+                sb.Append("[");
+                sb.Append(s);
+                sb.Append("] ");
+            }
+            return sb.ToString();
+        }
     }
-
-
 }

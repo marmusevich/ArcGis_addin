@@ -10,6 +10,7 @@ namespace CadastralReference
 {
     //CadastralReference
     [Serializable]
+    [XmlRootAttribute("CadastralReferenceData", IsNullable = true)]
     public class CadastralReferenceData
     {
         #region // для теста
@@ -22,7 +23,7 @@ namespace CadastralReference
                     "Детальный план: схема планировочные ограничения",
                     "Граници участков смежных землепользователей"
                   };
-        #endregion // для теста
+
 
         public void InitPagesDescription()
         {
@@ -39,14 +40,14 @@ namespace CadastralReference
             }
         }
 
-        public CadastralReferenceData()
-        {
-            m_Pages = new List<OnePageDescriptions>();
-            DinamicRTF_Template = new StringCollection();
-        }
+        #endregion // для теста
 
-        /// ////////////////////////////////////////////////////////////////////////////////////////////
+        // XML строка с настройками по умалчанию
+        private const string defaultSettingXML = null;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
         #region внутренние переменные
+
         List<OnePageDescriptions> m_Pages = null;
 
         private int m_ZayavkaID = -1;
@@ -64,11 +65,6 @@ namespace CadastralReference
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
         #region публичные свойства
-        /// <summary>
-        /// свойства графических листов
-        /// </summary>
-        [XmlArray("Pages"), XmlArrayItem("Page")]
-        public List<OnePageDescriptions> Pages { get { return m_Pages; } private set { m_Pages = value; } }
         /// <summary>
         /// код заявления
         /// </summary>
@@ -161,13 +157,105 @@ namespace CadastralReference
         public Dictionary<string, object> ZayavkaData { get { return m_ZayavkaData; } set { m_ZayavkaData = value; } }
 
 
-
-
+        /// <summary>
+        /// свойства графических листов
+        /// </summary>
+        [XmlArray("Pages"), XmlArrayItem("Page")]
+        public List<OnePageDescriptions> Pages { get { return m_Pages; } set { m_Pages = value; } }
         #endregion
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         #region функции
+        public CadastralReferenceData()
+        {
+            m_Pages = new List<OnePageDescriptions>();
+            DinamicRTF_Template = new StringCollection();
+        }
 
+        //скопировать настройки
+        public void CopySetingFrom(CadastralReferenceData crd)
+        {
+            this.TitulRTF_Template = crd.TitulRTF_Template;
+            this.Page1RTF_Template = crd.Page1RTF_Template; 
+            this.ConstRTF_Template = crd.ConstRTF_Template; 
+            this.RaspiskaRTF_Template = crd.RaspiskaRTF_Template; 
+            this.ObjectLayerName = crd.ObjectLayerName;
+
+            this.DinamicRTF_Template = new StringCollection();
+            foreach (string s in crd.DinamicRTF_Template)
+                this.DinamicRTF_Template.Add(s);
+
+            foreach (OnePageDescriptions opd in crd.Pages)
+            {
+                // не портить текущие значения, новые добавить
+                int index = this.Pages.IndexOf(opd);
+                if (index == -1)
+                {
+                    OnePageDescriptions tmp = new OnePageDescriptions();
+                    tmp.CopySetingFrom(opd);
+                    this.Pages.Add(tmp);
+                }
+                else
+                {
+                    this.Pages[index].CopySetingFrom(opd);
+                }
+            }
+        }
+
+
+        //выгрузить настройки
+        public string SaveSettingToXMLString()
+        {
+            string ret = "";
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(CadastralReferenceData));
+                StringWriter stringWriter = new StringWriter();
+                xmlSerializer.Serialize(stringWriter, this);
+                ret = stringWriter.ToString();
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                System.Console.WriteLine(string.Format("SaveSettingToXMLString Error = {0}\r\n",  ex.Message));
+            }
+            return ret;
+        }
+
+        //загрузить настройки, при неудаче установить по умалчанию
+        public void LoadSettingFromXMLString(string xml)
+        {
+            CadastralReferenceData tmp = null;
+            XmlSerializer xmlSerializer = null;
+            StringReader stringReader = null;
+            try
+            {
+                xmlSerializer = new XmlSerializer(typeof(CadastralReferenceData));
+                try
+                {
+                    xmlSerializer = new XmlSerializer(typeof(CadastralReferenceData));
+                    stringReader = new StringReader(xml);
+                    tmp = (CadastralReferenceData)xmlSerializer.Deserialize(stringReader);
+                }
+                catch (Exception ex) // попробывать загрузить установки по умолчанию
+                {
+                    System.Console.WriteLine(string.Format("LoadSettingFromXMLString load Error = {0}\r\n", ex.Message));
+                    System.Console.WriteLine(string.Format("LoadSettingFromXMLString try load default\r\n"));
+                    stringReader = new StringReader(defaultSettingXML);
+                    tmp = (CadastralReferenceData)xmlSerializer.Deserialize(stringReader);
+                }
+
+                if (tmp != null)
+                {
+                    this.CopySetingFrom(tmp);
+                }
+
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                System.Console.WriteLine(string.Format("LoadSettingFromXMLString Error = {0}\r\n", ex.Message));
+            }
+
+        }
         #endregion
 
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -190,34 +278,6 @@ namespace CadastralReference
                 Image_Change(sender, EventArgs.Empty);
         }
         #endregion
-
-
-
-        static public string ToXMLSerializableString(CadastralReferenceData m)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(CadastralReferenceData));
-            StringWriter stringWriter = new StringWriter();
-            xmlSerializer.Serialize(stringWriter, m);
-            return stringWriter.ToString();
-        }
-
-        static public CadastralReferenceData FromSerializableXMLString(string xml)
-        {
-
-            var xmlSerializer = new XmlSerializer(typeof(CadastralReferenceData));
-            var stringReader = new StringReader(xml);
-            return (CadastralReferenceData)xmlSerializer.Deserialize(stringReader);
-            //try
-            //{
-
-            //}
-            //catch (Exception ex) // обработка ошибок
-            //{
-            //    System.Console.WriteLine(string.Format("{0}.{1}()] {2}\r\n", ex.TargetSite.DeclaringType, ex.TargetSite.Name, ex.Message));
-            //}
-
-
-        }
     }
 }
 
