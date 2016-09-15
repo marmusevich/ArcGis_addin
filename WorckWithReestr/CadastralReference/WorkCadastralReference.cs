@@ -1,15 +1,12 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.ArcMapUI;
-using ESRI.ArcGIS.Geometry;
-using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Output;
 using ESRI.ArcGIS.Carto;
 using WorckWithReestr;
-using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using System;
-using System.Collections.Specialized;
+using SharedClasses;
+using System.IO;
 
 
 //Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX
@@ -35,11 +32,61 @@ namespace CadastralReference
             if (m_CadastralReferenceData == null)
             {
                 m_CadastralReferenceData = new CadastralReferenceData();
-                m_CadastralReferenceData.InitPagesDescription();
+                LoadSettingFromDB();
             }
             return m_CadastralReferenceData; 
         }
         #endregion
+
+
+        public static void SaveSettingToDB()
+        {
+            try
+            {
+                string filename = System.IO.Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("CadastralReferenceData_{0:yyy.MM.dd_H-mm-ss}.setting.xml", DateTime.Now));
+                string xml = GetCadastralReferenceData().SaveSettingToXMLString();
+                File.WriteAllText(filename, xml);
+
+                WorkCadastralReference_DB.SaveToDBPage(-1, "Настройки", -1,"", xml);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, "SaveSettingToDB Error");
+                //GeneralApp.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, objectID));
+            }
+        }
+        public static void LoadSettingFromDB()
+        {
+            m_CadastralReferenceData.InitPagesDescription();
+
+            string xml = (string)WorkCadastralReference_DB.LoadToDBPage(-1, -1);
+            m_CadastralReferenceData.LoadSettingFromXMLString(xml);
+        }
+
+        public static void SaveToDBImage(OnePageDescriptions opd)
+        {
+            Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
+            opd.Image = img;
+
+            //сохранить картинку в базу
+            WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), opd.PagesID, opd.Caption, opd.Image);
+        }
+        public static void LoadToDBImage(OnePageDescriptions opd)
+        {
+            opd.Image = (Image)WorkCadastralReference_DB.LoadToDBPage(GetCadastralReferenceData().ZayavkaID, opd.PagesID);
+        }
+
+        public static void SaveToDBRTF()
+        {
+            WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), 0, "SaveToDBRTF", GetCadastralReferenceData().AllRTF);
+        }
+        public static void LoadToDBRTF()
+        {
+            GetCadastralReferenceData().AllRTF = (string)WorkCadastralReference_DB.LoadToDBPage(GetCadastralReferenceData().ZayavkaID,  0 );
+        }
+
+
+
 
         /// <summary>
         /// открыть окно выбора заявки 
@@ -48,7 +95,6 @@ namespace CadastralReference
         {
             string filteredString = "";
             int i = frmReestrZayav_jurnal.ShowForSelect(filteredString);
-            if (i == 0) i = -1;
 
             SetZayavka(i);
         }
@@ -58,10 +104,24 @@ namespace CadastralReference
         /// <param name="zayavkaID"> код заявка</param>
         public static void SetZayavka(int zayavkaID)
         {
-            GetCadastralReferenceData().ZayavkaData = WorkCadastralReference_DB.GetZayavkaData(zayavkaID);
-            GetCadastralReferenceData().ZayavkaID = zayavkaID;
-            GetCadastralReferenceData().ObjektInMapID = -1;
+            if (zayavkaID == -1)
+            {
+                m_CadastralReferenceData = null;
+            }
+            else if (zayavkaID >= 0)
+            {
+                GetCadastralReferenceData().ZayavkaData = WorkCadastralReference_DB.GetZayavkaData(zayavkaID);
+                GetCadastralReferenceData().ZayavkaID = zayavkaID;
+            }
+
+            //GetCadastralReferenceData().ObjektInMapID = -1;
         }
+
+
+        //  прочитать все листы справки
+        // еще событие на запрет редактирования
+
+
         /// <summary>
         /// Описание заявки
         /// </summary>
@@ -70,7 +130,6 @@ namespace CadastralReference
         {
             if (GetCadastralReferenceData().ZayavkaID == -1)
                 return "Не выбрана заявка.";
-
 
             string strKod_Z = "";
             string N_Z = "";
@@ -127,7 +186,6 @@ namespace CadastralReference
             return "Указан объект №" + GetCadastralReferenceData().ObjektInMapID.ToString();
         }
 
-
         /// <summary>
         /// Настроить макет
         /// </summary>
@@ -170,26 +228,6 @@ namespace CadastralReference
             mxdoc.PageLayout.ZoomToWhole();
             mxdoc.ActiveView.Refresh();
         }
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #region  дополнительные функции
-
-
-
-
-
-
-
-        //заготовка
-        private static void f1()
-        {
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            IActiveView activeView = mxdoc.ActiveView;
-            WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
-        }
-
-        #endregion
-
     }
 }
 

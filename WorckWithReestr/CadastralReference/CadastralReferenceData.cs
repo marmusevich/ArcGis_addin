@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using SharedClasses;
 
 namespace CadastralReference
 {
@@ -172,34 +173,50 @@ namespace CadastralReference
             DinamicRTF_Template = new StringCollection();
         }
 
+        public CadastralReferenceData(CadastralReferenceData crd)
+        {
+            m_Pages = new List<OnePageDescriptions>();
+            DinamicRTF_Template = new StringCollection();
+            CopySetingFrom(crd);
+        }
+
+
         //скопировать настройки
         public void CopySetingFrom(CadastralReferenceData crd)
         {
+            if (crd == null) return;
+
             this.TitulRTF_Template = crd.TitulRTF_Template;
             this.Page1RTF_Template = crd.Page1RTF_Template; 
             this.ConstRTF_Template = crd.ConstRTF_Template; 
             this.RaspiskaRTF_Template = crd.RaspiskaRTF_Template; 
             this.ObjectLayerName = crd.ObjectLayerName;
 
-            this.DinamicRTF_Template = new StringCollection();
-            foreach (string s in crd.DinamicRTF_Template)
-                this.DinamicRTF_Template.Add(s);
-
-            foreach (OnePageDescriptions opd in crd.Pages)
+            if(crd.DinamicRTF_Template != null)
             {
-                // не портить текущие значения, новые добавить
-                int index = this.Pages.IndexOf(opd);
-                if (index == -1)
+                this.DinamicRTF_Template = new StringCollection();
+                foreach (string s in crd.DinamicRTF_Template)
+                    this.DinamicRTF_Template.Add(s);
+            }
+            if (crd.Pages != null)
+            {
+                foreach (OnePageDescriptions opd in crd.Pages)
                 {
-                    OnePageDescriptions tmp = new OnePageDescriptions();
-                    tmp.CopySetingFrom(opd);
-                    this.Pages.Add(tmp);
-                }
-                else
-                {
-                    this.Pages[index].CopySetingFrom(opd);
+                    // не портить текущие значения, новые добавить
+                    int index = this.Pages.IndexOf(opd);
+                    if (index == -1)
+                    {
+                        OnePageDescriptions tmp = new OnePageDescriptions();
+                        tmp.CopySetingFrom(opd);
+                        this.Pages.Add(tmp);
+                    }
+                    else
+                    {
+                        this.Pages[index].CopySetingFrom(opd);
+                    }
                 }
             }
+
         }
 
 
@@ -216,7 +233,9 @@ namespace CadastralReference
             }
             catch (Exception ex) // обработка ошибок
             {
-                System.Console.WriteLine(string.Format("SaveSettingToXMLString Error = {0}\r\n",  ex.Message));
+                Logger.Write(ex, "Запись настроек кадастровой справки");
+                GeneralApp.ShowErrorMessage("Запись настроек кадастровой справки");
+
             }
             return ret;
         }
@@ -238,8 +257,8 @@ namespace CadastralReference
                 }
                 catch (Exception ex) // попробывать загрузить установки по умолчанию
                 {
-                    System.Console.WriteLine(string.Format("LoadSettingFromXMLString load Error = {0}\r\n", ex.Message));
-                    System.Console.WriteLine(string.Format("LoadSettingFromXMLString try load default\r\n"));
+                    Logger.Write(ex, "Чтение настроек кадастровой справки - основное значение");
+
                     stringReader = new StringReader(defaultSettingXML);
                     tmp = (CadastralReferenceData)xmlSerializer.Deserialize(stringReader);
                 }
@@ -252,7 +271,8 @@ namespace CadastralReference
             }
             catch (Exception ex) // обработка ошибок
             {
-                System.Console.WriteLine(string.Format("LoadSettingFromXMLString Error = {0}\r\n", ex.Message));
+                Logger.Write(ex, "Чтение настроек кадастровой справки");
+                GeneralApp.ShowErrorMessage("Чтение настроек кадастровой справки");
             }
 
         }

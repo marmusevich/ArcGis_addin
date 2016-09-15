@@ -93,7 +93,8 @@ namespace WorckWithReestr
                                       base.table.FindField("Prim"), // 23
                                       base.table.FindField("Rajon"), 
                                       base.table.FindField("IsHaveReferense"),
-                                      base.table.FindField("IsReferenceClose") 
+                                      base.table.FindField("IsReferenceClose"),
+                                      base.table.FindField("MapObjectID")
 
                                     };
             GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
@@ -119,6 +120,8 @@ namespace WorckWithReestr
             indexRajon = dgv.Columns["Rajon"].Index;
 
             dgv.Columns["GlobalID"].Visible = false;
+            dgv.Columns["IsReferenceClose"].Visible = false;
+            dgv.Columns["MapObjectID"].Visible = false;
 
         dgv.CellFormatting += OnCellFormatting;
         }
@@ -278,35 +281,3 @@ namespace WorckWithReestr
     }
 }
 
-
-
-    
-//base.table.FindField("Cane_Date"), 
-//base.table.FindField("Adress_Text"), 
-
-//base.table.FindField("Rajon"), 
-//base.table.FindField("IsHaveReferense"),
-//base.table.FindField("IsReferenceClose") 
-
-
-
-//Kadastr2016.DBO.Rej_Adm_Raj_Mis
-//
-//  <Name>ID_RAI</Name> 
-//  <Type>esriFieldTypeInteger</Type> 
-//  <AliasName>Ідентифікатор району</AliasName>
-
-//  < Name > NAZVA_UKR </ Name >
-//  < Type > esriFieldTypeString </ Type >
-//  < Length > 80 </ Length >
-//  < AliasName > Назва району українською мовою</AliasName>
-
-//  < Name > NAZVA_ROS </ Name >
-//  < Type > esriFieldTypeString </ Type >
-//  < Length > 80 </ Length >
-//  < AliasName > Назва району російською мовою</AliasName>
-
-//  < Name > NAZVA_LAT </ Name >
-//  < Type > esriFieldTypeString </ Type >
-//  < Length > 80 </ Length >
-//  < AliasName > Назва району латиницею</AliasName> 

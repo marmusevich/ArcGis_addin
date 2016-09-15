@@ -18,51 +18,58 @@ namespace CadastralReference
     public static class WorkCadastralReference_DB
     {
         //
-        public const string ReestrZayav_NameWorkspace = "Kadastr2016";
-        public const string ReestrZayav_NameTable = "Kn_Reg_Zayv";
+        private const string DB_NameWorkspace = "Kadastr2016";
+        private const string ReestrZayav_NameTable = "Kn_Reg_Zayv";
+        private const string CadastralReference_NameTable = "";
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region  группа сохранения и чтения из/в базу
-        //IMAGE
-        public static void SaveToDBImage(OnePageDescriptions opd)
-        {
-            Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
-            opd.Image = img;
-        }
-        public static void LoadToDBImage(OnePageDescriptions opd)
-        {
-            MessageBox.Show("LoadToDBImage ->" + opd.Caption);
-        }
-
-        //RTF
-        public static void SaveToDBRTF()
-        {
-            MessageBox.Show("SaveToDBRTF");
-        }
-        public static void LoadToDBRTF()
-        {
-            MessageBox.Show("LoadToDBRTF");
-        }
-
-        //All
-        public static void SaveToDB()
-        {
-            MessageBox.Show("SaveToDB");
-        }
-        public static void LoadToDB()
-        {
-            MessageBox.Show("LoadToDB");
-        }
         #endregion
+
+        //сохранениелиста
+        public static void SaveToDBPage(int zayavkaId, string zayavkaDiscription, int pageId, string pageCaption, object data )
+        {
+
+        }
+
+        // получить один лист
+        public static object LoadToDBPage(int zayavkaId, int pageId)
+        {
+
+            return null;
+        }
+
+        // получить все листы
+        public static object[] LoadToDBPageArray(int zayavkaId)
+        {
+
+            return null;
+        }
+
+
+
+
+
+        //изменение заявки - еще чтение этих полей
+        public static void EditZayavkaData(int ZayavkaID, object MapObjectID = null, object IsHaveReferense = null, object IsReferenceClose = null)
+        {
+        }
+
 
         // возвращает словарь данных по заявке
         public static Dictionary<string, object> GetZayavkaData(int ZayavkaID)
         {
             Dictionary<string, object> zayavkaData = null;
 
+
+            //
+            //int MapObjectID,
+            //bool IsHaveReferense, 
+            //bool IsReferenceClose
+
             try
             {
-                IFeatureWorkspace fws = SharedClasses.GeneralDBWork.GetWorkspace(ReestrZayav_NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = SharedClasses.GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
                 ITable table = fws.OpenTable(ReestrZayav_NameTable);
                 IRow row = table.GetRow(ZayavkaID);
 
@@ -96,7 +103,7 @@ namespace CadastralReference
             }
             catch (Exception ex) // обработка ошибок
             {
-                SharedClasses.Logger.Write(ex, string.Format("CadastralReference.WorkCadastralReference.GetZayavkaData('{0}', '{1}', '{2}')", ReestrZayav_NameWorkspace, ReestrZayav_NameTable, ZayavkaID));
+                SharedClasses.Logger.Write(ex, string.Format("CadastralReference.WorkCadastralReference.GetZayavkaData('{0}', '{1}', '{2}')", DB_NameWorkspace, ReestrZayav_NameTable, ZayavkaID));
             }
             return zayavkaData;
         }

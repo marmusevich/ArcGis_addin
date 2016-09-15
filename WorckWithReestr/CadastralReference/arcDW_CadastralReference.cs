@@ -320,10 +320,7 @@ namespace WorckWithReestr
         private void btnSaveToDBMaket_Click(object sender, EventArgs e)
         {
             OnePageDescriptions opd = this.GetPageDescriptionsFromControlTag(sender as Control);
-            WorkCadastralReference_DB.SaveToDBImage(opd);
-            //PictureBox controlByName = this.GetControlByName(this.prefix_pbPrev + opd.NameFromDB) as PictureBox;
-            //if (controlByName != null)
-            //    controlByName.Image = opd.Image;
+            WorkCadastralReference.SaveToDBImage(opd);
         }
 
 
@@ -336,7 +333,7 @@ namespace WorckWithReestr
 
         private void btnRTFSaveToDB_Click(object sender, EventArgs e)
         {
-            WorkCadastralReference_DB.SaveToDBRTF();
+            WorkCadastralReference.SaveToDBRTF();
         }
 
         private void btnRTFPrev_Click(object sender, EventArgs e)
@@ -425,7 +422,9 @@ namespace WorckWithReestr
             this.Hook = hook;
 			
             InitControls();
-			
+
+            AppStartPoint.Init();
+
         }
 
         /// <summary>

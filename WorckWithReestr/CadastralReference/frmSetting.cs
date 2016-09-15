@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SharedClasses;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CadastralReference
@@ -13,14 +15,13 @@ namespace CadastralReference
         private string prefix_btnSelectedLayers = "btnSelectedLayers_";
 
 
+        CadastralReferenceData m_crd = null;
 
-        List<OnePageDescriptions> m_Pages = null;
 
         public frmSetting()
         {
             InitializeComponent();
-
-            m_Pages = WorkCadastralReference.GetCadastralReferenceData().Pages;
+            m_crd = new CadastralReferenceData(WorkCadastralReference.GetCadastralReferenceData());
         }
 
 
@@ -53,7 +54,7 @@ namespace CadastralReference
 
         private void FillclbListOfPages()
         {
-            foreach (OnePageDescriptions pd in m_Pages)
+            foreach (OnePageDescriptions pd in m_crd.Pages)
             {
                 clbListOfPages.Items.Add(pd, pd.Enable);
             }
@@ -63,7 +64,7 @@ namespace CadastralReference
         private void CreateTabsTotcPages()
         {
 
-            foreach (OnePageDescriptions pd in m_Pages)
+            foreach (OnePageDescriptions pd in m_crd.Pages)
             {
                 Create_tpPages(pd);
             }
@@ -111,7 +112,7 @@ namespace CadastralReference
             t.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             t.Size = new System.Drawing.Size(522, 20);
             t.Tag = pd;
-            t.Text = GetShortListOfEnabledLayers(pd);
+            t.Text = pd.LayersToString();
             t.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtSelectedLayers_MouseDoubleClick);
             return t;
         }
@@ -175,21 +176,11 @@ namespace CadastralReference
 
             TextBox t = GetControlByName(prefix_txtSelectedLayers + pd.PagesID.ToString()) as TextBox;
             if(t != null)
-                t.Text = GetShortListOfEnabledLayers(pd);
+                t.Text = pd.LayersToString();
 
 
         }
-        private string GetShortListOfEnabledLayers(OnePageDescriptions pd)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach (string s in pd.Layers)
-            {
-                sb.Append("[");
-                sb.Append(s);
-                sb.Append("] ");
-            }
-            return sb.ToString();
-        }
+
 
 
 
@@ -218,19 +209,8 @@ namespace CadastralReference
         #region 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // продвинутое сохранение
-            for (int i = 0; i < clbListOfPages.Items.Count; i++)
-            {
-                OnePageDescriptions pd = clbListOfPages.Items[i] as OnePageDescriptions;
-                // проверки
-                int index = WorkCadastralReference.GetCadastralReferenceData().Pages.IndexOf(pd);
-                if (index != -1)
-                {
-                    WorkCadastralReference.GetCadastralReferenceData().Pages[index] = pd;
-                }
-                else
-                    WorkCadastralReference.GetCadastralReferenceData().Pages.Add(pd);
-            }
+            WorkCadastralReference.GetCadastralReferenceData().CopySetingFrom(m_crd);
+            WorkCadastralReference.SaveSettingToDB();
 
             this.DialogResult = DialogResult.OK;
             this.Close();
