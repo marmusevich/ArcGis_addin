@@ -6,6 +6,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using SharedClasses;
+using System.Windows.Forms;
 
 namespace CadastralReference
 {
@@ -52,7 +53,10 @@ namespace CadastralReference
         List<OnePageDescriptions> m_Pages = null;
 
         private int m_ZayavkaID = -1;
-        private int m_ObjektInMapID = -1;
+        private int m_MapObjectID = -1;
+        private bool m_IsReferenceClose = false;
+        private Dictionary<string, object> m_ZayavkaData = null;
+
         private string m_AllRTF = "";
         private string m_TitulRTF_Template = " Титул ";
         private string m_Page1RTF_Template = " начало динамической части";
@@ -61,7 +65,6 @@ namespace CadastralReference
         private string m_ConstRTF_Template = " постоянная часть";
         private string m_RaspiskaRTF_Template = " расписка";
         private string m_ObjectLayerName = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX"; // проблема, это не имя слоя
-        private Dictionary<string, object> m_ZayavkaData = null;
         #endregion
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,22 +93,48 @@ namespace CadastralReference
         /// код объекта
         /// </summary>
         [XmlIgnore]
-        public int ObjektInMapID
+        public int MapObjectID
         {
             get
             {
-                return m_ObjektInMapID;
+                return m_MapObjectID;
             }
             set
             {
-                if (m_ObjektInMapID != value)
+                if (m_MapObjectID != value)
                 {
-                    m_ObjektInMapID = value;
+                    m_MapObjectID = value;
                     if (ObjektInMapID_Change != null)
                         ObjektInMapID_Change(this, EventArgs.Empty);
                 }
             }
         }
+        /// <summary>
+        /// справка закрыта для редактирования
+        /// </summary>
+        [XmlIgnore]
+        public bool IsReferenceClose
+        {
+            get
+            {
+                return m_IsReferenceClose;
+            }
+            set
+            {
+                if (m_IsReferenceClose != value)
+                {
+                    m_IsReferenceClose = value;
+                    if (IsReferenceClose_Change != null)
+                        IsReferenceClose_Change(this, EventArgs.Empty);
+                }
+            }
+        }
+        /// <summary>
+        /// Данные заявки
+        /// </summary>
+        [XmlIgnore]
+        public Dictionary<string, object> ZayavkaData { get { return m_ZayavkaData; } set { m_ZayavkaData = value; } }
+
         /// <summary>
         /// весь текст итогового документа
         /// </summary>
@@ -146,16 +175,6 @@ namespace CadastralReference
         /// </summary>
         [XmlElement("ObjectLayerName")]
         public string ObjectLayerName { get { return m_ObjectLayerName; } set { m_ObjectLayerName = value; } }
-        /// <summary>
-        /// справка закрыта для редактирования
-        /// </summary>
-        [XmlIgnore]
-        public bool IsCloseToEdit { get; set; }
-        /// <summary>
-        /// Данные заявки
-        /// </summary>
-        [XmlIgnore]
-        public Dictionary<string, object> ZayavkaData { get { return m_ZayavkaData; } set { m_ZayavkaData = value; } }
 
 
         /// <summary>
@@ -179,7 +198,6 @@ namespace CadastralReference
             DinamicRTF_Template = new StringCollection();
             CopySetingFrom(crd);
         }
-
 
         //скопировать настройки
         public void CopySetingFrom(CadastralReferenceData crd)
@@ -219,6 +237,19 @@ namespace CadastralReference
 
         }
 
+        public void ClearData()
+        {
+            ZayavkaID = -1;
+            MapObjectID = -1;
+            IsReferenceClose = false;
+            ZayavkaData = null;
+            AllRTF = "";
+            DinamicRTF = new StringCollection();
+
+            if (Pages != null)
+                foreach (OnePageDescriptions opd in Pages)
+                    opd.Image = null;
+        }
 
         //выгрузить настройки
         public string SaveSettingToXMLString()
@@ -234,8 +265,7 @@ namespace CadastralReference
             catch (Exception ex) // обработка ошибок
             {
                 Logger.Write(ex, "Запись настроек кадастровой справки");
-                GeneralApp.ShowErrorMessage("Запись настроек кадастровой справки");
-
+                GeneralApp.ShowErrorMessage("Ошибка при записи настроек кадастровой справки");
             }
             return ret;
         }
@@ -257,7 +287,7 @@ namespace CadastralReference
                 }
                 catch (Exception ex) // попробывать загрузить установки по умолчанию
                 {
-                    Logger.Write(ex, "Чтение настроек кадастровой справки - основное значение");
+                    Logger.Write(ex, "Ошибка при чтение настроек кадастровой справки - основное значение");
 
                     stringReader = new StringReader(defaultSettingXML);
                     tmp = (CadastralReferenceData)xmlSerializer.Deserialize(stringReader);
@@ -267,14 +297,12 @@ namespace CadastralReference
                 {
                     this.CopySetingFrom(tmp);
                 }
-
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, "Чтение настроек кадастровой справки");
-                GeneralApp.ShowErrorMessage("Чтение настроек кадастровой справки");
+                Logger.Write(ex, "Ошибка при чтение  настроек кадастровой справки");
+                GeneralApp.ShowErrorMessage("Ошибка при чтение  настроек кадастровой справки");
             }
-
         }
         #endregion
 
@@ -284,10 +312,17 @@ namespace CadastralReference
         /// смена заявления
         /// </summary>
         public event EventHandler<EventArgs> ZayavkaID_Change;
+
         /// <summary>
         /// смена объекта
         /// </summary>
         public event EventHandler<EventArgs> ObjektInMapID_Change;
+        
+        /// <summary>
+        /// запрет редактирования
+        /// </summary>
+        public event EventHandler<EventArgs> IsReferenceClose_Change;
+        
         /// <summary>
         ///смена изображения
         /// </summary>

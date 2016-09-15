@@ -27,8 +27,7 @@ namespace WorckWithReestr
 
             statsticsDockableWin.Show(!statsticsDockableWin.IsVisible() || show);
 
-            if (id != -1)
-                CadastralReference.WorkCadastralReference.SetZayavka(id);
+            CadastralReference.WorkCadastralReference.SetZayavka(id);
         }
         protected override void OnUpdate()
         {

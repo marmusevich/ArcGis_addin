@@ -17,12 +17,9 @@ namespace WorckWithReestr
         public static void Init()
         {
             if (SharedClasses.GeneralApp.GetAddInsAppInfo() == null)
-            //if (m_AddInsAppInfo == null)
             {
-
                 m_AddInsAppInfo = new AppStartPoint();
                 SharedClasses.GeneralApp.SetAddInsAppInfo(m_AddInsAppInfo);
-
             }
         }
 

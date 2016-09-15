@@ -273,7 +273,7 @@ namespace WorckWithReestr
         //включение/выключение панелей от наличия заявки
         private void EnablePanels()
         {
-            bool f = (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1) && (WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID != -1);
+            bool f = (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1) && (WorkCadastralReference.GetCadastralReferenceData().MapObjectID != -1);
             pnRtf.Enabled = f;
             tlpPages.Enabled = f;
             btnSetObject.Enabled = f;
@@ -379,24 +379,17 @@ namespace WorckWithReestr
         // изменение кода заявления
         private void ZayavkaID_Change(object sender, EventArgs e)
         {
-            bool f = (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1);
-            if (f)
-                lblZayavkaDiscriptions.Text = WorkCadastralReference.GetZayavkaDiscription();
-            else
-                lblZayavkaDiscriptions.Text = "Заявка не указана";
+            lblZayavkaDiscriptions.Text = WorkCadastralReference.GetZayavkaDiscription();
 
-            btnSetObject.Enabled = f;
-            lblObjectMapIDDiscriptions.Enabled = f;
+            btnSetObject.Enabled = WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1;
+            lblObjectMapIDDiscriptions.Enabled = WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1;
         }
 
         // изменение кода выделенного объекта
         private void ObjektInMapID_Change(object sender, EventArgs e)
         {
             EnablePanels();
-            if (WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID == -1)
-                lblObjectMapIDDiscriptions.Text = "Объект не выбран";
-            else
-                lblObjectMapIDDiscriptions.Text = WorkCadastralReference.GetObjektInMapDiscription();
+            lblObjectMapIDDiscriptions.Text = WorkCadastralReference.GetObjektInMapDiscription();
         }
 
         //изменение изабражения

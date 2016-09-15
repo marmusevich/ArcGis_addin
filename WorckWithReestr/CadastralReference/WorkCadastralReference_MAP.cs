@@ -149,34 +149,36 @@ namespace CadastralReference
                 while (layer != null)
                 {
                     string ln = layer.Name;
-                    //string tn = "";
-                    //int iii = -1;
+                //string tn = "";
+                //int iii = -1;
 
-                    //IFeatureLayer pFeatureLayer = layer as IFeatureLayer;
-                    //if (pFeatureLayer != null)
-                    //{
-                    //    //string s = string.Format("LN({0}) FC_AN({1}) OC_ID({2})", pFeatureLayer.Name, pFeatureLayer.FeatureClass.AliasName, pFeatureLayer.FeatureClass.ObjectClassID);
-                    //    //MessageBox.Show(s);
-                    //    iii = pFeatureLayer.FeatureClass.ObjectClassID;
-                    //    //ret.Add(s);
-                    //    //ret.Add(layer.Name);
-                    //}
-                    //else
-                    //    str += "\n" + layer.Name;
+                IFeatureLayer pFeatureLayer = layer as IFeatureLayer;
+                if (pFeatureLayer != null)
+                {
+                    //string s = string.Format("LN({0}) FC_AN({1}) OC_ID({2})", pFeatureLayer.Name, pFeatureLayer.FeatureClass.AliasName, pFeatureLayer.FeatureClass.ObjectClassID);
+                    //MessageBox.Show(s);
+                    //iii = pFeatureLayer.FeatureClass.ObjectClassID;
+                    //ret.Add(s);
+                    //ret.Add(layer.Name);
+                }
+                else
+                    str += "\n" + layer.Name;
 
-                    //IDisplayTable pDisplayTable = layer as IDisplayTable;
-                    //if (pDisplayTable != null)
-                    //{
-                    //     IDataset dsTable = pDisplayTable.DisplayTable as IDataset;
-                    //    if (dsTable != null)
-                    //        //MessageBox.Show(string.Format("dsTable.Name({0})", dsTable.Name ));
-                    //        tn = dsTable.Name;
-                    //    else
-                    //        str1 += "\n" + layer.Name;
-                    //}
+                IDisplayTable pDisplayTable = layer as IDisplayTable;
+                if (pDisplayTable != null)
+                {
+                    IDataset dsTable = pDisplayTable.DisplayTable as IDataset;
+                    if (dsTable != null)
+                    {
+                        //MessageBox.Show(string.Format("dsTable.Name({0})", dsTable.Name ));
+                        //tn = dsTable.Name;
+                    }
+                    else
+                        str1 += "\n" + layer.Name;
+                }
 
-                    //string s = string.Format("({0})[{1}]-{2}", iii , tn, ln );
-                    ret.Add(ln);
+                //string s = string.Format("({0})[{1}]-{2}", iii , tn, ln );
+                ret.Add(ln);
 
                     layer = enumLayer.Next();
                 }

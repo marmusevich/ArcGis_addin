@@ -9,8 +9,9 @@ using SharedClasses;
 using System.IO;
 
 
-//Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX
 
+//  прочитать все листы справки
+// еще событие на запрет редактирования
 
 namespace CadastralReference
 {
@@ -47,7 +48,7 @@ namespace CadastralReference
                 string xml = GetCadastralReferenceData().SaveSettingToXMLString();
                 File.WriteAllText(filename, xml);
 
-                WorkCadastralReference_DB.SaveToDBPage(-1, "Настройки", -1,"", xml);
+                WorkCadastralReference_DB.SaveToDBPage(-1, "Настройки", -1, "Настройки" , xml);
             }
             catch (Exception ex) // обработка ошибок
             {
@@ -59,8 +60,8 @@ namespace CadastralReference
         {
             m_CadastralReferenceData.InitPagesDescription();
 
-            string xml = (string)WorkCadastralReference_DB.LoadToDBPage(-1, -1);
-            m_CadastralReferenceData.LoadSettingFromXMLString(xml);
+            //string xml = (string)WorkCadastralReference_DB.LoadFromDBPage(-1, -1, "Настройки");
+            //m_CadastralReferenceData.LoadSettingFromXMLString(xml);
         }
 
         public static void SaveToDBImage(OnePageDescriptions opd)
@@ -71,18 +72,24 @@ namespace CadastralReference
             //сохранить картинку в базу
             WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), opd.PagesID, opd.Caption, opd.Image);
         }
-        public static void LoadToDBImage(OnePageDescriptions opd)
-        {
-            opd.Image = (Image)WorkCadastralReference_DB.LoadToDBPage(GetCadastralReferenceData().ZayavkaID, opd.PagesID);
-        }
 
         public static void SaveToDBRTF()
         {
-            WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), 0, "SaveToDBRTF", GetCadastralReferenceData().AllRTF);
+            WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), 0, "текстовая часть", GetCadastralReferenceData().AllRTF);
         }
-        public static void LoadToDBRTF()
+
+        public static void LoadFromDB()
         {
-            GetCadastralReferenceData().AllRTF = (string)WorkCadastralReference_DB.LoadToDBPage(GetCadastralReferenceData().ZayavkaID,  0 );
+            object tmp = null;
+            tmp = WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 0, "текстовая часть");
+            if (tmp != null && tmp is string)
+                GetCadastralReferenceData().AllRTF = (string)tmp;
+            foreach (OnePageDescriptions opd in GetCadastralReferenceData().Pages)
+            {
+                tmp = WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, opd.PagesID, opd.Caption);
+                if (tmp != null && tmp is Image)
+                    opd.Image = (Image)tmp;
+            }
         }
 
 
@@ -106,20 +113,20 @@ namespace CadastralReference
         {
             if (zayavkaID == -1)
             {
-                m_CadastralReferenceData = null;
+                GetCadastralReferenceData().ClearData();
             }
             else if (zayavkaID >= 0)
             {
                 GetCadastralReferenceData().ZayavkaData = WorkCadastralReference_DB.GetZayavkaData(zayavkaID);
                 GetCadastralReferenceData().ZayavkaID = zayavkaID;
+
+                GetCadastralReferenceData().MapObjectID = (int)GetCadastralReferenceData().ZayavkaData["MapObjectID"] ;
+                GetCadastralReferenceData().IsReferenceClose = (bool)GetCadastralReferenceData().ZayavkaData["IsReferenceClose"];
+
+                if (GetCadastralReferenceData().MapObjectID != -1)
+                    LoadFromDB();
             }
-
-            //GetCadastralReferenceData().ObjektInMapID = -1;
         }
-
-
-        //  прочитать все листы справки
-        // еще событие на запрет редактирования
 
 
         /// <summary>
@@ -175,15 +182,25 @@ namespace CadastralReference
                 }
                 feature = enumFeature.Next();
             }
-            GetCadastralReferenceData().ObjektInMapID = objectID;
-        }
+            GetCadastralReferenceData().MapObjectID = objectID;
+
+            if (GetCadastralReferenceData().MapObjectID != -1)
+                LoadFromDB();
+
+            }
         /// <summary>
         /// Описание объекта карты
         /// </summary>
         /// <returns></returns>
         public static string GetObjektInMapDiscription()
         {
-            return "Указан объект №" + GetCadastralReferenceData().ObjektInMapID.ToString();
+            string ret = "Объект не выбран";
+            if(GetCadastralReferenceData().MapObjectID != -1)
+            {
+                LoadFromDB();
+                ret = "Указан объект №" + GetCadastralReferenceData().MapObjectID.ToString();
+            }
+            return ret;
         }
 
         /// <summary>
@@ -214,7 +231,7 @@ namespace CadastralReference
         public static void EnableLayersFropPageAndSetScale(OnePageDescriptions opd)
         {
 
-            if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().ObjektInMapID == -1)
+            if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().MapObjectID == -1)
                 return;
 
             WorkCadastralReference_MAP.EnableLayersFromPages(opd);
