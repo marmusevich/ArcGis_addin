@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Xml;
 using System.Xml.Serialization;
+using System.IO;
 
 namespace CadastralReference
 {
