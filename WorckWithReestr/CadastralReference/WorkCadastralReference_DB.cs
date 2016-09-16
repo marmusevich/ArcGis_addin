@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using SharedClasses;
+using System.IO;
 
 namespace CadastralReference
 {
@@ -23,11 +24,43 @@ namespace CadastralReference
         private const string CadastralReferenceData_NameTable = "CadastralReferenceData";
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #region  группа сохранения и чтения из/в базу
-        #endregion
+        public static byte[] ImageToByteArray(Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            return ms.ToArray();
+        }
+
+        public static Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            Image ret = null;
+            if (byteArrayIn != null)
+            {
+                MemoryStream ms = new System.IO.MemoryStream(byteArrayIn);
+                ret = Image.FromStream(ms);
+            }
+            return ret;
+        }
+
+        public static byte[] StringToByteArray(String str)
+        {
+            System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+            return encoding.GetBytes(str);
+        }
+
+        public static String ByteArrayToString(byte[] byteArrayIn)
+        {
+            String ret = "";
+            if (byteArrayIn != null)
+            { 
+                System.Text.UTF8Encoding decoder = new System.Text.UTF8Encoding();
+                ret = decoder.GetString(byteArrayIn);
+            }
+            return ret;
+        }
 
         //сохранение листа
-        public static void SaveToDBPage(int zayavkaId, string zayavkaDiscription, int pageId, string pageCaption, object data )
+        public static void SaveToDBPage(int zayavkaId, string zayavkaDiscription, int pageId, string pageCaption, Byte[] data )
         {
             IWorkspaceEdit wse = null;
             try
@@ -51,7 +84,9 @@ namespace CadastralReference
                 row.set_Value(table.FindField("zayavkaId"), zayavkaId);
                 row.set_Value(table.FindField("pageId"), pageId);
                 //блоб
-                //row.set_Value(table.FindField("data"), data);
+                IMemoryBlobStream memoryBlobStream = new MemoryBlobStreamClass();
+                ((IMemoryBlobStreamVariant)memoryBlobStream).ImportFromVariant(data);
+                row.set_Value(table.FindField("data"), memoryBlobStream);
                 //текст
                 SaveStringValueFromTextBoxToDB(ref table, ref row, "zayavkaDiscription", zayavkaDiscription);
                 SaveStringValueFromTextBoxToDB(ref table, ref row, "pageCaption", pageCaption);
@@ -80,7 +115,7 @@ namespace CadastralReference
         }
 
         // получить один лист
-        public static object LoadFromDBPage(int zayavkaId, int pageId, string pageCaption)
+        public static Byte[] LoadFromDBPage(int zayavkaId, int pageId, string pageCaption)
         {
             try
             {
@@ -91,7 +126,10 @@ namespace CadastralReference
                 { 
                     ITable table = fws.OpenTable(CadastralReferenceData_NameTable);
                     IRow row = table.GetRow(referensePageId);
-                    return row.get_Value(table.FindField("data"));
+                    IMemoryBlobStream memoryBlobStream = (IMemoryBlobStream)row.get_Value(table.FindField("data"));
+                    object odata;
+                    ((IMemoryBlobStreamVariant)memoryBlobStream).ExportToVariant(out odata);
+                    return (Byte[])odata;
                 }
             }
             catch (Exception ex) // обработка ошибок
@@ -104,8 +142,11 @@ namespace CadastralReference
         }
 
         //изменение заявки - еще чтение этих полей
-        public static void EditZayavkaData(int ZayavkaID, object MapObjectID = null, object IsHaveReferense = null, object IsReferenceClose = null)
+        public static void EditZayavkaData(int ZayavkaID, int MapObjectID, object isHaveReferense = null, object isReferenceClose = null)
         {
+            if (ZayavkaID == -1 || MapObjectID == -1)
+                return;
+
             IWorkspaceEdit wse = null;
             try
             {
@@ -121,14 +162,52 @@ namespace CadastralReference
                 row = table.GetRow(ZayavkaID);
                 if (row != null)
                 {
+                    // старые значения
+                    int oldMapObjectID = -1;
+                    bool oldIsHaveReferense = false;
+                    bool oldIsReferenceClose = false;
 
-                    // здесь проверять и сохранять
+                    object db_mapObjectID = row.get_Value(table.FindField("MapObjectID"));
+                    if (db_mapObjectID is int)
+                        oldMapObjectID = (int)db_mapObjectID;
 
-                    ////int MapObjectID,
-                    ////bool IsHaveReferense, 
-                    ////bool IsReferenceClose
+                    object db_isReferenceClose = row.get_Value(table.FindField("IsReferenceClose"));
+                    if (!(db_isReferenceClose == null || Convert.IsDBNull(db_isReferenceClose)))
+                    {
+                        oldIsReferenceClose = Convert.ToInt16(db_isReferenceClose) != 0;
+                    }
+
+                    object db_isHaveReferense = row.get_Value(table.FindField("IsHaveReferense"));
+                    if (!(db_isHaveReferense == null || Convert.IsDBNull(db_isHaveReferense)))
+                    {
+                        oldIsHaveReferense = Convert.ToInt16(db_isReferenceClose) != 0;
+                    }
+
+                    // новые значения
+                    bool newIsHaveReferense = false;
+                    bool newIsReferenceClose = false;
+
+                    if (isHaveReferense is bool)
+                        newIsHaveReferense = (bool)isHaveReferense;
+
+                    if (isReferenceClose is bool)
+                        newIsReferenceClose = (bool)isReferenceClose;
+
+                    // здесь проверять
 
 
+                    // сохранять
+                    row.set_Value(table.FindField("MapObjectID"), MapObjectID);
+                    // сохранение bool
+                    if (newIsHaveReferense)
+                        row.set_Value(table.FindField("IsHaveReferense"), 1);
+                    else
+                        row.set_Value(table.FindField("IsHaveReferense"), 0);
+                    // сохранение bool
+                    if (newIsReferenceClose)
+                        row.set_Value(table.FindField("IsReferenceClose"), 1);
+                    else
+                        row.set_Value(table.FindField("IsReferenceClose"), 0);
                     row.Store();
                 }
                 // закончить транзакцию
@@ -188,7 +267,7 @@ namespace CadastralReference
                     zayavkaData.Add("strRajon", ReestrDictionaryWork.GetNazvaByIDFromAdmRaj(Rajon));
 
                     object mapObjectID = row.get_Value(table.FindField("MapObjectID"));
-                    if(mapObjectID is int)
+                    if (mapObjectID is int)
                         zayavkaData.Add("MapObjectID", (int)mapObjectID );
                     else 
                         zayavkaData.Add("MapObjectID", -1 );

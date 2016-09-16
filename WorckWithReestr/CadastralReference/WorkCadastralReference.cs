@@ -18,8 +18,6 @@ namespace CadastralReference
     // работа со справкой
     public static class WorkCadastralReference
     {
-
-
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region  вся информация по справке - синглитон
         private static CadastralReferenceData m_CadastralReferenceData = null;
@@ -48,7 +46,7 @@ namespace CadastralReference
                 string xml = GetCadastralReferenceData().SaveSettingToXMLString();
                 File.WriteAllText(filename, xml);
 
-                WorkCadastralReference_DB.SaveToDBPage(-1, "Настройки", -1, "Настройки" , xml);
+                WorkCadastralReference_DB.SaveToDBPage(-1, "Настройки", -1, "Настройки" , WorkCadastralReference_DB.StringToByteArray(xml) );
             }
             catch (Exception ex) // обработка ошибок
             {
@@ -58,41 +56,61 @@ namespace CadastralReference
         }
         public static void LoadSettingFromDB()
         {
-            m_CadastralReferenceData.InitPagesDescription();
-
-            //string xml = (string)WorkCadastralReference_DB.LoadFromDBPage(-1, -1, "Настройки");
-            //m_CadastralReferenceData.LoadSettingFromXMLString(xml);
+            try
+            {
+                m_CadastralReferenceData.InitPagesDescription();
+                string xml = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(-1, -1, "Настройки"));
+                m_CadastralReferenceData.LoadSettingFromXMLString(xml);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, "LoadSettingFromDB Error");
+            }
         }
 
         public static void SaveToDBImage(OnePageDescriptions opd)
         {
-            Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
-            opd.Image = img;
-
-            //сохранить картинку в базу
-            WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), opd.PagesID, opd.Caption, opd.Image);
+            try
+            {
+                Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
+                opd.Image = img;
+                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), opd.PagesID, opd.Caption, WorkCadastralReference_DB.ImageToByteArray(opd.Image) );
+                WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, "SaveToDBImage Error");
+            }
         }
 
         public static void SaveToDBRTF()
         {
-            WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), 0, "текстовая часть", GetCadastralReferenceData().AllRTF);
+            try
+            {
+                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), 0, "текстовая часть", WorkCadastralReference_DB.StringToByteArray(GetCadastralReferenceData().AllRTF));
+                WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, "SaveToDBRTF Error");
+            }
         }
 
         public static void LoadFromDB()
         {
-            object tmp = null;
-            tmp = WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 0, "текстовая часть");
-            if (tmp != null && tmp is string)
-                GetCadastralReferenceData().AllRTF = (string)tmp;
-            foreach (OnePageDescriptions opd in GetCadastralReferenceData().Pages)
+            try
             {
-                tmp = WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, opd.PagesID, opd.Caption);
-                if (tmp != null && tmp is Image)
-                    opd.Image = (Image)tmp;
+                GetCadastralReferenceData().AllRTF = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 0, "текстовая часть"));
+                foreach (OnePageDescriptions opd in GetCadastralReferenceData().Pages)
+                {
+                    opd.Image = WorkCadastralReference_DB.ByteArrayToImage(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, opd.PagesID, opd.Caption)); 
+                }
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, "LoadFromDB Error");
             }
         }
-
-
 
 
         /// <summary>
@@ -115,7 +133,7 @@ namespace CadastralReference
             {
                 GetCadastralReferenceData().ClearData();
             }
-            else if (zayavkaID >= 0)
+            else if (zayavkaID > 0)
             {
                 GetCadastralReferenceData().ZayavkaData = WorkCadastralReference_DB.GetZayavkaData(zayavkaID);
                 GetCadastralReferenceData().ZayavkaID = zayavkaID;
@@ -185,9 +203,11 @@ namespace CadastralReference
             GetCadastralReferenceData().MapObjectID = objectID;
 
             if (GetCadastralReferenceData().MapObjectID != -1)
+            {
+                WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, null, null);
                 LoadFromDB();
-
             }
+        }
         /// <summary>
         /// Описание объекта карты
         /// </summary>
