@@ -64,7 +64,8 @@ namespace CadastralReference
         private StringCollection m_DinamicRTF = null;
         private string m_ConstRTF_Template = " постоянная часть";
         private string m_RaspiskaRTF_Template = " расписка";
-        private string m_ObjectLayerName = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX"; // проблема, это не имя слоя
+        private string m_ObjectLayerName = "Зона розміщення об’єкту ";
+        private string m_ObjectTableName = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX"; 
         #endregion
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
@@ -171,10 +172,12 @@ namespace CadastralReference
         [XmlElement("RaspiskaRTF_Template")]
         public string RaspiskaRTF_Template { get { return m_RaspiskaRTF_Template; } set { m_RaspiskaRTF_Template = value; } }
         /// <summary>
-        /// имя слоя на котором размещены объекты
+        /// имя слоя и таблицы на котором размещены объекты
         /// </summary>
-        [XmlElement("ObjectLayerName")]
-        public string ObjectLayerName { get { return m_ObjectLayerName; } set { m_ObjectLayerName = value; } }
+        [XmlIgnore]
+        public string ObjectLayerName { get { return m_ObjectLayerName; } private set { m_ObjectLayerName = value; } }
+        [XmlIgnore]
+        public string ObjectTableName { get { return m_ObjectTableName; } private set { m_ObjectTableName = value; } }
 
 
         /// <summary>
@@ -208,7 +211,6 @@ namespace CadastralReference
             this.Page1RTF_Template = crd.Page1RTF_Template; 
             this.ConstRTF_Template = crd.ConstRTF_Template; 
             this.RaspiskaRTF_Template = crd.RaspiskaRTF_Template; 
-            this.ObjectLayerName = crd.ObjectLayerName;
 
             if(crd.DinamicRTF_Template != null)
             {

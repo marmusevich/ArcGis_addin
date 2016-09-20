@@ -9,7 +9,6 @@ using SharedClasses;
 using System.IO;
 
 
-
 //  прочитать все листы справки
 // еще событие на запрет редактирования
 
@@ -192,7 +191,7 @@ namespace CadastralReference
                     {
                         tabName = (feature.Class as IDataset).Name;
                         //проверка на принадлежность нашему проекту
-                        //if (GetCadastralReferenceData().ObjectLayerName.ToLower() == tabName.ToLower())
+                        //if (GetCadastralReferenceData().ObjectTableName.ToLower() == tabName.ToLower())
                         {
                             objectID = feature.OID;
                         }
@@ -229,26 +228,43 @@ namespace CadastralReference
         /// <param name="opd">описание листа</param>
         public static void GenerateMaket(OnePageDescriptions opd)
         {
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            IActiveView activeView = mxdoc.ActiveView;
+            if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().MapObjectID == -1)
+                return;
+
+            WorkCadastralReference_MAP.EnableLayersFromPages(opd);
+            WorkCadastralReference_MAP.SetScaleAndCentred();
             WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
+            WorkCadastralReference_MAP.SetStandartMapSkale();
+
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+
+
+
+            //IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            IActiveView activeView = mxdoc.ActiveView;
+            //WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
 
             WorkCadastralReference_MAP.ChangeSizeDateFrame();
             WorkCadastralReference_MAP.AddScalebar();
             WorkCadastralReference_MAP.AddNorthArrowTool();
             WorkCadastralReference_MAP.AddText();
 
-            WorkCadastralReference_MAP.AddLegend(mxdoc.PageLayout, mxdoc.FocusMap, 5, 5, 20);
+            //WorkCadastralReference_MAP.AddLegend(mxdoc.PageLayout, mxdoc.FocusMap, 5, 5, 20);
+
+
 
             activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             activeView.Refresh();
+            mxdoc.PageLayout.ZoomToWhole();
+            //mxdoc.ActiveView.Refresh();
+
         }
 
         /// <summary>
         /// Переключить слои
         /// </summary>
         /// <param name="opd"> описание листа</param>
-        public static void EnableLayersFropPageAndSetScale(OnePageDescriptions opd)
+        private static void EnableLayersFropPageAndSetScale(OnePageDescriptions opd)
         {
 
             if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().MapObjectID == -1)

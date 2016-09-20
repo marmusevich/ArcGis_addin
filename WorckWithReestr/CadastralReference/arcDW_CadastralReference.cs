@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using CadastralReference;
 
+
 namespace WorckWithReestr
 {
     /// <summary>
@@ -26,6 +27,7 @@ namespace WorckWithReestr
             WorkCadastralReference.GetCadastralReferenceData().Image_Change += new EventHandler<EventArgs>(OnImage_Change);
             WorkCadastralReference.GetCadastralReferenceData().ZayavkaID_Change += new EventHandler<EventArgs>(ZayavkaID_Change);
             WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID_Change += new EventHandler<EventArgs>(ObjektInMapID_Change);
+            WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose_Change += new EventHandler<EventArgs>(IsReferenceClose_Change);
             EnablePanels();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -287,19 +289,16 @@ namespace WorckWithReestr
         private void xbSelect_CheckedChanged(object sender, EventArgs e)
         {
             xbSelect_OnChecked(GetPageDescriptionsFromControlTag(sender as Control));
-            //MessageBox.Show("xbSelect_CheckedChanged");
         }
         private void rbSelect_Click(object sender, EventArgs e)
         {
-            OnePageDescriptions opd = GetPageDescriptionsFromControlTag(sender as Control);
-            RadioButton rb = GetControlByName(prefix_xbSelect + opd.PagesID.ToString()) as RadioButton;
-            if (rb != null)
-            {
-                //MessageBox.Show("rbSelect_Click");
-
-                if (rb.Checked)
-                    WorkCadastralReference.EnableLayersFropPageAndSetScale(opd);
-            }
+            //OnePageDescriptions opd = GetPageDescriptionsFromControlTag(sender as Control);
+            //RadioButton rb = GetControlByName(prefix_xbSelect + opd.PagesID.ToString()) as RadioButton;
+            //if (rb != null)
+            //{
+            //    //if (rb.Checked)
+            //    //    WorkCadastralReference.EnableLayersFropPageAndSetScale(opd);
+            //}
         }
 
 
@@ -314,7 +313,9 @@ namespace WorckWithReestr
 
         private void btnGenerateMaket_Click(object sender, EventArgs e)
         {
-            WorkCadastralReference.GenerateMaket(GetPageDescriptionsFromControlTag(sender as Control));
+            OnePageDescriptions opd = GetPageDescriptionsFromControlTag(sender as Control);
+            //WorkCadastralReference.EnableLayersFropPageAndSetScale(opd);
+            WorkCadastralReference.GenerateMaket(opd);
         }
 
         private void btnSaveToDBMaket_Click(object sender, EventArgs e)
@@ -360,11 +361,94 @@ namespace WorckWithReestr
         }
 
 
+        //ESRI.ArcGIS.ArcMapUI.IMxDocument mxdoc = ArcMap.Application.Document as ESRI.ArcGIS.ArcMapUI.IMxDocument;
+
+        ////IPoint pageSaze = GetPageSaze();
+        ////point.PutCoords(pageSaze.X / 2, pageSaze.Y - 2);
+        //ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+        //envelope.PutCoords(1, 1, 6, 6); // Specify the location and size of the scalebar
+
+        //ESRI.ArcGIS.Display.IStyleGallery styleGallery = mxdoc.StyleGallery;
+        //ESRI.ArcGIS.Display.IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("North Arrows", "ESRI.STYLE", "Default");
+
+        //ESRI.ArcGIS.Display.IStyleGalleryItem northArrowStyle = enumStyleGallery.Next();
+        //while (northArrowStyle != null)
+        //{
+        //    if (northArrowStyle.Name == "ESRI North 1")
+        //    {
+        //        break;
+        //    }
+        //    northArrowStyle = enumStyleGallery.Next();
+        //}
+        //ESRI.ArcGIS.Carto.INorthArrow northArrow = northArrowStyle.Item as ESRI.ArcGIS.Carto.INorthArrow;
+
+
+        //ESRI.ArcGIS.DisplayUI.ISymbolSelector symbolSelector = new ESRI.ArcGIS.DisplayUI.SymbolSelector();
+        ////ESRI.ArcGIS.Display.ISimpleMarkerSymbol markerSymbol = new ESRI.ArcGIS.Display.SimpleMarkerSymbol();
+
+        //// ESRI.ArcGIS.Carto.MarkerNorthArrow
+
+        //if ((symbolSelector.AddSymbol((ESRI.ArcGIS.Display.ISymbol)northArrow.sy)))
+        //{
+        //    if (symbolSelector.SelectSymbol(0))
+        //    {
+        //        //ESRI.ArcGIS.Carto.INorthArrow northArrow = symbolSelector.GetSymbolAt(0) as ESRI.ArcGIS.Carto.INorthArrow;
+
+        //    }
+        //}
+        //northArrow.Map = mxdoc.FocusMap;
+        //ESRI.ArcGIS.Carto.IMapSurroundFrame pMSFrame = new ESRI.ArcGIS.Carto.MapSurroundFrameClass();
+        //pMSFrame.MapSurround = northArrow;
+        //ESRI.ArcGIS.Carto.IElement MSElement = pMSFrame as ESRI.ArcGIS.Carto.IElement;
+        //MSElement.Geometry = envelope as ESRI.ArcGIS.Geometry.IGeometry;
+
+        //ESRI.ArcGIS.Carto.IGraphicsContainer gc = mxdoc.PageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer;
+        //gc.AddElement(MSElement, 0);
         private void btnCloseEdit_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Закрыть для редактирования");
-            WorkCadastralReference_MAP.SetStandartMapSkale();
+            Form frm = new CadastralReference.frmTextSetting();
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ESRI.ArcGIS.ArcMapUI.IMxDocument mxdoc = WorckWithReestr.ArcMap.Application.Document as ESRI.ArcGIS.ArcMapUI.IMxDocument;
+            string name = "ScaleCaption";
+            ESRI.ArcGIS.Carto.TextElementClass textElement = new ESRI.ArcGIS.Carto.TextElementClass();
+            textElement.Size = 22;
+            textElement.Name = name;
+
+
+            textElement.Text = "Маштаб ( 1:)";
+
+            //OpenSymbolSelecter(textElement);
+            //OpenSymbolEditor(textElement);
+
+            textElement.HorizontalAlignment = ESRI.ArcGIS.Display.esriTextHorizontalAlignment.esriTHARight;
+            textElement.VerticalAlignment = ESRI.ArcGIS.Display.esriTextVerticalAlignment.esriTVATop;
+
+            ESRI.ArcGIS.Geometry.IPoint point = new ESRI.ArcGIS.Geometry.Point();
+            point.PutCoords(0, 0);
+            ESRI.ArcGIS.Carto.IElement element = textElement as ESRI.ArcGIS.Carto.IElement;
+            element.Geometry = point;
+
+
+            ESRI.ArcGIS.Carto.IGraphicsContainer gc = mxdoc.PageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer;
+            gc.AddElement(element, 0);
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            ESRI.ArcGIS.Carto.IActiveView activeView = mxdoc.ActiveView;
+            activeView.PartialRefresh(ESRI.ArcGIS.Carto.esriViewDrawPhase.esriViewGraphics, null, null);
+            //activeView.Refresh();
+            mxdoc.PageLayout.ZoomToWhole();
+            return;
+
+
+            if (MessageBox.Show("Закрыть справку для редактирования? добавить проверки", "Кадастровая справка", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                //WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose = true;
+            }
         }
+
+
+
 
         private void btnSetObject_Click(object sender, EventArgs e)
         {
@@ -403,21 +487,24 @@ namespace WorckWithReestr
             SetTextToxbSelect(opd);
 
         }
+
+        //при закрытии справки
+        private void IsReferenceClose_Change(object sender, EventArgs e)
+        {
+            //CadastralReferenceData opd = (CadastralReferenceData)sender;
+
+        }
         #endregion нашы события
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region штатные функции
-
         public arcDW_CadastralReference(object hook)
         {
+            AppStartPoint.Init();
             InitializeComponent();
             this.Hook = hook;
-			
             InitControls();
-
-            AppStartPoint.Init();
-
         }
 
         /// <summary>

@@ -81,8 +81,8 @@ namespace CadastralReference
                 else
                     layer.Visible = false;
                 // всегда показывать слой где расположены объекты
-                //if (WorkCadastralReference.GetCadastralReferenceData().ObjectLayerName.ToLower() == layer.Name.ToLower())
-                //    layer.Visible = true;
+                if (WorkCadastralReference.GetCadastralReferenceData().ObjectLayerName.ToLower() == layer.Name.ToLower())
+                    layer.Visible = true;
 
                 layer = enumLayer.Next();
             }
@@ -101,8 +101,6 @@ namespace CadastralReference
             }
             mxdoc.ActiveView.ContentsChanged();
         }
-
-
 
         // получить изображенние карты из Арк ГИСа 
         public static Image GetImageFromArcGis()
@@ -141,51 +139,14 @@ namespace CadastralReference
         {
             StringCollection ret = new StringCollection();
             IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+            IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
+            ILayer layer = enumLayer.Next();
+            while (layer != null)
+            {
+                ret.Add(layer.Name);
 
-                IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
-                ILayer layer = enumLayer.Next();
-                string str = "";
-                string str1 = "";
-                while (layer != null)
-                {
-                    string ln = layer.Name;
-                //string tn = "";
-                //int iii = -1;
-
-                IFeatureLayer pFeatureLayer = layer as IFeatureLayer;
-                if (pFeatureLayer != null)
-                {
-                    //string s = string.Format("LN({0}) FC_AN({1}) OC_ID({2})", pFeatureLayer.Name, pFeatureLayer.FeatureClass.AliasName, pFeatureLayer.FeatureClass.ObjectClassID);
-                    //MessageBox.Show(s);
-                    //iii = pFeatureLayer.FeatureClass.ObjectClassID;
-                    //ret.Add(s);
-                    //ret.Add(layer.Name);
-                }
-                else
-                    str += "\n" + layer.Name;
-
-                IDisplayTable pDisplayTable = layer as IDisplayTable;
-                if (pDisplayTable != null)
-                {
-                    IDataset dsTable = pDisplayTable.DisplayTable as IDataset;
-                    if (dsTable != null)
-                    {
-                        //MessageBox.Show(string.Format("dsTable.Name({0})", dsTable.Name ));
-                        //tn = dsTable.Name;
-                    }
-                    else
-                        str1 += "\n" + layer.Name;
-                }
-
-                //string s = string.Format("({0})[{1}]-{2}", iii , tn, ln );
-                ret.Add(ln);
-
-                    layer = enumLayer.Next();
-                }
-                if(str != "")
-                    MessageBox.Show("not IFeatureLayer: " + str);
-                if (str1 != "")
-                    MessageBox.Show("not IDataset: " + str1);
+                layer = enumLayer.Next();
+            }
             return ret;
         }
 
@@ -210,9 +171,6 @@ namespace CadastralReference
             //MessageBox.Show(string.Format("curSkale ={0} newSkale = {1}", curSkale, newSkale));
             mxdoc.FocusMap.MapScale = newSkale;
         }
-
-
-
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -287,8 +245,14 @@ namespace CadastralReference
 
             IStyleGalleryItem scalebarStyle = enumStyleGallery.Next();
             for (int i = 0; i < 4; i++)
+            //while (northArrowStyle != null)
             {
-                scalebarStyle = enumStyleGallery.Next();
+                    //if (scalebarStyle.Name == "ESRI North 1")
+                    //{
+                    //    break;
+                    //}
+
+                    scalebarStyle = enumStyleGallery.Next();
             }
 
             IScaleBar scalebar = scalebarStyle.Item as IScaleBar;
@@ -342,10 +306,10 @@ namespace CadastralReference
             string name = "ScaleCaption";
             DeleteElementByName(name);
 
-            ITextElement textElement = new TextElementClass();
+            TextElementClass textElement = new TextElementClass();
             textElement.Text = "Маштаб ( 1:" + Math.Round(GetShowMapScale()).ToString() + ")";
-            ((TextElementClass)textElement).Size = 22;
-            ((TextElementClass)textElement).Name = name;
+            textElement.Size = 22;
+            textElement.Name = name;
 
             IPoint pageSaze = GetPageSaze();
             IPoint point = new ESRI.ArcGIS.Geometry.Point();
@@ -393,26 +357,104 @@ namespace CadastralReference
             {
                 return;
             }
-            ESRI.ArcGIS.Carto.IGraphicsContainer graphicsContainer = pageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer; // Dynamic Cast
-            ESRI.ArcGIS.Carto.IMapFrame mapFrame = graphicsContainer.FindFrame(map) as ESRI.ArcGIS.Carto.IMapFrame; // Dynamic Cast
-            ESRI.ArcGIS.esriSystem.IUID uid = new ESRI.ArcGIS.esriSystem.UIDClass();
+            IGraphicsContainer graphicsContainer = pageLayout as IGraphicsContainer; // Dynamic Cast
+            IMapFrame mapFrame = graphicsContainer.FindFrame(map) as IMapFrame; // Dynamic Cast
+            IUID uid = new ESRI.ArcGIS.esriSystem.UIDClass();
             uid.Value = "esriCarto.Legend";
-            ESRI.ArcGIS.Carto.IMapSurroundFrame mapSurroundFrame = mapFrame.CreateSurroundFrame((ESRI.ArcGIS.esriSystem.UID)uid, null); // Explicit Cast
+            IMapSurroundFrame mapSurroundFrame = mapFrame.CreateSurroundFrame((UID)uid, null); // Explicit Cast
 
             //Get aspect ratio
-            ESRI.ArcGIS.Carto.IQuerySize querySize = mapSurroundFrame.MapSurround as ESRI.ArcGIS.Carto.IQuerySize; // Dynamic Cast
-            System.Double w = 0;
-            System.Double h = 0;
+            IQuerySize querySize = mapSurroundFrame.MapSurround as IQuerySize; // Dynamic Cast
+            Double w = 0;
+            Double h = 0;
             querySize.QuerySize(ref w, ref h);
-            System.Double aspectRatio = w / h;
+            Double aspectRatio = w / h;
 
-            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+            IEnvelope envelope = new EnvelopeClass();
             envelope.PutCoords(posX, posY, (posX * legW), (posY * legW / aspectRatio));
-            ESRI.ArcGIS.Carto.IElement element = mapSurroundFrame as ESRI.ArcGIS.Carto.IElement; // Dynamic Cast
+            IElement element = mapSurroundFrame as IElement; // Dynamic Cast
             element.Geometry = envelope;
             graphicsContainer.AddElement(element, 0);
         }
 
+        
+
+        ///<summary>Add a North Arrow to the Page Layout from the Map.</summary>
+        ///      
+        ///<param name="pageLayout">An IPageLayout interface.</param>
+        ///<param name="map">An IMap interface.</param>
+        ///      
+        ///<remarks></remarks>
+        public static void AddNorthArrow(ESRI.ArcGIS.Carto.IPageLayout pageLayout, ESRI.ArcGIS.Carto.IMap map)
+        {
+            if (pageLayout == null || map == null)
+            {
+                return;
+            }
+            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+            envelope.PutCoords(0.2, 0.2, 5, 5); //  Specify the location and size of the north arrow
+
+            ESRI.ArcGIS.esriSystem.IUID uid = new ESRI.ArcGIS.esriSystem.UIDClass();
+            uid.Value = "esriCarto.MarkerNorthArrow";
+
+            // Create a Surround. Set the geometry of the MapSurroundFrame to give it a location
+            // Activate it and add it to the PageLayout's graphics container
+            ESRI.ArcGIS.Carto.IGraphicsContainer graphicsContainer = pageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IActiveView activeView = pageLayout as ESRI.ArcGIS.Carto.IActiveView; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IFrameElement frameElement = graphicsContainer.FindFrame(map);
+            ESRI.ArcGIS.Carto.IMapFrame mapFrame = frameElement as ESRI.ArcGIS.Carto.IMapFrame; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IMapSurroundFrame mapSurroundFrame = mapFrame.CreateSurroundFrame(uid as ESRI.ArcGIS.esriSystem.UID, null); // Dynamic Cast
+            ESRI.ArcGIS.Carto.IElement element = mapSurroundFrame as ESRI.ArcGIS.Carto.IElement; // Dynamic Cast
+            element.Geometry = envelope;
+            element.Activate(activeView.ScreenDisplay);
+            graphicsContainer.AddElement(element, 0);
+            ESRI.ArcGIS.Carto.IMapSurround mapSurround = mapSurroundFrame.MapSurround;
+
+            // Change out the default north arrow
+            ESRI.ArcGIS.Carto.IMarkerNorthArrow markerNorthArrow = mapSurround as ESRI.ArcGIS.Carto.IMarkerNorthArrow; // Dynamic Cast
+            ESRI.ArcGIS.Display.IMarkerSymbol markerSymbol = markerNorthArrow.MarkerSymbol;
+            ESRI.ArcGIS.Display.ICharacterMarkerSymbol characterMarkerSymbol = markerSymbol as ESRI.ArcGIS.Display.ICharacterMarkerSymbol; // Dynamic Cast
+            characterMarkerSymbol.CharacterIndex = 200; // change the symbol for the North Arrow
+            markerNorthArrow.MarkerSymbol = characterMarkerSymbol;
+        }
+
+        ///<summary>Add a Scale Bar to the Page Layout from the Map.</summary>
+        ///
+        ///<param name="pageLayout">An IPageLayout interface.</param>
+        ///<param name="map">An IMap interface.</param>
+        ///
+        ///<remarks></remarks>
+        public static void AddScalebar(ESRI.ArcGIS.Carto.IPageLayout pageLayout, ESRI.ArcGIS.Carto.IMap map)
+        {
+
+            if (pageLayout == null || map == null)
+            {
+                return;
+            }
+
+            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+            envelope.PutCoords(0.2, 0.2, 1, 2); // Specify the location and size of the scalebar
+            ESRI.ArcGIS.esriSystem.IUID uid = new ESRI.ArcGIS.esriSystem.UIDClass();
+            uid.Value = "esriCarto.AlternatingScaleBar";
+
+            // Create a Surround. Set the geometry of the MapSurroundFrame to give it a location
+            // Activate it and add it to the PageLayout's graphics container
+            ESRI.ArcGIS.Carto.IGraphicsContainer graphicsContainer = pageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IActiveView activeView = pageLayout as ESRI.ArcGIS.Carto.IActiveView; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IFrameElement frameElement = graphicsContainer.FindFrame(map);
+            ESRI.ArcGIS.Carto.IMapFrame mapFrame = frameElement as ESRI.ArcGIS.Carto.IMapFrame; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IMapSurroundFrame mapSurroundFrame = mapFrame.CreateSurroundFrame(uid as ESRI.ArcGIS.esriSystem.UID, null); // Dynamic Cast
+            ESRI.ArcGIS.Carto.IElement element = mapSurroundFrame as ESRI.ArcGIS.Carto.IElement; // Dynamic Cast
+            element.Geometry = envelope;
+            element.Activate(activeView.ScreenDisplay);
+            graphicsContainer.AddElement(element, 0);
+            ESRI.ArcGIS.Carto.IMapSurround mapSurround = mapSurroundFrame.MapSurround;
+
+
+            ESRI.ArcGIS.Carto.IScaleBar markerScaleBar = ((ESRI.ArcGIS.Carto.IScaleBar)(mapSurround));
+            markerScaleBar.LabelPosition = ESRI.ArcGIS.Carto.esriVertPosEnum.esriBelow;
+            markerScaleBar.UseMapSettings();
+        }
 
         // изменить размер фрейма данных
         public static void ChangeSizeDateFrame()

@@ -63,6 +63,9 @@
     <Reference Include="ESRI.ArcGIS.Display, Version=10.4.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.DisplayUI, Version=10.4.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Editor, Version=10.4.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -110,6 +113,12 @@
       <DependentUpon>arcDW_CadastralReference.cs</DependentUpon>
     </Compile>
     <Compile Include="CadastralReference\CadastralReferenceData.cs" />
+    <Compile Include="CadastralReference\frmHelpTemplateView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmHelpTemplateView.Designer.cs">
+      <DependentUpon>frmHelpTemplateView.cs</DependentUpon>
+    </Compile>	
     <Compile Include="CadastralReference\frmPrevImage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +143,12 @@
     <Compile Include="CadastralReference\frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastralReference\frmTextSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmTextSetting.Designer.cs">
+      <DependentUpon>frmTextSetting.cs</DependentUpon>
+    </Compile>	
     <Compile Include="CadastralReference\OnePageDescriptions.cs" />
     <Compile Include="CadastralReference\WorckWithRTF.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference.cs" />
