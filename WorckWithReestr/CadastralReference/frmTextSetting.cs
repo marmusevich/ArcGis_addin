@@ -1,5 +1,7 @@
 ﻿//using ESRI.ArcGIS.Display;
 //using ESRI.ArcGIS.DisplayUI;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.DisplayUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -111,44 +113,23 @@ namespace CadastralReference
             m_oted.Text = txtText.Text;
         }
 
-        //private static void OpenSymbolEditor(TextSymbolClass symbol)
-        //{
-        //    ISymbolEditor symbolEditor = new SymbolEditor();
-        //    symbolEditor.Title = "Edit My Marker";
-        //    if (!symbolEditor.EditSymbol(symbol as ISymbol, 0))
-        //    {
-        //        //Return a message here.
-        //        MessageBox.Show("!!!");
-        //    }
-        //    else
-        //    {
-        //        //Do something with the edited symbol.
-        //        //A multi-layer symbol will be returned.
-        //        IMarkerSymbol newSymbol = null;
-        //        IMultiLayerMarkerSymbol multiMarker = null;
-        //        multiMarker = symbol as IMultiLayerMarkerSymbol;
-        //        newSymbol = multiMarker.get_Layer(0);
-        //        symbol = multiMarker.get_Layer(0) as ITextSymbol;
-        //    }
-        //}
-        ////textElement.Symbol
-        private void OpenSymbolSelecter(TextSymbolClass symbol)
-        {
-        //    ISymbolSelector symbolSelector = new SymbolSelector();
-        //    if ((symbolSelector.AddSymbol((ISymbol)symbol)))
-        //    {
-        //        if (symbolSelector.SelectSymbol(0))
-        //        {
-        //            symbol = symbolSelector.GetSymbolAt(0) as ITextSymbol;
-        //        }
-        //    }
-        }
 
         //////////////////////////////////////////////////////////////////////////////////////////////
 
         private void btnFontSetting_Click(object sender, EventArgs e)
         {
-            OpenSymbolSelecter(m_oted.TextSymbolClass);
+
+
+            ISymbolSelector symbolSelector = new SymbolSelector();
+            if ((symbolSelector.AddSymbol((ISymbol)m_oted.TextSymbolClass)))
+            {
+                if (symbolSelector.SelectSymbol(0))
+                {
+                    m_oted.TextSymbolClass = symbolSelector.GetSymbolAt(0) as ITextSymbol;
+                }
+            }
+
+
         }
 
         private void btnHelpTemplate_Click(object sender, EventArgs e)
@@ -165,6 +146,7 @@ namespace CadastralReference
         private void btnOk_Click(object sender, EventArgs e)
         {
             save();
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -173,6 +155,9 @@ namespace CadastralReference
             InitializeComponent();
             m_oted = new CadastralReference.OneTextElementDescription();
             m_oted.CopySetingFrom(oted);
+
+            //MessageBox.Show("frmTextSetting_ctr " + oted.ToString() +" -> "+ m_oted.ToString());
+
             init();
         }
     }

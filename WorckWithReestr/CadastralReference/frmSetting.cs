@@ -235,7 +235,11 @@ namespace CadastralReference
                     p.Parent = null;// -- Скрыть
             }
         }
-        #endregion 
+        #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

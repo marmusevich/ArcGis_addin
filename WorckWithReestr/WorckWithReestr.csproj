@@ -118,7 +118,7 @@
     </Compile>
     <Compile Include="CadastralReference\frmHelpTemplateView.Designer.cs">
       <DependentUpon>frmHelpTemplateView.cs</DependentUpon>
-    </Compile>	
+    </Compile>
     <Compile Include="CadastralReference\frmPrevImage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,8 +148,10 @@
     </Compile>
     <Compile Include="CadastralReference\frmTextSetting.Designer.cs">
       <DependentUpon>frmTextSetting.cs</DependentUpon>
-    </Compile>	
+    </Compile>
     <Compile Include="CadastralReference\OnePageDescriptions.cs" />
+    <Compile Include="CadastralReference\OneTextElementDescription.cs" />
+    <Compile Include="CadastralReference\TextTemplateConverter.cs" />
     <Compile Include="CadastralReference\WorckWithRTF.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference_DB.cs" />

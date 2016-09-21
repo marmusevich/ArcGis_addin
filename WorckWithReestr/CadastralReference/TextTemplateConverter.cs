@@ -31,7 +31,7 @@ namespace CadastralReference
             }
             public string GetReplesedString()
             {
-                return "1:XXX";
+                return "1:" + Math.Round(WorkCadastralReference_MAP.GetShowMapScale()).ToString();
             }
         }
         class AdressOpisatelniy : IOneTextTemplateConverter
@@ -57,7 +57,7 @@ namespace CadastralReference
         { new MapScale(), new AdressOpisatelniy()};
 
         // произвести замену
-        public static string s(string input)
+        public static string Implement(string input)
         {
             StringBuilder sb = new StringBuilder(input);
             foreach (IOneTextTemplateConverter ottc in arrMetod)
@@ -76,7 +76,7 @@ namespace CadastralReference
                 sb.Append(ottc.GeVariableName());
                 sb.Append(" - ");
                 sb.Append(ottc.GeDiscription());
-                sb.Append("/n ");
+                sb.Append("\n");
             }
             return sb.ToString();
         }

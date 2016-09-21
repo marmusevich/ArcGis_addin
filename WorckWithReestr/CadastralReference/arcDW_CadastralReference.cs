@@ -406,32 +406,11 @@ namespace WorckWithReestr
         //gc.AddElement(MSElement, 0);
         private void btnCloseEdit_Click(object sender, EventArgs e)
         {
-            Form frm = new CadastralReference.frmTextSetting();
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ESRI.ArcGIS.ArcMapUI.IMxDocument mxdoc = WorckWithReestr.ArcMap.Application.Document as ESRI.ArcGIS.ArcMapUI.IMxDocument;
-            string name = "ScaleCaption";
-            ESRI.ArcGIS.Carto.TextElementClass textElement = new ESRI.ArcGIS.Carto.TextElementClass();
-            textElement.Size = 22;
-            textElement.Name = name;
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-            textElement.Text = "Маштаб ( 1:)";
-
-            //OpenSymbolSelecter(textElement);
-            //OpenSymbolEditor(textElement);
-
-            textElement.HorizontalAlignment = ESRI.ArcGIS.Display.esriTextHorizontalAlignment.esriTHARight;
-            textElement.VerticalAlignment = ESRI.ArcGIS.Display.esriTextVerticalAlignment.esriTVATop;
-
-            ESRI.ArcGIS.Geometry.IPoint point = new ESRI.ArcGIS.Geometry.Point();
-            point.PutCoords(0, 0);
-            ESRI.ArcGIS.Carto.IElement element = textElement as ESRI.ArcGIS.Carto.IElement;
-            element.Geometry = point;
-
-
-            ESRI.ArcGIS.Carto.IGraphicsContainer gc = mxdoc.PageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer;
-            gc.AddElement(element, 0);
+            
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             ESRI.ArcGIS.Carto.IActiveView activeView = mxdoc.ActiveView;

@@ -299,28 +299,41 @@ namespace CadastralReference
             }
         }
 
-        public static void AddText()
+        public static void AddText(OneTextElementDescription oted)
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-
-            string name = "ScaleCaption";
-            DeleteElementByName(name);
-
             TextElementClass textElement = new TextElementClass();
-            textElement.Text = "Маштаб ( 1:" + Math.Round(GetShowMapScale()).ToString() + ")";
-            textElement.Size = 22;
-            textElement.Name = name;
+            textElement.Name = oted.Text;
+            textElement.Text = TextTemplateConverter.Implement(oted.Text);
+            textElement.Symbol = oted.TextSymbolClass;
+            textElement.HorizontalAlignment = oted.AncorHorizontal;
+            textElement.VerticalAlignment = oted.AncorVertical;
 
-            IPoint pageSaze = GetPageSaze();
             IPoint point = new ESRI.ArcGIS.Geometry.Point();
-            point.PutCoords(pageSaze.X / 2, pageSaze.Y - 2);
+            IPoint pageSaze = GetPageSaze();
+
+            double x = 0, y = 0;
+            if (oted.PagePosVertical == esriTextVerticalAlignment.esriTVATop)
+                y = pageSaze.Y;
+            else if (oted.PagePosVertical == esriTextVerticalAlignment.esriTVACenter)
+                y = pageSaze.Y / 2;
+            else
+                y = 0;
+
+            if (oted.PagePosHorizontal == esriTextHorizontalAlignment.esriTHARight)
+                x = pageSaze.X;
+            else if (oted.PagePosHorizontal == esriTextHorizontalAlignment.esriTHACenter)
+                x = pageSaze.X / 2;
+            else
+                x = 0;
+
+            point.PutCoords(x + oted.PosX, y + oted.PosY);
+
             IElement element = textElement as IElement;
             element.Geometry = point;
-
             IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
             gc.AddElement(element, 0);
         }
-
 
         public static void DeleteElementByName(string name)
         {

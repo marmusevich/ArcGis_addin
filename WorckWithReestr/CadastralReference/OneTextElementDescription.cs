@@ -1,64 +1,12 @@
 ﻿
 using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Xml;
 using System.Xml.Serialization;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
 
 namespace CadastralReference
 {
-
-    //     Horizontal text alignment options.
-    public enum esriTextHorizontalAlignment
-    {
-        //
-        // Сводка:
-        //     The text is left justified.
-        esriTHALeft = 0,
-        //
-        // Сводка:
-        //     The text is center justified.
-        esriTHACenter = 1,
-        //
-        // Сводка:
-        //     The text is right justified.
-        esriTHARight = 2,
-        //
-        // Сводка:
-        //     The text is fully justified.
-        esriTHAFull = 3
-    }
-
-    //     Vertical text alignment options.
-    public enum esriTextVerticalAlignment
-    {
-        //
-        // Сводка:
-        //     The text is aligned at the top.
-        esriTVATop = 0,
-        //
-        // Сводка:
-        //     The text is aligned at the center.
-        esriTVACenter = 1,
-        //
-        // Сводка:
-        //     The text is aligned at the baseline.
-        esriTVABaseline = 2,
-        //
-        // Сводка:
-        //     The text is aligned at the bottom.
-        esriTVABottom = 3
-    }
-
-
-
-    public class TextSymbolClass
-    { }
-
-    
-
-
     /// <summary> Информация об одном листе
     /// </summary>
     [Serializable]
@@ -97,9 +45,9 @@ namespace CadastralReference
         /// <summary> TextSymbolClass - дополнительные параметры элемента
         /// </summary>
         [XmlIgnore]
-        TextSymbolClass m_textSymbolClass = new TextSymbolClass();
+        ITextSymbol m_textSymbolClass = new TextSymbolClass();
         [XmlIgnore]
-        public TextSymbolClass TextSymbolClass 
+        public ITextSymbol TextSymbolClass 
         {
             get { return m_textSymbolClass; }
             set
@@ -128,19 +76,31 @@ namespace CadastralReference
                 }
             } 
         }
-        //ITextSymbol symbol
-
         #endregion
 
         // серелизовать в масив байтов
-        private static byte[] SerializTextSymbolClassToByte(TextSymbolClass tsc)
+        private static byte[] SerializTextSymbolClassToByte(ITextSymbol tsc)
         {
-            return null;
+            if (tsc == null) return null;
+
+            IXMLWriter xmlWriter = new XMLWriterClass();
+            IXMLStream xmlStream = new XMLStreamClass();
+            xmlWriter.WriteTo((IStream)xmlStream);
+            IXMLSerializer xmlSerializer = new XMLSerializerClass();
+            xmlSerializer.WriteObject(xmlWriter, null, null, "TextSymbolClass_Serialized", "OneTextElementDescription", tsc);
+            return xmlStream.SaveToBytes();
         }
         // десерилезовать
-        private static TextSymbolClass DeSerializByteToTextSymbolClass(byte[] byteArr)
+        private static ITextSymbol DeSerializByteToTextSymbolClass(byte[] byteArr)
         {
-            return null;
+            if (byteArr == null) return null;
+
+            IXMLStream xmlStream = new XMLStreamClass();
+            xmlStream.LoadFromBytes(byteArr);
+            IXMLReader xmlReader = new XMLReaderClass();
+            xmlReader.ReadFrom((IStream)xmlStream); // Explicit Cast
+            IXMLSerializer xmlSerializer = new XMLSerializerClass();
+            return (ITextSymbol)xmlSerializer.ReadObject(xmlReader, null, null);
         }
 
 
@@ -149,18 +109,17 @@ namespace CadastralReference
             return Text;
         }
 
-
         public OneTextElementDescription()
         {
-            this.Text = "";
+            this.Text = "0";
             this.PosX = 0;
             this.PosY = 0;
             this.PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
             this.PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
             this.AncorHorizontal = esriTextHorizontalAlignment.esriTHALeft;
             this.AncorVertical = esriTextVerticalAlignment.esriTVABottom;
-            this.m_textSymbolClass_Serialized_innerUse = new byte[1];
-            this.m_textSymbolClass = null;
+            this.m_textSymbolClass = new TextSymbolClass();
+            this.m_textSymbolClass_Serialized_innerUse = SerializTextSymbolClassToByte(m_textSymbolClass);
         }
 
         //скопировать настройки
@@ -176,6 +135,5 @@ namespace CadastralReference
             this.m_textSymbolClass_Serialized_innerUse = (byte[])oted.TextSymbolClass_Serialized_innerUse.Clone();
             this.m_textSymbolClass = DeSerializByteToTextSymbolClass(m_textSymbolClass_Serialized_innerUse);
         }
-
     }
 }

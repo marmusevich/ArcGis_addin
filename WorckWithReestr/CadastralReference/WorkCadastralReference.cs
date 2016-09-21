@@ -247,7 +247,7 @@ namespace CadastralReference
             WorkCadastralReference_MAP.ChangeSizeDateFrame();
             WorkCadastralReference_MAP.AddScalebar();
             WorkCadastralReference_MAP.AddNorthArrowTool();
-            WorkCadastralReference_MAP.AddText();
+            //WorkCadastralReference_MAP.AddText();
 
             //WorkCadastralReference_MAP.AddLegend(mxdoc.PageLayout, mxdoc.FocusMap, 5, 5, 20);
 
