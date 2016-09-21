@@ -56,6 +56,8 @@ namespace CadastralReference
     public class TextSymbolClass
     { }
 
+    
+
 
     /// <summary> Информация об одном листе
     /// </summary>

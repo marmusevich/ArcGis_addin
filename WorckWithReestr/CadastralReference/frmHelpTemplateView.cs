@@ -17,5 +17,10 @@ namespace CadastralReference
         {
             InitializeComponent();
         }
+
+        private void frmHelpTemplateView_Load(object sender, EventArgs e)
+        {
+            this.lblOpisanie.Text = TextTemplateConverter.GetDiscription();
+        }
     }
 }

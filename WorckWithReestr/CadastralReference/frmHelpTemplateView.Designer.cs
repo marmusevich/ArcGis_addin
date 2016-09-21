@@ -51,8 +51,6 @@
             this.lblOpisanie.Name = "lblOpisanie";
             this.lblOpisanie.Size = new System.Drawing.Size(372, 239);
             this.lblOpisanie.TabIndex = 1;
-            this.lblOpisanie.Text = "{_МаштабКарты_} - текущий маштаб карты;\r\n{_ОписательныйАдрес_} - адресс из заявки" +
-    "";
             // 
             // frmHelpTemplateView
             // 
@@ -68,6 +66,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Описание переменных шаблона";
+            this.Load += new System.EventHandler(this.frmHelpTemplateView_Load);
             this.ResumeLayout(false);
 
         }
