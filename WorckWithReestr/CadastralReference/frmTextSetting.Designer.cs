@@ -33,11 +33,11 @@
             this.rbPosVer_Botton = new System.Windows.Forms.RadioButton();
             this.rbPosVer_Centr = new System.Windows.Forms.RadioButton();
             this.rbPosVer_Top = new System.Windows.Forms.RadioButton();
-            this.gbPositionGorizontal = new System.Windows.Forms.GroupBox();
-            this.nudPosGor = new System.Windows.Forms.NumericUpDown();
-            this.rbPosGor_Right = new System.Windows.Forms.RadioButton();
-            this.rbPosGor_Centr = new System.Windows.Forms.RadioButton();
-            this.rbPosGor_Left = new System.Windows.Forms.RadioButton();
+            this.gbPositionHorizontal = new System.Windows.Forms.GroupBox();
+            this.nudPosHor = new System.Windows.Forms.NumericUpDown();
+            this.rbPosHor_Right = new System.Windows.Forms.RadioButton();
+            this.rbPosHor_Centr = new System.Windows.Forms.RadioButton();
+            this.rbPosHor_Left = new System.Windows.Forms.RadioButton();
             this.gbAncorPoint = new System.Windows.Forms.GroupBox();
             this.rbAncorPoint_BR = new System.Windows.Forms.RadioButton();
             this.rbAncorPoint_BC = new System.Windows.Forms.RadioButton();
@@ -48,15 +48,15 @@
             this.rbAncorPoint_TR = new System.Windows.Forms.RadioButton();
             this.rbAncorPoint_CR = new System.Windows.Forms.RadioButton();
             this.rbAncorPoint_TL = new System.Windows.Forms.RadioButton();
-            this.tbText = new System.Windows.Forms.TextBox();
+            this.txtText = new System.Windows.Forms.TextBox();
             this.btnFontSetting = new System.Windows.Forms.Button();
             this.btnHelpTemplate = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbPositionVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPosVer)).BeginInit();
-            this.gbPositionGorizontal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPosGor)).BeginInit();
+            this.gbPositionHorizontal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPosHor)).BeginInit();
             this.gbAncorPoint.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,70 +125,70 @@
             this.rbPosVer_Top.Text = "от верхнего края";
             this.rbPosVer_Top.UseVisualStyleBackColor = true;
             // 
-            // gbPositionGorizontal
+            // gbPositionHorizontal
             // 
-            this.gbPositionGorizontal.Controls.Add(this.nudPosGor);
-            this.gbPositionGorizontal.Controls.Add(this.rbPosGor_Right);
-            this.gbPositionGorizontal.Controls.Add(this.rbPosGor_Centr);
-            this.gbPositionGorizontal.Controls.Add(this.rbPosGor_Left);
-            this.gbPositionGorizontal.Location = new System.Drawing.Point(215, 139);
-            this.gbPositionGorizontal.Name = "gbPositionGorizontal";
-            this.gbPositionGorizontal.Size = new System.Drawing.Size(200, 90);
-            this.gbPositionGorizontal.TabIndex = 4;
-            this.gbPositionGorizontal.TabStop = false;
-            this.gbPositionGorizontal.Text = "Позиция по горизонтали";
+            this.gbPositionHorizontal.Controls.Add(this.nudPosHor);
+            this.gbPositionHorizontal.Controls.Add(this.rbPosHor_Right);
+            this.gbPositionHorizontal.Controls.Add(this.rbPosHor_Centr);
+            this.gbPositionHorizontal.Controls.Add(this.rbPosHor_Left);
+            this.gbPositionHorizontal.Location = new System.Drawing.Point(215, 139);
+            this.gbPositionHorizontal.Name = "gbPositionHorizontal";
+            this.gbPositionHorizontal.Size = new System.Drawing.Size(200, 90);
+            this.gbPositionHorizontal.TabIndex = 4;
+            this.gbPositionHorizontal.TabStop = false;
+            this.gbPositionHorizontal.Text = "Позиция по горизонтали";
             // 
-            // nudPosGor
+            // nudPosHor
             // 
-            this.nudPosGor.DecimalPlaces = 2;
-            this.nudPosGor.Location = new System.Drawing.Point(130, 44);
-            this.nudPosGor.Maximum = new decimal(new int[] {
+            this.nudPosHor.DecimalPlaces = 2;
+            this.nudPosHor.Location = new System.Drawing.Point(130, 44);
+            this.nudPosHor.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
-            this.nudPosGor.Minimum = new decimal(new int[] {
+            this.nudPosHor.Minimum = new decimal(new int[] {
             200,
             0,
             0,
             -2147483648});
-            this.nudPosGor.Name = "nudPosGor";
-            this.nudPosGor.Size = new System.Drawing.Size(64, 20);
-            this.nudPosGor.TabIndex = 3;
-            this.nudPosGor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudPosHor.Name = "nudPosHor";
+            this.nudPosHor.Size = new System.Drawing.Size(64, 20);
+            this.nudPosHor.TabIndex = 3;
+            this.nudPosHor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // rbPosGor_Right
+            // rbPosHor_Right
             // 
-            this.rbPosGor_Right.AutoSize = true;
-            this.rbPosGor_Right.Location = new System.Drawing.Point(7, 68);
-            this.rbPosGor_Right.Name = "rbPosGor_Right";
-            this.rbPosGor_Right.Size = new System.Drawing.Size(107, 17);
-            this.rbPosGor_Right.TabIndex = 2;
-            this.rbPosGor_Right.TabStop = true;
-            this.rbPosGor_Right.Text = "от правого края";
-            this.rbPosGor_Right.UseVisualStyleBackColor = true;
+            this.rbPosHor_Right.AutoSize = true;
+            this.rbPosHor_Right.Location = new System.Drawing.Point(7, 68);
+            this.rbPosHor_Right.Name = "rbPosHor_Right";
+            this.rbPosHor_Right.Size = new System.Drawing.Size(107, 17);
+            this.rbPosHor_Right.TabIndex = 2;
+            this.rbPosHor_Right.TabStop = true;
+            this.rbPosHor_Right.Text = "от правого края";
+            this.rbPosHor_Right.UseVisualStyleBackColor = true;
             // 
-            // rbPosGor_Centr
+            // rbPosHor_Centr
             // 
-            this.rbPosGor_Centr.AutoSize = true;
-            this.rbPosGor_Centr.Location = new System.Drawing.Point(7, 44);
-            this.rbPosGor_Centr.Name = "rbPosGor_Centr";
-            this.rbPosGor_Centr.Size = new System.Drawing.Size(74, 17);
-            this.rbPosGor_Centr.TabIndex = 1;
-            this.rbPosGor_Centr.TabStop = true;
-            this.rbPosGor_Centr.Text = "от центра";
-            this.rbPosGor_Centr.UseVisualStyleBackColor = true;
+            this.rbPosHor_Centr.AutoSize = true;
+            this.rbPosHor_Centr.Location = new System.Drawing.Point(7, 44);
+            this.rbPosHor_Centr.Name = "rbPosHor_Centr";
+            this.rbPosHor_Centr.Size = new System.Drawing.Size(74, 17);
+            this.rbPosHor_Centr.TabIndex = 1;
+            this.rbPosHor_Centr.TabStop = true;
+            this.rbPosHor_Centr.Text = "от центра";
+            this.rbPosHor_Centr.UseVisualStyleBackColor = true;
             // 
-            // rbPosGor_Left
+            // rbPosHor_Left
             // 
-            this.rbPosGor_Left.AutoSize = true;
-            this.rbPosGor_Left.Location = new System.Drawing.Point(7, 20);
-            this.rbPosGor_Left.Name = "rbPosGor_Left";
-            this.rbPosGor_Left.Size = new System.Drawing.Size(101, 17);
-            this.rbPosGor_Left.TabIndex = 0;
-            this.rbPosGor_Left.TabStop = true;
-            this.rbPosGor_Left.Text = "от левого края";
-            this.rbPosGor_Left.UseVisualStyleBackColor = true;
+            this.rbPosHor_Left.AutoSize = true;
+            this.rbPosHor_Left.Location = new System.Drawing.Point(7, 20);
+            this.rbPosHor_Left.Name = "rbPosHor_Left";
+            this.rbPosHor_Left.Size = new System.Drawing.Size(101, 17);
+            this.rbPosHor_Left.TabIndex = 0;
+            this.rbPosHor_Left.TabStop = true;
+            this.rbPosHor_Left.Text = "от левого края";
+            this.rbPosHor_Left.UseVisualStyleBackColor = true;
             // 
             // gbAncorPoint
             // 
@@ -218,7 +218,6 @@
             this.rbAncorPoint_BR.TabStop = true;
             this.rbAncorPoint_BR.Text = " ";
             this.rbAncorPoint_BR.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_BR.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_BC
             // 
@@ -230,7 +229,6 @@
             this.rbAncorPoint_BC.TabStop = true;
             this.rbAncorPoint_BC.Text = " ";
             this.rbAncorPoint_BC.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_BC.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_CC
             // 
@@ -242,7 +240,6 @@
             this.rbAncorPoint_CC.TabStop = true;
             this.rbAncorPoint_CC.Text = " ";
             this.rbAncorPoint_CC.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_CC.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_BL
             // 
@@ -254,7 +251,6 @@
             this.rbAncorPoint_BL.TabStop = true;
             this.rbAncorPoint_BL.Text = " ";
             this.rbAncorPoint_BL.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_BL.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_CL
             // 
@@ -266,7 +262,6 @@
             this.rbAncorPoint_CL.TabStop = true;
             this.rbAncorPoint_CL.Text = " ";
             this.rbAncorPoint_CL.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_CL.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_TC
             // 
@@ -278,7 +273,6 @@
             this.rbAncorPoint_TC.TabStop = true;
             this.rbAncorPoint_TC.Text = " ";
             this.rbAncorPoint_TC.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_TC.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_TR
             // 
@@ -290,7 +284,6 @@
             this.rbAncorPoint_TR.TabStop = true;
             this.rbAncorPoint_TR.Text = " ";
             this.rbAncorPoint_TR.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_TR.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_CR
             // 
@@ -302,7 +295,6 @@
             this.rbAncorPoint_CR.TabStop = true;
             this.rbAncorPoint_CR.Text = " ";
             this.rbAncorPoint_CR.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_CR.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
             // rbAncorPoint_TL
             // 
@@ -314,16 +306,15 @@
             this.rbAncorPoint_TL.TabStop = true;
             this.rbAncorPoint_TL.Text = " ";
             this.rbAncorPoint_TL.UseVisualStyleBackColor = true;
-            this.rbAncorPoint_TL.CheckedChanged += new System.EventHandler(this.rbAncorPoint_change);
             // 
-            // tbText
+            // txtText
             // 
-            this.tbText.Location = new System.Drawing.Point(9, 12);
-            this.tbText.Multiline = true;
-            this.tbText.Name = "tbText";
-            this.tbText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbText.Size = new System.Drawing.Size(287, 91);
-            this.tbText.TabIndex = 6;
+            this.txtText.Location = new System.Drawing.Point(9, 12);
+            this.txtText.Multiline = true;
+            this.txtText.Name = "txtText";
+            this.txtText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtText.Size = new System.Drawing.Size(287, 91);
+            this.txtText.TabIndex = 6;
             // 
             // btnFontSetting
             // 
@@ -377,9 +368,9 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnHelpTemplate);
             this.Controls.Add(this.btnFontSetting);
-            this.Controls.Add(this.tbText);
+            this.Controls.Add(this.txtText);
             this.Controls.Add(this.gbAncorPoint);
-            this.Controls.Add(this.gbPositionGorizontal);
+            this.Controls.Add(this.gbPositionHorizontal);
             this.Controls.Add(this.gbPositionVertical);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTextSetting";
@@ -388,9 +379,9 @@
             this.gbPositionVertical.ResumeLayout(false);
             this.gbPositionVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPosVer)).EndInit();
-            this.gbPositionGorizontal.ResumeLayout(false);
-            this.gbPositionGorizontal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPosGor)).EndInit();
+            this.gbPositionHorizontal.ResumeLayout(false);
+            this.gbPositionHorizontal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPosHor)).EndInit();
             this.gbAncorPoint.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -404,11 +395,11 @@
         private System.Windows.Forms.RadioButton rbPosVer_Botton;
         private System.Windows.Forms.RadioButton rbPosVer_Centr;
         private System.Windows.Forms.RadioButton rbPosVer_Top;
-        private System.Windows.Forms.GroupBox gbPositionGorizontal;
-        private System.Windows.Forms.NumericUpDown nudPosGor;
-        private System.Windows.Forms.RadioButton rbPosGor_Right;
-        private System.Windows.Forms.RadioButton rbPosGor_Centr;
-        private System.Windows.Forms.RadioButton rbPosGor_Left;
+        private System.Windows.Forms.GroupBox gbPositionHorizontal;
+        private System.Windows.Forms.NumericUpDown nudPosHor;
+        private System.Windows.Forms.RadioButton rbPosHor_Right;
+        private System.Windows.Forms.RadioButton rbPosHor_Centr;
+        private System.Windows.Forms.RadioButton rbPosHor_Left;
         private System.Windows.Forms.GroupBox gbAncorPoint;
         private System.Windows.Forms.RadioButton rbAncorPoint_BR;
         private System.Windows.Forms.RadioButton rbAncorPoint_BC;
@@ -419,7 +410,7 @@
         private System.Windows.Forms.RadioButton rbAncorPoint_TR;
         private System.Windows.Forms.RadioButton rbAncorPoint_CR;
         private System.Windows.Forms.RadioButton rbAncorPoint_TL;
-        private System.Windows.Forms.TextBox tbText;
+        private System.Windows.Forms.TextBox txtText;
         private System.Windows.Forms.Button btnFontSetting;
         private System.Windows.Forms.Button btnHelpTemplate;
         private System.Windows.Forms.Button btnOk;
