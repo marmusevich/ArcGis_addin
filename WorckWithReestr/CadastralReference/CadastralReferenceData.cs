@@ -180,6 +180,12 @@ namespace CadastralReference
         public string ObjectTableName { get { return m_ObjectTableName; } private set { m_ObjectTableName = value; } }
 
 
+        //[XmlIgnore]
+        //public ESRI.ArcGIS.Display.TextSymbolClass ts = new ESRI.ArcGIS.Display.TextSymbolClass();
+        ////public byte[] ts_string = new byte[1]();
+
+  
+
         /// <summary>
         /// свойства графических листов
         /// </summary>
@@ -259,6 +265,10 @@ namespace CadastralReference
             string ret = "";
             try
             {
+                //ts_string = 
+                 //   SerializeAnXMLFile(@"d:\a.marmusevich\111.XML", this, "CadastralReferenceData");
+
+
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(CadastralReferenceData));
                 StringWriter stringWriter = new StringWriter();
                 xmlSerializer.Serialize(stringWriter, this);
@@ -306,6 +316,61 @@ namespace CadastralReference
                 GeneralApp.ShowErrorMessage("Ошибка при чтение  настроек кадастровой справки");
             }
         }
+
+
+
+        //Serialize any object and save it to an xml file using the XMLSerializer.
+        ///<summary>Serialize any object and save it to an xml file using the XMLSerializer.</summary>
+        /// 
+        ///<param name="xmlPathFile">A System.String that is the path and file name of the XML file to create. Example: "C:\temp\myfile.xml"</param>
+        ///<param name="xmlObject">A System.Object. Any ArcObject (Example: IPoint, IPolygon, IFieldEdit, etc..) or intrinsic value (Example: string, boolean, int, etc..) can be used.</param>
+        ///<param name="xmlNodeName">A System.String for the name of the XML node (element) that will contain the data. Example: "Point" or "Polygon" or "whatever".</param>
+        ///  
+        ///<remarks></remarks>
+        public byte[] SerializeAnXMLFile(String xmlPathFile, Object xmlObject, String xmlNodeName)
+        {
+            String elementURI = "http://www.esri.com/schemas/ArcGIS/9.2";
+            // Create xml writer
+            ESRI.ArcGIS.esriSystem.IXMLWriter xmlWriter = new ESRI.ArcGIS.esriSystem.XMLWriterClass();
+            // Create xml stream
+            ESRI.ArcGIS.esriSystem.IXMLStream xmlStream = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
+            // Explicit Cast for IStream and then write to stream 
+            xmlWriter.WriteTo((ESRI.ArcGIS.esriSystem.IStream)xmlStream);
+            // Serialize 
+            ESRI.ArcGIS.esriSystem.IXMLSerializer xmlSerializer = new ESRI.ArcGIS.esriSystem.XMLSerializerClass();
+            xmlSerializer.WriteObject(xmlWriter, null, null, xmlNodeName, elementURI, xmlObject);
+            // Save the xmlObject to an xml file. When using xmlstream the cpu keeps data in memory until it is written to file. 
+
+            xmlStream.SaveToFile(@xmlPathFile);
+            //return xmlStream.SaveToString();
+            return xmlStream.SaveToBytes();
+        }
+
+        //Deserialize an XML file and return its contents using the XMLSerializer.
+        ///<summary>Deserialize an XML file and return its contents using the XMLSerializer</summary>
+        /// 
+        ///<param name="xmlPathFile">A System.String that is the fully qualified path and file name to an XML file. Example: "C:\temp\mydata.xml"</param>
+        ///  
+        ///<returns>A System.Object that is XML</returns>
+        ///  
+        ///<remarks></remarks>
+        public System.Object DeserializeAnXMLFile(System.String xmlPathFile)
+        {
+            // Create xmlStream and load in the .XML file
+            ESRI.ArcGIS.esriSystem.IXMLStream xmlStream = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
+            xmlStream.LoadFromFile(xmlPathFile);
+
+            // Create xmlReader and read the XML stream
+            ESRI.ArcGIS.esriSystem.IXMLReader xmlReader = new ESRI.ArcGIS.esriSystem.XMLReaderClass();
+            xmlReader.ReadFrom((ESRI.ArcGIS.esriSystem.IStream)xmlStream); // Explicit Cast
+
+            // Create a serializer
+            ESRI.ArcGIS.esriSystem.IXMLSerializer xmlSerializer = new ESRI.ArcGIS.esriSystem.XMLSerializerClass();
+
+            // Return the XML contents
+            return xmlSerializer.ReadObject(xmlReader, null, null);
+        }
+
         #endregion
 
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -337,6 +402,3 @@ namespace CadastralReference
         #endregion
     }
 }
-
-
-
