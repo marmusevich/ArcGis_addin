@@ -70,6 +70,13 @@ namespace CadastralReference
             }
         }
         private Image m_Image;
+
+        /// <summary>
+        /// описание текстовых элементов на листе
+        /// </summary>
+        [XmlArray("TextElements"), XmlArrayItem("TextElement")]
+        public List<OneTextElementDescription> TextElements { get { return m_TextElements; } set { m_TextElements = value; } }
+        private List<OneTextElementDescription> m_TextElements;
         #endregion
 
         #region события
@@ -115,6 +122,7 @@ namespace CadastralReference
             Enable = enable;
             Layers = new StringCollection();
             m_Image = null;
+            m_TextElements = new List<OneTextElementDescription>();
         }
 
         public OnePageDescriptions()
@@ -123,6 +131,7 @@ namespace CadastralReference
             Enable = false;
             Layers = new StringCollection();
             m_Image = null;
+            m_TextElements = new List<OneTextElementDescription>();
         }
 
         //скопировать настройки
@@ -133,6 +142,14 @@ namespace CadastralReference
             Layers = new StringCollection();
             foreach (string s in opd.Layers)
                 this.Layers.Add(s);
+
+            m_TextElements = new List<OneTextElementDescription>();
+            foreach (OneTextElementDescription oted in opd.TextElements)
+            {
+                OneTextElementDescription tmp = new OneTextElementDescription();
+                tmp.CopySetingFrom(oted);
+                this.m_TextElements.Add(tmp);
+            }
         }
 
         //предстовленеие перечня слоев

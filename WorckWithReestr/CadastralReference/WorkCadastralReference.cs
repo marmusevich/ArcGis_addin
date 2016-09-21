@@ -247,9 +247,18 @@ namespace CadastralReference
             WorkCadastralReference_MAP.ChangeSizeDateFrame();
             WorkCadastralReference_MAP.AddScalebar();
             WorkCadastralReference_MAP.AddNorthArrowTool();
-            //WorkCadastralReference_MAP.AddText();
-
             //WorkCadastralReference_MAP.AddLegend(mxdoc.PageLayout, mxdoc.FocusMap, 5, 5, 20);
+
+
+
+
+
+            //нанаести все надписи листа
+            foreach (OneTextElementDescription oted in opd.TextElements)
+            {
+                WorkCadastralReference_MAP.DeleteElementByName(oted.Text);
+                WorkCadastralReference_MAP.AddText(oted);
+            }
 
 
 
