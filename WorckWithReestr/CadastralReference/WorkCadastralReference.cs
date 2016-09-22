@@ -238,20 +238,16 @@ namespace CadastralReference
 
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 
-
-
             //IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IActiveView activeView = mxdoc.ActiveView;
             //WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
 
-            WorkCadastralReference_MAP.ChangeSizeDateFrame();
-            WorkCadastralReference_MAP.AddScalebar();
-            WorkCadastralReference_MAP.AddNorthArrowTool();
+            WorkCadastralReference_MAP.ChangeSizeDateFrame(opd);
+
+            WorkCadastralReference_MAP.AddScalebar(opd);
+            WorkCadastralReference_MAP.AddNorthArrowTool(opd);
+            
             //WorkCadastralReference_MAP.AddLegend(mxdoc.PageLayout, mxdoc.FocusMap, 5, 5, 20);
-
-
-
-
 
             //нанаести все надписи листа
             foreach (OneTextElementDescription oted in opd.TextElements)

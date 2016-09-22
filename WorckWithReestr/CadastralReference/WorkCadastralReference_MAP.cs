@@ -174,9 +174,11 @@ namespace CadastralReference
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static void AddNorthArrowTool()
+        public static void AddNorthArrowTool(OnePageDescriptions opd)
         {
             DeleteNordArrow();
+
+            if (!opd.IsHasNordArrow) return;
 
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 
@@ -234,9 +236,11 @@ namespace CadastralReference
 
         }
 
-        public static void AddScalebar()
+        public static void AddScalebar(OnePageDescriptions opd)
         {
             DeleteScalebar();
+
+            if (!opd.IsHasScaleBar) return;
 
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 
@@ -470,7 +474,7 @@ namespace CadastralReference
         }
 
         // изменить размер фрейма данных
-        public static void ChangeSizeDateFrame()
+        public static void ChangeSizeDateFrame(OnePageDescriptions opd)
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             IGraphicsContainer graphicsContainer = mxdoc.PageLayout as IGraphicsContainer;
@@ -499,7 +503,7 @@ namespace CadastralReference
                 // dateFrameElement.Geometry.Envelope
 
                 IEnvelope envelope = new EnvelopeClass();
-                envelope.PutCoords(1, 2.5, pageSaze.X - 1, pageSaze.Y - 2.5);
+                envelope.PutCoords(opd.DataFrameSyze_Left, opd.DataFrameSyze_Down, pageSaze.X - opd.DataFrameSyze_Right, pageSaze.Y - opd.DataFrameSyze_Up );
                 dateFrameElement.Geometry = envelope as IGeometry;
             }
         }

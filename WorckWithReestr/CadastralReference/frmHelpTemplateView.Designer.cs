@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnOk = new System.Windows.Forms.Button();
-            this.lblOpisanie = new System.Windows.Forms.Label();
+            this.lblOpisanie = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
@@ -44,12 +44,12 @@
             // 
             // lblOpisanie
             // 
-            this.lblOpisanie.BackColor = System.Drawing.SystemColors.Window;
-            this.lblOpisanie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblOpisanie.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblOpisanie.Location = new System.Drawing.Point(0, 0);
+            this.lblOpisanie.Multiline = true;
             this.lblOpisanie.Name = "lblOpisanie";
-            this.lblOpisanie.Size = new System.Drawing.Size(372, 239);
+            this.lblOpisanie.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.lblOpisanie.Size = new System.Drawing.Size(372, 235);
             this.lblOpisanie.TabIndex = 1;
             // 
             // frmHelpTemplateView
@@ -68,12 +68,13 @@
             this.Text = "Описание переменных шаблона";
             this.Load += new System.EventHandler(this.frmHelpTemplateView_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Label lblOpisanie;
+        private System.Windows.Forms.TextBox lblOpisanie;
     }
 }

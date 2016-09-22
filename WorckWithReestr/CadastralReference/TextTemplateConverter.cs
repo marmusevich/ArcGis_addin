@@ -23,7 +23,7 @@ namespace CadastralReference
         {
             public string GeVariableName()
             {
-                return "{_MapScale_}";
+                return "{_маштаб_}";
             }
             public string GeDiscription()
             {

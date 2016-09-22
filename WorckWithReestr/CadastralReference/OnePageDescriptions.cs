@@ -77,6 +77,13 @@ namespace CadastralReference
         [XmlArray("TextElements"), XmlArrayItem("TextElement")]
         public List<OneTextElementDescription> TextElements { get { return m_TextElements; } set { m_TextElements = value; } }
         private List<OneTextElementDescription> m_TextElements;
+
+        public double DataFrameSyze_Down = 0;
+        public double DataFrameSyze_Up = 0;
+        public double DataFrameSyze_Left = 0;
+        public double DataFrameSyze_Right = 0;
+        public bool IsHasNordArrow = false;
+        public bool IsHasScaleBar = false;
         #endregion
 
         #region события
@@ -150,10 +157,20 @@ namespace CadastralReference
                 tmp.CopySetingFrom(oted);
                 this.m_TextElements.Add(tmp);
             }
+
+
+            this.DataFrameSyze_Down = opd.DataFrameSyze_Down;
+            this.DataFrameSyze_Up = opd.DataFrameSyze_Up;
+            this.DataFrameSyze_Left = opd.DataFrameSyze_Left;
+            this.DataFrameSyze_Right = opd.DataFrameSyze_Right;
+            this.IsHasNordArrow = opd.IsHasNordArrow;
+            this.IsHasScaleBar = opd.IsHasScaleBar;
+
+
         }
 
-        //предстовленеие перечня слоев
-        public string LayersToString()
+    //предстовленеие перечня слоев
+    public string LayersToString()
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (string s in Layers)

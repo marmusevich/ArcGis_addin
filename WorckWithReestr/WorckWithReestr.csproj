@@ -367,6 +367,9 @@
     <EmbeddedResource Include="CadastralReference\arcDW_CadastralReference.resx">
       <DependentUpon>arcDW_CadastralReference.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmHelpTemplateView.resx">
+      <DependentUpon>frmHelpTemplateView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmPrevImage.resx">
       <DependentUpon>frmPrevImage.cs</DependentUpon>
     </EmbeddedResource>

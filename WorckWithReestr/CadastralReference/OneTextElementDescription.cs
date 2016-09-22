@@ -111,7 +111,7 @@ namespace CadastralReference
 
         public OneTextElementDescription()
         {
-            this.Text = "0";
+            this.Text = "";
             this.PosX = 0;
             this.PosY = 0;
             this.PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
