@@ -361,56 +361,69 @@ namespace WorckWithReestr
         }
 
 
-        //ESRI.ArcGIS.ArcMapUI.IMxDocument mxdoc = ArcMap.Application.Document as ESRI.ArcGIS.ArcMapUI.IMxDocument;
-
-        ////IPoint pageSaze = GetPageSaze();
-        ////point.PutCoords(pageSaze.X / 2, pageSaze.Y - 2);
-        //ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
-        //envelope.PutCoords(1, 1, 6, 6); // Specify the location and size of the scalebar
-
-        //ESRI.ArcGIS.Display.IStyleGallery styleGallery = mxdoc.StyleGallery;
-        //ESRI.ArcGIS.Display.IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("North Arrows", "ESRI.STYLE", "Default");
-
-        //ESRI.ArcGIS.Display.IStyleGalleryItem northArrowStyle = enumStyleGallery.Next();
-        //while (northArrowStyle != null)
-        //{
-        //    if (northArrowStyle.Name == "ESRI North 1")
-        //    {
-        //        break;
-        //    }
-        //    northArrowStyle = enumStyleGallery.Next();
-        //}
-        //ESRI.ArcGIS.Carto.INorthArrow northArrow = northArrowStyle.Item as ESRI.ArcGIS.Carto.INorthArrow;
-
-
-        //ESRI.ArcGIS.DisplayUI.ISymbolSelector symbolSelector = new ESRI.ArcGIS.DisplayUI.SymbolSelector();
-        ////ESRI.ArcGIS.Display.ISimpleMarkerSymbol markerSymbol = new ESRI.ArcGIS.Display.SimpleMarkerSymbol();
-
-        //// ESRI.ArcGIS.Carto.MarkerNorthArrow
-
-        //if ((symbolSelector.AddSymbol((ESRI.ArcGIS.Display.ISymbol)northArrow.sy)))
-        //{
-        //    if (symbolSelector.SelectSymbol(0))
-        //    {
-        //        //ESRI.ArcGIS.Carto.INorthArrow northArrow = symbolSelector.GetSymbolAt(0) as ESRI.ArcGIS.Carto.INorthArrow;
-
-        //    }
-        //}
-        //northArrow.Map = mxdoc.FocusMap;
-        //ESRI.ArcGIS.Carto.IMapSurroundFrame pMSFrame = new ESRI.ArcGIS.Carto.MapSurroundFrameClass();
-        //pMSFrame.MapSurround = northArrow;
-        //ESRI.ArcGIS.Carto.IElement MSElement = pMSFrame as ESRI.ArcGIS.Carto.IElement;
-        //MSElement.Geometry = envelope as ESRI.ArcGIS.Geometry.IGeometry;
-
-        //ESRI.ArcGIS.Carto.IGraphicsContainer gc = mxdoc.PageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer;
-        //gc.AddElement(MSElement, 0);
         private void btnCloseEdit_Click(object sender, EventArgs e)
         {
 
             ESRI.ArcGIS.ArcMapUI.IMxDocument mxdoc = WorckWithReestr.ArcMap.Application.Document as ESRI.ArcGIS.ArcMapUI.IMxDocument;
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            
+            //IPoint pageSaze = GetPageSaze();
+            //point.PutCoords(pageSaze.X / 2, pageSaze.Y - 2);
+            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+            envelope.PutCoords(1, 1, 6, 6); // Specify the location and size of the scalebar
+
+            ESRI.ArcGIS.Display.IStyleGallery styleGallery = mxdoc.StyleGallery;
+            ESRI.ArcGIS.Display.IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("North Arrows", "ESRI.STYLE", "Default");
+
+            ESRI.ArcGIS.Display.IStyleGalleryItem northArrowStyle = enumStyleGallery.Next();
+            while (northArrowStyle != null)
+            {
+                if (northArrowStyle.Name == "ESRI North 1")
+                {
+                    break;
+                }
+                northArrowStyle = enumStyleGallery.Next();
+            }
+            object obj = northArrowStyle.Item;
+
+
+
+            ESRI.ArcGIS.DisplayUI.ISymbolSelector symbolSelector = new ESRI.ArcGIS.DisplayUI.SymbolSelector();
+            if ((symbolSelector.AddSymbol((ESRI.ArcGIS.Display.ISymbol)obj)))
+            {
+                if (symbolSelector.SelectSymbol(0))
+                {
+                    obj = symbolSelector.GetSymbolAt(0);
+                }
+            }
+
+            ESRI.ArcGIS.Carto.INorthArrow northArrow = obj as ESRI.ArcGIS.Carto.INorthArrow;
+
+
+
+            //ESRI.ArcGIS.DisplayUI.ISymbolSelector symbolSelector = new ESRI.ArcGIS.DisplayUI.SymbolSelector();
+            ////ESRI.ArcGIS.Display.ISimpleMarkerSymbol markerSymbol = new ESRI.ArcGIS.Display.SimpleMarkerSymbol();
+
+            //// ESRI.ArcGIS.Carto.MarkerNorthArrow
+
+            //if ((symbolSelector.AddSymbol((ESRI.ArcGIS.Display.ISymbol)northArrow.sy)))
+            //{
+            //    if (symbolSelector.SelectSymbol(0))
+            //    {
+            //        //ESRI.ArcGIS.Carto.INorthArrow northArrow = symbolSelector.GetSymbolAt(0) as ESRI.ArcGIS.Carto.INorthArrow;
+
+            //    }
+            //}
+            //northArrow.Map = mxdoc.FocusMap;
+            //ESRI.ArcGIS.Carto.IMapSurroundFrame pMSFrame = new ESRI.ArcGIS.Carto.MapSurroundFrameClass();
+            //pMSFrame.MapSurround = northArrow;
+            //ESRI.ArcGIS.Carto.IElement MSElement = pMSFrame as ESRI.ArcGIS.Carto.IElement;
+            //MSElement.Geometry = envelope as ESRI.ArcGIS.Geometry.IGeometry;
+
+            //ESRI.ArcGIS.Carto.IGraphicsContainer gc = mxdoc.PageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer;
+            //gc.AddElement(MSElement, 0);
+
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             ESRI.ArcGIS.Carto.IActiveView activeView = mxdoc.ActiveView;
@@ -425,9 +438,6 @@ namespace WorckWithReestr
                 //WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose = true;
             }
         }
-
-
-
 
         private void btnSetObject_Click(object sender, EventArgs e)
         {

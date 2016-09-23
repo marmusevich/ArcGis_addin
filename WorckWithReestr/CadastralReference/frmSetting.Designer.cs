@@ -41,6 +41,7 @@ namespace CadastralReference
             this.tpRTF = new System.Windows.Forms.TabPage();
             this.tpPages = new System.Windows.Forms.TabPage();
             this.tcPages = new System.Windows.Forms.TabControl();
+            this.btnAddPage = new System.Windows.Forms.Button();
             this.tcSetting.SuspendLayout();
             this.tpMain.SuspendLayout();
             this.pnListOfPages.SuspendLayout();
@@ -97,6 +98,7 @@ namespace CadastralReference
             // 
             // pnListOfPages
             // 
+            this.pnListOfPages.Controls.Add(this.btnAddPage);
             this.pnListOfPages.Controls.Add(this.lblListOfPages);
             this.pnListOfPages.Controls.Add(this.clbListOfPages);
             this.pnListOfPages.Location = new System.Drawing.Point(0, 0);
@@ -151,6 +153,16 @@ namespace CadastralReference
             this.tcPages.Size = new System.Drawing.Size(645, 415);
             this.tcPages.TabIndex = 0;
             // 
+            // btnAddPage
+            // 
+            this.btnAddPage.Location = new System.Drawing.Point(71, 231);
+            this.btnAddPage.Name = "btnAddPage";
+            this.btnAddPage.Size = new System.Drawing.Size(101, 23);
+            this.btnAddPage.TabIndex = 4;
+            this.btnAddPage.Text = "Добавить лист";
+            this.btnAddPage.UseVisualStyleBackColor = true;
+            this.btnAddPage.Click += new System.EventHandler(this.btnAddPage_Click);
+            // 
             // frmSetting
             // 
             this.AcceptButton = this.btnSave;
@@ -183,5 +195,6 @@ namespace CadastralReference
         private Panel pnListOfPages;
         private Label lblListOfPages;
         private CheckedListBox clbListOfPages;
+        private Button btnAddPage;
     }
 }

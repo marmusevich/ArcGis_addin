@@ -118,8 +118,6 @@ namespace CadastralReference
 
         private void btnFontSetting_Click(object sender, EventArgs e)
         {
-
-
             ISymbolSelector symbolSelector = new SymbolSelector();
             if ((symbolSelector.AddSymbol((ISymbol)m_oted.TextSymbolClass)))
             {
@@ -128,8 +126,6 @@ namespace CadastralReference
                     m_oted.TextSymbolClass = symbolSelector.GetSymbolAt(0) as ITextSymbol;
                 }
             }
-
-
         }
 
         private void btnHelpTemplate_Click(object sender, EventArgs e)

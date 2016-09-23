@@ -149,6 +149,12 @@
     <Compile Include="CadastralReference\frmTextSetting.Designer.cs">
       <DependentUpon>frmTextSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastralReference\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\InputBox.Designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastralReference\OnePageDescriptions.cs" />
     <Compile Include="CadastralReference\OneTextElementDescription.cs" />
     <Compile Include="CadastralReference\TextTemplateConverter.cs" />
@@ -381,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FizLic\frmFizLic_element.resx">
       <DependentUpon>frmFizLic_element.cs</DependentUpon>

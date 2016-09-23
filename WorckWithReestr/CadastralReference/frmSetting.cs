@@ -51,18 +51,23 @@ namespace CadastralReference
         #region //создать элементы управления
         private void CreateUI()
         {
+            foreach (OnePageDescriptions pd in m_crd.Pages)
+            {
+                CreateUiOnePage(pd);
+            }
+        }
+
+        private void CreateUiOnePage(OnePageDescriptions pd)
+        {
             this.tcSetting.SuspendLayout();
             this.tpMain.SuspendLayout();
             this.pnListOfPages.SuspendLayout();
             this.tpPages.SuspendLayout();
             this.SuspendLayout();
-            //
-            foreach (OnePageDescriptions pd in m_crd.Pages)
-            {
-                clbListOfPages.Items.Add(pd, pd.Enable);
-                Create_tpPages(pd);
-            }
-            //
+
+            clbListOfPages.Items.Add(pd, pd.Enable);
+            Create_tpPages(pd);
+
             this.tcSetting.ResumeLayout(false);
             this.tpMain.ResumeLayout(false);
             this.pnListOfPages.ResumeLayout(false);
@@ -96,12 +101,10 @@ namespace CadastralReference
 
             this.tcPages.Controls.Add(tp);
 
-
             if (opd.Enable)
                 tp.Parent = this.tcPages;// -- Показать
             else
                 tp.Parent = null;// -- Скрыть
-
 
             tp.ResumeLayout(false);
             tp.PerformLayout();
@@ -418,7 +421,6 @@ namespace CadastralReference
                 t.Text = pd.LayersToString();
         }
 
-
         private void GetSettingFromForm()
         {
             foreach (OnePageDescriptions opd in m_crd.Pages)
@@ -590,6 +592,25 @@ namespace CadastralReference
                     p.Parent = this.tcPages;// -- Показать
                 else
                     p.Parent = null;// -- Скрыть
+            }
+        }
+
+        private void btnAddPage_Click(object sender, EventArgs e)
+        {
+            InputBox inputBox = new InputBox("Название нового листа");
+            if (inputBox.ShowDialog() == DialogResult.OK && inputBox.Value != "")
+            {
+                OnePageDescriptions opd = new OnePageDescriptions(inputBox.Value, true);
+                //проверить уникальность имени
+                if (m_crd.Pages.Contains(opd))
+                {
+                    MessageBox.Show("Название нового листа не уникально.");
+                }
+                else
+                {
+                    m_crd.Pages.Add(opd);
+                    CreateUiOnePage(opd);
+                }
             }
         }
         #endregion

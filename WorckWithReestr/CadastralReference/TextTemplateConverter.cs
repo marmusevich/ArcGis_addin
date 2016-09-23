@@ -46,15 +46,139 @@ namespace CadastralReference
             }
             public string GetReplesedString()
             {
-                return "адресс из заявки";
+                string ret = "";
+                if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                {
+                    ret = WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Adress_Text"] as string;
+                }
+                return ret;
             }
         }
-
-
+        class NomerZayavki : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_НомерЗаявки_}";
+            }
+            public string GeDiscription()
+            {
+                return "номер заявки";
+            }
+            public string GetReplesedString()
+            {
+                string ret = "";
+                if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                {
+                    ret = WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["N_Z"] as string;
+                }
+                return ret;
+            }
+        }
+        class DataZayavki : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_ДатаЗаявки_}";
+            }
+            public string GeDiscription()
+            {
+                return "дата заявки";
+            }
+            public string GetReplesedString()
+            {
+                string ret = "";
+                if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                {
+                    ret = ((DateTime)WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Data_Z"]).ToString();
+                }
+                return ret;
+            }
+        }
+        class Zayavitel : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_Заявитель_}";
+            }
+            public string GeDiscription()
+            {
+                return "название заявителя";
+            }
+            public string GetReplesedString()
+            {
+                string ret = "";
+                if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                {
+                    ret = WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["strKod_Z"] as string;
+                }
+                return ret;
+            }
+        }
+        class KancelyarskiyNomer : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_ВходящийНомер_}";
+            }
+            public string GeDiscription()
+            {
+                return "номер входящий";
+            }
+            public string GetReplesedString()
+            {
+                string ret = "";
+                if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                {
+                    ret = WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Cane"] as string;
+                }
+                return ret;
+            }
+        }
+        class KancelyarskiyData : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_ВходящаяДата_}";
+            }
+            public string GeDiscription()
+            {
+                return "дата входящая";
+            }
+            public string GetReplesedString()
+            {
+                string ret = "";
+                if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                {
+                    ret = ((DateTime)WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Cane_Date"]).ToString();
+                }
+                return ret;
+            }
+        }
+        class Rajon : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_Район_}";
+            }
+            public string GeDiscription()
+            {
+                return "район города";
+            }
+            public string GetReplesedString()
+            {
+                string ret = "";
+                if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                {
+                    ret = WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["strRajon"] as string;
+                }
+                return ret;
+            }
+        }
         #endregion
 
         static IOneTextTemplateConverter[] arrMetod = new IOneTextTemplateConverter[] 
-        { new MapScale(), new AdressOpisatelniy()};
+        { new MapScale(), new AdressOpisatelniy(), new NomerZayavki(), new DataZayavki(), new Zayavitel(),
+          new KancelyarskiyNomer(), new KancelyarskiyData(), new Rajon()};
 
         // произвести замену
         public static string Implement(string input)

@@ -289,7 +289,6 @@ namespace CadastralReference
             return zayavkaData;
         }
 
-
         private static int GetReferensePageIdFromDB(IFeatureWorkspace fws, int zayavkaId, int pageId)
         {
             int ret = -1;
@@ -318,7 +317,5 @@ namespace CadastralReference
             }
             row.set_Value(table.FindField(fildName), text);
         }
-
-
     }
 }
