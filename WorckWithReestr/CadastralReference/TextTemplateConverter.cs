@@ -200,7 +200,7 @@ namespace CadastralReference
                 sb.Append(ottc.GeVariableName());
                 sb.Append(" - ");
                 sb.Append(ottc.GeDiscription());
-                sb.Append("\n");
+                sb.Append(" \r\n");
             }
             return sb.ToString();
         }
