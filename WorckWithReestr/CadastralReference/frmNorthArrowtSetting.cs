@@ -16,33 +16,44 @@ namespace CadastralReference
 {
     public partial class frmNorthArrowtSetting : Form
     {
-        private class TextAlignment
-        {
-            public esriTextHorizontalAlignment ha;
-            public esriTextVerticalAlignment va;
+    //    private class TextAlignment
+    //    {
+    //        public esriTextHorizontalAlignment ha;
+    //        public esriTextVerticalAlignment va;
 
-            public TextAlignment(esriTextHorizontalAlignment _ha, esriTextVerticalAlignment _va)
-            {
-                ha = _ha;
-                va = _va;
-            }
-        }
+    //        public TextAlignment(esriTextHorizontalAlignment _ha, esriTextVerticalAlignment _va)
+    //        {
+    //            ha = _ha;
+    //            va = _va;
+    //        }
+    //    }
 
-        public OneTextElementDescription m_oted = null;
+        public OnePageDescriptions m_opd = null;
 
         private void init()
         {
-            if (m_oted == null) return;
+            if (m_opd == null) return;
 
-            this.rbAncorPoint_BL.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVABottom);
-            this.rbAncorPoint_BC.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVABottom);
-            this.rbAncorPoint_BR.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVABottom);
-            this.rbAncorPoint_CL.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVACenter);
-            this.rbAncorPoint_CC.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVACenter);
-            this.rbAncorPoint_CR.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVACenter);
-            this.rbAncorPoint_TL.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
-            this.rbAncorPoint_TC.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVATop);
-            this.rbAncorPoint_TR.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVATop);
+            //this.rbAncorPoint_BL.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVABottom);
+            //this.rbAncorPoint_BC.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVABottom);
+            //this.rbAncorPoint_BR.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVABottom);
+            //this.rbAncorPoint_CL.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVACenter);
+            //this.rbAncorPoint_CC.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVACenter);
+            //this.rbAncorPoint_CR.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVACenter);
+            //this.rbAncorPoint_TL.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
+            //this.rbAncorPoint_TC.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVATop);
+            //this.rbAncorPoint_TR.Tag = new TextAlignment(esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVATop);
+            //foreach (Control c in gbAncorPoint.Controls)
+            //{
+            //    RadioButton rb = c as RadioButton;
+            //    if (rb != null)
+            //    {
+            //        TextAlignment ap = (TextAlignment)rb.Tag;
+            //        if (ap != null)
+            //            rb.Checked = (ap.ha == m_oted.AncorHorizontal) && (ap.va == m_oted.AncorVertical);
+            //    }
+            //}
+
 
             this.rbPosVer_Botton.Tag = esriTextVerticalAlignment.esriTVABottom;
             this.rbPosVer_Centr.Tag = esriTextVerticalAlignment.esriTVACenter;
@@ -52,87 +63,69 @@ namespace CadastralReference
             this.rbPosHor_Centr.Tag = esriTextHorizontalAlignment.esriTHACenter;
             this.rbPosHor_Left.Tag = esriTextHorizontalAlignment.esriTHALeft;
 
-            foreach (Control c in gbAncorPoint.Controls)
-            {
-                RadioButton rb = c as RadioButton;
-                if (rb != null)
-                {
-                    TextAlignment ap = (TextAlignment)rb.Tag;
-                    if (ap != null)
-                        rb.Checked = (ap.ha == m_oted.AncorHorizontal) && (ap.va == m_oted.AncorVertical);
-                }
-            }
+
             foreach (Control c in gbPositionHorizontal.Controls)
             {
                 RadioButton rb = c as RadioButton;
-                if (rb != null )
-                    rb.Checked = ((esriTextHorizontalAlignment)rb.Tag) == m_oted.PagePosHorizontal;
+                if (rb != null)
+                    rb.Checked = ((esriTextHorizontalAlignment)rb.Tag) == m_opd.NorthArrow_PagePosHorizontal;
             }
             foreach (Control c in gbPositionVertical.Controls)
             {
                 RadioButton rb = c as RadioButton;
                 if (rb != null)
-                    rb.Checked = ((esriTextVerticalAlignment)rb.Tag) == m_oted.PagePosVertical;
+                    rb.Checked = ((esriTextVerticalAlignment)rb.Tag) == m_opd.NorthArrow_PagePosVertical;
             }
 
-            nudPosVer.Value = (decimal)m_oted.PosY;
-            nudPosHor.Value = (decimal)m_oted.PosX;
-            txtText.Text = m_oted.Text;
+            nudPosVer.Value = (decimal)m_opd.NorthArrow_PosY;
+            nudPosHor.Value = (decimal)m_opd.NorthArrow_PosX;
         }
 
         private void save()
         {
-            foreach (Control c in gbAncorPoint.Controls)
-            {
-                RadioButton rb = c as RadioButton;
-                if (rb != null && rb.Checked)
-                {
-                    TextAlignment ap = (TextAlignment)rb.Tag;
-                    if (ap != null)
-                    {
-                        m_oted.AncorVertical = ap.va;
-                        m_oted.AncorHorizontal = ap.ha;
-                    }
-                }
-            }
+            //foreach (Control c in gbAncorPoint.Controls)
+            //{
+            //    RadioButton rb = c as RadioButton;
+            //    if (rb != null && rb.Checked)
+            //    {
+            //        TextAlignment ap = (TextAlignment)rb.Tag;
+            //        if (ap != null)
+            //        {
+            //            m_oted.AncorVertical = ap.va;
+            //            m_oted.AncorHorizontal = ap.ha;
+            //        }
+            //    }
+            //}
+
             foreach (Control c in gbPositionHorizontal.Controls)
             {
                 RadioButton rb = c as RadioButton;
                 if (rb != null && rb.Checked)
-                    m_oted.PagePosHorizontal = (esriTextHorizontalAlignment)rb.Tag;
+                    m_opd.NorthArrow_PagePosHorizontal = (esriTextHorizontalAlignment)rb.Tag;
             }
             foreach (Control c in gbPositionVertical.Controls)
             {
                 RadioButton rb = c as RadioButton;
                 if (rb != null && rb.Checked)
-                    m_oted.PagePosVertical = (esriTextVerticalAlignment)rb.Tag;
+                    m_opd.NorthArrow_PagePosVertical = (esriTextVerticalAlignment)rb.Tag;
             }
 
-            m_oted.PosY = (double)nudPosVer.Value;
-            m_oted.PosX = (double)nudPosHor.Value;
-            m_oted.Text = txtText.Text;
+            m_opd.NorthArrow_PosY = (double)nudPosVer.Value;
+            m_opd.NorthArrow_PosX = (double)nudPosHor.Value;
         }
-
-
         //////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void btnFontSetting_Click(object sender, EventArgs e)
+        private void btnNorthArrowSetting_Click(object sender, EventArgs e)
         {
-            ISymbolSelector symbolSelector = new SymbolSelector();
-            if ((symbolSelector.AddSymbol((ISymbol)m_oted.TextSymbolClass)))
-            {
-                if (symbolSelector.SelectSymbol(0))
-                {
-                    m_oted.TextSymbolClass = symbolSelector.GetSymbolAt(0) as ITextSymbol;
-                }
-            }
+            // здесь выбор
+            ESRI.ArcGIS.Framework.IStyleSelector StyleSelector = new ESRI.ArcGIS.CartoUI.NorthArrowSelector();
+            StyleSelector.AddStyle(m_opd.NorthArrow);
+            if (StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd))//;
+                m_opd.NorthArrow = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.MarkerNorthArrow;
+            //else
+            //    MessageBox.Show("false"); // кнопка отмена
         }
 
-        private void btnHelpTemplate_Click(object sender, EventArgs e)
-        {
-            Form frm = new frmHelpTemplateView();
-            frm.ShowDialog();
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -146,15 +139,18 @@ namespace CadastralReference
             this.Close();
         }
 
-        public frmNorthArrowtSetting(OneTextElementDescription oted)
+        public frmNorthArrowtSetting(OnePageDescriptions opd)
         {
             InitializeComponent();
-            m_oted = new CadastralReference.OneTextElementDescription();
-            m_oted.CopySetingFrom(oted);
+            m_opd = new OnePageDescriptions();
+            m_opd.CopySetingFrom(opd);
 
-            //MessageBox.Show("frmNorthArrowtSetting_ctr " + oted.ToString() +" -> "+ m_oted.ToString());
+        }
 
+        private void frmNorthArrowtSetting_Load(object sender, EventArgs e)
+        {
             init();
+
         }
     }
 }

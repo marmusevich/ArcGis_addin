@@ -191,7 +191,7 @@ namespace CadastralReference
                     {
                         tabName = (feature.Class as IDataset).Name;
                         //проверка на принадлежность нашему проекту
-                        if (GetCadastralReferenceData().ObjectTableName.ToLower() == tabName.ToLower())
+                        if (CadastralReferenceData.ObjectTableName.ToLower() == tabName.ToLower())
                         {
                             objectID = feature.OID;
                         }
@@ -245,7 +245,7 @@ namespace CadastralReference
 
                 //WorkCadastralReference_MAP.DeleteScalebar();
                 //WorkCadastralReference_MAP.AddScalebar(opd);
-            
+
                 //нанаести все надписи листа
                 foreach (OneTextElementDescription oted in opd.TextElements)
                 {
@@ -260,7 +260,7 @@ namespace CadastralReference
                 activeView.Refresh();
                 mxdoc.PageLayout.ZoomToWhole();
                 //mxdoc.ActiveView.Refresh();
-
+            }
             catch (Exception ex) // обработка ошибок
             {
 

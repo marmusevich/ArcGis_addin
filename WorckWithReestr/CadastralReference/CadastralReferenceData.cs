@@ -47,6 +47,14 @@ namespace CadastralReference
         // XML строка с настройками по умалчанию
         private const string defaultSettingXML = null;
 
+
+        [XmlIgnore]
+        public const string ObjectLayerName = "Зона розміщення об’єкту ";
+        [XmlIgnore]
+        public const string ObjectTableName = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX";
+
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////
         #region внутренние переменные
 
@@ -58,14 +66,12 @@ namespace CadastralReference
         private Dictionary<string, object> m_ZayavkaData = null;
 
         private string m_AllRTF = "";
-        private string m_TitulRTF_Template = " Титул ";
-        private string m_Page1RTF_Template = " начало динамической части";
+        private string m_TitulRTF_Template = "";
+        private string m_Page1RTF_Template = "";
         private StringCollection m_DinamicRTF_Template = null;
         private StringCollection m_DinamicRTF = null;
-        private string m_ConstRTF_Template = " постоянная часть";
-        private string m_RaspiskaRTF_Template = " расписка";
-        private string m_ObjectLayerName = "Зона розміщення об’єкту ";
-        private string m_ObjectTableName = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX"; 
+        private string m_ConstRTF_Template = "";
+        private string m_RaspiskaRTF_Template = "";
         #endregion
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,10 +180,6 @@ namespace CadastralReference
         /// <summary>
         /// имя слоя и таблицы на котором размещены объекты
         /// </summary>
-        [XmlIgnore]
-        public string ObjectLayerName { get { return m_ObjectLayerName; } private set { m_ObjectLayerName = value; } }
-        [XmlIgnore]
-        public string ObjectTableName { get { return m_ObjectTableName; } private set { m_ObjectTableName = value; } }
 
 
         /// <summary>

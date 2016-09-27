@@ -374,6 +374,7 @@
             this.Controls.Add(this.gbPositionVertical);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTextSetting";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Параметры текстового элемента";
             this.gbPositionVertical.ResumeLayout(false);

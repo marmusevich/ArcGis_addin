@@ -81,7 +81,7 @@ namespace CadastralReference
                 else
                     layer.Visible = false;
                 // всегда показывать слой где расположены объекты
-                if (WorkCadastralReference.GetCadastralReferenceData().ObjectLayerName.ToLower() == layer.Name.ToLower())
+                if (CadastralReferenceData.ObjectLayerName.ToLower() == layer.Name.ToLower())
                     layer.Visible = true;
 
                 layer = enumLayer.Next();
@@ -195,7 +195,8 @@ namespace CadastralReference
             {
                 IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
                 IMap m = mxdoc.FocusMap;
-                ret =  m.MapScale;
+                ret = m.MapScale;
+            }
             catch (Exception ex) // обработка ошибок
             {
 
@@ -327,8 +328,25 @@ namespace CadastralReference
 
             if (!opd.IsHasNorthArrow || opd.NorthArrow == null) return;
 
+            IPoint pageSaze = GetPageSaze();
+            double x = 0, y = 0;
+            if (opd.NorthArrow_PagePosVertical == esriTextVerticalAlignment.esriTVATop)
+                y = pageSaze.Y;
+            else if (opd.NorthArrow_PagePosVertical == esriTextVerticalAlignment.esriTVACenter)
+                y = pageSaze.Y / 2;
+            else
+                y = 0;
+
+            if (opd.NorthArrow_PagePosHorizontal == esriTextHorizontalAlignment.esriTHARight)
+                x = pageSaze.X;
+            else if (opd.NorthArrow_PagePosHorizontal == esriTextHorizontalAlignment.esriTHACenter)
+                x = pageSaze.X / 2;
+            else
+                x = 0;
+
+
             IEnvelope envelope = new EnvelopeClass();
-            envelope.PutCoords(opd.NorthArrow_PosX, opd.NorthArrow_PosY, opd.NorthArrow_PosX, opd.NorthArrow_PosY);
+            envelope.PutCoords(x + opd.NorthArrow_PosX, y + opd.NorthArrow_PosY, x + opd.NorthArrow_PosX, y + opd.NorthArrow_PosY);
 
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 

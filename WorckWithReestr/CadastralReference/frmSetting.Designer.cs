@@ -36,12 +36,12 @@ namespace CadastralReference
             this.tcSetting = new System.Windows.Forms.TabControl();
             this.tpMain = new System.Windows.Forms.TabPage();
             this.pnListOfPages = new System.Windows.Forms.Panel();
+            this.btnAddPage = new System.Windows.Forms.Button();
             this.lblListOfPages = new System.Windows.Forms.Label();
             this.clbListOfPages = new System.Windows.Forms.CheckedListBox();
             this.tpRTF = new System.Windows.Forms.TabPage();
             this.tpPages = new System.Windows.Forms.TabPage();
             this.tcPages = new System.Windows.Forms.TabControl();
-            this.btnAddPage = new System.Windows.Forms.Button();
             this.tcSetting.SuspendLayout();
             this.tpMain.SuspendLayout();
             this.pnListOfPages.SuspendLayout();
@@ -106,6 +106,16 @@ namespace CadastralReference
             this.pnListOfPages.Size = new System.Drawing.Size(286, 258);
             this.pnListOfPages.TabIndex = 2;
             // 
+            // btnAddPage
+            // 
+            this.btnAddPage.Location = new System.Drawing.Point(71, 231);
+            this.btnAddPage.Name = "btnAddPage";
+            this.btnAddPage.Size = new System.Drawing.Size(101, 23);
+            this.btnAddPage.TabIndex = 4;
+            this.btnAddPage.Text = "Добавить лист";
+            this.btnAddPage.UseVisualStyleBackColor = true;
+            this.btnAddPage.Click += new System.EventHandler(this.btnAddPage_Click);
+            // 
             // lblListOfPages
             // 
             this.lblListOfPages.Location = new System.Drawing.Point(3, 3);
@@ -153,16 +163,6 @@ namespace CadastralReference
             this.tcPages.Size = new System.Drawing.Size(645, 415);
             this.tcPages.TabIndex = 0;
             // 
-            // btnAddPage
-            // 
-            this.btnAddPage.Location = new System.Drawing.Point(71, 231);
-            this.btnAddPage.Name = "btnAddPage";
-            this.btnAddPage.Size = new System.Drawing.Size(101, 23);
-            this.btnAddPage.TabIndex = 4;
-            this.btnAddPage.Text = "Добавить лист";
-            this.btnAddPage.UseVisualStyleBackColor = true;
-            this.btnAddPage.Click += new System.EventHandler(this.btnAddPage_Click);
-            // 
             // frmSetting
             // 
             this.AcceptButton = this.btnSave;
@@ -172,6 +172,7 @@ namespace CadastralReference
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Name = "frmSetting";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSetting";
             this.Load += new System.EventHandler(this.frmSetting_Load);

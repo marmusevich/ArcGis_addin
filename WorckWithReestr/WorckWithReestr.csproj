@@ -155,14 +155,12 @@
     <Compile Include="CadastralReference\frmTextSetting.Designer.cs">
       <DependentUpon>frmTextSetting.cs</DependentUpon>
     </Compile>
-	
     <Compile Include="CadastralReference\frmNorthArrowtSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CadastralReference\frmNorthArrowtSetting.Designer.cs">
       <DependentUpon>frmNorthArrowtSetting.cs</DependentUpon>
     </Compile>
-	
     <Compile Include="CadastralReference\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,6 +388,9 @@
     <EmbeddedResource Include="CadastralReference\frmHelpTemplateView.resx">
       <DependentUpon>frmHelpTemplateView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmNorthArrowtSetting.resx">
+      <DependentUpon>frmNorthArrowtSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmPrevImage.resx">
       <DependentUpon>frmPrevImage.cs</DependentUpon>
     </EmbeddedResource>
@@ -401,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmTextSetting.resx">
+      <DependentUpon>frmTextSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>

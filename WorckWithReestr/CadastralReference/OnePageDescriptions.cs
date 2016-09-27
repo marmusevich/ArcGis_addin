@@ -6,6 +6,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Display;
 
 namespace CadastralReference
 {
@@ -71,7 +72,7 @@ namespace CadastralReference
                 }
             }
         }
-        private Image m_Image;
+        private Image m_Image = null;
 
         /// <summary>
         /// описание текстовых элементов на листе
@@ -81,17 +82,30 @@ namespace CadastralReference
         private List<OneTextElementDescription> m_TextElements;
 
         // размер фрейма данных
+        [XmlElement("DataFrameSyze_Down", Type = typeof(double))]
         public double DataFrameSyze_Down = 0;
+        [XmlElement("DataFrameSyze_Up", Type = typeof(double))]
         public double DataFrameSyze_Up = 0;
+        [XmlElement("DataFrameSyze_Left", Type = typeof(double))]
         public double DataFrameSyze_Left = 0;
+        [XmlElement("DataFrameSyze_Right", Type = typeof(double))]
         public double DataFrameSyze_Right = 0;
 
         // стрелка севера
+        [XmlElement("IsHasNorthArrow", Type = typeof(bool))]
         public bool IsHasNorthArrow = false;
+        [XmlElement("NorthArrow_PosX", Type = typeof(double))]
         public double NorthArrow_PosX { get; set; }
+        [XmlElement("NorthArrow_PosY", Type = typeof(double))]
         public double NorthArrow_PosY { get; set; }
+        /// <summary>  точька отсчета на странице по горизонтали
+        /// </summary>
+        public esriTextHorizontalAlignment NorthArrow_PagePosHorizontal { get; set; }
+        /// <summary> точька отсчета на странице по вертикали
+        /// </summary>
+        public esriTextVerticalAlignment NorthArrow_PagePosVertical { get; set; }
         [XmlIgnore]
-        INorthArrow m_NorthArrow = new MarkerNorthArrow();
+        INorthArrow m_NorthArrow = null;
         [XmlIgnore]
         public INorthArrow NorthArrow
         {
@@ -108,7 +122,7 @@ namespace CadastralReference
         /// <summary>  серелизованый INorthArrow для серелизации внутреннее использование
         /// </summary>
         [XmlIgnore]
-        byte[] m_NorthArrow_Serialized_innerUse;
+        byte[] m_NorthArrow_Serialized_innerUse = null;
         public byte[] NorthArrow_Serialized_innerUse
         {
             get { return m_NorthArrow_Serialized_innerUse; }
@@ -124,6 +138,7 @@ namespace CadastralReference
 
 
 
+        [XmlElement("IsHasScaleBar", Type = typeof(bool))]
         public bool IsHasScaleBar = false;
         #endregion
 
@@ -174,6 +189,8 @@ namespace CadastralReference
 
             m_NorthArrow = new MarkerNorthArrow();
             m_NorthArrow_Serialized_innerUse = SerializeNorthArrowToByte(m_NorthArrow);
+            NorthArrow_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            NorthArrow_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
 
         }
 
@@ -187,7 +204,8 @@ namespace CadastralReference
 
             m_NorthArrow = new MarkerNorthArrow();
             m_NorthArrow_Serialized_innerUse = SerializeNorthArrowToByte(m_NorthArrow);
-
+            NorthArrow_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            NorthArrow_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
         }
 
         //скопировать настройки
@@ -215,6 +233,8 @@ namespace CadastralReference
             this.IsHasNorthArrow = opd.IsHasNorthArrow;
             this.NorthArrow_PosX = opd.NorthArrow_PosX;
             this.NorthArrow_PosY = opd.NorthArrow_PosY;
+            this.NorthArrow_PagePosHorizontal = opd.NorthArrow_PagePosHorizontal;
+            this.NorthArrow_PagePosVertical = opd.NorthArrow_PagePosVertical;
             this.m_NorthArrow_Serialized_innerUse = (byte[])opd.m_NorthArrow_Serialized_innerUse.Clone();
             this.m_NorthArrow = DeSerializeByteToNorthArrow(m_NorthArrow_Serialized_innerUse);
 
@@ -238,11 +258,11 @@ namespace CadastralReference
 
 
         // серелизовать в масив байтов стрелку севера
-        private static byte[] SerializeNorthArrowToByte(INorthArrow na)
+        private static byte[] SerializeNorthArrowToByte(INorthArrow northArrow)
         {
-            if (na == null) return null;
+            if (northArrow == null) return null;
             IXMLStream xmlStream = new XMLStreamClass();
-            ((ESRI.ArcGIS.esriSystem.IPersistStream)na).Save((ESRI.ArcGIS.esriSystem.IStream)xmlStream, 0);
+            ((ESRI.ArcGIS.esriSystem.IPersistStream)northArrow).Save((IStream)xmlStream, 0);
             return xmlStream.SaveToBytes();
         }
         // десерилезовать стрелку севера

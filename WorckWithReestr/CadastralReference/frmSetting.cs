@@ -381,7 +381,7 @@ namespace CadastralReference
             b.Size = new System.Drawing.Size(75, 23);
             b.Text = "Параметры";
             b.UseVisualStyleBackColor = true;
-            b.Click += new System.EventHandler(this.btnNordArrow_Click);
+            b.Click += new System.EventHandler(this.btnNorthArrow_Click);
             b.Enabled = opd.IsHasNorthArrow;
             return b;
         }
@@ -534,9 +534,18 @@ namespace CadastralReference
 
         }
 
-        private void btnNordArrow_Click(object sender, EventArgs e)
+        private void btnNorthArrow_Click(object sender, EventArgs e)
         {
-
+            OnePageDescriptions opd = this.GetPageDescriptionsFromControlTag(sender as Control);
+            frmNorthArrowtSetting frm = new frmNorthArrowtSetting(opd);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                opd.NorthArrow = frm.m_opd.NorthArrow;
+                opd.NorthArrow_PagePosHorizontal = frm.m_opd.NorthArrow_PagePosHorizontal;
+                opd.NorthArrow_PagePosVertical = frm.m_opd.NorthArrow_PagePosVertical;
+                opd.NorthArrow_PosX = frm.m_opd.NorthArrow_PosX;
+                opd.NorthArrow_PosY = frm.m_opd.NorthArrow_PosY;
+            }
         }
 
         private void cbNordArrow_CheckedChanged(object sender, EventArgs e)

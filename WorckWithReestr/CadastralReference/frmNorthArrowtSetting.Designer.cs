@@ -48,9 +48,7 @@
             this.rbAncorPoint_TR = new System.Windows.Forms.RadioButton();
             this.rbAncorPoint_CR = new System.Windows.Forms.RadioButton();
             this.rbAncorPoint_TL = new System.Windows.Forms.RadioButton();
-            this.txtText = new System.Windows.Forms.TextBox();
-            this.btnFontSetting = new System.Windows.Forms.Button();
-            this.btnHelpTemplate = new System.Windows.Forms.Button();
+            this.btnNorthArrowSetting = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbPositionVertical.SuspendLayout();
@@ -66,7 +64,7 @@
             this.gbPositionVertical.Controls.Add(this.rbPosVer_Botton);
             this.gbPositionVertical.Controls.Add(this.rbPosVer_Centr);
             this.gbPositionVertical.Controls.Add(this.rbPosVer_Top);
-            this.gbPositionVertical.Location = new System.Drawing.Point(9, 139);
+            this.gbPositionVertical.Location = new System.Drawing.Point(4, 12);
             this.gbPositionVertical.Name = "gbPositionVertical";
             this.gbPositionVertical.Size = new System.Drawing.Size(200, 90);
             this.gbPositionVertical.TabIndex = 2;
@@ -131,7 +129,7 @@
             this.gbPositionHorizontal.Controls.Add(this.rbPosHor_Right);
             this.gbPositionHorizontal.Controls.Add(this.rbPosHor_Centr);
             this.gbPositionHorizontal.Controls.Add(this.rbPosHor_Left);
-            this.gbPositionHorizontal.Location = new System.Drawing.Point(215, 139);
+            this.gbPositionHorizontal.Location = new System.Drawing.Point(210, 12);
             this.gbPositionHorizontal.Name = "gbPositionHorizontal";
             this.gbPositionHorizontal.Size = new System.Drawing.Size(200, 90);
             this.gbPositionHorizontal.TabIndex = 4;
@@ -201,12 +199,13 @@
             this.gbAncorPoint.Controls.Add(this.rbAncorPoint_TR);
             this.gbAncorPoint.Controls.Add(this.rbAncorPoint_CR);
             this.gbAncorPoint.Controls.Add(this.rbAncorPoint_TL);
-            this.gbAncorPoint.Location = new System.Drawing.Point(303, 12);
+            this.gbAncorPoint.Location = new System.Drawing.Point(1303, 12);
             this.gbAncorPoint.Name = "gbAncorPoint";
             this.gbAncorPoint.Size = new System.Drawing.Size(112, 123);
             this.gbAncorPoint.TabIndex = 5;
             this.gbAncorPoint.TabStop = false;
             this.gbAncorPoint.Text = "Точька привязки";
+            this.gbAncorPoint.Visible = false;
             // 
             // rbAncorPoint_BR
             // 
@@ -307,38 +306,19 @@
             this.rbAncorPoint_TL.Text = " ";
             this.rbAncorPoint_TL.UseVisualStyleBackColor = true;
             // 
-            // txtText
+            // btnNorthArrowSetting
             // 
-            this.txtText.Location = new System.Drawing.Point(9, 12);
-            this.txtText.Multiline = true;
-            this.txtText.Name = "txtText";
-            this.txtText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtText.Size = new System.Drawing.Size(287, 91);
-            this.txtText.TabIndex = 6;
-            // 
-            // btnFontSetting
-            // 
-            this.btnFontSetting.Location = new System.Drawing.Point(9, 109);
-            this.btnFontSetting.Name = "btnFontSetting";
-            this.btnFontSetting.Size = new System.Drawing.Size(119, 23);
-            this.btnFontSetting.TabIndex = 7;
-            this.btnFontSetting.Text = "Свойство шрифта ...";
-            this.btnFontSetting.UseVisualStyleBackColor = true;
-            this.btnFontSetting.Click += new System.EventHandler(this.btnFontSetting_Click);
-            // 
-            // btnHelpTemplate
-            // 
-            this.btnHelpTemplate.Location = new System.Drawing.Point(179, 109);
-            this.btnHelpTemplate.Name = "btnHelpTemplate";
-            this.btnHelpTemplate.Size = new System.Drawing.Size(116, 23);
-            this.btnHelpTemplate.TabIndex = 8;
-            this.btnHelpTemplate.Text = "Описание шаблона";
-            this.btnHelpTemplate.UseVisualStyleBackColor = true;
-            this.btnHelpTemplate.Click += new System.EventHandler(this.btnHelpTemplate_Click);
+            this.btnNorthArrowSetting.Location = new System.Drawing.Point(112, 108);
+            this.btnNorthArrowSetting.Name = "btnNorthArrowSetting";
+            this.btnNorthArrowSetting.Size = new System.Drawing.Size(190, 23);
+            this.btnNorthArrowSetting.TabIndex = 7;
+            this.btnNorthArrowSetting.Text = "Дополнительные свойства ...";
+            this.btnNorthArrowSetting.UseVisualStyleBackColor = true;
+            this.btnNorthArrowSetting.Click += new System.EventHandler(this.btnNorthArrowSetting_Click);
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(340, 238);
+            this.btnOk.Location = new System.Drawing.Point(335, 147);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 9;
@@ -349,7 +329,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(9, 238);
+            this.btnCancel.Location = new System.Drawing.Point(4, 147);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -363,19 +343,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(422, 268);
+            this.ClientSize = new System.Drawing.Size(422, 174);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnHelpTemplate);
-            this.Controls.Add(this.btnFontSetting);
-            this.Controls.Add(this.txtText);
+            this.Controls.Add(this.btnNorthArrowSetting);
             this.Controls.Add(this.gbAncorPoint);
             this.Controls.Add(this.gbPositionHorizontal);
             this.Controls.Add(this.gbPositionVertical);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmNorthArrowtSetting";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Параметры текстового элемента";
+            this.Text = "Параметры стрелки севера";
+            this.Load += new System.EventHandler(this.frmNorthArrowtSetting_Load);
             this.gbPositionVertical.ResumeLayout(false);
             this.gbPositionVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPosVer)).EndInit();
@@ -384,7 +364,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPosHor)).EndInit();
             this.gbAncorPoint.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -410,9 +389,7 @@
         private System.Windows.Forms.RadioButton rbAncorPoint_TR;
         private System.Windows.Forms.RadioButton rbAncorPoint_CR;
         private System.Windows.Forms.RadioButton rbAncorPoint_TL;
-        private System.Windows.Forms.TextBox txtText;
-        private System.Windows.Forms.Button btnFontSetting;
-        private System.Windows.Forms.Button btnHelpTemplate;
+        private System.Windows.Forms.Button btnNorthArrowSetting;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
     }

@@ -19,10 +19,12 @@ namespace CadastralReference
 
         /// <summary> позиция по горизонтали
         /// </summary>
+        [XmlElement("PosX", Type = typeof(double))]
         public double PosX { get; set; }
 
         /// <summary>  позиция по вертикали
         /// </summary>
+        [XmlElement("PosY", Type = typeof(double))]
         public double PosY { get; set; }
 
         /// <summary>  точька отсчета на странице по горизонтали
