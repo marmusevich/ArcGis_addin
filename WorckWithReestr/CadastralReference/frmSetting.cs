@@ -531,7 +531,20 @@ namespace CadastralReference
 
         private void btnScaleBar_Click(object sender, EventArgs e)
         {
-
+            OnePageDescriptions opd = this.GetPageDescriptionsFromControlTag(sender as Control);
+            frmScaleBarSetting frm = new frmScaleBarSetting(opd);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                opd.ScaleBar = frm.m_opd.ScaleBar;
+                opd.ScaleBar_PagePosHorizontal = frm.m_opd.ScaleBar_PagePosHorizontal;
+                opd.ScaleBar_PagePosVertical = frm.m_opd.ScaleBar_PagePosVertical;
+                opd.ScaleBar_PosX = frm.m_opd.ScaleBar_PosX;
+                opd.ScaleBar_PosY = frm.m_opd.ScaleBar_PosY;
+                opd.ScaleBar_Height = frm.m_opd.ScaleBar_Height;
+                opd.ScaleBar_Width = frm.m_opd.ScaleBar_Width;
+                opd.ScaleBar_AncorHorizontal = frm.m_opd.ScaleBar_AncorHorizontal;
+                opd.ScaleBar_AncorVertical = frm.m_opd.ScaleBar_AncorVertical;
+            }
         }
 
         private void btnNorthArrow_Click(object sender, EventArgs e)

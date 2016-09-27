@@ -324,8 +324,6 @@ namespace CadastralReference
         // добавить стрелку северу
         public static void AddNorthArrowTool(OnePageDescriptions opd)
         {
-            DeleteNordArrow();
-
             if (!opd.IsHasNorthArrow || opd.NorthArrow == null) return;
 
             IPoint pageSaze = GetPageSaze();
@@ -387,42 +385,71 @@ namespace CadastralReference
 
         public static void AddScalebar(OnePageDescriptions opd)
         {
-            DeleteScalebar();
+            if (!opd.IsHasScaleBar || opd.ScaleBar == null) return;
 
-            if (!opd.IsHasScaleBar) return;
+            IPoint pageSaze = GetPageSaze();
+            double x = 0, y = 0;
+            if (opd.ScaleBar_PagePosVertical == esriTextVerticalAlignment.esriTVATop)
+                y = pageSaze.Y;
+            else if (opd.ScaleBar_PagePosVertical == esriTextVerticalAlignment.esriTVACenter)
+                y = pageSaze.Y / 2;
+            else
+                y = 0;
+
+            if (opd.ScaleBar_PagePosHorizontal == esriTextHorizontalAlignment.esriTHARight)
+                x = pageSaze.X;
+            else if (opd.ScaleBar_PagePosHorizontal == esriTextHorizontalAlignment.esriTHACenter)
+                x = pageSaze.X / 2;
+            else
+                x = 0;
+
+
+            double x1 = 0, y1 = 0;
+            double x2 = 0, y2 = 0;
+
+            if (opd.ScaleBar_AncorVertical == esriTextVerticalAlignment.esriTVATop)
+            {
+                y1 = y - opd.ScaleBar_Height;
+                y2 = y;
+            }
+            else if (opd.ScaleBar_AncorVertical == esriTextVerticalAlignment.esriTVACenter)
+            {
+                y1 = y - opd.ScaleBar_Height/2;
+                y2 = y + opd.ScaleBar_Height/2;
+            }
+            else
+            {
+                y1 = y;
+                y2 = y + opd.ScaleBar_Height;
+            }
+
+            if (opd.ScaleBar_AncorHorizontal == esriTextHorizontalAlignment.esriTHARight)
+            {
+                x1 = x - opd.ScaleBar_Width;
+                x2 = x;
+            }
+            else if (opd.ScaleBar_AncorHorizontal == esriTextHorizontalAlignment.esriTHACenter)
+            {
+                x1 = x - opd.ScaleBar_Width/2;
+                x2 = x + opd.ScaleBar_Width/2;
+            }
+            else
+            {
+                x1 = x;
+                x2 = x + opd.ScaleBar_Width;
+            }
+
+
+
+            IEnvelope envelope = new EnvelopeClass();
+            envelope.PutCoords(x1, y1, x2, y2);
 
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 
-            IStyleGallery styleGallery = mxdoc.StyleGallery;
-            IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("Scale Bars", "ESRI.Style", "");
-
-            IStyleGalleryItem scalebarStyle = enumStyleGallery.Next();
-            for (int i = 0; i < 4; i++)
-            //while (northArrowStyle != null)
-            {
-                //if (scalebarStyle.Name == "ESRI North 1")
-                //{
-                //    break;
-                //}
-
-                scalebarStyle = enumStyleGallery.Next();
-            }
-
-            IScaleBar scalebar = scalebarStyle.Item as IScaleBar;
-            scalebar.Map = mxdoc.FocusMap;
-
-            scalebar.Units = esriUnits.esriKilometers;
-
             IMapSurroundFrame pMSFrame = new MapSurroundFrameClass();
-            pMSFrame.MapSurround = scalebar;
+            //((ESRI.ArcGIS.Carto.IElementProperties3)pMSFrame).AnchorPoint = ESRI.ArcGIS.Carto.esriAnchorPointEnum.esriTopRightCorner;
+            pMSFrame.MapSurround = opd.ScaleBar;
             IElement MSElement = pMSFrame as IElement;
-
-
-            IPoint pageSaze = GetPageSaze();
-
-            IEnvelope envelope = new EnvelopeClass();
-            envelope.PutCoords(pageSaze.X - 8, 1, pageSaze.X - 1, 2.5); // Specify the location and size of the scalebar
-
             MSElement.Geometry = envelope as IGeometry;
 
             IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;

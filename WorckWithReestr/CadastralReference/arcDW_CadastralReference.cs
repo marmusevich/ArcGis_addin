@@ -363,64 +363,57 @@ namespace WorckWithReestr
 
         private void btnCloseEdit_Click(object sender, EventArgs e)
         {
-
             ESRI.ArcGIS.ArcMapUI.IMxDocument mxdoc = WorckWithReestr.ArcMap.Application.Document as ESRI.ArcGIS.ArcMapUI.IMxDocument;
 
-
             //AddScalebar(mxdoc.PageLayout, mxdoc.FocusMap);
-
-
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            //ESRI.ArcGIS.Carto.MarkerNorthArrow northArrow1 = new ESRI.ArcGIS.Carto.MarkerNorthArrow();
-            //// здесь выбор
-            //ESRI.ArcGIS.Framework.IStyleSelector StyleSelector = new ESRI.ArcGIS.CartoUI.NorthArrowSelector();
-            //StyleSelector.AddStyle(northArrow1);
-            //StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd);
-            ////if (StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd))//;
-            ////    MessageBox.Show("True"); // кнопка ок
-            ////else
-            ////    MessageBox.Show("false"); // кнопка отмена
-            //northArrow1 = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.MarkerNorthArrow;
-            //// здесь выбор
+            //Type T = Type.GetType("ESRI.ArcGIS.Carto.AlternatingScaleBar");
+            //ESRI.ArcGIS.Carto.IScaleBar scalebar1 = (ESRI.ArcGIS.Carto.IScaleBar)Activator.CreateInstance(T); // new ESRI.ArcGIS.Carto.AlternatingScaleBar();
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ESRI.ArcGIS.Carto.IScaleBar scalebar1 = null; // new ESRI.ArcGIS.Carto.AlternatingScaleBar();
+
+            // здесь выбор
+            ESRI.ArcGIS.Framework.IStyleSelector StyleSelector = new ESRI.ArcGIS.CartoUI.ScaleBarSelector();
+            //StyleSelector.AddStyle(scalebar1);
+            StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd);
+            scalebar1 = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.IScaleBar;
+            // здесь выбор
+
+            ESRI.ArcGIS.esriSystem.IXMLStream xmlStream = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
+            ((ESRI.ArcGIS.esriSystem.IPersistStream)scalebar1).Save((ESRI.ArcGIS.esriSystem.IStream)xmlStream, 0);
+            xmlStream.SaveToFile(@"d:\a.marmusevich\scalebar.bin");
+
+
+
+            //MessageBox.Show("scalebar_Name = [" + scalebar_Name + "]  scalebar_Category = [" + scalebar_Category + "]");
+
             //ESRI.ArcGIS.Display.IStyleGallery styleGallery = mxdoc.StyleGallery;
             //ESRI.ArcGIS.Display.IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("Scale Bars", "ESRI.Style", "");
             //ESRI.ArcGIS.Display.IStyleGalleryItem styleGalleryItem = enumStyleGallery.Next();
             //styleGalleryItem = enumStyleGallery.Next();
+            //ESRI.ArcGIS.Carto.IScaleBar scalebar = styleGalleryItem.Item as ESRI.ArcGIS.Carto.IScaleBar;
 
 
-            ESRI.ArcGIS.Carto.IScaleBar scalebar1 = new ESRI.ArcGIS.Carto.AlternatingScaleBar();
+            ESRI.ArcGIS.Carto.IScaleBar scalebar = null;
+            if (scalebar1.Name == "Alternating Scale Bar")
+                scalebar = new ESRI.ArcGIS.Carto.AlternatingScaleBar();
+            if (scalebar1.Name == "Double Alternating Scale Bar")
+                scalebar = new ESRI.ArcGIS.Carto.DoubleAlternatingScaleBar();
+            if (scalebar1.Name == "Hollow Scale Bar")
+                scalebar = new ESRI.ArcGIS.Carto.HollowScaleBar();
+            if (scalebar1.Name == "Scale Line")
+                scalebar = new ESRI.ArcGIS.Carto.ScaleLine();
+            if (scalebar1.Name == "Single Division Scale Bar")
+                scalebar = new ESRI.ArcGIS.Carto.SingleDivisionScaleBar();
+            if (scalebar1.Name == "Stepped Scale Line")
+                scalebar = new ESRI.ArcGIS.Carto.SteppedScaleLine();
 
-            //// здесь выбор
-            //ESRI.ArcGIS.Framework.IStyleSelector StyleSelector = new ESRI.ArcGIS.CartoUI.ScaleBarSelector();
-            //StyleSelector.AddStyle(scalebar1);
-            //StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd);
-            //scalebar1 = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.IScaleBar;
-            //// здесь выбор
-            ESRI.ArcGIS.Carto.IScaleBar scalebar = scalebar1;
+            ESRI.ArcGIS.esriSystem.IXMLStream xmlStream1 = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
+            xmlStream1.LoadFromFile(@"d:\a.marmusevich\scalebar.bin");
+            ((ESRI.ArcGIS.esriSystem.IPersistStream)scalebar).Load((ESRI.ArcGIS.esriSystem.IStream)xmlStream1);
 
-            MessageBox.Show(  ((ESRI.ArcGIS.Display.IStyleGalleryItem) scalebar).Name);
-
-            System.Type t = scalebar.GetType();
-            MessageBox.Show("Name " + t.Name + " FullName" + t.FullName + "   ToString" + t.ToString());
-            //uid.Value = uidstr;// "esriCarto.AlternatingScaleBar";
-
-
-            //AddScalebar(mxdoc.PageLayout, mxdoc.FocusMap, ((ESRI.ArcGIS.Carto.IMapSurround)scalebar).Name);
-            return;
-
-            //ESRI.ArcGIS.esriSystem.IXMLStream xmlStream = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
-            //((ESRI.ArcGIS.esriSystem.IPersistStream)scalebar1).Save((ESRI.ArcGIS.esriSystem.IStream)xmlStream, 0);
-            //xmlStream.SaveToFile(@"d:\a.marmusevich\scalebar.bin");
-
-
-            //ESRI.ArcGIS.esriSystem.IXMLStream xmlStream1 = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
-            //xmlStream1.LoadFromFile(@"d:\a.marmusevich\scalebar.bin");
-            //ESRI.ArcGIS.Carto.IScaleBar scalebar = new ESRI.ArcGIS.Carto.AlternatingScaleBar();
-            //((ESRI.ArcGIS.esriSystem.IPersistStream)scalebar).Load((ESRI.ArcGIS.esriSystem.IStream)xmlStream1);
-
+            MessageBox.Show(scalebar.Name);
 
             scalebar.Map = mxdoc.FocusMap;
             scalebar.Units = ESRI.ArcGIS.esriSystem.esriUnits.esriKilometers;

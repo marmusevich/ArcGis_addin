@@ -161,6 +161,12 @@
     <Compile Include="CadastralReference\frmNorthArrowtSetting.Designer.cs">
       <DependentUpon>frmNorthArrowtSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastralReference\frmScaleBarSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmScaleBarSetting.Designer.cs">
+      <DependentUpon>frmScaleBarSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastralReference\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmRTF.resx">
       <DependentUpon>frmRTF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmScaleBarSetting.resx">
+      <DependentUpon>frmScaleBarSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmSelectLayers.resx">
       <DependentUpon>frmSelectLayers.cs</DependentUpon>

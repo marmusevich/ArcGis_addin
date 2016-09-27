@@ -243,8 +243,8 @@ namespace CadastralReference
                 WorkCadastralReference_MAP.DeleteNordArrow();
                 WorkCadastralReference_MAP.AddNorthArrowTool(opd);
 
-                //WorkCadastralReference_MAP.DeleteScalebar();
-                //WorkCadastralReference_MAP.AddScalebar(opd);
+                WorkCadastralReference_MAP.DeleteScalebar();
+                WorkCadastralReference_MAP.AddScalebar(opd);
 
                 //нанаести все надписи листа
                 foreach (OneTextElementDescription oted in opd.TextElements)

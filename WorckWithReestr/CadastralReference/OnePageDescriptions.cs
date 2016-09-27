@@ -140,6 +140,62 @@ namespace CadastralReference
 
         [XmlElement("IsHasScaleBar", Type = typeof(bool))]
         public bool IsHasScaleBar = false;
+        [XmlElement("ScaleBar_PosX", Type = typeof(double))]
+        public double ScaleBar_PosX { get; set; }
+        [XmlElement("ScaleBar_PosY", Type = typeof(double))]
+        public double ScaleBar_PosY { get; set; }
+        [XmlElement("ScaleBar_Height", Type = typeof(double))]
+        public double ScaleBar_Height { get; set; }
+        [XmlElement("ScaleBar_Width", Type = typeof(double))]
+        public double ScaleBar_Width { get; set; }
+        /// <summary>  точька отсчета на странице по горизонтали
+        /// </summary>
+        public esriTextHorizontalAlignment ScaleBar_PagePosHorizontal { get; set; }
+        /// <summary> точька отсчета на странице по вертикали
+        /// </summary>
+        public esriTextVerticalAlignment ScaleBar_PagePosVertical { get; set; }
+        /// <summary> точька привязки элемента по горизонтали - якорь
+        /// </summary>
+        public esriTextHorizontalAlignment ScaleBar_AncorHorizontal { get; set; }
+        /// <summary>  точька привязки элемента по вертикали - якорь
+        /// </summary>
+        public esriTextVerticalAlignment ScaleBar_AncorVertical { get; set; }
+
+        public string TypeScaleBarName = "";
+
+        [XmlIgnore]
+        IScaleBar m_ScaleBar = null;
+        [XmlIgnore]
+        public IScaleBar ScaleBar
+        {
+            get { return m_ScaleBar; }
+            set
+            {
+                if (m_ScaleBar != value)
+                {
+                    m_ScaleBar = value;
+                    TypeScaleBarName = m_ScaleBar.Name;
+                    m_ScaleBar_Serialized_innerUse = SerializeScaleBarToByte(m_ScaleBar);
+                }
+            }
+        }
+
+        /// <summary>  серелизованый INorthArrow для серелизации внутреннее использование
+        /// </summary>
+        [XmlIgnore]
+        byte[] m_ScaleBar_Serialized_innerUse = null;
+        public byte[] ScaleBar_Serialized_innerUse
+        {
+            get { return m_ScaleBar_Serialized_innerUse; }
+            set
+            {
+                if (m_ScaleBar_Serialized_innerUse != value)
+                {
+                    m_ScaleBar_Serialized_innerUse = (byte[])value.Clone();
+                    m_ScaleBar = DeSerializeByteToScaleBar(m_ScaleBar_Serialized_innerUse, TypeScaleBarName);
+                }
+            }
+        }
         #endregion
 
         #region события
@@ -192,6 +248,13 @@ namespace CadastralReference
             NorthArrow_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
             NorthArrow_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
 
+            m_ScaleBar = new AlternatingScaleBar();
+            TypeScaleBarName = "Alternating Scale Bar";
+            m_ScaleBar_Serialized_innerUse = SerializeScaleBarToByte(m_ScaleBar);
+            ScaleBar_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            ScaleBar_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
+            ScaleBar_AncorHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            ScaleBar_AncorVertical = esriTextVerticalAlignment.esriTVABottom;
         }
 
         public OnePageDescriptions()
@@ -206,6 +269,14 @@ namespace CadastralReference
             m_NorthArrow_Serialized_innerUse = SerializeNorthArrowToByte(m_NorthArrow);
             NorthArrow_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
             NorthArrow_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
+
+            m_ScaleBar = new AlternatingScaleBar();
+            TypeScaleBarName = "Alternating Scale Bar";
+            m_ScaleBar_Serialized_innerUse = SerializeScaleBarToByte(m_ScaleBar);
+            ScaleBar_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            ScaleBar_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
+            ScaleBar_AncorHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            ScaleBar_AncorVertical = esriTextVerticalAlignment.esriTVABottom;
         }
 
         //скопировать настройки
@@ -239,7 +310,17 @@ namespace CadastralReference
             this.m_NorthArrow = DeSerializeByteToNorthArrow(m_NorthArrow_Serialized_innerUse);
 
             this.IsHasScaleBar = opd.IsHasScaleBar;
-
+            this.TypeScaleBarName = opd.TypeScaleBarName;
+            this.ScaleBar_PosX = opd.ScaleBar_PosX;
+            this.ScaleBar_PosY = opd.ScaleBar_PosY;
+            this.ScaleBar_PagePosHorizontal = opd.ScaleBar_PagePosHorizontal;
+            this.ScaleBar_PagePosVertical = opd.ScaleBar_PagePosVertical;
+            this.ScaleBar_Height = opd.ScaleBar_Height;
+            this.ScaleBar_Width = opd.ScaleBar_Width;
+            this.ScaleBar_AncorHorizontal = opd.ScaleBar_AncorHorizontal;
+            this.ScaleBar_AncorVertical = opd.ScaleBar_AncorVertical;
+            this.m_ScaleBar_Serialized_innerUse = (byte[])opd.m_ScaleBar_Serialized_innerUse.Clone();
+            this.m_ScaleBar = DeSerializeByteToScaleBar(m_ScaleBar_Serialized_innerUse, TypeScaleBarName);
         }
 
         //предстовленеие перечня слоев
@@ -275,6 +356,43 @@ namespace CadastralReference
             MarkerNorthArrow northArrow = new MarkerNorthArrow();
             ((IPersistStream)northArrow).Load((IStream)xmlStream);
             return northArrow;
+        }
+
+
+        // серелизовать в масив байтов стрелку севера
+        private static byte[] SerializeScaleBarToByte(IScaleBar ScaleBar)
+        {
+            if (ScaleBar == null) return null;
+            IXMLStream xmlStream = new XMLStreamClass();
+            ((ESRI.ArcGIS.esriSystem.IPersistStream)ScaleBar).Save((IStream)xmlStream, 0);
+            return xmlStream.SaveToBytes();
+        }
+        // десерилезовать стрелку севера
+        private static IScaleBar DeSerializeByteToScaleBar(byte[] byteArr, string TypeScaleBarName)
+        {
+            if (byteArr == null) return null;
+
+            IXMLStream xmlStream = new XMLStreamClass();
+            xmlStream.LoadFromBytes(byteArr);
+
+            IScaleBar ScaleBar = null;
+            if (TypeScaleBarName == "Alternating Scale Bar")
+                ScaleBar = new AlternatingScaleBar();
+            if (TypeScaleBarName == "Double Alternating Scale Bar")
+                ScaleBar = new DoubleAlternatingScaleBar();
+            if (TypeScaleBarName == "Hollow Scale Bar")
+                ScaleBar = new HollowScaleBar();
+            if (TypeScaleBarName == "Scale Line")
+                ScaleBar = new ScaleLine();
+            if (TypeScaleBarName == "Single Division Scale Bar")
+                ScaleBar = new SingleDivisionScaleBar();
+            if (TypeScaleBarName == "Stepped Scale Line")
+                ScaleBar = new SteppedScaleLine();
+
+            if (ScaleBar == null) return null;
+
+            ((IPersistStream)ScaleBar).Load((IStream)xmlStream);
+            return ScaleBar;
         }
     }
 }
