@@ -64,13 +64,13 @@ namespace WorckWithReestr
             this.tlpPages.Name = "tlpPages";
             this.tlpPages.RowCount = 1;
             this.tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpPages.Size = new System.Drawing.Size(449, 295);
+            this.tlpPages.Size = new System.Drawing.Size(319, 278);
             this.tlpPages.TabIndex = 0;
             // 
             // btnSetting
             // 
             this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetting.Location = new System.Drawing.Point(378, 481);
+            this.btnSetting.Location = new System.Drawing.Point(248, 481);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(75, 23);
             this.btnSetting.TabIndex = 1;
@@ -87,9 +87,9 @@ namespace WorckWithReestr
             this.pnRtf.Controls.Add(this.btnRTFPrev);
             this.pnRtf.Controls.Add(this.btnRTFSaveToDB);
             this.pnRtf.Controls.Add(this.btnRtfGenerate);
-            this.pnRtf.Location = new System.Drawing.Point(4, 412);
+            this.pnRtf.Location = new System.Drawing.Point(3, 399);
             this.pnRtf.Name = "pnRtf";
-            this.pnRtf.Size = new System.Drawing.Size(449, 63);
+            this.pnRtf.Size = new System.Drawing.Size(319, 63);
             this.pnRtf.TabIndex = 3;
             // 
             // lblRTF
@@ -98,7 +98,7 @@ namespace WorckWithReestr
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRTF.Location = new System.Drawing.Point(6, 4);
             this.lblRTF.Name = "lblRTF";
-            this.lblRTF.Size = new System.Drawing.Size(438, 23);
+            this.lblRTF.Size = new System.Drawing.Size(308, 23);
             this.lblRTF.TabIndex = 3;
             this.lblRTF.Text = "RTF";
             this.lblRTF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -140,7 +140,7 @@ namespace WorckWithReestr
             this.lblZayavka.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblZayavka.Location = new System.Drawing.Point(4, 3);
             this.lblZayavka.Name = "lblZayavka";
-            this.lblZayavka.Size = new System.Drawing.Size(449, 14);
+            this.lblZayavka.Size = new System.Drawing.Size(319, 14);
             this.lblZayavka.TabIndex = 4;
             this.lblZayavka.Text = "Заявка:";
             this.lblZayavka.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -153,7 +153,7 @@ namespace WorckWithReestr
             this.lblZayavkaDiscriptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblZayavkaDiscriptions.Location = new System.Drawing.Point(112, 21);
             this.lblZayavkaDiscriptions.Name = "lblZayavkaDiscriptions";
-            this.lblZayavkaDiscriptions.Size = new System.Drawing.Size(341, 35);
+            this.lblZayavkaDiscriptions.Size = new System.Drawing.Size(211, 35);
             this.lblZayavkaDiscriptions.TabIndex = 5;
             this.lblZayavkaDiscriptions.Tag = "null";
             this.lblZayavkaDiscriptions.Text = "Заявка не указана";
@@ -181,11 +181,12 @@ namespace WorckWithReestr
             // 
             // btnCloseEdit
             // 
-            this.btnCloseEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCloseEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseEdit.ForeColor = System.Drawing.Color.Maroon;
             this.btnCloseEdit.Location = new System.Drawing.Point(4, 480);
             this.btnCloseEdit.Name = "btnCloseEdit";
-            this.btnCloseEdit.Size = new System.Drawing.Size(160, 23);
+            this.btnCloseEdit.Size = new System.Drawing.Size(152, 23);
             this.btnCloseEdit.TabIndex = 8;
             this.btnCloseEdit.Text = "Закрыть для изменения";
             this.btnCloseEdit.UseVisualStyleBackColor = true;
@@ -199,7 +200,7 @@ namespace WorckWithReestr
             this.lblObjectMapIDDiscriptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblObjectMapIDDiscriptions.Location = new System.Drawing.Point(112, 77);
             this.lblObjectMapIDDiscriptions.Name = "lblObjectMapIDDiscriptions";
-            this.lblObjectMapIDDiscriptions.Size = new System.Drawing.Size(341, 35);
+            this.lblObjectMapIDDiscriptions.Size = new System.Drawing.Size(211, 35);
             this.lblObjectMapIDDiscriptions.TabIndex = 9;
             this.lblObjectMapIDDiscriptions.Text = "Объект не указан";
             this.lblObjectMapIDDiscriptions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -211,7 +212,7 @@ namespace WorckWithReestr
             this.lblObjectMapID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblObjectMapID.Location = new System.Drawing.Point(4, 60);
             this.lblObjectMapID.Name = "lblObjectMapID";
-            this.lblObjectMapID.Size = new System.Drawing.Size(449, 14);
+            this.lblObjectMapID.Size = new System.Drawing.Size(319, 14);
             this.lblObjectMapID.TabIndex = 10;
             this.lblObjectMapID.Text = "Объект на карте:";
             this.lblObjectMapID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -229,7 +230,7 @@ namespace WorckWithReestr
             this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.tlpPages);
             this.Name = "arcDW_CadastralReference";
-            this.Size = new System.Drawing.Size(460, 511);
+            this.Size = new System.Drawing.Size(330, 511);
             this.pnRtf.ResumeLayout(false);
             this.ResumeLayout(false);
 

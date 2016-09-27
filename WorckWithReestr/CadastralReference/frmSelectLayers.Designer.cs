@@ -53,6 +53,7 @@
             this.lbAllLayers.FormattingEnabled = true;
             this.lbAllLayers.Location = new System.Drawing.Point(5, 21);
             this.lbAllLayers.Name = "lbAllLayers";
+            this.lbAllLayers.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbAllLayers.Size = new System.Drawing.Size(228, 329);
             this.lbAllLayers.TabIndex = 1;
             this.lbAllLayers.DoubleClick += new System.EventHandler(this.lbAllLayers_DoubleClick);
@@ -100,6 +101,7 @@
             this.lbSelectedLayers.FormattingEnabled = true;
             this.lbSelectedLayers.Location = new System.Drawing.Point(277, 21);
             this.lbSelectedLayers.Name = "lbSelectedLayers";
+            this.lbSelectedLayers.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbSelectedLayers.Size = new System.Drawing.Size(228, 329);
             this.lbSelectedLayers.TabIndex = 7;
             this.lbSelectedLayers.DoubleClick += new System.EventHandler(this.lbSelectedLayers_DoubleClick);

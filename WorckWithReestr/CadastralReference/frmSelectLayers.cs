@@ -58,23 +58,29 @@ namespace CadastralReference
 
         private void Add()
         {
-            string tmp = (string)lbAllLayers.SelectedItem;
-            if (tmp != null)
+            System.Array arr = new object[lbAllLayers.SelectedItems.Count];
+            lbAllLayers.SelectedItems.CopyTo(arr, 0);
+            foreach (object o in arr)
             {
-                lbSelectedLayers.Items.Add(tmp);
-                lbAllLayers.Items.Remove(tmp);
-                //lbAllLayers.SelectedIndex = -1;
+                if (o != null)
+                {
+                    lbSelectedLayers.Items.Add(o);
+                    lbAllLayers.Items.Remove(o);
+                }
             }
         }
 
         private void Del()
         {
-            string tmp = (string)lbSelectedLayers.SelectedItem;
-            if (tmp != null)
+            System.Array arr = new object[lbAllLayers.SelectedItems.Count];
+            lbAllLayers.SelectedItems.CopyTo(arr, 0);
+            foreach (object o in arr)
             {
-                lbAllLayers.Items.Add(tmp);
-                lbSelectedLayers.Items.Remove(tmp);
-                //lbSelectedLayers.SelectedIndex = -1;
+                if (o != null)
+                {
+                    lbAllLayers.Items.Add(o);
+                    lbSelectedLayers.Items.Remove(o);
+                }
             }
         }
 

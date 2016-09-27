@@ -191,7 +191,7 @@ namespace CadastralReference
                     {
                         tabName = (feature.Class as IDataset).Name;
                         //проверка на принадлежность нашему проекту
-                        //if (GetCadastralReferenceData().ObjectTableName.ToLower() == tabName.ToLower())
+                        if (GetCadastralReferenceData().ObjectTableName.ToLower() == tabName.ToLower())
                         {
                             objectID = feature.OID;
                         }
@@ -231,60 +231,42 @@ namespace CadastralReference
             if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().MapObjectID == -1)
                 return;
 
-            WorkCadastralReference_MAP.EnableLayersFromPages(opd);
-            WorkCadastralReference_MAP.SetScaleAndCentred();
-            WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
-            WorkCadastralReference_MAP.SetStandartMapSkale();
-
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-
-            //IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            IActiveView activeView = mxdoc.ActiveView;
-            //WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
-
-            WorkCadastralReference_MAP.ChangeSizeDateFrame(opd);
-
-            WorkCadastralReference_MAP.AddScalebar(opd);
-            WorkCadastralReference_MAP.AddNorthArrowTool(opd);
-            
-            //WorkCadastralReference_MAP.AddLegend(mxdoc.PageLayout, mxdoc.FocusMap, 5, 5, 20);
-
-            //нанаести все надписи листа
-            foreach (OneTextElementDescription oted in opd.TextElements)
+            try
             {
-                WorkCadastralReference_MAP.DeleteElementByName(oted.Text);
-                WorkCadastralReference_MAP.AddText(oted);
+                WorkCadastralReference_MAP.EnableLayersFromPages(opd);
+                WorkCadastralReference_MAP.SetScaleAndCentred();
+                WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
+                WorkCadastralReference_MAP.SetStandartMapSkale();
+
+                WorkCadastralReference_MAP.ChangeSizeDateFrame(opd);
+
+                WorkCadastralReference_MAP.DeleteNordArrow();
+                WorkCadastralReference_MAP.AddNorthArrowTool(opd);
+
+                //WorkCadastralReference_MAP.DeleteScalebar();
+                //WorkCadastralReference_MAP.AddScalebar(opd);
+            
+                //нанаести все надписи листа
+                foreach (OneTextElementDescription oted in opd.TextElements)
+                {
+                    WorkCadastralReference_MAP.DeleteElementByName(oted.Text);
+                    WorkCadastralReference_MAP.AddText(oted);
+                }
+
+                IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+                IActiveView activeView = mxdoc.ActiveView;
+
+                activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+                activeView.Refresh();
+                mxdoc.PageLayout.ZoomToWhole();
+                //mxdoc.ActiveView.Refresh();
+
+            catch (Exception ex) // обработка ошибок
+            {
+
+                Logger.Write(ex, string.Format("Построение макета '{0}' заявка id {1}", opd.Caption, GetCadastralReferenceData().ZayavkaID));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при построение листа '{0}' заявка id {1}", opd.Caption, GetCadastralReferenceData().ZayavkaID));
             }
-
-
-
-            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
-            activeView.Refresh();
-            mxdoc.PageLayout.ZoomToWhole();
-            //mxdoc.ActiveView.Refresh();
-
-        }
-
-        /// <summary>
-        /// Переключить слои
-        /// </summary>
-        /// <param name="opd"> описание листа</param>
-        private static void EnableLayersFropPageAndSetScale(OnePageDescriptions opd)
-        {
-
-            if (GetCadastralReferenceData().ZayavkaID == -1 || GetCadastralReferenceData().MapObjectID == -1)
-                return;
-
-            WorkCadastralReference_MAP.EnableLayersFromPages(opd);
-
-            WorkCadastralReference_MAP.SetScaleAndCentred();
-
-            WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
-            WorkCadastralReference_MAP.SetStandartMapSkale();
-
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            mxdoc.PageLayout.ZoomToWhole();
-            mxdoc.ActiveView.Refresh();
         }
     }
 }

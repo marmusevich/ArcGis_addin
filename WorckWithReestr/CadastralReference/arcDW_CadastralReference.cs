@@ -365,61 +365,115 @@ namespace WorckWithReestr
         {
 
             ESRI.ArcGIS.ArcMapUI.IMxDocument mxdoc = WorckWithReestr.ArcMap.Application.Document as ESRI.ArcGIS.ArcMapUI.IMxDocument;
+
+
+            //AddScalebar(mxdoc.PageLayout, mxdoc.FocusMap);
+
+
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
-            envelope.PutCoords(1, 1, 6, 6); // Specify the location and size of the scalebar
 
+            //ESRI.ArcGIS.Carto.MarkerNorthArrow northArrow1 = new ESRI.ArcGIS.Carto.MarkerNorthArrow();
+            //// здесь выбор
+            //ESRI.ArcGIS.Framework.IStyleSelector StyleSelector = new ESRI.ArcGIS.CartoUI.NorthArrowSelector();
+            //StyleSelector.AddStyle(northArrow1);
+            //StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd);
+            ////if (StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd))//;
+            ////    MessageBox.Show("True"); // кнопка ок
+            ////else
+            ////    MessageBox.Show("false"); // кнопка отмена
+            //northArrow1 = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.MarkerNorthArrow;
+            //// здесь выбор
 
-            ESRI.ArcGIS.Display.IStyleGallery styleGallery = mxdoc.StyleGallery;
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //ESRI.ArcGIS.Display.IStyleGallery styleGallery = mxdoc.StyleGallery;
             //ESRI.ArcGIS.Display.IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("Scale Bars", "ESRI.Style", "");
-            ESRI.ArcGIS.Display.IEnumStyleGalleryItem enumStyleGallery = styleGallery.get_Items("North Arrows", "ESRI.STYLE", "Default");
-            ESRI.ArcGIS.Display.IStyleGalleryItem styleGalleryItem = enumStyleGallery.Next();
-            styleGalleryItem = enumStyleGallery.Next();
+            //ESRI.ArcGIS.Display.IStyleGalleryItem styleGalleryItem = enumStyleGallery.Next();
+            //styleGalleryItem = enumStyleGallery.Next();
 
 
-            ESRI.ArcGIS.Carto.INorthArrow northArrow = styleGalleryItem.Item as ESRI.ArcGIS.Carto.INorthArrow;
-            // здесь выбор
-            ESRI.ArcGIS.Framework.IStyleSelector StyleSelector = new ESRI.ArcGIS.CartoUI.NorthArrowSelector();
-            StyleSelector.AddStyle(northArrow);
-            StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd);
-            northArrow = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.INorthArrow;
-            // здесь выбор
-            //
+            ESRI.ArcGIS.Carto.IScaleBar scalebar1 = new ESRI.ArcGIS.Carto.AlternatingScaleBar();
 
-
-            //ESRI.ArcGIS.Carto.IScaleBar scalebar = styleGalleryItem.Item as ESRI.ArcGIS.Carto.IScaleBar;
             //// здесь выбор
             //ESRI.ArcGIS.Framework.IStyleSelector StyleSelector = new ESRI.ArcGIS.CartoUI.ScaleBarSelector();
-            //StyleSelector.AddStyle(scalebar);
+            //StyleSelector.AddStyle(scalebar1);
             //StyleSelector.DoModal(WorckWithReestr.ArcMap.Application.hWnd);
-            //scalebar = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.IScaleBar;
+            //scalebar1 = StyleSelector.GetStyle(0) as ESRI.ArcGIS.Carto.IScaleBar;
             //// здесь выбор
-            //scalebar.Map = mxdoc.FocusMap;
-            //scalebar.Units = ESRI.ArcGIS.esriSystem.esriUnits.esriKilometers;
+            ESRI.ArcGIS.Carto.IScaleBar scalebar = scalebar1;
 
+            MessageBox.Show(  ((ESRI.ArcGIS.Display.IStyleGalleryItem) scalebar).Name);
+
+            System.Type t = scalebar.GetType();
+            MessageBox.Show("Name " + t.Name + " FullName" + t.FullName + "   ToString" + t.ToString());
+            //uid.Value = uidstr;// "esriCarto.AlternatingScaleBar";
+
+
+            //AddScalebar(mxdoc.PageLayout, mxdoc.FocusMap, ((ESRI.ArcGIS.Carto.IMapSurround)scalebar).Name);
+            return;
+
+            //ESRI.ArcGIS.esriSystem.IXMLStream xmlStream = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
+            //((ESRI.ArcGIS.esriSystem.IPersistStream)scalebar1).Save((ESRI.ArcGIS.esriSystem.IStream)xmlStream, 0);
+            //xmlStream.SaveToFile(@"d:\a.marmusevich\scalebar.bin");
+
+
+            //ESRI.ArcGIS.esriSystem.IXMLStream xmlStream1 = new ESRI.ArcGIS.esriSystem.XMLStreamClass();
+            //xmlStream1.LoadFromFile(@"d:\a.marmusevich\scalebar.bin");
+            //ESRI.ArcGIS.Carto.IScaleBar scalebar = new ESRI.ArcGIS.Carto.AlternatingScaleBar();
+            //((ESRI.ArcGIS.esriSystem.IPersistStream)scalebar).Load((ESRI.ArcGIS.esriSystem.IStream)xmlStream1);
+
+
+            scalebar.Map = mxdoc.FocusMap;
+            scalebar.Units = ESRI.ArcGIS.esriSystem.esriUnits.esriKilometers;
 
 
             ESRI.ArcGIS.Carto.IMapSurroundFrame pMSFrame = new ESRI.ArcGIS.Carto.MapSurroundFrameClass();
-            pMSFrame.MapSurround = northArrow;
-            //pMSFrame.MapSurround = scalebar;
+            pMSFrame.MapSurround = scalebar;
             ESRI.ArcGIS.Carto.IElement MSElement = pMSFrame as ESRI.ArcGIS.Carto.IElement;
+
+            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+            envelope.PutCoords(0, 0, 10, 1); // Specify the location and size of the scalebar
+
             MSElement.Geometry = envelope as ESRI.ArcGIS.Geometry.IGeometry;
 
             ESRI.ArcGIS.Carto.IGraphicsContainer gc = mxdoc.PageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer;
             gc.AddElement(MSElement, 0);
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
             ESRI.ArcGIS.Carto.IActiveView activeView = mxdoc.ActiveView;
             activeView.PartialRefresh(ESRI.ArcGIS.Carto.esriViewDrawPhase.esriViewGraphics, null, null);
             //activeView.Refresh();
             mxdoc.PageLayout.ZoomToWhole();
             return;
-
-
             if (MessageBox.Show("Закрыть справку для редактирования? добавить проверки", "Кадастровая справка", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose = true;
             }
+        }
+
+
+        public void AddScalebar(ESRI.ArcGIS.Carto.IPageLayout pageLayout, ESRI.ArcGIS.Carto.IMap map, string uidstr)
+        {
+            if (pageLayout == null || map == null) { return; }
+
+            ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+            envelope.PutCoords(0.2, 0.2, 1, 2); // Specify the location and size of the scalebar
+            ESRI.ArcGIS.esriSystem.IUID uid = new ESRI.ArcGIS.esriSystem.UIDClass();
+            uid.Value = uidstr;// "esriCarto.AlternatingScaleBar";
+            // Create a Surround. Set the geometry of the MapSurroundFrame to give it a location
+            // Activate it and add it to the PageLayout's graphics container
+            ESRI.ArcGIS.Carto.IGraphicsContainer graphicsContainer = pageLayout as ESRI.ArcGIS.Carto.IGraphicsContainer; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IActiveView activeView = pageLayout as ESRI.ArcGIS.Carto.IActiveView; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IFrameElement frameElement = graphicsContainer.FindFrame(map);
+            ESRI.ArcGIS.Carto.IMapFrame mapFrame = frameElement as ESRI.ArcGIS.Carto.IMapFrame; // Dynamic Cast
+            ESRI.ArcGIS.Carto.IMapSurroundFrame mapSurroundFrame = mapFrame.CreateSurroundFrame(uid as ESRI.ArcGIS.esriSystem.UID, null); // Dynamic Cast
+            ESRI.ArcGIS.Carto.IElement element = mapSurroundFrame as ESRI.ArcGIS.Carto.IElement; // Dynamic Cast
+            element.Geometry = envelope;
+            element.Activate(activeView.ScreenDisplay);
+            graphicsContainer.AddElement(element, 0);
+            ESRI.ArcGIS.Carto.IMapSurround mapSurround = mapSurroundFrame.MapSurround;
+
+            ESRI.ArcGIS.Carto.IScaleBar markerScaleBar = ((ESRI.ArcGIS.Carto.IScaleBar)(mapSurround));
+            markerScaleBar.LabelPosition = ESRI.ArcGIS.Carto.esriVertPosEnum.esriBelow;
+            markerScaleBar.UseMapSettings();
         }
 
         private void btnSetObject_Click(object sender, EventArgs e)

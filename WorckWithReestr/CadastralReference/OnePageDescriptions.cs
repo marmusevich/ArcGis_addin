@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Xml;
 using System.Xml.Serialization;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.esriSystem;
 
 namespace CadastralReference
 {
@@ -78,11 +80,50 @@ namespace CadastralReference
         public List<OneTextElementDescription> TextElements { get { return m_TextElements; } set { m_TextElements = value; } }
         private List<OneTextElementDescription> m_TextElements;
 
+        // размер фрейма данных
         public double DataFrameSyze_Down = 0;
         public double DataFrameSyze_Up = 0;
         public double DataFrameSyze_Left = 0;
         public double DataFrameSyze_Right = 0;
-        public bool IsHasNordArrow = false;
+
+        // стрелка севера
+        public bool IsHasNorthArrow = false;
+        public double NorthArrow_PosX { get; set; }
+        public double NorthArrow_PosY { get; set; }
+        [XmlIgnore]
+        INorthArrow m_NorthArrow = new MarkerNorthArrow();
+        [XmlIgnore]
+        public INorthArrow NorthArrow
+        {
+            get { return m_NorthArrow; }
+            set
+            {
+                if (m_NorthArrow != value)
+                {
+                    m_NorthArrow = value;
+                    m_NorthArrow_Serialized_innerUse = SerializeNorthArrowToByte(m_NorthArrow);
+                }
+            }
+        }
+        /// <summary>  серелизованый INorthArrow для серелизации внутреннее использование
+        /// </summary>
+        [XmlIgnore]
+        byte[] m_NorthArrow_Serialized_innerUse;
+        public byte[] NorthArrow_Serialized_innerUse
+        {
+            get { return m_NorthArrow_Serialized_innerUse; }
+            set
+            {
+                if (m_NorthArrow_Serialized_innerUse != value)
+                {
+                    m_NorthArrow_Serialized_innerUse = (byte[])value.Clone();
+                    m_NorthArrow = DeSerializeByteToNorthArrow(m_NorthArrow_Serialized_innerUse);
+                }
+            }
+        }
+
+
+
         public bool IsHasScaleBar = false;
         #endregion
 
@@ -130,6 +171,10 @@ namespace CadastralReference
             Layers = new StringCollection();
             m_Image = null;
             m_TextElements = new List<OneTextElementDescription>();
+
+            m_NorthArrow = new MarkerNorthArrow();
+            m_NorthArrow_Serialized_innerUse = SerializeNorthArrowToByte(m_NorthArrow);
+
         }
 
         public OnePageDescriptions()
@@ -139,6 +184,10 @@ namespace CadastralReference
             Layers = new StringCollection();
             m_Image = null;
             m_TextElements = new List<OneTextElementDescription>();
+
+            m_NorthArrow = new MarkerNorthArrow();
+            m_NorthArrow_Serialized_innerUse = SerializeNorthArrowToByte(m_NorthArrow);
+
         }
 
         //скопировать настройки
@@ -158,19 +207,23 @@ namespace CadastralReference
                 this.m_TextElements.Add(tmp);
             }
 
-
             this.DataFrameSyze_Down = opd.DataFrameSyze_Down;
             this.DataFrameSyze_Up = opd.DataFrameSyze_Up;
             this.DataFrameSyze_Left = opd.DataFrameSyze_Left;
             this.DataFrameSyze_Right = opd.DataFrameSyze_Right;
-            this.IsHasNordArrow = opd.IsHasNordArrow;
-            this.IsHasScaleBar = opd.IsHasScaleBar;
 
+            this.IsHasNorthArrow = opd.IsHasNorthArrow;
+            this.NorthArrow_PosX = opd.NorthArrow_PosX;
+            this.NorthArrow_PosY = opd.NorthArrow_PosY;
+            this.m_NorthArrow_Serialized_innerUse = (byte[])opd.m_NorthArrow_Serialized_innerUse.Clone();
+            this.m_NorthArrow = DeSerializeByteToNorthArrow(m_NorthArrow_Serialized_innerUse);
+
+            this.IsHasScaleBar = opd.IsHasScaleBar;
 
         }
 
-    //предстовленеие перечня слоев
-    public string LayersToString()
+        //предстовленеие перечня слоев
+        public string LayersToString()
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (string s in Layers)
@@ -180,6 +233,28 @@ namespace CadastralReference
                 sb.Append("] ");
             }
             return sb.ToString();
+        }
+
+
+
+        // серелизовать в масив байтов стрелку севера
+        private static byte[] SerializeNorthArrowToByte(INorthArrow na)
+        {
+            if (na == null) return null;
+            IXMLStream xmlStream = new XMLStreamClass();
+            ((ESRI.ArcGIS.esriSystem.IPersistStream)na).Save((ESRI.ArcGIS.esriSystem.IStream)xmlStream, 0);
+            return xmlStream.SaveToBytes();
+        }
+        // десерилезовать стрелку севера
+        private static INorthArrow DeSerializeByteToNorthArrow(byte[] byteArr)
+        {
+            if (byteArr == null) return null;
+
+            IXMLStream xmlStream = new XMLStreamClass();
+            xmlStream.LoadFromBytes(byteArr);
+            MarkerNorthArrow northArrow = new MarkerNorthArrow();
+            ((IPersistStream)northArrow).Load((IStream)xmlStream);
+            return northArrow;
         }
     }
 }

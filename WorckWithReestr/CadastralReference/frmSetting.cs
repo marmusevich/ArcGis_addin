@@ -215,7 +215,7 @@ namespace CadastralReference
             c.Size = new System.Drawing.Size(107, 17);
             c.Text = "Стрелка севера";
             c.UseVisualStyleBackColor = true;
-            c.Checked = opd.IsHasNordArrow;
+            c.Checked = opd.IsHasNorthArrow;
             c.CheckedChanged += new System.EventHandler(this.cbNordArrow_CheckedChanged);
             return c;
         }
@@ -382,7 +382,7 @@ namespace CadastralReference
             b.Text = "Параметры";
             b.UseVisualStyleBackColor = true;
             b.Click += new System.EventHandler(this.btnNordArrow_Click);
-            b.Enabled = opd.IsHasNordArrow;
+            b.Enabled = opd.IsHasNorthArrow;
             return b;
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -442,7 +442,7 @@ namespace CadastralReference
 
                 CheckBox cna = GetControlByName(prefix_cbNordArrow + opd.PagesID.ToString()) as CheckBox;
                 if (cna != null)
-                    opd.IsHasNordArrow = cna.Checked;
+                    opd.IsHasNorthArrow = cna.Checked;
 
                 CheckBox csb = GetControlByName(prefix_cbScaleBar + opd.PagesID.ToString()) as CheckBox;
                 if (csb != null)

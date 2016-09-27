@@ -55,7 +55,7 @@ namespace CadastralReference
                 if (m_textSymbolClass != value)
                 {
                     m_textSymbolClass = value;
-                    m_textSymbolClass_Serialized_innerUse = SerializTextSymbolClassToByte(m_textSymbolClass);
+                    m_textSymbolClass_Serialized_innerUse = SerializeTextSymbolClassToByte(m_textSymbolClass);
                 }
             }
         }
@@ -72,14 +72,14 @@ namespace CadastralReference
                 if (m_textSymbolClass_Serialized_innerUse != value)
                 {
                     m_textSymbolClass_Serialized_innerUse = (byte[])value.Clone();
-                    m_textSymbolClass = DeSerializByteToTextSymbolClass(m_textSymbolClass_Serialized_innerUse);
+                    m_textSymbolClass = DeSerializeByteToTextSymbolClass(m_textSymbolClass_Serialized_innerUse);
                 }
             } 
         }
         #endregion
 
         // серелизовать в масив байтов
-        private static byte[] SerializTextSymbolClassToByte(ITextSymbol tsc)
+        private static byte[] SerializeTextSymbolClassToByte(ITextSymbol tsc)
         {
             if (tsc == null) return null;
 
@@ -91,7 +91,7 @@ namespace CadastralReference
             return xmlStream.SaveToBytes();
         }
         // десерилезовать
-        private static ITextSymbol DeSerializByteToTextSymbolClass(byte[] byteArr)
+        private static ITextSymbol DeSerializeByteToTextSymbolClass(byte[] byteArr)
         {
             if (byteArr == null) return null;
 
@@ -119,7 +119,7 @@ namespace CadastralReference
             this.AncorHorizontal = esriTextHorizontalAlignment.esriTHALeft;
             this.AncorVertical = esriTextVerticalAlignment.esriTVABottom;
             this.m_textSymbolClass = new TextSymbolClass();
-            this.m_textSymbolClass_Serialized_innerUse = SerializTextSymbolClassToByte(m_textSymbolClass);
+            this.m_textSymbolClass_Serialized_innerUse = SerializeTextSymbolClassToByte(m_textSymbolClass);
         }
 
         //скопировать настройки
@@ -133,7 +133,7 @@ namespace CadastralReference
             this.AncorHorizontal = oted.AncorHorizontal;
             this.AncorVertical = oted.AncorVertical;
             this.m_textSymbolClass_Serialized_innerUse = (byte[])oted.TextSymbolClass_Serialized_innerUse.Clone();
-            this.m_textSymbolClass = DeSerializByteToTextSymbolClass(m_textSymbolClass_Serialized_innerUse);
+            this.m_textSymbolClass = DeSerializeByteToTextSymbolClass(m_textSymbolClass_Serialized_innerUse);
         }
     }
 }
