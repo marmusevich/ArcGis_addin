@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Display;
+using SharedClasses;
 
 namespace CadastralReference
 {
@@ -232,26 +233,10 @@ namespace CadastralReference
         /// </summary>
         /// <param name="caption"> название </param>
         /// <param name="enable"> включен ли?</param>
-        public OnePageDescriptions(string caption, bool enable = false)
+        public OnePageDescriptions(string caption, bool enable = false):this()
         {
             Caption = caption;
             Enable = enable;
-            Layers = new StringCollection();
-            m_Image = null;
-            m_TextElements = new List<OneTextElementDescription>();
-
-            m_NorthArrow = new MarkerNorthArrow();
-            m_NorthArrow_Serialized_innerUse = SerializeNorthArrowToByte(m_NorthArrow);
-            NorthArrow_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
-            NorthArrow_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
-
-            m_ScaleBar = new AlternatingScaleBar();
-            TypeScaleBarName = "Alternating Scale Bar";
-            m_ScaleBar_Serialized_innerUse = SerializeScaleBarToByte(m_ScaleBar);
-            ScaleBar_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
-            ScaleBar_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
-            ScaleBar_AncorHorizontal = esriTextHorizontalAlignment.esriTHALeft;
-            ScaleBar_AncorVertical = esriTextVerticalAlignment.esriTVABottom;
         }
 
         public OnePageDescriptions()
@@ -267,13 +252,18 @@ namespace CadastralReference
             NorthArrow_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
             NorthArrow_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
 
-            m_ScaleBar = new AlternatingScaleBar();
-            TypeScaleBarName = "Alternating Scale Bar";
+            m_ScaleBar = new ScaleLine();
+            m_ScaleBar.Units = esriUnits.esriKilometers;
+            TypeScaleBarName = "Scale Line";
             m_ScaleBar_Serialized_innerUse = SerializeScaleBarToByte(m_ScaleBar);
-            ScaleBar_PagePosHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            ScaleBar_PagePosHorizontal = esriTextHorizontalAlignment.esriTHARight;
             ScaleBar_PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
-            ScaleBar_AncorHorizontal = esriTextHorizontalAlignment.esriTHALeft;
+            ScaleBar_AncorHorizontal = esriTextHorizontalAlignment.esriTHARight;
             ScaleBar_AncorVertical = esriTextVerticalAlignment.esriTVABottom;
+            ScaleBar_PosX = 0;
+            ScaleBar_PosY = 0;
+            ScaleBar_Height = 0.75;
+            ScaleBar_Width = 6.65;
         }
 
         //скопировать настройки
@@ -347,11 +337,18 @@ namespace CadastralReference
         private static INorthArrow DeSerializeByteToNorthArrow(byte[] byteArr)
         {
             if (byteArr == null) return null;
-
-            IXMLStream xmlStream = new XMLStreamClass();
-            xmlStream.LoadFromBytes(byteArr);
             MarkerNorthArrow northArrow = new MarkerNorthArrow();
-            ((IPersistStream)northArrow).Load((IStream)xmlStream);
+            try
+            {
+                IXMLStream xmlStream = new XMLStreamClass();
+                xmlStream.LoadFromBytes(byteArr);
+                ((IPersistStream)northArrow).Load((IStream)xmlStream);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+
+                Logger.Write(ex, string.Format(" DeSerializeByteToNorthArrow "));
+            }
             return northArrow;
         }
 
@@ -368,27 +365,34 @@ namespace CadastralReference
         private static IScaleBar DeSerializeByteToScaleBar(byte[] byteArr, string TypeScaleBarName)
         {
             if (byteArr == null) return null;
-
-            IXMLStream xmlStream = new XMLStreamClass();
-            xmlStream.LoadFromBytes(byteArr);
-
             IScaleBar ScaleBar = null;
-            if (TypeScaleBarName == "Alternating Scale Bar")
-                ScaleBar = new AlternatingScaleBar();
-            if (TypeScaleBarName == "Double Alternating Scale Bar")
-                ScaleBar = new DoubleAlternatingScaleBar();
-            if (TypeScaleBarName == "Hollow Scale Bar")
-                ScaleBar = new HollowScaleBar();
-            if (TypeScaleBarName == "Scale Line")
-                ScaleBar = new ScaleLine();
-            if (TypeScaleBarName == "Single Division Scale Bar")
-                ScaleBar = new SingleDivisionScaleBar();
-            if (TypeScaleBarName == "Stepped Scale Line")
-                ScaleBar = new SteppedScaleLine();
+            try
+            {
+                IXMLStream xmlStream = new XMLStreamClass();
+                xmlStream.LoadFromBytes(byteArr);
 
-            if (ScaleBar == null) return null;
+                if (TypeScaleBarName == "Alternating Scale Bar")
+                    ScaleBar = new AlternatingScaleBar();
+                if (TypeScaleBarName == "Double Alternating Scale Bar")
+                    ScaleBar = new DoubleAlternatingScaleBar();
+                if (TypeScaleBarName == "Hollow Scale Bar")
+                    ScaleBar = new HollowScaleBar();
+                if (TypeScaleBarName == "Scale Line")
+                    ScaleBar = new ScaleLine();
+                if (TypeScaleBarName == "Single Division Scale Bar")
+                    ScaleBar = new SingleDivisionScaleBar();
+                if (TypeScaleBarName == "Stepped Scale Line")
+                    ScaleBar = new SteppedScaleLine();
 
-            ((IPersistStream)ScaleBar).Load((IStream)xmlStream);
+                if (ScaleBar == null) return null;
+
+                ((IPersistStream)ScaleBar).Load((IStream)xmlStream);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+
+                Logger.Write(ex, string.Format(" DeSerializeByteToScaleBar "));
+            }
             return ScaleBar;
         }
     }

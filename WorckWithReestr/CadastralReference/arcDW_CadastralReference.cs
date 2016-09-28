@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using CadastralReference;
 
-
 namespace WorckWithReestr
 {
     /// <summary>

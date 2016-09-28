@@ -35,6 +35,14 @@ namespace CadastralReference
             this.btnSave = new System.Windows.Forms.Button();
             this.tcSetting = new System.Windows.Forms.TabControl();
             this.tpMain = new System.Windows.Forms.TabPage();
+            this.txtObjectLayerName = new System.Windows.Forms.TextBox();
+            this.lblObjectLayerName = new System.Windows.Forms.Label();
+            this.txtObjectTableName = new System.Windows.Forms.TextBox();
+            this.lblObjectTableName = new System.Windows.Forms.Label();
+            this.txtRukovoditelDoljnost = new System.Windows.Forms.TextBox();
+            this.lblRukovoditelDoljnost = new System.Windows.Forms.Label();
+            this.txtRukovoditelFIO = new System.Windows.Forms.TextBox();
+            this.lblRukovoditelFIO = new System.Windows.Forms.Label();
             this.pnListOfPages = new System.Windows.Forms.Panel();
             this.btnAddPage = new System.Windows.Forms.Button();
             this.lblListOfPages = new System.Windows.Forms.Label();
@@ -87,6 +95,14 @@ namespace CadastralReference
             // 
             // tpMain
             // 
+            this.tpMain.Controls.Add(this.txtObjectLayerName);
+            this.tpMain.Controls.Add(this.lblObjectLayerName);
+            this.tpMain.Controls.Add(this.txtObjectTableName);
+            this.tpMain.Controls.Add(this.lblObjectTableName);
+            this.tpMain.Controls.Add(this.txtRukovoditelDoljnost);
+            this.tpMain.Controls.Add(this.lblRukovoditelDoljnost);
+            this.tpMain.Controls.Add(this.txtRukovoditelFIO);
+            this.tpMain.Controls.Add(this.lblRukovoditelFIO);
             this.tpMain.Controls.Add(this.pnListOfPages);
             this.tpMain.Location = new System.Drawing.Point(4, 22);
             this.tpMain.Name = "tpMain";
@@ -96,19 +112,92 @@ namespace CadastralReference
             this.tpMain.Text = "Главное";
             this.tpMain.UseVisualStyleBackColor = true;
             // 
+            // txtObjectLayerName
+            // 
+            this.txtObjectLayerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObjectLayerName.Enabled = false;
+            this.txtObjectLayerName.Location = new System.Drawing.Point(349, 152);
+            this.txtObjectLayerName.Name = "txtObjectLayerName";
+            this.txtObjectLayerName.Size = new System.Drawing.Size(296, 20);
+            this.txtObjectLayerName.TabIndex = 10;
+            // 
+            // lblObjectLayerName
+            // 
+            this.lblObjectLayerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblObjectLayerName.Location = new System.Drawing.Point(349, 131);
+            this.lblObjectLayerName.Name = "lblObjectLayerName";
+            this.lblObjectLayerName.Size = new System.Drawing.Size(296, 20);
+            this.lblObjectLayerName.TabIndex = 9;
+            this.lblObjectLayerName.Text = "Имя слоя размещения объектов";
+            // 
+            // txtObjectTableName
+            // 
+            this.txtObjectTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObjectTableName.Enabled = false;
+            this.txtObjectTableName.Location = new System.Drawing.Point(349, 200);
+            this.txtObjectTableName.Name = "txtObjectTableName";
+            this.txtObjectTableName.Size = new System.Drawing.Size(296, 20);
+            this.txtObjectTableName.TabIndex = 8;
+            // 
+            // lblObjectTableName
+            // 
+            this.lblObjectTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblObjectTableName.Location = new System.Drawing.Point(349, 179);
+            this.lblObjectTableName.Name = "lblObjectTableName";
+            this.lblObjectTableName.Size = new System.Drawing.Size(296, 20);
+            this.lblObjectTableName.TabIndex = 7;
+            this.lblObjectTableName.Text = "Имя таблицы размещения объектов";
+            // 
+            // txtRukovoditelDoljnost
+            // 
+            this.txtRukovoditelDoljnost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRukovoditelDoljnost.Location = new System.Drawing.Point(349, 36);
+            this.txtRukovoditelDoljnost.Name = "txtRukovoditelDoljnost";
+            this.txtRukovoditelDoljnost.Size = new System.Drawing.Size(296, 20);
+            this.txtRukovoditelDoljnost.TabIndex = 6;
+            // 
+            // lblRukovoditelDoljnost
+            // 
+            this.lblRukovoditelDoljnost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRukovoditelDoljnost.Location = new System.Drawing.Point(349, 15);
+            this.lblRukovoditelDoljnost.Name = "lblRukovoditelDoljnost";
+            this.lblRukovoditelDoljnost.Size = new System.Drawing.Size(296, 20);
+            this.lblRukovoditelDoljnost.TabIndex = 5;
+            this.lblRukovoditelDoljnost.Text = "Должность руководителя";
+            // 
+            // txtRukovoditelFIO
+            // 
+            this.txtRukovoditelFIO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRukovoditelFIO.Location = new System.Drawing.Point(349, 84);
+            this.txtRukovoditelFIO.Name = "txtRukovoditelFIO";
+            this.txtRukovoditelFIO.Size = new System.Drawing.Size(296, 20);
+            this.txtRukovoditelFIO.TabIndex = 4;
+            // 
+            // lblRukovoditelFIO
+            // 
+            this.lblRukovoditelFIO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRukovoditelFIO.Location = new System.Drawing.Point(349, 63);
+            this.lblRukovoditelFIO.Name = "lblRukovoditelFIO";
+            this.lblRukovoditelFIO.Size = new System.Drawing.Size(296, 20);
+            this.lblRukovoditelFIO.TabIndex = 3;
+            this.lblRukovoditelFIO.Text = "ФИО руководителя";
+            // 
             // pnListOfPages
             // 
+            this.pnListOfPages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnListOfPages.Controls.Add(this.btnAddPage);
             this.pnListOfPages.Controls.Add(this.lblListOfPages);
             this.pnListOfPages.Controls.Add(this.clbListOfPages);
-            this.pnListOfPages.Location = new System.Drawing.Point(0, 0);
+            this.pnListOfPages.Location = new System.Drawing.Point(3, 3);
             this.pnListOfPages.Name = "pnListOfPages";
-            this.pnListOfPages.Size = new System.Drawing.Size(286, 258);
+            this.pnListOfPages.Size = new System.Drawing.Size(340, 415);
             this.pnListOfPages.TabIndex = 2;
             // 
             // btnAddPage
             // 
-            this.btnAddPage.Location = new System.Drawing.Point(71, 231);
+            this.btnAddPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddPage.Location = new System.Drawing.Point(118, 388);
             this.btnAddPage.Name = "btnAddPage";
             this.btnAddPage.Size = new System.Drawing.Size(101, 23);
             this.btnAddPage.TabIndex = 4;
@@ -118,18 +207,23 @@ namespace CadastralReference
             // 
             // lblListOfPages
             // 
+            this.lblListOfPages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblListOfPages.Location = new System.Drawing.Point(3, 3);
             this.lblListOfPages.Name = "lblListOfPages";
-            this.lblListOfPages.Size = new System.Drawing.Size(280, 20);
+            this.lblListOfPages.Size = new System.Drawing.Size(334, 20);
             this.lblListOfPages.TabIndex = 3;
             this.lblListOfPages.Text = "Перечень листов справки";
             // 
             // clbListOfPages
             // 
+            this.clbListOfPages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clbListOfPages.FormattingEnabled = true;
-            this.clbListOfPages.Location = new System.Drawing.Point(3, 26);
+            this.clbListOfPages.Location = new System.Drawing.Point(3, 20);
             this.clbListOfPages.Name = "clbListOfPages";
-            this.clbListOfPages.Size = new System.Drawing.Size(280, 199);
+            this.clbListOfPages.Size = new System.Drawing.Size(334, 364);
             this.clbListOfPages.TabIndex = 2;
             this.clbListOfPages.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbListOfPages_ItemCheck);
             // 
@@ -178,6 +272,7 @@ namespace CadastralReference
             this.Load += new System.EventHandler(this.frmSetting_Load);
             this.tcSetting.ResumeLayout(false);
             this.tpMain.ResumeLayout(false);
+            this.tpMain.PerformLayout();
             this.pnListOfPages.ResumeLayout(false);
             this.tpPages.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -197,5 +292,13 @@ namespace CadastralReference
         private Label lblListOfPages;
         private CheckedListBox clbListOfPages;
         private Button btnAddPage;
+        private TextBox txtRukovoditelDoljnost;
+        private Label lblRukovoditelDoljnost;
+        private TextBox txtRukovoditelFIO;
+        private Label lblRukovoditelFIO;
+        private TextBox txtObjectLayerName;
+        private Label lblObjectLayerName;
+        private TextBox txtObjectTableName;
+        private Label lblObjectTableName;
     }
 }

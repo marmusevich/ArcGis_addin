@@ -1,16 +1,8 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
-using ESRI.ArcGIS.ArcMapUI;
-using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Output;
-using ESRI.ArcGIS.Carto;
-using WorckWithReestr;
-using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using SharedClasses;
 using System.IO;
 

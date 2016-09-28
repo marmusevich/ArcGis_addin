@@ -1,7 +1,5 @@
-﻿using SharedClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace CadastralReference
@@ -45,6 +43,12 @@ namespace CadastralReference
         private void frmSetting_Load(object sender, EventArgs e)
         {
             CreateUI();
+
+            txtRukovoditelDoljnost.Text = m_crd.RukovoditelDoljnost;
+            txtRukovoditelFIO.Text = m_crd.RukovoditelFIO;
+            txtObjectLayerName.Text = CadastralReferenceData.ObjectLayerName;
+            txtObjectTableName.Text = CadastralReferenceData.ObjectTableName;
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -464,6 +468,11 @@ namespace CadastralReference
                 if (n_Right != null)
                     opd.DataFrameSyze_Right = (double)n_Right.Value;
             }
+
+
+
+            m_crd.RukovoditelDoljnost = txtRukovoditelDoljnost.Text;
+            m_crd.RukovoditelFIO = txtRukovoditelFIO.Text;
         }
         #endregion вспомогательные функции
 

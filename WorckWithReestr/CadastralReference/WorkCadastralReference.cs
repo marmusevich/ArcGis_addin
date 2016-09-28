@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 using ESRI.ArcGIS.ArcMapUI;
 using ESRI.ArcGIS.Carto;
 using WorckWithReestr;
@@ -8,9 +7,6 @@ using System;
 using SharedClasses;
 using System.IO;
 
-
-//  прочитать все листы справки
-// еще событие на запрет редактирования
 
 namespace CadastralReference
 {
@@ -29,7 +25,6 @@ namespace CadastralReference
         {
             if (m_CadastralReferenceData == null)
             {
-                m_CadastralReferenceData = new CadastralReferenceData();
                 LoadSettingFromDB();
             }
             return m_CadastralReferenceData; 
@@ -41,29 +36,39 @@ namespace CadastralReference
         {
             try
             {
-                string filename = System.IO.Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("CadastralReferenceData_{0:yyy.MM.dd_H-mm-ss}.setting.xml", DateTime.Now));
                 string xml = GetCadastralReferenceData().SaveSettingToXMLString();
+                
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // test
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                string filename = System.IO.Path.Combine(GeneralApp.GetAppDataPathAndCreateDirIfNeed(), string.Format("CadastralReferenceData_{0:yyy.MM.dd_H-mm-ss}.setting.xml", DateTime.Now));
                 File.WriteAllText(filename, xml);
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // test
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 WorkCadastralReference_DB.SaveToDBPage(-1, "Настройки", -1, "Настройки" , WorkCadastralReference_DB.StringToByteArray(xml) );
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, "SaveSettingToDB Error");
-                //GeneralApp.ShowErrorMessage(string.Format("Проблема при сохранение данных справочника '{0}' id {1}", NameTable, objectID));
+                Logger.Write(ex, "Запись настроек кадастровой справки");
+                GeneralApp.ShowErrorMessage("Ошибка при записи настроек кадастровой справки");
             }
         }
         public static void LoadSettingFromDB()
         {
+            m_CadastralReferenceData = new CadastralReferenceData();
             try
             {
-                m_CadastralReferenceData.InitPagesDescription();
                 string xml = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(-1, -1, "Настройки"));
                 m_CadastralReferenceData.LoadSettingFromXMLString(xml);
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, "LoadSettingFromDB Error");
+                Logger.Write(ex, "Ошибка при чтение  настроек кадастровой справки");
+                GeneralApp.ShowErrorMessage("Ошибка при чтение  настроек кадастровой справки \n\r Установлены значения по умолчанию. ");
+
+                m_CadastralReferenceData.InitDefaultSetting();
             }
         }
 
@@ -164,7 +169,7 @@ namespace CadastralReference
                 N_Z = GetCadastralReferenceData().ZayavkaData["N_Z"] as string;
                 Data_Z = (DateTime)GetCadastralReferenceData().ZayavkaData["Data_Z"];
             }
-            return string.Format("Заявка №{0} от {1}г. {2} (id = {3}))", N_Z, Data_Z, strKod_Z,  GetCadastralReferenceData().ZayavkaID.ToString() );
+            return string.Format("Заявка №{0} от {1:d}г. {2} (id = {3})", N_Z, Data_Z, strKod_Z,  GetCadastralReferenceData().ZayavkaID.ToString() );
         }
 
 
@@ -246,10 +251,11 @@ namespace CadastralReference
                 WorkCadastralReference_MAP.DeleteScalebar();
                 WorkCadastralReference_MAP.AddScalebar(opd);
 
+                WorkCadastralReference_MAP.DeleteAllText();
                 //нанаести все надписи листа
                 foreach (OneTextElementDescription oted in opd.TextElements)
                 {
-                    WorkCadastralReference_MAP.DeleteElementByName(oted.Text);
+                    //WorkCadastralReference_MAP.DeleteElementByName(oted.Text);
                     WorkCadastralReference_MAP.AddText(oted);
                 }
 

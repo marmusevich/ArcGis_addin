@@ -35,7 +35,7 @@
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnOk.Location = new System.Drawing.Point(148, 242);
+            this.btnOk.Location = new System.Drawing.Point(234, 241);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 0;
@@ -50,7 +50,7 @@
             this.lblOpisanie.Multiline = true;
             this.lblOpisanie.Name = "lblOpisanie";
             this.lblOpisanie.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.lblOpisanie.Size = new System.Drawing.Size(372, 235);
+            this.lblOpisanie.Size = new System.Drawing.Size(535, 235);
             this.lblOpisanie.TabIndex = 1;
             // 
             // frmHelpTemplateView
@@ -59,7 +59,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnOk;
-            this.ClientSize = new System.Drawing.Size(372, 277);
+            this.ClientSize = new System.Drawing.Size(535, 272);
             this.Controls.Add(this.lblOpisanie);
             this.Controls.Add(this.btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

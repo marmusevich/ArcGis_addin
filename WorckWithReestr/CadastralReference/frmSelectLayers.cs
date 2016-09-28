@@ -1,15 +1,5 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-using ESRI.ArcGIS.ArcMapUI;
-using ESRI.ArcGIS.Geometry;
-using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Output;
-using ESRI.ArcGIS.Carto;
-using WorckWithReestr;
-using ESRI.ArcGIS.Display;
-using ESRI.ArcGIS.Geodatabase;
+﻿using System.Windows.Forms;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace CadastralReference

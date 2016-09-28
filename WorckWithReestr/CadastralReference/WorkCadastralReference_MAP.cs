@@ -305,6 +305,30 @@ namespace CadastralReference
             gc.AddElement(element, 0);
         }
 
+        public static void DeleteAllText()
+        {
+            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
+            IGraphicsContainer gc = mxdoc.PageLayout as IGraphicsContainer;
+            gc.Reset();
+
+            List<IElement> forDel = new List<IElement>();
+
+            IElement element = gc.Next();
+            while (element != null)
+            {
+                if (element is ITextElement)
+                {
+                    forDel.Add(element);
+                }
+                element = gc.Next();
+            }
+
+            foreach(IElement e in forDel)
+            {
+                gc.DeleteElement(e);
+            }
+        }
+
         // удалить элементы по имени
         public static void DeleteElementByName(string name)
         {
@@ -403,6 +427,8 @@ namespace CadastralReference
             else
                 x = 0;
 
+            x += opd.ScaleBar_PosX;
+            y += opd.ScaleBar_PosY;
 
             double x1 = 0, y1 = 0;
             double x2 = 0, y2 = 0;
@@ -438,8 +464,6 @@ namespace CadastralReference
                 x1 = x;
                 x2 = x + opd.ScaleBar_Width;
             }
-
-
 
             IEnvelope envelope = new EnvelopeClass();
             envelope.PutCoords(x1, y1, x2, y2);

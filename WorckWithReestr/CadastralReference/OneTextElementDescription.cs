@@ -4,6 +4,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using SharedClasses;
 
 namespace CadastralReference
 {
@@ -95,14 +96,23 @@ namespace CadastralReference
         // десерилезовать
         private static ITextSymbol DeSerializeByteToTextSymbolClass(byte[] byteArr)
         {
+            ITextSymbol ret = null; 
             if (byteArr == null) return null;
+            try
+            {
+                IXMLStream xmlStream = new XMLStreamClass();
+                xmlStream.LoadFromBytes(byteArr);
+                IXMLReader xmlReader = new XMLReaderClass();
+                xmlReader.ReadFrom((IStream)xmlStream); // Explicit Cast
+                IXMLSerializer xmlSerializer = new XMLSerializerClass();
+                ret = (ITextSymbol)xmlSerializer.ReadObject(xmlReader, null, null);
+            }
+            catch (Exception ex) // обработка ошибок
+            {
 
-            IXMLStream xmlStream = new XMLStreamClass();
-            xmlStream.LoadFromBytes(byteArr);
-            IXMLReader xmlReader = new XMLReaderClass();
-            xmlReader.ReadFrom((IStream)xmlStream); // Explicit Cast
-            IXMLSerializer xmlSerializer = new XMLSerializerClass();
-            return (ITextSymbol)xmlSerializer.ReadObject(xmlReader, null, null);
+                Logger.Write(ex, string.Format(" DeSerializeByteToTextSymbolClass "));
+            }
+            return ret;
         }
 
 

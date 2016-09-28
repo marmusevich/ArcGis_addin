@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CadastralReference
 {
@@ -89,7 +86,7 @@ namespace CadastralReference
                 string ret = "";
                 if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
                 {
-                    ret = ((DateTime)WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Data_Z"]).ToString();
+                    ret = string.Format("{0:d}", (DateTime)WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Data_Z"]);
                 }
                 return ret;
             }
@@ -149,7 +146,7 @@ namespace CadastralReference
                 string ret = "";
                 if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
                 {
-                    ret = ((DateTime)WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Cane_Date"]).ToString();
+                    ret = string.Format("{0:d}", (DateTime)WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["Cane_Date"]);
                 }
                 return ret;
             }
@@ -174,30 +171,41 @@ namespace CadastralReference
                 return ret;
             }
         }
-        class Direktor : IOneTextTemplateConverter
+        class RukovoditelDoljnost : IOneTextTemplateConverter
         {
             public string GeVariableName()
             {
-                return "{_Директор_}";
+                return "{_ДолжностьРуководителя_}";
             }
             public string GeDiscription()
             {
-                return "директор";
+                return "должность руководителя";
             }
             public string GetReplesedString()
             {
-                //string ret = "";
-                //if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
-                //{
-                //    ret = WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["strRajon"] as string;
-                //}
-                //return ret;
+                return WorkCadastralReference.GetCadastralReferenceData().RukovoditelDoljnost;
             }
-        }        #endregion
+        }
+        class RukovoditelFIO : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_ФИОруководителя_}";
+            }
+            public string GeDiscription()
+            {
+                return "ФИО руководителя";
+            }
+            public string GetReplesedString()
+            {
+                return WorkCadastralReference.GetCadastralReferenceData().RukovoditelFIO;
+            }
+        }
+        #endregion
 
         static IOneTextTemplateConverter[] arrMetod = new IOneTextTemplateConverter[] 
         { new MapScale(), new AdressOpisatelniy(), new NomerZayavki(), new DataZayavki(), new Zayavitel(),
-          new KancelyarskiyNomer(), new KancelyarskiyData(), new Rajon() , new Direktor()};
+          new KancelyarskiyNomer(), new KancelyarskiyData(), new Rajon(), new RukovoditelDoljnost(), new RukovoditelFIO()};
 
         // произвести замену
         public static string Implement(string input)
