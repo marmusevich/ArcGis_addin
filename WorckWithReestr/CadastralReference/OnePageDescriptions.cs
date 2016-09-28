@@ -160,9 +160,7 @@ namespace CadastralReference
         /// <summary>  точька привязки элемента по вертикали - якорь
         /// </summary>
         public esriTextVerticalAlignment ScaleBar_AncorVertical { get; set; }
-
         public string TypeScaleBarName = "";
-
         [XmlIgnore]
         IScaleBar m_ScaleBar = null;
         [XmlIgnore]
@@ -179,7 +177,6 @@ namespace CadastralReference
                 }
             }
         }
-
         /// <summary>  серелизованый INorthArrow для серелизации внутреннее использование
         /// </summary>
         [XmlIgnore]
