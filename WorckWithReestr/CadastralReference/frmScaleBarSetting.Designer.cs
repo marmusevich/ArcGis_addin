@@ -210,7 +210,7 @@
             this.gbAncorPoint.Size = new System.Drawing.Size(112, 123);
             this.gbAncorPoint.TabIndex = 5;
             this.gbAncorPoint.TabStop = false;
-            this.gbAncorPoint.Text = "Точька привязки";
+            this.gbAncorPoint.Text = "Точка привязки";
             // 
             // rbAncorPoint_BR
             // 
@@ -417,7 +417,7 @@
             this.Name = "frmScaleBarSetting";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Параметры маштабной линейки";
+            this.Text = "Параметры масштабной линейки";
             this.Load += new System.EventHandler(this.frmScaleBartSetting_Load);
             this.gbPositionVertical.ResumeLayout(false);
             this.gbPositionVertical.PerformLayout();

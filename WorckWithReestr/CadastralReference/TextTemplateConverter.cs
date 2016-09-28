@@ -23,11 +23,11 @@ namespace CadastralReference
         {
             public string GeVariableName()
             {
-                return "{_маштаб_}";
+                return "{_масштаб_}";
             }
             public string GeDiscription()
             {
-                return "текущий маштаб карты в формате 1:XXX";
+                return "текущий масштаб карты в формате 1:XXX";
             }
             public string GetReplesedString()
             {
@@ -42,7 +42,7 @@ namespace CadastralReference
             }
             public string GeDiscription()
             {
-                return "адресс из заявки";
+                return "адрес из заявки";
             }
             public string GetReplesedString()
             {
@@ -174,11 +174,30 @@ namespace CadastralReference
                 return ret;
             }
         }
-        #endregion
+        class Direktor : IOneTextTemplateConverter
+        {
+            public string GeVariableName()
+            {
+                return "{_Директор_}";
+            }
+            public string GeDiscription()
+            {
+                return "директор";
+            }
+            public string GetReplesedString()
+            {
+                //string ret = "";
+                //if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaData != null)
+                //{
+                //    ret = WorkCadastralReference.GetCadastralReferenceData().ZayavkaData["strRajon"] as string;
+                //}
+                //return ret;
+            }
+        }        #endregion
 
         static IOneTextTemplateConverter[] arrMetod = new IOneTextTemplateConverter[] 
         { new MapScale(), new AdressOpisatelniy(), new NomerZayavki(), new DataZayavki(), new Zayavitel(),
-          new KancelyarskiyNomer(), new KancelyarskiyData(), new Rajon()};
+          new KancelyarskiyNomer(), new KancelyarskiyData(), new Rajon() , new Direktor()};
 
         // произвести замену
         public static string Implement(string input)

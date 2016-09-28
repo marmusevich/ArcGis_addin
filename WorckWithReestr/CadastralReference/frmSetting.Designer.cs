@@ -174,7 +174,7 @@ namespace CadastralReference
             this.Name = "frmSetting";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmSetting";
+            this.Text = "Настройки кадастровой справки";
             this.Load += new System.EventHandler(this.frmSetting_Load);
             this.tcSetting.ResumeLayout(false);
             this.tpMain.ResumeLayout(false);

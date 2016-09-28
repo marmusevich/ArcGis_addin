@@ -29,7 +29,7 @@ namespace CadastralReference
             StringCollection tmp = WorkCadastralReference_MAP.GetListOfAllLaers();
             if (tmp == null || tmp.Count == 0)
             {
-                MessageBox.Show("В карте нет слоев. \n Добавте слои на карту.");
+                MessageBox.Show("В карте нет слоев. \n Добавьте слои на карту.");
                 DialogResult = DialogResult.Abort;
                 this.Close();
 

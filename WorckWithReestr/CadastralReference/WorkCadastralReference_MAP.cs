@@ -200,8 +200,8 @@ namespace CadastralReference
             catch (Exception ex) // обработка ошибок
             {
 
-                Logger.Write(ex, string.Format("Получение маштаба"));
-                GeneralApp.ShowErrorMessage(string.Format("Проблема при получении маштаба"));
+                Logger.Write(ex, string.Format("Получение масштаба"));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при получении масштаба"));
             }
             return ret;
         }

@@ -134,8 +134,8 @@ namespace CadastralReference
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("Чтиение листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
-                GeneralApp.ShowErrorMessage(string.Format("Проблема при чтиение листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
+                Logger.Write(ex, string.Format("Чтении листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при чтении листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
             }
 
             return null;
@@ -282,8 +282,8 @@ namespace CadastralReference
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("Не удается получмить данные заявки id '{0}'", ZayavkaID));
-                GeneralApp.ShowErrorMessage(string.Format("Не удается получмить данные заявки id '{0}'", ZayavkaID));
+                Logger.Write(ex, string.Format("Не удается получить данные заявки id '{0}'", ZayavkaID));
+                GeneralApp.ShowErrorMessage(string.Format("Не удается получить данные заявки id '{0}'", ZayavkaID));
                 zayavkaData = null;
             }
             return zayavkaData;

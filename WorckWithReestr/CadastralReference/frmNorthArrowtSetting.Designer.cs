@@ -204,7 +204,7 @@
             this.gbAncorPoint.Size = new System.Drawing.Size(112, 123);
             this.gbAncorPoint.TabIndex = 5;
             this.gbAncorPoint.TabStop = false;
-            this.gbAncorPoint.Text = "Точька привязки";
+            this.gbAncorPoint.Text = "Точка привязки";
             this.gbAncorPoint.Visible = false;
             // 
             // rbAncorPoint_BR

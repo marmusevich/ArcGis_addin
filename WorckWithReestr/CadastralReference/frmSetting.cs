@@ -227,7 +227,7 @@ namespace CadastralReference
             c.Name = prefix_cbScaleBar + opd.PagesID.ToString();
             c.Tag = opd;
             c.Size = new System.Drawing.Size(119, 17);
-            c.Text = "Маштабная шкала";
+            c.Text = "Масштабная шкала";
             c.Checked = opd.IsHasScaleBar;
             c.UseVisualStyleBackColor = true;
             c.CheckedChanged += new System.EventHandler(this.cbScaleBar_CheckedChanged);
