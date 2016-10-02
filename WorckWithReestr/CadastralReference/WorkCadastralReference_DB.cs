@@ -66,7 +66,7 @@ namespace CadastralReference
                 ITable table = fws.OpenTable(CadastralReferenceData_NameTable);
                 IRow row = null;
 
-                int referensePageId = GetReferensePageIdFromDB(fws, zayavkaId, pageId);
+                int referensePageId = GetPageBaseIDInParametrsPage(fws, zayavkaId, pageId);
                 if (referensePageId != -1)
                     row = table.GetRow(referensePageId);
                 else
@@ -82,7 +82,6 @@ namespace CadastralReference
                 //текст
                 SaveStringValueFromTextBoxToDB(ref table, ref row, "zayavkaDiscription", zayavkaDiscription);
                 SaveStringValueFromTextBoxToDB(ref table, ref row, "pageCaption", pageCaption);
-
 
                 row.Store();
 
@@ -103,7 +102,6 @@ namespace CadastralReference
                     wse.StopEditing(false);
                 }
             }
-
         }
 
         // получить один лист
@@ -113,7 +111,7 @@ namespace CadastralReference
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
 
-                int referensePageId = GetReferensePageIdFromDB(fws, zayavkaId, pageId);
+                int referensePageId = GetPageBaseIDInParametrsPage(fws, zayavkaId, pageId);
                 if (referensePageId != -1)
                 { 
                     ITable table = fws.OpenTable(CadastralReferenceData_NameTable);
@@ -186,7 +184,9 @@ namespace CadastralReference
                         newIsReferenceClose = (bool)isReferenceClose;
 
                     // здесь проверять
-
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    System.Windows.Forms.MessageBox.Show("EditZayavkaData - здесь проверять");
 
                     // сохранять
                     row.set_Value(table.FindField("MapObjectID"), MapObjectID);
@@ -219,7 +219,6 @@ namespace CadastralReference
                 }
             }
         }
-
 
         // возвращает словарь данных по заявке
         public static Dictionary<string, object> GetZayavkaData(int ZayavkaID)
@@ -281,7 +280,8 @@ namespace CadastralReference
             return zayavkaData;
         }
 
-        private static int GetReferensePageIdFromDB(IFeatureWorkspace fws, int zayavkaId, int pageId)
+        // получить ID листа из базы по параметрам листа
+        private static int GetPageBaseIDInParametrsPage(IFeatureWorkspace fws, int zayavkaId, int pageId)
         {
             int ret = -1;
             IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
@@ -309,5 +309,76 @@ namespace CadastralReference
             }
             row.set_Value(table.FindField(fildName), text);
         }
+
+        // получить список имеющихся листов заявки
+        public static Dictionary<int, string> GetFromDBListExistingPages(int zayavkaId)
+        {
+            Dictionary<int, string> data = new Dictionary<int, string>();
+            try
+            {
+                //SELECT OBJECTID, zayavkaId, zayavkaDiscription, pageId, pageCaption, data   FROM[Kadastr2016].[dbo].[CADASTRALREFERENCEDATA]
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
+                IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
+                queryDef2.Tables = CadastralReferenceData_NameTable;
+                queryDef2.SubFields = "DISTINCT  OBJECTID, pageCaption";
+                queryDef2.WhereClause = "zayavkaId = " + zayavkaId.ToString();
+                ICursor cursor = queryDef2.Evaluate2(true);
+                IRow row = null;
+                while ((row = cursor.NextRow()) != null)
+                {
+                    object o0 = row.get_Value(0);
+                    object o1 = row.get_Value(1);
+
+                    if ((o0 != null) && !Convert.IsDBNull(o0) && (o1 != null) && !Convert.IsDBNull(o1))
+                        data.Add((int)o0, o1.ToString());
+                }
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("Получение списка имеющихся листов заявки id {0}", zayavkaId));
+            }
+            return data;
+        }
+
+
+        // удаление одного листа справки
+        public static bool DeleteOnePageFromDB(int zayavkaId, int objectID, string pageCaption)
+        {
+            bool ret = false;
+            IWorkspaceEdit wse = null;
+            try
+            {
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
+                // начать транзакцию
+                wse = fws as IWorkspaceEdit;
+                wse.StartEditing(false);
+                wse.StartEditOperation();
+
+                ITable table = fws.OpenTable(CadastralReferenceData_NameTable);
+
+                IRow row = table.GetRow(objectID);
+                row.Delete();
+
+                // закончить транзакцию
+                wse.StopEditOperation();
+                wse.StopEditing(true);
+                ret = true;
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("Удаление листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
+                GeneralApp.ShowErrorMessage(string.Format("Проблема при удаление листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
+                ret = false;
+            }
+            finally
+            {
+                if ((wse != null) && wse.IsBeingEdited())
+                {
+                    wse.StopEditing(false);
+                }
+            }
+            return ret;
+        }
+
     }
 }

@@ -6,7 +6,8 @@ using ESRI.ArcGIS.Geodatabase;
 using System;
 using SharedClasses;
 using System.IO;
-
+using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace CadastralReference
 {
@@ -78,7 +79,7 @@ namespace CadastralReference
             {
                 Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
                 opd.Image = img;
-                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), opd.PagesID, opd.Caption, WorkCadastralReference_DB.ImageToByteArray(opd.Image) );
+                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), opd.PagesID, opd.Caption, WorkCadastralReference_DB.ImageToByteArray(opd.Image) );
                 WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
             }
             catch (Exception ex) // обработка ошибок
@@ -91,7 +92,7 @@ namespace CadastralReference
         {
             try
             {
-                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(), 0, "текстовая часть", WorkCadastralReference_DB.StringToByteArray(GetCadastralReferenceData().AllRTF));
+                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), 0, "текстовая часть", WorkCadastralReference_DB.StringToByteArray(GetCadastralReferenceData().AllRTF));
                 WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
             }
             catch (Exception ex) // обработка ошибок
@@ -155,21 +156,65 @@ namespace CadastralReference
         /// Описание заявки
         /// </summary>
         /// <returns></returns>
-        public static string GetZayavkaDiscription()
+        public static string GetZayavkaDiscription(int zayavkaID)
         {
-            if (GetCadastralReferenceData().ZayavkaID == -1)
+            if (zayavkaID == -1)
                 return "Не выбрана заявка.";
 
             string strKod_Z = "";
             string N_Z = "";
             DateTime Data_Z = new DateTime();
-            if (GetCadastralReferenceData().ZayavkaData != null)
-            {
-                strKod_Z = GetCadastralReferenceData().ZayavkaData["strKod_Z"] as string;
-                N_Z = GetCadastralReferenceData().ZayavkaData["N_Z"] as string;
-                Data_Z = (DateTime)GetCadastralReferenceData().ZayavkaData["Data_Z"];
-            }
+            if (GetCadastralReferenceData().ZayavkaData == null)
+                GetCadastralReferenceData().ZayavkaData = WorkCadastralReference_DB.GetZayavkaData(zayavkaID);
+
+            strKod_Z = GetCadastralReferenceData().ZayavkaData["strKod_Z"] as string;
+            N_Z = GetCadastralReferenceData().ZayavkaData["N_Z"] as string;
+            Data_Z = (DateTime)GetCadastralReferenceData().ZayavkaData["Data_Z"];
             return string.Format("Заявка №{0} от {1:d}г. {2} (id = {3})", N_Z, Data_Z, strKod_Z,  GetCadastralReferenceData().ZayavkaID.ToString() );
+        }
+
+        public static bool CheckReferenceToExistPages(int zayavkaID)
+        {
+            bool ret = false;
+            if (zayavkaID != -1)
+            {
+                if (GetCadastralReferenceData().IsReferenceClose)
+                    MessageBox.Show("Справка закрыта для редактирования.");
+                else
+                {
+                    Dictionary<int, string> data = WorkCadastralReference_DB.GetFromDBListExistingPages(zayavkaID);
+                    if (data != null && data.Count > 0)
+                    {
+                        string str = "";
+                        foreach (var v in data)
+                            str += string.Format("   - {0}\r\n", v.Value);
+
+                        DialogResult dr = MessageBox.Show("Имеютсяследующие готовые листы:\r\n" + str+ "\r\n  Удалить их?", "Имеются данные", MessageBoxButtons.YesNoCancel);
+                        if(dr == DialogResult.Yes)
+                        {
+                            //удалить готовые листы
+                            bool flag = true;
+                            foreach (var v in data)
+                            {
+                                // проверка на удачность
+                                flag = WorkCadastralReference_DB.DeleteOnePageFromDB(zayavkaID, v.Key, v.Value ) && flag;
+                            }
+                            if (flag)
+                            {
+                                GetCadastralReferenceData().ClearData();
+                                WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, -1, false, false);
+                            }
+                            SetZayavka(zayavkaID);
+                            ret = true && flag;
+                        }
+                        else
+                            ret = false;
+                    }
+                    else
+                        ret = true;
+                }
+            }
+            return ret;
         }
 
 

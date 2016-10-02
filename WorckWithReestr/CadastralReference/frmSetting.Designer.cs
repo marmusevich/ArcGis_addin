@@ -221,9 +221,9 @@ namespace CadastralReference
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.clbListOfPages.FormattingEnabled = true;
-            this.clbListOfPages.Location = new System.Drawing.Point(3, 20);
+            this.clbListOfPages.Location = new System.Drawing.Point(3, 35);
             this.clbListOfPages.Name = "clbListOfPages";
-            this.clbListOfPages.Size = new System.Drawing.Size(334, 364);
+            this.clbListOfPages.Size = new System.Drawing.Size(334, 349);
             this.clbListOfPages.TabIndex = 2;
             this.clbListOfPages.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbListOfPages_ItemCheck);
             // 

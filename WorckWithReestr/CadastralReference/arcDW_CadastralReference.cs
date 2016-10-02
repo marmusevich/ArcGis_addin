@@ -17,6 +17,10 @@ namespace WorckWithReestr
         private string prefix_btnSaveToDB = "btnSaveToDBMaket_";
         private string prefix_btnPrev = "btnPreviewMaket_";
 
+        ToolTip toolTipZayavkaDiscriptionsk;
+        ToolTip toolTipObjectMapIDDiscriptions;
+
+
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // иницилизация компонента
@@ -34,9 +38,7 @@ namespace WorckWithReestr
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region создать элементы управления
-        // добовляет всплывающую подсказку
-        //ToolTip toolTipOk = new ToolTip();
-        //toolTipOk.SetToolTip(cbSelect, "cbSelect");
+
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +58,7 @@ namespace WorckWithReestr
             //графические листы
             foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
             {
-                if (!pd.Enable)
+                if (!pd.Enable && pd.Image==null)
                     continue;
 
                 tlpPages.RowCount++;
@@ -356,7 +358,7 @@ namespace WorckWithReestr
 
         private void ZayavkaChange_Click(object sender, EventArgs e)
         {
-            WorkCadastralReference.SelectZayavka();
+                WorkCadastralReference.SelectZayavka();
         }
 
 
@@ -364,14 +366,24 @@ namespace WorckWithReestr
         {
             if (MessageBox.Show("Закрыть справку для редактирования? добавить проверки", "Кадастровая справка", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose = true;
+                WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose = true;
             }
         }
 
         private void btnSetObject_Click(object sender, EventArgs e)
         {
-            WorkCadastralReference.SelectObjektInMap();
+            if (WorkCadastralReference.CheckReferenceToExistPages(WorkCadastralReference.GetCadastralReferenceData().ZayavkaID))
+                WorkCadastralReference.SelectObjektInMap();
         }
+
+        private void llblClearData_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MessageBox.Show("Сбросить редактор?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                WorkCadastralReference.SetZayavka(-1);
+            }
+        }
+
 
         #endregion События элементов управления
 
@@ -381,7 +393,8 @@ namespace WorckWithReestr
         // изменение кода заявления
         private void ZayavkaID_Change(object sender, EventArgs e)
         {
-            lblZayavkaDiscriptions.Text = WorkCadastralReference.GetZayavkaDiscription();
+            lblZayavkaDiscriptions.Text = WorkCadastralReference.GetZayavkaDiscription(WorkCadastralReference.GetCadastralReferenceData().ZayavkaID);
+            toolTipZayavkaDiscriptionsk.SetToolTip(lblZayavkaDiscriptions, lblZayavkaDiscriptions.Text);
 
             btnSetObject.Enabled = WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1;
             lblObjectMapIDDiscriptions.Enabled = WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1;
@@ -392,6 +405,7 @@ namespace WorckWithReestr
         {
             EnablePanels();
             lblObjectMapIDDiscriptions.Text = WorkCadastralReference.GetObjektInMapDiscription();
+            toolTipObjectMapIDDiscriptions.SetToolTip(lblObjectMapIDDiscriptions, lblObjectMapIDDiscriptions.Text);
         }
 
         //изменение изабражения
@@ -423,6 +437,15 @@ namespace WorckWithReestr
             InitializeComponent();
             this.Hook = hook;
             InitControls();
+
+            // добовляет всплывающую подсказку
+            //ToolTip toolTipOk = new ToolTip();
+            //toolTipOk.SetToolTip(cbSelect, "cbSelect");
+
+            toolTipZayavkaDiscriptionsk = new ToolTip();
+            toolTipZayavkaDiscriptionsk.SetToolTip(lblZayavkaDiscriptions, "");
+            toolTipObjectMapIDDiscriptions = new ToolTip();
+            toolTipObjectMapIDDiscriptions.SetToolTip(lblObjectMapIDDiscriptions, "");
         }
 
         /// <summary>
@@ -462,5 +485,6 @@ namespace WorckWithReestr
 
         }
         #endregion
+
     }
 }

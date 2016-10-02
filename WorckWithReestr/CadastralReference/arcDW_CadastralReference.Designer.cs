@@ -47,6 +47,7 @@ namespace WorckWithReestr
             this.btnCloseEdit = new System.Windows.Forms.Button();
             this.lblObjectMapIDDiscriptions = new System.Windows.Forms.Label();
             this.lblObjectMapID = new System.Windows.Forms.Label();
+            this.llblClearData = new System.Windows.Forms.LinkLabel();
             this.pnRtf.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -217,8 +218,22 @@ namespace WorckWithReestr
             this.lblObjectMapID.Text = "Объект на карте:";
             this.lblObjectMapID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // llblClearData
+            // 
+            this.llblClearData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.llblClearData.AutoSize = true;
+            this.llblClearData.LinkColor = System.Drawing.Color.Blue;
+            this.llblClearData.Location = new System.Drawing.Point(284, 8);
+            this.llblClearData.Name = "llblClearData";
+            this.llblClearData.Size = new System.Drawing.Size(38, 13);
+            this.llblClearData.TabIndex = 11;
+            this.llblClearData.TabStop = true;
+            this.llblClearData.Text = "Сброс";
+            this.llblClearData.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblClearData_LinkClicked);
+            // 
             // arcDW_CadastralReference
             // 
+            this.Controls.Add(this.llblClearData);
             this.Controls.Add(this.lblObjectMapID);
             this.Controls.Add(this.lblObjectMapIDDiscriptions);
             this.Controls.Add(this.btnCloseEdit);
@@ -233,6 +248,7 @@ namespace WorckWithReestr
             this.Size = new System.Drawing.Size(330, 511);
             this.pnRtf.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -251,5 +267,6 @@ namespace WorckWithReestr
         private Button btnCloseEdit;
         private Label lblObjectMapIDDiscriptions;
         private Label lblObjectMapID;
+        private LinkLabel llblClearData;
     }
 }

@@ -82,20 +82,20 @@ namespace WorckWithReestr
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             SetIntValueFromDBToTextBox(ref row, "N_Z", txtN_Z);
 
-            
-            
-            bool IsHaveReferense = GeneralApp.ConvertVolueToBool(base.table.FindField("IsHaveReferense"));
-            bool IsReferenceClose = GeneralApp.ConvertVolueToBool(base.table.FindField("IsReferenceClose"));
+            bool IsHaveReferense = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "IsHaveReferense"));
+            bool IsReferenceClose = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "IsReferenceClose"));
             string tmp = "";
             if (IsHaveReferense)
-                tmp += "Кадастровой справки нет.";
-            else
-            { 
+            {
                 tmp += "Есть кадастровая справка.";
                 if (IsReferenceClose)
-                    tmp += " Не заблокирована.";
-                else
                     tmp += " Заблокирована для редоктирования.";
+                else
+                    tmp += " Не заблокирована.";
+            }
+            else
+            {
+                tmp += "Кадастровой справки нет.";
             }
             llblHaveReferense.Text = tmp;
         }
@@ -216,6 +216,14 @@ namespace WorckWithReestr
             SetMaxLengthStringValueToTextBox("Adress_Text", txtAdress_Text);
         }
 
+        protected override bool DeleteData()
+        {
+            if (CadastralReference.WorkCadastralReference.CheckReferenceToExistPages(objectID))
+            {
+                return base.DeleteData();
+            }
+            return false;
+        }
         private void OnChangedTipDoc()
         {
             txtTip_Doc.Text = ReestrDictionaryWork.GetNameByIDFromTip_Doc(mTip_Doc);
