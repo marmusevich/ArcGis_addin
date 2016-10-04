@@ -219,45 +219,6 @@ namespace CadastralReference
 
 
         /// <summary>
-        /// Запоменание выбранного юъекта на карте с проверками
-        /// </summary>
-        public static void SelectObjektInMap()
-        {
-            IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
-            IActiveView activeView = mxdoc.ActiveView;
-            
-            int objectID = -1;
-
-            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
-            //переберем все выбранные объекты на карте
-            IEnumFeature enumFeature = mxDoc.FocusMap.FeatureSelection as IEnumFeature;
-            IFeature feature = enumFeature.Next();
-            while (feature != null)
-            {
-                string tabName = "";
-                if (feature.Class != null)
-                {
-                    if ((feature.Class) is IDataset)
-                    {
-                        tabName = (feature.Class as IDataset).Name;
-                        //проверка на принадлежность нашему проекту
-                        if (CadastralReferenceData.ObjectTableName.ToLower() == tabName.ToLower())
-                        {
-                            objectID = feature.OID;
-                        }
-                    }
-                }
-                feature = enumFeature.Next();
-            }
-            GetCadastralReferenceData().MapObjectID = objectID;
-
-            if (GetCadastralReferenceData().MapObjectID != -1)
-            {
-                WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, null, null);
-                LoadFromDB();
-            }
-        }
-        /// <summary>
         /// Описание объекта карты
         /// </summary>
         /// <returns></returns>

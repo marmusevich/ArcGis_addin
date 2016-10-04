@@ -120,6 +120,7 @@
     <Compile Include="ArcButtons\arcBtn_Open_ReestrZayav.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_RejAdmRajMis.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_TipDoc.cs" />
+    <Compile Include="ArcButtons\arcTool_SelectOdject.cs" />
     <Compile Include="CadastralReference\arcDW_CadastralReference.cs">
       <SubType>UserControl</SubType>
     </Compile>

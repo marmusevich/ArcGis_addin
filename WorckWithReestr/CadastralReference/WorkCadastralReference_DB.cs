@@ -173,20 +173,38 @@ namespace CadastralReference
                         oldIsHaveReferense = Convert.ToInt16(db_isReferenceClose) != 0;
                     }
 
+
+                    // а какие проверки? все изменения возможные реализовать
+
+
+
+                    ////проверка на объект карты
+                    //if (MapObjectID != oldMapObjectID)
+                    //    throw new Exception(string.Format("MapObjectID({0}) != oldMapObjectID({1})", MapObjectID, oldMapObjectID));
+
+
                     // новые значения
                     bool newIsHaveReferense = false;
                     bool newIsReferenceClose = false;
 
+                    //
                     if (isHaveReferense is bool)
+                    {
                         newIsHaveReferense = (bool)isHaveReferense;
+                    }
+                    else // без изменения
+                        newIsHaveReferense = oldIsHaveReferense;
 
+                    //
                     if (isReferenceClose is bool)
+                    { 
                         newIsReferenceClose = (bool)isReferenceClose;
+                    }
+                    else // без изменения
+                        newIsReferenceClose = oldIsReferenceClose;
 
-                    // здесь проверять
-                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    System.Windows.Forms.MessageBox.Show("EditZayavkaData - здесь проверять");
 
                     // сохранять
                     row.set_Value(table.FindField("MapObjectID"), MapObjectID);

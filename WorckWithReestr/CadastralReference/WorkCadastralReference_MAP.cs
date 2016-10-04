@@ -34,6 +34,64 @@ namespace CadastralReference
             }
         }
 
+
+
+        /// <summary>
+        /// Запоменание выбранного юъекта на карте с проверками
+        /// </summary>
+        public static void EnableSelectToo()
+        {
+            //ESRI.ArcGIS.Desktop.AddIns.Tool tool = new arcTool_SelectOdject();
+            //ESRI.ArcGIS.Framework.ICommandItem tool = new arcTool_SelectOdject();
+            //ArcMap.Application.CurrentTool = tool;
+
+            arcTool_SelectOdject.SetToolActiveInToolBar(ArcMap.Application);
+        }
+
+        public static void SelectObjektInMap()
+        {
+            if (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID == -1 || WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose)
+                return;
+
+            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+            IActiveView activeView = mxDoc.ActiveView;
+
+            int objectID = -1;
+
+            //переберем все выбранные объекты на карте
+            IEnumFeature enumFeature = mxDoc.FocusMap.FeatureSelection as IEnumFeature;
+            IFeature feature = enumFeature.Next();
+            while (feature != null)
+            {
+                string tabName = "";
+                if (feature.Class != null)
+                {
+                    if ((feature.Class) is IDataset)
+                    {
+                        tabName = (feature.Class as IDataset).Name;
+                        //проверка на принадлежность нашему проекту
+                       // if (CadastralReferenceData.ObjectTableName.ToLower() == tabName.ToLower())
+                        {
+                            objectID = feature.OID;
+                        }
+                    }
+                }
+                feature = enumFeature.Next();
+            }
+            WorkCadastralReference.GetCadastralReferenceData().MapObjectID = objectID;
+
+            if (WorkCadastralReference.GetCadastralReferenceData().MapObjectID != -1)
+            {
+                WorkCadastralReference_DB.EditZayavkaData(WorkCadastralReference.GetCadastralReferenceData().ZayavkaID, WorkCadastralReference.GetCadastralReferenceData().MapObjectID, null, null);
+                WorkCadastralReference.LoadFromDB();
+            }
+
+            GeneralMapWork.ClearMapSelection();
+            GeneralMapWork.ClearAllLayerSelection();
+            ArcMap.Application.CurrentTool = null;
+        }
+
+
         //спозиционировать на выбраном объекте, отценриовать
         public static void SetScaleAndCentred()
         {

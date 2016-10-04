@@ -40,7 +40,7 @@ namespace WorckWithKadastr2016
                 // там же форма выбора если выбрано больше чем одна запись
                 GeneralMapWork.GetSelectedTableNameAndObjectID(out table_name, out objectID, ref allTableName);
 
-                //здесь - процедура сапостовления, и вызов формы на просмотр
+                //здесь - процедура сопостовления, и вызов формы на просмотр
                 frmBaseElement frm = GetElementForm(table_name, objectID);
                 if (frm != null)
                 {

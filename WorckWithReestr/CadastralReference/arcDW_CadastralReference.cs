@@ -279,13 +279,44 @@ namespace WorckWithReestr
             bool f = (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1) && (WorkCadastralReference.GetCadastralReferenceData().MapObjectID != -1);
             pnRtf.Enabled = f;
             tlpPages.Enabled = f;
-            btnSetObject.Enabled = f;
+            EnableControlsForCloseReference();
+        }
+
+        //включение/выключение элементов управления при закрытии открытии справки
+        private void EnableControlsForCloseReference()
+        {
+            bool f = ! WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose;
+
+            btnSetObject.Enabled = f && (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1);
+            btnCloseEdit.Enabled = f && (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1);
+
+            btnRtfGenerate.Enabled = f;
+            btnRTFSaveToDB.Enabled = f;
+
+            Control c;
+            foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
+            {
+                c = GetControlByName(prefix_btnGenerate + pd.PagesID.ToString());
+                if(c!= null)
+                    c.Enabled = f;
+                c = GetControlByName(prefix_btnSaveToDB + pd.PagesID.ToString());
+                if (c != null)
+                    c.Enabled = f;
+            }
+
+            OnePageDescriptions opd = new OnePageDescriptions("Описательная часть", true);
+            c = GetControlByName(prefix_btnGenerate + opd.PagesID.ToString());
+            if (c != null)
+                c.Enabled = f;
+            c = GetControlByName(prefix_btnSaveToDB + opd.PagesID.ToString());
+            if (c != null)
+                c.Enabled = f;
         }
         #endregion вспомогательные функции
 
 
         #region События элементов управления
-  
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void xbSelect_CheckedChanged(object sender, EventArgs e)
         {
@@ -373,7 +404,7 @@ namespace WorckWithReestr
         private void btnSetObject_Click(object sender, EventArgs e)
         {
             if (WorkCadastralReference.CheckReferenceToExistPages(WorkCadastralReference.GetCadastralReferenceData().ZayavkaID))
-                WorkCadastralReference.SelectObjektInMap();
+                WorkCadastralReference_MAP.EnableSelectToo();
         }
 
         private void llblClearData_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -423,8 +454,7 @@ namespace WorckWithReestr
         //при закрытии справки
         private void IsReferenceClose_Change(object sender, EventArgs e)
         {
-            //CadastralReferenceData opd = (CadastralReferenceData)sender;
-
+            EnableControlsForCloseReference();
         }
         #endregion нашы события
 
@@ -437,10 +467,6 @@ namespace WorckWithReestr
             InitializeComponent();
             this.Hook = hook;
             InitControls();
-
-            // добовляет всплывающую подсказку
-            //ToolTip toolTipOk = new ToolTip();
-            //toolTipOk.SetToolTip(cbSelect, "cbSelect");
 
             toolTipZayavkaDiscriptionsk = new ToolTip();
             toolTipZayavkaDiscriptionsk.SetToolTip(lblZayavkaDiscriptions, "");
