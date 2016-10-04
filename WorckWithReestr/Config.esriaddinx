@@ -2,7 +2,7 @@
   <Name>WorckWithReestr</Name>
   <AddInID>{a3901e4d-bd63-4196-a8ae-2624c565cdae}</AddInID>
   <Description>Работа с реестром</Description>
-  <Version>2016.10.04 00-01 d</Version>
+  <Version>2016.10.04 13-27</Version>
   <Image>Images\DemoTest.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
@@ -20,7 +20,7 @@
         <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrZayav" class="arcBtn_Open_ReestrZayav" message="Работа с реестром - реестр заявлений" caption="Реестр заявлений" tip="Показать реестр заявлений" category="TKC:Работа с реестром" image="Images\arcBtn_Open_ReestrZayav.png" />
         <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" class="arcBtn_Open_ReestrVedomostey" message="Работа с реестром - реестр ведомостей" caption="Реестр ведомостей" tip="Показать реестр ведомостей" category="TKC:Работа с реестром" image="Images\arcBtn_Open_ReestrVedomostey.png" />
         <Button id="TKC_arcBtn_Open_dwCadastralReference" class="arcBtn_Open_dwCadastralReference" message="Работать с кадастровой справкой" caption="Открыть кадастровую справку" tip="Показать/спрятать окно кадастровой справки" category="TKC:Работа с реестром" image="Images\arcBtn_Open_dwCadastralReference.png" />
-        <Tool id="TKC_arcTool_SelectOdject" class="arcTool_SelectOdject" message="notUse" caption="notUse" tip="notUse" category="TKC:Работа с реестром"  />
+        <Tool id="TKC_arcTool_SelectOdject" class="arcTool_SelectOdject" message="notUse" caption="notUse" tip="notUse" category="TKC:Работа с реестром" cursor="Images\arcTool_SelectCursor.cur"  />
       </Commands>
       <Toolbars>
         <Toolbar id="TKC_WorckWithReestr_toolbar" caption="Работа с реестром" showInitially="true">

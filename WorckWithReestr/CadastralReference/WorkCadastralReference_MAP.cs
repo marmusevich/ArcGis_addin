@@ -70,7 +70,7 @@ namespace CadastralReference
                     {
                         tabName = (feature.Class as IDataset).Name;
                         //проверка на принадлежность нашему проекту
-                       // if (CadastralReferenceData.ObjectTableName.ToLower() == tabName.ToLower())
+                        if (CadastralReferenceData.ObjectTableName.ToLower() == tabName.ToLower())
                         {
                             objectID = feature.OID;
                         }

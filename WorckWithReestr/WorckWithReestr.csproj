@@ -473,6 +473,9 @@
   <ItemGroup>
     <AddInContent Include="Images\arcBtn_Open_dwCadastralReference.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\arcTool_SelectCursor.cur" />
+  </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
     <AddInTargetProduct>Desktop</AddInTargetProduct>

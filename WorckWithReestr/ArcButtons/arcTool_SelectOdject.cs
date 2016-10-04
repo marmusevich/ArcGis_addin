@@ -22,18 +22,18 @@ namespace WorckWithReestr
         }
 
 
-        protected override void OnActivate()
-        {
-            MessageBox.Show("OnActivate");
+        //protected override void OnActivate()
+        //{
+        //    MessageBox.Show("OnActivate");
 
-            //this.Cursor = Cursors.Cross;
-        }
-        protected override bool OnDeactivate()
-        {
-            MessageBox.Show("OnDeactivate");
-            //this.Cursor = Cursors.Default;
-            return false;
-        }
+        //    //this.Cursor = Cursors.Cross;
+        //}
+        //protected override bool OnDeactivate()
+        //{
+        //    MessageBox.Show("OnDeactivate");
+        //    //this.Cursor = Cursors.Default;
+        //    return false;
+        //}
 
 
         ////this.Cursor = Cursors.Hand;
@@ -49,7 +49,7 @@ namespace WorckWithReestr
         {
             //ESRI.ArcGIS.Framework.IMouseCursor appCursor = new ESRI.ArcGIS.Framework.MouseCursorClass();
             //appCursor.SetCursor(3);
-            this.Cursor = Cursors.Cross;
+          //  this.Cursor = Cursors.Cross;
         }
 
 
@@ -65,7 +65,7 @@ namespace WorckWithReestr
             //ESRI.ArcGIS.Framework.IMouseCursor appCursor = new ESRI.ArcGIS.Framework.MouseCursorClass();
             //appCursor.SetCursor(0);
 
-            this.Cursor = Cursors.Default;
+           // this.Cursor = Cursors.Default;
         }
 
 

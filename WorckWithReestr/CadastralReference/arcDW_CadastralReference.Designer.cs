@@ -176,7 +176,7 @@ namespace WorckWithReestr
             this.btnSetObject.Name = "btnSetObject";
             this.btnSetObject.Size = new System.Drawing.Size(102, 35);
             this.btnSetObject.TabIndex = 7;
-            this.btnSetObject.Text = "Запомнить выделенный";
+            this.btnSetObject.Text = "Выбрать объект";
             this.btnSetObject.UseVisualStyleBackColor = true;
             this.btnSetObject.Click += new System.EventHandler(this.btnSetObject_Click);
             // 
