@@ -11,9 +11,6 @@ namespace CadastralReference
     public static class WorkCadastralReference_DB
     {
         //
-        private const string DB_NameWorkspace = "Kadastr2016";
-        private const string ReestrZayav_NameTable = "Kn_Reg_Zayv";
-        private const string CadastralReferenceData_NameTable = "CadastralReferenceData";
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         public static byte[] ImageToByteArray(Image imageIn)
@@ -57,13 +54,13 @@ namespace CadastralReference
             IWorkspaceEdit wse = null;
             try
             {
-                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(CadastralReferenceData.DB_NameWorkspace) as IFeatureWorkspace;
                 // начать транзакцию
                 wse = fws as IWorkspaceEdit;
                 wse.StartEditing(false);
                 wse.StartEditOperation();
 
-                ITable table = fws.OpenTable(CadastralReferenceData_NameTable);
+                ITable table = fws.OpenTable(CadastralReferenceData.CadastralReferenceData_NameTable);
                 IRow row = null;
 
                 int referensePageId = GetPageBaseIDInParametrsPage(fws, zayavkaId, pageId);
@@ -109,12 +106,12 @@ namespace CadastralReference
         {
             try
             {
-                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(CadastralReferenceData.DB_NameWorkspace) as IFeatureWorkspace;
 
                 int referensePageId = GetPageBaseIDInParametrsPage(fws, zayavkaId, pageId);
                 if (referensePageId != -1)
                 { 
-                    ITable table = fws.OpenTable(CadastralReferenceData_NameTable);
+                    ITable table = fws.OpenTable(CadastralReferenceData.CadastralReferenceData_NameTable);
                     IRow row = table.GetRow(referensePageId);
                     IMemoryBlobStream memoryBlobStream = (IMemoryBlobStream)row.get_Value(table.FindField("data"));
                     object odata;
@@ -140,13 +137,13 @@ namespace CadastralReference
             IWorkspaceEdit wse = null;
             try
             {
-                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(CadastralReferenceData.DB_NameWorkspace) as IFeatureWorkspace;
                 // начать транзакцию
                 wse = fws as IWorkspaceEdit;
                 wse.StartEditing(false);
                 wse.StartEditOperation();
 
-                ITable  table = fws.OpenTable(ReestrZayav_NameTable);
+                ITable  table = fws.OpenTable(CadastralReferenceData.ReestrZayav_NameTable);
                 IRow row = null;
 
                 row = table.GetRow(ZayavkaID);
@@ -175,8 +172,6 @@ namespace CadastralReference
 
 
                     // а какие проверки? все изменения возможные реализовать
-
-
 
                     ////проверка на объект карты
                     //if (MapObjectID != oldMapObjectID)
@@ -245,8 +240,8 @@ namespace CadastralReference
 
             try
             {
-                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
-                ITable table = fws.OpenTable(ReestrZayav_NameTable);
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(CadastralReferenceData.DB_NameWorkspace) as IFeatureWorkspace;
+                ITable table = fws.OpenTable(CadastralReferenceData.ReestrZayav_NameTable);
                 IRow row = table.GetRow(ZayavkaID);
 
                 if (row != null)
@@ -303,7 +298,7 @@ namespace CadastralReference
         {
             int ret = -1;
             IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-            queryDef2.Tables = CadastralReferenceData_NameTable;
+            queryDef2.Tables = CadastralReferenceData.CadastralReferenceData_NameTable;
             queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
             queryDef2.WhereClause = "zayavkaId = " + zayavkaId.ToString() + " and pageId = " + pageId.ToString();
             ICursor cursor = queryDef2.Evaluate2(true);
@@ -335,9 +330,9 @@ namespace CadastralReference
             try
             {
                 //SELECT OBJECTID, zayavkaId, zayavkaDiscription, pageId, pageCaption, data   FROM[Kadastr2016].[dbo].[CADASTRALREFERENCEDATA]
-                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(CadastralReferenceData.DB_NameWorkspace) as IFeatureWorkspace;
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
-                queryDef2.Tables = CadastralReferenceData_NameTable;
+                queryDef2.Tables = CadastralReferenceData.CadastralReferenceData_NameTable;
                 queryDef2.SubFields = "DISTINCT  OBJECTID, pageCaption";
                 queryDef2.WhereClause = "zayavkaId = " + zayavkaId.ToString();
                 ICursor cursor = queryDef2.Evaluate2(true);
@@ -366,13 +361,13 @@ namespace CadastralReference
             IWorkspaceEdit wse = null;
             try
             {
-                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(DB_NameWorkspace) as IFeatureWorkspace;
+                IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(CadastralReferenceData.DB_NameWorkspace) as IFeatureWorkspace;
                 // начать транзакцию
                 wse = fws as IWorkspaceEdit;
                 wse.StartEditing(false);
                 wse.StartEditOperation();
 
-                ITable table = fws.OpenTable(CadastralReferenceData_NameTable);
+                ITable table = fws.OpenTable(CadastralReferenceData.CadastralReferenceData_NameTable);
 
                 IRow row = table.GetRow(objectID);
                 row.Delete();

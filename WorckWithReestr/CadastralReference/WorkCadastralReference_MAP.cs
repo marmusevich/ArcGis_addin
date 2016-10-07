@@ -57,6 +57,7 @@ namespace CadastralReference
             IActiveView activeView = mxDoc.ActiveView;
 
             int objectID = -1;
+            string object_Discription = "";
 
             //переберем все выбранные объекты на карте
             IEnumFeature enumFeature = mxDoc.FocusMap.FeatureSelection as IEnumFeature;
@@ -70,14 +71,16 @@ namespace CadastralReference
                     {
                         tabName = (feature.Class as IDataset).Name;
                         //проверка на принадлежность нашему проекту
-                        if (CadastralReferenceData.ObjectTableName.ToLower() == tabName.ToLower())
+                        if (CadastralReferenceData.ObjectWorkspaceAndTableName.ToLower() == tabName.ToLower())
                         {
                             objectID = feature.OID;
+                            object_Discription = "" + feature.get_Value(feature.Fields.FindField("Adr_Obj")) as string;
                         }
                     }
                 }
                 feature = enumFeature.Next();
             }
+            WorkCadastralReference.GetCadastralReferenceData().MapObjectID_Discription = object_Discription;
             WorkCadastralReference.GetCadastralReferenceData().MapObjectID = objectID;
 
             if (WorkCadastralReference.GetCadastralReferenceData().MapObjectID != -1)
@@ -95,12 +98,6 @@ namespace CadastralReference
         //спозиционировать на выбраном объекте, отценриовать
         public static void SetScaleAndCentred()
         {
-            //
-            //показать на карте
-            //SharedClasses.GeneralMapWork.ShowOnMap(ITable table, int objectID)
-            //спозиционироваться на выбранном объекте, установить масштаб
-            //SharedClasses.GeneralMapWork.PositionedOnSelectedObjectAndSetScale(IMxDocument mxDoc, IMap map)
-
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 
             if ((mxdoc.ActiveView is IPageLayout))
@@ -117,6 +114,54 @@ namespace CadastralReference
                 //mxdoc.ActiveView.Refresh();
             }
         }
+
+
+        //показать на карте
+        public static void ShowOnMap(int objectID)
+        {
+            try
+            {
+                //- проверить и получить связаный слой
+                IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+                if (mxDoc == null)
+                    return;
+
+                IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
+                ILayer layer = enumLayer.Next();
+                while (layer != null)
+                {
+                    if (CadastralReferenceData.ObjectLayerName.ToLower() != layer.Name.ToLower())
+                        continue;
+
+                    IFeatureClass fc = (layer as IFeatureLayer2).FeatureClass;
+                    if (fc != null)
+                    {
+                        SharedClasses.GeneralMapWork.SelectLayersFeatures(layer as IFeatureLayer, string.Format("OBJECTID = {0}", objectID));
+                        IFeature selectedFeature = (mxDoc.FocusMap.FeatureSelection as IEnumFeature).Next();
+                        //ITable tab = selectedFeature.Table;
+                        //IRow row = tab.GetRow(objectID);
+                        //WorkCadastralReference.GetCadastralReferenceData().MapObjectID_Discription = "" + row.get_Value(tab.FindField("Adr_Obj")) as string;
+                        WorkCadastralReference.GetCadastralReferenceData().MapObjectID_Discription = "" + selectedFeature.get_Value(selectedFeature.Fields.FindField("Adr_Obj")) as string;
+                        //MessageBox.Show("" + row.get_Value(tab.FindField("Adr_Obj")) as string + " + " + selectedFeature.get_Value(selectedFeature.Fields.FindField("Adr_Obj")) as string);
+
+                        if ((mxDoc.ActiveView is IPageLayout))
+                            mxDoc.ActiveView = mxDoc.FocusMap as IActiveView;
+
+                        IEnvelope envelope = selectedFeature.Shape.Envelope;
+                        envelope.Expand(10, 10, true);
+                        mxDoc.ActiveView.Extent = envelope;
+                        mxDoc.ActiveView.Refresh();
+                        break;
+                    }
+                    layer = enumLayer.Next();
+                }
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, string.Format("Показать на карте объект id {0}", objectID));
+            }
+        }
+
 
         // переключить слои
         public static void EnableLayersFromPages(OnePageDescriptions opd)
@@ -207,7 +252,7 @@ namespace CadastralReference
             }
             return ret;
         }
-        
+
         // выбрать ближайшеий больший стандартный маштаб
         public static void SetStandartMapSkale()
         {
@@ -228,7 +273,7 @@ namespace CadastralReference
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
 
         //получить размер листа
         public static IPoint GetPageSaze()
@@ -381,7 +426,7 @@ namespace CadastralReference
                 element = gc.Next();
             }
 
-            foreach(IElement e in forDel)
+            foreach (IElement e in forDel)
             {
                 gc.DeleteElement(e);
             }
@@ -498,8 +543,8 @@ namespace CadastralReference
             }
             else if (opd.ScaleBar_AncorVertical == esriTextVerticalAlignment.esriTVACenter)
             {
-                y1 = y - opd.ScaleBar_Height/2;
-                y2 = y + opd.ScaleBar_Height/2;
+                y1 = y - opd.ScaleBar_Height / 2;
+                y2 = y + opd.ScaleBar_Height / 2;
             }
             else
             {
@@ -514,8 +559,8 @@ namespace CadastralReference
             }
             else if (opd.ScaleBar_AncorHorizontal == esriTextHorizontalAlignment.esriTHACenter)
             {
-                x1 = x - opd.ScaleBar_Width/2;
-                x2 = x + opd.ScaleBar_Width/2;
+                x1 = x - opd.ScaleBar_Width / 2;
+                x2 = x + opd.ScaleBar_Width / 2;
             }
             else
             {

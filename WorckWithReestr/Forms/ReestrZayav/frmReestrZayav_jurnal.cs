@@ -64,7 +64,6 @@ namespace WorckWithReestr
 
         protected override void SetDefaultDisplayOrder()
         {
-
             int[] displayIndicies = {0,// base.table.FindField("OBJECTID "),// 0
                                       base.table.FindField("N_Z"),// 1
                                       base.table.FindField("Data_Z"),// 2
@@ -95,7 +94,6 @@ namespace WorckWithReestr
                                       base.table.FindField("IsHaveReferense"),
                                       base.table.FindField("IsReferenceClose"),
                                       base.table.FindField("MapObjectID")
-
                                     };
             GeneralApp.SetDisplayOrderByArray(ref dgv, displayIndicies);
         }

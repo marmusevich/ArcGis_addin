@@ -398,6 +398,7 @@ namespace WorckWithReestr
             if (MessageBox.Show("Закрыть справку для редактирования? добавить проверки", "Кадастровая справка", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose = true;
+                WorkCadastralReference_DB.EditZayavkaData(WorkCadastralReference.GetCadastralReferenceData().ZayavkaID, WorkCadastralReference.GetCadastralReferenceData().MapObjectID, null, true);
             }
         }
 

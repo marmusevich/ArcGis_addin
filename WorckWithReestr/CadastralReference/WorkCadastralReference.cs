@@ -143,11 +143,17 @@ namespace CadastralReference
                 GetCadastralReferenceData().ZayavkaData = WorkCadastralReference_DB.GetZayavkaData(zayavkaID);
                 GetCadastralReferenceData().ZayavkaID = zayavkaID;
 
-                GetCadastralReferenceData().MapObjectID = (int)GetCadastralReferenceData().ZayavkaData["MapObjectID"] ;
+                int MapObjectID = (int)GetCadastralReferenceData().ZayavkaData["MapObjectID"];
+
+                
                 GetCadastralReferenceData().IsReferenceClose = (bool)GetCadastralReferenceData().ZayavkaData["IsReferenceClose"];
 
-                if (GetCadastralReferenceData().MapObjectID != -1)
+                if (MapObjectID != -1)
+                {
                     LoadFromDB();
+                    WorkCadastralReference_MAP.ShowOnMap(MapObjectID);
+                }
+                GetCadastralReferenceData().MapObjectID = MapObjectID;
             }
         }
 
@@ -228,7 +234,7 @@ namespace CadastralReference
             if(GetCadastralReferenceData().MapObjectID != -1)
             {
                 LoadFromDB();
-                ret = "Указан объект №" + GetCadastralReferenceData().MapObjectID.ToString();
+                ret = "Указан объект '" + GetCadastralReferenceData().MapObjectID_Discription + "'  (№" + GetCadastralReferenceData().MapObjectID.ToString()+")";
             }
             return ret;
         }

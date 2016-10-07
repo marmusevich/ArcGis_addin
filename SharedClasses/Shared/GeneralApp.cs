@@ -139,10 +139,17 @@ namespace SharedClasses
         //устоновить порядок колонок по массиву
         public static void SetDisplayOrderByArray(ref DataGridView dgv, int[] displayIndices)
         {
-            for (int i = 0; i < displayIndices.Length; i++)
+            try
             {
-                //dgv.Columns[i].DisplayIndex = displayIndicies[i];
-                dgv.Columns[displayIndices[i]].DisplayIndex = i;
+                for (int i = 0; i < displayIndices.Length; i++)
+                {
+                    //dgv.Columns[i].DisplayIndex = displayIndicies[i];
+                    dgv.Columns[displayIndices[i]].DisplayIndex = i;
+                }
+            }
+            catch (Exception ex) // обработка ошибок
+            {
+                Logger.Write(ex, " _SetDisplayOrderByArray_ ");
             }
         }
         //получить дату первого дня месяца

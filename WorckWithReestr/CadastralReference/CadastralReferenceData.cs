@@ -14,6 +14,21 @@ namespace CadastralReference
     [XmlRootAttribute("CadastralReferenceData", IsNullable = true)]
     public class CadastralReferenceData
     {
+        [XmlIgnore]
+        public const string ObjectLayerName = @"Зона розміщення об’єкту ";
+        [XmlIgnore]
+        public const string ObjectWorkspaceAndTableName = @"Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX";
+
+        [XmlIgnore]
+        public const string DB_NameWorkspace = @"Kadastr2016";
+        [XmlIgnore]
+        public const string ReestrZayav_NameTable = @"Kn_Reg_Zayv";
+        [XmlIgnore]
+        public const string CadastralReferenceData_NameTable = @"CadastralReferenceData";
+
+
+
+
         #region по умолчанию
         public void InitDefaultSetting()
         {
@@ -76,11 +91,6 @@ namespace CadastralReference
 
         #endregion // по умолчанию
 
-        [XmlIgnore]
-        public const string ObjectLayerName = "Зона розміщення об’єкту ";
-        [XmlIgnore]
-        public const string ObjectTableName = "Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX";
-
         ////////////////////////////////////////////////////////////////////////////////////////////
         #region внутренние переменные
 
@@ -142,6 +152,9 @@ namespace CadastralReference
                 }
             }
         }
+        [XmlIgnore]
+        public string MapObjectID_Discription = "";
+
         /// <summary>
         /// справка закрыта для редактирования
         /// </summary>

@@ -47,8 +47,7 @@ namespace CadastralReference
             txtRukovoditelDoljnost.Text = m_crd.RukovoditelDoljnost;
             txtRukovoditelFIO.Text = m_crd.RukovoditelFIO;
             txtObjectLayerName.Text = CadastralReferenceData.ObjectLayerName;
-            txtObjectTableName.Text = CadastralReferenceData.ObjectTableName;
-
+            txtObjectTableName.Text = CadastralReferenceData.ObjectWorkspaceAndTableName;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
