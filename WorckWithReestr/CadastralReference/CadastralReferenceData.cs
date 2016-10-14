@@ -41,54 +41,6 @@ namespace CadastralReference
                 Logger.Write(ex, "_InitDefaultSetting_");
             }
         }
-
-        private void addStandartTekst(OnePageDescriptions opd)
-        {
-            opd.DataFrameSyze_Down = 5;
-            opd.DataFrameSyze_Up = 2.5;
-            opd.DataFrameSyze_Left = 1;
-            opd.DataFrameSyze_Right = 1;
-
-            OneTextElementDescription oted;
-
-            oted = new OneTextElementDescription();
-            oted.Text = @"Адреса: {_ОписательныйАдрес_}";
-            oted.PosX = -1;
-            oted.PosY = -4;
-            oted.PagePosHorizontal = esriTextHorizontalAlignment.esriTHARight;
-            oted.PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
-            oted.AncorHorizontal = esriTextHorizontalAlignment.esriTHARight;
-            oted.AncorVertical = esriTextVerticalAlignment.esriTVABottom;
-            //oted.TextSymbolClass = new TextSymbolClass();
-            //((IFormattedTextSymbol)oted.TextSymbolClass).CharacterWidth = 10;
-            ////oted.TextSymbolClass.Size = 10;
-            opd.TextElements.Add(oted);
-
-            oted = new OneTextElementDescription();
-            oted.Text = @"{_ДолжностьРуководителя_}";
-            oted.PosX = -1;
-            oted.PosY = -3;
-            oted.PagePosHorizontal = esriTextHorizontalAlignment.esriTHARight;
-            oted.PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
-            oted.AncorHorizontal = esriTextHorizontalAlignment.esriTHARight;
-            oted.AncorVertical = esriTextVerticalAlignment.esriTVABottom;
-            //oted.TextSymbolClass = new TextSymbolClass();
-            //oted.TextSymbolClass.Size = 14;
-            opd.TextElements.Add(oted);
-
-            oted = new OneTextElementDescription();
-            oted.Text = @"__________________ {_ФИОруководителя_}";
-            oted.PosX = -1;
-            oted.PosY = -2;
-            oted.PagePosHorizontal = esriTextHorizontalAlignment.esriTHARight;
-            oted.PagePosVertical = esriTextVerticalAlignment.esriTVABottom;
-            oted.AncorHorizontal = esriTextHorizontalAlignment.esriTHARight;
-            oted.AncorVertical = esriTextVerticalAlignment.esriTVABottom;
-            //oted.TextSymbolClass = new TextSymbolClass();
-            //oted.TextSymbolClass.Size = 14;
-            opd.TextElements.Add(oted);
-        }
-
         #endregion // по умолчанию
 
         ////////////////////////////////////////////////////////////////////////////////////////////
