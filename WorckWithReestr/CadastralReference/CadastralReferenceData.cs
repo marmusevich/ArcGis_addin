@@ -60,13 +60,14 @@ namespace CadastralReference
         private StringCollection m_DinamicRTF = null;
         private string m_ConstRTF_Template = "";
         private string m_RaspiskaRTF_Template = "";
+
+        private string m_BodyText = "";
+        private PdfDocument m_AllDocumentPdf = null;
         #endregion
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////
         #region публичные свойства
-        /// <summary>
-        /// код заявления
-        /// </summary>
+        /// <summary>/// код заявления/// </summary>
         [XmlIgnore]
         public int ZayavkaID
         {
@@ -84,9 +85,7 @@ namespace CadastralReference
                 }
             }
         }
-        /// <summary>
-        /// код объекта
-        /// </summary>
+        /// <summary>/// код объекта/// </summary>
         [XmlIgnore]
         public int MapObjectID
         {
@@ -107,9 +106,7 @@ namespace CadastralReference
         [XmlIgnore]
         public string MapObjectID_Discription = "";
 
-        /// <summary>
-        /// справка закрыта для редактирования
-        /// </summary>
+        /// <summary>/// справка закрыта для редактирования/// </summary>
         [XmlIgnore]
         public bool IsReferenceClose
         {
@@ -127,56 +124,92 @@ namespace CadastralReference
                 }
             }
         }
-        /// <summary>
-        /// Данные заявки
-        /// </summary>
+        /// <summary>/// Данные заявки/// </summary>
         [XmlIgnore]
         public Dictionary<string, object> ZayavkaData { get { return m_ZayavkaData; } set { m_ZayavkaData = value; } }
 
-        /// <summary>
-        /// весь текст итогового документа
-        /// </summary>
+        /// <summary>/// весь текст итогового документа/// </summary>
         [XmlIgnore]
         public string AllRTF { get { return m_AllRTF; } set { m_AllRTF = value; } }
-        /// <summary>
-        /// титульный лист - шаблон
-        /// </summary>
+        /// <summary>/// титульный лист - шаблон/// </summary>
         [XmlElement("TitulRTF_Template")]
         public string TitulRTF_Template { get { return m_TitulRTF_Template; } set { m_TitulRTF_Template = value; } }
-        /// <summary>
-        /// надпись до динамической части - шаблон
-        /// </summary>
+        /// <summary>/// надпись до динамической части - шаблон/// </summary>
         [XmlElement("Page1RTF_Template")]
         public string Page1RTF_Template { get { return m_Page1RTF_Template; } set { m_Page1RTF_Template = value; } }
-        /// <summary>
-        /// Динамическая часть - шаблон
-        /// </summary>
+        /// <summary>/// Динамическая часть - шаблон/// </summary>
         [XmlArray("DinamicRTF_Template")]
         public StringCollection DinamicRTF_Template { get { return m_DinamicRTF_Template; } set { m_DinamicRTF_Template = value; } }
-        /// <summary>
-        /// Динамическая часть из документа
-        /// </summary>
+        /// <summary>/// Динамическая часть из документа/// </summary>
         [XmlIgnore]
         public StringCollection DinamicRTF { get { return m_DinamicRTF; } set { m_DinamicRTF = value; } }
-        /// <summary>
-        /// окончание документа - шаблон
-        /// </summary>
+        /// <summary>/// окончание документа - шаблон/// </summary>
         [XmlElement("ConstRTF_Template")]
         public string ConstRTF_Template { get { return m_ConstRTF_Template; } set { m_ConstRTF_Template = value; } }
-        /// <summary>
-        /// расписка - шаблон
-        /// </summary>
+        /// <summary>/// расписка - шаблон/// </summary>
         [XmlElement("RaspiskaRTF_Template")]
         public string RaspiskaRTF_Template { get { return m_RaspiskaRTF_Template; } set { m_RaspiskaRTF_Template = value; } }
 
         public string RukovoditelDoljnost = @"Начальник служби м\б кадастру";
         public string RukovoditelFIO = "Греков О.С.";
 
-        /// <summary>
-        /// свойства графических листов
-        /// </summary>
+        /// <summary> свойства графических листов        /// </summary>
         [XmlArray("Pages"), XmlArrayItem("Page")]
         public List<OnePageDescriptions> Pages { get { return m_Pages; } set { m_Pages = value; } }
+
+
+
+        //титульный лист
+        public string Titul_Template = "";
+        //основная часть - начало
+        public string Body_Begin_Template = "";
+        //шаблоны изменяемой части
+        private StringCollection m_Body_Template = null;
+        public StringCollection Body_Template { get { return m_Body_Template; } set { m_Body_Template = value; } }
+
+        // основная часть - итоговый документ
+        [XmlIgnore]
+        public string BodyText
+        {
+            get
+            {
+                return m_BodyText;
+            }
+            set
+            {
+                if (m_BodyText != value)
+                {
+                    m_BodyText = value;
+                    if (BodyText_Change != null)
+                        BodyText_Change(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        //основная часть - окончание
+        public string Body_End_Template = "";
+        //расписка
+        public string Raspiska_Template = "";
+
+        // итоговый документ
+        [XmlIgnore]
+        public PdfDocument AllDocumentPdf
+        {
+            get
+            {
+                return m_AllDocumentPdf;
+            }
+            set
+            {
+                if (m_AllDocumentPdf != value)
+                {
+                    m_AllDocumentPdf = value;
+                    if (AllDocumentPdf_Change != null)
+                        AllDocumentPdf_Change(this, EventArgs.Empty);
+                }
+            }
+        }
+
         #endregion
 
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -286,30 +319,29 @@ namespace CadastralReference
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         #region события
-        /// <summary>
-        /// смена заявления
-        /// </summary>
+        /// <summary>/// смена заявления/// </summary>
         public event EventHandler<EventArgs> ZayavkaID_Change;
 
-        /// <summary>
-        /// смена объекта
-        /// </summary>
+        /// <summary>/// смена объекта/// </summary>
         public event EventHandler<EventArgs> ObjektInMapID_Change;
         
-        /// <summary>
-        /// запрет редактирования
-        /// </summary>
+        /// <summary>/// запрет редактирования/// </summary>
         public event EventHandler<EventArgs> IsReferenceClose_Change;
         
-        /// <summary>
-        ///смена изображения
-        /// </summary>
+        /// <summary>///смена изображения/// </summary>
         public event EventHandler<EventArgs> Image_Change;
         private void OnImage_Change(object sender, EventArgs e)
         {
             if (Image_Change != null)
                 Image_Change(sender, EventArgs.Empty);
         }
+
+        /// <summary>///смена итоговый документ/// </summary>
+        public event EventHandler<EventArgs> AllDocumentPdf_Change;
+        /// <summary>///смена основная часть/// </summary>
+        public event EventHandler<EventArgs> BodyText_Change;
+        
+        
         #endregion
 
 

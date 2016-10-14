@@ -102,6 +102,15 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="HtmlRenderer">
+      <HintPath>..\..\..\c#\WindowsFormsApplication3\WindowsFormsApplication3\ExternalLib\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.PdfSharp">
+      <HintPath>..\..\..\c#\WindowsFormsApplication3\WindowsFormsApplication3\ExternalLib\HtmlRenderer.PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp">
+      <HintPath>..\..\..\c#\WindowsFormsApplication3\WindowsFormsApplication3\ExternalLib\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -128,6 +137,12 @@
       <DependentUpon>arcDW_CadastralReference.cs</DependentUpon>
     </Compile>
     <Compile Include="CadastralReference\CadastralReferenceData.cs" />
+    <Compile Include="CadastralReference\frmEditHTML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmEditHTML.Designer.cs">
+      <DependentUpon>frmEditHTML.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastralReference\frmHelpTemplateView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,17 +155,17 @@
     <Compile Include="CadastralReference\frmPrevImage.Designer.cs">
       <DependentUpon>frmPrevImage.cs</DependentUpon>
     </Compile>
-    <Compile Include="CadastralReference\frmRTF.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CadastralReference\frmRTF.Designer.cs">
-      <DependentUpon>frmRTF.cs</DependentUpon>
-    </Compile>
     <Compile Include="CadastralReference\frmSelectLayers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CadastralReference\frmSelectLayers.Designer.cs">
       <DependentUpon>frmSelectLayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastralReference\frmSelectTextTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmSelectTextTemplate.Designer.cs">
+      <DependentUpon>frmSelectTextTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="CadastralReference\frmSetting.cs">
       <SubType>Form</SubType>
@@ -185,10 +200,10 @@
     <Compile Include="CadastralReference\OnePageDescriptions.cs" />
     <Compile Include="CadastralReference\OneTextElementDescription.cs" />
     <Compile Include="CadastralReference\TextTemplateConverter.cs" />
-    <Compile Include="CadastralReference\WorckWithRTF.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference_DB.cs" />
     <Compile Include="CadastralReference\WorkCadastralReference_MAP.cs" />
+    <Compile Include="CadastralReference\WorkCadastralReference_text.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
@@ -400,6 +415,9 @@
     <EmbeddedResource Include="CadastralReference\arcDW_CadastralReference.resx">
       <DependentUpon>arcDW_CadastralReference.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmEditHTML.resx">
+      <DependentUpon>frmEditHTML.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmHelpTemplateView.resx">
       <DependentUpon>frmHelpTemplateView.cs</DependentUpon>
     </EmbeddedResource>
@@ -409,14 +427,14 @@
     <EmbeddedResource Include="CadastralReference\frmPrevImage.resx">
       <DependentUpon>frmPrevImage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadastralReference\frmRTF.resx">
-      <DependentUpon>frmRTF.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmScaleBarSetting.resx">
       <DependentUpon>frmScaleBarSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmSelectLayers.resx">
       <DependentUpon>frmSelectLayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmSelectTextTemplate.resx">
+      <DependentUpon>frmSelectTextTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
@@ -475,6 +493,12 @@
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Images\arcTool_SelectCursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ExternalLib\GvS.Controls.HtmlTextbox\GvS.Controls.HtmlTextbox.csproj">
+      <Project>{aaa9e9d4-7a91-46bf-a5fd-11538e57d5c2}</Project>
+      <Name>GvS.Controls.HtmlTextbox</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

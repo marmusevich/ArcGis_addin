@@ -644,5 +644,41 @@ namespace CadastralReference
             }
         }
         #endregion
+
+        private void btnEditTitul_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Titul_Template);
+        }
+
+        private void btnEditBodyBegin_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Body_Begin_Template);
+        }
+
+        private void btnEditBodyEnd_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Body_End_Template);
+        }
+
+        private void btnEditRaspiska_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Raspiska_Template);
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            //string xml;
+            //xml = File.ReadAllText(XML_filename);
+            //crd.LoadSettingFromXMLString(xml);
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //string xml = crd.SaveSettingToXMLString();
+            //File.WriteAllText(XML_filename, xml);
+        }
+
+
     }
 }
