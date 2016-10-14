@@ -34,8 +34,8 @@ namespace CadastralReference
 
         private void btnHelpTemplate_Click(object sender, EventArgs e)
         {
-            //Form frm = new frmHelpTemplateView();
-            //frm.ShowDialog();
+            Form frm = new frmHelpTemplateView();
+            frm.ShowDialog();
         }
 
         private void btnAddTemplate_Click(object sender, EventArgs e)

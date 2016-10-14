@@ -36,10 +36,11 @@ namespace WorckWithReestr
             this.tlpPages = new System.Windows.Forms.TableLayoutPanel();
             this.btnSetting = new System.Windows.Forms.Button();
             this.pnRtf = new System.Windows.Forms.Panel();
-            this.lblRTF = new System.Windows.Forms.Label();
-            this.btnRTFPrev = new System.Windows.Forms.Button();
-            this.btnRTFSaveToDB = new System.Windows.Forms.Button();
-            this.btnRtfGenerate = new System.Windows.Forms.Button();
+            this.btnEditText = new System.Windows.Forms.Button();
+            this.lblPDF = new System.Windows.Forms.Label();
+            this.btnPDFPrev = new System.Windows.Forms.Button();
+            this.btnSavePDFToDB = new System.Windows.Forms.Button();
+            this.btnPDFGenerate = new System.Windows.Forms.Button();
             this.lblZayavka = new System.Windows.Forms.Label();
             this.lblZayavkaDiscriptions = new System.Windows.Forms.Label();
             this.btnZayavkaChange = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@ namespace WorckWithReestr
             this.tlpPages.Name = "tlpPages";
             this.tlpPages.RowCount = 1;
             this.tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpPages.Size = new System.Drawing.Size(319, 278);
+            this.tlpPages.Size = new System.Drawing.Size(319, 257);
             this.tlpPages.TabIndex = 0;
             // 
             // btnSetting
@@ -84,55 +85,66 @@ namespace WorckWithReestr
             this.pnRtf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnRtf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnRtf.Controls.Add(this.lblRTF);
-            this.pnRtf.Controls.Add(this.btnRTFPrev);
-            this.pnRtf.Controls.Add(this.btnRTFSaveToDB);
-            this.pnRtf.Controls.Add(this.btnRtfGenerate);
-            this.pnRtf.Location = new System.Drawing.Point(3, 399);
+            this.pnRtf.Controls.Add(this.btnEditText);
+            this.pnRtf.Controls.Add(this.lblPDF);
+            this.pnRtf.Controls.Add(this.btnPDFPrev);
+            this.pnRtf.Controls.Add(this.btnSavePDFToDB);
+            this.pnRtf.Controls.Add(this.btnPDFGenerate);
+            this.pnRtf.Location = new System.Drawing.Point(3, 378);
             this.pnRtf.Name = "pnRtf";
-            this.pnRtf.Size = new System.Drawing.Size(319, 63);
+            this.pnRtf.Size = new System.Drawing.Size(319, 96);
             this.pnRtf.TabIndex = 3;
             // 
-            // lblRTF
+            // btnEditText
             // 
-            this.lblRTF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnEditText.Location = new System.Drawing.Point(6, 64);
+            this.btnEditText.Name = "btnEditText";
+            this.btnEditText.Size = new System.Drawing.Size(306, 23);
+            this.btnEditText.TabIndex = 4;
+            this.btnEditText.Text = "Редактировать динамическую часть";
+            this.btnEditText.UseVisualStyleBackColor = true;
+            this.btnEditText.Click += new System.EventHandler(this.btnEditText_Click);
+            // 
+            // lblPDF
+            // 
+            this.lblPDF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRTF.Location = new System.Drawing.Point(6, 4);
-            this.lblRTF.Name = "lblRTF";
-            this.lblRTF.Size = new System.Drawing.Size(308, 23);
-            this.lblRTF.TabIndex = 3;
-            this.lblRTF.Text = "RTF";
-            this.lblRTF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPDF.Location = new System.Drawing.Point(6, 4);
+            this.lblPDF.Name = "lblPDF";
+            this.lblPDF.Size = new System.Drawing.Size(308, 23);
+            this.lblPDF.TabIndex = 3;
+            this.lblPDF.Text = "RTF";
+            this.lblPDF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnRTFPrev
+            // btnPDFPrev
             // 
-            this.btnRTFPrev.Location = new System.Drawing.Point(219, 30);
-            this.btnRTFPrev.Name = "btnRTFPrev";
-            this.btnRTFPrev.Size = new System.Drawing.Size(93, 23);
-            this.btnRTFPrev.TabIndex = 2;
-            this.btnRTFPrev.Text = "Просмотр";
-            this.btnRTFPrev.UseVisualStyleBackColor = true;
-            this.btnRTFPrev.Click += new System.EventHandler(this.btnRTFPrev_Click);
+            this.btnPDFPrev.Location = new System.Drawing.Point(219, 35);
+            this.btnPDFPrev.Name = "btnPDFPrev";
+            this.btnPDFPrev.Size = new System.Drawing.Size(93, 23);
+            this.btnPDFPrev.TabIndex = 2;
+            this.btnPDFPrev.Text = "Просмотр";
+            this.btnPDFPrev.UseVisualStyleBackColor = true;
+            this.btnPDFPrev.Click += new System.EventHandler(this.btnPDFPrev_Click);
             // 
-            // btnRTFSaveToDB
+            // btnSavePDFToDB
             // 
-            this.btnRTFSaveToDB.Location = new System.Drawing.Point(107, 30);
-            this.btnRTFSaveToDB.Name = "btnRTFSaveToDB";
-            this.btnRTFSaveToDB.Size = new System.Drawing.Size(106, 23);
-            this.btnRTFSaveToDB.TabIndex = 1;
-            this.btnRTFSaveToDB.Text = "Сохранить в ДБ";
-            this.btnRTFSaveToDB.UseVisualStyleBackColor = true;
-            this.btnRTFSaveToDB.Click += new System.EventHandler(this.btnRTFSaveToDB_Click);
+            this.btnSavePDFToDB.Location = new System.Drawing.Point(107, 35);
+            this.btnSavePDFToDB.Name = "btnSavePDFToDB";
+            this.btnSavePDFToDB.Size = new System.Drawing.Size(106, 23);
+            this.btnSavePDFToDB.TabIndex = 1;
+            this.btnSavePDFToDB.Text = "Сохранить в ДБ";
+            this.btnSavePDFToDB.UseVisualStyleBackColor = true;
+            this.btnSavePDFToDB.Click += new System.EventHandler(this.btnPDFSaveToDB_Click);
             // 
-            // btnRtfGenerate
+            // btnPDFGenerate
             // 
-            this.btnRtfGenerate.Location = new System.Drawing.Point(6, 30);
-            this.btnRtfGenerate.Name = "btnRtfGenerate";
-            this.btnRtfGenerate.Size = new System.Drawing.Size(95, 23);
-            this.btnRtfGenerate.TabIndex = 0;
-            this.btnRtfGenerate.Text = "Генерировать";
-            this.btnRtfGenerate.UseVisualStyleBackColor = true;
-            this.btnRtfGenerate.Click += new System.EventHandler(this.btnRtfGenerate_Click);
+            this.btnPDFGenerate.Location = new System.Drawing.Point(6, 35);
+            this.btnPDFGenerate.Name = "btnPDFGenerate";
+            this.btnPDFGenerate.Size = new System.Drawing.Size(95, 23);
+            this.btnPDFGenerate.TabIndex = 0;
+            this.btnPDFGenerate.Text = "Генерировать";
+            this.btnPDFGenerate.UseVisualStyleBackColor = true;
+            this.btnPDFGenerate.Click += new System.EventHandler(this.btnPDFGenerate_Click);
             // 
             // lblZayavka
             // 
@@ -256,10 +268,10 @@ namespace WorckWithReestr
     private TableLayoutPanel tlpPages;
     private Button btnSetting;
     private Panel pnRtf;
-    private Label lblRTF;
-    private Button btnRTFPrev;
-    private Button btnRTFSaveToDB;
-    private Button btnRtfGenerate;
+    private Label lblPDF;
+    private Button btnPDFPrev;
+    private Button btnSavePDFToDB;
+    private Button btnPDFGenerate;
     private Label lblZayavka;
     private Label lblZayavkaDiscriptions;
     private Button btnZayavkaChange;
@@ -268,5 +280,6 @@ namespace WorckWithReestr
         private Label lblObjectMapIDDiscriptions;
         private Label lblObjectMapID;
         private LinkLabel llblClearData;
+        private Button btnEditText;
     }
 }

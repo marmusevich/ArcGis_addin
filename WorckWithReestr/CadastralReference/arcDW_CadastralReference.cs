@@ -31,6 +31,10 @@ namespace WorckWithReestr
             WorkCadastralReference.GetCadastralReferenceData().ZayavkaID_Change += new EventHandler<EventArgs>(ZayavkaID_Change);
             WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID_Change += new EventHandler<EventArgs>(ObjektInMapID_Change);
             WorkCadastralReference.GetCadastralReferenceData().IsReferenceClose_Change += new EventHandler<EventArgs>(IsReferenceClose_Change);
+
+            WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf_Change += new EventHandler<EventArgs>(AllDocumentPdf_Change);
+            WorkCadastralReference.GetCadastralReferenceData().BodyText_Change += new EventHandler<EventArgs>(BodyText_Change);
+
             EnablePanels();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,8 +42,6 @@ namespace WorckWithReestr
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region создать элементы управления
-
-
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // генерировать автоматом
@@ -75,29 +77,11 @@ namespace WorckWithReestr
                 colum++;
             }
 
-            //текстовый лист
-            OnePageDescriptions opd = new OnePageDescriptions("Описательная часть", true);
-            tlpPages.RowCount++;
-            tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tlpPages.Controls.Add(Create_cbSelect(opd), 0, colum * 2);
-            tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tlpPages.Controls.Add(Create_pnlWorckText(prefix_pnlPage + opd.PagesID.ToString()), 0, colum * 2 + 1);
-            //
-            //xbSelect_OnChecked(opd);
-            SetTextToxbSelect(opd);
-
             //
             tlpPages.Visible = false;
             tlpPages.ResumeLayout(false);
             ResumeLayout(false);
             tlpPages.Visible = true; 
-        }
-
-        // лист текстового описания справки
-        private Panel Create_pnlWorckText(string panelName)
-        {
-            Panel pnlTexts = new Panel();
-            return pnlTexts;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -290,8 +274,8 @@ namespace WorckWithReestr
             btnSetObject.Enabled = f && (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1);
             btnCloseEdit.Enabled = f && (WorkCadastralReference.GetCadastralReferenceData().ZayavkaID != -1);
 
-            btnRtfGenerate.Enabled = f;
-            btnRTFSaveToDB.Enabled = f;
+            btnPDFGenerate.Enabled = f;
+            btnSavePDFToDB.Enabled = f;
 
             Control c;
             foreach (OnePageDescriptions pd in WorkCadastralReference.GetCadastralReferenceData().Pages)
@@ -311,6 +295,27 @@ namespace WorckWithReestr
             c = GetControlByName(prefix_btnSaveToDB + opd.PagesID.ToString());
             if (c != null)
                 c.Enabled = f;
+        }
+
+        private void SetTextToPDFLabel()
+        {
+
+            bool isPDF = WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf != null;
+            bool isBodyText = WorkCadastralReference.GetCadastralReferenceData().BodyText != "";
+
+            string str = "";
+
+            if (isPDF)
+                str += "Есть PDF. ";
+            else
+                str += "Нет PDF. ";
+
+            if (isBodyText)
+                str += "Есть Динамическая часть.";
+            else
+                str += "Нет Динамическая части.";
+
+            lblPDF.Text = str;
         }
         #endregion вспомогательные функции
 
@@ -358,23 +363,29 @@ namespace WorckWithReestr
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // RTF
-        private void btnRtfGenerate_Click(object sender, EventArgs e)
+        // PDF
+        private void btnPDFGenerate_Click(object sender, EventArgs e)
         {
-            WorckWithRTF.GenerateRTF();
+            WorkCadastralReference_text.GeneratePDF();
         }
 
-        private void btnRTFSaveToDB_Click(object sender, EventArgs e)
+        private void btnPDFSaveToDB_Click(object sender, EventArgs e)
         {
-            WorkCadastralReference.SaveToDBRTF();
+            WorkCadastralReference.SaveToDBPDF();
         }
 
-        private void btnRTFPrev_Click(object sender, EventArgs e)
+        private void btnPDFPrev_Click(object sender, EventArgs e)
         {
-            frmRTF frm = new frmRTF();
-            frm.ShowDialog();
+            WorkCadastralReference_text.ShowPDF();
         }
 
+        private void btnEditText_Click(object sender, EventArgs e)
+        {
+            frmEditHTML frm = new frmEditHTML();
+            frm.tbHTML.Text = WorkCadastralReference.GetCadastralReferenceData().BodyText;
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                WorkCadastralReference.GetCadastralReferenceData().BodyText = frm.tbHTML.Text;
+        }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnSetting_Click(object sender, EventArgs e)
@@ -416,9 +427,7 @@ namespace WorckWithReestr
             }
         }
 
-
         #endregion События элементов управления
-
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region нашы события
@@ -456,6 +465,18 @@ namespace WorckWithReestr
         private void IsReferenceClose_Change(object sender, EventArgs e)
         {
             EnableControlsForCloseReference();
+        }
+
+
+        /// <summary>///смена итоговый документ/// </summary>
+        private void AllDocumentPdf_Change(object sender, EventArgs e)
+        {
+            SetTextToPDFLabel();
+        }
+        /// <summary>///смена основная часть/// </summary>
+        private void BodyText_Change(object sender, EventArgs e)
+        {
+            SetTextToPDFLabel();
         }
         #endregion нашы события
 
@@ -515,3 +536,4 @@ namespace WorckWithReestr
 
     }
 }
+

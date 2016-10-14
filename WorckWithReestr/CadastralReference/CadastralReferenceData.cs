@@ -6,6 +6,8 @@ using System.Xml.Serialization;
 using System.IO;
 using SharedClasses;
 using ESRI.ArcGIS.Display;
+using PdfSharp.Pdf;
+
 
 namespace CadastralReference
 {
@@ -25,9 +27,6 @@ namespace CadastralReference
         public const string ReestrZayav_NameTable = @"Kn_Reg_Zayv";
         [XmlIgnore]
         public const string CadastralReferenceData_NameTable = @"CadastralReferenceData";
-
-
-
 
         #region по умолчанию
         public void InitDefaultSetting()
@@ -52,14 +51,6 @@ namespace CadastralReference
         private int m_MapObjectID = -1;
         private bool m_IsReferenceClose = false;
         private Dictionary<string, object> m_ZayavkaData = null;
-
-        private string m_AllRTF = "";
-        private string m_TitulRTF_Template = "";
-        private string m_Page1RTF_Template = "";
-        private StringCollection m_DinamicRTF_Template = null;
-        private StringCollection m_DinamicRTF = null;
-        private string m_ConstRTF_Template = "";
-        private string m_RaspiskaRTF_Template = "";
 
         private string m_BodyText = "";
         private PdfDocument m_AllDocumentPdf = null;
@@ -128,28 +119,6 @@ namespace CadastralReference
         [XmlIgnore]
         public Dictionary<string, object> ZayavkaData { get { return m_ZayavkaData; } set { m_ZayavkaData = value; } }
 
-        /// <summary>/// весь текст итогового документа/// </summary>
-        [XmlIgnore]
-        public string AllRTF { get { return m_AllRTF; } set { m_AllRTF = value; } }
-        /// <summary>/// титульный лист - шаблон/// </summary>
-        [XmlElement("TitulRTF_Template")]
-        public string TitulRTF_Template { get { return m_TitulRTF_Template; } set { m_TitulRTF_Template = value; } }
-        /// <summary>/// надпись до динамической части - шаблон/// </summary>
-        [XmlElement("Page1RTF_Template")]
-        public string Page1RTF_Template { get { return m_Page1RTF_Template; } set { m_Page1RTF_Template = value; } }
-        /// <summary>/// Динамическая часть - шаблон/// </summary>
-        [XmlArray("DinamicRTF_Template")]
-        public StringCollection DinamicRTF_Template { get { return m_DinamicRTF_Template; } set { m_DinamicRTF_Template = value; } }
-        /// <summary>/// Динамическая часть из документа/// </summary>
-        [XmlIgnore]
-        public StringCollection DinamicRTF { get { return m_DinamicRTF; } set { m_DinamicRTF = value; } }
-        /// <summary>/// окончание документа - шаблон/// </summary>
-        [XmlElement("ConstRTF_Template")]
-        public string ConstRTF_Template { get { return m_ConstRTF_Template; } set { m_ConstRTF_Template = value; } }
-        /// <summary>/// расписка - шаблон/// </summary>
-        [XmlElement("RaspiskaRTF_Template")]
-        public string RaspiskaRTF_Template { get { return m_RaspiskaRTF_Template; } set { m_RaspiskaRTF_Template = value; } }
-
         public string RukovoditelDoljnost = @"Начальник служби м\б кадастру";
         public string RukovoditelFIO = "Греков О.С.";
 
@@ -217,7 +186,6 @@ namespace CadastralReference
         public CadastralReferenceData()
         {
             m_Pages = new List<OnePageDescriptions>();
-            DinamicRTF_Template = new StringCollection();
         }
 
         public CadastralReferenceData(CadastralReferenceData crd):this()
@@ -230,17 +198,6 @@ namespace CadastralReference
         {
             if (crd == null) return;
             
-            this.TitulRTF_Template = crd.TitulRTF_Template;
-            this.Page1RTF_Template = crd.Page1RTF_Template; 
-            this.ConstRTF_Template = crd.ConstRTF_Template; 
-            this.RaspiskaRTF_Template = crd.RaspiskaRTF_Template; 
-
-            if(crd.DinamicRTF_Template != null)
-            {
-                this.DinamicRTF_Template = new StringCollection();
-                foreach (string s in crd.DinamicRTF_Template)
-                    this.DinamicRTF_Template.Add(s);
-            }
             if (crd.Pages != null)
             {
                 foreach (OnePageDescriptions opd in crd.Pages)
@@ -265,6 +222,18 @@ namespace CadastralReference
             {
                 opd.Image_Change += new EventHandler<EventArgs>(OnImage_Change);
             }
+
+            this.Titul_Template = crd.Titul_Template;
+            this.Body_Begin_Template = crd.Body_Begin_Template;
+            if (crd.Body_Template != null)
+            {
+                this.Body_Template = new StringCollection();
+                foreach (string s in crd.Body_Template)
+                    this.Body_Template.Add(s);
+            }
+            this.Body_End_Template = crd.Body_End_Template;
+            this.Raspiska_Template = crd.Raspiska_Template;
+
         }
 
         public void ClearData()
@@ -273,8 +242,9 @@ namespace CadastralReference
             MapObjectID = -1;
             IsReferenceClose = false;
             ZayavkaData = null;
-            AllRTF = "";
-            DinamicRTF = new StringCollection();
+
+            BodyText = "";
+            AllDocumentPdf = null;
 
             if (Pages != null)
                 foreach (OnePageDescriptions opd in Pages)
@@ -351,11 +321,6 @@ namespace CadastralReference
             return @"<?xml version=""1.0"" encoding=""utf-16""?>     <CadastralReferenceData xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <RukovoditelDoljnost>Начальник служби м\б кадастру</RukovoditelDoljnost>
   <RukovoditelFIO>Греков О.С.</RukovoditelFIO>
-  <TitulRTF_Template />
-  <Page1RTF_Template />
-  <DinamicRTF_Template />
-  <ConstRTF_Template />
-  <RaspiskaRTF_Template />
   <Pages>
     <Page>
       <DataFrameSyze_Down>5</DataFrameSyze_Down>

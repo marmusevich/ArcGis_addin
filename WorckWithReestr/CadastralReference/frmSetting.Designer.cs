@@ -58,8 +58,8 @@ namespace CadastralReference
             this.lblBodyEnd = new System.Windows.Forms.Label();
             this.tpPages = new System.Windows.Forms.TabPage();
             this.tcPages = new System.Windows.Forms.TabControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnSaveToFile = new System.Windows.Forms.Button();
+            this.btnLoadFromFile = new System.Windows.Forms.Button();
             this.tcSetting.SuspendLayout();
             this.tpMain.SuspendLayout();
             this.pnListOfPages.SuspendLayout();
@@ -258,7 +258,7 @@ namespace CadastralReference
             // 
             // btnEditTitul
             // 
-            this.btnEditTitul.Location = new System.Drawing.Point(195, 12);
+            this.btnEditTitul.Location = new System.Drawing.Point(195, 8);
             this.btnEditTitul.Name = "btnEditTitul";
             this.btnEditTitul.Size = new System.Drawing.Size(107, 23);
             this.btnEditTitul.TabIndex = 6;
@@ -268,15 +268,16 @@ namespace CadastralReference
             // 
             // lblTitul
             // 
-            this.lblTitul.Location = new System.Drawing.Point(6, 12);
+            this.lblTitul.Location = new System.Drawing.Point(6, 8);
             this.lblTitul.Name = "lblTitul";
-            this.lblTitul.Size = new System.Drawing.Size(190, 23);
+            this.lblTitul.Size = new System.Drawing.Size(174, 23);
             this.lblTitul.TabIndex = 2;
             this.lblTitul.Text = "Титульный лист";
+            this.lblTitul.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnEditRaspiska
             // 
-            this.btnEditRaspiska.Location = new System.Drawing.Point(195, 108);
+            this.btnEditRaspiska.Location = new System.Drawing.Point(529, 34);
             this.btnEditRaspiska.Name = "btnEditRaspiska";
             this.btnEditRaspiska.Size = new System.Drawing.Size(107, 23);
             this.btnEditRaspiska.TabIndex = 7;
@@ -286,15 +287,16 @@ namespace CadastralReference
             // 
             // lblRaspiska
             // 
-            this.lblRaspiska.Location = new System.Drawing.Point(6, 108);
+            this.lblRaspiska.Location = new System.Drawing.Point(340, 34);
             this.lblRaspiska.Name = "lblRaspiska";
-            this.lblRaspiska.Size = new System.Drawing.Size(190, 23);
+            this.lblRaspiska.Size = new System.Drawing.Size(174, 23);
             this.lblRaspiska.TabIndex = 3;
             this.lblRaspiska.Text = "Расписка";
+            this.lblRaspiska.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnEditBodyBegin
             // 
-            this.btnEditBodyBegin.Location = new System.Drawing.Point(195, 44);
+            this.btnEditBodyBegin.Location = new System.Drawing.Point(195, 35);
             this.btnEditBodyBegin.Name = "btnEditBodyBegin";
             this.btnEditBodyBegin.Size = new System.Drawing.Size(107, 23);
             this.btnEditBodyBegin.TabIndex = 8;
@@ -304,15 +306,16 @@ namespace CadastralReference
             // 
             // lblBodyBegin
             // 
-            this.lblBodyBegin.Location = new System.Drawing.Point(6, 44);
+            this.lblBodyBegin.Location = new System.Drawing.Point(6, 35);
             this.lblBodyBegin.Name = "lblBodyBegin";
-            this.lblBodyBegin.Size = new System.Drawing.Size(190, 23);
+            this.lblBodyBegin.Size = new System.Drawing.Size(174, 23);
             this.lblBodyBegin.TabIndex = 4;
             this.lblBodyBegin.Text = "Основная часть - начало";
+            this.lblBodyBegin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnEditBodyEnd
             // 
-            this.btnEditBodyEnd.Location = new System.Drawing.Point(195, 76);
+            this.btnEditBodyEnd.Location = new System.Drawing.Point(529, 8);
             this.btnEditBodyEnd.Name = "btnEditBodyEnd";
             this.btnEditBodyEnd.Size = new System.Drawing.Size(107, 23);
             this.btnEditBodyEnd.TabIndex = 9;
@@ -322,11 +325,12 @@ namespace CadastralReference
             // 
             // lblBodyEnd
             // 
-            this.lblBodyEnd.Location = new System.Drawing.Point(6, 76);
+            this.lblBodyEnd.Location = new System.Drawing.Point(340, 8);
             this.lblBodyEnd.Name = "lblBodyEnd";
-            this.lblBodyEnd.Size = new System.Drawing.Size(190, 23);
+            this.lblBodyEnd.Size = new System.Drawing.Size(174, 23);
             this.lblBodyEnd.TabIndex = 5;
             this.lblBodyEnd.Text = "Основная часть - окончание";
+            this.lblBodyEnd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tpPages
             // 
@@ -348,33 +352,32 @@ namespace CadastralReference
             this.tcPages.Size = new System.Drawing.Size(645, 415);
             this.tcPages.TabIndex = 0;
             // 
-            // button1
+            // btnSaveToFile
             // 
-            this.button1.Location = new System.Drawing.Point(320, 465);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSaveToFile.Location = new System.Drawing.Point(294, 465);
+            this.btnSaveToFile.Name = "btnSaveToFile";
+            this.btnSaveToFile.Size = new System.Drawing.Size(108, 23);
+            this.btnSaveToFile.TabIndex = 5;
+            this.btnSaveToFile.Text = "Сохранить в файл";
+            this.btnSaveToFile.UseVisualStyleBackColor = true;
             // 
-            // btnLoad
+            // btnLoadFromFile
             // 
-            this.btnLoad.Location = new System.Drawing.Point(213, 465);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
-            this.btnLoad.TabIndex = 4;
-            this.btnLoad.Text = "Загрузить";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.btnLoadFromFile.Location = new System.Drawing.Point(164, 465);
+            this.btnLoadFromFile.Name = "btnLoadFromFile";
+            this.btnLoadFromFile.Size = new System.Drawing.Size(124, 23);
+            this.btnLoadFromFile.TabIndex = 4;
+            this.btnLoadFromFile.Text = "Загрузить из файла";
+            this.btnLoadFromFile.UseVisualStyleBackColor = true;
+            this.btnLoadFromFile.Click += new System.EventHandler(this.btnLoadFromFile_Click);
             // 
             // frmSetting
             // 
             this.AcceptButton = this.btnSave;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(672, 493);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnSaveToFile);
+            this.Controls.Add(this.btnLoadFromFile);
             this.Controls.Add(this.tcSetting);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
@@ -422,7 +425,7 @@ namespace CadastralReference
         private Label lblBodyBegin;
         private Button btnEditBodyEnd;
         private Label lblBodyEnd;
-        private Button button1;
-        private Button btnLoad;
+        private Button btnSaveToFile;
+        private Button btnLoadFromFile;
     }
 }

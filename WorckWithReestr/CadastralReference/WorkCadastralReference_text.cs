@@ -53,66 +53,45 @@ namespace CadastralReference
                 html = frm.tbHTML.Text;
         }
 
-        public static void ShowPDF(PdfDocument pdf)
+        public static void ShowPDF()
         {
-
-            if (pdf != null)
+            if (WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf != null)
             {
                 string tmpFileName = System.IO.Path.GetTempFileName() + ".pdf";
 
-                pdf.Save(tmpFileName);
+                WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.Save(tmpFileName);
 
                 Process.Start(tmpFileName);
             }
-
         }
 
-        public static string Implement(string input)
-        {
-            StringBuilder sb = new StringBuilder(input);
-            sb.Replace("{_масштаб_}", "текущий масштаб карты в формате 1:XXX");
-            return sb.ToString();
-        }
 
-        public static PdfDocument GeneratePDF(ref CadastralReferenceData crd)
+        public static PdfDocument GeneratePDF()
         {
             PdfDocument pdf = new PdfDocument();
-
             string str = "";
 
-            str = crd.Titul_Template;
-            //обработать шаблон
-            //str = TextTemplateConverter.Implement(crd.Titul_Template);
-            str = Implement(str);
+            str = TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Titul_Template);
             AddPageFromHTML(str, ref pdf);
 
-            str = crd.Body_Begin_Template;
-            //обработать шаблон
-            //str = TextTemplateConverter.Implement(crd.Body_Begin_Template);
-            str = Implement(str);
-            str += "<P>" + crd.BodyText + "</P>";
-            str += crd.Body_End_Template;
-            //обработать шаблон
-            //str += TextTemplateConverter.Implement(crd.Body_End_Template);
-            str = Implement(str);
+            str = TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Body_Begin_Template);
+            str += "<P>" + WorkCadastralReference.GetCadastralReferenceData().BodyText + "</P>";
+            str += TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Body_End_Template);
             AddPageFromHTML(str, ref pdf);
 
-
-            str = crd.Raspiska_Template;
-            //обработать шаблон
-            //str = TextTemplateConverter.Implement(crd.Raspiska_Template);
-            str = Implement(str);
+            str = TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Raspiska_Template);
             AddPageFromHTML(str, ref pdf);
 
-
-            AddPageFromImage(Image.FromFile(@"d:\a4.png"), ref pdf);
-            AddPageFromImage(Image.FromFile(@"d:\a3.png"), ref pdf);
-            AddPageFromImage(Image.FromFile(@"d:\1.png"), ref pdf);
-
+            if (WorkCadastralReference.GetCadastralReferenceData().Pages != null)
+                foreach (OnePageDescriptions opd in WorkCadastralReference.GetCadastralReferenceData().Pages)
+                    if(opd.Image != null)
+                        AddPageFromImage(opd.Image, ref pdf);
 
 
             pdf.Close();
-            ShowPDF(pdf);
+            WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf = pdf;
+
+            ShowPDF();
             return pdf;
         }
 

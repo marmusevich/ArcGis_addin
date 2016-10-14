@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using SharedClasses;
 using System.IO;
+using PdfSharp.Pdf.IO;
+using PdfSharp.Pdf;
+
 
 namespace CadastralReference
 {
@@ -30,6 +33,25 @@ namespace CadastralReference
             }
             return ret;
         }
+
+        public static byte[] PDFToByteArray(PdfDocument pdf)
+        {
+            MemoryStream ms = new MemoryStream();
+            pdf.Save(ms);
+            return ms.ToArray();
+        }
+
+        public static PdfDocument ByteArrayToPDF(byte[] byteArrayIn)
+        {
+            PdfDocument pdf = null;
+            if (byteArrayIn != null)
+            {
+                MemoryStream ms = new System.IO.MemoryStream(byteArrayIn);
+                pdf = new PdfDocument(ms);
+            }
+            return pdf;
+        }
+
 
         public static byte[] StringToByteArray(String str)
         {

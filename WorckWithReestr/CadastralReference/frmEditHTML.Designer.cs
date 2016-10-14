@@ -94,9 +94,9 @@
             // 
             this.btnAddTemplate.Location = new System.Drawing.Point(347, 6);
             this.btnAddTemplate.Name = "btnAddTemplate";
-            this.btnAddTemplate.Size = new System.Drawing.Size(104, 23);
+            this.btnAddTemplate.Size = new System.Drawing.Size(144, 23);
             this.btnAddTemplate.TabIndex = 10;
-            this.btnAddTemplate.Text = "btnAddTemplate";
+            this.btnAddTemplate.Text = "Добавить из заготовки";
             this.btnAddTemplate.UseVisualStyleBackColor = true;
             this.btnAddTemplate.Click += new System.EventHandler(this.btnAddTemplate_Click);
             // 

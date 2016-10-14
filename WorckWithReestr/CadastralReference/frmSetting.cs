@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SharedClasses;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CadastralReference
@@ -607,6 +609,8 @@ namespace CadastralReference
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
 
         }
 
@@ -665,20 +669,50 @@ namespace CadastralReference
             WorkCadastralReference_text.EditHTML(ref m_crd.Raspiska_Template);
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void btnLoadFromFile_Click(object sender, EventArgs e)
         {
-            //string xml;
-            //xml = File.ReadAllText(XML_filename);
-            //crd.LoadSettingFromXMLString(xml);
+            OpenFileDialog ofd = new OpenFileDialog();
+            try
+            {
+                ofd.InitialDirectory = GeneralApp.GetAppDataPathAndCreateDirIfNeed();
+                ofd.Filter = "XML|*.xml";
+                ofd.Title = "Сохранить..";
 
+                if ((ofd.ShowDialog() == DialogResult.OK) && ofd.FileName != "")
+                {
+                    string xml = File.ReadAllText(ofd.FileName);
+                    WorkCadastralReference.GetCadastralReferenceData().LoadSettingFromXMLString(xml);
+                }
+            }
+            catch (Exception ex)
+            {
+                // сообщить про ошибку
+                Logger.Write(ex, string.Format("На могу загрузить настройки из '{0}'", ofd.FileName));
+                GeneralApp.ShowErrorMessage(string.Format("На могу загрузить настройки из'{0}'", ofd.FileName));
+            }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSaveToFile_Click(object sender, EventArgs e)
         {
-            //string xml = crd.SaveSettingToXMLString();
-            //File.WriteAllText(XML_filename, xml);
+            SaveFileDialog sfd = new SaveFileDialog();
+            try
+            {
+                sfd.InitialDirectory = GeneralApp.GetAppDataPathAndCreateDirIfNeed();
+                sfd.Filter = "XML|*.xml";
+                sfd.Title = "Сохранить..";
+
+                if ((sfd.ShowDialog() == DialogResult.OK) && sfd.FileName != "")
+                {
+                    string xml = WorkCadastralReference.GetCadastralReferenceData().SaveSettingToXMLString();
+                    File.WriteAllText(sfd.FileName, xml);
+                }
+            }
+            catch (Exception ex)
+            {
+                // сообщить про ошибку
+                Logger.Write(ex, string.Format("На могу сохранить настройки в '{0}'", sfd.FileName));
+                GeneralApp.ShowErrorMessage(string.Format("На могу сохранить настройки в '{0}'", sfd.FileName));
+            }
         }
-
-
     }
 }

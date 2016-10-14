@@ -103,13 +103,13 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="HtmlRenderer">
-      <HintPath>..\..\..\c#\WindowsFormsApplication3\WindowsFormsApplication3\ExternalLib\HtmlRenderer.dll</HintPath>
+      <HintPath>ExternalLib\HtmlRenderer.dll</HintPath>
     </Reference>
     <Reference Include="HtmlRenderer.PdfSharp">
-      <HintPath>..\..\..\c#\WindowsFormsApplication3\WindowsFormsApplication3\ExternalLib\HtmlRenderer.PdfSharp.dll</HintPath>
+      <HintPath>ExternalLib\HtmlRenderer.PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp">
-      <HintPath>..\..\..\c#\WindowsFormsApplication3\WindowsFormsApplication3\ExternalLib\PdfSharp.dll</HintPath>
+      <HintPath>ExternalLib\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
