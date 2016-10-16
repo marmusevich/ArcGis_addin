@@ -101,7 +101,7 @@ namespace WorckWithReestr
             this.btnEditText.Name = "btnEditText";
             this.btnEditText.Size = new System.Drawing.Size(306, 23);
             this.btnEditText.TabIndex = 4;
-            this.btnEditText.Text = "Редактировать динамическую часть";
+            this.btnEditText.Text = "Редактировать изменяемую часть";
             this.btnEditText.UseVisualStyleBackColor = true;
             this.btnEditText.Click += new System.EventHandler(this.btnEditText_Click);
             // 

@@ -43,11 +43,15 @@ namespace CadastralReference
 
         public static PdfDocument ByteArrayToPDF(byte[] byteArrayIn)
         {
-            PdfDocument pdf = null;
+            PdfDocument pdf = new PdfDocument(); ;
             if (byteArrayIn != null)
             {
                 MemoryStream ms = new System.IO.MemoryStream(byteArrayIn);
-                pdf = new PdfDocument(ms);
+                PdfDocument PDFDoc = PdfReader.Open(ms, PdfDocumentOpenMode.Import);
+                for (int Pg = 0; Pg < PDFDoc.Pages.Count; Pg++)
+                {
+                    pdf.AddPage(PDFDoc.Pages[Pg]);
+                }
             }
             return pdf;
         }
@@ -126,11 +130,12 @@ namespace CadastralReference
         // получить один лист
         public static Byte[] LoadFromDBPage(int zayavkaId, int pageId, string pageCaption)
         {
+            int referensePageId = -1;
             try
             {
                 IFeatureWorkspace fws = GeneralDBWork.GetWorkspace(CadastralReferenceData.DB_NameWorkspace) as IFeatureWorkspace;
 
-                int referensePageId = GetPageBaseIDInParametrsPage(fws, zayavkaId, pageId);
+                referensePageId = GetPageBaseIDInParametrsPage(fws, zayavkaId, pageId);
                 if (referensePageId != -1)
                 { 
                     ITable table = fws.OpenTable(CadastralReferenceData.CadastralReferenceData_NameTable);
@@ -143,7 +148,7 @@ namespace CadastralReference
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, string.Format("Чтении листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
+                Logger.Write(ex, string.Format("Чтении листа справки '{0}'[{1}] заявка id {2} (recId [{3}])", pageCaption, pageId, zayavkaId, referensePageId));
                 GeneralApp.ShowErrorMessage(string.Format("Проблема при чтении листа справки '{0}' заявка id {1}", pageCaption, zayavkaId));
             }
 

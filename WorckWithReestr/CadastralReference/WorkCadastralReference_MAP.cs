@@ -304,7 +304,7 @@ namespace CadastralReference
             {
 
                 Logger.Write(ex, string.Format("Получение масштаба"));
-                GeneralApp.ShowErrorMessage(string.Format("Проблема при получении масштаба"));
+                //GeneralApp.ShowErrorMessage(string.Format("Проблема при получении масштаба"));
             }
             return ret;
         }

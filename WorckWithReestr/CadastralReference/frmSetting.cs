@@ -671,6 +671,10 @@ namespace CadastralReference
 
         private void btnLoadFromFile_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Заменить текущие настройки данными из файла?", "Загрузка настроек", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.No)
+                return;
+
             OpenFileDialog ofd = new OpenFileDialog();
             try
             {
@@ -681,12 +685,14 @@ namespace CadastralReference
                 if ((ofd.ShowDialog() == DialogResult.OK) && ofd.FileName != "")
                 {
                     string xml = File.ReadAllText(ofd.FileName);
-                    WorkCadastralReference.GetCadastralReferenceData().LoadSettingFromXMLString(xml);
+                    m_crd.LoadSettingFromXMLString(xml);
                 }
             }
             catch (Exception ex)
             {
                 // сообщить про ошибку
+                m_crd.InitDefaultSetting();
+
                 Logger.Write(ex, string.Format("На могу загрузить настройки из '{0}'", ofd.FileName));
                 GeneralApp.ShowErrorMessage(string.Format("На могу загрузить настройки из'{0}'", ofd.FileName));
             }
@@ -703,7 +709,7 @@ namespace CadastralReference
 
                 if ((sfd.ShowDialog() == DialogResult.OK) && sfd.FileName != "")
                 {
-                    string xml = WorkCadastralReference.GetCadastralReferenceData().SaveSettingToXMLString();
+                    string xml = m_crd.SaveSettingToXMLString();
                     File.WriteAllText(sfd.FileName, xml);
                 }
             }

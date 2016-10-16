@@ -79,8 +79,11 @@ namespace CadastralReference
             {
                 Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
                 opd.Image = img;
-                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), opd.PagesID, opd.Caption, WorkCadastralReference_DB.ImageToByteArray(opd.Image) );
-                WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
+                if (opd.Image != null)
+                {
+                    WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), opd.PagesID, opd.Caption, WorkCadastralReference_DB.ImageToByteArray(opd.Image));
+                    WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
+                }
             }
             catch (Exception ex) // обработка ошибок
             {
@@ -92,13 +95,23 @@ namespace CadastralReference
         {
             try
             {
-                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), 0, "текстовая часть", WorkCadastralReference_DB.PDFToByteArray(GetCadastralReferenceData().AllDocumentPdf));
-                WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), 1, "текстовая часть", WorkCadastralReference_DB.StringToByteArray(GetCadastralReferenceData().BodyText));
-                WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
+                bool f = false;
+                if (GetCadastralReferenceData().AllDocumentPdf != null)
+                {
+                    WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), 0, "PDF", WorkCadastralReference_DB.PDFToByteArray(GetCadastralReferenceData().AllDocumentPdf));
+                    f = true;
+                }
+                if (GetCadastralReferenceData().BodyText != null && GetCadastralReferenceData().BodyText != "")
+                {
+                    WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), 1, "изменяемая часть", WorkCadastralReference_DB.StringToByteArray(GetCadastralReferenceData().BodyText));
+                    f = true;
+                }
+                if(f)
+                    WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
             }
             catch (Exception ex) // обработка ошибок
             {
-                Logger.Write(ex, "SaveToDBRTF Error");
+                Logger.Write(ex, "SaveToDBPDF Error");
             }
         }
 
@@ -106,8 +119,8 @@ namespace CadastralReference
         {
             try
             {
-                GetCadastralReferenceData().AllDocumentPdf = WorkCadastralReference_DB.ByteArrayToPDF(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 0, "текстовая часть"));
-                GetCadastralReferenceData().BodyText = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 1, "текстовая часть"));
+                GetCadastralReferenceData().AllDocumentPdf = WorkCadastralReference_DB.ByteArrayToPDF(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 0, "PDF"));
+                GetCadastralReferenceData().BodyText = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 1, "изменяемая часть"));
                 foreach (OnePageDescriptions opd in GetCadastralReferenceData().Pages)
                 {
                     opd.Image = WorkCadastralReference_DB.ByteArrayToImage(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, opd.PagesID, opd.Caption)); 
