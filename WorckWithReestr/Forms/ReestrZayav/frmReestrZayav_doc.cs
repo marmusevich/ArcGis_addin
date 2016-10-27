@@ -30,6 +30,10 @@ namespace WorckWithReestr
         int mFio_Z = -1;
         int mRajon = -1;
 
+        bool IsHaveReferense = false;
+        bool IsReferenceClose = false;
+
+
         #endregion
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -82,8 +86,8 @@ namespace WorckWithReestr
             //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             SetIntValueFromDBToTextBox(ref row, "N_Z", txtN_Z);
 
-            bool IsHaveReferense = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "IsHaveReferense"));
-            bool IsReferenceClose = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "IsReferenceClose"));
+            IsHaveReferense = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "IsHaveReferense"));
+            IsReferenceClose = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "IsReferenceClose"));
             string tmp = "";
             if (IsHaveReferense)
             {
@@ -98,6 +102,17 @@ namespace WorckWithReestr
                 tmp += "Кадастровой справки нет.";
             }
             llblHaveReferense.Text = tmp;
+
+            // справка есть и она закрыта - заблкировать изменение
+            if (IsHaveReferense && IsReferenceClose)
+            {
+                foreach (System.Windows.Forms.Control c in Controls)
+                {
+                    c.Enabled = false;
+                }
+                btnOk.Enabled = true;
+                btnCancel.Enabled = true;
+            }
         }
 
         protected override void FormElement_to_DB(IRow row)

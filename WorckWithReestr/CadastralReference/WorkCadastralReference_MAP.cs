@@ -34,8 +34,6 @@ namespace CadastralReference
             }
         }
 
-
-
         /// <summary>
         /// Запоменание выбранного юъекта на карте с проверками
         /// </summary>
@@ -89,8 +87,8 @@ namespace CadastralReference
                 WorkCadastralReference.LoadFromDB();
             }
 
-            GeneralMapWork.ClearMapSelection();
-            GeneralMapWork.ClearAllLayerSelection();
+            //GeneralMapWork.ClearMapSelection();
+            //GeneralMapWork.ClearAllLayerSelection();
             ArcMap.Application.CurrentTool = null;
         }
 
@@ -377,7 +375,7 @@ namespace CadastralReference
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
             TextElementClass textElement = new TextElementClass();
             textElement.Name = oted.Text;
-            textElement.Text = TextTemplateConverter.Implement(oted.Text);
+            textElement.Text = TextTemplateConverter.Convert(oted.Text);
             textElement.Symbol = oted.TextSymbolClass;
             textElement.HorizontalAlignment = oted.AncorHorizontal;
             textElement.VerticalAlignment = oted.AncorVertical;

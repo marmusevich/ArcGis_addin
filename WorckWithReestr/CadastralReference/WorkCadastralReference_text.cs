@@ -6,6 +6,9 @@ using PdfSharp.Drawing;
 using System.Drawing;
 using System.Diagnostics;
 using System.Text;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
+using System.Windows.Forms;
+using PdfSharp.Pdf.Annotations;
 
 namespace CadastralReference
 {
@@ -13,7 +16,16 @@ namespace CadastralReference
     {
         private static void AddPageFromHTML(string html, ref PdfDocument pdf)
         {
-            PdfDocument pdftmp = TheArtOfDev.HtmlRenderer.PdfSharp.PdfGenerator.GeneratePdf(html, PdfSharp.PageSize.A4);
+            PdfGenerateConfig pgc = new PdfGenerateConfig();
+            pgc.PageSize = PdfSharp.PageSize.A4;
+            // переконветировать еденицы измерения
+            XSize a1 = PdfGenerateConfig.MilimitersToUnits(WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningDown, WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningUp);
+            XSize a2 = PdfGenerateConfig.MilimitersToUnits(WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningLeft, WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningRight);
+            pgc.MarginBottom = (int)a1.Width;
+            pgc.MarginTop = (int)a1.Height;
+            pgc.MarginLeft = (int)a2.Width;
+            pgc.MarginRight = (int)a2.Height;
+            PdfDocument pdftmp = TheArtOfDev.HtmlRenderer.PdfSharp.PdfGenerator.GeneratePdf(html, pgc);
             using (MemoryStream ms = new System.IO.MemoryStream((int)pdftmp.FileSize))
             {
                 pdftmp.Save(ms, false);
@@ -31,19 +43,16 @@ namespace CadastralReference
 
         private static void AddPageFromImage(Image image, ref PdfDocument pdf)
         {
-            PdfPage pdfPage = new PdfPage();
             XImage img = XImage.FromGdiPlusImage(image);
             PdfSharp.Drawing.XSize size = img.Size;
 
-            pdfPage.Width = size.Width;
-            pdfPage.Height = size.Height;
-
-            pdf.Pages.Add(pdfPage);
+            PdfPage pdfPage = pdf.AddPage();
+            pdfPage.Width = XUnit.FromPoint(size.Width);
+            pdfPage.Height = XUnit.FromPoint(size.Height);
 
             XGraphics xgr = XGraphics.FromPdfPage(pdfPage);
             xgr.DrawImage(img, 0, 0);
         }
-
 
         public static void EditHTML(ref string html)
         {
@@ -58,41 +67,49 @@ namespace CadastralReference
             if (WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf != null)
             {
                 string tmpFileName = System.IO.Path.GetTempFileName() + ".pdf";
-
                 WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.Save(tmpFileName);
-
                 Process.Start(tmpFileName);
             }
         }
 
 
-        public static PdfDocument GeneratePDF()
+        public static void GeneratePDF()
         {
             PdfDocument pdf = new PdfDocument();
             string str = "";
 
-            str = TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Titul_Template);
+            str = TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Titul_Template);
             AddPageFromHTML(str, ref pdf);
 
-            str = TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Body_Begin_Template);
+            str = TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Body_Begin_Template);
             str += "<P>" + WorkCadastralReference.GetCadastralReferenceData().BodyText + "</P>";
-            str += TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Body_End_Template);
+            str += TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Body_End_Template);
             AddPageFromHTML(str, ref pdf);
 
-            str = TextTemplateConverter.Implement(WorkCadastralReference.GetCadastralReferenceData().Raspiska_Template);
+            str = TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Raspiska_Template);
             AddPageFromHTML(str, ref pdf);
 
             if (WorkCadastralReference.GetCadastralReferenceData().Pages != null)
                 foreach (OnePageDescriptions opd in WorkCadastralReference.GetCadastralReferenceData().Pages)
-                    if(opd.Image != null)
+                    if (opd.Image != null)
                         AddPageFromImage(opd.Image, ref pdf);
 
-
+            MemoryStream ms = new MemoryStream();
+            pdf.Save(ms, false);
             pdf.Close();
-            WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf = pdf;
+
+            WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf = new PdfDocument(); ;
+            PdfDocument PDFDoc = PdfReader.Open(ms, PdfDocumentOpenMode.Import);
+            for (int Pg = 0; Pg < PDFDoc.Pages.Count; Pg++)
+            {
+                WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.AddPage(PDFDoc.Pages[Pg]);
+            }
+
+
+            WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.Info.Author = @"Worck With Reestr addIn";
+            WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.Info.Title = @"Cadastral Reference";
 
             ShowPDF();
-            return pdf;
         }
 
     }

@@ -208,7 +208,7 @@ namespace CadastralReference
           new KancelyarskiyNomer(), new KancelyarskiyData(), new Rajon(), new RukovoditelDoljnost(), new RukovoditelFIO()};
 
         // произвести замену
-        public static string Implement(string input)
+        public static string Convert(string input)
         {
             StringBuilder sb = new StringBuilder(input);
             foreach (IOneTextTemplateConverter ottc in arrMetod)

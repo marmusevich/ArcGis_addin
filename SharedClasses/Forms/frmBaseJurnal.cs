@@ -172,7 +172,7 @@ namespace SharedClasses
             return ret;
         }
         //построить фильтр
-        private IQueryFilter BuildConditions()
+        protected IQueryFilter BuildConditions()
         {
             IQueryFilter ret = null;
             string dopUsl = GetStringAddetConditions();
@@ -234,7 +234,7 @@ namespace SharedClasses
             Close();
         }
 
-        private void Reflesh()
+        protected void Reflesh()
         {
             tableWrapper.UpdateData();
             dgv.Refresh();

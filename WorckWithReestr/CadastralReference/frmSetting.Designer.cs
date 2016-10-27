@@ -48,6 +48,15 @@ namespace CadastralReference
             this.lblListOfPages = new System.Windows.Forms.Label();
             this.clbListOfPages = new System.Windows.Forms.CheckedListBox();
             this.tpRTF = new System.Windows.Forms.TabPage();
+            this.gbPDFMarning = new System.Windows.Forms.GroupBox();
+            this.nudMarningDown = new System.Windows.Forms.NumericUpDown();
+            this.lblMarningDown = new System.Windows.Forms.Label();
+            this.nudMarningRight = new System.Windows.Forms.NumericUpDown();
+            this.lblMarningRight = new System.Windows.Forms.Label();
+            this.nudMarningLeft = new System.Windows.Forms.NumericUpDown();
+            this.lblMarningLeft = new System.Windows.Forms.Label();
+            this.nudMarningUp = new System.Windows.Forms.NumericUpDown();
+            this.lblMarningUp = new System.Windows.Forms.Label();
             this.btnEditTitul = new System.Windows.Forms.Button();
             this.lblTitul = new System.Windows.Forms.Label();
             this.btnEditRaspiska = new System.Windows.Forms.Button();
@@ -64,6 +73,11 @@ namespace CadastralReference
             this.tpMain.SuspendLayout();
             this.pnListOfPages.SuspendLayout();
             this.tpRTF.SuspendLayout();
+            this.gbPDFMarning.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningUp)).BeginInit();
             this.tpPages.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -240,6 +254,7 @@ namespace CadastralReference
             // 
             // tpRTF
             // 
+            this.tpRTF.Controls.Add(this.gbPDFMarning);
             this.tpRTF.Controls.Add(this.btnEditTitul);
             this.tpRTF.Controls.Add(this.lblTitul);
             this.tpRTF.Controls.Add(this.btnEditRaspiska);
@@ -255,6 +270,109 @@ namespace CadastralReference
             this.tpRTF.TabIndex = 1;
             this.tpRTF.Text = "Текстовый документ";
             this.tpRTF.UseVisualStyleBackColor = true;
+            // 
+            // gbPDFMarning
+            // 
+            this.gbPDFMarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbPDFMarning.Controls.Add(this.nudMarningDown);
+            this.gbPDFMarning.Controls.Add(this.lblMarningDown);
+            this.gbPDFMarning.Controls.Add(this.nudMarningRight);
+            this.gbPDFMarning.Controls.Add(this.lblMarningRight);
+            this.gbPDFMarning.Controls.Add(this.nudMarningLeft);
+            this.gbPDFMarning.Controls.Add(this.lblMarningLeft);
+            this.gbPDFMarning.Controls.Add(this.nudMarningUp);
+            this.gbPDFMarning.Controls.Add(this.lblMarningUp);
+            this.gbPDFMarning.Location = new System.Drawing.Point(7, 62);
+            this.gbPDFMarning.Name = "gbPDFMarning";
+            this.gbPDFMarning.Size = new System.Drawing.Size(638, 69);
+            this.gbPDFMarning.TabIndex = 10;
+            this.gbPDFMarning.TabStop = false;
+            this.gbPDFMarning.Text = "Отступы в текстовой части PDF (мм)";
+            // 
+            // nudMarningDown
+            // 
+            this.nudMarningDown.DecimalPlaces = 2;
+            this.nudMarningDown.Location = new System.Drawing.Point(84, 41);
+            this.nudMarningDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nudMarningDown.Name = "nudMarningDown";
+            this.nudMarningDown.Size = new System.Drawing.Size(56, 20);
+            this.nudMarningDown.TabIndex = 7;
+            // 
+            // lblMarningDown
+            // 
+            this.lblMarningDown.Location = new System.Drawing.Point(7, 40);
+            this.lblMarningDown.Name = "lblMarningDown";
+            this.lblMarningDown.Size = new System.Drawing.Size(67, 23);
+            this.lblMarningDown.TabIndex = 6;
+            this.lblMarningDown.Text = "от низа";
+            // 
+            // nudMarningRight
+            // 
+            this.nudMarningRight.DecimalPlaces = 2;
+            this.nudMarningRight.Location = new System.Drawing.Point(321, 41);
+            this.nudMarningRight.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nudMarningRight.Name = "nudMarningRight";
+            this.nudMarningRight.Size = new System.Drawing.Size(56, 20);
+            this.nudMarningRight.TabIndex = 5;
+            // 
+            // lblMarningRight
+            // 
+            this.lblMarningRight.Location = new System.Drawing.Point(244, 40);
+            this.lblMarningRight.Name = "lblMarningRight";
+            this.lblMarningRight.Size = new System.Drawing.Size(67, 23);
+            this.lblMarningRight.TabIndex = 4;
+            this.lblMarningRight.Text = "от правого";
+            // 
+            // nudMarningLeft
+            // 
+            this.nudMarningLeft.DecimalPlaces = 2;
+            this.nudMarningLeft.Location = new System.Drawing.Point(321, 16);
+            this.nudMarningLeft.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nudMarningLeft.Name = "nudMarningLeft";
+            this.nudMarningLeft.Size = new System.Drawing.Size(56, 20);
+            this.nudMarningLeft.TabIndex = 3;
+            // 
+            // lblMarningLeft
+            // 
+            this.lblMarningLeft.Location = new System.Drawing.Point(244, 15);
+            this.lblMarningLeft.Name = "lblMarningLeft";
+            this.lblMarningLeft.Size = new System.Drawing.Size(67, 23);
+            this.lblMarningLeft.TabIndex = 2;
+            this.lblMarningLeft.Text = "от левого";
+            // 
+            // nudMarningUp
+            // 
+            this.nudMarningUp.DecimalPlaces = 2;
+            this.nudMarningUp.Location = new System.Drawing.Point(84, 16);
+            this.nudMarningUp.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nudMarningUp.Name = "nudMarningUp";
+            this.nudMarningUp.Size = new System.Drawing.Size(56, 20);
+            this.nudMarningUp.TabIndex = 1;
+            // 
+            // lblMarningUp
+            // 
+            this.lblMarningUp.Location = new System.Drawing.Point(7, 15);
+            this.lblMarningUp.Name = "lblMarningUp";
+            this.lblMarningUp.Size = new System.Drawing.Size(67, 23);
+            this.lblMarningUp.TabIndex = 0;
+            this.lblMarningUp.Text = "от верха";
             // 
             // btnEditTitul
             // 
@@ -360,6 +478,7 @@ namespace CadastralReference
             this.btnSaveToFile.TabIndex = 5;
             this.btnSaveToFile.Text = "Сохранить в файл";
             this.btnSaveToFile.UseVisualStyleBackColor = true;
+            this.btnSaveToFile.Click += new System.EventHandler(this.btnSaveToFile_Click);
             // 
             // btnLoadFromFile
             // 
@@ -391,6 +510,11 @@ namespace CadastralReference
             this.tpMain.PerformLayout();
             this.pnListOfPages.ResumeLayout(false);
             this.tpRTF.ResumeLayout(false);
+            this.gbPDFMarning.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMarningUp)).EndInit();
             this.tpPages.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -427,5 +551,14 @@ namespace CadastralReference
         private Label lblBodyEnd;
         private Button btnSaveToFile;
         private Button btnLoadFromFile;
+        private GroupBox gbPDFMarning;
+        private NumericUpDown nudMarningUp;
+        private Label lblMarningUp;
+        private NumericUpDown nudMarningDown;
+        private Label lblMarningDown;
+        private NumericUpDown nudMarningRight;
+        private Label lblMarningRight;
+        private NumericUpDown nudMarningLeft;
+        private Label lblMarningLeft;
     }
 }

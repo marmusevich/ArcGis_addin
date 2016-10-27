@@ -19,7 +19,7 @@ namespace CadastralReference
         [XmlIgnore]
         public const string ObjectLayerName = @"Зона розміщення об’єкту ";
         [XmlIgnore]
-        public const string ObjectWorkspaceAndTableName = @"Кадастровая_справка.DBO.KS_OBJ_FOR_ALEX";
+        public const string ObjectWorkspaceAndTableName = @"Кадастровая_справка.DBO.KS_OBJ";
 
         [XmlIgnore]
         public const string DB_NameWorkspace = @"Kadastr2016";
@@ -126,6 +126,11 @@ namespace CadastralReference
         [XmlArray("Pages"), XmlArrayItem("Page")]
         public List<OnePageDescriptions> Pages { get { return m_Pages; } set { m_Pages = value; } }
 
+        // отступы от краев в текстовой части PDF
+        public double PDFTextMarningUp = 0;
+        public double PDFTextMarningDown = 0;
+        public double PDFTextMarningRight = 0;
+        public double PDFTextMarningLeft = 0;
 
 
         //титульный лист
@@ -234,6 +239,10 @@ namespace CadastralReference
             this.Body_End_Template = crd.Body_End_Template;
             this.Raspiska_Template = crd.Raspiska_Template;
 
+            this.PDFTextMarningUp = crd.PDFTextMarningUp;
+            this.PDFTextMarningDown = crd.PDFTextMarningDown;
+            this.PDFTextMarningRight = crd.PDFTextMarningRight;
+            this.PDFTextMarningLeft = crd.PDFTextMarningLeft;
         }
 
         public void ClearData()
