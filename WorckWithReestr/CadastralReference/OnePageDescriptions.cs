@@ -92,6 +92,12 @@ namespace CadastralReference
         [XmlElement("DataFrameSyze_Right", Type = typeof(double))]
         public double DataFrameSyze_Right = 0;
 
+        // ручной маштаб
+        public double Scale_Manual = 0;
+        // режим маштобирования
+        public int ScaleMode = 0;
+
+
         // стрелка севера
         [XmlElement("IsHasNorthArrow", Type = typeof(bool))]
         public bool IsHasNorthArrow = false;
@@ -264,10 +270,10 @@ namespace CadastralReference
             ScaleBar_PosY = 0;
             ScaleBar_Height = 0.75;
             ScaleBar_Width = 6.65;
-        }
+    }
 
-        //скопировать настройки
-        public void CopySetingFrom(OnePageDescriptions opd)
+    //скопировать настройки
+    public void CopySetingFrom(OnePageDescriptions opd)
         {
             this.Caption = opd.Caption;
             this.Enable = opd.Enable;
@@ -308,6 +314,10 @@ namespace CadastralReference
             this.ScaleBar_AncorVertical = opd.ScaleBar_AncorVertical;
             this.m_ScaleBar_Serialized_innerUse = (byte[])opd.m_ScaleBar_Serialized_innerUse.Clone();
             this.m_ScaleBar = DeSerializeByteToScaleBar(m_ScaleBar_Serialized_innerUse, TypeScaleBarName);
+
+            this.Scale_Manual = opd.Scale_Manual;
+            this.ScaleMode = opd.ScaleMode;
+
         }
 
         //предстовленеие перечня слоев
@@ -320,10 +330,11 @@ namespace CadastralReference
                 sb.Append(s);
                 sb.Append("] ");
             }
-            return sb.ToString();
+            string str = sb.ToString();
+            if (str == "") str = "Не указаны.";
+
+            return str;
         }
-
-
 
         // серелизовать в масив байтов стрелку севера
         private static byte[] SerializeNorthArrowToByte(INorthArrow northArrow)

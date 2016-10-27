@@ -165,7 +165,7 @@ namespace SharedClasses
             return ret;
         }
         //построить фильтр
-        private IQueryFilter BuildConditions()
+        protected IQueryFilter BuildConditions()
         {
             IQueryFilter ret = null;
             return ret;
@@ -202,7 +202,7 @@ namespace SharedClasses
             Close();
         }
 
-        private void Reflesh()
+        protected void Reflesh()
         {
             tableWrapper.UpdateData();
             dgv.Refresh();

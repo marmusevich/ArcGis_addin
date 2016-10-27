@@ -62,8 +62,8 @@ namespace CadastralReference
 
         private void Del()
         {
-            System.Array arr = new object[lbAllLayers.SelectedItems.Count];
-            lbAllLayers.SelectedItems.CopyTo(arr, 0);
+            System.Array arr = new object[lbSelectedLayers.SelectedItems.Count];
+            lbSelectedLayers.SelectedItems.CopyTo(arr, 0);
             foreach (object o in arr)
             {
                 if (o != null)

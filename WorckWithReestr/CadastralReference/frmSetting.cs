@@ -31,6 +31,13 @@ namespace CadastralReference
         private string prefix_btnScaleBar = "btnScaleBar_";
         private string prefix_btnNordArrow = "btnNordArrow_";
 
+        private string prefix_gbScaleMode = "gbScaleMode_";
+        private string prefix_nudScaleMode_Scale = "nudScaleMode_Scale_";
+        private string prefix_rbScaleMode_Manual = "rbScaleMode_Manual_";
+        private string prefix_rbScaleMode_DontChange = "rbScaleMode_DontChange_";
+        private string prefix_rbScaleMode_Avto = "rbScaleMode_Avto_";
+
+
 
         CadastralReferenceData m_crd = null;
 
@@ -50,7 +57,13 @@ namespace CadastralReference
             txtRukovoditelFIO.Text = m_crd.RukovoditelFIO;
             txtObjectLayerName.Text = CadastralReferenceData.ObjectLayerName;
             txtObjectTableName.Text = CadastralReferenceData.ObjectWorkspaceAndTableName;
-        }
+
+
+            nudMarningUp.Value = (decimal)m_crd.PDFTextMarningUp;
+            nudMarningDown.Value = (decimal)m_crd.PDFTextMarningDown;
+            nudMarningRight.Value = (decimal)m_crd.PDFTextMarningRight;
+            nudMarningLeft.Value = (decimal)m_crd.PDFTextMarningLeft;
+    }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region //создать элементы управления
@@ -103,6 +116,7 @@ namespace CadastralReference
             tp.Controls.Add(Create_cbScaleBar(opd));
             tp.Controls.Add(Create_cbNordArrow(opd));
             tp.Controls.Add(Create_gbTextsElement(opd));
+            tp.Controls.Add(Create_gbScaleMode(opd));
 
             this.tcPages.Controls.Add(tp);
 
@@ -153,6 +167,90 @@ namespace CadastralReference
             b.Click += new System.EventHandler(this.btnSelectedLayers_Click);
             return b;
         }
+        private GroupBox Create_gbScaleMode(OnePageDescriptions opd)
+        {
+            GroupBox g = new GroupBox();
+            g.SuspendLayout();
+            g.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right)));
+            g.Location = new System.Drawing.Point(3, 170);
+            g.Name = prefix_gbScaleMode + opd.PagesID.ToString();
+            g.Tag = opd;
+            g.Size = new System.Drawing.Size(631, 45);
+            g.TabStop = false;
+            g.Text = "Режим масштабирования";
+            g.Controls.Add(Create_nudScaleMode_Scale(opd));
+            g.Controls.Add(Create_rbScaleMode_Avto(opd));
+            g.Controls.Add(Create_rbScaleMode_DontChange(opd));
+            g.Controls.Add(Create_rbScaleMode_Manual(opd));
+            g.ResumeLayout(false);
+            return g;
+        }
+        private NumericUpDown Create_nudScaleMode_Scale(OnePageDescriptions opd)
+        {
+            NumericUpDown n = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(n)).BeginInit();
+            n.DecimalPlaces = 1;
+            n.Location = new System.Drawing.Point(325, 19);
+            n.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            n.Name = prefix_nudScaleMode_Scale + opd.PagesID.ToString();
+            n.Value = (decimal)opd.Scale_Manual;
+            n.Tag = opd;
+            n.Size = new System.Drawing.Size(104, 20);
+            n.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            ((System.ComponentModel.ISupportInitialize)(n)).EndInit();
+            n.Enabled = opd.ScaleMode == 2;
+
+            return n;
+        }
+        private RadioButton Create_rbScaleMode_Manual(OnePageDescriptions opd)
+        {
+            RadioButton r = new RadioButton();
+            r.AutoSize = true;
+            r.Location = new System.Drawing.Point(204, 19);
+            r.Name = prefix_rbScaleMode_Manual + opd.PagesID.ToString(); ;
+            r.Size = new System.Drawing.Size(115, 17);
+            r.Tag = opd;
+            r.TabStop = true;
+            r.Text = "Задать вручную";
+            r.UseVisualStyleBackColor = true;
+            r.Checked = opd.ScaleMode == 2;
+            r.CheckedChanged += new System.EventHandler(this.rbScaleMode_CheckedChanged);
+
+            return r;
+        }
+        private RadioButton Create_rbScaleMode_DontChange(OnePageDescriptions opd)
+        {
+            RadioButton r = new RadioButton();
+            r.AutoSize = true;
+            r.Location = new System.Drawing.Point(105, 19);
+            r.Name = prefix_rbScaleMode_DontChange + opd.PagesID.ToString(); ;
+            r.Size = new System.Drawing.Size(91, 17);
+            r.Tag = opd;
+            r.TabStop = true;
+            r.Text = "Не изменять";
+            r.UseVisualStyleBackColor = true;
+            r.Checked = opd.ScaleMode == 1;
+            r.CheckedChanged += new System.EventHandler(this.rbScaleMode_CheckedChanged);
+
+            return r;
+        }
+        private RadioButton Create_rbScaleMode_Avto(OnePageDescriptions opd)
+        {
+            RadioButton r = new RadioButton();
+            r.AutoSize = true;
+            r.Location = new System.Drawing.Point(8, 20);
+            r.Name = prefix_rbScaleMode_Avto + opd.PagesID.ToString(); ;
+            r.Size = new System.Drawing.Size(91, 17);
+            r.TabStop = true;
+            r.Tag = opd;
+            r.Text = "Авто масштаб";
+            r.UseVisualStyleBackColor = true;
+            r.Checked = opd.ScaleMode == 0;
+            r.CheckedChanged += new System.EventHandler(this.rbScaleMode_CheckedChanged);
+
+            return r;
+        }
+
         private GroupBox Create_gbTextsElement(OnePageDescriptions opd)
         {
             GroupBox g = new GroupBox();
@@ -426,6 +524,7 @@ namespace CadastralReference
                 t.Text = pd.LayersToString();
         }
 
+        // перенести настройки из элементов управлений
         private void GetSettingFromForm()
         {
             foreach (OnePageDescriptions opd in m_crd.Pages)
@@ -468,12 +567,35 @@ namespace CadastralReference
                 NumericUpDown n_Right = GetControlByName(prefix_nudDataFrameSyze_Right + opd.PagesID.ToString()) as NumericUpDown;
                 if (n_Right != null)
                     opd.DataFrameSyze_Right = (double)n_Right.Value;
+
+                NumericUpDown nudScaleMode_Scale = GetControlByName(prefix_nudScaleMode_Scale + opd.PagesID.ToString()) as NumericUpDown;
+                if (nudScaleMode_Scale != null)
+                {
+                    opd.Scale_Manual = (double)nudScaleMode_Scale.Value;
+                }
+
+                RadioButton rbScaleMode_Manual = GetControlByName(prefix_rbScaleMode_Manual + opd.PagesID.ToString()) as RadioButton;
+                RadioButton rbScaleMode_Avto = GetControlByName(prefix_rbScaleMode_Avto + opd.PagesID.ToString()) as RadioButton;
+                RadioButton rbScaleMode_DontChange = GetControlByName(prefix_rbScaleMode_DontChange + opd.PagesID.ToString()) as RadioButton;
+                if (rbScaleMode_Manual != null && rbScaleMode_Avto != null && rbScaleMode_DontChange != null)
+                {
+                    if (rbScaleMode_Avto.Checked)
+                        opd.ScaleMode = 0;
+                    else if (rbScaleMode_DontChange.Checked)
+                        opd.ScaleMode = 1;
+                    else
+                        opd.ScaleMode = 2;
+                }
+                else
+                    opd.ScaleMode = 0;
             }
-
-
-
             m_crd.RukovoditelDoljnost = txtRukovoditelDoljnost.Text;
             m_crd.RukovoditelFIO = txtRukovoditelFIO.Text;
+
+            m_crd.PDFTextMarningUp = (double)nudMarningUp.Value;
+            m_crd.PDFTextMarningDown = (double)nudMarningDown.Value;
+            m_crd.PDFTextMarningRight = (double)nudMarningRight.Value;
+            m_crd.PDFTextMarningLeft = (double)nudMarningLeft.Value;
         }
         #endregion вспомогательные функции
 
@@ -591,6 +713,15 @@ namespace CadastralReference
             {
                 b.Enabled = c.Checked;
             }
+        }
+
+        private void rbScaleMode_CheckedChanged(object sender, EventArgs e)
+        {
+            OnePageDescriptions opd = GetPageDescriptionsFromControlTag(sender as Control);
+            RadioButton rb = GetControlByName(prefix_rbScaleMode_Manual + opd.PagesID.ToString()) as RadioButton; ;
+            NumericUpDown nud = GetControlByName(prefix_nudScaleMode_Scale + opd.PagesID.ToString()) as NumericUpDown;
+            if (nud != null && rb != null)
+                nud.Enabled = rb.Checked;
         }
         #endregion
 
@@ -720,5 +851,6 @@ namespace CadastralReference
                 GeneralApp.ShowErrorMessage(string.Format("На могу сохранить настройки в '{0}'", sfd.FileName));
             }
         }
+
     }
 }

@@ -265,10 +265,25 @@ namespace CadastralReference
 
             try
             {
+                IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
                 WorkCadastralReference_MAP.EnableLayersFromPages(opd);
-                WorkCadastralReference_MAP.SetScaleAndCentred();
-                WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
-                WorkCadastralReference_MAP.SetStandartMapSkale();
+
+                if (opd.ScaleMode == 2)
+                {
+                    WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
+                    mxdoc.FocusMap.MapScale = opd.Scale_Manual;
+                }
+                else if (opd.ScaleMode == 1)
+                {
+                    WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
+                }
+                else //if (opd.ScaleMode == 0)
+                {
+                    WorkCadastralReference_MAP.SetScaleAndCentred();
+                    WorkCadastralReference_MAP.CheckAndSetPageLayoutMode();
+                    WorkCadastralReference_MAP.SetStandartMapSkale();
+                }
+
 
                 WorkCadastralReference_MAP.ChangeSizeDateFrame(opd);
 
@@ -286,7 +301,6 @@ namespace CadastralReference
                     WorkCadastralReference_MAP.AddText(oted);
                 }
 
-                IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
                 IActiveView activeView = mxdoc.ActiveView;
 
                 activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);

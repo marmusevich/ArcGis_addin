@@ -44,12 +44,19 @@ namespace WorckWithReestr
             : base()
         {
             InitializeComponent();
+
+            cbHaveReferense.SelectedIndex = 0;
+            cbReferenceClose.SelectedIndex = 0;
+
         }
 
         public frmReestrZayav_jurnal(bool isSelectMode, string filteredString)
             : base(isSelectMode, filteredString)
         {
             InitializeComponent();
+            
+            cbHaveReferense.SelectedIndex = 0;
+            cbReferenceClose.SelectedIndex = 0;
 
             base.NameWorkspace = "Kadastr2016";
             base.NameTable = "Kn_Reg_Zayv";
@@ -118,7 +125,7 @@ namespace WorckWithReestr
             indexRajon = dgv.Columns["Rajon"].Index;
 
             dgv.Columns["GlobalID"].Visible = false;
-            dgv.Columns["IsReferenceClose"].Visible = false;
+            //dgv.Columns["IsReferenceClose"].Visible = false;
             dgv.Columns["MapObjectID"].Visible = false;
 
         dgv.CellFormatting += OnCellFormatting;
@@ -128,6 +135,16 @@ namespace WorckWithReestr
         protected override string GetStringAddetConditions()
         {
             string ret = base.GetStringAddetConditions();
+
+            if (cbHaveReferense.SelectedIndex == 1)
+                ret += " IsHaveReferense = 1 "; // "Имеющие кадастровую справку"
+            else if (cbHaveReferense.SelectedIndex == 2)
+                ret += " IsHaveReferense = 0 "; // "Не имеющие кадастровую справку"
+
+            if (cbReferenceClose.SelectedIndex == 1)
+                ret += " IsReferenceClose = 1 "; // "Закрыта справка"
+            else if (cbReferenceClose.SelectedIndex == 2)
+                ret += " IsReferenceClose = 0 "; // "Открыта справка"
 
             return ret;
         }
@@ -276,6 +293,24 @@ namespace WorckWithReestr
 
         }
         #endregion
+
+        private void cbHaveReferense_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tableWrapper != null)
+            {
+                tableWrapper.QueryFilter = BuildConditions();
+                Reflesh();
+            }
+        }
+
+        private void cbReferenceClose_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tableWrapper != null)
+            {
+                tableWrapper.QueryFilter = BuildConditions();
+                Reflesh();
+            }
+        }
     }
 }
 
