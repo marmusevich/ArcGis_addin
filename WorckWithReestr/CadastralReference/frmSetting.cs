@@ -345,7 +345,7 @@ namespace CadastralReference
             g.Tag = opd;
             g.Size = new System.Drawing.Size(629, 64);
             g.TabStop = false;
-            g.Text = "Размер области данных";
+            g.Text = "Размер области данных (см)";
             g.Controls.Add(Create_nudDataFrameSyze_Down(opd));
             g.Controls.Add(Create_nudDataFrameSyze_Up(opd));
             g.Controls.Add(Create_nudDataFrameSyze_Left(opd));
@@ -851,6 +851,5 @@ namespace CadastralReference
                 GeneralApp.ShowErrorMessage(string.Format("На могу сохранить настройки в '{0}'", sfd.FileName));
             }
         }
-
     }
 }

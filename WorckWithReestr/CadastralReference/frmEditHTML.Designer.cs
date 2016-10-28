@@ -125,6 +125,6 @@
         private System.Windows.Forms.Button btnCancel;
         public GvS.Controls.HtmlTextbox tbHTML;
         private System.Windows.Forms.Button btnHelpTemplate;
-        private System.Windows.Forms.Button btnAddTemplate;
+        public System.Windows.Forms.Button btnAddTemplate;
     }
 }

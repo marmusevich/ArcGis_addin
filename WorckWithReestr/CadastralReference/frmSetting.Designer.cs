@@ -288,7 +288,7 @@ namespace CadastralReference
             this.gbPDFMarning.Size = new System.Drawing.Size(638, 69);
             this.gbPDFMarning.TabIndex = 10;
             this.gbPDFMarning.TabStop = false;
-            this.gbPDFMarning.Text = "Отступы в текстовой части PDF (мм)";
+            this.gbPDFMarning.Text = "Отступы в текстовой части PDF (см)";
             // 
             // nudMarningDown
             // 

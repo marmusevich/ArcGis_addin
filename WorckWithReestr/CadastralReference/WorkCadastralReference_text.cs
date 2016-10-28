@@ -19,8 +19,8 @@ namespace CadastralReference
             PdfGenerateConfig pgc = new PdfGenerateConfig();
             pgc.PageSize = PdfSharp.PageSize.A4;
             // переконветировать еденицы измерения
-            XSize a1 = PdfGenerateConfig.MilimitersToUnits(WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningDown, WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningUp);
-            XSize a2 = PdfGenerateConfig.MilimitersToUnits(WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningLeft, WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningRight);
+            XSize a1 = PdfGenerateConfig.MilimitersToUnits(WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningDown * 10, WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningUp * 10);
+            XSize a2 = PdfGenerateConfig.MilimitersToUnits(WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningLeft * 10, WorkCadastralReference.GetCadastralReferenceData().PDFTextMarningRight * 10);
             pgc.MarginBottom = (int)a1.Width;
             pgc.MarginTop = (int)a1.Height;
             pgc.MarginLeft = (int)a2.Width;
@@ -54,9 +54,10 @@ namespace CadastralReference
             xgr.DrawImage(img, 0, 0);
         }
 
-        public static void EditHTML(ref string html)
+        public static void EditHTML(ref string html,  bool isUseTemplate = false)
         {
             frmEditHTML frm = new frmEditHTML();
+            frm.btnAddTemplate.Visible = isUseTemplate;
             frm.tbHTML.Text = html;
             if(frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 html = frm.tbHTML.Text;

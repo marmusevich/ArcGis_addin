@@ -75,7 +75,7 @@
             this.gbPositionVertical.Size = new System.Drawing.Size(200, 90);
             this.gbPositionVertical.TabIndex = 2;
             this.gbPositionVertical.TabStop = false;
-            this.gbPositionVertical.Text = "Позиция по вертикали";
+            this.gbPositionVertical.Text = "Позиция по вертикали (см)";
             // 
             // nudPosVer
             // 
@@ -140,7 +140,7 @@
             this.gbPositionHorizontal.Size = new System.Drawing.Size(200, 90);
             this.gbPositionHorizontal.TabIndex = 4;
             this.gbPositionHorizontal.TabStop = false;
-            this.gbPositionHorizontal.Text = "Позиция по горизонтали";
+            this.gbPositionHorizontal.Text = "Позиция по горизонтали (см)";
             // 
             // nudPosHor
             // 

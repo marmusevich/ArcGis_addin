@@ -129,7 +129,7 @@ namespace CadastralReference
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(548, 362);
+            this.ClientSize = new System.Drawing.Size(778, 557);
             this.Controls.Add(this.btnSaveAs);
             this.Controls.Add(this.btnPageSetap);
             this.Controls.Add(this.btnPrinterSetting);
