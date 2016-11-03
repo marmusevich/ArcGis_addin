@@ -132,7 +132,7 @@ namespace WorckWithReestr
             this.btnSavePDFToDB.Name = "btnSavePDFToDB";
             this.btnSavePDFToDB.Size = new System.Drawing.Size(106, 23);
             this.btnSavePDFToDB.TabIndex = 1;
-            this.btnSavePDFToDB.Text = "Сохранить в ДБ";
+            this.btnSavePDFToDB.Text = "Сохранить в БД";
             this.btnSavePDFToDB.UseVisualStyleBackColor = true;
             this.btnSavePDFToDB.Click += new System.EventHandler(this.btnPDFSaveToDB_Click);
             // 
