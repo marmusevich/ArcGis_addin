@@ -45,6 +45,7 @@
             this.theBrowser = new System.Windows.Forms.WebBrowser();
             this.txtSource = new System.Windows.Forms.TextBox();
             this.tmrSourceSync = new System.Windows.Forms.Timer(this.components);
+            this.tsbUnderline = new System.Windows.Forms.ToolStripButton();
             this.toolBar.SuspendLayout();
             this.editSplit.Panel1.SuspendLayout();
             this.editSplit.Panel2.SuspendLayout();
@@ -60,6 +61,7 @@
             this.tsbPaste,
             this.toolStripSeparator1,
             this.tsbBold,
+            this.tsbUnderline,
             this.tsbItalic,
             this.toolStripSeparator2,
             this.tsbOrderedList,
@@ -73,7 +75,7 @@
             this.tsbViewSource});
             this.toolBar.Location = new System.Drawing.Point(1, 1);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(497, 25);
+            this.toolBar.Size = new System.Drawing.Size(497, 27);
             this.toolBar.TabIndex = 1;
             this.toolBar.Text = "toolStrip1";
             this.toolBar.Visible = false;
@@ -84,7 +86,7 @@
             this.tsbCut.Image = global::GvS.Controls.Properties.Resources.CutHS;
             this.tsbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCut.Name = "tsbCut";
-            this.tsbCut.Size = new System.Drawing.Size(23, 22);
+            this.tsbCut.Size = new System.Drawing.Size(23, 24);
             this.tsbCut.Text = "Cut";
             this.tsbCut.Click += new System.EventHandler(this.tsbCut_Click);
             // 
@@ -94,7 +96,7 @@
             this.tsbCopy.Image = global::GvS.Controls.Properties.Resources.CopyHS;
             this.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCopy.Name = "tsbCopy";
-            this.tsbCopy.Size = new System.Drawing.Size(23, 22);
+            this.tsbCopy.Size = new System.Drawing.Size(23, 24);
             this.tsbCopy.Text = "Copy";
             this.tsbCopy.Click += new System.EventHandler(this.tsbCopy_Click);
             // 
@@ -104,14 +106,14 @@
             this.tsbPaste.Image = global::GvS.Controls.Properties.Resources.PasteHS;
             this.tsbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPaste.Name = "tsbPaste";
-            this.tsbPaste.Size = new System.Drawing.Size(23, 22);
+            this.tsbPaste.Size = new System.Drawing.Size(23, 24);
             this.tsbPaste.Text = "Paste";
             this.tsbPaste.Click += new System.EventHandler(this.tsbPaste_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbBold
             // 
@@ -120,7 +122,7 @@
             this.tsbBold.Image = global::GvS.Controls.Properties.Resources.boldhs;
             this.tsbBold.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBold.Name = "tsbBold";
-            this.tsbBold.Size = new System.Drawing.Size(23, 22);
+            this.tsbBold.Size = new System.Drawing.Size(23, 24);
             this.tsbBold.Text = "Bold";
             this.tsbBold.Click += new System.EventHandler(this.tsbBold_Click);
             // 
@@ -131,14 +133,14 @@
             this.tsbItalic.Image = global::GvS.Controls.Properties.Resources.ItalicHS;
             this.tsbItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbItalic.Name = "tsbItalic";
-            this.tsbItalic.Size = new System.Drawing.Size(23, 22);
+            this.tsbItalic.Size = new System.Drawing.Size(23, 24);
             this.tsbItalic.Text = "Italic";
             this.tsbItalic.Click += new System.EventHandler(this.tsbItalic_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbOrderedList
             // 
@@ -147,7 +149,7 @@
             this.tsbOrderedList.Image = global::GvS.Controls.Properties.Resources.List_NumberedHS;
             this.tsbOrderedList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOrderedList.Name = "tsbOrderedList";
-            this.tsbOrderedList.Size = new System.Drawing.Size(23, 22);
+            this.tsbOrderedList.Size = new System.Drawing.Size(23, 24);
             this.tsbOrderedList.Text = "Ordered list";
             this.tsbOrderedList.Click += new System.EventHandler(this.tsbOrderedList_Click);
             // 
@@ -158,7 +160,7 @@
             this.tsbBulletList.Image = global::GvS.Controls.Properties.Resources.List_BulletsHS;
             this.tsbBulletList.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBulletList.Name = "tsbBulletList";
-            this.tsbBulletList.Size = new System.Drawing.Size(23, 22);
+            this.tsbBulletList.Size = new System.Drawing.Size(23, 24);
             this.tsbBulletList.Text = "Bullet List";
             this.tsbBulletList.Click += new System.EventHandler(this.tsbBulletList_Click);
             // 
@@ -168,7 +170,7 @@
             this.tsbUnIndent.Image = global::GvS.Controls.Properties.Resources.OutdentHS;
             this.tsbUnIndent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUnIndent.Name = "tsbUnIndent";
-            this.tsbUnIndent.Size = new System.Drawing.Size(23, 22);
+            this.tsbUnIndent.Size = new System.Drawing.Size(23, 24);
             this.tsbUnIndent.Text = "Unindent";
             this.tsbUnIndent.Click += new System.EventHandler(this.tsbUnIndent_Click);
             // 
@@ -178,14 +180,14 @@
             this.tsbIndent.Image = global::GvS.Controls.Properties.Resources.IndentHS;
             this.tsbIndent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbIndent.Name = "tsbIndent";
-            this.tsbIndent.Size = new System.Drawing.Size(23, 22);
+            this.tsbIndent.Size = new System.Drawing.Size(23, 24);
             this.tsbIndent.Text = "Indent";
             this.tsbIndent.Click += new System.EventHandler(this.tsbIndent_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbFont
             // 
@@ -195,10 +197,10 @@
             "Georgia, Times New Roman, Times, serif",
             "Consolas, Courier New, Courier, monospace"});
             this.tsbFont.Name = "tsbFont";
-            this.tsbFont.Size = new System.Drawing.Size(121, 25);
+            this.tsbFont.Size = new System.Drawing.Size(121, 27);
             this.tsbFont.SelectedIndexChanged += new System.EventHandler(this.tsbFont_SelectedIndexChanged);
-            this.tsbFont.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tsbFont_KeyDown);
             this.tsbFont.Leave += new System.EventHandler(this.tsbFont_Leave);
+            this.tsbFont.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tsbFont_KeyDown);
             // 
             // tsbFontSize
             // 
@@ -212,10 +214,10 @@
             "4",
             "5"});
             this.tsbFontSize.Name = "tsbFontSize";
-            this.tsbFontSize.Size = new System.Drawing.Size(75, 25);
+            this.tsbFontSize.Size = new System.Drawing.Size(75, 23);
             this.tsbFontSize.SelectedIndexChanged += new System.EventHandler(this.tsbFontSize_SelectedIndexChanged);
-            this.tsbFontSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tsbFontSize_KeyDown);
             this.tsbFontSize.Leave += new System.EventHandler(this.tsbFontSize_Leave);
+            this.tsbFontSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tsbFontSize_KeyDown);
             // 
             // toolStripSeparator4
             // 
@@ -229,14 +231,14 @@
             this.tsbViewSource.Image = global::GvS.Controls.Properties.Resources.EditCodeHS;
             this.tsbViewSource.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbViewSource.Name = "tsbViewSource";
-            this.tsbViewSource.Size = new System.Drawing.Size(23, 22);
+            this.tsbViewSource.Size = new System.Drawing.Size(23, 20);
             this.tsbViewSource.Text = "View/Edit Html code";
             this.tsbViewSource.CheckedChanged += new System.EventHandler(this.tsbViewSource_CheckedChanged);
             // 
             // editSplit
             // 
             this.editSplit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editSplit.Location = new System.Drawing.Point(1, 1);
+            this.editSplit.Location = new System.Drawing.Point(1, 28);
             this.editSplit.Name = "editSplit";
             this.editSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -248,7 +250,7 @@
             // 
             this.editSplit.Panel2.Controls.Add(this.txtSource);
             this.editSplit.Panel2Collapsed = true;
-            this.editSplit.Size = new System.Drawing.Size(497, 359);
+            this.editSplit.Size = new System.Drawing.Size(497, 332);
             this.editSplit.SplitterDistance = 191;
             this.editSplit.TabIndex = 0;
             // 
@@ -258,7 +260,7 @@
             this.theBrowser.Location = new System.Drawing.Point(0, 0);
             this.theBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.theBrowser.Name = "theBrowser";
-            this.theBrowser.Size = new System.Drawing.Size(497, 359);
+            this.theBrowser.Size = new System.Drawing.Size(497, 332);
             this.theBrowser.TabIndex = 0;
             this.theBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.theBrowser_DocumentCompleted);
             // 
@@ -282,6 +284,16 @@
             this.tmrSourceSync.Enabled = true;
             this.tmrSourceSync.Interval = 1000;
             this.tmrSourceSync.Tick += new System.EventHandler(this.tmrSourceSync_Tick);
+            // 
+            // tsbUnderline
+            // 
+            this.tsbUnderline.CheckOnClick = true;
+            this.tsbUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUnderline.Name = "tsbUnderline";
+            this.tsbUnderline.Size = new System.Drawing.Size(62, 24);
+            this.tsbUnderline.Text = "Underline";
+            this.tsbUnderline.Click += new System.EventHandler(this.tsbUnderline_Click);
             // 
             // HtmlTextbox
             // 
@@ -326,5 +338,6 @@
         internal System.Windows.Forms.WebBrowser theBrowser;
         internal System.Windows.Forms.TextBox txtSource;
         internal System.Windows.Forms.ToolStripComboBox tsbFont;
+        private System.Windows.Forms.ToolStripButton tsbUnderline;
     }
 }

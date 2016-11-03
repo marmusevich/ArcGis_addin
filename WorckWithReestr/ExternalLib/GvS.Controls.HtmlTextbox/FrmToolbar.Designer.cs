@@ -26,6 +26,7 @@
             this.components = new System.ComponentModel.Container();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.tsbBold = new System.Windows.Forms.ToolStripButton();
+            this.tsbUnderline = new System.Windows.Forms.ToolStripButton();
             this.tsbItalic = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbOrderedList = new System.Windows.Forms.ToolStripButton();
@@ -51,6 +52,7 @@
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbBold,
+            this.tsbUnderline,
             this.tsbItalic,
             this.toolStripSeparator2,
             this.tsbOrderedList,
@@ -63,7 +65,7 @@
             this.tsbPaste});
             this.toolBar.Location = new System.Drawing.Point(0, 25);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(246, 25);
+            this.toolBar.Size = new System.Drawing.Size(238, 25);
             this.toolBar.TabIndex = 2;
             this.toolBar.Text = "toolStrip1";
             // 
@@ -77,6 +79,16 @@
             this.tsbBold.Size = new System.Drawing.Size(23, 22);
             this.tsbBold.Text = "Bold";
             this.tsbBold.Click += new System.EventHandler(this.tsbBold_Click);
+            // 
+            // tsbUnderline
+            // 
+            this.tsbUnderline.CheckOnClick = true;
+            this.tsbUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUnderline.Name = "tsbUnderline";
+            this.tsbUnderline.Size = new System.Drawing.Size(62, 22);
+            this.tsbUnderline.Text = "Underline";
+            this.tsbUnderline.Click += new System.EventHandler(this.tsbUnderline_Click);
             // 
             // tsbItalic
             // 
@@ -147,7 +159,7 @@
             this.tsbCut.Image = global::GvS.Controls.Properties.Resources.CutHS;
             this.tsbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCut.Name = "tsbCut";
-            this.tsbCut.Size = new System.Drawing.Size(23, 22);
+            this.tsbCut.Size = new System.Drawing.Size(23, 20);
             this.tsbCut.Text = "Cut";
             this.tsbCut.Click += new System.EventHandler(this.tsbCut_Click);
             // 
@@ -157,7 +169,7 @@
             this.tsbCopy.Image = global::GvS.Controls.Properties.Resources.CopyHS;
             this.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCopy.Name = "tsbCopy";
-            this.tsbCopy.Size = new System.Drawing.Size(23, 22);
+            this.tsbCopy.Size = new System.Drawing.Size(23, 20);
             this.tsbCopy.Text = "Copy";
             this.tsbCopy.Click += new System.EventHandler(this.tsbCopy_Click);
             // 
@@ -167,7 +179,7 @@
             this.tsbPaste.Image = global::GvS.Controls.Properties.Resources.PasteHS;
             this.tsbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPaste.Name = "tsbPaste";
-            this.tsbPaste.Size = new System.Drawing.Size(23, 22);
+            this.tsbPaste.Size = new System.Drawing.Size(23, 20);
             this.tsbPaste.Text = "Paste";
             this.tsbPaste.Click += new System.EventHandler(this.tsbPaste_Click);
             // 
@@ -181,7 +193,7 @@
             this.tsbViewSource});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(246, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(238, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -225,7 +237,7 @@
             this.tsbViewSource.Image = global::GvS.Controls.Properties.Resources.EditCodeHS;
             this.tsbViewSource.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbViewSource.Name = "tsbViewSource";
-            this.tsbViewSource.Size = new System.Drawing.Size(23, 20);
+            this.tsbViewSource.Size = new System.Drawing.Size(23, 22);
             this.tsbViewSource.Text = "View Html Source";
             this.tsbViewSource.CheckedChanged += new System.EventHandler(this.tsbViewSource_CheckedChanged);
             // 
@@ -237,7 +249,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(246, 52);
+            this.ClientSize = new System.Drawing.Size(238, 44);
             this.ControlBox = false;
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.toolStrip1);
@@ -245,7 +257,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmToolbar";
-            this.Opacity = 0.7;
+            this.Opacity = 0.7D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -280,5 +292,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Timer tmrAppear;
         internal System.Windows.Forms.ToolStripComboBox tsbFont;
+        private System.Windows.Forms.ToolStripButton tsbUnderline;
     }
 }

@@ -403,6 +403,12 @@ namespace GvS.Controls {
             this.theBrowser.Document.ExecCommand("Italic", false, null);
         }
 
+        private void tsbUnderline_Click(object sender, EventArgs e)
+        {
+            this.WaitUntilBrowserReady();
+            this.theBrowser.Document.ExecCommand("Underline", false, null);
+        }
+
         private void tsbOrderedList_Click(object sender, EventArgs e) {
             this.WaitUntilBrowserReady();
             this.theBrowser.Document.ExecCommand("InsertOrderedList", false, null);
@@ -646,5 +652,6 @@ To reset, set to single line with *.")]
             }
             return base.ProcessDialogKey(keyData);
         }
+
     }
 }

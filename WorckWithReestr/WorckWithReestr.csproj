@@ -498,6 +498,7 @@
     <ProjectReference Include="ExternalLib\GvS.Controls.HtmlTextbox\GvS.Controls.HtmlTextbox.csproj">
       <Project>{aaa9e9d4-7a91-46bf-a5fd-11538e57d5c2}</Project>
       <Name>GvS.Controls.HtmlTextbox</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

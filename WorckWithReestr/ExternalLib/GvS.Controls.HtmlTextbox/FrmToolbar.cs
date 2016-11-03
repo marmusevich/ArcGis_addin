@@ -384,5 +384,10 @@ namespace GvS.Controls {
 
         #endregion
 
+        private void tsbUnderline_Click(object sender, EventArgs e)
+        {
+            this._theBrowser.Document.ExecCommand("Underline", false, null);
+            this.HtmlTextBox.GetFocusBack();
     }
+}
 }

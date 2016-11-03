@@ -28,35 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbHTML = new GvS.Controls.HtmlTextbox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnHelpTemplate = new System.Windows.Forms.Button();
             this.btnAddTemplate = new System.Windows.Forms.Button();
+            this.tbHTML = new GvS.Controls.HtmlTextbox();
             this.SuspendLayout();
-            // 
-            // tbHTML
-            // 
-            this.tbHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbHTML.Fonts = new string[] {
-        "Corbel",
-        "Corbel, Verdana, Arial, Helvetica, sans-serif",
-        "Georgia, Times New Roman, Times, serif",
-        "Consolas, Courier New, Courier, monospace"};
-            this.tbHTML.IllegalPatterns = new string[] {
-        "<script.*?>",
-        "<\\w+\\s+.*?(j|java|vb|ecma)script:.*?>",
-        "<\\w+(\\s+|\\s+.*?\\s+)on\\w+\\s*=.+?>",
-        "</?input.*?>"};
-            this.tbHTML.Location = new System.Drawing.Point(-1, 35);
-            this.tbHTML.Name = "tbHTML";
-            this.tbHTML.Padding = new System.Windows.Forms.Padding(1);
-            this.tbHTML.ShowHtmlSource = false;
-            this.tbHTML.Size = new System.Drawing.Size(736, 448);
-            this.tbHTML.TabIndex = 0;
-            this.tbHTML.ToolbarStyle = GvS.Controls.ToolbarStyles.AlwaysInternal;
             // 
             // btnOk
             // 
@@ -99,6 +76,29 @@
             this.btnAddTemplate.Text = "Добавить из заготовки";
             this.btnAddTemplate.UseVisualStyleBackColor = true;
             this.btnAddTemplate.Click += new System.EventHandler(this.btnAddTemplate_Click);
+            // 
+            // tbHTML
+            // 
+            this.tbHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbHTML.Fonts = new string[] {
+        "Corbel",
+        "Corbel, Verdana, Arial, Helvetica, sans-serif",
+        "Georgia, Times New Roman, Times, serif",
+        "Consolas, Courier New, Courier, monospace"};
+            this.tbHTML.IllegalPatterns = new string[] {
+        "<script.*?>",
+        "<\\w+\\s+.*?(j|java|vb|ecma)script:.*?>",
+        "<\\w+(\\s+|\\s+.*?\\s+)on\\w+\\s*=.+?>",
+        "</?input.*?>"};
+            this.tbHTML.Location = new System.Drawing.Point(-1, 35);
+            this.tbHTML.Name = "tbHTML";
+            this.tbHTML.Padding = new System.Windows.Forms.Padding(1);
+            this.tbHTML.ShowHtmlSource = false;
+            this.tbHTML.Size = new System.Drawing.Size(736, 448);
+            this.tbHTML.TabIndex = 0;
+            this.tbHTML.ToolbarStyle = GvS.Controls.ToolbarStyles.AlwaysInternal;
             // 
             // frmEditHTML
             // 
