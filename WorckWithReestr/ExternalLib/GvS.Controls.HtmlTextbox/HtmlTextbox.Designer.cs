@@ -28,9 +28,18 @@
             this.tsbCut = new System.Windows.Forms.ToolStripButton();
             this.tsbCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbPaste = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbUndo = new System.Windows.Forms.ToolStripButton();
+            this.tsbRedo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBold = new System.Windows.Forms.ToolStripButton();
+            this.tsbUnderline = new System.Windows.Forms.ToolStripButton();
             this.tsbItalic = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbJustifyLeft = new System.Windows.Forms.ToolStripButton();
+            this.tsbJustifyCenter = new System.Windows.Forms.ToolStripButton();
+            this.tsbJustifyRight = new System.Windows.Forms.ToolStripButton();
+            this.tsbJustifyFull = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbOrderedList = new System.Windows.Forms.ToolStripButton();
             this.tsbBulletList = new System.Windows.Forms.ToolStripButton();
@@ -45,7 +54,6 @@
             this.theBrowser = new System.Windows.Forms.WebBrowser();
             this.txtSource = new System.Windows.Forms.TextBox();
             this.tmrSourceSync = new System.Windows.Forms.Timer(this.components);
-            this.tsbUnderline = new System.Windows.Forms.ToolStripButton();
             this.toolBar.SuspendLayout();
             this.editSplit.Panel1.SuspendLayout();
             this.editSplit.Panel2.SuspendLayout();
@@ -59,10 +67,18 @@
             this.tsbCut,
             this.tsbCopy,
             this.tsbPaste,
+            this.toolStripSeparator5,
+            this.tsbUndo,
+            this.tsbRedo,
             this.toolStripSeparator1,
             this.tsbBold,
             this.tsbUnderline,
             this.tsbItalic,
+            this.toolStripSeparator6,
+            this.tsbJustifyLeft,
+            this.tsbJustifyCenter,
+            this.tsbJustifyRight,
+            this.tsbJustifyFull,
             this.toolStripSeparator2,
             this.tsbOrderedList,
             this.tsbBulletList,
@@ -110,6 +126,31 @@
             this.tsbPaste.Text = "Paste";
             this.tsbPaste.Click += new System.EventHandler(this.tsbPaste_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsbUndo
+            // 
+            this.tsbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbUndo.Image = global::GvS.Controls.Properties.Resources.UndoHS;
+            this.tsbUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUndo.Name = "tsbUndo";
+            this.tsbUndo.Size = new System.Drawing.Size(23, 24);
+            this.tsbUndo.Text = "Undo";
+            this.tsbUndo.Click += new System.EventHandler(this.tsbUndo_Click);
+            // 
+            // tsbRedo
+            // 
+            this.tsbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRedo.Image = global::GvS.Controls.Properties.Resources.RedoHS;
+            this.tsbRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRedo.Name = "tsbRedo";
+            this.tsbRedo.Size = new System.Drawing.Size(23, 24);
+            this.tsbRedo.Text = "Redo";
+            this.tsbRedo.Click += new System.EventHandler(this.tsbRedo_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -126,6 +167,17 @@
             this.tsbBold.Text = "Bold";
             this.tsbBold.Click += new System.EventHandler(this.tsbBold_Click);
             // 
+            // tsbUnderline
+            // 
+            this.tsbUnderline.CheckOnClick = true;
+            this.tsbUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbUnderline.Image = global::GvS.Controls.Properties.Resources.UnderlineHS;
+            this.tsbUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUnderline.Name = "tsbUnderline";
+            this.tsbUnderline.Size = new System.Drawing.Size(23, 24);
+            this.tsbUnderline.Text = "Underline";
+            this.tsbUnderline.Click += new System.EventHandler(this.tsbUnderline_Click);
+            // 
             // tsbItalic
             // 
             this.tsbItalic.CheckOnClick = true;
@@ -136,6 +188,57 @@
             this.tsbItalic.Size = new System.Drawing.Size(23, 24);
             this.tsbItalic.Text = "Italic";
             this.tsbItalic.Click += new System.EventHandler(this.tsbItalic_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsbJustifyLeft
+            // 
+            this.tsbJustifyLeft.Checked = true;
+            this.tsbJustifyLeft.CheckOnClick = true;
+            this.tsbJustifyLeft.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsbJustifyLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbJustifyLeft.Image = global::GvS.Controls.Properties.Resources.justifyLeft;
+            this.tsbJustifyLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbJustifyLeft.Name = "tsbJustifyLeft";
+            this.tsbJustifyLeft.Size = new System.Drawing.Size(23, 24);
+            this.tsbJustifyLeft.Text = "Justify left";
+            this.tsbJustifyLeft.Click += new System.EventHandler(this.tsbJustifyLeft_Click);
+            // 
+            // tsbJustifyCenter
+            // 
+            this.tsbJustifyCenter.CheckOnClick = true;
+            this.tsbJustifyCenter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbJustifyCenter.Image = global::GvS.Controls.Properties.Resources.justifyCenter;
+            this.tsbJustifyCenter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbJustifyCenter.Name = "tsbJustifyCenter";
+            this.tsbJustifyCenter.Size = new System.Drawing.Size(23, 24);
+            this.tsbJustifyCenter.Text = "Justify center";
+            this.tsbJustifyCenter.Click += new System.EventHandler(this.tsbJustifyCenter_Click);
+            // 
+            // tsbJustifyRight
+            // 
+            this.tsbJustifyRight.CheckOnClick = true;
+            this.tsbJustifyRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbJustifyRight.Image = global::GvS.Controls.Properties.Resources.justifyRight;
+            this.tsbJustifyRight.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbJustifyRight.Name = "tsbJustifyRight";
+            this.tsbJustifyRight.Size = new System.Drawing.Size(23, 24);
+            this.tsbJustifyRight.Text = "Justify right";
+            this.tsbJustifyRight.Click += new System.EventHandler(this.tsbJustifyRight_Click);
+            // 
+            // tsbJustifyFull
+            // 
+            this.tsbJustifyFull.CheckOnClick = true;
+            this.tsbJustifyFull.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbJustifyFull.Image = global::GvS.Controls.Properties.Resources.justifyFull;
+            this.tsbJustifyFull.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbJustifyFull.Name = "tsbJustifyFull";
+            this.tsbJustifyFull.Size = new System.Drawing.Size(23, 24);
+            this.tsbJustifyFull.Text = "Justify full";
+            this.tsbJustifyFull.Click += new System.EventHandler(this.tsbJustifyFull_Click);
             // 
             // toolStripSeparator2
             // 
@@ -197,7 +300,7 @@
             "Georgia, Times New Roman, Times, serif",
             "Consolas, Courier New, Courier, monospace"});
             this.tsbFont.Name = "tsbFont";
-            this.tsbFont.Size = new System.Drawing.Size(121, 27);
+            this.tsbFont.Size = new System.Drawing.Size(121, 23);
             this.tsbFont.SelectedIndexChanged += new System.EventHandler(this.tsbFont_SelectedIndexChanged);
             this.tsbFont.Leave += new System.EventHandler(this.tsbFont_Leave);
             this.tsbFont.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tsbFont_KeyDown);
@@ -285,16 +388,6 @@
             this.tmrSourceSync.Interval = 1000;
             this.tmrSourceSync.Tick += new System.EventHandler(this.tmrSourceSync_Tick);
             // 
-            // tsbUnderline
-            // 
-            this.tsbUnderline.CheckOnClick = true;
-            this.tsbUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbUnderline.Name = "tsbUnderline";
-            this.tsbUnderline.Size = new System.Drawing.Size(62, 24);
-            this.tsbUnderline.Text = "Underline";
-            this.tsbUnderline.Click += new System.EventHandler(this.tsbUnderline_Click);
-            // 
             // HtmlTextbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,5 +432,13 @@
         internal System.Windows.Forms.TextBox txtSource;
         internal System.Windows.Forms.ToolStripComboBox tsbFont;
         private System.Windows.Forms.ToolStripButton tsbUnderline;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton tsbUndo;
+        private System.Windows.Forms.ToolStripButton tsbRedo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton tsbJustifyLeft;
+        private System.Windows.Forms.ToolStripButton tsbJustifyCenter;
+        private System.Windows.Forms.ToolStripButton tsbJustifyRight;
+        private System.Windows.Forms.ToolStripButton tsbJustifyFull;
     }
 }

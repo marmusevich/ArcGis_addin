@@ -314,7 +314,16 @@ namespace GvS.Controls {
                 this.tsbFontSize.Enabled = false;
                 this.tsbIndent.Enabled = false;
                 this.tsbUnIndent.Enabled = false;
-            } else {
+                this.tsbUnderline.Enabled = false;
+                this.tsbJustifyLeft.Enabled = false;
+                this.tsbJustifyCenter.Enabled = false;
+                this.tsbJustifyRight.Enabled = false;
+                this.tsbJustifyFull.Enabled = false;
+                this.tsbUndo.Enabled = false;
+                this.tsbRedo.Enabled = false;
+            }
+            else
+            {
                 this.tsbBold.Enabled = true;
                 this.tsbItalic.Enabled = true;
                 this.tsbOrderedList.Enabled = true;
@@ -323,11 +332,26 @@ namespace GvS.Controls {
                 this.tsbFontSize.Enabled = true;
                 this.tsbIndent.Enabled = true;
                 this.tsbUnIndent.Enabled = true;
+                this.tsbUnderline.Enabled = true;
+                this.tsbJustifyLeft.Enabled = true;
+                this.tsbJustifyCenter.Enabled = true;
+                this.tsbJustifyRight.Enabled = true;
+                this.tsbJustifyFull.Enabled = true;
+                this.tsbUndo.Enabled = true;
+                this.tsbRedo.Enabled = true;
+
             }
             this.tsbBold.Checked = (bool)theBrowser.Document.InvokeScript("IsBold");
             this.tsbItalic.Checked = (bool)theBrowser.Document.InvokeScript("IsItalic");
+            this.tsbUnderline.Checked = (bool)theBrowser.Document.InvokeScript("IsUnderline");
             this.tsbOrderedList.Checked = (bool)theBrowser.Document.InvokeScript("IsOrderedList");
             this.tsbBulletList.Checked = (bool)theBrowser.Document.InvokeScript("IsBulletList");
+
+            this.tsbJustifyLeft.Checked = (bool)theBrowser.Document.InvokeScript("IsjustifyLeft");
+            this.tsbJustifyCenter.Checked = (bool)theBrowser.Document.InvokeScript("IsjustifyCenter");
+            this.tsbJustifyRight.Checked = (bool)theBrowser.Document.InvokeScript("IsjustifyRight");
+            this.tsbJustifyFull.Checked = (bool)theBrowser.Document.InvokeScript("IsjustifyFull");
+
 
             if (!this.tsbFont.Focused) {
                 this.tsbFont.Text = (theBrowser.Document.InvokeScript("GetFont") ?? string.Empty).ToString();
@@ -653,5 +677,56 @@ To reset, set to single line with *.")]
             return base.ProcessDialogKey(keyData);
         }
 
+        private void tsbUndo_Click(object sender, EventArgs e)
+        {
+            this.WaitUntilBrowserReady();
+            this.theBrowser.Document.ExecCommand("Undo", false, null);
+        }
+
+        private void tsbRedo_Click(object sender, EventArgs e)
+        {
+            this.WaitUntilBrowserReady();
+            this.theBrowser.Document.ExecCommand("Redo", false, null);
+        }
+
+        private void tsbJustifyLeft_Click(object sender, EventArgs e)
+        {
+            tsbJustifyCenter.Checked = false;
+            tsbJustifyRight.Checked = false;
+            tsbJustifyFull.Checked = false;
+
+            this.WaitUntilBrowserReady();
+            this.theBrowser.Document.ExecCommand("justifyLeft", false, null);
+        }
+
+        private void tsbJustifyCenter_Click(object sender, EventArgs e)
+        {
+            tsbJustifyLeft.Checked = false;
+            tsbJustifyRight.Checked = false;
+            tsbJustifyFull.Checked = false;
+
+            this.WaitUntilBrowserReady();
+            this.theBrowser.Document.ExecCommand("justifyCenter", false, null);
+        }
+
+        private void tsbJustifyRight_Click(object sender, EventArgs e)
+        {
+            tsbJustifyLeft.Checked = false;
+            tsbJustifyCenter.Checked = false;
+            tsbJustifyFull.Checked = false;
+
+            this.WaitUntilBrowserReady();
+            this.theBrowser.Document.ExecCommand("justifyRight", false, null);
+        }
+
+        private void tsbJustifyFull_Click(object sender, EventArgs e)
+        {
+            tsbJustifyLeft.Checked = false;
+            tsbJustifyCenter.Checked = false;
+            tsbJustifyRight.Checked = false;
+
+            this.WaitUntilBrowserReady();
+            this.theBrowser.Document.ExecCommand("justifyFull", false, null);
+        }
     }
 }

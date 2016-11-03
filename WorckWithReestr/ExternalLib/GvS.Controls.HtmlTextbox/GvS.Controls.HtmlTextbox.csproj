@@ -68,6 +68,13 @@
     <Compile Include="ToolbarStyles.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\justifyCenter.png" />
+    <Content Include="Resources\justifyFull.png" />
+    <Content Include="Resources\justifyLeft.png" />
+    <Content Include="Resources\justifyRight.png" />
+    <Content Include="Resources\RedoHS.png" />
+    <Content Include="Resources\UndoHS.png" />
+    <None Include="Resources\UnderlineHS.png" />
     <None Include="Resources\EditCodeHS.png" />
     <None Include="Resources\CutHS.png" />
     <None Include="Resources\CopyHS.png" />

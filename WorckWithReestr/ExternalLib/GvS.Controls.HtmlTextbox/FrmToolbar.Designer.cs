@@ -65,7 +65,7 @@
             this.tsbPaste});
             this.toolBar.Location = new System.Drawing.Point(0, 25);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(238, 25);
+            this.toolBar.Size = new System.Drawing.Size(242, 25);
             this.toolBar.TabIndex = 2;
             this.toolBar.Text = "toolStrip1";
             // 
@@ -83,10 +83,11 @@
             // tsbUnderline
             // 
             this.tsbUnderline.CheckOnClick = true;
-            this.tsbUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbUnderline.Image = global::GvS.Controls.Properties.Resources.UnderlineHS;
             this.tsbUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUnderline.Name = "tsbUnderline";
-            this.tsbUnderline.Size = new System.Drawing.Size(62, 22);
+            this.tsbUnderline.Size = new System.Drawing.Size(23, 22);
             this.tsbUnderline.Text = "Underline";
             this.tsbUnderline.Click += new System.EventHandler(this.tsbUnderline_Click);
             // 
@@ -159,7 +160,7 @@
             this.tsbCut.Image = global::GvS.Controls.Properties.Resources.CutHS;
             this.tsbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCut.Name = "tsbCut";
-            this.tsbCut.Size = new System.Drawing.Size(23, 20);
+            this.tsbCut.Size = new System.Drawing.Size(23, 22);
             this.tsbCut.Text = "Cut";
             this.tsbCut.Click += new System.EventHandler(this.tsbCut_Click);
             // 
@@ -169,7 +170,7 @@
             this.tsbCopy.Image = global::GvS.Controls.Properties.Resources.CopyHS;
             this.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCopy.Name = "tsbCopy";
-            this.tsbCopy.Size = new System.Drawing.Size(23, 20);
+            this.tsbCopy.Size = new System.Drawing.Size(23, 22);
             this.tsbCopy.Text = "Copy";
             this.tsbCopy.Click += new System.EventHandler(this.tsbCopy_Click);
             // 
@@ -193,7 +194,7 @@
             this.tsbViewSource});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(238, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(242, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -249,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(238, 44);
+            this.ClientSize = new System.Drawing.Size(242, 49);
             this.ControlBox = false;
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.toolStrip1);

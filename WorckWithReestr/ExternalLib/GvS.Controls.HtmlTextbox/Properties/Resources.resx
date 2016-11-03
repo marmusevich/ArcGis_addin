@@ -154,4 +154,25 @@
   <data name="FontHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FontHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="UnderlineHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\underlinehs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="justifyCenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\justifycenter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="justifyFull" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\justifyfull.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="justifyLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\justifyleft.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="justifyRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\justifyright.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\redohs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\undohs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

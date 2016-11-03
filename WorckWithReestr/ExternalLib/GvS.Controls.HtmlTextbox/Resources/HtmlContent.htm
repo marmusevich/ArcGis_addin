@@ -9,26 +9,37 @@
 		<title></title>
 		<style id="styleFixed" type="text/css">
 		    body {
-                margin: 2px;
+                margin: 0px;
                 font-family: Corbel, Arial, Helvetica, sans-serif;
                 font-size: small;
-            }
+                            }
 		    .clsTextBox 
 		    {
 		        width:100%;
 		        height:100%;
 		    }
+			P{
+				margin: 0px ;
+		    }
+			
 		</style>
 		<style id="styleCustom" type="text/css">
             #theTextBox 
             {
+                
             }
 		</style>
 		<script type="text/ecmascript">
 		    function IsBold()        { return document.queryCommandValue("Bold"); }
-		    function IsItalic()      { return document.queryCommandValue("Italic"); }
-		    function IsBulletList()  { return document.queryCommandValue("InsertUnOrderedList"); }
+		    function IsUnderline() { return document.queryCommandValue("Underline"); }
+		    function IsItalic() { return document.queryCommandValue("Italic"); }
+		    function IsBulletList() { return document.queryCommandValue("InsertUnOrderedList"); }
 		    function IsOrderedList() { return document.queryCommandValue("InsertOrderedList"); }
+		    function IsjustifyLeft() { return document.queryCommandValue("justifyLeft"); }
+		    function IsjustifyCenter() { return document.queryCommandValue("justifyCenter"); }
+		    function IsjustifyRight() { return document.queryCommandValue("justifyRight"); }
+		    function IsjustifyFull() { return document.queryCommandValue("justifyFull"); }
+
 		    function GetFont()       { return document.queryCommandValue("FontName"); }
 		    function GetFontSize()   { return document.queryCommandValue("FontSize"); }
 		    function InitFocus()     { theTextbox.focus(); }
@@ -42,7 +53,7 @@
 		</script>
 	</head>
 	<body>
-	    <div id="theTextbox" class="clsTextBox" contenteditable="true">
+	    <div id="theTextbox" class="clsTextBox" contenteditable="true" >
 	    </div>
 	</body>
 </html>
