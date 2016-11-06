@@ -43,7 +43,7 @@ namespace CadastralReference
             frmSelectTextTemplate frm = new frmSelectTextTemplate();
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //html = frm.tbHTML.Text;
+                tbHTML.Text += frm.ReturnString;
             }
         }
     }

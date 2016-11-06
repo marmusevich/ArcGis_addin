@@ -106,7 +106,8 @@ namespace CadastralReference
                     WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), 1, "изменяемая часть", WorkCadastralReference_DB.StringToByteArray(GetCadastralReferenceData().BodyText));
                     f = true;
                 }
-                if(f)
+
+                if (f)
                     WorkCadastralReference_DB.EditZayavkaData(GetCadastralReferenceData().ZayavkaID, GetCadastralReferenceData().MapObjectID, true, null);
             }
             catch (Exception ex) // обработка ошибок
@@ -121,6 +122,7 @@ namespace CadastralReference
             {
                 GetCadastralReferenceData().AllDocumentPdf = WorkCadastralReference_DB.ByteArrayToPDF(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 0, "PDF"));
                 GetCadastralReferenceData().BodyText = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, 1, "изменяемая часть"));
+
                 foreach (OnePageDescriptions opd in GetCadastralReferenceData().Pages)
                 {
                     opd.Image = WorkCadastralReference_DB.ByteArrayToImage(WorkCadastralReference_DB.LoadFromDBPage(GetCadastralReferenceData().ZayavkaID, opd.PagesID, opd.Caption)); 

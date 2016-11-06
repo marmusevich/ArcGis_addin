@@ -9,6 +9,7 @@ using System.Text;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using System.Windows.Forms;
 using PdfSharp.Pdf.Annotations;
+using SharedClasses;
 
 namespace CadastralReference
 {
@@ -65,12 +66,23 @@ namespace CadastralReference
 
         public static void ShowPDF()
         {
-            if (WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf != null)
+            try
             {
-                string tmpFileName = System.IO.Path.GetTempFileName() + ".pdf";
-                WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.Save(tmpFileName);
-                Process.Start(tmpFileName);
+                if (WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf != null
+                     && WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.PageCount > 0)
+                {
+                    string tmpFileName = System.IO.Path.GetTempFileName() + ".pdf";
+                    WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.Save(tmpFileName);
+                    Process.Start(tmpFileName);
+                }
             }
+            catch (Exception ex)
+            {
+                // сообщить про ошибку
+                Logger.Write(ex, string.Format("На могу отобразить PDF"));
+                GeneralApp.ShowErrorMessage(string.Format("На могу отобразить PDF " ));
+            }
+
         }
 
 
@@ -113,5 +125,91 @@ namespace CadastralReference
             ShowPDF();
         }
 
+
+
+
+        public static void SaveRTF()
+        {
+            IDataObject obj = Clipboard.GetDataObject();
+            SaveFileDialog sfd = new SaveFileDialog();
+            try
+            {
+                sfd.InitialDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+                sfd.Filter = "rtf|*.rtf";
+                sfd.Title = "Сохранить..";
+
+                if ((sfd.ShowDialog() == DialogResult.OK) && sfd.FileName != "")
+                {
+                    System.IO.FileStream fs = (System.IO.FileStream)sfd.OpenFile();
+                    string html = "";
+
+                    html += TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Titul_Template);
+                    //html += " <br clear=all style='mso-special-character:line-break;page-break-before:always'> ";
+                    html += TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Body_Begin_Template);
+                    html += "<P>" + WorkCadastralReference.GetCadastralReferenceData().BodyText + "</P>";
+                    html += TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Body_End_Template);
+                    //html += " <br clear=all style='mso-special-character:line-break;page-break-before:always'> ";
+                    html += TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Raspiska_Template);
+                    //html += " <br clear=all style='mso-special-character:line-break;page-break-before:always'> ";
+
+
+                    RichTextBox rtbTemp = new RichTextBox();
+                    HtmlToRtf(html, ref rtbTemp);
+
+                    ////****
+
+                    //HtmlToRtf(TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Titul_Template), ref rtbTemp);
+                    //rtbTemp.Text += Environment.NewLine;
+
+                    ////html += TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Body_Begin_Template);
+                    ////html += "<P>" + WorkCadastralReference.GetCadastralReferenceData().BodyText + "</P>";
+                    ////html += TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Body_End_Template);
+                    ////HtmlToRtf(html, ref rtbTemp);
+                    ////rtbTemp.Text += Environment.NewLine;
+
+
+                    //HtmlToRtf(TextTemplateConverter.Convert(WorkCadastralReference.GetCadastralReferenceData().Raspiska_Template), ref rtbTemp);
+                    //rtbTemp.Text += Environment.NewLine;
+
+
+                    if (WorkCadastralReference.GetCadastralReferenceData().Pages != null)
+                        foreach (OnePageDescriptions opd in WorkCadastralReference.GetCadastralReferenceData().Pages)
+                            if (opd.Image != null)
+                            {
+                                Clipboard.Clear();
+                                Clipboard.SetImage(opd.Image);
+                                rtbTemp.Paste();
+                            }
+                    Clipboard.Clear();
+
+                    rtbTemp.SaveFile(fs, RichTextBoxStreamType.RichText);
+                    fs.Close();
+
+                    Process.Start(sfd.FileName);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // сообщить про ошибку
+                Logger.Write(ex, string.Format("На могу сохранить RTF в '{0}'", sfd.FileName));
+                GeneralApp.ShowErrorMessage(string.Format("На могу сохранить RTF в '{0}'", sfd.FileName));
+            }
+
+            Clipboard.SetDataObject(obj);
+
+        }
+
+        private static void HtmlToRtf(string html, ref RichTextBox rtbTemp)
+        {
+            WebBrowser wb = new WebBrowser();
+            wb.Navigate("about:blank");
+
+            wb.Document.Write(html);
+            wb.Document.ExecCommand("SelectAll", false, null);
+            wb.Document.ExecCommand("Copy", false, null);
+            //rtbTemp.SelectAll();
+            rtbTemp.Paste();
+        }
     }
 }

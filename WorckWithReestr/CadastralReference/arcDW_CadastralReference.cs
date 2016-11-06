@@ -300,7 +300,8 @@ namespace WorckWithReestr
         private void SetTextToPDFLabel()
         {
 
-            bool isPDF = WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf != null;
+            bool isPDF = WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf != null ;
+            isPDF = isPDF && WorkCadastralReference.GetCadastralReferenceData().AllDocumentPdf.PageCount>0;
             bool isBodyText = WorkCadastralReference.GetCadastralReferenceData().BodyText != "";
 
             string str = "";
@@ -427,6 +428,11 @@ namespace WorckWithReestr
             {
                 WorkCadastralReference.SetZayavka(-1);
             }
+        }
+
+        private void btnSaveToRTF_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.SaveRTF();
         }
 
         #endregion События элементов управления

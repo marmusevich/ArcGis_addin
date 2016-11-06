@@ -63,6 +63,9 @@ namespace CadastralReference
             nudMarningDown.Value = (decimal)m_crd.PDFTextMarningDown;
             nudMarningRight.Value = (decimal)m_crd.PDFTextMarningRight;
             nudMarningLeft.Value = (decimal)m_crd.PDFTextMarningLeft;
+
+            foreach (string s in m_crd.Body_Template)
+                lbBody_Template.Items.Add(s);
     }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -596,6 +599,17 @@ namespace CadastralReference
             m_crd.PDFTextMarningDown = (double)nudMarningDown.Value;
             m_crd.PDFTextMarningRight = (double)nudMarningRight.Value;
             m_crd.PDFTextMarningLeft = (double)nudMarningLeft.Value;
+
+
+            m_crd.Body_Template.Clear();
+            foreach (object o in lbBody_Template.Items)
+            {
+                string tmp = (string)o;
+                if (tmp != null)
+                {
+                    m_crd.Body_Template.Add(tmp);
+                }
+            }
         }
         #endregion вспомогательные функции
 
@@ -723,6 +737,90 @@ namespace CadastralReference
             if (nud != null && rb != null)
                 nud.Enabled = rb.Checked;
         }
+
+
+
+        private void btnAddTemplateLine_Click(object sender, EventArgs e)
+        {
+            if (tbBody_Template_String.Text != "")
+            {
+                lbBody_Template.Items.Add(tbBody_Template_String.Text);
+                tbBody_Template_String.Text = "";
+            }
+        }
+
+        private void btnPreserveTemplateLine_Click(object sender, EventArgs e)
+        {
+            if (tbBody_Template_String.Text != "" )
+            {
+                if (lbBody_Template.SelectedIndex != -1) // edit
+                {
+                    lbBody_Template.Items[lbBody_Template.SelectedIndex] = tbBody_Template_String.Text;
+                    tbBody_Template_String.Text = "";
+                }
+                else // add
+                {
+                    lbBody_Template.Items.Add(tbBody_Template_String.Text);
+                    tbBody_Template_String.Text = "";
+                }
+            }
+        }
+
+        private void btnEditTemplateLine_Click(object sender, EventArgs e)
+        {
+            if (lbBody_Template.SelectedIndex != -1)
+            {
+                tbBody_Template_String.Text = lbBody_Template.SelectedItem.ToString();
+            }
+        }
+
+        private void lbBody_Template_DoubleClick(object sender, EventArgs e)
+        {
+            if (lbBody_Template.SelectedIndex != -1)
+            {
+                tbBody_Template_String.Text = lbBody_Template.SelectedItem.ToString();
+            }
+        }
+
+        private void btnDelTemplateLine_Click(object sender, EventArgs e)
+        {
+            tbBody_Template_String.Text = "";
+            if (lbBody_Template.SelectedIndex != -1)
+            {
+                if (MessageBox.Show("Удалить выбранную запись?", "Заготовка основной части", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    lbBody_Template.Items.Remove(lbBody_Template.SelectedItem);
+                }
+            }
+        }
+
+        private void btnHelpTemplate_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmHelpTemplateView();
+            frm.ShowDialog();
+        }
+
+
+
+        private void btnEditTitul_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Titul_Template);
+        }
+
+        private void btnEditBodyBegin_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Body_Begin_Template);
+        }
+
+        private void btnEditBodyEnd_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Body_End_Template);
+        }
+
+        private void btnEditRaspiska_Click(object sender, EventArgs e)
+        {
+            WorkCadastralReference_text.EditHTML(ref m_crd.Raspiska_Template);
+        }
         #endregion
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -779,27 +877,6 @@ namespace CadastralReference
             }
         }
         #endregion
-
-        private void btnEditTitul_Click(object sender, EventArgs e)
-        {
-            WorkCadastralReference_text.EditHTML(ref m_crd.Titul_Template);
-        }
-
-        private void btnEditBodyBegin_Click(object sender, EventArgs e)
-        {
-            WorkCadastralReference_text.EditHTML(ref m_crd.Body_Begin_Template);
-        }
-
-        private void btnEditBodyEnd_Click(object sender, EventArgs e)
-        {
-            WorkCadastralReference_text.EditHTML(ref m_crd.Body_End_Template);
-        }
-
-        private void btnEditRaspiska_Click(object sender, EventArgs e)
-        {
-            WorkCadastralReference_text.EditHTML(ref m_crd.Raspiska_Template);
-        }
-
         private void btnLoadFromFile_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Заменить текущие настройки данными из файла?", "Загрузка настроек", MessageBoxButtons.YesNo);
@@ -851,5 +928,9 @@ namespace CadastralReference
                 GeneralApp.ShowErrorMessage(string.Format("На могу сохранить настройки в '{0}'", sfd.FileName));
             }
         }
+
+
+
+
     }
 }

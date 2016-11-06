@@ -160,6 +160,8 @@ namespace CadastralReference
             }
         }
 
+
+
         //основная часть - окончание
         public string Body_End_Template = "";
         //расписка
@@ -254,6 +256,7 @@ namespace CadastralReference
 
             BodyText = "";
             AllDocumentPdf = null;
+            
 
             if (Pages != null)
                 foreach (OnePageDescriptions opd in Pages)

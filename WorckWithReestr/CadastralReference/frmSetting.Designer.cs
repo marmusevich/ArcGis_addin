@@ -48,6 +48,15 @@ namespace CadastralReference
             this.lblListOfPages = new System.Windows.Forms.Label();
             this.clbListOfPages = new System.Windows.Forms.CheckedListBox();
             this.tpRTF = new System.Windows.Forms.TabPage();
+            this.lblBody_Template_String = new System.Windows.Forms.Label();
+            this.btnHelpTemplate = new System.Windows.Forms.Button();
+            this.btnDelTemplateLine = new System.Windows.Forms.Button();
+            this.btnEditTemplateLine = new System.Windows.Forms.Button();
+            this.btnPreserveTemplateLine = new System.Windows.Forms.Button();
+            this.btnAddTemplateLine = new System.Windows.Forms.Button();
+            this.lblBody_Template = new System.Windows.Forms.Label();
+            this.tbBody_Template_String = new System.Windows.Forms.TextBox();
+            this.lbBody_Template = new System.Windows.Forms.ListBox();
             this.gbPDFMarning = new System.Windows.Forms.GroupBox();
             this.nudMarningDown = new System.Windows.Forms.NumericUpDown();
             this.lblMarningDown = new System.Windows.Forms.Label();
@@ -254,6 +263,15 @@ namespace CadastralReference
             // 
             // tpRTF
             // 
+            this.tpRTF.Controls.Add(this.lblBody_Template_String);
+            this.tpRTF.Controls.Add(this.btnHelpTemplate);
+            this.tpRTF.Controls.Add(this.btnDelTemplateLine);
+            this.tpRTF.Controls.Add(this.btnEditTemplateLine);
+            this.tpRTF.Controls.Add(this.btnPreserveTemplateLine);
+            this.tpRTF.Controls.Add(this.btnAddTemplateLine);
+            this.tpRTF.Controls.Add(this.lblBody_Template);
+            this.tpRTF.Controls.Add(this.tbBody_Template_String);
+            this.tpRTF.Controls.Add(this.lbBody_Template);
             this.tpRTF.Controls.Add(this.gbPDFMarning);
             this.tpRTF.Controls.Add(this.btnEditTitul);
             this.tpRTF.Controls.Add(this.lblTitul);
@@ -271,6 +289,104 @@ namespace CadastralReference
             this.tpRTF.Text = "Текстовый документ";
             this.tpRTF.UseVisualStyleBackColor = true;
             // 
+            // lblBody_Template_String
+            // 
+            this.lblBody_Template_String.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBody_Template_String.AutoSize = true;
+            this.lblBody_Template_String.Location = new System.Drawing.Point(6, 307);
+            this.lblBody_Template_String.Name = "lblBody_Template_String";
+            this.lblBody_Template_String.Size = new System.Drawing.Size(180, 13);
+            this.lblBody_Template_String.TabIndex = 19;
+            this.lblBody_Template_String.Text = "Строка заготовки основной части";
+            // 
+            // btnHelpTemplate
+            // 
+            this.btnHelpTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelpTemplate.Location = new System.Drawing.Point(529, 277);
+            this.btnHelpTemplate.Name = "btnHelpTemplate";
+            this.btnHelpTemplate.Size = new System.Drawing.Size(116, 23);
+            this.btnHelpTemplate.TabIndex = 11;
+            this.btnHelpTemplate.Text = "Описание шаблона";
+            this.btnHelpTemplate.UseVisualStyleBackColor = true;
+            this.btnHelpTemplate.Click += new System.EventHandler(this.btnHelpTemplate_Click);
+            // 
+            // btnDelTemplateLine
+            // 
+            this.btnDelTemplateLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelTemplateLine.Location = new System.Drawing.Point(257, 277);
+            this.btnDelTemplateLine.Name = "btnDelTemplateLine";
+            this.btnDelTemplateLine.Size = new System.Drawing.Size(75, 23);
+            this.btnDelTemplateLine.TabIndex = 17;
+            this.btnDelTemplateLine.Text = "Удалить";
+            this.btnDelTemplateLine.UseVisualStyleBackColor = true;
+            this.btnDelTemplateLine.Click += new System.EventHandler(this.btnDelTemplateLine_Click);
+            // 
+            // btnEditTemplateLine
+            // 
+            this.btnEditTemplateLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditTemplateLine.Location = new System.Drawing.Point(176, 277);
+            this.btnEditTemplateLine.Name = "btnEditTemplateLine";
+            this.btnEditTemplateLine.Size = new System.Drawing.Size(75, 23);
+            this.btnEditTemplateLine.TabIndex = 16;
+            this.btnEditTemplateLine.Text = "Редактировать";
+            this.btnEditTemplateLine.UseVisualStyleBackColor = true;
+            this.btnEditTemplateLine.Click += new System.EventHandler(this.btnEditTemplateLine_Click);
+            // 
+            // btnPreserveTemplateLine
+            // 
+            this.btnPreserveTemplateLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPreserveTemplateLine.Location = new System.Drawing.Point(95, 277);
+            this.btnPreserveTemplateLine.Name = "btnPreserveTemplateLine";
+            this.btnPreserveTemplateLine.Size = new System.Drawing.Size(75, 23);
+            this.btnPreserveTemplateLine.TabIndex = 15;
+            this.btnPreserveTemplateLine.Text = "Сохранить";
+            this.btnPreserveTemplateLine.UseVisualStyleBackColor = true;
+            this.btnPreserveTemplateLine.Click += new System.EventHandler(this.btnPreserveTemplateLine_Click);
+            // 
+            // btnAddTemplateLine
+            // 
+            this.btnAddTemplateLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddTemplateLine.Location = new System.Drawing.Point(9, 277);
+            this.btnAddTemplateLine.Name = "btnAddTemplateLine";
+            this.btnAddTemplateLine.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTemplateLine.TabIndex = 14;
+            this.btnAddTemplateLine.Text = "Добавить";
+            this.btnAddTemplateLine.UseVisualStyleBackColor = true;
+            this.btnAddTemplateLine.Click += new System.EventHandler(this.btnAddTemplateLine_Click);
+            // 
+            // lblBody_Template
+            // 
+            this.lblBody_Template.AutoSize = true;
+            this.lblBody_Template.Location = new System.Drawing.Point(6, 144);
+            this.lblBody_Template.Name = "lblBody_Template";
+            this.lblBody_Template.Size = new System.Drawing.Size(163, 13);
+            this.lblBody_Template.TabIndex = 13;
+            this.lblBody_Template.Text = "Заготовки для основной части";
+            // 
+            // tbBody_Template_String
+            // 
+            this.tbBody_Template_String.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBody_Template_String.Location = new System.Drawing.Point(5, 325);
+            this.tbBody_Template_String.Multiline = true;
+            this.tbBody_Template_String.Name = "tbBody_Template_String";
+            this.tbBody_Template_String.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbBody_Template_String.Size = new System.Drawing.Size(640, 88);
+            this.tbBody_Template_String.TabIndex = 12;
+            // 
+            // lbBody_Template
+            // 
+            this.lbBody_Template.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbBody_Template.FormattingEnabled = true;
+            this.lbBody_Template.Location = new System.Drawing.Point(9, 163);
+            this.lbBody_Template.Name = "lbBody_Template";
+            this.lbBody_Template.ScrollAlwaysVisible = true;
+            this.lbBody_Template.Size = new System.Drawing.Size(636, 108);
+            this.lbBody_Template.TabIndex = 18;
+            this.lbBody_Template.DoubleClick += new System.EventHandler(this.lbBody_Template_DoubleClick);
+            // 
             // gbPDFMarning
             // 
             this.gbPDFMarning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -283,9 +399,9 @@ namespace CadastralReference
             this.gbPDFMarning.Controls.Add(this.lblMarningLeft);
             this.gbPDFMarning.Controls.Add(this.nudMarningUp);
             this.gbPDFMarning.Controls.Add(this.lblMarningUp);
-            this.gbPDFMarning.Location = new System.Drawing.Point(7, 62);
+            this.gbPDFMarning.Location = new System.Drawing.Point(9, 62);
             this.gbPDFMarning.Name = "gbPDFMarning";
-            this.gbPDFMarning.Size = new System.Drawing.Size(638, 69);
+            this.gbPDFMarning.Size = new System.Drawing.Size(636, 69);
             this.gbPDFMarning.TabIndex = 10;
             this.gbPDFMarning.TabStop = false;
             this.gbPDFMarning.Text = "Отступы в текстовой части PDF (см)";
@@ -395,7 +511,7 @@ namespace CadastralReference
             // 
             // btnEditRaspiska
             // 
-            this.btnEditRaspiska.Location = new System.Drawing.Point(529, 34);
+            this.btnEditRaspiska.Location = new System.Drawing.Point(538, 34);
             this.btnEditRaspiska.Name = "btnEditRaspiska";
             this.btnEditRaspiska.Size = new System.Drawing.Size(107, 23);
             this.btnEditRaspiska.TabIndex = 7;
@@ -433,7 +549,7 @@ namespace CadastralReference
             // 
             // btnEditBodyEnd
             // 
-            this.btnEditBodyEnd.Location = new System.Drawing.Point(529, 8);
+            this.btnEditBodyEnd.Location = new System.Drawing.Point(538, 8);
             this.btnEditBodyEnd.Name = "btnEditBodyEnd";
             this.btnEditBodyEnd.Size = new System.Drawing.Size(107, 23);
             this.btnEditBodyEnd.TabIndex = 9;
@@ -510,6 +626,7 @@ namespace CadastralReference
             this.tpMain.PerformLayout();
             this.pnListOfPages.ResumeLayout(false);
             this.tpRTF.ResumeLayout(false);
+            this.tpRTF.PerformLayout();
             this.gbPDFMarning.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudMarningDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMarningRight)).EndInit();
@@ -560,5 +677,14 @@ namespace CadastralReference
         private Label lblMarningRight;
         private NumericUpDown nudMarningLeft;
         private Label lblMarningLeft;
+        private Label lblBody_Template_String;
+        private Button btnHelpTemplate;
+        private Button btnDelTemplateLine;
+        private Button btnEditTemplateLine;
+        private Button btnPreserveTemplateLine;
+        private Button btnAddTemplateLine;
+        private Label lblBody_Template;
+        private TextBox tbBody_Template_String;
+        private ListBox lbBody_Template;
     }
 }

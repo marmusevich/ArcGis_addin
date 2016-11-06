@@ -49,6 +49,7 @@ namespace WorckWithReestr
             this.lblObjectMapIDDiscriptions = new System.Windows.Forms.Label();
             this.lblObjectMapID = new System.Windows.Forms.Label();
             this.llblClearData = new System.Windows.Forms.LinkLabel();
+            this.btnSaveToRTF = new System.Windows.Forms.Button();
             this.pnRtf.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@ namespace WorckWithReestr
             this.tlpPages.Name = "tlpPages";
             this.tlpPages.RowCount = 1;
             this.tlpPages.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpPages.Size = new System.Drawing.Size(319, 257);
+            this.tlpPages.Size = new System.Drawing.Size(319, 230);
             this.tlpPages.TabIndex = 0;
             // 
             // btnSetting
@@ -85,14 +86,15 @@ namespace WorckWithReestr
             this.pnRtf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnRtf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnRtf.Controls.Add(this.btnSaveToRTF);
             this.pnRtf.Controls.Add(this.btnEditText);
             this.pnRtf.Controls.Add(this.lblPDF);
             this.pnRtf.Controls.Add(this.btnPDFPrev);
             this.pnRtf.Controls.Add(this.btnSavePDFToDB);
             this.pnRtf.Controls.Add(this.btnPDFGenerate);
-            this.pnRtf.Location = new System.Drawing.Point(3, 378);
+            this.pnRtf.Location = new System.Drawing.Point(3, 351);
             this.pnRtf.Name = "pnRtf";
-            this.pnRtf.Size = new System.Drawing.Size(319, 96);
+            this.pnRtf.Size = new System.Drawing.Size(319, 123);
             this.pnRtf.TabIndex = 3;
             // 
             // btnEditText
@@ -243,6 +245,17 @@ namespace WorckWithReestr
             this.llblClearData.Text = "Сброс";
             this.llblClearData.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblClearData_LinkClicked);
             // 
+            // btnSaveToRTF
+            // 
+            this.btnSaveToRTF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveToRTF.Location = new System.Drawing.Point(107, 93);
+            this.btnSaveToRTF.Name = "btnSaveToRTF";
+            this.btnSaveToRTF.Size = new System.Drawing.Size(205, 23);
+            this.btnSaveToRTF.TabIndex = 5;
+            this.btnSaveToRTF.Text = "Сохранить формате  RTF на диск";
+            this.btnSaveToRTF.UseVisualStyleBackColor = true;
+            this.btnSaveToRTF.Click += new System.EventHandler(this.btnSaveToRTF_Click);
+            // 
             // arcDW_CadastralReference
             // 
             this.Controls.Add(this.llblClearData);
@@ -281,5 +294,6 @@ namespace WorckWithReestr
         private Label lblObjectMapID;
         private LinkLabel llblClearData;
         private Button btnEditText;
+        private Button btnSaveToRTF;
     }
 }

@@ -21,7 +21,11 @@ namespace CadastralReference
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            ReturnString = (string)lbTexts.SelectedItem;
+            if(lbTexts.SelectedIndex != -1)
+            {
+                ReturnString = (string)lbTexts.SelectedItem;
+                DialogResult = DialogResult.OK;
+            }
 
             this.Close();
         }
@@ -34,14 +38,20 @@ namespace CadastralReference
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            ReturnString = (string)lbTexts.SelectedItem;
-            DialogResult = DialogResult.OK;
+            if (lbTexts.SelectedIndex != -1)
+            {
+                ReturnString = (string)lbTexts.SelectedItem;
+                DialogResult = DialogResult.OK;
+            }
             this.Close();
         }
 
         private void frmSelectTextTemplate_Load(object sender, EventArgs e)
         {
-
+            foreach(string str in WorkCadastralReference.GetCadastralReferenceData().Body_Template)
+            {
+                lbTexts.Items.Add(TextTemplateConverter.Convert(str));
+            }
         }
     }
 }
