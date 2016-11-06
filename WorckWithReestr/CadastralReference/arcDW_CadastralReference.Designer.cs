@@ -36,6 +36,7 @@ namespace WorckWithReestr
             this.tlpPages = new System.Windows.Forms.TableLayoutPanel();
             this.btnSetting = new System.Windows.Forms.Button();
             this.pnRtf = new System.Windows.Forms.Panel();
+            this.btnSaveToRTF = new System.Windows.Forms.Button();
             this.btnEditText = new System.Windows.Forms.Button();
             this.lblPDF = new System.Windows.Forms.Label();
             this.btnPDFPrev = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@ namespace WorckWithReestr
             this.lblObjectMapIDDiscriptions = new System.Windows.Forms.Label();
             this.lblObjectMapID = new System.Windows.Forms.Label();
             this.llblClearData = new System.Windows.Forms.LinkLabel();
-            this.btnSaveToRTF = new System.Windows.Forms.Button();
             this.pnRtf.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +96,16 @@ namespace WorckWithReestr
             this.pnRtf.Name = "pnRtf";
             this.pnRtf.Size = new System.Drawing.Size(319, 123);
             this.pnRtf.TabIndex = 3;
+            // 
+            // btnSaveToRTF
+            // 
+            this.btnSaveToRTF.Location = new System.Drawing.Point(107, 93);
+            this.btnSaveToRTF.Name = "btnSaveToRTF";
+            this.btnSaveToRTF.Size = new System.Drawing.Size(205, 23);
+            this.btnSaveToRTF.TabIndex = 5;
+            this.btnSaveToRTF.Text = "Сохранить в формате  RTF на диск";
+            this.btnSaveToRTF.UseVisualStyleBackColor = true;
+            this.btnSaveToRTF.Click += new System.EventHandler(this.btnSaveToRTF_Click);
             // 
             // btnEditText
             // 
@@ -244,17 +254,6 @@ namespace WorckWithReestr
             this.llblClearData.TabStop = true;
             this.llblClearData.Text = "Сброс";
             this.llblClearData.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblClearData_LinkClicked);
-            // 
-            // btnSaveToRTF
-            // 
-            this.btnSaveToRTF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveToRTF.Location = new System.Drawing.Point(107, 93);
-            this.btnSaveToRTF.Name = "btnSaveToRTF";
-            this.btnSaveToRTF.Size = new System.Drawing.Size(205, 23);
-            this.btnSaveToRTF.TabIndex = 5;
-            this.btnSaveToRTF.Text = "Сохранить формате  RTF на диск";
-            this.btnSaveToRTF.UseVisualStyleBackColor = true;
-            this.btnSaveToRTF.Click += new System.EventHandler(this.btnSaveToRTF_Click);
             // 
             // arcDW_CadastralReference
             // 
