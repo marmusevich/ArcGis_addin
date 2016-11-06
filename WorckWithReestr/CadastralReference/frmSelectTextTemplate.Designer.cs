@@ -79,7 +79,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lbTexts);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmSelectTextTemplate";
             this.Text = "Выбор текста ";
             this.Load += new System.EventHandler(this.frmSelectTextTemplate_Load);
