@@ -385,6 +385,7 @@ namespace WorckWithReestr
             //    frm.tbHTML.PlainText = "< UL >< LI ></ LI ></ UL >";
             frmEditHTML frm = new frmEditHTML();
             frm.btnAddTemplate.Visible = true;
+            frm.btnHelpTemplate.Visible = false;
             frm.tbHTML.Text = WorkCadastralReference.GetCadastralReferenceData().BodyText;
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 WorkCadastralReference.GetCadastralReferenceData().BodyText = frm.tbHTML.Text;

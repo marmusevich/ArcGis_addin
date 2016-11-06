@@ -66,7 +66,12 @@ namespace CadastralReference
 
             foreach (string s in m_crd.Body_Template)
                 lbBody_Template.Items.Add(s);
-    }
+
+#if DEBUG
+            btnSaveToFile.Visible = true;
+            btnLoadFromFile.Visible = true;
+#endif
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region //создать элементы управления

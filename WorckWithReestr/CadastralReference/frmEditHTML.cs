@@ -46,5 +46,10 @@ namespace CadastralReference
                 tbHTML.Text += frm.ReturnString;
             }
         }
+
+        private void frmEditHTML_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

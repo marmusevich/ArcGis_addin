@@ -59,6 +59,7 @@ namespace CadastralReference
         {
             frmEditHTML frm = new frmEditHTML();
             frm.btnAddTemplate.Visible = isUseTemplate;
+            frm.btnHelpTemplate.Visible = !isUseTemplate;
             frm.tbHTML.Text = html;
             if(frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 html = frm.tbHTML.Text;

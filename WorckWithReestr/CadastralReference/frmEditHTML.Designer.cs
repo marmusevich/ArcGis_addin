@@ -115,6 +115,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmEditHTML";
             this.Text = "Редактирование текста...";
+            this.Load += new System.EventHandler(this.frmEditHTML_Load);
             this.ResumeLayout(false);
 
         }
@@ -124,7 +125,7 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         public GvS.Controls.HtmlTextbox tbHTML;
-        private System.Windows.Forms.Button btnHelpTemplate;
         public System.Windows.Forms.Button btnAddTemplate;
+        public System.Windows.Forms.Button btnHelpTemplate;
     }
 }

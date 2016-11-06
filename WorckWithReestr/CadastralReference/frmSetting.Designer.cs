@@ -594,6 +594,7 @@ namespace CadastralReference
             this.btnSaveToFile.TabIndex = 5;
             this.btnSaveToFile.Text = "Сохранить в файл";
             this.btnSaveToFile.UseVisualStyleBackColor = true;
+            this.btnSaveToFile.Visible = false;
             this.btnSaveToFile.Click += new System.EventHandler(this.btnSaveToFile_Click);
             // 
             // btnLoadFromFile
@@ -604,6 +605,7 @@ namespace CadastralReference
             this.btnLoadFromFile.TabIndex = 4;
             this.btnLoadFromFile.Text = "Загрузить из файла";
             this.btnLoadFromFile.UseVisualStyleBackColor = true;
+            this.btnLoadFromFile.Visible = false;
             this.btnLoadFromFile.Click += new System.EventHandler(this.btnLoadFromFile_Click);
             // 
             // frmSetting
