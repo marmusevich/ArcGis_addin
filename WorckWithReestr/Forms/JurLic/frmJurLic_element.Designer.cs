@@ -29,26 +29,28 @@ namespace WorckWithReestr
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblName = new Label();
-            this.lblFV = new Label();
-            this.lblOKPO = new Label();
-            this.cbFV = new ComboBox();
-            this.txtOKPO = new TextBox();
-            this.txtName = new TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblFV = new System.Windows.Forms.Label();
+            this.lblOKPO = new System.Windows.Forms.Label();
+            this.cbFV = new System.Windows.Forms.ComboBox();
+            this.txtOKPO = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtTel_Z = new System.Windows.Forms.TextBox();
+            this.lblTel_Z = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(354, 82);
+            this.btnOk.Location = new System.Drawing.Point(354, 92);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 82);
+            this.btnCancel.Location = new System.Drawing.Point(6, 92);
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(9, 12);
+            this.lblName.Location = new System.Drawing.Point(3, 9);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(92, 20);
             this.lblName.TabIndex = 23;
@@ -56,7 +58,7 @@ namespace WorckWithReestr
             // 
             // lblFV
             // 
-            this.lblFV.Location = new System.Drawing.Point(9, 41);
+            this.lblFV.Location = new System.Drawing.Point(3, 41);
             this.lblFV.Name = "lblFV";
             this.lblFV.Size = new System.Drawing.Size(131, 20);
             this.lblFV.TabIndex = 24;
@@ -72,7 +74,7 @@ namespace WorckWithReestr
             // 
             // cbFV
             // 
-            this.cbFV.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cbFV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFV.FormattingEnabled = true;
             this.cbFV.Location = new System.Drawing.Point(136, 38);
             this.cbFV.Name = "cbFV";
@@ -95,11 +97,28 @@ namespace WorckWithReestr
             this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
+            // txtTel_Z
+            // 
+            this.txtTel_Z.Location = new System.Drawing.Point(136, 65);
+            this.txtTel_Z.Name = "txtTel_Z";
+            this.txtTel_Z.Size = new System.Drawing.Size(293, 20);
+            this.txtTel_Z.TabIndex = 29;
+            // 
+            // lblTel_Z
+            // 
+            this.lblTel_Z.Location = new System.Drawing.Point(3, 65);
+            this.lblTel_Z.Name = "lblTel_Z";
+            this.lblTel_Z.Size = new System.Drawing.Size(125, 20);
+            this.lblTel_Z.TabIndex = 30;
+            this.lblTel_Z.Text = "Тел. / e-mail заявника";
+            // 
             // frmJurLic_element
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 111);
+            this.ClientSize = new System.Drawing.Size(439, 122);
+            this.Controls.Add(this.txtTel_Z);
+            this.Controls.Add(this.lblTel_Z);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtOKPO);
             this.Controls.Add(this.cbFV);
@@ -117,6 +136,8 @@ namespace WorckWithReestr
             this.Controls.SetChildIndex(this.cbFV, 0);
             this.Controls.SetChildIndex(this.txtOKPO, 0);
             this.Controls.SetChildIndex(this.txtName, 0);
+            this.Controls.SetChildIndex(this.lblTel_Z, 0);
+            this.Controls.SetChildIndex(this.txtTel_Z, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,5 +152,7 @@ namespace WorckWithReestr
         private ComboBox cbFV;
         private TextBox txtOKPO;
         private TextBox txtName;
+        private TextBox txtTel_Z;
+        private Label lblTel_Z;
     }
 }

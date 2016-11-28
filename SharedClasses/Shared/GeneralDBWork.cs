@@ -391,7 +391,7 @@ namespace SharedClasses
             return ret;
         }
         // возвращает максимальное значение цыфрового поля из таблицы например для автоинкриманта порядковых номеров
-        public static int GetMaxNumerForAutoicrement(string workspaceName, string tableName, string fildName)
+        public static int GetMaxNumerForAutoicrement(string workspaceName, string tableName, string fildName, string condition = null)
         {
             int ret = 0;
             try
@@ -401,6 +401,8 @@ namespace SharedClasses
                 //queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.Tables = tableName;
                 queryDef2.SubFields = "MAX( " + fildName + " )";
+                if(condition != null)
+                    queryDef2.WhereClause = condition;
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;
                 if ((row = cursor.NextRow()) != null)

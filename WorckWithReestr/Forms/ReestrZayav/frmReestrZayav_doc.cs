@@ -157,7 +157,7 @@ namespace WorckWithReestr
             if (ReestrDocumentWork.IsNumerReestrZayavExist(N_Z) && (editMode != EditMode.EDIT))
             {
                 if (MessageBox.Show(string.Format("Документ с номером [{0}] уже есть. \n Згенерировать следующий доступный? ",N_Z), "Не унекальный номер", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    N_Z = ReestrDocumentWork.GetNextNumerToReestrZayav();
+                    N_Z = ReestrDocumentWork.GetNextNumerToReestrZayav("Tip_Doc = " + mTip_Doc.ToString());
             }
             row.set_Value(base.table.FindField("N_Z"), N_Z);
         }
@@ -166,6 +166,7 @@ namespace WorckWithReestr
         {
             bool ret = base.ValidatingData();
             ret = GeneralDBWork.CheckValueIsInt_SetError(txtN_Z, errorProvider) && ret;
+            ret = GeneralDBWork.CheckValueStringNotEmpty_SetError(txtCane, errorProvider) && ret;
             ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Z, errorProvider, ref mFio_Z) && ret;
             //ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Vid, errorProvider, ref mFio_Ved_Vid) && ret;
             //ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtFio_Ved_Prin, errorProvider, ref mFio_Ved_Prin) && ret;
@@ -178,7 +179,7 @@ namespace WorckWithReestr
                 ret = ReestrDictionaryWork.CheckValueIsContainsFizLic_SetError(txtKod_Z, errorProvider, ref mKod_Z, null) && ret;
             }
             ret = ReestrDictionaryWork.CheckValueIsContainsTip_Doc_SetError(txtTip_Doc, errorProvider, ref mTip_Doc, null) && ret;
-            ret = ReestrDictionaryWork.CheckValueIsContainsAdmRaj_SetError(txtRajon, errorProvider, ref mRajon, null) && ret;
+            //ret = ReestrDictionaryWork.CheckValueIsContainsAdmRaj_SetError(txtRajon, errorProvider, ref mRajon, null) && ret;
 
 
             return ret;
@@ -210,8 +211,8 @@ namespace WorckWithReestr
         protected override void DB_DefaultValue_to_FormElement()
         {
             base.DB_DefaultValue_to_FormElement();
-            //алгоритм генерации номера, запрос большего из базы или последнего
-            txtN_Z.Text = ReestrDocumentWork.GetNextNumerToReestrZayav().ToString();
+            ////алгоритм генерации номера, запрос большего из базы или последнего
+            //txtN_Z.Text = ReestrDocumentWork.GetNextNumerToReestrZayav().ToString();
         }
 
         protected override void SetMaxLengthStringValueToTextBoxFromDB()
@@ -242,6 +243,9 @@ namespace WorckWithReestr
         private void OnChangedTipDoc()
         {
             txtTip_Doc.Text = ReestrDictionaryWork.GetNameByIDFromTip_Doc(mTip_Doc);
+            //алгоритм генерации номера, запрос большего из базы или последнего
+            txtN_Z.Text = ReestrDocumentWork.GetNextNumerToReestrZayav("Tip_Doc = " + mTip_Doc.ToString()).ToString();
+
         }
 
         private void OnChangedFio_Ved_Prin()
@@ -259,6 +263,8 @@ namespace WorckWithReestr
             if (cbStatus.SelectedIndex == 0)
             {
                 txtKod_Z.Text = ReestrDictionaryWork.GetNameByIDFromJurOsoby(mKod_Z);
+                txtTel_Z.Text = ReestrDictionaryWork.GetTelByIDFromJurOsoby(mKod_Z);
+                
             }
             else
             {
@@ -395,6 +401,12 @@ namespace WorckWithReestr
             isModified = true;
             ValidatingData();
         }
+        private void txtCane_TextChanged(object sender, EventArgs e)
+        {
+            isModified = true;
+            ValidatingData();
+        }
+
 
         private void txtN_Z_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {

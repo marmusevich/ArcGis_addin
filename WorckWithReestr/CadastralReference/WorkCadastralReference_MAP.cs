@@ -174,11 +174,18 @@ namespace CadastralReference
             ILayer layer = enumLayer.Next();
             while (layer != null)
             {
-                if (tmp.Contains(layer.Name.ToLower()))
+                string layerName = layer.Name.ToLower();
+                int index = tmp.IndexOf(layerName);
+                if (index != -1)
                 {
                     layer.Visible = true;
-                    tmp.Remove(layer.Name.ToLower());
+                    tmp.RemoveAt(index);
                 }
+                //if (tmp.Contains(layerName))
+                //{
+                //    layer.Visible = true;
+                //    tmp.Remove(layerName);
+                //}
                 else
                     layer.Visible = false;
                 // всегда показывать слой где расположены объекты

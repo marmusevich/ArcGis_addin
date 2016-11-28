@@ -31,6 +31,7 @@ namespace WorckWithReestr
             // взять из базы
             SetStringValueFromDBToTextBox(ref row, "nazva", txtName);
             SetStringValueFromDBToTextBox(ref row, "kod_EDRPOY", txtOKPO);
+            SetStringValueFromDBToTextBox(ref row, "Tel_Z", txtTel_Z);
 
             CheсkValueAndSetToComboBox(ref cbFV, ref dda, "forma_vlasnosti", GetValueFromDB(ref row, "forma_vlasnosti"));
         }
@@ -41,6 +42,7 @@ namespace WorckWithReestr
             // положить в базы
             SaveStringValueFromTextBoxToDB(ref row, "nazva", txtName);
             SaveStringValueFromTextBoxToDB(ref row, "kod_EDRPOY", txtOKPO);
+            SaveStringValueFromTextBoxToDB(ref row, "Tel_Z", txtTel_Z);
 
             SaveDomeinDataValueFromComboBoxToDB(ref row, "forma_vlasnosti", ref cbFV);
         }

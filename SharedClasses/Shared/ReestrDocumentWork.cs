@@ -10,9 +10,9 @@
 
 
         //вернуть следующий порядковый номер для рееста заявлений / обращений
-        public static int GetNextNumerToReestrZayav()
+        public static int GetNextNumerToReestrZayav(string condition = null)
         {
-            return GeneralDBWork.GetMaxNumerForAutoicrement("Kadastr2016", "Kn_Reg_Zayv", "N_Z") + 1;
+            return GeneralDBWork.GetMaxNumerForAutoicrement("Kadastr2016", "Kn_Reg_Zayv", "N_Z", condition) + 1;
         }
         //проверить существование порядкового номера для рееста заявлений / обращений
         public static bool IsNumerReestrZayavExist(int numer)

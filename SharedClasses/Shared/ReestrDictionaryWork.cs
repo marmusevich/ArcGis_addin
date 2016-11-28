@@ -42,6 +42,14 @@ namespace SharedClasses
                 ret = o.ToString();
             return ret;
         }
+        public static string GetTelByIDFromJurOsoby(int id)
+        {
+            string ret = "";
+            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "jur_osoby", "Tel_Z");
+            if (o != null)
+                ret = o.ToString();
+            return ret;
+        }
         //вернуть ИНН из справочника юр лиц
         public static string GetINNByIDFromJurOsoby(int id)
         {

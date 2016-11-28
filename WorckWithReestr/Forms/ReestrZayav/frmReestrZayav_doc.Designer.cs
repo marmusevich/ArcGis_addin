@@ -532,6 +532,7 @@ namespace WorckWithReestr
             this.txtCane.Name = "txtCane";
             this.txtCane.Size = new System.Drawing.Size(130, 20);
             this.txtCane.TabIndex = 12;
+            this.txtCane.TextChanged += new System.EventHandler(this.txtCane_TextChanged);
             this.txtCane.Validating += new System.ComponentModel.CancelEventHandler(this.txtCane_Validating);
             // 
             // txtPr_Otkaz
