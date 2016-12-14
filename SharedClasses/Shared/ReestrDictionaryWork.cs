@@ -19,62 +19,83 @@ namespace SharedClasses
         public static string GetFIOByIDFromFizLic(int id)
         {
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "fizichni_osoby", "P_I_B");
-            if (o != null)
-                ret = o.ToString();
+            if(id != -1)
+            { 
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "fizichni_osoby", "P_I_B");
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
         //вернуть ИНН из справочника физлиц
         public static string GetINNByIDFromFizLic(int id)
         {
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "fizichni_osoby", "ident_kod");
-            if (o != null)
-                ret = o.ToString();
+            if (id != -1)
+            {
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "fizichni_osoby", "ident_kod");
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
         //вернуть наименование из справочника юр лиц
         public static string GetNameByIDFromJurOsoby(int id)
         {
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "jur_osoby", "nazva");
-            if (o != null)
-                ret = o.ToString();
+            if (id != -1)
+            {
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "jur_osoby", "nazva");
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
         public static string GetTelByIDFromJurOsoby(int id)
         {
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "jur_osoby", "Tel_Z");
-            if (o != null)
-                ret = o.ToString();
+            if (id != -1)
+            {
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "jur_osoby", "Tel_Z");
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
         //вернуть ИНН из справочника юр лиц
         public static string GetINNByIDFromJurOsoby(int id)
         {
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "jur_osoby", "kod_EDRPOY");
-            if (o != null)
-                ret = o.ToString();
+            if (id != -1)
+            {
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "jur_osoby", "kod_EDRPOY");
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
         //вернуть наименование из справочника типов документов
         public static string GetNameByIDFromTip_Doc(int id)
         {
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "Tip_Doc", "Tip_Doc");
-            if (o != null)
-                ret = o.ToString();
+            if (id != -1)
+            {
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "Tip_Doc", "Tip_Doc");
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
         //вернуть код из справочника типов документов
         public static string GetCodeByIDFromTip_Doc(int id)
         {
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "Tip_Doc", "Kod_Doc");
-            if (o != null)
-                ret = o.ToString();
+            if (id != -1)
+            {
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "Tip_Doc", "Kod_Doc");
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
         //вернуть название района из справочника районов
@@ -87,9 +108,12 @@ namespace SharedClasses
                 fildname = "NAZVA_LAT";
 
             string ret = "";
-            object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "Rej_Adm_Raj_Mis", fildname);
-            if (o != null)
-                ret = o.ToString();
+            if (id != -1)
+            {
+                object o = GeneralDBWork.GetValueByID("Kadastr2016", id, "Rej_Adm_Raj_Mis", fildname);
+                if (o != null)
+                    ret = o.ToString();
+            }
             return ret;
         }
 
