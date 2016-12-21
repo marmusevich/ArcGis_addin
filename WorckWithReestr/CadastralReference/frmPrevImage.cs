@@ -50,7 +50,6 @@ namespace CadastralReference
         }
 
         
-        
         public frmPrevImage()
         {
             InitializeComponent();

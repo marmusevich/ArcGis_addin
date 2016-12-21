@@ -346,7 +346,10 @@ namespace WorckWithReestr
         {
             frmPrevImage frm = new frmPrevImage();
             frm.page = GetPageDescriptionsFromControlTag(sender as Control);
-            frm.ShowDialog();
+            if (frm.page != null && frm.page.Image != null)
+                frm.ShowDialog();
+            else
+                MessageBox.Show("Нет сгенерированого изображения");
         }
 
         private void btnGenerateMaket_Click(object sender, EventArgs e)

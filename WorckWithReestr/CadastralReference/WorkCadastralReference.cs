@@ -80,8 +80,6 @@ namespace CadastralReference
         {
             try
             {
-                Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
-                opd.Image = img;
                 if (opd.Image != null)
                 {
                     WorkCadastralReference_DB.SaveToDBPage(GetCadastralReferenceData().ZayavkaID, GetZayavkaDiscription(GetCadastralReferenceData().ZayavkaID), opd.PagesID, opd.Caption, WorkCadastralReference_DB.ImageToByteArray(opd.Image));
@@ -312,6 +310,10 @@ namespace CadastralReference
                 activeView.Refresh();
                 mxdoc.PageLayout.ZoomToWhole();
                 //mxdoc.ActiveView.Refresh();
+
+                Image img = WorkCadastralReference_MAP.GetImageFromArcGis();
+                opd.Image = img;
+
             }
             catch (Exception ex) // обработка ошибок
             {
