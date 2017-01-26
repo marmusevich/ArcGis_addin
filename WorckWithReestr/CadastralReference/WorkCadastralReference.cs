@@ -162,10 +162,8 @@ namespace CadastralReference
                 GetCadastralReferenceData().ZayavkaID = zayavkaID;
 
                 int MapObjectID = (int)GetCadastralReferenceData().ZayavkaData["MapObjectID"];
-
-                
+              
                 GetCadastralReferenceData().IsReferenceClose = (bool)GetCadastralReferenceData().ZayavkaData["IsReferenceClose"];
-
                 if (MapObjectID != -1)
                 {
                     LoadFromDB();

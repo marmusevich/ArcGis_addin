@@ -128,28 +128,30 @@ namespace CadastralReference
                 ILayer layer = enumLayer.Next();
                 while (layer != null)
                 {
-                    if (CadastralReferenceData.ObjectLayerName.ToLower() != layer.Name.ToLower())
-                        continue;
 
-                    IFeatureClass fc = (layer as IFeatureLayer2).FeatureClass;
-                    if (fc != null)
-                    {
-                        SharedClasses.GeneralMapWork.SelectLayersFeatures(layer as IFeatureLayer, string.Format("OBJECTID = {0}", objectID));
-                        IFeature selectedFeature = (mxDoc.FocusMap.FeatureSelection as IEnumFeature).Next();
-                        //ITable tab = selectedFeature.Table;
-                        //IRow row = tab.GetRow(objectID);
-                        //WorkCadastralReference.GetCadastralReferenceData().MapObjectID_Discription = "" + row.get_Value(tab.FindField("Adr_Obj")) as string;
-                        WorkCadastralReference.GetCadastralReferenceData().MapObjectID_Discription = "" + selectedFeature.get_Value(selectedFeature.Fields.FindField("Adr_Obj")) as string;
-                        //MessageBox.Show("" + row.get_Value(tab.FindField("Adr_Obj")) as string + " + " + selectedFeature.get_Value(selectedFeature.Fields.FindField("Adr_Obj")) as string);
+                    if (CadastralReferenceData.ObjectLayerName.ToLower() == layer.Name.ToLower())
+                    { 
+                        //MessageBox.Show("CadastralReferenceData.ObjectLayerName=" + CadastralReferenceData.ObjectLayerName + "     layer.Name=" + layer.Name);
 
-                        if ((mxDoc.ActiveView is IPageLayout))
-                            mxDoc.ActiveView = mxDoc.FocusMap as IActiveView;
+                        IFeatureClass fc = (layer as IFeatureLayer2).FeatureClass;
+                        if (fc != null)
+                        {
+                            SharedClasses.GeneralMapWork.SelectLayersFeatures(layer as IFeatureLayer, string.Format("OBJECTID = {0}", objectID));
+                            IFeature selectedFeature = (mxDoc.FocusMap.FeatureSelection as IEnumFeature).Next();
 
-                        IEnvelope envelope = selectedFeature.Shape.Envelope;
-                        envelope.Expand(10, 10, true);
-                        mxDoc.ActiveView.Extent = envelope;
-                        mxDoc.ActiveView.Refresh();
-                        break;
+
+                            WorkCadastralReference.GetCadastralReferenceData().MapObjectID_Discription = "" + selectedFeature.get_Value(selectedFeature.Fields.FindField("Adr_Obj")) as string;
+                            //MessageBox.Show("" + selectedFeature.get_Value(selectedFeature.Fields.FindField("Adr_Obj")) as string);
+
+                            if ((mxDoc.ActiveView is IPageLayout))
+                                mxDoc.ActiveView = mxDoc.FocusMap as IActiveView;
+
+                            IEnvelope envelope = selectedFeature.Shape.Envelope;
+                            envelope.Expand(10, 10, true);
+                            mxDoc.ActiveView.Extent = envelope;
+                            mxDoc.ActiveView.Refresh();
+                            break;
+                        }
                     }
                     layer = enumLayer.Next();
                 }

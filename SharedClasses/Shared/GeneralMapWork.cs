@@ -260,6 +260,8 @@ namespace SharedClasses
                 IQueryFilter pQueryFilter = new QueryFilterClass();
                 pQueryFilter.WhereClause = WhereClause;
                 pFeatureSelection.SelectFeatures(pQueryFilter, esriSelectionResultEnum.esriSelectionResultNew, false);
+
+                //System.Windows.Forms.MessageBox.Show("pFeatureSelection.SelectionSet.Count = " + pFeatureSelection.SelectionSet.Count);
             }
         }
         //выбрать по полигону
