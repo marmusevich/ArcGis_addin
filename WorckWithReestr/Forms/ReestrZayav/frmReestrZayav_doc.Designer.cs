@@ -646,8 +646,6 @@ namespace WorckWithReestr
             this.llblHaveReferense.Name = "llblHaveReferense";
             this.llblHaveReferense.Size = new System.Drawing.Size(932, 23);
             this.llblHaveReferense.TabIndex = 56;
-            this.llblHaveReferense.TabStop = true;
-            this.llblHaveReferense.Text = "linkLabel1";
             this.llblHaveReferense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.llblHaveReferense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblHaveReferense_LinkClicked);
             // 

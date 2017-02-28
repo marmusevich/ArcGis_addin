@@ -199,6 +199,9 @@ namespace WorckWithReestr
             ReestrDictionaryWork.EnableAutoComlectToFizLic(txtFio_Ved_Prin);
             ReestrDictionaryWork.EnableAutoComlectToFizLic(txtFio_Ved_Vid);
             ReestrDictionaryWork.EnableAutoComlectToFizLic(txtTip_Doc);
+
+            EnableAutoComlectToAdress();
+
             if (cbStatus.SelectedIndex == 0)
                 ReestrDictionaryWork.EnableAutoComlectToJurLic(txtKod_Z);
             else
@@ -240,6 +243,26 @@ namespace WorckWithReestr
             }
             return false;
         }
+
+        //включить автозаполнение поля по описательного адресса
+        public bool EnableAutoComlectToAdress()
+        {
+            bool ret = false;
+
+            AutoCompleteStringCollection sourse = GeneralDBWork.GenerateAutoCompleteStringCollection("Kadastr2016", "Kn_Reg_Zayv", "Adress_Text");
+            if (sourse != null)
+            {
+                txtAdress_Text.AutoCompleteCustomSource = sourse;
+                txtAdress_Text.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtAdress_Text.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                ret = true;
+            }
+            //txtAdress_Text.ReadOnly = !ret;
+            return ret;
+        }
+
+
+
         private void OnChangedTipDoc()
         {
             txtTip_Doc.Text = ReestrDictionaryWork.GetNameByIDFromTip_Doc(mTip_Doc);
@@ -334,7 +357,7 @@ namespace WorckWithReestr
         //---------------------------------------------------------------------------------------------------------------------------------------------
         private void btnFio_Z_Click(object sender, EventArgs e)
         {
-            string filteredString = "";
+            string filteredString = " EtoSotrydnik = 1 ";
             mFio_Z = frmFizLic_list.ShowForSelect(filteredString);
             OnChangedFio_Z();
             errorProvider.SetError(txtFio_Z, String.Empty);
@@ -359,7 +382,7 @@ namespace WorckWithReestr
             }
             else
             {
-                string filteredString = "";
+                string filteredString = " EtoSotrydnik = 0 ";
                 mKod_Z = frmFizLic_list.ShowForSelect(filteredString);
             }
             OnChangedKod_Z();
@@ -369,7 +392,7 @@ namespace WorckWithReestr
 
         private void btnFio_Ved_Prin_Click(object sender, EventArgs e)
         {
-            string filteredString = "";
+            string filteredString = " EtoSotrydnik = 1 ";
             mFio_Ved_Prin = frmFizLic_list.ShowForSelect(filteredString);
             OnChangedFio_Ved_Prin();
             errorProvider.SetError(txtFio_Ved_Prin, String.Empty);
@@ -378,7 +401,7 @@ namespace WorckWithReestr
 
         private void btnFio_Ved_Vid_Click(object sender, EventArgs e)
         {
-            string filteredString = "";
+            string filteredString = " EtoSotrydnik = 1 ";
             mFio_Ved_Vid = frmFizLic_list.ShowForSelect(filteredString);
             OnChangedFio_Ved_Vid();
             errorProvider.SetError(txtFio_Ved_Vid, String.Empty);

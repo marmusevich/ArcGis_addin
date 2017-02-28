@@ -168,6 +168,29 @@ namespace SharedClasses
         protected IQueryFilter BuildConditions()
         {
             IQueryFilter ret = null;
+            string dopUsl = GetStringAddetConditions();
+            string usl = "";
+
+            if (FilteredString != "")
+            {
+                usl = FilteredString;
+
+                if (dopUsl != "")
+                    usl += " and " + dopUsl;
+            }
+            else
+            {
+                if (dopUsl != "")
+                    usl = dopUsl;
+            }
+
+            if (usl != "")
+            {
+                ret = new QueryFilter();// Class();
+                ret.WhereClause = usl;
+            }
+
+
             return ret;
         }
         //настроить грид
