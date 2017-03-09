@@ -2,7 +2,6 @@
 using System;
 using System.Windows.Forms;
 
-
 namespace SharedClasses
 {
     public partial class frmBaseDocument : Form, IElementFormWorckWithControlsAndDB

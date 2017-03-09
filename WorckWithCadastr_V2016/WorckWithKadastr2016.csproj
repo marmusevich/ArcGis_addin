@@ -336,7 +336,6 @@
       <DependentUpon>frmSelectObjAndLayerForToolShowObjInfo.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmSelectObjAndLayerForToolShowObjInfo.resx</Link>
     </EmbeddedResource>
-	
     <EmbeddedResource Include="..\SharedClasses\Forms\frmBaseJurnal.resx">
       <DependentUpon>frmBaseJurnal.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmBaseJurnal.resx</Link>
@@ -345,7 +344,6 @@
       <DependentUpon>frmBaseSpr_list.cs</DependentUpon>
       <Link>SharedClasses\Forms\frmBaseSpr_list.resx</Link>
     </EmbeddedResource>
-	
   </ItemGroup>
   <ItemGroup>
     <AddInContent Include="Config.esriaddinx">
@@ -412,8 +410,6 @@
   <ItemGroup>
     <AddInContent Include="Images\arcTool_ShowObjInfa.png" />
   </ItemGroup>
-  
-  
   <ItemGroup>
     <EmbeddedResource Include="Forms\Base\frmBaseElement.resx">
       <DependentUpon>frmBaseElement.cs</DependentUpon>
@@ -455,7 +451,12 @@
       <DependentUpon>frmZtl_Bdn_element.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\SharedClasses\ExternalLib\DgvFilterPopup\DgvFilterPopup.csproj">
+      <Project>{4b9be5fd-303e-4270-9c4d-fa3bde6c34eb}</Project>
+      <Name>DgvFilterPopup</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
     <AddInTargetProduct>Desktop</AddInTargetProduct>

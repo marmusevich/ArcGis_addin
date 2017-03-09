@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
 
+//using DgvFilterPopup;
+
+
 namespace SharedClasses
 {
     public partial class frmBaseSpr_list : Form, IListFormFilterMetods
@@ -257,6 +260,8 @@ namespace SharedClasses
                     this.Close();
                 }
             }
+
+            //new DgvFilterManager(dgv);
         }
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -332,8 +337,6 @@ namespace SharedClasses
                 //frmSelectSearchInListForm.ShowForView(this, table);
             }
         }
-		
-		
 		
         private void tsbReflesh_Click(object sender, EventArgs e)
         {

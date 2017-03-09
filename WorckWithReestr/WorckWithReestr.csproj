@@ -495,6 +495,10 @@
     <AddInContent Include="Images\arcTool_SelectCursor.cur" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharedClasses\ExternalLib\DgvFilterPopup\DgvFilterPopup.csproj">
+      <Project>{4b9be5fd-303e-4270-9c4d-fa3bde6c34eb}</Project>
+      <Name>DgvFilterPopup</Name>
+    </ProjectReference>
     <ProjectReference Include="ExternalLib\GvS.Controls.HtmlTextbox\GvS.Controls.HtmlTextbox.csproj">
       <Project>{aaa9e9d4-7a91-46bf-a5fd-11538e57d5c2}</Project>
       <Name>GvS.Controls.HtmlTextbox</Name>
