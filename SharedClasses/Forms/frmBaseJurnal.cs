@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
 
-//using DgvFilterPopup;
+
 
 
 namespace SharedClasses
@@ -269,8 +269,6 @@ namespace SharedClasses
                     Close();
                 }
             }
-
-            //new DgvFilterManager(dgv);
         }
         private void frmBaseJurnal_FormClosing(object sender, FormClosingEventArgs e)
         {

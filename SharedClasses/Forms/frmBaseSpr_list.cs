@@ -3,8 +3,6 @@ using System.Windows.Forms;
 
 using ESRI.ArcGIS.Geodatabase;
 
-//using DgvFilterPopup;
-
 
 namespace SharedClasses
 {
@@ -260,8 +258,6 @@ namespace SharedClasses
                     this.Close();
                 }
             }
-
-            //new DgvFilterManager(dgv);
         }
         private void frmBaseSpr_list_FormClosing(object sender, FormClosingEventArgs e)
         {

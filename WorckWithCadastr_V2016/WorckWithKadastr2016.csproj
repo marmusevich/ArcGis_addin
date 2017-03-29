@@ -451,12 +451,6 @@
       <DependentUpon>frmZtl_Bdn_element.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SharedClasses\ExternalLib\DgvFilterPopup\DgvFilterPopup.csproj">
-      <Project>{4b9be5fd-303e-4270-9c4d-fa3bde6c34eb}</Project>
-      <Name>DgvFilterPopup</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
     <AddInTargetProduct>Desktop</AddInTargetProduct>
