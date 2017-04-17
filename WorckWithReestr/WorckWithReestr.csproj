@@ -173,6 +173,12 @@
     <Compile Include="CadastralReference\frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastralReference\frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastralReference\frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastralReference\frmTextSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,7 @@
     <Compile Include="CadastralReference\InputBox.Designer.cs">
       <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastralReference\OneLayersDescriptions.cs" />
     <Compile Include="CadastralReference\OnePageDescriptions.cs" />
     <Compile Include="CadastralReference\OneTextElementDescription.cs" />
     <Compile Include="CadastralReference\TextTemplateConverter.cs" />
@@ -438,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastralReference\frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastralReference\frmTextSetting.resx">
       <DependentUpon>frmTextSetting.cs</DependentUpon>

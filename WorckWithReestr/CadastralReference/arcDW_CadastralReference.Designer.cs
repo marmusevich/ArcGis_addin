@@ -50,6 +50,7 @@ namespace WorckWithReestr
             this.lblObjectMapIDDiscriptions = new System.Windows.Forms.Label();
             this.lblObjectMapID = new System.Windows.Forms.Label();
             this.llblClearData = new System.Windows.Forms.LinkLabel();
+            this.btnTest = new System.Windows.Forms.Button();
             this.pnRtf.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,8 +256,20 @@ namespace WorckWithReestr
             this.llblClearData.Text = "Сброс";
             this.llblClearData.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblClearData_LinkClicked);
             // 
+            // btnTest
+            // 
+            this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTest.Location = new System.Drawing.Point(163, 480);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 12;
+            this.btnTest.Text = "btnTest";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // arcDW_CadastralReference
             // 
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.llblClearData);
             this.Controls.Add(this.lblObjectMapID);
             this.Controls.Add(this.lblObjectMapIDDiscriptions);
@@ -294,5 +307,6 @@ namespace WorckWithReestr
         private LinkLabel llblClearData;
         private Button btnEditText;
         private Button btnSaveToRTF;
+        private Button btnTest;
     }
 }
