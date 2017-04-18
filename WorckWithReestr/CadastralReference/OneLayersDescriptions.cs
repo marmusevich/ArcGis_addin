@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 
 namespace CadastralReference
 {
+    [Serializable]
     public class OneLayerDescriptions : IEquatable<OneLayerDescriptions>
     {
         /// <summary>
@@ -20,7 +21,6 @@ namespace CadastralReference
 
         public OneLayerDescriptions()
         {
-            Caption = "";
             Type = LayerType.Feature;
             DataPath = "";
         }
@@ -28,7 +28,6 @@ namespace CadastralReference
 
         public OneLayerDescriptions(ILayer layer)
         {
-            Caption = "";
             Type = LayerType.Feature;
             DataPath = "";
         }
@@ -37,7 +36,6 @@ namespace CadastralReference
         //скопировать настройки
         public void CopySetingFrom(OneLayerDescriptions old)
         {
-            this.Caption = old.Caption;
             this.Type = old.Type;
             this.DataPath = old.DataPath;
         }
@@ -45,11 +43,6 @@ namespace CadastralReference
 
 
         #region свойсва / поля
-        /// <summary>
-        /// 
-        /// </summary>
-        [XmlElement("Caption")]
-        public string Caption { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -216,5 +216,125 @@ namespace WorckWithReestr
             DialogResult = DialogResult.OK;
             this.Close();
         }
+
+
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+        }
+
+        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+        }
+
+
+        private void tvLayers_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            txt.Text = "FullPath = " + e.Node.FullPath + System.Environment.NewLine +
+                "Name = " + e.Node.Name + System.Environment.NewLine +
+                "Text = " + e.Node.Text + System.Environment.NewLine + System.Environment.NewLine +
+                "onl.DataPath = " + ((OneLayerDescriptions)e.Node.Tag).DataPath;
+
+        }
+
+
+
+
+
+        public void init_treeView()
+        {
+            List<OneLayerDescriptions> LayerDescriptions = new List<OneLayerDescriptions>();
+            foreach (OneLayerDescriptions old in opd.LayerDescriptions)
+            {
+                OneLayerDescriptions tmp = new OneLayerDescriptions();
+                tmp.CopySetingFrom(old);
+                LayerDescriptions.Add(tmp);
+            }
+
+
+            LayerDescriptions = NewMethod(LayerDescriptions);
+
+            // фигня
+            LayerDescriptions = NewMethod(LayerDescriptions);
+
+
+            //----------
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (OneLayerDescriptions old in LayerDescriptions)
+            {
+                sb.Append("[");
+                sb.Append(old.Caption);
+                sb.Append("] ");
+            }
+            string str = sb.ToString();
+            if (str != "")
+                MessageBox.Show(str);
+        }
+
+
+        private List<OneLayerDescriptions> NewMethod(List<OneLayerDescriptions> LayerDescriptions)
+        {
+            List<OneLayerDescriptions> tmp = new List<OneLayerDescriptions>();
+
+            while (LayerDescriptions.Count > 0)
+            {
+                OneLayerDescriptions onl = LayerDescriptions[0];
+
+                if (onl.ParentDataPath == "")
+                {
+                    addNode(onl);
+                    LayerDescriptions.Remove(onl);
+                    onl = null;
+                }
+                else
+                {
+                    TreeNode[] findTreeNodes = tvLayers.Nodes.Find(onl.ParentDataPath, true);
+                    if (findTreeNodes.Length > 0)
+                    {
+                        foreach (TreeNode tn in findTreeNodes)
+                        {
+                            OneLayerDescriptions olp_tmp = (OneLayerDescriptions)tn.Tag;
+                            if (olp_tmp.Type.Equals(onl.ParentType) && olp_tmp.DataPath.Equals(onl.ParentDataPath))
+                            {
+                                addNode(onl, tn);
+                                LayerDescriptions.Remove(onl);
+                                onl = null;
+                            }
+                        }
+                    }
+                }
+                if (onl != null)
+                {
+                    tmp.Add(onl);
+                    LayerDescriptions.Remove(onl);
+                    onl = null;
+                }
+            }
+            return tmp;
+        }
+
+
+        public void addNode(OneLayerDescriptions onl, TreeNode parent = null)
+        {
+
+            TreeNode newNode = new TreeNode();
+
+            if (parent == null)
+            {
+                this.tvLayers.Nodes.Add(newNode);
+            }
+            else
+            {
+                parent.Nodes.Add(newNode);
+            }
+
+            newNode.Name = onl.DataPath;
+            newNode.Text = onl.Caption;
+            newNode.ToolTipText = newNode.FullPath;
+            newNode.Tag = onl;
+        }
+
+
+
     }
 }

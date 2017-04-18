@@ -53,6 +53,10 @@ namespace CadastralReference
         /// </summary>
         [XmlArray("Layers"), XmlArrayItem("Layer")]
         public StringCollection Layers { get; set; }
+
+        [XmlArray("LayerDescriptions"), XmlArrayItem("OneLayerDescriptions")]
+        public List<OneLayerDescriptions> LayerDescriptions { get; set; }
+
         /// <summary>
         /// макет 
         /// </summary>
@@ -250,6 +254,7 @@ namespace CadastralReference
             Caption = "";
             Enable = false;
             Layers = new StringCollection();
+            LayerDescriptions = new List<OneLayerDescriptions>(); 
             m_Image = null;
             m_TextElements = new List<OneTextElementDescription>();
 
@@ -272,14 +277,23 @@ namespace CadastralReference
             ScaleBar_Width = 6.65;
     }
 
-    //скопировать настройки
-    public void CopySetingFrom(OnePageDescriptions opd)
+        //скопировать настройки
+        public void CopySetingFrom(OnePageDescriptions opd)
         {
             this.Caption = opd.Caption;
             this.Enable = opd.Enable;
             Layers = new StringCollection();
             foreach (string s in opd.Layers)
                 this.Layers.Add(s);
+
+            LayerDescriptions = new List<OneLayerDescriptions>();
+            foreach (OneLayerDescriptions old in opd.LayerDescriptions)
+            {
+                OneLayerDescriptions tmp = new OneLayerDescriptions();
+                tmp.CopySetingFrom(old);
+                this.LayerDescriptions.Add(tmp);
+            }
+
 
             m_TextElements = new List<OneTextElementDescription>();
             foreach (OneTextElementDescription oted in opd.TextElements)
@@ -320,21 +334,22 @@ namespace CadastralReference
 
         }
 
-        //предстовленеие перечня слоев
-        public string LayersToString()
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach (string s in Layers)
-            {
-                sb.Append("[");
-                sb.Append(s);
-                sb.Append("] ");
-            }
-            string str = sb.ToString();
-            if (str == "") str = "Не указаны.";
+        ////предстовленеие перечня слоев
+        //public string LayersToString()
+        //{
+        //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-            return str;
-        }
+        //    foreach (OneLayerDescriptions old in LayerDescriptions)
+        //    {
+        //        sb.Append("[");
+        //        sb.Append(old.Caption);
+        //        sb.Append("] ");
+        //    }
+        //    string str = sb.ToString();
+        //    if (str == "") str = "Не указаны.";
+
+        //    return str;
+        //}
 
         // серелизовать в масив байтов стрелку севера
         private static byte[] SerializeNorthArrowToByte(INorthArrow northArrow)
