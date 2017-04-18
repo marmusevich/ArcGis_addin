@@ -63,7 +63,7 @@ namespace CadastralReference
         #region перегрузка стандартных функций
         public override string ToString()
         {
-            return Caption;
+            return "Caption";
         }
 
         public override bool Equals(object obj)

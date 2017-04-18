@@ -13,7 +13,7 @@ using ESRI.ArcGIS.ArcMapUI;
 
 
 
-namespace WorckWithReestr
+namespace CadastralReference
 {
     public partial class frmTest : Form
     {
@@ -21,6 +21,159 @@ namespace WorckWithReestr
         {
             InitializeComponent();
         }
+
+
+        private void frmTest_Load(object sender, EventArgs e)
+        {
+            getData();
+            data += "\n \n \n \n \t \t <<--->> \t \t \n \n \n \n ";
+            getData2();
+
+
+
+            txt.Text = data;
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            //if (retVal == null)
+            //    retVal = new StringCollection();
+
+            //retVal.Clear();
+
+            //foreach (object o in lbSelectedLayers.Items)
+            //{
+            //    string tmp = (string)o;
+            //    if (tmp != null)
+            //    {
+            //        retVal.Add(tmp);
+            //    }
+            //}
+            DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+        }
+
+        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+        }
+
+        private void tvLayers_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            txt.Text = "FullPath = " + e.Node.FullPath + System.Environment.NewLine +
+                "Name = " + e.Node.Name + System.Environment.NewLine +
+                "Text = " + e.Node.Text + System.Environment.NewLine + System.Environment.NewLine +
+                "onl.DataPath = " + ((OneLayerDescriptions)e.Node.Tag).DataPath;
+
+        }
+
+
+        //------------------------------
+
+
+        //построить дерево по методу getData2()
+
+
+
+        public void init_treeView()
+        {
+            //List<OneLayerDescriptions> LayerDescriptions = new List<OneLayerDescriptions>();
+            //foreach (OneLayerDescriptions old in opd.LayerDescriptions)
+            //{
+            //    OneLayerDescriptions tmp = new OneLayerDescriptions();
+            //    tmp.CopySetingFrom(old);
+            //    LayerDescriptions.Add(tmp);
+            //}
+
+
+            //LayerDescriptions = NewMethod(LayerDescriptions);
+
+            //// фигня
+            //LayerDescriptions = NewMethod(LayerDescriptions);
+
+
+            ////----------
+            ////System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            ////foreach (OneLayerDescriptions old in LayerDescriptions)
+            ////{
+            ////    sb.Append("[");
+            ////    sb.Append(old.Caption);
+            ////    sb.Append("] ");
+            ////}
+            ////string str = sb.ToString();
+            ////if (str != "")
+            ////    MessageBox.Show(str);
+        }
+
+
+        private List<OneLayerDescriptions> NewMethod(List<OneLayerDescriptions> LayerDescriptions)
+        {
+            List<OneLayerDescriptions> tmp = new List<OneLayerDescriptions>();
+
+            //while (LayerDescriptions.Count > 0)
+            //{
+            //    OneLayerDescriptions onl = LayerDescriptions[0];
+
+            //    if (onl.ParentDataPath == "")
+            //    {
+            //        addNode(onl);
+            //        LayerDescriptions.Remove(onl);
+            //        onl = null;
+            //    }
+            //    else
+            //    {
+            //        TreeNode[] findTreeNodes = tvLayers.Nodes.Find(onl.ParentDataPath, true);
+            //        if (findTreeNodes.Length > 0)
+            //        {
+            //            foreach (TreeNode tn in findTreeNodes)
+            //            {
+            //                OneLayerDescriptions olp_tmp = (OneLayerDescriptions)tn.Tag;
+            //                if (olp_tmp.Type.Equals(onl.ParentType) && olp_tmp.DataPath.Equals(onl.ParentDataPath))
+            //                {
+            //                    addNode(onl, tn);
+            //                    LayerDescriptions.Remove(onl);
+            //                    onl = null;
+            //                }
+            //            }
+            //        }
+            //    }
+            //    if (onl != null)
+            //    {
+            //        tmp.Add(onl);
+            //        LayerDescriptions.Remove(onl);
+            //        onl = null;
+            //    }
+            //}
+            return tmp;
+        }
+
+
+        public void addNode(OneLayerDescriptions onl, TreeNode parent = null)
+        {
+            TreeNode newNode = new TreeNode();
+
+            if (parent == null)
+            {
+                this.tvLayers.Nodes.Add(newNode);
+            }
+            else
+            {
+                parent.Nodes.Add(newNode);
+            }
+
+            newNode.Name = onl.DataPath;
+            //newNode.Text = onl.Caption;
+            newNode.ToolTipText = newNode.FullPath;
+            newNode.Tag = onl;
+        }
+
+
+        //-----------------------------------------
 
 
 
@@ -73,266 +226,147 @@ namespace WorckWithReestr
         string data = "";
 
 
-        void getData(ILayer selectedLayer)
+        void getData()
         {
-
-            if (selectedLayer != null)
+            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+            IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
+            ILayer layer = enumLayer.Next();
+            int layerCount = 0;
+            while (layer != null)
             {
-
-                if (selectedLayer is IFeatureLayer2)
+                if (layer is ICompositeLayer) //для групповых узлов 
                 {
+                    ICompositeLayer compositeLayer = (ICompositeLayer)layer;
+                    data += "IComposite\t" + layer.Name + "\tCount = " + compositeLayer.Count + "\t";
+                    //data += " \n";
+                }
 
-                    data += "Feature\t" + selectedLayer.Name + "\t";
-
-                    IFeatureLayer2 selectedFL = selectedLayer as IFeatureLayer2;
-                    data += "Data Source Type: " + selectedFL.DataSourceType + "\t";
+                if (layer is IFeatureLayer2)
+                {
+                    data += "Feature\t" + layer.Name + "\t";
+                    IFeatureLayer2 selectedFL = layer as IFeatureLayer2;
 
                     if (selectedFL.FeatureClass is IDataset)
                     {
                         IDataset dataset = (IDataset)(selectedFL.FeatureClass); // Explicit Cast
-                        data += "dataset: " + (dataset.Workspace.PathName + " --> " + dataset.Name) + "\t";
+                        //data += "dataset: " + (dataset.Workspace.PathName + " --> " + dataset.Name) + "\t";
+                        data += "dataset: " + dataset.Name + "\t";
                     }
+                    else
+                    {
+                        data += "NO dataset \t";
+                    }
+                    if (selectedFL.FeatureClass != null)
+                        data += "FeatureClass.ID=" + selectedFL.FeatureClass.ObjectClassID + "\t";
+                    else
+                        data += "FeatureClass= null \t";
 
-                    data += " \n";
+                    data += "Data Source Type: " + selectedFL.DataSourceType + "\t";
                 }
-
-                if (selectedLayer is IRasterLayer)
+                else if (layer is IRasterLayer)
                 {
-                    data += "Raster\t" + selectedLayer.Name + "\t";
-                    IRasterLayer selectedRL = selectedLayer as IRasterLayer;
+                    data += "Raster\t" + layer.Name + "\t";
+                    IRasterLayer selectedRL = layer as IRasterLayer;
                     data += "File Path: " + selectedRL.FilePath + "\t";
-
-                    data += "\n";
-                }
-
-
-
-
-                //if (selectedLayer is IGroupLayer) // не даёт перечень узлов
-                //{
-                //    IGroupLayer group = (IGroupLayer)selectedLayer;
-                //    data += "Layer.Name=" + selectedLayer.Name + "->    Expanded = " + group.Expanded + "\n";
-                //}
-
-
-                //if (selectedLayer is ICompositeLayer2) // не всегда
-                //{
-                //    ICompositeLayer2 compositeLayer2 = (ICompositeLayer2)selectedLayer;
-                //    data += "      ICompositeLayer2   " + selectedLayer.Name + " ->Count = " + compositeLayer2.Count + "\n";
-                //}
-
-                if (selectedLayer is ICompositeLayer) //для групповых узлов 
-                {
-                    ICompositeLayer compositeLayer = (ICompositeLayer)selectedLayer;
-                    data += "IComposite\t" + selectedLayer.Name + "\tCount = " + compositeLayer.Count + "\t";
-                    data += " \n";
-                }
-            }
-        }
-
-
-//        IMap myMap = ArcMap.Document.ActivatedView.FocusMap;
-//for (int i = 0; i<myMap.LayerCount; i++)
-//{
-//     if (myMap.Layer[i] is ICompositeLayer)
-//     {
-//           ICompositeLayer igroup = myMap.Layer[i] as ICompositeLayer;
-//           for (int j = 0; j<igroup.Count; j++)
-//           {
-//                 IFeatureLayer ilayer = igroup.Layer(j) as IFeatureLayer;
-//        // Do whatever you need.
-//    }
-//}
-//}
-
-
-        //public List<ILayer> GetLayers(string groupLayerName)
-        //{
-
-        //    ICompositeLayer compositeLayer = GetGroupLayer(groupLayerName);
-        //    List<ILayer> layers = new List<ILayer>();
-
-        //    if (compositeLayer != null)
-        //    {
-        //        for (int j = 0; j < compositeLayer.Count; j++)
-        //        {
-        //            layers.Add(new Layer(compositeLayer.Layer[j]));
-        //        }
-        //    }
-        //    return layers;
-        //}
-
-        //ICompositeLayer GetGroupLayer(string groupLayerName)
-        //{
-        //    var mapLayers = _map.Layers;
-        //    for (var layer = mapLayers.Next(); layer != null; layer = mapLayers.Next())
-        //    {
-        //        var comLayer = layer as ICompositeLayer;
-        //        var groupLayer = layer as IGroupLayer;
-        //        if ((comLayer != null) && (groupLayer != null) && (layer.Name.Equals(groupLayerName)))
-        //            return groupLayer;
-        //    }
-        //}
-
-
-
-        private void frmTest_Load(object sender, EventArgs e)
-        {
-
-
-            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
-            IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
-            ILayer layer = enumLayer.Next();
-            while (layer != null)
-            {
-                getData(layer);
-                layer = enumLayer.Next();
-            }
-
-
-
-
-            txt.Text = data;
-        }
-
-
-
-
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-            //if (retVal == null)
-            //    retVal = new StringCollection();
-
-            //retVal.Clear();
-
-            //foreach (object o in lbSelectedLayers.Items)
-            //{
-            //    string tmp = (string)o;
-            //    if (tmp != null)
-            //    {
-            //        retVal.Add(tmp);
-            //    }
-            //}
-            DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
-
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-        }
-
-        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
-        {
-        }
-
-
-        private void tvLayers_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            txt.Text = "FullPath = " + e.Node.FullPath + System.Environment.NewLine +
-                "Name = " + e.Node.Name + System.Environment.NewLine +
-                "Text = " + e.Node.Text + System.Environment.NewLine + System.Environment.NewLine +
-                "onl.DataPath = " + ((OneLayerDescriptions)e.Node.Tag).DataPath;
-
-        }
-
-
-
-
-
-        public void init_treeView()
-        {
-            List<OneLayerDescriptions> LayerDescriptions = new List<OneLayerDescriptions>();
-            foreach (OneLayerDescriptions old in opd.LayerDescriptions)
-            {
-                OneLayerDescriptions tmp = new OneLayerDescriptions();
-                tmp.CopySetingFrom(old);
-                LayerDescriptions.Add(tmp);
-            }
-
-
-            LayerDescriptions = NewMethod(LayerDescriptions);
-
-            // фигня
-            LayerDescriptions = NewMethod(LayerDescriptions);
-
-
-            //----------
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach (OneLayerDescriptions old in LayerDescriptions)
-            {
-                sb.Append("[");
-                sb.Append(old.Caption);
-                sb.Append("] ");
-            }
-            string str = sb.ToString();
-            if (str != "")
-                MessageBox.Show(str);
-        }
-
-
-        private List<OneLayerDescriptions> NewMethod(List<OneLayerDescriptions> LayerDescriptions)
-        {
-            List<OneLayerDescriptions> tmp = new List<OneLayerDescriptions>();
-
-            while (LayerDescriptions.Count > 0)
-            {
-                OneLayerDescriptions onl = LayerDescriptions[0];
-
-                if (onl.ParentDataPath == "")
-                {
-                    addNode(onl);
-                    LayerDescriptions.Remove(onl);
-                    onl = null;
                 }
                 else
                 {
-                    TreeNode[] findTreeNodes = tvLayers.Nodes.Find(onl.ParentDataPath, true);
-                    if (findTreeNodes.Length > 0)
-                    {
-                        foreach (TreeNode tn in findTreeNodes)
-                        {
-                            OneLayerDescriptions olp_tmp = (OneLayerDescriptions)tn.Tag;
-                            if (olp_tmp.Type.Equals(onl.ParentType) && olp_tmp.DataPath.Equals(onl.ParentDataPath))
-                            {
-                                addNode(onl, tn);
-                                LayerDescriptions.Remove(onl);
-                                onl = null;
-                            }
-                        }
-                    }
+                    data += "!!!!\t" + layer.Name + "\t";
                 }
-                if (onl != null)
-                {
-                    tmp.Add(onl);
-                    LayerDescriptions.Remove(onl);
-                    onl = null;
-                }
+
+
+                data += " \n";
+
+
+
+                layer = enumLayer.Next();
+                layerCount++;
             }
-            return tmp;
+
+            data += "layerCount = " + layerCount + "\n";
+        }
+        
+
+        void getData2()
+        {
+            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+            IMap myMap = mxDoc.FocusMap;
+
+            int layerCount = 0;
+
+
+            for (int i = 0; i < myMap.LayerCount; i++)
+            {
+                ILayer layer = myMap.Layer[i];
+                layerCount += NewMethod1(layer);
+            }
+
+            data += "layerCount = " + layerCount + "\n";
+
         }
 
-
-        public void addNode(OneLayerDescriptions onl, TreeNode parent = null)
+        private int NewMethod1(ILayer layer)
         {
+            int layerCount = 0;
 
-            TreeNode newNode = new TreeNode();
-
-            if (parent == null)
+            if (layer is ICompositeLayer)
             {
-                this.tvLayers.Nodes.Add(newNode);
+                ICompositeLayer igroup = layer as ICompositeLayer;
+                data += "IComposite\t" + layer.Name + "\tCount = " + igroup.Count + "\t";
+
+                for (int j = 0; j < igroup.Count; j++)
+                {
+                    ILayer layer2 = igroup.Layer[j];
+                    layerCount += NewMethod1(layer2);
+                }
+            }
+
+            // остольные случаи
+
+            if (layer is IFeatureLayer2)
+            {
+                data += "Feature\t" + layer.Name + "\t";
+                IFeatureLayer2 selectedFL = layer as IFeatureLayer2;
+
+                if (selectedFL.FeatureClass is IDataset)
+                {
+                    IDataset dataset = (IDataset)(selectedFL.FeatureClass); // Explicit Cast
+                                                                            //data += "dataset: " + (dataset.Workspace.PathName + " --> " + dataset.Name) + "\t";
+                    data += "dataset: " + dataset.Name + "\t";
+                }
+                else
+                {
+                    data += "NO dataset \t";
+                }
+                if (selectedFL.FeatureClass != null)
+                    data += "FeatureClass.ID=" + selectedFL.FeatureClass.ObjectClassID + "\t";
+                else
+                    data += "FeatureClass= null \t";
+
+                data += "Data Source Type: " + selectedFL.DataSourceType + "\t";
+            }
+            else if (layer is IRasterLayer)
+            {
+                data += "Raster\t" + layer.Name + "\t";
+                IRasterLayer selectedRL = layer as IRasterLayer;
+                data += "File Path: " + selectedRL.FilePath + "\t";
             }
             else
             {
-                parent.Nodes.Add(newNode);
+                data += "!!!!\t" + layer.Name + "\t";
             }
 
-            newNode.Name = onl.DataPath;
-            newNode.Text = onl.Caption;
-            newNode.ToolTipText = newNode.FullPath;
-            newNode.Tag = onl;
+
+            data += " \n";
+
+            layerCount++;
+
+
+            return layerCount;
         }
+
+
+
 
 
 

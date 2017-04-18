@@ -1,4 +1,4 @@
-﻿namespace WorckWithReestr
+﻿namespace CadastralReference
 {
     partial class frmTest
     {
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txt = new System.Windows.Forms.TextBox();
-            this.lblSelectedLayers = new System.Windows.Forms.Label();
             this.lblAllLayers = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
@@ -46,15 +45,6 @@
             this.txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txt.Size = new System.Drawing.Size(633, 118);
             this.txt.TabIndex = 0;
-            // 
-            // lblSelectedLayers
-            // 
-            this.lblSelectedLayers.AutoSize = true;
-            this.lblSelectedLayers.Location = new System.Drawing.Point(420, 9);
-            this.lblSelectedLayers.Name = "lblSelectedLayers";
-            this.lblSelectedLayers.Size = new System.Drawing.Size(93, 13);
-            this.lblSelectedLayers.TabIndex = 10;
-            this.lblSelectedLayers.Text = "Выбранные слои";
             // 
             // lblAllLayers
             // 
@@ -97,6 +87,9 @@
             this.tvLayers.Name = "tvLayers";
             this.tvLayers.Size = new System.Drawing.Size(633, 295);
             this.tvLayers.TabIndex = 13;
+            this.tvLayers.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+            this.tvLayers.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.tvLayers.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLayers_NodeMouseClick);
             // 
             // frmTest
             // 
@@ -109,7 +102,6 @@
             this.Controls.Add(this.tvLayers);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.lblSelectedLayers);
             this.Controls.Add(this.lblAllLayers);
             this.Controls.Add(this.txt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -126,7 +118,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txt;
-        private System.Windows.Forms.Label lblSelectedLayers;
         private System.Windows.Forms.Label lblAllLayers;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;

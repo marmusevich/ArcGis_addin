@@ -159,7 +159,7 @@ namespace CadastralReference
             t.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             t.Size = new System.Drawing.Size(520, 23);
             t.Tag = opd;
-            t.Text = opd.LayersToString();
+            //t.Text = opd.LayersToString();
             t.MouseDoubleClick += new MouseEventHandler(this.txtSelectedLayers_MouseDoubleClick);
             return t;
         }
@@ -524,11 +524,11 @@ namespace CadastralReference
             frmSelectLayers frm = new frmSelectLayers();
             frm.retVal = pd.Layers;
 
-            if(frm.ShowDialog() == DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
                 pd.Layers = frm.retVal;
 
             TextBox t = GetControlByName(prefix_txtSelectedLayers + pd.PagesID.ToString()) as TextBox;
-            if(t != null)
+            if (t != null)
                 t.Text = pd.LayersToString();
         }
 

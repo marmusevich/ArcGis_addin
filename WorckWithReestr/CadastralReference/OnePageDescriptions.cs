@@ -334,22 +334,21 @@ namespace CadastralReference
 
         }
 
-        ////предстовленеие перечня слоев
-        //public string LayersToString()
-        //{
-        //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        //предстовленеие перечня слоев
+        public string LayersToString()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (string s in Layers)
+            {
+                sb.Append("[");
+                sb.Append(s);
+                sb.Append("] ");
+            }
+            string str = sb.ToString();
+            if (str == "") str = "Не указаны.";
 
-        //    foreach (OneLayerDescriptions old in LayerDescriptions)
-        //    {
-        //        sb.Append("[");
-        //        sb.Append(old.Caption);
-        //        sb.Append("] ");
-        //    }
-        //    string str = sb.ToString();
-        //    if (str == "") str = "Не указаны.";
-
-        //    return str;
-        //}
+            return str;
+        }
 
         // серелизовать в масив байтов стрелку севера
         private static byte[] SerializeNorthArrowToByte(INorthArrow northArrow)
