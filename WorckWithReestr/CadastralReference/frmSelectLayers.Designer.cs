@@ -69,9 +69,6 @@
             this.tvLayers.ShowNodeToolTips = true;
             this.tvLayers.Size = new System.Drawing.Size(338, 342);
             this.tvLayers.TabIndex = 15;
-            this.tvLayers.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvLayers_AfterCheck);
-            this.tvLayers.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvLayers_AfterSelect);
-            this.tvLayers.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLayers_NodeMouseClick);
             // 
             // txt
             // 

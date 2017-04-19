@@ -19,6 +19,13 @@ namespace CadastralReference
         [XmlIgnore]
         //public const string ObjectLayerName = @"Зона розміщення об’єкту ";
         public const string ObjectLayerName = @"Об""єкт";
+
+        //<OneLayerDescriptions>
+        //  <Caption>Об"єкт</Caption>
+        //  <LayerType>Feature</LayerType>
+        //  <DataPath>Кадастровая_справка.DBO.KS_OBJ</DataPath>
+        //</OneLayerDescriptions>
+
         
         [XmlIgnore]
         public const string ObjectWorkspaceAndTableName = @"Кадастровая_справка.DBO.KS_OBJ";

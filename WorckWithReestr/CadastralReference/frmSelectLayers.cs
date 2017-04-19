@@ -100,7 +100,6 @@ namespace CadastralReference
         }
         //-----------------------------------------
 
-
         //------------------------------
         //делегат для выполнения в рекурсивном обходе
         private delegate void DelegateWorkWithTreeNode(TreeNode treeNode);
@@ -143,7 +142,7 @@ namespace CadastralReference
             OneLayerDescriptions old = (OneLayerDescriptions)treeNode.Tag;
             if (old != null)
             {
-                string layerName = treeNode.Name.ToLower();
+                string layerName = treeNode.Text.ToLower();
                 int index = tmpSc.IndexOf(layerName);
                 if (index != -1)
                 {
@@ -183,15 +182,17 @@ namespace CadastralReference
 
                 if (tmpOdl.Count > 0)
                 {
-                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                    sb.Append("LayerDescriptions Отсутствуют слои:\n");
-                    foreach (OneLayerDescriptions old in tmpOdl)
-                    {
-                        sb.Append("[");
-                        sb.Append(old.Caption + " - data path = " + old.DataPath);
-                        sb.Append("]\n");
-                    }
-                    MessageBox.Show(sb.ToString());
+                    MessageBox.Show("LayerDescriptions Count = " + tmpOdl.Count);
+
+                    //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    //sb.Append("LayerDescriptions Отсутствуют слои:\n");
+                    //foreach (OneLayerDescriptions old in tmpOdl)
+                    //{
+                    //    sb.Append("[");
+                    //    sb.Append(old.Caption + " - data path = " + old.DataPath);
+                    //    sb.Append("]\n");
+                    //}
+                    //MessageBox.Show(sb.ToString());
                 }
             }
 
@@ -206,17 +207,25 @@ namespace CadastralReference
 
                 if (tmpSc.Count > 0)
                 {
-                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                    sb.Append("StringBuilder Отсутствуют слои:\n");
-                    foreach (string s in tmpSc)
-                    {
-                        sb.Append("[");
-                        sb.Append(s);
-                        sb.Append("]\n");
-                    }
-                    MessageBox.Show(sb.ToString());
+                    MessageBox.Show("StringBuilder Count = " + tmpSc.Count);
+
+                    //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    //sb.Append("StringBuilder Отсутствуют слои:\n");
+                    //foreach (string s in tmpSc)
+                    //{
+                    //    sb.Append("[");
+                    //    sb.Append(s);
+                    //    sb.Append("]\n");
+                    //}
+                    //MessageBox.Show(sb.ToString());
                 }
             }
+
+
+
+            this.tvLayers.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvLayers_AfterCheck);
+            //this.tvLayers.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvLayers_AfterSelect);
+            this.tvLayers.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLayers_NodeMouseClick);
 
         }
 
@@ -229,12 +238,10 @@ namespace CadastralReference
                 retVal2.Clear();
 
             TreeViewCallRecursive(tvLayers, this.LayerDescriptionsFromTreeNode);
-            
 
             // удалить данные из StringCollection retVal
-            if (retVal != null)
-                retVal.Clear();
-
+            //if (retVal != null)
+            //    retVal.Clear();
 
             DialogResult = DialogResult.OK;
             this.Close();
@@ -260,13 +267,13 @@ namespace CadastralReference
                 {
                     DialogResult res = MessageBox.Show("Включить все вложенные слои?", "слои => '+'", MessageBoxButtons.YesNoCancel);
                     if (res == DialogResult.OK)
-                        TreeViewCallRecursive(tvLayers, this.CheckedTreeNode);
+                        TreeNodeCallRecursive(e.Node, this.CheckedTreeNode);
                 }
                 else
                 {
                     DialogResult res = MessageBox.Show("Выключить все вложенные слои?", "слои => '-'", MessageBoxButtons.YesNoCancel);
                     if (res == DialogResult.OK)
-                        TreeViewCallRecursive(tvLayers, this.UnCheckedTreeNode);
+                        TreeNodeCallRecursive(e.Node, this.UnCheckedTreeNode);
                 }
             }
         }
