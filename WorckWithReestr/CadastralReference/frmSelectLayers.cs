@@ -75,9 +75,6 @@ namespace CadastralReference
         //-----------------------------------------
 
         //------------------------------
-        //делегат для выполнения в рекурсивном обходе
-        private delegate void DelegateWorkWithTreeNode(TreeNode treeNode);
-
         // обход всего дерева
         private int TreeViewCallRecursive(TreeView treeView, DelegateWorkWithTreeNode func)
         {
@@ -104,23 +101,58 @@ namespace CadastralReference
         //-----------------------------------------
 
 
-
-
-        private void testDelegateWorkWithTreeNode(TreeNode treeNode)
+        //------------------------------
+        //делегат для выполнения в рекурсивном обходе
+        private delegate void DelegateWorkWithTreeNode(TreeNode treeNode);
+        // - включить для дочерних выбор
+        private void CheckedTreeNode(TreeNode treeNode)
         {
-            this.txt.Text += System.Environment.NewLine + " Text = " + treeNode.Text;
+            treeNode.Checked = true;
         }
-
-        // нужны следующие делегаты
-        // - вкл/откл для дочерних выбор
-        // - включить  из List<OneLayerDescriptions> 
-        // - включить из StringCollection retVal
-        // - 
-        // - сохранить в  List<OneLayerDescriptions> 
-        // 
-        //    поле класа + делегат
-        // ИЛИ
-        //   параметр делегата - не получится КАК передать параметр для всех вызовов?
+        // - отключить для дочерних выбор
+        private void UnCheckedTreeNode(TreeNode treeNode)
+        {
+            treeNode.Checked = false;
+        }
+        // - включить из List<OneLayerDescriptions> 
+        List<OneLayerDescriptions> tmpOdl;
+        private void LayerDescriptionsToTreeNode(TreeNode treeNode)
+        {
+            OneLayerDescriptions old = (OneLayerDescriptions)treeNode.Tag;
+            if (old != null)
+            {
+                int index = tmpOdl.IndexOf(old);
+                if (index != -1)
+                {
+                    treeNode.Checked = true;
+                    tmpOdl.RemoveAt(index);
+                }
+            }
+        }
+        // - сохранить в List<OneLayerDescriptions> 
+        private void LayerDescriptionsFromTreeNode(TreeNode treeNode)
+        {
+            OneLayerDescriptions old = (OneLayerDescriptions)treeNode.Tag;
+            if (treeNode.Checked && old != null)
+                retVal2.Add(old);
+        }
+        // - включить из StringCollection 
+        StringCollection tmpSc;
+        private void StringCollectionToTreeNode(TreeNode treeNode)
+        {
+            OneLayerDescriptions old = (OneLayerDescriptions)treeNode.Tag;
+            if (old != null)
+            {
+                string layerName = treeNode.Name.ToLower();
+                int index = tmpSc.IndexOf(layerName);
+                if (index != -1)
+                {
+                    treeNode.Checked = true;
+                    tmpSc.RemoveAt(index);
+                }
+            }
+        }
+        //------------------------------
 
         private void frmSelectLayers_Load(object sender, EventArgs e)
         {
@@ -141,27 +173,49 @@ namespace CadastralReference
 
 
             // чтение LayerDescriptions из List<OneLayerDescriptions> retVal2
-            if (retVal2 != null)
+            if (retVal2 != null && retVal2.Count > 0)
             {
+                tmpOdl = new List<OneLayerDescriptions>();
+                foreach (OneLayerDescriptions old in retVal2)
+                    tmpOdl.Add(old);
 
+                TreeViewCallRecursive(tvLayers, this.LayerDescriptionsToTreeNode);
+
+                if (tmpOdl.Count > 0)
+                {
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.Append("LayerDescriptions Отсутствуют слои:\n");
+                    foreach (OneLayerDescriptions old in tmpOdl)
+                    {
+                        sb.Append("[");
+                        sb.Append(old.Caption + " - data path = " + old.DataPath);
+                        sb.Append("]\n");
+                    }
+                    MessageBox.Show(sb.ToString());
+                }
             }
 
             // чтение для перехода StringCollection retVal если != NULL
-            if (retVal != null)
+            if (retVal != null && retVal.Count > 0)
             {
-                String[] ar = new String[retVal.Count];
-                retVal.CopyTo(ar, 0);
+                tmpSc = new StringCollection();
+                foreach (string s in retVal)
+                    tmpSc.Add(s.ToLower());
 
-                //lbSelectedLayers.Items.AddRange(ar);
+                TreeViewCallRecursive(tvLayers, this.StringCollectionToTreeNode);
 
-                //// убрать выбранное
-                //foreach (object o in lbSelectedLayers.Items)
-                //{
-                //    if (lbAllLayers.Items.Contains(o))
-                //    {
-                //        lbAllLayers.Items.Remove(o);
-                //    }
-                //}
+                if (tmpSc.Count > 0)
+                {
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.Append("StringBuilder Отсутствуют слои:\n");
+                    foreach (string s in tmpSc)
+                    {
+                        sb.Append("[");
+                        sb.Append(s);
+                        sb.Append("]\n");
+                    }
+                    MessageBox.Show(sb.ToString());
+                }
             }
 
         }
@@ -169,21 +223,18 @@ namespace CadastralReference
         private void btnOk_Click(object sender, EventArgs e)
         {
             // сохранить LayerDescriptions в List<OneLayerDescriptions> retVal2
+            if (retVal2 == null)
+                retVal2 = new List<OneLayerDescriptions>();
+            else
+                retVal2.Clear();
 
+            TreeViewCallRecursive(tvLayers, this.LayerDescriptionsFromTreeNode);
             
-            // удалить данные из StringCollection retVal
-            //    if(retVal == null)
-            //        retVal = new StringCollection();
-            //    retVal.Clear();
 
-            //    foreach (object o in lbSelectedLayers.Items)
-            //    {
-            //        string tmp = (string)o;
-            //        if (tmp != null)
-            //        { 
-            //            retVal.Add(tmp);
-            //        }
-            //    }
+            // удалить данные из StringCollection retVal
+            if (retVal != null)
+                retVal.Clear();
+
 
             DialogResult = DialogResult.OK;
             this.Close();
@@ -202,7 +253,22 @@ namespace CadastralReference
         // при включении / отключении спрашивать и рекурсивно вкл/откл для всех дочерних
         private void tvLayers_AfterCheck(object sender, TreeViewEventArgs e)
         {
-
+            OneLayerDescriptions old = (OneLayerDescriptions)e.Node.Tag;
+            if (old != null && old.Type == OneLayerDescriptions.LayerType.Group)
+            {
+                if (e.Node.Checked)
+                {
+                    DialogResult res = MessageBox.Show("Включить все вложенные слои?", "слои => '+'", MessageBoxButtons.YesNoCancel);
+                    if (res == DialogResult.OK)
+                        TreeViewCallRecursive(tvLayers, this.CheckedTreeNode);
+                }
+                else
+                {
+                    DialogResult res = MessageBox.Show("Выключить все вложенные слои?", "слои => '-'", MessageBoxButtons.YesNoCancel);
+                    if (res == DialogResult.OK)
+                        TreeViewCallRecursive(tvLayers, this.UnCheckedTreeNode);
+                }
+            }
         }
 
         private void tvLayers_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
