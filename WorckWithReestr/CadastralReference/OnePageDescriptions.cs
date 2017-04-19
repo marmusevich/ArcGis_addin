@@ -243,7 +243,7 @@ namespace CadastralReference
         /// </summary>
         /// <param name="caption"> название </param>
         /// <param name="enable"> включен ли?</param>
-        public OnePageDescriptions(string caption, bool enable = false):this()
+        public OnePageDescriptions(string caption, bool enable = false) : this()
         {
             Caption = caption;
             Enable = enable;
@@ -254,7 +254,7 @@ namespace CadastralReference
             Caption = "";
             Enable = false;
             Layers = new StringCollection();
-            LayerDescriptions = new List<OneLayerDescriptions>(); 
+            LayerDescriptions = new List<OneLayerDescriptions>();
             m_Image = null;
             m_TextElements = new List<OneTextElementDescription>();
 
@@ -275,7 +275,7 @@ namespace CadastralReference
             ScaleBar_PosY = 0;
             ScaleBar_Height = 0.75;
             ScaleBar_Width = 6.65;
-    }
+        }
 
         //скопировать настройки
         public void CopySetingFrom(OnePageDescriptions opd)
@@ -349,6 +349,22 @@ namespace CadastralReference
 
             return str;
         }
+
+        public string LayerDescriptionsToString()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (OneLayerDescriptions old in LayerDescriptions)
+            {
+                sb.Append("[");
+                sb.Append(old.Caption);
+                sb.Append("] ");
+            }
+            string str = sb.ToString();
+            if (str == "") str = "Не указаны.";
+
+            return str;
+        }
+
 
         // серелизовать в масив байтов стрелку севера
         private static byte[] SerializeNorthArrowToByte(INorthArrow northArrow)

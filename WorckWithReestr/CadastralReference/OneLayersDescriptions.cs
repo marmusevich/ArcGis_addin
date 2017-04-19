@@ -21,7 +21,6 @@ namespace CadastralReference
             Feature = 3,
         }
 
-
         public OneLayerDescriptions()
         {
             Type = LayerType.Other;
@@ -33,7 +32,6 @@ namespace CadastralReference
         {
             CopySetingFrom(old); 
         }
-
 
         public OneLayerDescriptions(ILayer layer)
         {
@@ -69,7 +67,6 @@ namespace CadastralReference
                 DataPath = layer.Name;
             }
         }
-
 
         //скопировать настройки
         public void CopySetingFrom(OneLayerDescriptions old)
