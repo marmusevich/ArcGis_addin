@@ -549,7 +549,7 @@ namespace WorckWithReestr
         private void btnTest_Click(object sender, EventArgs e)
         {
             frmTest frm = new frmTest();
-            frm.Show();
+            frm.ShowDialog();
 
         }
     }

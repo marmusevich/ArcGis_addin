@@ -25,11 +25,11 @@ namespace CadastralReference
 
         private void frmTest_Load(object sender, EventArgs e)
         {
-            getData();
-            data += "\n \n \n \n \t \t <<--->> \t \t \n \n \n \n ";
-            getData2();
+            //getData();
+            //data += "\n \n \n \n \t \t <<--->> \t \t \n \n \n \n ";
+            //getData2();
 
-
+            BuldTree();
 
             txt.Text = data;
         }
@@ -68,6 +68,8 @@ namespace CadastralReference
             txt.Text = "FullPath = " + e.Node.FullPath + System.Environment.NewLine +
                 "Name = " + e.Node.Name + System.Environment.NewLine +
                 "Text = " + e.Node.Text + System.Environment.NewLine + System.Environment.NewLine +
+                "onl.Caption = " + ((OneLayerDescriptions)e.Node.Tag).Caption + System.Environment.NewLine +
+                "onl.Type = " + ((OneLayerDescriptions)e.Node.Tag).Type.ToString() + System.Environment.NewLine +
                 "onl.DataPath = " + ((OneLayerDescriptions)e.Node.Tag).DataPath;
 
         }
@@ -77,6 +79,64 @@ namespace CadastralReference
 
 
         //построить дерево по методу getData2()
+
+        void BuldTree()
+        {
+            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+            IMap myMap = mxDoc.FocusMap;
+            int layerCount = 0;
+            for (int i = 0; i < myMap.LayerCount; i++)
+            {
+                layerCount += BuldNode(myMap.Layer[i], null);
+            }
+
+            data += "layerCount = " + layerCount + "\n";
+
+        }
+
+        private int BuldNode(ILayer layer, TreeNode parent)
+        {
+            int layerCount = 0;
+
+
+            OneLayerDescriptions onl = new OneLayerDescriptions(layer);
+            TreeNode currNode = addNode(onl, parent);
+            if (layer is ICompositeLayer)
+            {
+                ICompositeLayer igroup = layer as ICompositeLayer;
+                for (int j = 0; j < igroup.Count; j++)
+                {
+                    layerCount += BuldNode(igroup.Layer[j], currNode);
+                }
+            }
+            layerCount++;
+            return layerCount;
+        }
+
+
+
+
+        public TreeNode addNode(OneLayerDescriptions onl, TreeNode parent)
+        {
+            TreeNode newNode = new TreeNode();
+
+            if (parent == null)
+            {
+                this.tvLayers.Nodes.Add(newNode);
+            }
+            else
+            {
+                parent.Nodes.Add(newNode);
+            }
+
+            newNode.Name = onl.DataPath;
+            newNode.Text = onl.Caption;
+            newNode.ToolTipText = newNode.FullPath;
+            newNode.Tag = onl;
+
+            return newNode;
+        }
+
 
 
 
@@ -109,7 +169,6 @@ namespace CadastralReference
             ////if (str != "")
             ////    MessageBox.Show(str);
         }
-
 
         private List<OneLayerDescriptions> NewMethod(List<OneLayerDescriptions> LayerDescriptions)
         {
@@ -153,24 +212,6 @@ namespace CadastralReference
         }
 
 
-        public void addNode(OneLayerDescriptions onl, TreeNode parent = null)
-        {
-            TreeNode newNode = new TreeNode();
-
-            if (parent == null)
-            {
-                this.tvLayers.Nodes.Add(newNode);
-            }
-            else
-            {
-                parent.Nodes.Add(newNode);
-            }
-
-            newNode.Name = onl.DataPath;
-            //newNode.Text = onl.Caption;
-            newNode.ToolTipText = newNode.FullPath;
-            newNode.Tag = onl;
-        }
 
 
         //-----------------------------------------

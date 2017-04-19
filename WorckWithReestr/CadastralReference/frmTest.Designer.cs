@@ -37,13 +37,13 @@
             // 
             // txt
             // 
-            this.txt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt.Location = new System.Drawing.Point(13, 331);
+            this.txt.Location = new System.Drawing.Point(341, 30);
             this.txt.Multiline = true;
             this.txt.Name = "txt";
             this.txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt.Size = new System.Drawing.Size(633, 118);
+            this.txt.Size = new System.Drawing.Size(301, 411);
             this.txt.TabIndex = 0;
             // 
             // lblAllLayers
@@ -57,23 +57,21 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(13, 455);
+            this.btnCancel.Location = new System.Drawing.Point(13, 447);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(90, 23);
+            this.btnCancel.Size = new System.Drawing.Size(88, 23);
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnOk
             // 
-            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(556, 455);
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOk.Location = new System.Drawing.Point(556, 447);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(90, 23);
+            this.btnOk.Size = new System.Drawing.Size(88, 23);
             this.btnOk.TabIndex = 11;
             this.btnOk.Text = "Ок";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -81,11 +79,16 @@
             // 
             // tvLayers
             // 
-            this.tvLayers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tvLayers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tvLayers.CheckBoxes = true;
+            this.tvLayers.FullRowSelect = true;
+            this.tvLayers.HotTracking = true;
             this.tvLayers.Location = new System.Drawing.Point(13, 30);
             this.tvLayers.Name = "tvLayers";
-            this.tvLayers.Size = new System.Drawing.Size(633, 295);
+            this.tvLayers.ShowNodeToolTips = true;
+            this.tvLayers.Size = new System.Drawing.Size(321, 411);
             this.tvLayers.TabIndex = 13;
             this.tvLayers.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             this.tvLayers.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -97,8 +100,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(656, 483);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(654, 475);
             this.Controls.Add(this.tvLayers);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -106,7 +108,6 @@
             this.Controls.Add(this.txt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmTest";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выбор слоёв для листа";
             this.Load += new System.EventHandler(this.frmTest_Load);
