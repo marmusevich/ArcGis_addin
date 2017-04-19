@@ -159,7 +159,7 @@ namespace CadastralReference
             t.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             t.Size = new System.Drawing.Size(520, 23);
             t.Tag = opd;
-            //t.Text = opd.LayersToString();
+            t.Text = opd.LayersToString();
             t.MouseDoubleClick += new MouseEventHandler(this.txtSelectedLayers_MouseDoubleClick);
             return t;
         }

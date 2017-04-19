@@ -29,18 +29,15 @@
         private void InitializeComponent()
         {
             this.btnOk = new System.Windows.Forms.Button();
-            this.lbAllLayers = new System.Windows.Forms.ListBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.lblAllLayers = new System.Windows.Forms.Label();
-            this.lblSelectedLayers = new System.Windows.Forms.Label();
-            this.lbSelectedLayers = new System.Windows.Forms.ListBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.tvLayers = new System.Windows.Forms.TreeView();
+            this.txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(427, 359);
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOk.Location = new System.Drawing.Point(454, 360);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 0;
@@ -48,75 +45,44 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // lbAllLayers
-            // 
-            this.lbAllLayers.FormattingEnabled = true;
-            this.lbAllLayers.Location = new System.Drawing.Point(5, 21);
-            this.lbAllLayers.Name = "lbAllLayers";
-            this.lbAllLayers.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbAllLayers.Size = new System.Drawing.Size(228, 329);
-            this.lbAllLayers.Sorted = true;
-            this.lbAllLayers.TabIndex = 1;
-            this.lbAllLayers.DoubleClick += new System.EventHandler(this.lbAllLayers_DoubleClick);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(240, 97);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(30, 23);
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = ">>";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Location = new System.Drawing.Point(239, 163);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(30, 23);
-            this.btnDel.TabIndex = 4;
-            this.btnDel.Text = "<<";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // lblAllLayers
-            // 
-            this.lblAllLayers.AutoSize = true;
-            this.lblAllLayers.Location = new System.Drawing.Point(54, 3);
-            this.lblAllLayers.Name = "lblAllLayers";
-            this.lblAllLayers.Size = new System.Drawing.Size(97, 13);
-            this.lblAllLayers.TabIndex = 5;
-            this.lblAllLayers.Text = "Имеющиеся слои";
-            // 
-            // lblSelectedLayers
-            // 
-            this.lblSelectedLayers.AutoSize = true;
-            this.lblSelectedLayers.Location = new System.Drawing.Point(344, 3);
-            this.lblSelectedLayers.Name = "lblSelectedLayers";
-            this.lblSelectedLayers.Size = new System.Drawing.Size(93, 13);
-            this.lblSelectedLayers.TabIndex = 6;
-            this.lblSelectedLayers.Text = "Выбранные слои";
-            // 
-            // lbSelectedLayers
-            // 
-            this.lbSelectedLayers.FormattingEnabled = true;
-            this.lbSelectedLayers.Location = new System.Drawing.Point(277, 21);
-            this.lbSelectedLayers.Name = "lbSelectedLayers";
-            this.lbSelectedLayers.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbSelectedLayers.Size = new System.Drawing.Size(228, 329);
-            this.lbSelectedLayers.Sorted = true;
-            this.lbSelectedLayers.TabIndex = 7;
-            this.lbSelectedLayers.DoubleClick += new System.EventHandler(this.lbSelectedLayers_DoubleClick);
-            // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(5, 359);
+            this.btnCancel.Location = new System.Drawing.Point(12, 360);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // tvLayers
+            // 
+            this.tvLayers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tvLayers.CheckBoxes = true;
+            this.tvLayers.FullRowSelect = true;
+            this.tvLayers.HotTracking = true;
+            this.tvLayers.Location = new System.Drawing.Point(12, 12);
+            this.tvLayers.Name = "tvLayers";
+            this.tvLayers.ShowNodeToolTips = true;
+            this.tvLayers.Size = new System.Drawing.Size(338, 342);
+            this.tvLayers.TabIndex = 15;
+            this.tvLayers.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+            this.tvLayers.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.tvLayers.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLayers_NodeMouseClick);
+            // 
+            // txt
+            // 
+            this.txt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt.Location = new System.Drawing.Point(356, 12);
+            this.txt.Multiline = true;
+            this.txt.Name = "txt";
+            this.txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txt.Size = new System.Drawing.Size(173, 342);
+            this.txt.TabIndex = 14;
             // 
             // frmSelectLayers
             // 
@@ -124,17 +90,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(511, 388);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(541, 395);
+            this.Controls.Add(this.tvLayers);
+            this.Controls.Add(this.txt);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lbSelectedLayers);
-            this.Controls.Add(this.lblSelectedLayers);
-            this.Controls.Add(this.lblAllLayers);
-            this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.lbAllLayers);
             this.Controls.Add(this.btnOk);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmSelectLayers";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -148,12 +109,8 @@
         #endregion
 
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.ListBox lbAllLayers;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Label lblAllLayers;
-        private System.Windows.Forms.Label lblSelectedLayers;
-        private System.Windows.Forms.ListBox lbSelectedLayers;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TreeView tvLayers;
+        private System.Windows.Forms.TextBox txt;
     }
 }
