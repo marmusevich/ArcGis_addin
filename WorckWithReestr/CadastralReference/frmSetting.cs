@@ -832,13 +832,13 @@ namespace CadastralReference
         #region 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            GetSettingFromForm();
+            //GetSettingFromForm();
 
-            WorkCadastralReference.GetCadastralReferenceData().CopySetingFrom(m_crd);
-            WorkCadastralReference.SaveSettingToDB();
+            //WorkCadastralReference.GetCadastralReferenceData().CopySetingFrom(m_crd);
+            //WorkCadastralReference.SaveSettingToDB();
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            //this.DialogResult = DialogResult.OK;
+            //this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
