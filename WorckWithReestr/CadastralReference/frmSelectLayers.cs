@@ -104,12 +104,23 @@ namespace CadastralReference
         //-----------------------------------------
 
 
+
+
         private void testDelegateWorkWithTreeNode(TreeNode treeNode)
         {
-            txt.Text += System.Environment.NewLine + " Text = " + treeNode.Text;
+            this.txt.Text += System.Environment.NewLine + " Text = " + treeNode.Text;
         }
 
-
+        // нужны следующие делегаты
+        // - вкл/откл для дочерних выбор
+        // - включить  из List<OneLayerDescriptions> 
+        // - включить из StringCollection retVal
+        // - 
+        // - сохранить в  List<OneLayerDescriptions> 
+        // 
+        //    поле класа + делегат
+        // ИЛИ
+        //   параметр делегата - не получится КАК передать параметр для всех вызовов?
 
         private void frmSelectLayers_Load(object sender, EventArgs e)
         {
@@ -123,14 +134,10 @@ namespace CadastralReference
                 this.Close();
             }
 
-
-            txt.Text += System.Environment.NewLine + "1 treeNodeCount = " +
-                TreeViewCallRecursive(tvLayers, this.testDelegateWorkWithTreeNode) +
-                System.Environment.NewLine;
-
-            txt.Text += System.Environment.NewLine + "2 treeNodeCount = " +
-                TreeViewCallRecursive(tvLayers, delegate (TreeNode treeNode) {; }) +
-                System.Environment.NewLine;
+            //int t = TreeViewCallRecursive(tvLayers, this.testDelegateWorkWithTreeNode);
+            //txt.Text += System.Environment.NewLine + "1 treeNodeCount = " + t.ToString() + System.Environment.NewLine;
+            //int tt = TreeViewCallRecursive(tvLayers, delegate (TreeNode treeNode) {; });
+            //txt.Text += System.Environment.NewLine + "2 treeNodeCount = " + tt.ToString() + System.Environment.NewLine;
 
 
             // чтение LayerDescriptions из List<OneLayerDescriptions> retVal2
@@ -186,25 +193,26 @@ namespace CadastralReference
 
         private void tvLayers_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            txt.Text += System.Environment.NewLine + "1 AfterSelect treeNodeCount = " +
-                TreeNodeCallRecursive(e.Node, this.testDelegateWorkWithTreeNode) +
-                System.Environment.NewLine;
-
+            //int t = TreeNodeCallRecursive(e.Node, this.testDelegateWorkWithTreeNode);
+            //txt.Text += System.Environment.NewLine + "1 AfterSelect treeNodeCount = " +
+            //    t.ToString() +
+            //    System.Environment.NewLine;
         }
 
         // при включении / отключении спрашивать и рекурсивно вкл/откл для всех дочерних
         private void tvLayers_AfterCheck(object sender, TreeViewEventArgs e)
         {
+
         }
 
         private void tvLayers_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            //txt.Text = "FullPath = " + e.Node.FullPath + System.Environment.NewLine +
-            //    "Name = " + e.Node.Name + System.Environment.NewLine +
-            //    "Text = " + e.Node.Text + System.Environment.NewLine + System.Environment.NewLine +
-            //    "onl.Caption = " + ((OneLayerDescriptions)e.Node.Tag).Caption + System.Environment.NewLine +
-            //    "onl.Type = " + ((OneLayerDescriptions)e.Node.Tag).Type.ToString() + System.Environment.NewLine +
-            //    "onl.DataPath = " + ((OneLayerDescriptions)e.Node.Tag).DataPath;
+            txt.Text = "FullPath = " + e.Node.FullPath + System.Environment.NewLine +
+                "Name = " + e.Node.Name + System.Environment.NewLine +
+                "Text = " + e.Node.Text + System.Environment.NewLine + System.Environment.NewLine +
+                "onl.Caption = " + ((OneLayerDescriptions)e.Node.Tag).Caption + System.Environment.NewLine +
+                "onl.Type = " + ((OneLayerDescriptions)e.Node.Tag).Type.ToString() + System.Environment.NewLine +
+                "onl.DataPath = " + ((OneLayerDescriptions)e.Node.Tag).DataPath;
 
         }
 
