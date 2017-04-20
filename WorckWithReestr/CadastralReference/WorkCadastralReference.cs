@@ -14,10 +14,13 @@ namespace CadastralReference
     // работа со справкой
     public static class WorkCadastralReference
     {
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // для хранения настроек
+        private const int zayavkaId_ForNastroyka = -2;
+        private const int pageId_ForNastroyka = -1;
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region  вся информация по справке - синглитон
         private static CadastralReferenceData m_CadastralReferenceData = null;
-
         /// <summary>
         /// return CadastralReferenceData - сиглитон
         /// </summary>
@@ -51,7 +54,7 @@ namespace CadastralReference
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 #endif
 
-                WorkCadastralReference_DB.SaveToDBPage(-1, "Настройки", -1, "Настройки" , WorkCadastralReference_DB.StringToByteArray(xml) );
+                WorkCadastralReference_DB.SaveToDBPage(zayavkaId_ForNastroyka, "Настройки", pageId_ForNastroyka, "Настройки" , WorkCadastralReference_DB.StringToByteArray(xml) );
             }
             catch (Exception ex) // обработка ошибок
             {
@@ -59,12 +62,13 @@ namespace CadastralReference
                 GeneralApp.ShowErrorMessage("Ошибка при записи настроек кадастровой справки");
             }
         }
+
         public static void LoadSettingFromDB()
         {
             m_CadastralReferenceData = new CadastralReferenceData();
             try
             {
-                string xml = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(-1, -1, "Настройки"));
+                string xml = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(zayavkaId_ForNastroyka, pageId_ForNastroyka, "Настройки"));
                 m_CadastralReferenceData.LoadSettingFromXMLString(xml);
             }
             catch (Exception ex) // обработка ошибок

@@ -16,19 +16,14 @@ namespace CadastralReference
     [XmlRootAttribute("CadastralReferenceData", IsNullable = true)]
     public class CadastralReferenceData
     {
-        [XmlIgnore]
+        //[XmlIgnore]
         //public const string ObjectLayerName = @"Зона розміщення об’єкту ";
-        public const string ObjectLayerName = @"Об""єкт";
+        //public const string ObjectLayerName = @"Об""єкт";
+        //[XmlIgnore]
+        //public const string ObjectWorkspaceAndTableName = @"Кадастровая_справка.DBO.KS_OBJ";
 
-        //<OneLayerDescriptions>
-        //  <Caption>Об"єкт</Caption>
-        //  <LayerType>Feature</LayerType>
-        //  <DataPath>Кадастровая_справка.DBO.KS_OBJ</DataPath>
-        //</OneLayerDescriptions>
-
-        
         [XmlIgnore]
-        public const string ObjectWorkspaceAndTableName = @"Кадастровая_справка.DBO.KS_OBJ";
+        public static readonly OneLayerDescriptions ObjectLayer = new OneLayerDescriptions(@"Об""єкт", OneLayerDescriptions.LayerType.Feature, @"Кадастровая_справка.DBO.KS_OBJ");
 
         [XmlIgnore]
         public const string DB_NameWorkspace = @"Kadastr2016";

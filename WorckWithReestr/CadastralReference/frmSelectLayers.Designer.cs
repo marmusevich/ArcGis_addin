@@ -31,13 +31,12 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tvLayers = new System.Windows.Forms.TreeView();
-            this.txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(454, 360);
+            this.btnOk.Location = new System.Drawing.Point(306, 536);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 0;
@@ -49,7 +48,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(12, 360);
+            this.btnCancel.Location = new System.Drawing.Point(12, 536);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 8;
@@ -67,19 +66,8 @@
             this.tvLayers.Location = new System.Drawing.Point(12, 12);
             this.tvLayers.Name = "tvLayers";
             this.tvLayers.ShowNodeToolTips = true;
-            this.tvLayers.Size = new System.Drawing.Size(338, 342);
+            this.tvLayers.Size = new System.Drawing.Size(369, 518);
             this.tvLayers.TabIndex = 15;
-            // 
-            // txt
-            // 
-            this.txt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt.Location = new System.Drawing.Point(356, 12);
-            this.txt.Multiline = true;
-            this.txt.Name = "txt";
-            this.txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt.Size = new System.Drawing.Size(173, 342);
-            this.txt.TabIndex = 14;
             // 
             // frmSelectLayers
             // 
@@ -87,9 +75,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(541, 395);
+            this.ClientSize = new System.Drawing.Size(393, 571);
             this.Controls.Add(this.tvLayers);
-            this.Controls.Add(this.txt);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -99,7 +86,6 @@
             this.Text = "Выбор слоёв для листа";
             this.Load += new System.EventHandler(this.frmSelectLayers_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -108,6 +94,5 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TreeView tvLayers;
-        private System.Windows.Forms.TextBox txt;
     }
 }

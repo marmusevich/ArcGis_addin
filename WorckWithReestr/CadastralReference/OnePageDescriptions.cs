@@ -338,11 +338,23 @@ namespace CadastralReference
         public string LayersToString()
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach (string s in Layers)
+            if (LayerDescriptions != null && LayerDescriptions.Count > 0)
             {
-                sb.Append("[");
-                sb.Append(s);
-                sb.Append("] ");
+                foreach (OneLayerDescriptions old in LayerDescriptions)
+                {
+                    sb.Append("[");
+                    sb.Append(old.Caption);
+                    sb.Append("] ");
+                }
+            }
+            else
+            { 
+                foreach (string s in Layers)
+                {
+                    sb.Append("[");
+                    sb.Append(s);
+                    sb.Append("] ");
+                }
             }
             string str = sb.ToString();
             if (str == "") str = "Не указаны.";
@@ -350,20 +362,6 @@ namespace CadastralReference
             return str;
         }
 
-        public string LayerDescriptionsToString()
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach (OneLayerDescriptions old in LayerDescriptions)
-            {
-                sb.Append("[");
-                sb.Append(old.Caption);
-                sb.Append("] ");
-            }
-            string str = sb.ToString();
-            if (str == "") str = "Не указаны.";
-
-            return str;
-        }
 
 
         // серелизовать в масив байтов стрелку севера

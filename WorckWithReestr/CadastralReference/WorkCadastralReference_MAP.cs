@@ -69,7 +69,7 @@ namespace CadastralReference
                     {
                         tabName = (feature.Class as IDataset).Name;
                         //проверка на принадлежность нашему проекту
-                        if (CadastralReferenceData.ObjectWorkspaceAndTableName.ToLower() == tabName.ToLower())
+                        if (CadastralReferenceData.ObjectLayer.DataPath.ToLower() == tabName.ToLower())
                         {
                             objectID = feature.OID;
                             object_Discription = "" + feature.get_Value(feature.Fields.FindField("Adr_Obj")) as string;
@@ -128,8 +128,9 @@ namespace CadastralReference
                 ILayer layer = enumLayer.Next();
                 while (layer != null)
                 {
+                    OneLayerDescriptions onl = new OneLayerDescriptions(layer);
 
-                    if (CadastralReferenceData.ObjectLayerName.ToLower() == layer.Name.ToLower())
+                    if (CadastralReferenceData.ObjectLayer.Equals(onl))
                     { 
                         //MessageBox.Show("CadastralReferenceData.ObjectLayerName=" + CadastralReferenceData.ObjectLayerName + "     layer.Name=" + layer.Name);
 
@@ -168,47 +169,92 @@ namespace CadastralReference
         {
             IMxDocument mxdoc = ArcMap.Application.Document as IMxDocument;
 
-            StringCollection tmp = new StringCollection();
-            foreach (string s in opd.Layers)
-                tmp.Add(s.ToLower());
-
-            IEnumLayer enumLayer = mxdoc.FocusMap.Layers;
-            ILayer layer = enumLayer.Next();
-            while (layer != null)
+            // чтение LayerDescriptions из List<OneLayerDescriptions> 
+            if (opd.LayerDescriptions != null && opd.LayerDescriptions.Count > 0)
             {
-                string layerName = layer.Name.ToLower();
-                int index = tmp.IndexOf(layerName);
-                if (index != -1)
-                {
-                    layer.Visible = true;
-                    tmp.RemoveAt(index);
-                }
-                //if (tmp.Contains(layerName))
-                //{
-                //    layer.Visible = true;
-                //    tmp.Remove(layerName);
-                //}
-                else
-                    layer.Visible = false;
-                // всегда показывать слой где расположены объекты
-                if (CadastralReferenceData.ObjectLayerName.ToLower() == layer.Name.ToLower())
-                    layer.Visible = true;
+                List<OneLayerDescriptions>  tmpOdl = new List<OneLayerDescriptions>();
+                foreach (OneLayerDescriptions old in opd.LayerDescriptions)
+                    tmpOdl.Add(old);
 
-                layer = enumLayer.Next();
+                IEnumLayer enumLayer = mxdoc.FocusMap.Layers;
+                ILayer layer = enumLayer.Next();
+                while (layer != null)
+                {
+                    OneLayerDescriptions onl = new OneLayerDescriptions(layer);
+                    int index = tmpOdl.IndexOf(onl);
+                    if (index != -1)
+                    {
+                        layer.Visible = true;
+                        tmpOdl.RemoveAt(index);
+                    }
+                    else
+                        layer.Visible = false;
+
+
+                    // всегда показывать слой где расположены объекты
+                    if (CadastralReferenceData.ObjectLayer.Equals(onl))
+                        layer.Visible = true;
+
+                    layer = enumLayer.Next();
+                }
+
+                if (tmpOdl.Count > 0)
+                {
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.Append("Лист \"" + opd.Caption + "\". Отсутствуют слои:\n");
+                    foreach (OneLayerDescriptions old in tmpOdl)
+                    {
+                        sb.Append("[");
+                        sb.Append(old.Caption + " - data path = " + old.DataPath);
+                        sb.Append("]\n");
+                    }
+                    MessageBox.Show(sb.ToString());
+                }
+            }
+            // чтение для перехода StringCollection если != NULL
+            else //if(opd.Layers != null && opd.Layers.Count > 0)
+            {
+                StringCollection tmpSc = new StringCollection();
+                foreach (string s in opd.Layers)
+                    tmpSc.Add(s.ToLower());
+
+                    IEnumLayer enumLayer = mxdoc.FocusMap.Layers;
+                    ILayer layer = enumLayer.Next();
+                    while (layer != null)
+                    {
+                        string layerName = layer.Name.ToLower();
+                        int index = tmpSc.IndexOf(layerName);
+                        if (index != -1)
+                        {
+                            layer.Visible = true;
+                            tmpSc.RemoveAt(index);
+                        }
+                        else
+                            layer.Visible = false;
+
+                    // всегда показывать слой где расположены объекты
+                    if (CadastralReferenceData.ObjectLayer.Caption.ToLower() == layer.Name.ToLower())
+                        layer.Visible = true;
+
+                    layer = enumLayer.Next();
+                    }
+
+
+
+                if (tmpSc.Count > 0)
+                {
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    sb.Append("Лист \"" + opd.Caption + "\". Отсутствуют слои:\n");
+                    foreach (string s in tmpSc)
+                    {
+                        sb.Append("[");
+                        sb.Append(s);
+                        sb.Append("]\n");
+                    }
+                    MessageBox.Show(sb.ToString());
+                }
             }
 
-            if (tmp.Count > 0)
-            {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append("Лист \"" + opd.Caption + "\". Отсутствуют слои:\n");
-                foreach (string s in tmp)
-                {
-                    sb.Append("[");
-                    sb.Append(s);
-                    sb.Append("]\n");
-                }
-                MessageBox.Show(sb.ToString());
-            }
             mxdoc.ActiveView.ContentsChanged();
         }
 
@@ -244,21 +290,21 @@ namespace CadastralReference
         }
 
         // получить перечень листов
-        public static StringCollection GetListOfAllLaers()
+        //public static StringCollection GetListOfAllLaers()
 
-        {
-            StringCollection ret = new StringCollection();
-            IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
-            IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
-            ILayer layer = enumLayer.Next();
-            while (layer != null)
-            {
-                ret.Add(layer.Name);
+        //{
+        //    StringCollection ret = new StringCollection();
+        //    IMxDocument mxDoc = ArcMap.Application.Document as IMxDocument;
+        //    IEnumLayer enumLayer = mxDoc.FocusMap.Layers;
+        //    ILayer layer = enumLayer.Next();
+        //    while (layer != null)
+        //    {
+        //        ret.Add(layer.Name);
 
-                layer = enumLayer.Next();
-            }
-            return ret;
-        }
+        //        layer = enumLayer.Next();
+        //    }
+        //    return ret;
+        //}
 
         // выбрать ближайшеий больший стандартный маштаб
         public static void SetStandartMapSkale()

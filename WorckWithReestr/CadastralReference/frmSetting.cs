@@ -51,12 +51,16 @@ namespace CadastralReference
 
         private void frmSetting_Load(object sender, EventArgs e)
         {
+#if DEBUG
+            btnSaveToFile.Visible = true;
+            btnLoadFromFile.Visible = true;
+#endif
             CreateUI();
 
             txtRukovoditelDoljnost.Text = m_crd.RukovoditelDoljnost;
             txtRukovoditelFIO.Text = m_crd.RukovoditelFIO;
-            txtObjectLayerName.Text = CadastralReferenceData.ObjectLayerName;
-            txtObjectTableName.Text = CadastralReferenceData.ObjectWorkspaceAndTableName;
+            txtObjectLayerName.Text = CadastralReferenceData.ObjectLayer.Caption;
+            txtObjectTableName.Text = CadastralReferenceData.ObjectLayer.DataPath;
 
 
             nudMarningUp.Value = (decimal)m_crd.PDFTextMarningUp;
@@ -67,10 +71,7 @@ namespace CadastralReference
             foreach (string s in m_crd.Body_Template)
                 lbBody_Template.Items.Add(s);
 
-#if DEBUG
-            btnSaveToFile.Visible = true;
-            btnLoadFromFile.Visible = true;
-#endif
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -159,7 +160,8 @@ namespace CadastralReference
             t.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             t.Size = new System.Drawing.Size(520, 23);
             t.Tag = opd;
-            t.Text = opd.LayerDescriptionsToString();
+
+            t.Text = opd.LayersToString();
             t.MouseDoubleClick += new MouseEventHandler(this.txtSelectedLayers_MouseDoubleClick);
             return t;
         }
@@ -522,18 +524,18 @@ namespace CadastralReference
         private void ShowForm_SelectLayers(OnePageDescriptions pd)
         {
             frmSelectLayers frm = new frmSelectLayers();
-            frm.retVal = pd.Layers;
-            frm.retVal2 = pd.LayerDescriptions;
+            frm.retString = pd.Layers;
+            frm.retLayerDescriptions = pd.LayerDescriptions;
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                pd.Layers = frm.retVal;
-                pd.LayerDescriptions = frm.retVal2;
+                pd.Layers = frm.retString;
+                pd.LayerDescriptions = frm.retLayerDescriptions;
             }
 
             TextBox t = GetControlByName(prefix_txtSelectedLayers + pd.PagesID.ToString()) as TextBox;
             if (t != null)
-                t.Text = pd.LayerDescriptionsToString();
+                t.Text = pd.LayersToString();
         }
 
         // перенести настройки из элементов управлений
@@ -836,13 +838,13 @@ namespace CadastralReference
         #region 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //GetSettingFromForm();
+            GetSettingFromForm();
 
-            //WorkCadastralReference.GetCadastralReferenceData().CopySetingFrom(m_crd);
-            //WorkCadastralReference.SaveSettingToDB();
+            WorkCadastralReference.GetCadastralReferenceData().CopySetingFrom(m_crd);
+            WorkCadastralReference.SaveSettingToDB();
 
-            //this.DialogResult = DialogResult.OK;
-            //this.Close();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -937,9 +939,5 @@ namespace CadastralReference
                 GeneralApp.ShowErrorMessage(string.Format("На могу сохранить настройки в '{0}'", sfd.FileName));
             }
         }
-
-
-
-
     }
 }

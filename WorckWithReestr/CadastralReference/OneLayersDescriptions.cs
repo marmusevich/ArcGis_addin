@@ -28,9 +28,16 @@ namespace CadastralReference
             Caption = "";
         }
 
-        public OneLayerDescriptions(OneLayerDescriptions old)
+        public OneLayerDescriptions(OneLayerDescriptions old) : this()
         {
             CopySetingFrom(old); 
+        }
+
+        public OneLayerDescriptions(string Caption, LayerType Type, string DataPath) : this()
+        {
+            this.Type = Type;
+            this.DataPath = DataPath;
+            this.Caption = Caption;
         }
 
         public OneLayerDescriptions(ILayer layer)
