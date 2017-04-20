@@ -260,21 +260,23 @@ namespace CadastralReference
         // при включении / отключении спрашивать и рекурсивно вкл/откл для всех дочерних
         private void tvLayers_AfterCheck(object sender, TreeViewEventArgs e)
         {
-            OneLayerDescriptions old = (OneLayerDescriptions)e.Node.Tag;
-            if (old != null && old.Type == OneLayerDescriptions.LayerType.Group)
+            if (e.Node.Nodes.Count > 0)
             {
+                this.tvLayers.AfterCheck -= new System.Windows.Forms.TreeViewEventHandler(this.tvLayers_AfterCheck);
                 if (e.Node.Checked)
                 {
                     DialogResult res = MessageBox.Show("Включить все вложенные слои?", "слои => '+'", MessageBoxButtons.YesNoCancel);
-                    if (res == DialogResult.OK)
+                    if (res == DialogResult.Yes)
                         TreeNodeCallRecursive(e.Node, this.CheckedTreeNode);
                 }
                 else
                 {
                     DialogResult res = MessageBox.Show("Выключить все вложенные слои?", "слои => '-'", MessageBoxButtons.YesNoCancel);
-                    if (res == DialogResult.OK)
+                    if (res == DialogResult.Yes)
                         TreeNodeCallRecursive(e.Node, this.UnCheckedTreeNode);
                 }
+
+                this.tvLayers.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvLayers_AfterCheck);
             }
         }
 
