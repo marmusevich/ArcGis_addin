@@ -2,11 +2,11 @@
   <Name>WorckWithReestr</Name>
   <AddInID>{a3901e4d-bd63-4196-a8ae-2624c565cdae}</AddInID>
   <Description>Работа с реестром</Description>
-  <Version>2017.04.25 10:00</Version>
+  <Version>2017.09.26 16:35</Version>
   <Image>Images\DemoTest.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>26.04.2017</Date>
+  <Date>26.09.2017</Date>
   <Targets>
     <Target name="Desktop" version="10.4" />
   </Targets>
@@ -19,7 +19,9 @@
         <Button id="TKC_WorckWithReestr_arcBtn_Open_RejAdmRajMis" class="arcBtn_Open_RejAdmRajMis" message="Работа с реестром - Районы города" caption="Районы города" tip="Показать справочник районов города" category="TKC:Работа с реестром" image="Images\arcBtn_Open_RejAdmRajMis.png" />
         <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrZayav" class="arcBtn_Open_ReestrZayav" message="Работа с реестром - реестр заявлений" caption="Реестр заявлений" tip="Показать реестр заявлений" category="TKC:Работа с реестром" image="Images\arcBtn_Open_ReestrZayav.png" />
         <Button id="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" class="arcBtn_Open_ReestrVedomostey" message="Работа с реестром - реестр ведомостей" caption="Реестр ведомостей" tip="Показать реестр ведомостей" category="TKC:Работа с реестром" image="Images\arcBtn_Open_ReestrVedomostey.png" />
-        <Button id="TKC_arcBtn_Open_dwCadastralReference" class="arcBtn_Open_dwCadastralReference" message="Работать с кадастровой справкой" caption="Открыть кадастровую справку" tip="Показать/спрятать окно кадастровой справки" category="TKC:Работа с реестром" image="Images\arcBtn_Open_dwCadastralReference.png" />
+        <!--<Button id="TKC_arcBtn_Open_dwCadastralReference" class="arcBtn_Open_dwCadastralReference" message="Работать с кадастровой справкой" caption="Открыть кадастровую справку" tip="Показать/спрятать окно кадастровой справки" category="TKC:Работа с реестром" image="Images\arcBtn_Open_dwCadastralReference.png" />-->
+        <Button id="TKC_arcBtn_Open_dwCadastralReference" class="arcBtn_Open_dwCadastralReference" message="Работать с кадастровой справкой" caption="Кадастровая справка" tip="Показать/спрятать окно кадастровой справки" category="TKC:Работа с реестром"  />
+        <Button id="TKC_arcBtn_Open_dwHistorianReference" class="arcBtn_Open_dwHistorianReference" message="Работать с историко-архитектурной справкой" caption="Историко-архитектурная справка" tip="Показать/спрятать окно историко-архитектурной справки" category="TKC:Работа с реестром"  />
         <Tool id="TKC_arcTool_SelectOdject" class="arcTool_SelectOdject" message="notUse" caption="notUse" tip="notUse" category="TKC:Работа с реестром" cursor="Images\arcTool_SelectCursor.cur"  />
       </Commands>
       <Toolbars>
@@ -32,6 +34,7 @@
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_ReestrZayav" />
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_ReestrVedomostey" separator="true" />
             <Button refID="TKC_arcBtn_Open_dwCadastralReference" />
+            <Button refID="TKC_arcBtn_Open_dwHistorianReference" />
           </Items>
         </Toolbar>
       </Toolbars>

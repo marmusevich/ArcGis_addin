@@ -27,6 +27,7 @@ namespace WorckWithReestr
         private void InitControls()
         {
             Generate_AndAddToTableLayoutPanel();
+            WorkCadastralReference.GetCadastralReferenceData().TypeReference_Change += new EventHandler<EventArgs>(OnTypeReference_Change); ;
             WorkCadastralReference.GetCadastralReferenceData().Image_Change += new EventHandler<EventArgs>(OnImage_Change);
             WorkCadastralReference.GetCadastralReferenceData().ZayavkaID_Change += new EventHandler<EventArgs>(ZayavkaID_Change);
             WorkCadastralReference.GetCadastralReferenceData().ObjektInMapID_Change += new EventHandler<EventArgs>(ObjektInMapID_Change);
@@ -443,6 +444,15 @@ namespace WorckWithReestr
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region нашы события
+
+        
+        // изменение кода заявления
+        private void OnTypeReference_Change(object sender, EventArgs e)
+        {
+            //пересоздать
+            Generate_AndAddToTableLayoutPanel();
+        }
+
         // изменение кода заявления
         private void ZayavkaID_Change(object sender, EventArgs e)
         {

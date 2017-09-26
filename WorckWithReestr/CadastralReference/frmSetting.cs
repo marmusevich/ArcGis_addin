@@ -51,6 +51,11 @@ namespace CadastralReference
 
         private void frmSetting_Load(object sender, EventArgs e)
         {
+            ReLoadForm();
+        }
+
+        private void ReLoadForm()
+        {
 #if DEBUG
             btnSaveToFile.Visible = true;
             btnLoadFromFile.Visible = true;
@@ -70,8 +75,6 @@ namespace CadastralReference
 
             foreach (string s in m_crd.Body_Template)
                 lbBody_Template.Items.Add(s);
-
-
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -904,7 +907,13 @@ namespace CadastralReference
                 if ((ofd.ShowDialog() == DialogResult.OK) && ofd.FileName != "")
                 {
                     string xml = File.ReadAllText(ofd.FileName);
+                    m_crd = new CadastralReferenceData();
                     m_crd.LoadSettingFromXMLString(xml);
+
+                    clbListOfPages.Items.Clear();
+                    lbBody_Template.Items.Clear();
+                    tcPages.Controls.Clear();
+                    ReLoadForm();
                 }
             }
             catch (Exception ex)

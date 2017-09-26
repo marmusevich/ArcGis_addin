@@ -8,6 +8,9 @@ using SharedClasses;
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Framework;
+
 
 namespace CadastralReference
 {
@@ -16,9 +19,9 @@ namespace CadastralReference
     {
         // для хранения настроек
         private const int zayavkaId_ForNastroyka = -2;
-        private const int pageId_ForNastroyka = -1;
+        private static TypeReference TypeReference_ForNastroyka = TypeReference.Cadastr;
 
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #region  вся информация по справке - синглитон
         private static CadastralReferenceData m_CadastralReferenceData = null;
         /// <summary>
@@ -29,6 +32,7 @@ namespace CadastralReference
         {
             if (m_CadastralReferenceData == null)
             {
+                m_CadastralReferenceData = new CadastralReferenceData();
                 LoadSettingFromDB();
             }
             return m_CadastralReferenceData; 
@@ -36,14 +40,67 @@ namespace CadastralReference
         #endregion
 
 
+        // 
+        public enum TypeReference
+        {
+            Cadastr = -1,
+            Historian = -2
+        }
+
+
+        public static void SetTypeReference(TypeReference type)
+        {
+            // после проверки
+            //if(type != null || TypeReference.)
+            {
+                //очистить текущие данные
+                GetCadastralReferenceData().ClearData();
+                GetCadastralReferenceData().ClearSeting();
+
+                //перезагрузить настройки из базы
+                TypeReference_ForNastroyka = type;
+                LoadSettingFromDB();
+
+                //пересоздать элементы управления - послать событие
+                GetCadastralReferenceData().OnTypeReference_Change();
+            }
+        }
+
+        public static void Show(int id, TypeReference type)
+        {
+            ArcMap.Application.CurrentTool = null;
+
+            UID dockableWinUID = new UIDClass();
+            dockableWinUID.Value = ThisAddIn.IDs.arcDW_CadastralReference;
+
+            IDockableWindow statsticsDockableWin = ArcMap.DockableWindowManager.GetDockableWindow(dockableWinUID);
+
+            if(type == TypeReference.Cadastr)
+                statsticsDockableWin.Caption = "Кадастровая справка";
+            else if (type == TypeReference.Historian)
+                statsticsDockableWin.Caption = "Историко-архитектурная справка";
+
+
+            if (TypeReference_ForNastroyka == type)
+                // если равны то просто вкл / выкл
+                statsticsDockableWin.Show(!statsticsDockableWin.IsVisible());
+            else
+            {
+                //если разные то установить и включить
+                SetTypeReference(type);
+                statsticsDockableWin.Show(true);
+            }
+
+            SetZayavka(id);
+        }
+
+
         public static void SaveSettingToDB()
         {
             try
             {
                 string xml = GetCadastralReferenceData().SaveSettingToXMLString();
-
 #if DEBUG
-
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 // test
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,8 +110,7 @@ namespace CadastralReference
                 // test
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 #endif
-
-                WorkCadastralReference_DB.SaveToDBPage(zayavkaId_ForNastroyka, "Настройки", pageId_ForNastroyka, "Настройки" , WorkCadastralReference_DB.StringToByteArray(xml) );
+                WorkCadastralReference_DB.SaveToDBPage(zayavkaId_ForNastroyka, "Настройки", (int)TypeReference_ForNastroyka, "Настройки" , WorkCadastralReference_DB.StringToByteArray(xml) );
             }
             catch (Exception ex) // обработка ошибок
             {
@@ -65,18 +121,16 @@ namespace CadastralReference
 
         public static void LoadSettingFromDB()
         {
-            m_CadastralReferenceData = new CadastralReferenceData();
             try
             {
-                string xml = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(zayavkaId_ForNastroyka, pageId_ForNastroyka, "Настройки"));
+                string xml = WorkCadastralReference_DB.ByteArrayToString(WorkCadastralReference_DB.LoadFromDBPage(zayavkaId_ForNastroyka, (int)TypeReference_ForNastroyka, "Настройки"));
                 m_CadastralReferenceData.LoadSettingFromXMLString(xml);
             }
             catch (Exception ex) // обработка ошибок
             {
                 m_CadastralReferenceData.InitDefaultSetting();
-                Logger.Write(ex, "Ошибка при чтение  настроек кадастровой справки");
-                GeneralApp.ShowErrorMessage("Ошибка при чтение  настроек кадастровой справки \n\r Установлены значения по умолчанию. ");
-
+                Logger.Write(ex, "Ошибка при чтение настроек кадастровой справки");
+                GeneralApp.ShowErrorMessage("Ошибка при чтение настроек кадастровой справки \n\r Установлены значения по умолчанию. ");
             }
         }
 

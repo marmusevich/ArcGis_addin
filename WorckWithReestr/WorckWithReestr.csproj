@@ -122,6 +122,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcButtons\arcBtn_Open_dwHistorianReference.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_dwCadastralReference.cs" />
     <Compile Include="ArcButtons\AppStartPoint.cs" />
     <Compile Include="ArcButtons\arcBtn_Open_JurLicList.cs" />

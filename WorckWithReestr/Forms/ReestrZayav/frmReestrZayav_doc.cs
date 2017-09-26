@@ -347,8 +347,6 @@ namespace WorckWithReestr
         private void llblHaveReferense_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //arcBtn_Open_dwCadastralReference.Show(objectID, true);
-            //сохранить и закрыть
-            
         }
 
         #endregion
