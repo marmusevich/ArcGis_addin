@@ -61,6 +61,15 @@ namespace CadastralReference
                 TypeReference_ForNastroyka = type;
                 LoadSettingFromDB();
 
+                if (type == TypeReference.Cadastr)
+                {
+                    CadastralReferenceData.ObjectLayer = CadastralReferenceData.ObjectLayer_KS;
+                }
+                else if (type == TypeReference.Historian)
+                {
+                    CadastralReferenceData.ObjectLayer = CadastralReferenceData.ObjectLayer_IAS;
+                }
+
                 //пересоздать элементы управления - послать событие
                 GetCadastralReferenceData().OnTypeReference_Change();
             }
@@ -76,9 +85,13 @@ namespace CadastralReference
             IDockableWindow statsticsDockableWin = ArcMap.DockableWindowManager.GetDockableWindow(dockableWinUID);
 
             if(type == TypeReference.Cadastr)
+            { 
                 statsticsDockableWin.Caption = "Кадастровая справка";
+            }
             else if (type == TypeReference.Historian)
+            {
                 statsticsDockableWin.Caption = "Историко-архитектурная справка";
+            }
 
 
             if (TypeReference_ForNastroyka == type)
