@@ -122,14 +122,14 @@ namespace SharedClasses
                     SaveDBConnectPropertySetToDisk(ref ips);
                 }
 
-                if (ips.Count == 5)
+                if (ips.Count > 0)
                 {
                     m_DBConnectPropertySet = new PropertySetClass();
                     foreach (DataItemForXmlSerialize_IPropertySet dps in ips)
                         m_DBConnectPropertySet.SetProperty(dps.Key, dps.Value);
                 }
                 else
-                    throw new Exception("in loaded file not 5 parametrs...");
+                    throw new Exception("in loaded parametrs file is empty...");
             }
 
             Type factoryType = Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory");
@@ -341,11 +341,12 @@ namespace SharedClasses
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
                 //queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.Tables = tableName;
-                queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
+                queryDef2.SubFields = "DISTINCT OBJECTID";
                 if (strongCompare)
                     queryDef2.WhereClause = fildName + " = '" + textValue + "'";
                 else
                     queryDef2.WhereClause = fildName + " like '%" + textValue + "%'";
+                //queryDef2.PostfixClause = "limit 1";
                 //queryDef2.PostfixClause = "ORDER BY " + fildName;
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;
@@ -372,8 +373,9 @@ namespace SharedClasses
                 IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
                 //queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.Tables = tableName;
-                queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
+                queryDef2.SubFields = "DISTINCT OBJECTID";
                 queryDef2.WhereClause = fildName + " = " + intValue.ToString();
+                //queryDef2.PostfixClause = "limit 1";
                 //queryDef2.PostfixClause = "ORDER BY " + fildName;
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;
@@ -433,7 +435,7 @@ namespace SharedClasses
                 //queryDef2.Tables = workspaceName + ".DBO." + tableName;
                 queryDef2.Tables = tableName;
                 queryDef2.SubFields = "DISTINCT " + fildName;
-                queryDef2.PostfixClause = "ORDER BY " + fildName;
+                //queryDef2.PostfixClause = "ORDER BY " + fildName;
                 ICursor cursor = queryDef2.Evaluate2(true);
                 IRow row = null;
                 while ((row = cursor.NextRow()) != null)

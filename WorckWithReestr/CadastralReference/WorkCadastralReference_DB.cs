@@ -326,8 +326,9 @@ namespace CadastralReference
             int ret = -1;
             IQueryDef2 queryDef2 = (IQueryDef2)fws.CreateQueryDef();
             queryDef2.Tables = CadastralReferenceData.CadastralReferenceData_NameTable;
-            queryDef2.SubFields = "DISTINCT TOP 1 OBJECTID";
+            queryDef2.SubFields = "DISTINCT OBJECTID";
             queryDef2.WhereClause = "zayavkaId = " + zayavkaId.ToString() + " and pageId = " + pageId.ToString();
+            //queryDef2.PostfixClause = "limit 1";
             ICursor cursor = queryDef2.Evaluate2(true);
             IRow row = null;
             if ((row = cursor.NextRow()) != null)
