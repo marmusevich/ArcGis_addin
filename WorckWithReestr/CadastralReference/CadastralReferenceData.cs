@@ -18,20 +18,17 @@ namespace CadastralReference
     {
         [XmlIgnore]
         //слой и таблица для кадастровой справки
-        public static readonly OneLayerDescriptions ObjectLayer_KS = new OneLayerDescriptions(@"Об""єкт", OneLayerDescriptions.LayerType.Feature, @"Кадастровая_справка.DBO.KS_OBJ");
+        public static readonly OneLayerDescriptions ObjectLayer_KS = new OneLayerDescriptions(@"Об""єкт", OneLayerDescriptions.LayerType.Feature, @"v081_odessa.sde.KS_OBJ_MSK51");
         [XmlIgnore]
         //слой и таблица для архетектурно исторической справки
-        public static readonly OneLayerDescriptions ObjectLayer_IAS = new OneLayerDescriptions(@"Об""єкт", OneLayerDescriptions.LayerType.Feature, @"Историко_архитектурная_справка.DBO.IAS_OBJ");
+        public static readonly OneLayerDescriptions ObjectLayer_IAS = new OneLayerDescriptions(@"Об""єкт", OneLayerDescriptions.LayerType.Feature, @"v081_odessa.sde.IAS_OBJ_MSK51");
         [XmlIgnore]
         public static OneLayerDescriptions ObjectLayer = ObjectLayer_KS;
 
         [XmlIgnore]
-        public const string DB_NameWorkspace = @"Kadastr2016";
+        public const string DB_NameWorkspace = @"v081_odessa";
         [XmlIgnore]
         public const string ReestrZayav_NameTable = @"Kn_Reg_Zayv";
-
-
-
         [XmlIgnore]
         public const string CadastralReferenceData_NameTable = @"CadastralReferenceData";
 

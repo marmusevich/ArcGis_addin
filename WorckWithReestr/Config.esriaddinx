@@ -2,11 +2,11 @@
   <Name>WorckWithReestr</Name>
   <AddInID>{a3901e4d-bd63-4196-a8ae-2624c565cdae}</AddInID>
   <Description>Работа с реестром</Description>
-  <Version>2020.02.02 16:06</Version>
+  <Version>2020.02.04 14:25</Version>
   <Image>Images\DemoTest.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>02.02.2020</Date>
+  <Date>04.02.2020</Date>
   <Targets>
     <Target name="Desktop" version="10.6" />
   </Targets>
@@ -25,7 +25,7 @@
         <Tool id="TKC_arcTool_SelectOdject" class="arcTool_SelectOdject" message="notUse" caption="notUse" tip="notUse" category="TKC:Работа с реестром" cursor="Images\arcTool_SelectCursor.cur"  />
       </Commands>
       <Toolbars>
-        <Toolbar id="TKC_WorckWithReestr_toolbar" caption="Работа с реестром 2020-02-02" showInitially="true">
+        <Toolbar id="TKC_WorckWithReestr_toolbar" caption="Работа с реестром 2020-02-04" showInitially="true">
           <Items>
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_FizLicList" />
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_JurLicList" />
