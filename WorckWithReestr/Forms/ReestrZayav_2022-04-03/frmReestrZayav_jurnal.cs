@@ -156,11 +156,6 @@ namespace WorckWithReestr
                 dictionaryTableName = "fizichni_osoby";
                 return true;
             }
-            else if (fildName == "Fio_Ved_Vid")
-            {
-                dictionaryTableName = "fizichni_osoby";
-                return true;
-            }
             else if (fildName == "Fio_Z")
             {
                 dictionaryTableName = "fizichni_osoby";

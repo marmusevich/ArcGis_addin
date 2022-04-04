@@ -2,11 +2,11 @@
   <Name>WorckWithReestr</Name>
   <AddInID>{a3901e4d-bd63-4196-a8ae-2624c565cdae}</AddInID>
   <Description>Работа с реестром</Description>
-  <Version>2020.02.04 14:25</Version>
+  <Version>2022.04.02 10:10</Version>
   <Image>Images\DemoTest.png</Image>
   <Author>Владимиров С. К., Мармусевич А.В.</Author>
   <Company>TKC http://itservis.od.ua </Company>
-  <Date>04.02.2020</Date>
+  <Date>02.04.2022</Date>
   <Targets>
     <Target name="Desktop" version="10.6" />
   </Targets>
@@ -22,10 +22,10 @@
         <!--<Button id="TKC_arcBtn_Open_dwCadastralReference" class="arcBtn_Open_dwCadastralReference" message="Работать с кадастровой справкой" caption="Открыть кадастровую справку" tip="Показать/спрятать окно кадастровой справки" category="TKC:Работа с реестром" image="Images\arcBtn_Open_dwCadastralReference.png" />-->
         <Button id="TKC_arcBtn_Open_dwCadastralReference" class="arcBtn_Open_dwCadastralReference" message="Работать с кадастровой справкой" caption="Кадастровая справка" tip="Показать/спрятать окно кадастровой справки" category="TKC:Работа с реестром"  />
         <Button id="TKC_arcBtn_Open_dwHistorianReference" class="arcBtn_Open_dwHistorianReference" message="Работать с историко-архитектурной справкой" caption="Историко-архитектурная справка" tip="Показать/спрятать окно историко-архитектурной справки" category="TKC:Работа с реестром"  />
-        <Tool id="TKC_arcTool_SelectOdject" class="arcTool_SelectOdject" message="notUse" caption="notUse" tip="notUse" category="TKC:Работа с реестром" cursor="Images\arcTool_SelectCursor.cur"  />
+        <Tool id="TKC_arcTool_SelectOdject" class="arcTool_SelectOdject" message="Выбор объекта на карте" caption="Выбор объекта на карте" tip="Выбор объекта на карте" category="TKC:Работа с реестром" cursor="Images\arcTool_SelectCursor.cur"  />
       </Commands>
       <Toolbars>
-        <Toolbar id="TKC_WorckWithReestr_toolbar" caption="Работа с реестром 2020-02-04" showInitially="true">
+        <Toolbar id="TKC_WorckWithReestr_toolbar" caption="Работа с реестром 2022-04-02" showInitially="true">
           <Items>
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_FizLicList" />
             <Button refID="TKC_WorckWithReestr_arcBtn_Open_JurLicList" />

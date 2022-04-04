@@ -89,6 +89,7 @@ namespace CadastralReference
 
             //GeneralMapWork.ClearMapSelection();
             //GeneralMapWork.ClearAllLayerSelection();
+            mxDoc.ActiveView.Refresh();
             ArcMap.Application.CurrentTool = null;
         }
 

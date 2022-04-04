@@ -129,7 +129,6 @@ namespace WorckWithReestr
             SaveStringValueFromTextBoxToDB(ref row, "Tel_Z", txtTel_Z);
             SaveStringValueFromTextBoxToDB(ref row, "Prim", txtPrim);
             SaveStringValueFromTextBoxToDB(ref row, "Opisan_Ved", txtOpisan_Ved);
-            SaveStringValueFromTextBoxToDB(ref row, "Opisan_Ved", txtOpisan_Ved);
             SaveStringValueFromTextBoxToDB(ref row, "Forma_Ved", txtForma_Ved);
             SaveStringValueFromTextBoxToDB(ref row, "N_Ish_Z", txtN_Ish_Z);
             SaveStringValueFromTextBoxToDB(ref row, "Sodergan", txtSodergan);
