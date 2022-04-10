@@ -74,6 +74,8 @@ namespace WorckWithReestr
                                       base.table.FindField("Status"),// 11
                                       base.table.FindField("Cane"),// 14
                                       base.table.FindField("Cane_Date"),
+                                      base.table.FindField("qr_kod"),
+                                      base.table.FindField("Prim"),
                                       base.table.FindField("IsHaveReferense"),
                                       base.table.FindField("IsReferenceClose"),
                                       base.table.FindField("MapObjectID")
@@ -104,7 +106,7 @@ namespace WorckWithReestr
             dgv.Columns["Forma_Ved"].Visible = false;
             dgv.Columns["Fio_Ved_Vid"].Visible = false;
             dgv.Columns["Fio_Ved_Prin"].Visible = false;
-            dgv.Columns["Prim"].Visible = false;
+            //dgv.Columns["Prim"].Visible = false; // 2022-04-10 - enable
             dgv.Columns["Rajon"].Visible = false;
             dgv.Columns["Tel_Z"].Visible = false;
             dgv.Columns["Dodatok"].Visible = false;

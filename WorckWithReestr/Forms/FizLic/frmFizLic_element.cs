@@ -36,7 +36,7 @@ namespace WorckWithReestr
             SetStringValueFromDBToTextBox(ref row, "kategoriya", txtCategor);
             SetStringValueFromDBToTextBox(ref row, "ident_kod", txtINN);
 
-            cbIsWorker.Checked = GeneralApp.ConvertVolueToBool(base.table.FindField("EtoSotrydnik"));
+            cbIsWorker.Checked = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "etosotrydnik"));
         }
 
         protected override void FormElement_to_DB(IRow row)
@@ -48,9 +48,9 @@ namespace WorckWithReestr
             SaveStringValueFromTextBoxToDB(ref row, "ident_kod", txtINN);
 
             if (cbIsWorker.Checked)
-                row.set_Value(base.table.FindField("EtoSotrydnik"), 1);
+                row.set_Value(base.table.FindField("etosotrydnik"), 1);
             else
-                row.set_Value(base.table.FindField("EtoSotrydnik"), 0);
+                row.set_Value(base.table.FindField("etosotrydnik"), 0);
         }
 
         protected override bool ValidatingData()

@@ -370,8 +370,22 @@ namespace SharedClasses
                 {
                     short add = Convert.ToInt16(but.Tag);
                     enable_dtpDataEvent = false;
-                    dtpDataOt.Value = GeneralApp.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year, dtpDataOt.Value.Month + add, 15));
-                    dtpDatePo.Value = GeneralApp.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year, dtpDatePo.Value.Month + add, 15));
+
+                    if(add > 0 && dtpDataOt.Value.Month >= 12 && dtpDataOt.Value.Month == dtpDatePo.Value.Month) // next year
+                    {
+                        dtpDataOt.Value = GeneralApp.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year + add, 1, 15));
+                        dtpDatePo.Value = GeneralApp.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year + add, 1, 15));
+                    }
+                    else if(add < 0 && dtpDataOt.Value.Month <= 1 && dtpDataOt.Value.Month == dtpDatePo.Value.Month) // last year
+                    {
+                        dtpDataOt.Value = GeneralApp.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year + add, 12, 15));
+                        dtpDatePo.Value = GeneralApp.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year + add, 12, 15));
+                    }
+                    else
+                    {
+                        dtpDataOt.Value = GeneralApp.GetFirstMonthDayDate(new DateTime(dtpDataOt.Value.Year, dtpDataOt.Value.Month + add, 15));
+                        dtpDatePo.Value = GeneralApp.GetLastMonthDayDate(new DateTime(dtpDatePo.Value.Year, dtpDatePo.Value.Month + add, 15));
+                    }
                     tableWrapper.QueryFilter = BuildConditions();
                     Reflesh();
                 }

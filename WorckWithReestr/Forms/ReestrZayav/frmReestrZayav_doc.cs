@@ -37,9 +37,11 @@ namespace WorckWithReestr
             SetStringValueFromDBToTextBox(ref row, "Sodergan", txtSodergan);
             SetStringValueFromDBToTextBox(ref row, "Cane", txtCane);
             SetStringValueFromDBToTextBox(ref row, "Adress_Text", txtAdress_Text);
+            SetStringValueFromDBToTextBox(ref row, "prim", txtPrim);
 
             //доменные значения
             CheсkValueAndSetToComboBox(ref cbStatus, ref ddaStatus, "Status", GetValueFromDB(ref row, "Status"));
+            cbQrKod.Checked = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "qr_kod"));
 
             // справочники
             mTip_Doc = (int)GetValueFromDB(ref row, "Tip_Doc");
@@ -50,7 +52,6 @@ namespace WorckWithReestr
             OnChangedKod_Z();
             OnChangedTipDoc();
 
-            //N_Z, Type = esriFieldTypeInteger, AliasName = № пп 
             SetIntValueFromDBToTextBox(ref row, "N_Z", txtN_Z);
 
             IsHaveReferense = GeneralApp.ConvertVolueToBool(GetValueFromDB(ref row, "IsHaveReferense"));
@@ -93,9 +94,15 @@ namespace WorckWithReestr
             SaveStringValueFromTextBoxToDB(ref row, "Sodergan", txtSodergan);
             SaveStringValueFromTextBoxToDB(ref row, "Cane", txtCane);
             SaveStringValueFromTextBoxToDB(ref row, "Adress_Text", txtAdress_Text);
+            SaveStringValueFromTextBoxToDB(ref row, "prim", txtPrim);
 
             //доменные значения
             SaveDomeinDataValueFromComboBoxToDB(ref row, "Status", ref cbStatus);
+
+            if (cbQrKod.Checked)
+                row.set_Value(base.table.FindField("qr_kod"), 1);
+            else
+                row.set_Value(base.table.FindField("qr_kod"), 0);
 
             // справочники
             row.set_Value(base.table.FindField("Tip_Doc"), mTip_Doc);
@@ -163,6 +170,7 @@ namespace WorckWithReestr
             SetMaxLengthStringValueToTextBox("Sodergan", txtSodergan);
             SetMaxLengthStringValueToTextBox("Cane", txtCane);
             SetMaxLengthStringValueToTextBox("Adress_Text", txtAdress_Text);
+            SetMaxLengthStringValueToTextBox("Prim", txtPrim);
         }
 
         protected override bool DeleteData()
@@ -379,5 +387,14 @@ namespace WorckWithReestr
         }
         #endregion
 
+        private void txtPrim_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            isModified = true;
+        }
+
+        private void cbQrKod_CheckedChanged(object sender, EventArgs e)
+        {
+            isModified = true;
+        }
     }
 }

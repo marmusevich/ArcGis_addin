@@ -54,17 +54,20 @@ namespace WorckWithReestr
             this.txtAdress_Text = new System.Windows.Forms.TextBox();
             this.lblAdress_Text = new System.Windows.Forms.Label();
             this.llblHaveReferense = new System.Windows.Forms.LinkLabel();
+            this.cbQrKod = new System.Windows.Forms.CheckBox();
+            this.lblPrim = new System.Windows.Forms.Label();
+            this.txtPrim = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(465, 341);
+            this.btnOk.Location = new System.Drawing.Point(468, 401);
             this.btnOk.TabIndex = 23;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(8, 341);
+            this.btnCancel.Location = new System.Drawing.Point(11, 401);
             this.btnCancel.TabIndex = 25;
             // 
             // txtSodergan
@@ -287,11 +290,43 @@ namespace WorckWithReestr
             this.llblHaveReferense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.llblHaveReferense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblHaveReferense_LinkClicked);
             // 
+            // cbQrKod
+            // 
+            this.cbQrKod.AutoSize = true;
+            this.cbQrKod.Location = new System.Drawing.Point(11, 326);
+            this.cbQrKod.Name = "cbQrKod";
+            this.cbQrKod.Size = new System.Drawing.Size(101, 19);
+            this.cbQrKod.TabIndex = 57;
+            this.cbQrKod.Text = "Есть QR код";
+            this.cbQrKod.UseVisualStyleBackColor = true;
+            this.cbQrKod.CheckedChanged += new System.EventHandler(this.cbQrKod_CheckedChanged);
+            // 
+            // lblPrim
+            // 
+            this.lblPrim.AutoSize = true;
+            this.lblPrim.Location = new System.Drawing.Point(11, 352);
+            this.lblPrim.Name = "lblPrim";
+            this.lblPrim.Size = new System.Drawing.Size(74, 15);
+            this.lblPrim.TabIndex = 58;
+            this.lblPrim.Text = "Имя файла";
+            // 
+            // txtPrim
+            // 
+            this.txtPrim.Location = new System.Drawing.Point(143, 352);
+            this.txtPrim.Name = "txtPrim";
+            this.txtPrim.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtPrim.Size = new System.Drawing.Size(400, 20);
+            this.txtPrim.TabIndex = 59;
+            this.txtPrim.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrim_Validating);
+            // 
             // frmReestrZayav_doc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 369);
+            this.ClientSize = new System.Drawing.Size(552, 436);
+            this.Controls.Add(this.txtPrim);
+            this.Controls.Add(this.lblPrim);
+            this.Controls.Add(this.cbQrKod);
             this.Controls.Add(this.llblHaveReferense);
             this.Controls.Add(this.txtAdress_Text);
             this.Controls.Add(this.lblAdress_Text);
@@ -351,6 +386,9 @@ namespace WorckWithReestr
             this.Controls.SetChildIndex(this.lblAdress_Text, 0);
             this.Controls.SetChildIndex(this.txtAdress_Text, 0);
             this.Controls.SetChildIndex(this.llblHaveReferense, 0);
+            this.Controls.SetChildIndex(this.cbQrKod, 0);
+            this.Controls.SetChildIndex(this.lblPrim, 0);
+            this.Controls.SetChildIndex(this.txtPrim, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -384,5 +422,8 @@ namespace WorckWithReestr
         private TextBox txtAdress_Text;
         private Label lblAdress_Text;
         private LinkLabel llblHaveReferense;
+        private CheckBox cbQrKod;
+        private Label lblPrim;
+        private TextBox txtPrim;
     }
 }
